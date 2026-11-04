@@ -2,7 +2,7 @@
 
 **Status:** DRAFT — for ChatGPT review
 **Date:** 2026-11-04
-**Revision history:** First version, 2026-11-04: decisions D-01 to D-05 (consolidated correction instruction of 04-Nov-2026). Second version, 2026-11-04: decisions D-06 to D-09, and the status of D-02 (review instruction of 04-Nov-2026 and Rama's direction of the same day). Third version, 2026-11-04: decisions D-10 to D-18, the status of D-02, D-06 and D-08, and the note on evidence files (Rama's decisions of 04-Nov-2026). Fourth version, 2026-11-04: decisions D-19 and D-20, the Foundation → Pre-Phase gate (Rama's decisions of 04-Nov-2026).
+**Revision history:** First version, 2026-11-04: decisions D-01 to D-05 (consolidated correction instruction of 04-Nov-2026). Second version, 2026-11-04: decisions D-06 to D-09, and the status of D-02 (review instruction of 04-Nov-2026 and Rama's direction of the same day). Third version, 2026-11-04: decisions D-10 to D-18, the status of D-02, D-06 and D-08, and the note on evidence files (Rama's decisions of 04-Nov-2026). Fourth version, 2026-11-04: decisions D-19 and D-20, the Foundation → Pre-Phase gate (Rama's decisions of 04-Nov-2026). Fifth version, 2026-11-04: decision D-21, the Phase 1 study baseline and the reference system (Rama's decision of 04-Nov-2026).
 **Purpose and scope:** The project's Decision Register (Document 10, section 5). Each entry uses exactly the nine fields of Document 10, section 5. Prepared by Claude for ChatGPT's review; Rama decides (Document 05, section 1).
 **Evidence files:** Instructions, reviews and responses named as evidence are not kept as files in the repository (D-17). Those committed before Revision 5 remain in its Git history, at commit 9898e8c308e8ab8835efd3462aa2f1f97ba1760b; the others were never committed. Each entry states what decides it, and quotes Rama's words where they are the decision (Document 10, section 5).
 
@@ -285,5 +285,19 @@
 | Rama approval | Rama: "Accepted" (message to Claude, 04-Nov-2026, 14:39 IST), on ChatGPT's recommendation, which worded this decision: "I explicitly authorise commencement of Pre-Phase under Document 02. ChatGPT may now issue the Pre-Phase instructions." It also stated: "OI-04 and OI-07 should be settled before Phase 1, and OI-06 before Phase 2." |
 | Affected documents | 02 §2 and §6; 10 §11 (the open items, unchanged). |
 | Status | APPROVED. The next gate is Pre-Phase → Phase 1 (Document 02, section 6). |
+
+## D-21 — Phase 1 study baseline and the reference system
+
+| Field | Entry |
+|---|---|
+| Decision ID | D-21 |
+| Date | 2026-11-04 |
+| Subject | The commit of trading-system-prod-snapshot that the legacy study cites (Document 06, section 6), and which system is the reference |
+| Exact decision | The legacy system is studied as the production system held in trading-system-prod-snapshot at commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (branch `main`), and evidence cites this full commit. The production system is always the reference system: material that describes the testing system, including the statements of the five existing technical records that rest on the testing copy, is checked against the production code at that commit (Document 08, section 9). Phase 1 notes, topic by topic, where the code changed after the last recorded deployment (`686df1c` and `7d4970a`, 02-Sep-2026); whether production ran those later commits is UNKNOWN / NOT ESTABLISHED (Document 06, section 4.2). |
+| Rationale | `970aabf` is the head of the repository's only branch and its last commit (`git ls-remote`, 04-Nov-2026, 15:27 IST); the five existing technical records give it as production's code (`01_SYSTEM_OVERVIEW.md`, lines 27 and 153; `LEGACY_SYSTEM_MANUAL_INDEX.md`, line 13); its full SHA fixes it. Rama: the production and testing repositories differ in the S&R change and configuration settings, so the production system is the valid reference. |
+| Evidence | Claude's Pre-Phase checkpoint 1 of 04-Nov-2026, sections 3 and 5 (not kept as a file, D-17); `UNPUSHED_LEDGER.md` at `970aabf`, lines 3456 to 3469 and 3549. Rama's statement on the two repositories is reported by Rama and not independently verified, as the testing repository is ignored (D-12); it agrees with `01_SYSTEM_OVERVIEW.md`, Appendix 01-A (lines 160 to 178), which describes the testing copy as `970aabf` plus the S&R shadow files, with the `force_qty` change set in configuration and in three code files. |
+| Rama approval | Rama: "Agreed, Production repo vs sbx repo differs when? S&R Change and Config settings" and "So always review the production system as valid reference system" (message to Claude, 04-Nov-2026, 15:41 IST), on Claude's recommendation of `970aabf`. |
+| Affected documents | The Source Inventory, section 1 and SRC-10 to SRC-39; 06 §6 (the commit to be studied, recorded at Pre-Phase); 08 §9. |
+| Status | APPROVED. |
 
 **Related documents:** 01, 02, 03, 04, 05, 06, 07, 08, 09 and 10.

@@ -2,7 +2,7 @@
 
 **Status:** DRAFT — for ChatGPT review
 **Date:** 2026-11-04
-**Revision history:** First version, 2026-11-04: decisions D-01 to D-05 (consolidated correction instruction of 04-Nov-2026). Second version, 2026-11-04: decisions D-06 to D-09, and the status of D-02 (review instruction of 04-Nov-2026 and Rama's direction of the same day). Third version, 2026-11-04: decisions D-10 to D-18, the status of D-02, D-06 and D-08, and the note on evidence files (Rama's decisions of 04-Nov-2026). Fourth version, 2026-11-04: decisions D-19 and D-20, the Foundation → Pre-Phase gate (Rama's decisions of 04-Nov-2026). Fifth version, 2026-11-04: decision D-21, the Phase 1 study baseline and the reference system (Rama's decision of 04-Nov-2026).
+**Revision history:** First version, 2026-11-04: decisions D-01 to D-05 (consolidated correction instruction of 04-Nov-2026). Second version, 2026-11-04: decisions D-06 to D-09, and the status of D-02 (review instruction of 04-Nov-2026 and Rama's direction of the same day). Third version, 2026-11-04: decisions D-10 to D-18, the status of D-02, D-06 and D-08, and the note on evidence files (Rama's decisions of 04-Nov-2026). Fourth version, 2026-11-04: decisions D-19 and D-20, the Foundation → Pre-Phase gate (Rama's decisions of 04-Nov-2026). Fifth version, 2026-11-04: decision D-21, the Phase 1 study baseline and the reference system (Rama's decision of 04-Nov-2026). Sixth version, 2026-11-04: decision D-22, Pre-Phase Deliverable 1 (Rama's decision of 04-Nov-2026).
 **Purpose and scope:** The project's Decision Register (Document 10, section 5). Each entry uses exactly the nine fields of Document 10, section 5. Prepared by Claude for ChatGPT's review; Rama decides (Document 05, section 1).
 **Evidence files:** Instructions, reviews and responses named as evidence are not kept as files in the repository (D-17). Those committed before Revision 5 remain in its Git history, at commit 9898e8c308e8ab8835efd3462aa2f1f97ba1760b; the others were never committed. Each entry states what decides it, and quotes Rama's words where they are the decision (Document 10, section 5).
 
@@ -299,5 +299,19 @@
 | Rama approval | Rama: "Agreed, Production repo vs sbx repo differs when? S&R Change and Config settings" and "So always review the production system as valid reference system" (message to Claude, 04-Nov-2026, 15:41 IST), on Claude's recommendation of `970aabf`. |
 | Affected documents | The Source Inventory, section 1 and SRC-10 to SRC-39; 06 §6 (the commit to be studied, recorded at Pre-Phase); 08 §9. |
 | Status | APPROVED. |
+
+## D-22 — Pre-Phase Deliverable 1: the Source Inventory
+
+| Field | Entry |
+|---|---|
+| Decision ID | D-22 |
+| Date | 2026-11-04 |
+| Subject | Rama's approval of Pre-Phase Deliverable 1, the Source Inventory, after ChatGPT's review |
+| Exact decision | Rama approves Pre-Phase Deliverable 1, the Source Inventory (`SOURCE_INVENTORY_2026-11-04.md`), as committed at `cfa70bc`. Claude may begin Deliverable 2, the whole-system overview, under ChatGPT's Pre-Phase instructions of 04-Nov-2026. This does not pass the Pre-Phase → Phase 1 gate: the five Pre-Phase deliverables are approved together at that gate (Document 02, section 2, step 5, and section 6). The Source Inventory remains the live register that Pre-Phase updates (Document 05, section 11.1, timing rule 2). |
+| Rationale | ChatGPT's review of commit `cfa70bc` found no material defect, recommended the inventory for Rama's approval, and accepted the validator's T39 correction. |
+| Evidence | ChatGPT's review of the Deliverable 1 commit, 04-Nov-2026 (not kept as a file, D-17); commit `cfa70bcf535400c6e61147bb44bf67fc56f10124`. |
+| Rama approval | Rama: "Approved" (message to Claude, 04-Nov-2026, 16:09 IST), on ChatGPT's request: "Please approve or return Deliverable 1". |
+| Affected documents | The Source Inventory (its Status line); 02 §2. |
+| Status | APPROVED. The approval of the five Pre-Phase deliverables together remains for the Pre-Phase → Phase 1 gate. |
 
 **Related documents:** 01, 02, 03, 04, 05, 06, 07, 08, 09 and 10.

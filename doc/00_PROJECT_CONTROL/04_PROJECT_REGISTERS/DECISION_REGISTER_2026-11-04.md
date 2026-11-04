@@ -2,7 +2,7 @@
 
 **Status:** DRAFT — for ChatGPT review
 **Date:** 2026-11-04
-**Revision history:** First version, 2026-11-04: decisions D-01 to D-05 (consolidated correction instruction of 04-Nov-2026). Second version, 2026-11-04: decisions D-06 to D-09, and the status of D-02 (review instruction of 04-Nov-2026 and Rama's direction of the same day). Third version, 2026-11-04: decisions D-10 to D-18, the status of D-02, D-06 and D-08, and the note on evidence files (Rama's decisions of 04-Nov-2026). Fourth version, 2026-11-04: decisions D-19 and D-20, the Foundation → Pre-Phase gate (Rama's decisions of 04-Nov-2026). Fifth version, 2026-11-04: decision D-21, the Phase 1 study baseline and the reference system (Rama's decision of 04-Nov-2026). Sixth version, 2026-11-04: decision D-22, Pre-Phase Deliverable 1 (Rama's decision of 04-Nov-2026). Seventh version, 2026-11-04: decisions D-23 to D-25, the Phase 1 topic sequence, OI-04 and OI-07 (Rama's decisions of 04-Nov-2026). Eighth version, 2026-11-04: decision D-26, the approval of Revision 6 (Rama's decision of 04-Nov-2026).
+**Revision history:** First version, 2026-11-04: decisions D-01 to D-05 (consolidated correction instruction of 04-Nov-2026). Second version, 2026-11-04: decisions D-06 to D-09, and the status of D-02 (review instruction of 04-Nov-2026 and Rama's direction of the same day). Third version, 2026-11-04: decisions D-10 to D-18, the status of D-02, D-06 and D-08, and the note on evidence files (Rama's decisions of 04-Nov-2026). Fourth version, 2026-11-04: decisions D-19 and D-20, the Foundation → Pre-Phase gate (Rama's decisions of 04-Nov-2026). Fifth version, 2026-11-04: decision D-21, the Phase 1 study baseline and the reference system (Rama's decision of 04-Nov-2026). Sixth version, 2026-11-04: decision D-22, Pre-Phase Deliverable 1 (Rama's decision of 04-Nov-2026). Seventh version, 2026-11-04: decisions D-23 to D-25, the Phase 1 topic sequence, OI-04 and OI-07 (Rama's decisions of 04-Nov-2026). Eighth version, 2026-11-04: decision D-26, the approval of Revision 6 (Rama's decision of 04-Nov-2026). Ninth version, 2026-11-04: decision D-27, the Pre-Phase → Phase 1 gate (Rama's decision of 04-Nov-2026).
 **Purpose and scope:** The project's Decision Register (Document 10, section 5). Each entry uses exactly the nine fields of Document 10, section 5. Prepared by Claude for ChatGPT's review; Rama decides (Document 05, section 1).
 **Evidence files:** Instructions, reviews and responses named as evidence are not kept as files in the repository (D-17). Those committed before Revision 5 remain in its Git history, at commit 9898e8c308e8ab8835efd3462aa2f1f97ba1760b; the others were never committed. Each entry states what decides it, and quotes Rama's words where they are the decision (Document 10, section 5).
 
@@ -369,5 +369,19 @@
 | Rama approval | Rama chose "Approve Revision 6 (Recommended)" when Claude asked: "Revision 6: do you approve the revised foundation documents (your three decisions written into Documents 02, 04, 05, 07, 08 and 10) as ChatGPT reviewed and passed them?" (Claude chat, 04-Nov-2026, between 19:25 and 19:31 IST). |
 | Affected documents | 02, 04, 05, 07, 08 and 10 (their status lines). |
 | Status | APPROVED. |
+
+## D-27 — The Pre-Phase → Phase 1 gate
+
+| Field | Entry |
+|---|---|
+| Decision ID | D-27 |
+| Date | 2026-11-04 |
+| Subject | The Pre-Phase → Phase 1 gate (Document 02, section 6): the five Pre-Phase deliverables approved together, and Phase 1 authorised |
+| Exact decision | Rama approves the five Pre-Phase deliverables together, as committed at `08b3bcbe1ddba6e7247dbef40709dd20f10ba926`: the Source Inventory, the whole-system overview, the operational workflows, the Master System Investigation Index and the preparation for applying Document 08. Each is marked APPROVED. Pre-Phase is complete and the Pre-Phase → Phase 1 gate is passed: Phase 1 is authorised. It proceeds topic by topic under Document 04 and the approved index, one topic at a time (D-23), starting with A01; its first step is ChatGPT's investigation direction for A01 (Document 04, section 4, step 1). The Source Inventory remains the live register that Phase 1 updates (Document 05, section 11.1). |
+| Rationale | ChatGPT reviewed and passed each deliverable (Deliverable 1 was also approved on its own, D-22), recommended the gate on 04-Nov-2026, and passed Revision 6, which settles OI-04 and OI-07 before Phase 1 as D-20 requires and fixes the topic sequence (D-23). The gate needs Pre-Phase completion, ChatGPT's review and Rama's explicit approval (Document 02, section 6). |
+| Evidence | ChatGPT's reviews of the five deliverables and its Pre-Phase → Phase 1 gate recommendation, 04-Nov-2026 (not kept as files, D-17); commits `1a81f547b6fd138f9262c9cc40ae249e674b6aa8` (the index) and `08b3bcbe1ddba6e7247dbef40709dd20f10ba926` (Revision 6). |
+| Rama approval | Rama chose "Approve the gate, start Phase 1 (Recommended)" when Claude asked: "Pre-Phase → Phase 1 gate: do you approve the five Pre-Phase deliverables together (source inventory, system overview, workflows, investigation index, methodology plan) and authorise Phase 1 to start?" (Claude chat, 04-Nov-2026, between 19:25 and 19:31 IST). |
+| Affected documents | The five Pre-Phase deliverables (their status lines); 02 §2 and §6. |
+| Status | APPROVED. Pre-Phase is complete; Phase 1 is authorised. The next gate is Phase 1 → Phase 2 (Document 02, section 6). |
 
 **Related documents:** 01, 02, 03, 04, 05, 06, 07, 08, 09 and 10.

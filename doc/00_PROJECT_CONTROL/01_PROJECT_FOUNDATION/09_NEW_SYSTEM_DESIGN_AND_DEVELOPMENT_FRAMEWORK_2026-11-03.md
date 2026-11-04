@@ -1,6 +1,6 @@
 # 09 — New-System Design & Development Phase Framework
 
-**Status:** DRAFT — Revision 2, for ChatGPT review
+**Status:** APPROVED — Revision 2, approved by Rama on 2026-11-04 (Decision Register, D-19)
 **Date:** 2026-11-03
 **Revision history:** Consolidated framework draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 2, 2026-11-03: the audit rule widened to the entire system, every area and flow, not only configuration settings (Rama, 03-Nov-2026); changes are listed in the Revision 2 report.
 

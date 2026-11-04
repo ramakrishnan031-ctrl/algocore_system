@@ -1,6 +1,6 @@
 # 02 — Project Phases & Master Workflow
 
-**Status:** DRAFT — Revision 5, for ChatGPT review
+**Status:** APPROVED — Revision 5, approved by Rama on 2026-11-04 (Decision Register, D-19)
 **Date:** 2026-11-03
 **Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 2, 2026-11-03: the audit rule widened to the entire system, every area and flow, not only configuration settings (Rama, 03-Nov-2026); changes are listed in the Revision 2 report. Revision 3, 2026-11-04: section 2 states that Pre-Phase populates and reviews the one authoritative Source Inventory (Decision Register, D-03). Revision 5, 2026-11-04: section 1 lists all five Pre-Phase deliverables and names the Master System Investigation Index; section 2 limits the inventory to admitted sources (D-12), states who prepares the Master System Investigation Index (D-13) and how Pre-Phase prepares the application of Document 08 (D-16), and adds the Pre-Phase procedure; section 3 states the topic review and approval steps (D-11); section 6 adds the Foundation → Pre-Phase gate and requires ChatGPT's review and Rama's explicit approval at every gate; changes are listed in the Revision 5 report. This document did not change in Revision 4.
 

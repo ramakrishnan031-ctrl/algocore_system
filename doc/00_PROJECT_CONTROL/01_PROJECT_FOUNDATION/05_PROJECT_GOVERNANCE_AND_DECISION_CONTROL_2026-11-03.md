@@ -1,6 +1,6 @@
 # 05 — Project Governance & Decision Control
 
-**Status:** DRAFT — Revision 5, for ChatGPT review
+**Status:** APPROVED — Revision 5, approved by Rama on 2026-11-04 (Decision Register, D-19)
 **Date:** 2026-11-03
 **Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 3, 2026-11-04: section 4 uses the field names of the Decision Register (Document 10, section 5); its guidance is unchanged. This document did not change in Revision 2. Revision 5, 2026-11-04: section 3 allows a decision to be superseded or clarified in part; sections 5 and 6 refer to the commit and approval rule of Document 07, section 6 and to the gates of Document 02, section 6 (Decision Register, D-10); section 11.1 records Rama's decision on who maintains, reviews and decides the six registers and the open items table, and when each is updated, which closes OI-03 (D-13); changes are listed in the Revision 5 report. This document did not change in Revision 4.
 

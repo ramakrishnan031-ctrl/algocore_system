@@ -1,6 +1,6 @@
 # 06 — Technical Environment, Tools & Research Sources
 
-**Status:** DRAFT — Revision 5, for ChatGPT review
+**Status:** APPROVED — Revision 5, approved by Rama on 2026-11-04 (Decision Register, D-19)
 **Date:** 2026-11-03
 **Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 3, 2026-11-04: section 3 records that Rama created algocore_system; section 6 no longer lists OI-01 and OI-05, which are settled, and adds a technical reference on the Oracle Cloud user name (Decision Register, D-01 and D-04). This document did not change in Revision 2. Revision 5, 2026-11-04: section 2 states each party's part in commits, reviews and approvals (D-10 and D-11); section 3 adds trading-system-v2 to the ignored repositories and names the admitted legacy sources (D-12, which closes OI-02), and states algocore_system's commit rule and working period (D-06, D-10 and D-14); changes are listed in the Revision 5 report. This document did not change in Revision 4.
 

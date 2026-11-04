@@ -1,6 +1,6 @@
 # 04 — Topic Investigation Workflow & AI Continuity Protocol
 
-**Status:** DRAFT — Revision 5, mandatory procedure proposed for approval
+**Status:** APPROVED — Revision 5, mandatory procedure, approved by Rama on 2026-11-04 (Decision Register, D-19)
 **Date:** 2026-11-03
 **Revision history:** Draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 2, 2026-11-03: the audit rule widened to the entire system, every area and flow, not only configuration settings (Rama, 03-Nov-2026); changes are listed in the Revision 2 report. Revision 5, 2026-11-04: sections 3 and 8 and the cross-reference line name the Master System Investigation Index and the Master Project Index (Document 10, section 1); sections 4 and 11 state the topic review and approval steps, in which ChatGPT reviews the topic package and reports to Rama, and Rama approves or rejects it (Decision Register, D-11); changes are listed in the Revision 5 report. This document did not change in Revisions 3 and 4.
 

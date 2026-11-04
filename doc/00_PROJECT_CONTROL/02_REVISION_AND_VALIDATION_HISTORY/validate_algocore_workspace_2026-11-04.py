@@ -8,6 +8,10 @@ fixed file list: new working records may be added in the approved folders, under
 version of the script. Empty folders are never required, because Git does not keep them; approved folders that are
 absent are listed as a note.
 
+Change of 2026-11-04, after the foundation approval (Decision Register, D-19): self-tests T02, T07 and T08 find a
+document's status line by pattern instead of by the word DRAFT, so they run whatever the status is. No check of a
+working tree changed.
+
 Usage (Python 3, standard library only; <root> is the folder that contains doc/):
   python3 validate_algocore_workspace_2026-11-04.py <root>              a working tree: a local copy or a Git checkout
   python3 validate_algocore_workspace_2026-11-04.py --baseline <root>   as above, and exactly the files of the
@@ -861,8 +865,8 @@ D18 = ("## D-18 — Self-test closure\n\n| Field | Entry |\n|---|---|\n| Decisio
 TESTS = [
     # (id, kind, description, baseline mode, mutation, check IDs that must fail; empty = the run must pass)
     ("T01", "positive", "the working tree as it stands passes", False, lambda d: None, []),
-    ("T02", "revision", "status at Revision 6 without a history entry fails", False,
-     lambda d: edit(d, F["05"], "**Status:** DRAFT — Revision 5,", "**Status:** DRAFT — Revision 6,"), ["V24"]),
+    ("T02", "revision", "a status revision with no history entry fails", False,
+     lambda d: edit(d, F["05"], r"^(\*\*Status:\*\*[^\n]*? — Revision )\d+", r"\g<1>99", regex=True), ["V24"]),
     ("T03", "revision", "the next revision with its own history entry passes", False,
      lambda d: next_revision(d, F["09"]), []),
     ("T04", "revision", "one revision number with two different dates fails", False,
@@ -872,9 +876,11 @@ TESTS = [
     ("T06", "revision", "Date line different from the file-name date fails", False,
      lambda d: edit(d, F["07"], "**Date:** 2026-11-03", "**Date:** 2026-11-04"), ["V3"]),
     ("T07", "status", "status APPROVED is accepted", False,
-     lambda d: edit(d, F["01"], "**Status:** DRAFT — Revision 5", "**Status:** APPROVED — Revision 5"), []),
+     lambda d: edit(d, F["01"], r"^(\*\*Status:\*\* )[A-Z][A-Z ]*?( — Revision )", r"\g<1>APPROVED\g<2>", regex=True),
+     []),
     ("T08", "status", "a status outside Document 07, section 4 fails cleanly", False,
-     lambda d: edit(d, F["01"], "**Status:** DRAFT — Revision 5", "**Status:** FINAL — Revision 5"), ["V3"]),
+     lambda d: edit(d, F["01"], r"^(\*\*Status:\*\* )[A-Z][A-Z ]*?( — Revision )", r"\g<1>FINAL\g<2>", regex=True),
+     ["V3"]),
     ("T09", "status", "a missing status line fails cleanly, without a crash", False,
      lambda d: edit(d, F["03"], r"^\*\*Status:\*\*.*\n", "", regex=True), ["V3", "V24"]),
     ("T10", "open item", "closing OI-04 without a decision that closes it fails", False,

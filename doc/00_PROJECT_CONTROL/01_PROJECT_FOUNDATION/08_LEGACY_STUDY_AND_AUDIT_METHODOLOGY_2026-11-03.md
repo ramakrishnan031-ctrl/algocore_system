@@ -1,6 +1,6 @@
 # 08 — Legacy Study & Audit Methodology
 
-**Status:** DRAFT — Revision 5, for ChatGPT review
+**Status:** APPROVED — Revision 5, approved by Rama on 2026-11-04 (Decision Register, D-19)
 **Date:** 2026-11-03
 **Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 2, 2026-11-03: the audit rule widened to the entire system, every area and flow, not only configuration settings (Rama, 03-Nov-2026); changes are listed in the Revision 2 report. Revision 3, 2026-11-04: section 9 names the approved folder of the existing technical records and of their publication copies (Decision Register, D-01 and D-02). Revision 4, 2026-11-04: section 9 records that the originals are public, beside their redacted copies (Decision Register, D-08). Revision 5, 2026-11-04: section 8 states the topic review and approval steps (D-11); section 9 keeps the existing technical records unchanged, with corrections recorded in the topic documents, records that they and the legacy repository are the admitted legacy sources (D-12), and that their redacted copies were removed (D-18); changes are listed in the Revision 5 report.
 

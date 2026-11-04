@@ -1,6 +1,6 @@
 # 03 — AI Roles, Responsibilities & Operating Instructions
 
-**Status:** DRAFT — Revision 5, for ChatGPT review
+**Status:** APPROVED — Revision 5, approved by Rama on 2026-11-04 (Decision Register, D-19)
 **Date:** 2026-11-03
 **Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 2, 2026-11-03: the audit rule widened to the entire system, every area and flow, not only configuration settings (Rama, 03-Nov-2026); changes are listed in the Revision 2 report. Revision 5, 2026-11-04: section 1 adds Rama's approval of each Phase 1 topic document (Decision Register, D-11); section 2 gives ChatGPT the content of the Master System Investigation Index, the review of commits, registers and topic packages, and the review report to Rama (D-10, D-11 and D-13); section 3 gives Claude the commits allowed by Document 07, section 6, the topic evidence package, and the keeping of the index file and the registers (D-10, D-11 and D-13); changes are listed in the Revision 5 report. This document did not change in Revisions 3 and 4.
 

@@ -1,7 +1,7 @@
 # 01 — Project Foundation & Scope
 
 **Project:** Trading System — Legacy Manual & V2 Redesign
-**Status:** DRAFT — Revision 5, for ChatGPT review
+**Status:** APPROVED — Revision 5, approved by Rama on 2026-11-04 (Decision Register, D-19)
 **Date:** 2026-11-03
 **Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 2, 2026-11-03: the audit rule widened to the entire system, every area and flow, not only configuration settings (Rama, 03-Nov-2026); changes are listed in the Revision 2 report. Revision 5, 2026-11-04: section 2 adds trading-system-v2 to the ignored repositories (Decision Register, D-12); section 8 refers to the commit and approval rule of Document 07, section 6 and gives the end of GitHub's working period (D-10 and D-14); changes are listed in the Revision 5 report. This document did not change in Revisions 3 and 4.
 

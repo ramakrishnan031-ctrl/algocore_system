@@ -5,7 +5,7 @@ section 6.2); the commit message names that approval. The round started from com
 
 1. WHY
 A final semantic review of the ten foundation documents raised 27 findings: 0 blocker, 7 major, 13 minor and 7 for
-information (FR-01 to FR-27, section 6). Rama decided the open questions on 04-Nov-2026 (D-10 to D-17).
+information (FR-01 to FR-27, section 6). Rama decided the open questions on 04-Nov-2026 (D-10 to D-18).
 
 2. DECISIONS (Decision Register)
 D-10 Working commits: ordinary DRAFT records may be committed and are reviewed afterwards; changes to the foundation

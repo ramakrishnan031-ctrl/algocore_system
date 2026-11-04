@@ -1,8 +1,8 @@
 # 05 — Project Governance & Decision Control
 
-**Status:** APPROVED — Revision 5, approved by Rama on 2026-11-04 (Decision Register, D-19)
+**Status:** APPROVED — Revision 6, approved by Rama on 2026-11-04 (Decision Register, D-26)
 **Date:** 2026-11-03
-**Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 3, 2026-11-04: section 4 uses the field names of the Decision Register (Document 10, section 5); its guidance is unchanged. This document did not change in Revision 2. Revision 5, 2026-11-04: section 3 allows a decision to be superseded or clarified in part; sections 5 and 6 refer to the commit and approval rule of Document 07, section 6 and to the gates of Document 02, section 6 (Decision Register, D-10); section 11.1 records Rama's decision on who maintains, reviews and decides the six registers and the open items table, and when each is updated, which closes OI-03 (D-13); changes are listed in the Revision 5 report. This document did not change in Revision 4.
+**Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 3, 2026-11-04: section 4 uses the field names of the Decision Register (Document 10, section 5); its guidance is unchanged. This document did not change in Revision 2. Revision 5, 2026-11-04: section 3 allows a decision to be superseded or clarified in part; sections 5 and 6 refer to the commit and approval rule of Document 07, section 6 and to the gates of Document 02, section 6 (Decision Register, D-10); section 11.1 records Rama's decision on who maintains, reviews and decides the six registers and the open items table, and when each is updated, which closes OI-03 (D-13); changes are listed in the Revision 5 report. This document did not change in Revision 4. Revision 6, 2026-11-04: section 11.2 records Rama's decision on when a topic may close with unresolved issues, which closes OI-04 (Decision Register, D-24), and section 11.3 refers to it; changes are listed in the Revision 6 report.
 
 ## 1. Authority
 
@@ -149,18 +149,19 @@ Update timing:
 6. Open Issues Register: with each topic package, and immediately after Rama decides an issue's treatment.
 7. Open items table: immediately after Rama decides an open item, together with its Decision Register entry.
 
-### 11.2 Topic closure with unresolved issues — RECOMMENDATION, OPEN FOR RAMA
+### 11.2 Topic closure with unresolved issues
 
-Recommended rule: a topic may close with unresolved issues, provided that:
+Decided by Rama on 04-Nov-2026 (Decision Register, D-24, which closes OI-04). A topic may close with unresolved issues only when:
 
-* every issue found has been raised and discussed with Rama (Document 04, section 5.5);
-* each issue Rama left open is recorded in the Open Issues Register with its question, impact, evidence, owner and next action (section 8), and is shown in the topic document;
-* the topic's entry in the Topic Completion Register lists its open issues.
+* every issue found has been raised and discussed with Rama (Document 04, section 5.5), and Rama has explicitly agreed that each unresolved issue stays open;
+* each such issue is recorded as OPEN in the Open Issues Register with its question, impact, evidence, owner and next action (section 8), and is shown in the topic's RECONCILED TOPIC RECORD;
+* the topic's entry in the Topic Completion Register lists its open issues; and
+* the topic's evidence and required coverage are otherwise complete.
 
-Basis: Rama's stated working rules in the earlier project, that each matter is finalised or explicitly left open and that work then moves on to the next topic. They are not yet confirmed for this project.
+A topic is not closed to bypass a material evidence gap, an unreviewed contradiction, or an issue that prevents its findings from being reliable. Closure does not mean resolution: open issues stay visible and are carried forward (section 11.3).
 
 ### 11.3 Unresolved issues stay visible
 
-Whatever Rama decides under section 11.2, every unresolved issue remains visible and traceable, in the Open Issues Register and in the topic document, until it is resolved or Rama decides its treatment. No issue is silently closed or discarded. Open issues are carried into the next topic where relevant (Document 04, section 12) and into Phase 2.
+Whether or not its topic is closed (section 11.2), every unresolved issue remains visible and traceable, in the Open Issues Register and in the topic document, until it is resolved or Rama decides its treatment. No issue is silently closed or discarded. Open issues are carried into the next topic where relevant (Document 04, section 12) and into Phase 2.
 
 **Related documents:** 02, 03, 04, 07, 09 and 10.

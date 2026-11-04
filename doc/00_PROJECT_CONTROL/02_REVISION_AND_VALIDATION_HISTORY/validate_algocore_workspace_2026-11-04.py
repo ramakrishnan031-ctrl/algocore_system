@@ -13,6 +13,10 @@ document's status line by pattern instead of by the word DRAFT, so they run what
 working tree changed.
 Change of 2026-11-04, at the start of Pre-Phase (Decision Register, D-20): self-test T39 runs --baseline on the
 baseline files alone, so working records added beside them do not make it fail. No check of a working tree changed.
+Change of 2026-11-04, Revision 6 (Decision Register, D-24 and D-25, which close OI-04 and OI-07): check V10b also
+finds wording that shows OI-04 or OI-07 as open; self-tests T05, T10 and T14 find their targets without assuming
+that Document 10 is at Revision 5 or that OI-04 and OI-07 are open; new self-tests T52 and T53 test the two new
+V10b patterns. No other check changed.
 
 Usage (Python 3, standard library only; <root> is the folder that contains doc/):
   python3 validate_algocore_workspace_2026-11-04.py <root>              a working tree: a local copy or a Git checkout
@@ -140,7 +144,12 @@ STALE = {
     "OI-02": [r"Its status \(retain as reference material, or set aside\) is OPEN FOR RAMA"],
     "OI-03": [r"Register responsibilities — RECOMMENDATION, OPEN FOR RAMA", r"a recommendation is in Document 05, section 11\.1",
               r"is recommended in Document 05, section 11\.1", r"Only the first row's maintainer is already set"],
+    "OI-04": [r"Topic closure with unresolved issues — RECOMMENDATION", r"Recommended rule: a topic may close",
+              r"a recommended rule is in Document 05, section 11\.2", r"section 11\.2 \(OPEN FOR RAMA\)",
+              r"Whatever Rama decides under section 11\.2"],
     "OI-05": [r"Claude's working environment for this project: a new Claude Project, or new instructions"],
+    "OI-07": [r"ChatGPT proposes the names; if it does not, Claude recommends them",
+              r"OPEN FOR RAMA; Document 10, section 11, OI-07", r"names used so far for the topic document types"],
     "OI-08": [r"OPEN FOR RAMA, Document 10, section 11, OI-08", r"OPEN FOR RAMA, OI-08"],
     "OI-09": [r"OPEN FOR RAMA, OI-09", r"Proposed minimum content", r"proposed minimum content"],
     "OI-10": [r"OPEN FOR RAMA, Document 10, section 11, OI-10", r"OPEN FOR RAMA, OI-10"],
@@ -883,7 +892,7 @@ TESTS = [
     ("T04", "revision", "one revision number with two different dates fails", False,
      lambda d: edit(d, F["02"], "Revision 5, 2026-11-04:", "Revision 5, 2026-11-05:"), ["V24"]),
     ("T05", "revision", "section 11 heading at another revision than Document 10 fails", False,
-     lambda d: edit(d, F["10"], "## 11. Open items at Revision 5", "## 11. Open items at Revision 4"), ["V24"]),
+     lambda d: edit(d, F["10"], r"^(## 11\. Open items at Revision )\d+$", r"\g<1>1", regex=True), ["V24"]),
     ("T06", "revision", "Date line different from the file-name date fails", False,
      lambda d: edit(d, F["07"], "**Date:** 2026-11-03", "**Date:** 2026-11-04"), ["V3"]),
     ("T07", "status", "status APPROVED is accepted", False,
@@ -894,9 +903,9 @@ TESTS = [
      ["V3"]),
     ("T09", "status", "a missing status line fails cleanly, without a crash", False,
      lambda d: edit(d, F["03"], r"^\*\*Status:\*\*.*\n", "", regex=True), ["V3", "V24"]),
-    ("T10", "open item", "closing OI-04 without a decision that closes it fails", False,
-     lambda d: edit(d, F["10"], "| 05 §11.2 | Rama | OPEN |",
-                    "| 05 §11.2 | Rama | CLOSED, 2026-11-04 (Decision Register, D-01): self-test |"), ["V20"]),
+    ("T10", "open item", "closing OI-06 without a decision that closes it fails", False,
+     lambda d: edit(d, F["10"], "| 09 §2 | Rama | OPEN |",
+                    "| 09 §2 | Rama | CLOSED, 2026-11-04 (Decision Register, D-01): self-test |"), ["V20"]),
     ("T11", "open item", "reopening OI-01 while D-01 closes it fails", False,
      lambda d: edit(d, F["10"], r"\| CLOSED, 2026-11-04 \(Decision Register, D-01\)[^|]*\|", "| OPEN |", regex=True), ["V20"]),
     ("T12", "open item", "open wording for the closed OI-02 fails", False,
@@ -906,8 +915,8 @@ TESTS = [
      lambda d: (edit(d, REGISTER, "**Related documents:**", D18),
                 edit(d, F["10"], "| 09 §2 | Rama | OPEN |", "| 09 §2 | Rama | CLOSED, 2026-11-05 (Decision Register, D-18): self-test |")), []),
     ("T14", "open item", "an added open item passes (no fixed number of rows)", False,
-     lambda d: edit(d, F["10"], "| 07 §5 | ChatGPT proposes (Claude if ChatGPT does not); Rama | OPEN |",
-                    "| 07 §5 | ChatGPT proposes (Claude if ChatGPT does not); Rama | OPEN |\n| OI-11 | Self-test item | 09 §2 | Rama | OPEN |"), []),
+     lambda d: edit(d, F["10"], "| 09 §2 | Rama | OPEN |",
+                    "| 09 §2 | Rama | OPEN |\n| OI-11 | Self-test item | 09 §2 | Rama | OPEN |"), []),
     ("T15", "register", "a decision without the Rationale field fails", False,
      lambda d: edit(d, REGISTER, r"^\| Rationale \| Document 02, section 2 makes.*\n", "", regex=True), ["R1"]),
     ("T16", "register", "Document 05 with an old field name fails", False,
@@ -986,6 +995,12 @@ TESTS = [
      lambda d: edit(d, F["07"], "The existing technical records are kept in their original form, and are public (D-08).",
                     "The existing technical records are kept both in their original form and as redacted copies with identifying"
                     " values masked (D-02); both are public (D-08)."), ["V10c"]),
+    ("T52", "rules", "open wording for the closed OI-04 fails", False,
+     lambda d: edit(d, F["10"], "## 5. Decision register", "Whether a topic can close: a recommended rule is in Document 05, section 11.2.\n\n"
+                    "## 5. Decision register"), ["V10b"]),
+    ("T53", "rules", "open wording for the closed OI-07 fails", False,
+     lambda d: edit(d, F["07"], "## 6. Commits, approval and validation", "ChatGPT proposes the names; if it does"
+                    " not, Claude recommends them.\n\n## 6. Commits, approval and validation"), ["V10b"]),
 ]
 
 

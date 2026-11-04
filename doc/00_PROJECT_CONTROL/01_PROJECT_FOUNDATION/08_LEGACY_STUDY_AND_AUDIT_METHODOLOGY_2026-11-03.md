@@ -1,8 +1,8 @@
 # 08 — Legacy Study & Audit Methodology
 
-**Status:** APPROVED — Revision 5, approved by Rama on 2026-11-04 (Decision Register, D-19)
+**Status:** APPROVED — Revision 6, approved by Rama on 2026-11-04 (Decision Register, D-26)
 **Date:** 2026-11-03
-**Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 2, 2026-11-03: the audit rule widened to the entire system, every area and flow, not only configuration settings (Rama, 03-Nov-2026); changes are listed in the Revision 2 report. Revision 3, 2026-11-04: section 9 names the approved folder of the existing technical records and of their publication copies (Decision Register, D-01 and D-02). Revision 4, 2026-11-04: section 9 records that the originals are public, beside their redacted copies (Decision Register, D-08). Revision 5, 2026-11-04: section 8 states the topic review and approval steps (D-11); section 9 keeps the existing technical records unchanged, with corrections recorded in the topic documents, records that they and the legacy repository are the admitted legacy sources (D-12), and that their redacted copies were removed (D-18); changes are listed in the Revision 5 report.
+**Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 2, 2026-11-03: the audit rule widened to the entire system, every area and flow, not only configuration settings (Rama, 03-Nov-2026); changes are listed in the Revision 2 report. Revision 3, 2026-11-04: section 9 names the approved folder of the existing technical records and of their publication copies (Decision Register, D-01 and D-02). Revision 4, 2026-11-04: section 9 records that the originals are public, beside their redacted copies (Decision Register, D-08). Revision 5, 2026-11-04: section 8 states the topic review and approval steps (D-11); section 9 keeps the existing technical records unchanged, with corrections recorded in the topic documents, records that they and the legacy repository are the admitted legacy sources (D-12), and that their redacted copies were removed (D-18); changes are listed in the Revision 5 report. Revision 6, 2026-11-04: section 8 names the STUDY, the AUDIT and the RECONCILED TOPIC RECORD (Decision Register, D-25); changes are listed in the Revision 6 report.
 
 ## 1. Purpose
 
@@ -114,11 +114,11 @@ For each topic:
 2. Review source and relevant history.
 3. Trace actual implementation.
 4. Record evidence.
-5. Prepare the study document.
-6. Conduct the separate technical audit of every area and flow of the topic (section 6).
+5. Prepare the study document (the STUDY; Document 07, section 5).
+6. Conduct the separate technical audit of every area and flow of the topic (section 6), recorded in the AUDIT.
 7. Record defects, discrepancies, unknowns and open questions.
 8. Raise every issue with Rama, and record its agreed treatment or OPEN status (Document 04, section 5.5).
-9. Reconcile study and audit findings into one topic document, keeping distinct study and audit sections.
+9. Reconcile study and audit findings into one topic document, the RECONCILED TOPIC RECORD, keeping distinct study and audit sections.
 10. ChatGPT reviews every file of the topic package and reports the result to Rama in short, plain English.
 11. Rama approves or rejects the topic document and package; approval and commits follow Document 07, section 6 (Decision Register, D-11).
 

@@ -2,7 +2,7 @@
 
 **Status:** DRAFT — for ChatGPT review
 **Date:** 2026-11-04
-**Revision history:** First version, 2026-11-04: decisions D-01 to D-05 (consolidated correction instruction of 04-Nov-2026). Second version, 2026-11-04: decisions D-06 to D-09, and the status of D-02 (review instruction of 04-Nov-2026 and Rama's direction of the same day). Third version, 2026-11-04: decisions D-10 to D-18, the status of D-02, D-06 and D-08, and the note on evidence files (Rama's decisions of 04-Nov-2026). Fourth version, 2026-11-04: decisions D-19 and D-20, the Foundation → Pre-Phase gate (Rama's decisions of 04-Nov-2026). Fifth version, 2026-11-04: decision D-21, the Phase 1 study baseline and the reference system (Rama's decision of 04-Nov-2026). Sixth version, 2026-11-04: decision D-22, Pre-Phase Deliverable 1 (Rama's decision of 04-Nov-2026).
+**Revision history:** First version, 2026-11-04: decisions D-01 to D-05 (consolidated correction instruction of 04-Nov-2026). Second version, 2026-11-04: decisions D-06 to D-09, and the status of D-02 (review instruction of 04-Nov-2026 and Rama's direction of the same day). Third version, 2026-11-04: decisions D-10 to D-18, the status of D-02, D-06 and D-08, and the note on evidence files (Rama's decisions of 04-Nov-2026). Fourth version, 2026-11-04: decisions D-19 and D-20, the Foundation → Pre-Phase gate (Rama's decisions of 04-Nov-2026). Fifth version, 2026-11-04: decision D-21, the Phase 1 study baseline and the reference system (Rama's decision of 04-Nov-2026). Sixth version, 2026-11-04: decision D-22, Pre-Phase Deliverable 1 (Rama's decision of 04-Nov-2026). Seventh version, 2026-11-04: decisions D-23 to D-25, the Phase 1 topic sequence, OI-04 and OI-07 (Rama's decisions of 04-Nov-2026). Eighth version, 2026-11-04: decision D-26, the approval of Revision 6 (Rama's decision of 04-Nov-2026).
 **Purpose and scope:** The project's Decision Register (Document 10, section 5). Each entry uses exactly the nine fields of Document 10, section 5. Prepared by Claude for ChatGPT's review; Rama decides (Document 05, section 1).
 **Evidence files:** Instructions, reviews and responses named as evidence are not kept as files in the repository (D-17). Those committed before Revision 5 remain in its Git history, at commit 9898e8c308e8ab8835efd3462aa2f1f97ba1760b; the others were never committed. Each entry states what decides it, and quotes Rama's words where they are the decision (Document 10, section 5).
 
@@ -313,5 +313,61 @@
 | Rama approval | Rama: "Approved" (message to Claude, 04-Nov-2026, 16:09 IST), on ChatGPT's request: "Please approve or return Deliverable 1". |
 | Affected documents | The Source Inventory (its Status line); 02 §2. |
 | Status | APPROVED. The approval of the five Pre-Phase deliverables together remains for the Pre-Phase → Phase 1 gate. |
+
+## D-23 — Phase 1 topic sequence
+
+| Field | Entry |
+|---|---|
+| Decision ID | D-23 |
+| Date | 2026-11-04 |
+| Subject | The order in which the Phase 1 topics are taken (Master System Investigation Index, rule 9; Pre-Phase Deliverable 5, section 1) |
+| Exact decision | Phase 1 topics are taken strictly one at a time, in the order of the approved Master System Investigation Index and subject to its stated prerequisites: the next topic's study begins only after the previous topic package has completed ChatGPT's review and Rama has approved it. If Rama rejects a package, the rework is completed, the corrected package is reviewed again by ChatGPT, and Rama approves it before the next topic begins. Cross-topic dependencies and boundary references are still recorded; the sequence is not evidence of a code dependency. Recorded in Document 02, section 3 and Document 04, section 12. |
+| Rationale | ChatGPT's recommendation: it follows "topic by topic" (Document 02, section 3), the 13 steps of Document 04, section 4 and D-11; it reduces context switching and prevents unresolved findings from being carried invisibly into dependent topics. Claude agreed. |
+| Evidence | ChatGPT's Pre-Phase → Phase 1 gate recommendation of 04-Nov-2026, section 3A, and its review of Pre-Phase checkpoint 4, section D.2 (not kept as files, D-17). |
+| Rama approval | Rama chose "Yes, one at a time (Recommended)", described as "The next topic starts only after the previous one is reviewed and approved (or reworked)", when Claude asked: "Phase 1 topic order: should each topic be finished, reviewed by ChatGPT and approved by you before the next topic starts?" (Claude chat, 04-Nov-2026, between 18:55 and 19:00 IST). The rework path is worded to match the question he answered: a reworked package is reviewed again by ChatGPT and approved by Rama before the next topic starts (ChatGPT's review of the Revision 6 package, 04-Nov-2026). |
+| Affected documents | 02 §3; 04 §12; the Master System Investigation Index, rule 9 and section 6; Pre-Phase Deliverable 5, sections 1 and 10. |
+| Status | APPROVED. |
+
+## D-24 — OI-04: closing a topic with unresolved issues
+
+| Field | Entry |
+|---|---|
+| Decision ID | D-24 |
+| Date | 2026-11-04 |
+| Subject | OI-04: whether a Phase 1 topic can close with unresolved issues (Document 05, section 11.2) |
+| Exact decision | A Phase 1 topic may close with unresolved issues only when: every issue found has been raised and discussed with Rama, and Rama has explicitly agreed that each unresolved issue stays open; each such issue is recorded as OPEN in the Open Issues Register with its question, impact, evidence, owner and next action, and is shown in the topic's RECONCILED TOPIC RECORD; the topic's entry in the Topic Completion Register lists its open issues; and the topic's evidence and required coverage are otherwise complete. A topic is not closed to bypass a material evidence gap, an unreviewed contradiction, or an issue that prevents its findings from being reliable. Closure does not mean resolution: open issues stay visible and are carried forward. Recorded in Document 05, section 11.2. OI-04 is closed. |
+| Rationale | ChatGPT's recommendation adds two conditions to the rule recommended in Document 05, section 11.2 at Revision 5: Rama's explicit agreement that each issue stays open, and otherwise complete evidence and coverage. The records required by Document 05, sections 8 and 11.3 are kept. |
+| Evidence | ChatGPT's Pre-Phase → Phase 1 gate recommendation of 04-Nov-2026, section 3B (not kept as a file, D-17); Document 05, section 11.2 at Revision 5. |
+| Rama approval | Rama chose "Yes, with conditions (Recommended)", described as "Only if each open issue was discussed with you, you agreed it stays open, it is recorded and carried forward, and the topic is otherwise complete", when Claude asked: "OI-04: may a Phase 1 topic be closed while some of its issues are still unresolved?" (Claude chat, 04-Nov-2026, between 18:55 and 19:00 IST). |
+| Affected documents | 05 §11.2 and §11.3; 04 §11; 10 §4 and §11; the Master System Investigation Index, section 6; Pre-Phase Deliverable 5, sections 8 to 10. |
+| Status | APPROVED. OI-04: CLOSED (Document 10, section 11). |
+
+## D-25 — OI-07: names of the topic document types
+
+| Field | Entry |
+|---|---|
+| Decision ID | D-25 |
+| Date | 2026-11-04 |
+| Subject | OI-07: the names of the Phase 1 topic document types (Document 07, section 5) |
+| Exact decision | The three topic document types are named STUDY, AUDIT and RECONCILED TOPIC RECORD, with the files `<TOPIC_ID>_STUDY_YYYY-MM-DD.md`, `<TOPIC_ID>_AUDIT_YYYY-MM-DD.md` and `<TOPIC_ID>_RECONCILED_TOPIC_RECORD_YYYY-MM-DD.md`; each topic's supporting evidence is kept in an `evidence/` subfolder of its topic folder. The RECONCILED TOPIC RECORD is the authoritative topic document; it keeps distinct the study findings, the audit conclusions, Rama's decisions and the unresolved OPEN items. The names are used consistently in the governing documents and the registers. Recorded in Document 07, section 5. OI-07 is closed. |
+| Rationale | ChatGPT proposed the names, as Document 07, section 5 provides: STUDY, AUDIT and RECONCILED TOPIC RECORD in its gate recommendation, and the file-name pattern and the evidence subfolder in its review of Pre-Phase checkpoint 5, section D. The retention rule already keeps the study, audit and reconciled topic documents with their evidence (D-17). |
+| Evidence | ChatGPT's Pre-Phase → Phase 1 gate recommendation of 04-Nov-2026, section 3C, and its review of Pre-Phase checkpoint 5, section D (not kept as files, D-17). |
+| Rama approval | Rama chose "STUDY, AUDIT, RECONCILED TOPIC RECORD (Recommended)", described as "ChatGPT's latest set. Files: `<topic>_STUDY_<date>.md`, `<topic>_AUDIT_<date>.md`, `<topic>_RECONCILED_TOPIC_RECORD_<date>.md`, plus an `evidence/` subfolder", when Claude asked which of ChatGPT's two sets of names to use (Claude chat, 04-Nov-2026, between 18:55 and 19:00 IST). |
+| Affected documents | 07 §3 and §5; 02 §3; 04 §4; 08 §8; 10 §3 and §11; Pre-Phase Deliverable 5, section 8. |
+| Status | APPROVED. OI-07: CLOSED (Document 10, section 11). |
+
+## D-26 — Revision 6 of the foundation documents
+
+| Field | Entry |
+|---|---|
+| Decision ID | D-26 |
+| Date | 2026-11-04 |
+| Subject | Rama's approval of the Revision 6 foundation document set, after ChatGPT's review |
+| Exact decision | Rama approves the Revision 6 foundation document set as reviewed and passed by ChatGPT: Documents 02, 04, 05, 07, 08 and 10 at Revision 6, which carry out D-23 to D-25 and correct the labels carried forward from Revision 5, with the Revision 6 report and the validator change. The six documents are marked APPROVED at Revision 6; Documents 01, 03, 06 and 09 are unchanged. |
+| Rationale | ChatGPT's final review of the corrected Revision 6 package (zip SHA-256 `10853baa53c4db390b5a594d8333e4b6333b5bb9e22a076e557df5ac22df8752`) passed it and asked for Rama's explicit approval; a document may be marked APPROVED only after ChatGPT's review and Rama's explicit approval (Document 07, section 6.3). |
+| Evidence | ChatGPT's final review of the corrected Revision 6 package, 04-Nov-2026 (not kept as a file, D-17); `BASE_FILES_REVISION_6_REPORT_2026-11-04.txt`. |
+| Rama approval | Rama chose "Approve Revision 6 (Recommended)" when Claude asked: "Revision 6: do you approve the revised foundation documents (your three decisions written into Documents 02, 04, 05, 07, 08 and 10) as ChatGPT reviewed and passed them?" (Claude chat, 04-Nov-2026, between 19:25 and 19:31 IST). |
+| Affected documents | 02, 04, 05, 07, 08 and 10 (their status lines). |
+| Status | APPROVED. |
 
 **Related documents:** 01, 02, 03, 04, 05, 06, 07, 08, 09 and 10.

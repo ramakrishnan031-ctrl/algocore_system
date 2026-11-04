@@ -1,8 +1,8 @@
 # 07 — Repository, Documentation & Record Management
 
-**Status:** APPROVED — Revision 5, approved by Rama on 2026-11-04 (Decision Register, D-19)
+**Status:** APPROVED — Revision 6, approved by Rama on 2026-11-04 (Decision Register, D-26)
 **Date:** 2026-11-03
-**Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 3, 2026-11-04: section 2 records that Rama created algocore_system; section 3 replaces the proposed layout with the approved `doc/` layout and states where the registers and the one authoritative Source Inventory are kept; section 8 names the registers' folder (Decision Register, D-01 to D-03). This document did not change in Revision 2. Revision 4, 2026-11-04: section 2 records GitHub as the working repository until the new system design is reached, that nothing is kept private, and the security-issue reporting rule until Phase 1 is complete; section 3 records that the existing technical records are public in their original form and that the history folder holds the revision instructions, reviews and reports; section 4 states the revision and date convention; section 5 states the README exception and marks OI-07 as open for Rama (Decision Register, D-06 to D-09). Revision 5, 2026-11-04: section 2 records the first workspace push, ends GitHub's working period at the completion and freeze of the Phase 2 design (D-14), and makes public what the repository retains (D-17); section 3 names Pre-Phase in area 2 and the place of the preparation for applying Document 08 (D-16), states the retention rule: which records the repository keeps (D-17, which closes OI-10 and supersedes part of D-08), and records that the redacted copies of the existing technical records were removed as duplicates (D-18); section 5 states the file-name exceptions; section 6 becomes the one statement of working commits, foundation-controlled files, approval, validation and commit authorship (D-10, D-11 and D-15); section 7 refers to the retention rule; section 8 records register governance (D-13); changes are listed in the Revision 5 report. Carried forward (Document 05, section 10; Rama, 04-Nov-2026): the label "Proposed document statuses:" in section 4 is corrected in the revision that settles OI-04 and OI-07, before Phase 1.
+**Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 3, 2026-11-04: section 2 records that Rama created algocore_system; section 3 replaces the proposed layout with the approved `doc/` layout and states where the registers and the one authoritative Source Inventory are kept; section 8 names the registers' folder (Decision Register, D-01 to D-03). This document did not change in Revision 2. Revision 4, 2026-11-04: section 2 records GitHub as the working repository until the new system design is reached, that nothing is kept private, and the security-issue reporting rule until Phase 1 is complete; section 3 records that the existing technical records are public in their original form and that the history folder holds the revision instructions, reviews and reports; section 4 states the revision and date convention; section 5 states the README exception and marks OI-07 as open for Rama (Decision Register, D-06 to D-09). Revision 5, 2026-11-04: section 2 records the first workspace push, ends GitHub's working period at the completion and freeze of the Phase 2 design (D-14), and makes public what the repository retains (D-17); section 3 names Pre-Phase in area 2 and the place of the preparation for applying Document 08 (D-16), states the retention rule: which records the repository keeps (D-17, which closes OI-10 and supersedes part of D-08), and records that the redacted copies of the existing technical records were removed as duplicates (D-18); section 5 states the file-name exceptions; section 6 becomes the one statement of working commits, foundation-controlled files, approval, validation and commit authorship (D-10, D-11 and D-15); section 7 refers to the retention rule; section 8 records register governance (D-13); changes are listed in the Revision 5 report. Carried forward (Document 05, section 10; Rama, 04-Nov-2026): the label "Proposed document statuses:" in section 4 is corrected in the revision that settles OI-04 and OI-07, before Phase 1. Revision 6, 2026-11-04: section 3 states what each Phase 1 topic folder holds; section 4 drops the label "Proposed" carried forward from Revision 5; section 5 records the names and file names of the topic document types, which closes OI-07 (Decision Register, D-25); changes are listed in the Revision 6 report.
 
 ## 1. Purpose
 
@@ -50,7 +50,7 @@ Approved folder layout for algocore_system (APPROVED BY RAMA, 04-Nov-2026; Decis
 | `doc/01_PRE_PHASE/04_MASTER_SYSTEM_INVESTIGATION_INDEX/` | 2 | The Master System Investigation Index |
 | `doc/01_PRE_PHASE/05_PHASE1_METHODOLOGY/` | 2 | The Pre-Phase preparation for applying Document 08, which remains the governing methodology (D-16) |
 | `doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/` | 2 | The existing technical records of Document 08, section 9 |
-| `doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/TOPIC_WISE_DOCUMENTATION/` | 2 | One subfolder per Phase 1 topic |
+| `doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/TOPIC_WISE_DOCUMENTATION/` | 2 | One subfolder per Phase 1 topic, holding its STUDY, AUDIT and RECONCILED TOPIC RECORD and its `evidence/` subfolder (section 5) |
 | `doc/03_PHASE2_NEW_SYSTEM_DESIGN/DESIGN_TOPIC_DOCUMENTATION/` | 3 | One subfolder per design topic |
 | `doc/99_ARCHIVE/` | 5 | Superseded records |
 
@@ -84,7 +84,7 @@ Each document should identify:
 - Related documents.
 - Evidence references where relevant.
 
-Proposed document statuses:
+Document statuses:
 
 | Status | Meaning |
 |---|---|
@@ -111,7 +111,15 @@ Exceptions: the five existing technical records keep their original names (Docum
 
 README files are folder notes, not dated project documents. They are named README.md, without a date suffix (D-09).
 
-The names used so far for the topic document types (for example "study file" and "audit file") are illustrative only (Rama, 03-Nov-2026). ChatGPT proposes the names; if it does not, Claude recommends them (OPEN FOR RAMA; Document 10, section 11, OI-07).
+The Phase 1 topic document types are named as follows (Rama, 04-Nov-2026; Decision Register, D-25, which closes OI-07). `<TOPIC_ID>` is the topic's ID in the Master System Investigation Index, for example A01.
+
+| Name | What it is | File name |
+|---|---|---|
+| STUDY | The factual study of the topic's actual implementation and flows (Document 04, section 4, step 4) | `<TOPIC_ID>_STUDY_YYYY-MM-DD.md` |
+| AUDIT | The separate technical audit of actual against intended behaviour: its audit table, with the matches, issues and UNKNOWNs (Document 04, section 4, step 6; Document 08, section 6) | `<TOPIC_ID>_AUDIT_YYYY-MM-DD.md` |
+| RECONCILED TOPIC RECORD | The authoritative topic document (Document 04, section 4, step 10): it combines the study and the audit in distinct sections, and keeps distinct the study findings, the audit conclusions, Rama's decisions and the unresolved OPEN items | `<TOPIC_ID>_RECONCILED_TOPIC_RECORD_YYYY-MM-DD.md` |
+
+A topic's supporting evidence is kept in an `evidence/` subfolder of its topic folder, in files named under the convention above and referred to from its RECONCILED TOPIC RECORD; it is not a competing narrative report. The three documents and the evidence are all kept (section 3, retention rule). These names are used in the governing documents and the registers.
 
 ## 6. Commits, approval and validation
 

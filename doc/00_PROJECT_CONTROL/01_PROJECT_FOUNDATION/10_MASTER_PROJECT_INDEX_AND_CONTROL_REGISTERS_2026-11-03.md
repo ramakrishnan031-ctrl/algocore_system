@@ -1,8 +1,8 @@
 # 10 — Master Project Index & Control Registers
 
-**Status:** APPROVED — Revision 5, approved by Rama on 2026-11-04 (Decision Register, D-19)
+**Status:** APPROVED — Revision 6, approved by Rama on 2026-11-04 (Decision Register, D-26)
 **Date:** 2026-11-03
-**Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 2, 2026-11-03: the audit rule widened to the entire system, every area and flow, not only configuration settings (Rama, 03-Nov-2026); changes are listed in the Revision 2 report. Revision 3, 2026-11-04: section 5 names the Decision Register's folder; section 8 states where the one authoritative Source Inventory is kept; section 11 adds a status column and closes OI-01 and OI-05 (Decision Register, D-01, D-03 and D-04). Revision 5, 2026-11-04: section 1 distinguishes the Master Project Index from the Master System Investigation Index and gives the index's minimum content (D-16); section 2 gives the folders and the Decision Register's file name; sections 3 and 4 add Rama's approval of each topic document (D-11); section 5 states how evidence that is not kept as a file is recorded (D-17); sections 6, 8 and 9 keep the Open Issues Register apart from the open items table, limit the Source Inventory to admitted sources and record register governance (D-12 and D-13); section 10 names both indexes; section 11 closes OI-02 and OI-03, and the new OI-08 to OI-10 (D-12, D-13, D-16 and D-17); changes are listed in the Revision 5 report. This document did not change in Revision 4. Carried forward (Document 05, section 10; Rama, 04-Nov-2026): the labels "Suggested fields:" in section 3 and "Proposed sequence:" in section 4 are corrected in the revision that settles OI-04 and OI-07, before Phase 1.
+**Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 2, 2026-11-03: the audit rule widened to the entire system, every area and flow, not only configuration settings (Rama, 03-Nov-2026); changes are listed in the Revision 2 report. Revision 3, 2026-11-04: section 5 names the Decision Register's folder; section 8 states where the one authoritative Source Inventory is kept; section 11 adds a status column and closes OI-01 and OI-05 (Decision Register, D-01, D-03 and D-04). Revision 5, 2026-11-04: section 1 distinguishes the Master Project Index from the Master System Investigation Index and gives the index's minimum content (D-16); section 2 gives the folders and the Decision Register's file name; sections 3 and 4 add Rama's approval of each topic document (D-11); section 5 states how evidence that is not kept as a file is recorded (D-17); sections 6, 8 and 9 keep the Open Issues Register apart from the open items table, limit the Source Inventory to admitted sources and record register governance (D-12 and D-13); section 10 names both indexes; section 11 closes OI-02 and OI-03, and the new OI-08 to OI-10 (D-12, D-13, D-16 and D-17); changes are listed in the Revision 5 report. This document did not change in Revision 4. Carried forward (Document 05, section 10; Rama, 04-Nov-2026): the labels "Suggested fields:" in section 3 and "Proposed sequence:" in section 4 are corrected in the revision that settles OI-04 and OI-07, before Phase 1. Revision 6, 2026-11-04: sections 3 and 4 drop the labels "Suggested" and "Proposed" carried forward from Revision 5; section 3 names the topic document types (Decision Register, D-25); section 4 refers to the closure rule (D-24); section 11 closes OI-04 and OI-07 (D-24 and D-25); changes are listed in the Revision 6 report.
 
 ## 1. Purpose
 
@@ -35,7 +35,7 @@ Legacy technical manuals, including the existing technical records of Document 0
 
 ## 3. Topic completion register
 
-Suggested fields:
+Fields:
 
 | Field | Purpose |
 |---|---|
@@ -44,8 +44,9 @@ Suggested fields:
 | Scope | Agreed boundaries |
 | Phase | Current phase |
 | Status | Current workflow stage |
-| Study document | Relevant document |
-| Audit document | Relevant audit |
+| STUDY | The topic's STUDY (Document 07, section 5) |
+| AUDIT | The topic's AUDIT |
+| RECONCILED TOPIC RECORD | The topic's authoritative topic document |
 | Issues raised with Rama | Count and date of discussion (Document 04, section 5.5) |
 | Open issues | Outstanding questions, and issues left OPEN |
 | Reviewer | Review responsibility |
@@ -55,13 +56,13 @@ Suggested fields:
 
 ## 4. Topic workflow statuses
 
-Proposed sequence:
+Sequence:
 
 IN PROGRESS → UNDER REVIEW → RECONCILED → APPROVED BY RAMA → PUSH VERIFIED → CLOSED
 
 These are topic statuses, not document statuses.
 
-Whether a topic can close with unresolved issues: a recommended rule is in Document 05, section 11.2 (OPEN FOR RAMA). In every case, unresolved issues stay visible (Document 05, section 11.3).
+A topic can close with unresolved issues only under the conditions of Document 05, section 11.2 (Decision Register, D-24). Unresolved issues stay visible in every case (Document 05, section 11.3).
 
 ## 5. Decision register
 
@@ -139,17 +140,17 @@ Before opening any new topic, both ChatGPT and Claude must review Document 04, t
 
 This Master Project Index, the Master System Investigation Index and the approved project records are the authoritative source for project continuity—not conversational memory. Their current versions are those in algocore_system, branch main (Document 07, section 2).
 
-## 11. Open items at Revision 5
+## 11. Open items at Revision 6
 
 | Ref | Open item | Where | Decides | Status |
 |---|---|---|---|---|
 | OI-01 | Who creates algocore_system, and its first folder layout, including where the existing technical records go | 06 §3 and §6; 07 §2 and §3; 08 §9 | Rama | CLOSED, 2026-11-04 (Decision Register, D-01): Rama created algocore_system and approved the `doc/` folder layout, in which the files are staged |
 | OI-02 | The earlier project's work in trading-system-v2 (39 frozen manuals, A-001 to D-005, and later records): retain as reference material, or set aside | 01 §2; 06 §3 | Rama | CLOSED, 2026-11-04 (Decision Register, D-12): every repository other than algocore_system and trading-system-prod-snapshot is ignored, trading-system-v2 and trading-system-sbx-snapshot included; the five existing technical records are the admitted legacy records |
 | OI-03 | Register responsibilities and update timing | 05 §11.1 | Rama | CLOSED, 2026-11-04 (Decision Register, D-13): ChatGPT proposes and reviews the Master System Investigation Index, Claude keeps it and the registers, ChatGPT reviews them, and Rama decides; update timing in Document 05, section 11.1 |
-| OI-04 | Whether a topic can close with unresolved issues | 05 §11.2 | Rama | OPEN |
+| OI-04 | Whether a topic can close with unresolved issues | 05 §11.2 | Rama | CLOSED, 2026-11-04 (Decision Register, D-24): only when each unresolved issue was discussed with Rama, he agreed that it stays open, it is recorded as OPEN and carried forward, and the topic is otherwise complete |
 | OI-05 | Claude's working environment: a new Claude Project, or new instructions in the current one | 06 §6 | Rama | CLOSED, 2026-11-04 (Decision Register, D-04): a dedicated Claude Project, with ChatGPT in a dedicated ChatGPT project |
 | OI-06 | Recording "change" and "modify" as REVISE or UPGRADE | 09 §2 | Rama | OPEN |
-| OI-07 | Names for the topic document types | 07 §5 | ChatGPT proposes (Claude if ChatGPT does not); Rama | OPEN |
+| OI-07 | Names for the topic document types | 07 §5 | ChatGPT proposes (Claude if ChatGPT does not); Rama | CLOSED, 2026-11-04 (Decision Register, D-25): STUDY, AUDIT and RECONCILED TOPIC RECORD, with an `evidence/` subfolder; the file names are in Document 07, section 5 |
 | OI-08 | How Pre-Phase prepares the application of Document 08, which remains the governing Phase 1 methodology | 02 §2; 07 §3 | Rama | CLOSED, 2026-11-04 (Decision Register, D-16): Pre-Phase prepares the order, depth and deliverables for applying Document 08, and applies it to no individual module |
 | OI-09 | The minimum content of the Master System Investigation Index | 10 §1; 02 §2 | Rama | CLOSED, 2026-11-04 (Decision Register, D-16): scope, components and paths, Document 08 coverage items, dependencies and order of each topic |
 | OI-10 | Where the instructions, reviews and reports of Pre-Phase deliverables and Phase 1 topics are kept | 07 §2 and §3 | Rama | CLOSED, 2026-11-04 (Decision Register, D-17): they are not kept; the repository keeps project knowledge and evidence under the retention rule of Document 07, section 3 |

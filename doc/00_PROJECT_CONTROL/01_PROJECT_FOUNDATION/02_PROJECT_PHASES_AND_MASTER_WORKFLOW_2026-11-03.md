@@ -1,8 +1,8 @@
 # 02 — Project Phases & Master Workflow
 
-**Status:** APPROVED — Revision 5, approved by Rama on 2026-11-04 (Decision Register, D-19)
+**Status:** APPROVED — Revision 6, approved by Rama on 2026-11-04 (Decision Register, D-26)
 **Date:** 2026-11-03
-**Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 2, 2026-11-03: the audit rule widened to the entire system, every area and flow, not only configuration settings (Rama, 03-Nov-2026); changes are listed in the Revision 2 report. Revision 3, 2026-11-04: section 2 states that Pre-Phase populates and reviews the one authoritative Source Inventory (Decision Register, D-03). Revision 5, 2026-11-04: section 1 lists all five Pre-Phase deliverables and names the Master System Investigation Index; section 2 limits the inventory to admitted sources (D-12), states who prepares the Master System Investigation Index (D-13) and how Pre-Phase prepares the application of Document 08 (D-16), and adds the Pre-Phase procedure; section 3 states the topic review and approval steps (D-11); section 6 adds the Foundation → Pre-Phase gate and requires ChatGPT's review and Rama's explicit approval at every gate; changes are listed in the Revision 5 report. This document did not change in Revision 4.
+**Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 2, 2026-11-03: the audit rule widened to the entire system, every area and flow, not only configuration settings (Rama, 03-Nov-2026); changes are listed in the Revision 2 report. Revision 3, 2026-11-04: section 2 states that Pre-Phase populates and reviews the one authoritative Source Inventory (Decision Register, D-03). Revision 5, 2026-11-04: section 1 lists all five Pre-Phase deliverables and names the Master System Investigation Index; section 2 limits the inventory to admitted sources (D-12), states who prepares the Master System Investigation Index (D-13) and how Pre-Phase prepares the application of Document 08 (D-16), and adds the Pre-Phase procedure; section 3 states the topic review and approval steps (D-11); section 6 adds the Foundation → Pre-Phase gate and requires ChatGPT's review and Rama's explicit approval at every gate; changes are listed in the Revision 5 report. This document did not change in Revision 4. Revision 6, 2026-11-04: section 3 takes the Phase 1 topics one at a time (Decision Register, D-23) and names the STUDY, the AUDIT and the RECONCILED TOPIC RECORD (D-25); changes are listed in the Revision 6 report.
 
 ## 1. Overall sequence
 
@@ -49,7 +49,7 @@ Pre-Phase procedure:
 
 ## 3. Phase 1 — Legacy System Study and Audit
 
-Investigate the legacy system topic by topic using the approved Master System Investigation Index.
+Investigate the legacy system topic by topic using the approved Master System Investigation Index. Topics are taken one at a time, in the order of the approved index: the next topic starts only after the previous topic package has completed ChatGPT's review and Rama's approval. A package that Rama rejects is reworked, reviewed again by ChatGPT and approved by Rama before the next topic starts (Rama, 04-Nov-2026; Decision Register, D-23).
 
 For each topic:
 
@@ -57,12 +57,12 @@ For each topic:
 2. Establish scope and relevant approved context.
 3. Conduct preliminary investigation.
 4. Prepare focused investigation instructions.
-5. Claude performs repository fieldwork and gathers evidence: what the code actually does (the study).
+5. Claude performs repository fieldwork and gathers evidence: what the code actually does (the STUDY; Document 07, section 5).
 6. ChatGPT reviews findings and identifies gaps.
-7. Conduct the detailed technical audit of every area and flow of the topic, reviewed and challenged by ChatGPT: actual code behaviour is compared with intended behaviour, and every kind of issue is looked for (Document 04, section 5; Document 08, section 6).
+7. Conduct the detailed technical audit of every area and flow of the topic, reviewed and challenged by ChatGPT: actual code behaviour is compared with intended behaviour, and every kind of issue is looked for (Document 04, section 5; Document 08, section 6). It is recorded in the AUDIT.
 8. Prepare separate study and audit findings.
 9. Raise and discuss every issue found with Rama. Record each issue's agreed treatment as input to Phase 2, or its OPEN status (Document 04, section 5.5).
-10. Reconcile both into one authoritative topic document, retaining distinct study and audit sections.
+10. Reconcile both into one authoritative topic document, the RECONCILED TOPIC RECORD, retaining distinct study and audit sections.
 11. ChatGPT reviews every file of the topic package and reports the result to Rama in short, plain English, including any material defect or unresolved question.
 12. Rama approves or rejects the topic document and its package; ChatGPT's review alone does not finalise it (Document 07, section 6; Decision Register, D-11).
 13. Claude marks the approved document APPROVED and commits it, ChatGPT verifies the commit, and the topic is closed (closure with unresolved issues: Document 05, section 11.2).

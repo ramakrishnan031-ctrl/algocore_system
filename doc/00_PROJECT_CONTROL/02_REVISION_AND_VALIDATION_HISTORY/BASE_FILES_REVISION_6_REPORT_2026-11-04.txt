@@ -1,0 +1,42 @@
+BASE FILES - REVISION 6 REPORT (2026-11-04)
+The change report of the Revision 6 round (Document 07, section 3). Written by Claude on 04-Nov-2026, 19:19 IST.
+Rama's decisions D-23 to D-25 approve its substance. It is committed only after ChatGPT's review and Rama's explicit
+approval of the Revision 6 document set (Document 05, section 5; Document 07, sections 6.3 and 6.5), which the
+Decision Register records and the commit message names. The round started from commit 1a81f54.
+
+1. WHY
+Before Phase 1, OI-04 and OI-07 had to be settled (D-20), the labels carried forward from Revision 5 corrected
+(Document 05, section 10), and the order of the Phase 1 topics decided. ChatGPT recommended each in its
+Pre-Phase -> Phase 1 gate recommendation of 04-Nov-2026, and Rama decided all three on 04-Nov-2026.
+
+2. DECISIONS (Decision Register)
+D-23 Phase 1 topics are taken one at a time: the next topic starts only after the previous topic package has been
+     reviewed by ChatGPT and approved by Rama; a rejected package is reworked, reviewed again and approved first.
+D-24 OI-04 closed: a topic may close with unresolved issues only when each was discussed with Rama, he agreed that it
+     stays open, it is recorded as OPEN and carried forward, and the topic is otherwise complete.
+D-25 OI-07 closed: the topic documents are the STUDY, the AUDIT and the RECONCILED TOPIC RECORD, with dated file names
+     under the topic ID and an evidence/ subfolder.
+
+3. DOCUMENTS CHANGED (01, 03, 06 and 09 unchanged; each revision history names its sections)
+02 §3   04 §4, §11, §12   05 §11.2, §11.3   07 §3, §4, §5   08 §8   10 §3, §4, §11
+In short: the topic sequence (02 §3, 04 §12); the closure rule (05 §11.2, with 04 §11 and 10 §4); the names and file
+names of the topic documents (07 §5, with 07 §3, 02 §3, 04 §4, 08 §8 and 10 §3); OI-04 and OI-07 closed (10 §11); the
+labels "Proposed document statuses:", "Suggested fields:" and "Proposed sequence:" corrected (07 §4, 10 §3, 10 §4).
+Also updated, as working records: the Decision Register (D-23 to D-25); the Master System Investigation Index (rule 9,
+the prerequisites of A20, section 6); Pre-Phase Deliverable 5 (sections 1 and 8 to 10).
+
+4. VALIDATOR
+validate_algocore_workspace_2026-11-04.py is changed in place, as its header records: check V10b also finds wording
+that shows OI-04 or OI-07 as open; self-tests T05, T10 and T14 no longer assume that Document 10 is at Revision 5 or
+that OI-04 and OI-07 are open; new self-tests T52 and T53 test the new patterns. No other check changed.
+  SHA-256 before: 525ca753601d59c425f662062f996ba85d7beb6b6f07910261813aef9b506a2f
+  SHA-256 after:  bf5de81df1729cbff03d62b0ac02853b8c103d29b6a20a4de31be91b1dcab7d4
+
+5. VALIDATION
+Working copy with all the changes and this report: 95 of 95 checks pass; self-tests: 53 of 53 pass. With --baseline,
+the run is rejected on M6 only, as expected: that mode accepts exactly the 27 files of the Revision 5 baseline, and
+the working records are not among them. The same checks are run again on a fresh clone after the push.
+
+6. FILES
+Added: this report. The history folder holds the change reports of Revisions 1 to 6 (with the Revision 2 correction
+report) and the three validators; the repository holds 33 files.

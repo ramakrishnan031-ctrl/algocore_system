@@ -1,8 +1,8 @@
 # 04 — Topic Investigation Workflow & AI Continuity Protocol
 
-**Status:** APPROVED — Revision 5, mandatory procedure, approved by Rama on 2026-11-04 (Decision Register, D-19)
+**Status:** APPROVED — Revision 6, mandatory procedure, approved by Rama on 2026-11-04 (Decision Register, D-26)
 **Date:** 2026-11-03
-**Revision history:** Draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 2, 2026-11-03: the audit rule widened to the entire system, every area and flow, not only configuration settings (Rama, 03-Nov-2026); changes are listed in the Revision 2 report. Revision 5, 2026-11-04: sections 3 and 8 and the cross-reference line name the Master System Investigation Index and the Master Project Index (Document 10, section 1); sections 4 and 11 state the topic review and approval steps, in which ChatGPT reviews the topic package and reports to Rama, and Rama approves or rejects it (Decision Register, D-11); changes are listed in the Revision 5 report. This document did not change in Revisions 3 and 4.
+**Revision history:** Draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 2, 2026-11-03: the audit rule widened to the entire system, every area and flow, not only configuration settings (Rama, 03-Nov-2026); changes are listed in the Revision 2 report. Revision 5, 2026-11-04: sections 3 and 8 and the cross-reference line name the Master System Investigation Index and the Master Project Index (Document 10, section 1); sections 4 and 11 state the topic review and approval steps, in which ChatGPT reviews the topic package and reports to Rama, and Rama approves or rejects it (Decision Register, D-11); changes are listed in the Revision 5 report. This document did not change in Revisions 3 and 4. Revision 6, 2026-11-04: section 4 names the STUDY, the AUDIT and the RECONCILED TOPIC RECORD (Decision Register, D-25); section 11 states when a topic may close with unresolved issues (D-24); section 12 starts the next topic only after the previous topic package is reviewed by ChatGPT and approved by Rama, a rejected package being reworked, reviewed again and approved first (D-23); changes are listed in the Revision 6 report.
 
 ## 1. Purpose
 
@@ -42,13 +42,13 @@ This is the procedure for each Phase 1 topic (Document 02, section 3). Follow th
 1. ChatGPT prepares the investigation direction and focused questions.
 2. Claude inspects the actual repository, through its local read-only clone (Document 06, section 3), and supporting evidence.
 3. Claude records exact source paths, functions/classes, line references and the repository commit studied, where available.
-4. Claude traces inputs, logic, validations, outputs, storage and handoffs, and records unknowns (the study).
+4. Claude traces inputs, logic, validations, outputs, storage and handoffs, and records unknowns (the STUDY; Document 07, section 5).
 5. ChatGPT independently reviews and challenges the study findings; gaps are returned for follow-up.
-6. Claude conducts the technical audit of the whole topic: it compares actual with intended behaviour, looks for every kind of issue (section 5), and records defects, discrepancies and unknowns without silently correcting them.
+6. Claude conducts the technical audit of the whole topic: it compares actual with intended behaviour, looks for every kind of issue (section 5), and records defects, discrepancies and unknowns without silently correcting them (the AUDIT).
 7. ChatGPT reviews and challenges the audit findings; gaps and discrepancies are returned for follow-up.
 8. Every issue found is raised and discussed with Rama, and its agreed treatment, or its OPEN status, is recorded (section 5.5).
 9. Findings are reconciled with supporting evidence.
-10. Study and audit results are combined into the authoritative topic document, while retaining distinct study and audit sections.
+10. Study and audit results are combined into the authoritative topic document, the RECONCILED TOPIC RECORD, while retaining distinct study and audit sections.
 11. Claude prepares the topic package: the topic document and its evidence.
 12. ChatGPT reviews every file of the package and reports the result to Rama in short, plain English, including any material defect or unresolved question.
 13. Rama approves or rejects the topic document and package. ChatGPT's review alone does not finalise it, and Rama does not perform the technical review. Approval and commits follow Document 07, section 6 (Decision Register, D-11).
@@ -188,11 +188,11 @@ Before closure:
 - The approved document is committed, and ChatGPT has verified the commit.
 - Topic status is updated.
 
-Unresolved issues must not be hidden. Whether they prevent closure follows Document 05, section 11.2 (OPEN FOR RAMA) and Rama's authority.
+Unresolved issues must not be hidden. A topic may close with unresolved issues only under the conditions of Document 05, section 11.2 (Decision Register, D-24).
 
 ## 12. Next-topic handover
 
-The next topic must start using this same protocol. Previous decisions and unresolved issues must be carried forward where relevant; open issues stay in the Open Issues Register until resolved.
+The next topic must start using this same protocol, and only after the previous topic package has been reviewed by ChatGPT and approved by Rama; a package that Rama rejects is reworked, reviewed again by ChatGPT and approved by Rama first (Document 02, section 3; Decision Register, D-23). Previous decisions and unresolved issues must be carried forward where relevant; open issues stay in the Open Issues Register until resolved.
 
 ## 13. Change control
 

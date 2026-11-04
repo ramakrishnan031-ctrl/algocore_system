@@ -2,7 +2,7 @@
 
 **Status:** DRAFT — for ChatGPT review
 **Date:** 2026-11-04
-**Revision history:** First version, 2026-11-04: decisions D-01 to D-05 (consolidated correction instruction of 04-Nov-2026). Second version, 2026-11-04: decisions D-06 to D-09, and the status of D-02 (review instruction of 04-Nov-2026 and Rama's direction of the same day). Third version, 2026-11-04: decisions D-10 to D-18, the status of D-02, D-06 and D-08, and the note on evidence files (Rama's decisions of 04-Nov-2026).
+**Revision history:** First version, 2026-11-04: decisions D-01 to D-05 (consolidated correction instruction of 04-Nov-2026). Second version, 2026-11-04: decisions D-06 to D-09, and the status of D-02 (review instruction of 04-Nov-2026 and Rama's direction of the same day). Third version, 2026-11-04: decisions D-10 to D-18, the status of D-02, D-06 and D-08, and the note on evidence files (Rama's decisions of 04-Nov-2026). Fourth version, 2026-11-04: decisions D-19 and D-20, the Foundation → Pre-Phase gate (Rama's decisions of 04-Nov-2026).
 **Purpose and scope:** The project's Decision Register (Document 10, section 5). Each entry uses exactly the nine fields of Document 10, section 5. Prepared by Claude for ChatGPT's review; Rama decides (Document 05, section 1).
 **Evidence files:** Instructions, reviews and responses named as evidence are not kept as files in the repository (D-17). Those committed before Revision 5 remain in its Git history, at commit 9898e8c308e8ab8835efd3462aa2f1f97ba1760b; the others were never committed. Each entry states what decides it, and quotes Rama's words where they are the decision (Document 10, section 5).
 
@@ -258,4 +258,32 @@
 | Affected documents | 05 §3 (example); 07 §3; 08 §9; the status of D-02 and D-08; the validator's folder and file lists. |
 | Status | APPROVED. |
 
-**Related documents:** 01, 02, 03, 04, 05, 06, 07, 08 and 10.
+## D-19 — Foundation → Pre-Phase gate: the ten foundation documents approved
+
+| Field | Entry |
+|---|---|
+| Decision ID | D-19 |
+| Date | 2026-11-04 |
+| Subject | Rama's approval of the ten foundation documents, the second condition of the Foundation → Pre-Phase gate (Document 02, section 6) |
+| Exact decision | The ten foundation documents are approved as they stand in algocore_system, branch main, at commit b1927bd, unchanged since the Revision 5 commit 5afdcdf: Documents 01 to 08 and 10 at Revision 5, and Document 09 at Revision 2, its latest revision. Each is to be marked APPROVED (Document 07, sections 4 and 6.3). The approval closes no open item: OI-04, OI-06 and OI-07 stay OPEN (Document 10, section 11). |
+| Rationale | ChatGPT's final review of all ten documents found no material blocker and recommended approval; the one minor point it raised, a wording slip in BASE_FILES_REVISION_5_REPORT_2026-11-04.txt, was corrected in commit b1927bd. The validator passes on main: 95 of 95 checks, 96 of 96 with --baseline, and 51 of 51 self-tests. The Revision 5 report records that the foundation approval confirms the approvals that this register quotes from Rama's chat messages (FR-23). |
+| Evidence | ChatGPT's final review of Revision 5 and its recommendation to Rama of 04-Nov-2026, and Claude's reports on commits 5afdcdf and b1927bd; none is kept as a file (D-17). |
+| Rama approval | Rama: "Accepted" (message to Claude, 04-Nov-2026, 14:39 IST), on ChatGPT's recommendation "I recommend approving the Revision 5 foundation documents and authorising Pre-Phase", which worded this decision: "I approve all ten foundation documents, Revision 5, in algocore_system main." |
+| Affected documents | The Status line of Documents 01 to 10; 02 §6 (the gate); 07 §6.2 (from this approval, a change to an approved document follows Document 05, section 5). |
+| Status | APPROVED. |
+
+## D-20 — Foundation → Pre-Phase gate: Pre-Phase authorised
+
+| Field | Entry |
+|---|---|
+| Decision ID | D-20 |
+| Date | 2026-11-04 |
+| Subject | Rama's authorisation to start Pre-Phase, the third condition of the Foundation → Pre-Phase gate (Document 02, section 6) |
+| Exact decision | Pre-Phase is authorised to start under Document 02. With ChatGPT's final review and D-19, the Foundation → Pre-Phase gate is passed. ChatGPT may now issue the Pre-Phase instructions (Document 02, section 2, procedure step 2). Pre-Phase is limited to whole-system knowledge gathering and its five deliverables (Document 02, sections 1 and 2); it includes no individual module investigation, no Phase 1 audit and no V2 design. OI-04, OI-06 and OI-07 stay OPEN and do not block Pre-Phase; OI-04 and OI-07 are to be settled before Phase 1, and OI-06 before Phase 2. Phase 1 needs the Pre-Phase → Phase 1 gate. |
+| Rationale | The three conditions of the Foundation → Pre-Phase gate are met: ChatGPT's final review of all ten foundation documents, Rama's explicit approval of them (D-19), and Rama's explicit authorisation to start Pre-Phase. |
+| Evidence | ChatGPT's recommendation to Rama of 04-Nov-2026; not kept as a file (D-17). |
+| Rama approval | Rama: "Accepted" (message to Claude, 04-Nov-2026, 14:39 IST), on ChatGPT's recommendation, which worded this decision: "I explicitly authorise commencement of Pre-Phase under Document 02. ChatGPT may now issue the Pre-Phase instructions." It also stated: "OI-04 and OI-07 should be settled before Phase 1, and OI-06 before Phase 2." |
+| Affected documents | 02 §2 and §6; 10 §11 (the open items, unchanged). |
+| Status | APPROVED. The next gate is Pre-Phase → Phase 1 (Document 02, section 6). |
+
+**Related documents:** 01, 02, 03, 04, 05, 06, 07, 08, 09 and 10.

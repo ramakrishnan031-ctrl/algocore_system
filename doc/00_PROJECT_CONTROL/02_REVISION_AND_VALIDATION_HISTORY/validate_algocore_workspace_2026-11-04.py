@@ -11,6 +11,8 @@ absent are listed as a note.
 Change of 2026-11-04, after the foundation approval (Decision Register, D-19): self-tests T02, T07 and T08 find a
 document's status line by pattern instead of by the word DRAFT, so they run whatever the status is. No check of a
 working tree changed.
+Change of 2026-11-04, at the start of Pre-Phase (Decision Register, D-20): self-test T39 runs --baseline on the
+baseline files alone, so working records added beside them do not make it fail. No check of a working tree changed.
 
 Usage (Python 3, standard library only; <root> is the folder that contains doc/):
   python3 validate_algocore_workspace_2026-11-04.py <root>              a working tree: a local copy or a Git checkout
@@ -857,6 +859,15 @@ def drop_empty_dirs(root):
             p.rmdir()
 
 
+def keep_only(root, keep):
+    """Delete every file under doc/ that is not in keep, then the folders left empty."""
+    base = Path(root)
+    for p in sorted((base / "doc").rglob("*")):
+        if p.is_file() and p.relative_to(base).as_posix() not in keep:
+            p.unlink()
+    drop_empty_dirs(root)
+
+
 D18 = ("## D-18 — Self-test closure\n\n| Field | Entry |\n|---|---|\n| Decision ID | D-18 |\n| Date | 2026-11-05 |\n"
        "| Subject | Self-test |\n| Exact decision | Self-test. |\n| Rationale | Self-test. |\n| Evidence | Self-test. |\n"
        "| Rama approval | Self-test. |\n| Affected documents | 09 §2; 10 §11 (OI-06). |\n"
@@ -944,7 +955,8 @@ TESTS = [
      lambda d: write(d, f"{TOPICS}/T01_MARKET_DATA_STUDY_2026-11-05.md"), ["M2b"]),
     ("T38", "files", "a file outside doc/ fails", False,
      lambda d: write(d, "NOTES_2026-11-05.txt"), ["M5"]),
-    ("T39", "baseline", "the tree as it stands passes in --baseline mode", True, lambda d: None, []),
+    ("T39", "baseline", "the baseline files alone pass in --baseline mode", True,
+     lambda d: keep_only(d, set(BASELINE_FILES)), []),
     ("T40", "baseline", "an added working record fails in --baseline mode", True,
      lambda d: write(d, NEW_NOTE), ["M6"]),
     ("T41", "rules", "a restored prior-approval sentence fails", False,

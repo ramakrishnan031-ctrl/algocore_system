@@ -1,0 +1,40 @@
+GITHUB SETUP RECORD - algocore_system (2026-11-03)
+For ChatGPT. Written by Claude on 03-Nov-2026 at 20:43 IST (time from a time service).
+
+Labels used:
+- FACT (VERIFIED): Claude checked it from this session.
+- REPORTED: shown in Rama's screenshots of Claude in Chrome, which did the setup in Rama's browser at his request.
+  This session has not verified it.
+
+1. REPOSITORY
+- Created by Rama (with Claude in Chrome) before 20:36 IST on 03-Nov-2026. This settles the "who creates" part of
+  OI-01.
+- Owner ramakrishnan031-ctrl; name algocore_system; Public (FACT: public git access works).
+- Description (REPORTED): "AlgoCore: new Live-only NSE equity trading system. Project foundation, legacy study and
+  audit, design and build."
+- Empty, with no branches and no commits: FACT (VERIFIED), checked with git ls-remote at about 20:36 IST.
+- Created without a README, .gitignore or licence, so that the first commit holds exactly the approved files.
+  With no licence, default copyright applies: the repository can be viewed but not reused.
+
+2. SETTINGS (REPORTED)
+- Wiki and Projects are turned off, so all records stay in the repository files (Document 07).
+- Branch rule "protect-main" on the default branch: blocks deletion and force pushes. It does not require pull
+  requests, so approved publication pushes are not blocked.
+- Secret scanning and push protection: on.
+- The Claude GitHub App can access all repositories, including algocore_system.
+- Rama's account email settings: "Keep my email addresses private" is on, and "Block command line pushes that expose
+  my email" is on. Claude's commits will therefore use Rama's GitHub noreply address as the author email. This is
+  added to rule 8 of the Claude Project setup guide (CLAUDE_NEW_PROJECT_SETUP_2026-11-03.txt).
+
+3. NOT DONE
+- Nothing has been pushed or published. No README, folders or files have been added.
+- This session could not read the repository's settings through the GitHub API: its request to connect to the
+  repository was not permitted. The settings in section 2 are therefore REPORTED, not verified. Claude will confirm
+  its push access in the new Claude Project before the first publication.
+
+4. STILL OPEN
+- OI-01, remaining part: the first folder layout. Document 07, section 3 proposes one; it needs ChatGPT's approval.
+- First publication: the ten foundation documents. This waits for three things:
+  - Rama's decisions on OI-02 to OI-07 (OI-05 is settled once the two new projects are set up);
+  - the foundation being marked APPROVED;
+  - ChatGPT's publication approval (Document 07, section 6).

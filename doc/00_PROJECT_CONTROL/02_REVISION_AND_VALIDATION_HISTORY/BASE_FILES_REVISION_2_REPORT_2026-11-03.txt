@@ -1,0 +1,52 @@
+BASE FILES 01 TO 10 - REVISION 2 REPORT (2026-11-03)
+For Rama and ChatGPT. Written 03-Nov-2026 by Claude, 19:25 IST (current-time service).
+Revision 2 replaces Revision 1 under the same ten file names. The Revision 1 report still describes the Revision 1
+changes; this report covers only what changed since then.
+
+1. WHY
+Rama, 03-Nov-2026, 19:21 IST: the stop-loss example is only one illustration; there are other issues in signals,
+capital, alerts, order management and so on; the meaning is broad, covering the entire system, not one configuration
+setting. Revision 1 still framed the rule around configured and documented items. Revision 2 widens it: the audit
+covers every area and every flow of the system, and looks for every kind of issue, including defects where nothing
+states the intent.
+
+2. CHANGES
+04 section 5, retitled "Intended and actual behaviour - the whole-system audit" (sub-section numbers 5.1 to 5.5 kept,
+   so every cross-reference stays valid):
+ - 5.1: the audit is never limited to configuration settings. Intended behaviour comes from every source: configuration,
+   documents, comments, names, log and alert texts, earlier records, and Rama's statement of his intent. Where nothing
+   states the intent, the code is still audited for its own defects.
+ - 5.2: scope is the entire system, with the areas listed (market data to failure and recovery). The stop-loss case is
+   one illustration. Rama's statement that issues of the same nature exist in signals, capital, alerts and order
+   management is recorded as RAMA (STATED), to be established with evidence. Flows crossing topics are traced end to
+   end; a boundary issue is recorded against the owning topic and cross-referenced.
+ - 5.3: six kinds of issue: intended against actual; logic and calculation; flow and state; failure handling;
+   consistency across components; weakness. The list guides the audit and does not limit it.
+ - 5.4: each record gives the area and flow and the intended behaviour with its source; matches are recorded too, so
+   the audit's coverage is visible.
+ - Section 4 step 6, section 7 and section 11: wording aligned ("every area and flow of the topic").
+08 section 6, retitled "Auditing actual against intended behaviour": seven steps. The items come from the study; every
+   route is traced end to end (normal, rejection, error, retry, restart, mode branches); each step is checked against
+   04 section 5.3. Sections 4, 5 and 8: wording aligned.
+01 section 6, 02 section 3 step 7, 03 sections 2 and 3, 09 section 7: wording aligned with 04 section 5.
+10 section 7: fields "Area and flow", "Issue category" and "Intended behaviour and its source" replace the
+   configuration-only fields.
+05, 06, 07: unchanged; they stay at Revision 1.
+Basis: the scope is SETTLED (Rama, 19:21). INTERPRETATION: Rama's stated intent counts as a source of intended
+behaviour; matches are recorded for coverage. RECOMMENDATION: the six issue categories and the boundary rule.
+
+3. FOR CHATGPT
+- ChatGPT's review of Revision 1 (section 2) lists item-level checks. They are right, but the scope is wider: the whole
+  system, every area and flow, and every kind of issue, not only items that have a configured value.
+- The validation script is supplied: validate_base_files_2026-11-03.py.txt. Rename it to .py and run
+  "python3 validate_base_files.py <folder holding the ten .md files>". Exit 0 means every check passed.
+- Open items OI-01 to OI-07 are unchanged (10 section 11). The five technical records have still not reached Claude,
+  so the check of 08 sections 3 and 9 against them is still pending.
+
+4. VALIDATION (19:24 IST)
+- 23 checks, all PASS, including 164 cross-references that resolve. Two checks are new:
+  - V17: 04 section 5.2 scopes the audit to the entire system and names its areas; the stop-loss case is one
+    illustration; 04 never limits the audit to configuration settings.
+  - V23: no Revision 1 wording that limits the audit to configuration items is left in any file.
+- Negative test: a planted narrowing of 04 and a planted Revision 1 phrase in 09 were both caught.
+- Restrictions kept: no legacy repository read; no repository created; nothing pushed or published.

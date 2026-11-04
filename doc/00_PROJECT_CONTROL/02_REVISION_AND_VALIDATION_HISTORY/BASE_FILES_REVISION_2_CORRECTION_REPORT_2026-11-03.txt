@@ -1,0 +1,127 @@
+BASE FILES 01 TO 10 - REVISION 2 CORRECTION REPORT (2026-11-03)
+For Rama and ChatGPT. Written 03-Nov-2026 by Claude, 19:48 IST (current-time service).
+Instruction: INSTRUCTIONS_TO_CLAUDE_FINAL_CORRECTIONS_REV2_2026-11-03.txt (ChatGPT, 03-Nov-2026).
+The corrections complete Revision 2; they do not start a Revision 3, so no revision history line was changed.
+
+1. THE TWO CORRECTIONS
+C1 validate_base_files_2026-11-03.py.txt, check V16: "configured-vs-actual rule" now reads "intended-vs-actual
+   whole-system audit rule" (message and code comment). V16 still confirms that 01, 02, 03, 08 and 09 cite
+   Document 04, section 5, and that 04 holds the rule.
+C2 10_MASTER_PROJECT_INDEX_AND_CONTROL_REGISTERS_2026-11-03.md: heading "11. Open items at Revision 1" now reads
+   "11. Open items at Revision 2". The seven open items and who decides each are unchanged.
+No other line of the ten documents changed.
+
+2. ADDITIONAL CHANGES, IDENTIFIED SEPARATELY (SCRIPT ONLY; NO DOCUMENT AFFECTED)
+A1 V16 now also checks that 04 section 5 has the heading "Intended and actual behaviour - the whole-system audit", so
+   it confirms that 04 holds the whole-system rule (instruction section 1) and not just that a section 5.1 exists.
+A2 New check V24 (for instruction section 3, item 5): each file's revision history names every revision up to its
+   status, and the revision in 10 section 11's heading matches 10's own status. It would have caught C2.
+A3 The script now prints the number of individual check results ("CHECKS RUN").
+Checked and left unchanged: 09 section 2 says the label mapping "is proposed in Revision 1". That is true history, not
+a stale label. 05, 06 and 07 stay at Revision 1, because Revision 2 did not change them (V24 confirms each history).
+
+3. VALIDATION EXECUTION RESULTS
+- Command: python3 validate_base_files_2026-11-03.py.txt <folder holding the ten .md files>. Exit code 0.
+- 25 named checks: V1 to V24, plus V9b. They give 70 individual results, because V2 to V6 run once per file. All 70
+  PASS.
+- Count correction: the earlier reports' "22 checks" and "23 checks" counted the numbered checks only, without V9b.
+- Whole-system audit scope intact: V16 and V17 (04 section 5 heading, the entire system and its areas, stop-loss as one
+  illustration, "never limit the audit to configuration settings") and V23 (no configuration-only wording left).
+- Cross-references: 164, all resolve (V7). Revision histories: consistent (V24).
+- Negative test, run after the real run: planted faults in 04's section 5 heading, 10's open-items heading and 08's
+  revision history. V16 and V24 failed as they should, and the script exited 1.
+- Full output of the real run, verbatim:
+
+RUN AT 2026-11-03 19:47:55 IST
+PASS V1 exactly the ten required file names present (10 .md files)
+PASS V2 01 UTF-8, LF only, no tabs, no trailing spaces, single final newline
+PASS V3 01 title, status (Revision 1 or 2), date and revision history present
+PASS V4 01 top-level sections numbered 1..9 without gaps
+PASS V5 01 no leftover Markdown escapes (\& or 1\.)
+PASS V2 02 UTF-8, LF only, no tabs, no trailing spaces, single final newline
+PASS V3 02 title, status (Revision 1 or 2), date and revision history present
+PASS V4 02 top-level sections numbered 1..6 without gaps
+PASS V5 02 no leftover Markdown escapes (\& or 1\.)
+PASS V2 03 UTF-8, LF only, no tabs, no trailing spaces, single final newline
+PASS V3 03 title, status (Revision 1 or 2), date and revision history present
+PASS V4 03 top-level sections numbered 1..6 without gaps
+PASS V5 03 no leftover Markdown escapes (\& or 1\.)
+PASS V2 04 UTF-8, LF only, no tabs, no trailing spaces, single final newline
+PASS V3 04 title, status (Revision 1 or 2), date and revision history present
+PASS V4 04 top-level sections numbered 1..13 without gaps
+PASS V5 04 no leftover Markdown escapes (\& or 1\.)
+PASS V2 05 UTF-8, LF only, no tabs, no trailing spaces, single final newline
+PASS V3 05 title, status (Revision 1 or 2), date and revision history present
+PASS V4 05 top-level sections numbered 1..11 without gaps
+PASS V5 05 no leftover Markdown escapes (\& or 1\.)
+PASS V2 06 UTF-8, LF only, no tabs, no trailing spaces, single final newline
+PASS V3 06 title, status (Revision 1 or 2), date and revision history present
+PASS V4 06 top-level sections numbered 1..6 without gaps
+PASS V5 06 no leftover Markdown escapes (\& or 1\.)
+PASS V2 07 UTF-8, LF only, no tabs, no trailing spaces, single final newline
+PASS V3 07 title, status (Revision 1 or 2), date and revision history present
+PASS V4 07 top-level sections numbered 1..8 without gaps
+PASS V5 07 no leftover Markdown escapes (\& or 1\.)
+PASS V2 08 UTF-8, LF only, no tabs, no trailing spaces, single final newline
+PASS V3 08 title, status (Revision 1 or 2), date and revision history present
+PASS V4 08 top-level sections numbered 1..12 without gaps
+PASS V5 08 no leftover Markdown escapes (\& or 1\.)
+PASS V2 09 UTF-8, LF only, no tabs, no trailing spaces, single final newline
+PASS V3 09 title, status (Revision 1 or 2), date and revision history present
+PASS V4 09 top-level sections numbered 1..8 without gaps
+PASS V5 09 no leftover Markdown escapes (\& or 1\.)
+PASS V2 10 UTF-8, LF only, no tabs, no trailing spaces, single final newline
+PASS V3 10 title, status (Revision 1 or 2), date and revision history present
+PASS V4 10 top-level sections numbered 1..11 without gaps
+PASS V5 10 no leftover Markdown escapes (\& or 1\.)
+PASS V6 01 has a related-documents line
+PASS V6 02 has a related-documents line
+PASS V6 03 has a related-documents line
+PASS V6 04 has a related-documents line
+PASS V6 05 has a related-documents line
+PASS V6 06 has a related-documents line
+PASS V6 07 has a related-documents line
+PASS V6 08 has a related-documents line
+PASS V6 09 has a related-documents line
+PASS V6 10 has a related-documents line
+PASS V7 all 164 cross-references resolve to an existing document and section
+PASS V8 no 'sandbox'/'duplicate copy' study method left (replaced by the read-only clone)
+PASS V9 algocore_system spelled one way only
+PASS V9b algocore_system named in the repository, publication and open-item sections
+PASS V10 settled repository visibility no longer shown as OPEN
+PASS V11 phase names consistent (Pre-Phase, Phase 1, Phase 2, Phase 3)
+PASS V12 the six Phase 2 outcome labels identical in 02 section 4 and 09 section 2
+PASS V13 the six evidence classifications identical in 04 section 6 and 08 section 7
+PASS V14 approved sequence complete in 01 section 5
+PASS V15 approved sequence mapped completely in 02 section 1
+PASS V16 intended-vs-actual whole-system audit rule stated once (04 section 5) and referenced from 01, 02, 03, 08, 09
+PASS V17 audit rule scoped to the entire system (all areas and flows), stop-loss shown as one illustration only
+PASS V23 no Revision 1 wording left that limits the audit to configuration items
+PASS V18 runtime limitation stated once (06 section 4.2) and referenced from 04 and 08
+PASS V19 review-round control present (05 section 10)
+PASS V20 open-items table OI-01..OI-07 in 10 section 11; OPEN FOR RAMA occurrences per file: {'04': 1, '05': 3, '06': 4, '07': 3, '09': 1, '10': 2}
+PASS V21 no credential value, IP address, account identifier, long key-like string or machine path
+PASS V22 no session link
+PASS V24 each revision history names every revision up to the file's status, and 10 section 11's heading matches 10's revision
+
+CHECKS RUN: 70
+
+RESULT: PASS (0 failed)
+EXIT CODE: 0
+
+4. SHA-256 OF THE FILES DELIVERED
+d76b3edbdb17c93d596c16c40a15dc767ad914c0013ffb992d185d2584142aaa  01_PROJECT_FOUNDATION_AND_SCOPE_2026-11-03.md
+ff45e9cee2a6c610c0885a1e2089f38233f03ff5f254e6901ce28189e433279b  02_PROJECT_PHASES_AND_MASTER_WORKFLOW_2026-11-03.md
+1016bf2d3b6512c482704c0e95e6956499b47fd2158a0e8183ce196aa32804f9  03_AI_ROLES_RESPONSIBILITIES_AND_OPERATING_INSTRUCTIONS_2026-11-03.md
+2217883c05591ae648041ea9c0061709febc7228ec1fa54618612d88c814a79e  04_TOPIC_INVESTIGATION_WORKFLOW_AND_AI_CONTINUITY_PROTOCOL_2026-11-03.md
+efcb4595203a371d3041ad0ccfe7440d10ac41d39b9186b4390296bbf23f9cdb  05_PROJECT_GOVERNANCE_AND_DECISION_CONTROL_2026-11-03.md
+49a299d6c50d728d96ac5fe47b9d8942e6536d274db40be6e98b38b079a3cd13  06_TECHNICAL_ENVIRONMENT_TOOLS_AND_RESEARCH_SOURCES_2026-11-03.md
+70eb42907c4d25f6a43f40a2734f7c39ae0b52f2a3a0d365fcfe23975b576d6a  07_REPOSITORY_DOCUMENTATION_AND_RECORD_MANAGEMENT_2026-11-03.md
+6cc9a20e8e26c3991bbd472d0152a8e4f8ae303d9a636db5161bdfd0b2e23743  08_LEGACY_STUDY_AND_AUDIT_METHODOLOGY_2026-11-03.md
+0360174b6a75c707a477808d7ba684641664ce87b6c46b6d9a109c9481cd3224  09_NEW_SYSTEM_DESIGN_AND_DEVELOPMENT_FRAMEWORK_2026-11-03.md
+a7a3019b3ff42cfdd664cced1dce813a4dcc23e8f408ae56abc3552da0d49f7e  10_MASTER_PROJECT_INDEX_AND_CONTROL_REGISTERS_2026-11-03.md
+e9b30765e408be753f444e484b27747910fb8b2b102209f5813d5a41d566c563  validate_base_files_2026-11-03.py.txt
+
+5. RESTRICTIONS KEPT
+No legacy repository was inspected or modified. algocore_system was not created or pushed, and nothing was published to
+GitHub. Pre-Phase, Phase 1 and V2 design were not started, and no settled decision changed.

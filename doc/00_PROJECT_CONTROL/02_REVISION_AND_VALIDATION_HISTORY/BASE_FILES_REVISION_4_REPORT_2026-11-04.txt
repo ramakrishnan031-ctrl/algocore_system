@@ -1,0 +1,101 @@
+BASE FILES REVISION 4 - GITHUB WORKSPACE RULES AND FIRST PROJECT-WORKSPACE PUSH - REPORT (2026-11-04)
+For ChatGPT and Rama. Written 04-Nov-2026 by Claude, 10:40 IST (current-time service).
+Instruction: CLAUDE_REV3_REVIEW_GITHUB_WORKSPACE_INSTRUCTION_2026-11-04.txt (ChatGPT, 04-Nov-2026), and Rama's direction
+to Claude of 04-Nov-2026, 10:29 IST. Statements are FACT, checked in this session, unless labelled otherwise.
+
+1. RAMA'S DIRECTION AFTER THE INSTRUCTION (DECISION REGISTER, D-08)
+Rama, 10:29 IST: "Next time onwards don't waste time due credentials/secret resolving issues with GitHub. I accept the
+risk phase-1 is completed, Don't keep anything private, keep everything must be in public GitHub, proceed".
+Applied: nothing is kept private. This replaces the instruction's points O1, O5 and O6 and the exclusions in its
+section 6:
+- the five existing technical records are in GitHub as they are, beside their redacted copies, which are kept;
+- the ChatGPT instructions and reviews and the Claude reports that Claude holds (eight files, unchanged) are in
+  doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/, and so is this report;
+- not pushed: the ZIP packages, whose content is all in the repository, and the chat screenshots, which are not
+  project files.
+INTERPRETATION: "I accept the risk phase-1 is completed" is read as accepting the risk until Phase 1 is completed;
+Phase 1 has not started.
+Cited in the records but not held by Claude, so not pushed:
+INSTRUCTIONS_TO_CLAUDE_FINAL_CORRECTIONS_REV2_2026-11-03.txt, CLAUDE_NEW_PROJECT_SETUP_2026-11-03.txt, validate_rev1.py.
+
+2. CHANGES IN THIS ROUND
+- Document 07, Revision 4 (SHA-256 in section 4):
+  section 2: GitHub is the working repository until the new system design is reached (D-06); nothing is kept private
+  (D-08); the security-issue reporting rule until Phase 1 is complete, stated narrowly, without any permission to
+  commit a working credential (D-07);
+  section 3: the history folder holds the revision instructions, reviews and reports; the originals are public;
+  section 4: the revision and date convention (D-09);
+  section 5: the README exception (D-09); OI-07 marked OPEN FOR RAMA.
+- Document 08, Revision 4: section 9 no longer says that the originals are private (D-08). This is a directly related
+  correction: the instruction asked to report such a need before making it; Rama's direction made the old sentence
+  untrue, so it is corrected and reported here.
+- Decision Register: D-06 to D-09 added, each with the nine fields; D-02's status shows that D-08 superseded its
+  privacy part. D-01 to D-05 keep their IDs (O4).
+- Redacted copies: line 5 of each redaction note now says that the original is in the parent folder and public.
+- validate_base_files_2026-11-04.py was changed before its first push and keeps its name (D-05). It now checks
+  37 files, and pins the SHA-256 of the eight added records. The originals are checked as public (S1 to S3 do not
+  apply to them). New check V10c finds wording that a later decision superseded. Self-test T03 now uses the next free
+  revision. T32 and T33 now test a Git checkout without empty folders, which passes, and a missing original, which
+  fails.
+- Unchanged since Revision 3: Documents 01 to 06, 09 and 10, the README and the history records.
+Fact check: D-06 quotes Rama: "In project files itself I clearly mentioned GitHub will be used till new system design
+arrived". Documents 01, 06 and 07 named algocore_system as the place for the project's documents and deliverables.
+The period "until the new system design is reached" was first written in D-06.
+
+3. VALIDATION (10:40 IST, python3 -B -I)
+- validate_base_files_2026-11-04.py, local package (19 folders, 37 files): 88 checks, 88 PASS, 0 FAIL, exit 0
+- the same, --publication, on a Git-style copy without the empty folders: 88 checks, 88 PASS, 0 FAIL, exit 0
+- self-tests: 33 of 33 PASS, exit 0
+- Count: 88 checks, one more than Revision 3's 87 (V10c).
+- validate_base_files_2026-11-03.py, unchanged (SHA-256 e9b30765...c566c563), on the Revision 2 baseline:
+  70 checks, 70 PASS, 0 FAIL, exit 0
+- The validator is a set of pattern checks: a PASS is not proof (scope printed with every run). No separate credential
+  review was made (D-07).
+
+4. MANIFEST AND SHA-256 (37 files; this report is the 37th and cannot list its own hash)
+d76b3edbdb17c93d596c16c40a15dc767ad914c0013ffb992d185d2584142aaa  doc/00_PROJECT_CONTROL/01_PROJECT_FOUNDATION/01_PROJECT_FOUNDATION_AND_SCOPE_2026-11-03.md
+e2739b81fdee73b3df6eec24078e5843953d329b0e80593b8f7c03743b8e92c7  doc/00_PROJECT_CONTROL/01_PROJECT_FOUNDATION/02_PROJECT_PHASES_AND_MASTER_WORKFLOW_2026-11-03.md
+1016bf2d3b6512c482704c0e95e6956499b47fd2158a0e8183ce196aa32804f9  doc/00_PROJECT_CONTROL/01_PROJECT_FOUNDATION/03_AI_ROLES_RESPONSIBILITIES_AND_OPERATING_INSTRUCTIONS_2026-11-03.md
+2217883c05591ae648041ea9c0061709febc7228ec1fa54618612d88c814a79e  doc/00_PROJECT_CONTROL/01_PROJECT_FOUNDATION/04_TOPIC_INVESTIGATION_WORKFLOW_AND_AI_CONTINUITY_PROTOCOL_2026-11-03.md
+8c7152b00799e386c58294817fda76c0519c68ad2ba6dc8334d675437428725b  doc/00_PROJECT_CONTROL/01_PROJECT_FOUNDATION/05_PROJECT_GOVERNANCE_AND_DECISION_CONTROL_2026-11-03.md
+5d18dd8bd4bfa4a690f465037dc9c2d7229922988f4877d566398f588ae07d82  doc/00_PROJECT_CONTROL/01_PROJECT_FOUNDATION/06_TECHNICAL_ENVIRONMENT_TOOLS_AND_RESEARCH_SOURCES_2026-11-03.md
+2f713302d870d4d6886956be922b0fdcec7cbb9844c69245fa8c0aa15b4e82aa  doc/00_PROJECT_CONTROL/01_PROJECT_FOUNDATION/07_REPOSITORY_DOCUMENTATION_AND_RECORD_MANAGEMENT_2026-11-03.md
+4ac6f78dfc2d2c37d2246628145890fcc297c6191be312fd5f64ac2bccf2bbd3  doc/00_PROJECT_CONTROL/01_PROJECT_FOUNDATION/08_LEGACY_STUDY_AND_AUDIT_METHODOLOGY_2026-11-03.md
+0360174b6a75c707a477808d7ba684641664ce87b6c46b6d9a109c9481cd3224  doc/00_PROJECT_CONTROL/01_PROJECT_FOUNDATION/09_NEW_SYSTEM_DESIGN_AND_DEVELOPMENT_FRAMEWORK_2026-11-03.md
+cd41983cc8b2cfaadae0c5aae7b576de65504caec74a22e8420664e8ceb46ce1  doc/00_PROJECT_CONTROL/01_PROJECT_FOUNDATION/10_MASTER_PROJECT_INDEX_AND_CONTROL_REGISTERS_2026-11-03.md
+85d71849594242de25f31eb1a7d989338dbebdb33832ad987f67bbef689fe69b  doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/BASE_FILES_REVISION_1_REPORT_2026-11-03.txt
+4ebf55f577db5999bf77de6cb612e13333ef7318efdb73d5ccdffe2d01f28a4d  doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/BASE_FILES_REVISION_2_CORRECTION_REPORT_2026-11-03.txt
+c96c29dce282b8e8b2d552b5eb3ecf1330e21b232c54763bf20500676b94c0aa  doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/BASE_FILES_REVISION_2_REPORT_2026-11-03.txt
+821a15ca03f5573533be1b61cfcc9e1237327ffa1ba0cccf4740df803652d925  doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/BASE_FILES_REVISION_3_CORRECTION_REPORT_2026-11-04.txt
+c68faf464ce2d2f55d95e4d080a35d3c3b2b1ad4fad0176397b7a2b1539cafab  doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/CHATGPT_REVIEW_OI01_STAGING_PACKAGE_2026-11-04.txt
+c44de8f979c0d5ae195a73453e9bdda94d0202a47e0ccb0f11cd62c45bb60d2c  doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/CHATGPT_SUPPLEMENTAL_REVIEW_CLAUDE_RESPONSE_AND_ZIP_2026-11-04.txt
+a22272ab5b1e50cd16a5d8560aa11477f9b1a0c787bd7dca9943c9bf4383c4b0  doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/CLAUDE_CONSOLIDATED_OI01_FOUNDATION_CORRECTION_INSTRUCTION_2026-11-04.txt
+51d0a0882c72ab48340edfd46c3e12871cc58efbef37045c9daa8cc3033d2270  doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/CLAUDE_OI01_FOLDER_SETUP_AND_FILE_STAGING_INSTRUCTION_2026-11-04.txt
+3bb157411f52feff04dc10ca2a0e0e59a5b178a28ef37d7a8015b44a9c3e5391  doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/CLAUDE_RESPONSE_TO_CHATGPT_OI01_REVIEW_2026-11-04.txt
+fa4e53fbdbed33cf4fcb049ba730f6ba70ee8367168c3aa7b7b19e94103baa51  doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/CLAUDE_REV3_REVIEW_GITHUB_WORKSPACE_INSTRUCTION_2026-11-04.txt
+7a4c7568d2a0f5845c926a89d4b34955d5f8b4c396f40ef48ab27217eccaaff6  doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/OI01_FOLDER_SETUP_AND_FILE_STAGING_REPORT_2026-11-04.txt
+e9b30765e408be753f444e484b27747910fb8b2b102209f5813d5a41d566c563  doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/validate_base_files_2026-11-03.py
+368dc0fe8ea4e1471aa6a20e38d9cd05038eb1ee983e4e249c34c6bafb991e43  doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/validate_base_files_2026-11-04.py
+8337e083afbd6454ee50bff99ee02ad5a9f0dbb959425fba4ede998cba464911  doc/00_PROJECT_CONTROL/03_GITHUB_AND_REPOSITORY_RECORDS/GITHUB_ALGOCORE_SYSTEM_SETUP_RECORD_2026-11-03.txt
+4d0ab3577a1d63e1779862649e91a083674ca0c7450f6d042067724b9c8dc580  doc/00_PROJECT_CONTROL/04_PROJECT_REGISTERS/DECISION_REGISTER_2026-11-04.md
+606a8842708470bb9b192da58ccb56054a77860994b4f23634f1169a32bac922  doc/01_PRE_PHASE/01_SOURCE_INVENTORY/README.md
+51d5f315ba9a949f3807e5a68c6d48a46411b0e2eaeaaf9da1bf4693cb3283a9  doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/01_SYSTEM_OVERVIEW.md
+8b5aec74544c7a613ced958f90ca9deedb524db321ae7101b9a577015cbf6d49  doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/02_REPOSITORY_AND_FILE_MAP.md
+85d0bd23f087f33f9ff1724469faa30893ac3a26fb138abc86c7bfa5e82ece3c  doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/03A_CRON_REGISTRY_TABLE.md
+f7d38f2d0f7ea2d61783970b1e8a81fc06d1676ab613ee4db18178ee5cbc3087  doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/03_STARTUP_RUNTIME_AND_SCHEDULER.md
+dfe1ac19890df8fffc450adb627b49fcebe73d8545c91ac5ff83448de46c3287  doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/LEGACY_SYSTEM_MANUAL_INDEX.md
+ef0a434b90a12860b525ca746f7ac055e404a4c889db7acf9f390ddc31b1b8f1  doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/PUBLICATION_REDACTED_COPIES/01_SYSTEM_OVERVIEW.md
+2527b1d5293f33bdb748ac041e31fa70ae47b8f3959c4bb9182ab0fa3f8befed  doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/PUBLICATION_REDACTED_COPIES/02_REPOSITORY_AND_FILE_MAP.md
+bc833de34734f367eedd9aef38a3b1b4008b2e64531e4fbd68bd9d813653257b  doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/PUBLICATION_REDACTED_COPIES/03A_CRON_REGISTRY_TABLE.md
+b0fb067ce9066082f929ce9bb668994346e2e0f7c4407901d0b5fdd3bc348cf3  doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/PUBLICATION_REDACTED_COPIES/03_STARTUP_RUNTIME_AND_SCHEDULER.md
+fc30eb28cc381c59990ef0a911f907a588e7bd5b1f6539d146c865c350e07c7d  doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/PUBLICATION_REDACTED_COPIES/LEGACY_SYSTEM_MANUAL_INDEX.md
+Empty folders, not in Git: 8 (unchanged since Revision 3).
+
+5. CONFIRMATIONS
+- The push to algocore_system, branch main, was made after this report was written, in the commit that adds it.
+  Claude's reply to Rama gives the commit hash and the push check; the repository history shows them too.
+- The five original technical records are IN GitHub, by Rama's direction (D-08).
+- No GitHub issue, discussion, comment or warning about credential leaks was created (D-07).
+- No access to trading-system-prod-snapshot or any other legacy repository.
+- No Pre-Phase, Phase 1, V2 design or development work was started. The phase gates are unchanged.
+- The commit author is Rama's GitHub noreply address, and the message ends with the Co-Authored-By line only.

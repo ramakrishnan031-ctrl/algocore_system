@@ -1,0 +1,266 @@
+BASE FILES REVISION 3 - OI-01/OI-05 FOUNDATION CORRECTION ROUND - COMPLETION REPORT (2026-11-04)
+For ChatGPT, through Rama. Written 04-Nov-2026 by Claude, 10:15 IST (current-time service).
+Instruction: CLAUDE_CONSOLIDATED_OI01_FOUNDATION_CORRECTION_INSTRUCTION_2026-11-04.txt
+(ChatGPT, issued on Rama's "Ok proceed.").
+Package: ALGOCORE_SYSTEM_DOC_STAGING_REVISION_3_2026-11-04.zip. LOCAL STAGING ONLY - NOT APPROVED FOR PUBLICATION.
+Statements are FACT, checked in this session, unless labelled otherwise. No masked value appears in this report.
+
+READ FIRST - THE STAGING PACKAGE IS NOT A PUBLICATION TREE
+The package holds the five unredacted originals, which are private. The publication set is the package without them:
+23 files. Before any push, the tree to be pushed must pass: python3 validate_base_files_2026-11-04.py --publication
+<root>. Check M4 then fails if any original is present.
+
+1. FOLDER AND FILE MANIFEST (G.1)
+19 folders (doc/ and 18 subfolders) and 28 files: no file missing, none duplicated (28 different SHA-256 values).
+The 18 folders of Revision 2 are kept with the same names. One folder was added for D-02:
+doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/PUBLICATION_REDACTED_COPIES/
+doc/00_PROJECT_CONTROL/01_PROJECT_FOUNDATION/
+  unchanged                   4,238  01_PROJECT_FOUNDATION_AND_SCOPE_2026-11-03.md
+  CHANGED (Revision 3)        5,576  02_PROJECT_PHASES_AND_MASTER_WORKFLOW_2026-11-03.md
+  unchanged                   5,003  03_AI_ROLES_RESPONSIBILITIES_AND_OPERATING_INSTRUCTIONS_2026-11-03.md
+  unchanged                  11,563  04_TOPIC_INVESTIGATION_WORKFLOW_AND_AI_CONTINUITY_PROTOCOL_2026-11-03.md
+  CHANGED (Revision 3)        6,665  05_PROJECT_GOVERNANCE_AND_DECISION_CONTROL_2026-11-03.md
+  CHANGED (Revision 3)        6,339  06_TECHNICAL_ENVIRONMENT_TOOLS_AND_RESEARCH_SOURCES_2026-11-03.md
+  CHANGED (Revision 3)        6,659  07_REPOSITORY_DOCUMENTATION_AND_RECORD_MANAGEMENT_2026-11-03.md
+  CHANGED (Revision 3)        7,804  08_LEGACY_STUDY_AND_AUDIT_METHODOLOGY_2026-11-03.md
+  unchanged                   3,872  09_NEW_SYSTEM_DESIGN_AND_DEVELOPMENT_FRAMEWORK_2026-11-03.md
+  CHANGED (Revision 3)        6,835  10_MASTER_PROJECT_INDEX_AND_CONTROL_REGISTERS_2026-11-03.md
+doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/
+  unchanged                  13,877  BASE_FILES_REVISION_1_REPORT_2026-11-03.txt
+  unchanged                   9,079  BASE_FILES_REVISION_2_CORRECTION_REPORT_2026-11-03.txt
+  unchanged                   4,194  BASE_FILES_REVISION_2_REPORT_2026-11-03.txt
+  unchanged                   9,674  validate_base_files_2026-11-03.py
+  new                        49,418  validate_base_files_2026-11-04.py
+doc/00_PROJECT_CONTROL/03_GITHUB_AND_REPOSITORY_RECORDS/
+  unchanged                   2,586  GITHUB_ALGOCORE_SYSTEM_SETUP_RECORD_2026-11-03.txt
+doc/00_PROJECT_CONTROL/04_PROJECT_REGISTERS/
+  new                         9,072  DECISION_REGISTER_2026-11-04.md
+doc/01_PRE_PHASE/01_SOURCE_INVENTORY/
+  new                           612  README.md
+doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/
+  ORIGINAL - PRIVATE         20,534  01_SYSTEM_OVERVIEW.md
+  ORIGINAL - PRIVATE        782,947  02_REPOSITORY_AND_FILE_MAP.md
+  ORIGINAL - PRIVATE         12,377  03A_CRON_REGISTRY_TABLE.md
+  ORIGINAL - PRIVATE         35,778  03_STARTUP_RUNTIME_AND_SCHEDULER.md
+  ORIGINAL - PRIVATE         11,907  LEGACY_SYSTEM_MANUAL_INDEX.md
+doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/PUBLICATION_REDACTED_COPIES/
+  publication copy (new)     21,103  01_SYSTEM_OVERVIEW.md
+  publication copy (new)    783,418  02_REPOSITORY_AND_FILE_MAP.md
+  publication copy (new)     12,856  03A_CRON_REGISTRY_TABLE.md
+  publication copy (new)     36,257  03_STARTUP_RUNTIME_AND_SCHEDULER.md
+  publication copy (new)     12,364  LEGACY_SYSTEM_MANUAL_INDEX.md
+Counts: CHANGED (Revision 3) 6; ORIGINAL - PRIVATE 5; new 3; publication copy (new) 5; unchanged 9
+Empty folders (Git will not show them; no placeholder file was added):
+- doc/01_PRE_PHASE/02_WHOLE_SYSTEM_OVERVIEW/
+- doc/01_PRE_PHASE/03_OPERATIONAL_WORKFLOW/
+- doc/01_PRE_PHASE/04_MASTER_SYSTEM_INVESTIGATION_INDEX/
+- doc/01_PRE_PHASE/05_PHASE1_METHODOLOGY/
+- doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/TOPIC_WISE_DOCUMENTATION/
+- doc/03_PHASE2_NEW_SYSTEM_DESIGN/
+- doc/03_PHASE2_NEW_SYSTEM_DESIGN/DESIGN_TOPIC_DOCUMENTATION/
+- doc/99_ARCHIVE/
+In a Git dry run of the publication set (scratch copy, nothing committed): 23 files tracked, 11 folders visible.
+
+2. SHA-256 OF EVERY FILE (G.2; paths relative to the algocore_system folder; checkable with sha256sum -c)
+d76b3edbdb17c93d596c16c40a15dc767ad914c0013ffb992d185d2584142aaa  doc/00_PROJECT_CONTROL/01_PROJECT_FOUNDATION/01_PROJECT_FOUNDATION_AND_SCOPE_2026-11-03.md
+e2739b81fdee73b3df6eec24078e5843953d329b0e80593b8f7c03743b8e92c7  doc/00_PROJECT_CONTROL/01_PROJECT_FOUNDATION/02_PROJECT_PHASES_AND_MASTER_WORKFLOW_2026-11-03.md
+1016bf2d3b6512c482704c0e95e6956499b47fd2158a0e8183ce196aa32804f9  doc/00_PROJECT_CONTROL/01_PROJECT_FOUNDATION/03_AI_ROLES_RESPONSIBILITIES_AND_OPERATING_INSTRUCTIONS_2026-11-03.md
+2217883c05591ae648041ea9c0061709febc7228ec1fa54618612d88c814a79e  doc/00_PROJECT_CONTROL/01_PROJECT_FOUNDATION/04_TOPIC_INVESTIGATION_WORKFLOW_AND_AI_CONTINUITY_PROTOCOL_2026-11-03.md
+8c7152b00799e386c58294817fda76c0519c68ad2ba6dc8334d675437428725b  doc/00_PROJECT_CONTROL/01_PROJECT_FOUNDATION/05_PROJECT_GOVERNANCE_AND_DECISION_CONTROL_2026-11-03.md
+5d18dd8bd4bfa4a690f465037dc9c2d7229922988f4877d566398f588ae07d82  doc/00_PROJECT_CONTROL/01_PROJECT_FOUNDATION/06_TECHNICAL_ENVIRONMENT_TOOLS_AND_RESEARCH_SOURCES_2026-11-03.md
+af265debc2933189f7ac2975597140ba76de028e7df7be587b2bbac8a6150f49  doc/00_PROJECT_CONTROL/01_PROJECT_FOUNDATION/07_REPOSITORY_DOCUMENTATION_AND_RECORD_MANAGEMENT_2026-11-03.md
+d6782592737e126865d22da8c3fa21aeacda71055f7f5db01130679f8dee2944  doc/00_PROJECT_CONTROL/01_PROJECT_FOUNDATION/08_LEGACY_STUDY_AND_AUDIT_METHODOLOGY_2026-11-03.md
+0360174b6a75c707a477808d7ba684641664ce87b6c46b6d9a109c9481cd3224  doc/00_PROJECT_CONTROL/01_PROJECT_FOUNDATION/09_NEW_SYSTEM_DESIGN_AND_DEVELOPMENT_FRAMEWORK_2026-11-03.md
+cd41983cc8b2cfaadae0c5aae7b576de65504caec74a22e8420664e8ceb46ce1  doc/00_PROJECT_CONTROL/01_PROJECT_FOUNDATION/10_MASTER_PROJECT_INDEX_AND_CONTROL_REGISTERS_2026-11-03.md
+85d71849594242de25f31eb1a7d989338dbebdb33832ad987f67bbef689fe69b  doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/BASE_FILES_REVISION_1_REPORT_2026-11-03.txt
+4ebf55f577db5999bf77de6cb612e13333ef7318efdb73d5ccdffe2d01f28a4d  doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/BASE_FILES_REVISION_2_CORRECTION_REPORT_2026-11-03.txt
+c96c29dce282b8e8b2d552b5eb3ecf1330e21b232c54763bf20500676b94c0aa  doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/BASE_FILES_REVISION_2_REPORT_2026-11-03.txt
+e9b30765e408be753f444e484b27747910fb8b2b102209f5813d5a41d566c563  doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/validate_base_files_2026-11-03.py
+7bac1ab6c4b09b7b8d4369e7a7353873fcaaeecf5188ef186139d213d24b1a69  doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/validate_base_files_2026-11-04.py
+8337e083afbd6454ee50bff99ee02ad5a9f0dbb959425fba4ede998cba464911  doc/00_PROJECT_CONTROL/03_GITHUB_AND_REPOSITORY_RECORDS/GITHUB_ALGOCORE_SYSTEM_SETUP_RECORD_2026-11-03.txt
+4a38e5bc990a3589f7bbcf58aaa145dc0637c06d0d62813763ae03270daf7c51  doc/00_PROJECT_CONTROL/04_PROJECT_REGISTERS/DECISION_REGISTER_2026-11-04.md
+606a8842708470bb9b192da58ccb56054a77860994b4f23634f1169a32bac922  doc/01_PRE_PHASE/01_SOURCE_INVENTORY/README.md
+51d5f315ba9a949f3807e5a68c6d48a46411b0e2eaeaaf9da1bf4693cb3283a9  doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/01_SYSTEM_OVERVIEW.md
+8b5aec74544c7a613ced958f90ca9deedb524db321ae7101b9a577015cbf6d49  doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/02_REPOSITORY_AND_FILE_MAP.md
+85d0bd23f087f33f9ff1724469faa30893ac3a26fb138abc86c7bfa5e82ece3c  doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/03A_CRON_REGISTRY_TABLE.md
+f7d38f2d0f7ea2d61783970b1e8a81fc06d1676ab613ee4db18178ee5cbc3087  doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/03_STARTUP_RUNTIME_AND_SCHEDULER.md
+dfe1ac19890df8fffc450adb627b49fcebe73d8545c91ac5ff83448de46c3287  doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/LEGACY_SYSTEM_MANUAL_INDEX.md
+8e0f2d37ce2a2dc5f2f1c9d38e92555d63659288aa6ee21f0334c659cbb1c050  doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/PUBLICATION_REDACTED_COPIES/01_SYSTEM_OVERVIEW.md
+7d6e703d3586b1e4bfc70fc01dc9400a80004153733604569eea6f756e9094b1  doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/PUBLICATION_REDACTED_COPIES/02_REPOSITORY_AND_FILE_MAP.md
+c3dd40e13e53681705c264e3ee45a935e96ec192fca9e9501ef0256e15e4e59b  doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/PUBLICATION_REDACTED_COPIES/03A_CRON_REGISTRY_TABLE.md
+df2054e25bc0abf4dfbfd796cd05d071de65c9919d9ace845c5d214915420790  doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/PUBLICATION_REDACTED_COPIES/03_STARTUP_RUNTIME_AND_SCHEDULER.md
+aa9bee06bbc9289339c2f488ed037fd593ba7c23e033887f3364a3501565ef45  doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/PUBLICATION_REDACTED_COPIES/LEGACY_SYSTEM_MANUAL_INDEX.md
+
+3. THE FIVE ORIGINALS ARE UNCHANGED (G.3)
+- Hashed before and after the redaction step. Both values equal the upload service's record, and each original is
+  byte-identical to the file Rama uploaded. They are also equal to the Revision 2 baseline (section 2 hashes).
+- Claude's workspace is temporary and is not durable storage. The originals remain in Rama's supplied project files
+  and private source storage, and Rama should keep a private backup. Claude has not archived them permanently.
+
+4. REDACTION AUDIT (G.4; values not disclosed)
+Originals (private) and publication copies, under the same file names:
+  doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/
+  doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/PUBLICATION_REDACTED_COPIES/
+- 01_SYSTEM_OVERVIEW.md: [ACCOUNT_ID_1_REDACTED] 1 (original line 172, copy line 178); [PRODUCTION_VM_IP_REDACTED] 1
+    (original line 27, copy line 33); [TEST_VM_IP_REDACTED] 1 (original line 26, copy line 32).
+- 02_REPOSITORY_AND_FILE_MAP.md: [ACCOUNT_ID_2_REDACTED] 1 (original line 3315, copy line 3321).
+- 03_STARTUP_RUNTIME_AND_SCHEDULER.md: nothing masked; the redaction note says so.
+- 03A_CRON_REGISTRY_TABLE.md: nothing masked; the redaction note says so.
+- LEGACY_SYSTEM_MANUAL_INDEX.md: [PRODUCTION_VM_IP_REDACTED] 1 (original line 14, copy line 20).
+Total: 5 values masked in 3 files; 2 records needed no masking.
+- Each copy starts with a 5-line redaction note and a blank line, so copy line = original line + 6. The note names the
+  masked categories, the placeholders with their counts, and the SHA-256 of the unchanged original. The PC worktree
+  (D: drive) paths and the VM home paths are unchanged.
+- INTERPRETATION: "first" and "second" account identifier follow the order of the records, which is also the order of
+  the first completion report, section 8. ACCOUNT_ID_1 is the --account value in 01_SYSTEM_OVERVIEW.md; ACCOUNT_ID_2 is
+  the default --account value recorded in 02_REPOSITORY_AND_FILE_MAP.md.
+- Checks: the four values were read from the record lines that hold them, never typed. Every occurrence in any letter
+  case or with a separator was counted, and none exists in another form. The copy without its note, with the
+  placeholders restored, equals the original byte for byte. The copies hold no IP address other than loopback, and
+  no account-shaped token other than "SHA256" (in HMAC-SHA256). No masked value was printed or written outside the
+  private originals.
+
+5. CHANGED-DOCUMENT SUMMARY (G.5)
+Unchanged, byte-identical to Revision 2: 01, 03, 04 and 09 (status Revision 2).
+Changed, now DRAFT at Revision 3 (for ChatGPT review), each with a Revision 3 history entry dated 2026-11-04:
+- 02 section 2: the inventory bullet adds that Pre-Phase populates and reviews the one authoritative Source Inventory
+  in the registers folder, and keeps no second inventory in its working-notes folder.
+- 05 section 4: field names aligned with Document 10, section 5 (Decision reference > Decision ID, Decision > Exact
+  decision, Reason > Rationale, Approval > Rama approval, Impact > Affected documents). The descriptions, including the
+  India-date check, are unchanged; the intro names the Decision Register. Still nine fields.
+- 06 section 3: the algocore_system row records that Rama created it (D-01), in place of OPEN FOR RAMA.
+  06 section 6: the OI-01 and OI-05 bullets are removed; one sentence records both as settled (D-01, D-04); the Oracle
+  Cloud link is added as a technical reference only, with the limits ChatGPT set.
+- 07 section 2: Rama created algocore_system (D-01). Section 3: heading "Documentation areas and folder layout"; the
+  proposed table is replaced by the approved doc/ layout (14 rows, exact folder names); the registers and the one
+  authoritative Source Inventory are in 04_PROJECT_REGISTERS/; the Pre-Phase folder holds working notes only; the
+  originals are not published; empty folders get no placeholders. Section 8: the registers' folder is named.
+- 08 section 9: the records' approved folder, their PUBLICATION_REDACTED_COPIES/ subfolder and the private originals
+  are named (D-01, D-02).
+- 10 section 5: the Decision Register's folder, and the nine fields shared with Document 05. Section 8: the one
+  authoritative Source Inventory, its folder, Pre-Phase's role, the working-notes folder. Section 11: heading at
+  Revision 3, a Status column, OI-01 and OI-05 CLOSED.
+Additions beyond the instruction's list, made for cross-consistency (please confirm or reject each):
+- 05 section 4: the intro sentence names the Decision Register (Document 10, section 5).
+- 07 section 3: the D-02 subfolder is listed, and the originals are stated as not published.
+- 07 section 8 and 10 section 8: the location sentences (D-03).
+- 08 section 9: the publication copies are named (D-02).
+- 10 section 5: the sentence that Document 05 uses the same nine fields.
+
+6. DECISION REGISTER (G.6)
+doc/00_PROJECT_CONTROL/04_PROJECT_REGISTERS/DECISION_REGISTER_2026-11-04.md. Each entry has exactly the nine fields of
+Document 10, section 5, in its order: Decision ID, Date, Subject, Exact decision, Rationale, Evidence, Rama approval,
+Affected documents, Status. Date 2026-11-04 for all. Rationale quotes only recorded reasons. Rama approval records his
+OI-01 instruction and the "Ok proceed." behind the consolidated instruction.
+- D-01 OI-01: repository creator, folder layout and initial staging - APPROVED; OI-01 CLOSED
+- D-02 Publication copies of the five existing technical records - APPROVED
+- D-03 Location of the Source Inventory - APPROVED
+- D-04 OI-05: Claude's working environment - APPROVED; OI-05 CLOSED
+- D-05 Versioning of the validation script - APPROVED
+Also new: doc/01_PRE_PHASE/01_SOURCE_INVENTORY/README.md, the folder note. It says that this folder is NOT the
+authoritative Source Inventory and names the registers folder. No Source Inventory file was created, because
+Pre-Phase is not authorised.
+
+7. OPEN-ITEM STATUS (G.7; Document 10, section 11 at Revision 3)
+OI-01 CLOSED, 2026-11-04 (D-01)   OI-02 OPEN   OI-03 OPEN   OI-04 OPEN
+OI-05 CLOSED, 2026-11-04 (D-04)   OI-06 OPEN   OI-07 OPEN
+Unchanged items keep their wording. OPEN FOR RAMA markers left: 04 (1), 05 (3), 06 (1), 07 (1), 09 (1), 10 (2). Each
+belongs to OI-02, OI-03, OI-04 or OI-06, or to the definition of the label in 05 section 3. None refers to OI-01 or
+OI-05.
+
+8. NEW VALIDATOR (G.8)
+doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/validate_base_files_2026-11-04.py (SHA-256 in section 2).
+Runs (10:15 IST, python3 -B -I):
+- staging package:                         87 checks, 87 PASS, 0 FAIL, exit 0
+- publication tree (scratch copy without the five originals, --publication): 87 checks, 87 PASS, 0 FAIL, exit 0
+- self-tests (--self-test; 33 tests on temporary copies): 33 of 33 PASS, exit 0
+- usage error: exit 2. A folder with an empty doc/: FAIL reported cleanly, exit 1, no traceback.
+  T01 PASS [positive] the package as it stands passes
+  T02 PASS [revision] status at Revision 4 without a history entry fails (fails ['V24'])
+  T03 PASS [revision] a later revision with its own history entry passes
+  T04 PASS [revision] one revision number with two different dates fails (fails ['V24'])
+  T05 PASS [revision] section 11 heading at another revision than Document 10 fails (fails ['V24'])
+  T06 PASS [revision] Date line different from the file-name date fails (fails ['V3'])
+  T07 PASS [status] status APPROVED is accepted
+  T08 PASS [status] a status outside Document 07, section 4 fails cleanly (fails ['V3'])
+  T09 PASS [status] a missing status line fails cleanly, without a crash (fails ['V24', 'V3'])
+  T10 PASS [open item] closing OI-02 without a decision that closes it fails (fails ['V20'])
+  T11 PASS [open item] reopening OI-01 while D-01 closes it fails (fails ['V20'])
+  T12 PASS [open item] stale open wording for a closed item fails (fails ['V10b'])
+  T13 PASS [open item] closing OI-06 with a matching new decision passes
+  T14 PASS [open item] an added open item passes (no fixed number of rows)
+  T15 PASS [register] a decision without the Rationale field fails (fails ['R1'])
+  T16 PASS [register] Document 05 with an old field name fails (fails ['R2'])
+  T17 PASS [security] an IPv4 address in a foundation document fails (fails ['S1'])
+  T18 PASS [security] an account-shaped token in a publication copy fails (fails ['S2', 'S9'])
+  T19 PASS [security] a machine path in the Decision Register fails (fails ['S3'])
+  T20 PASS [security] a token in a known secret format fails (fails ['S6'])
+  T21 PASS [security] an e-mail address fails (fails ['S7'])
+  T22 PASS [security] a Claude session link fails (fails ['S8'])
+  T23 PASS [security] a credential-like assignment fails (fails ['S4'])
+  T24 PASS [security] loopback address and the term SHA256 pass (no false positive)
+  T25 PASS [security] an unknown placeholder in a copy fails (fails ['S9'])
+  T26 PASS [security] a wrong original SHA-256 in a redaction note fails (fails ['S9'])
+  T27 PASS [security] a changed line in a copy fails (fails ['S9'])
+  T28 PASS [security] a placeholder replaced by an address fails (fails ['S1', 'S9'])
+  T29 PASS [manifest] a changed original fails (fails ['M3'])
+  T30 PASS [manifest] an unexpected extra file fails (fails ['M2'])
+  T31 PASS [manifest] a missing foundation document fails cleanly (fails ['M2', 'V1'])
+  T32 PASS [publication] the originals in a publication tree fail (fails ['M4'])
+  T33 PASS [publication] a publication tree without the originals passes
+What it checks: the manifest (19 folders, 28 files; 23 in --publication mode), the pinned SHA-256 of the 4 history
+records, the old validator and the 5 originals; the old foundation checks; the revision convention; the open items
+against the register; the register's nine fields; Document 05's field names; the README; security patterns S1-S8;
+the copies (S9).
+Defect found and fixed during testing: test T17 showed that the address pattern missed an address followed by a full
+stop. The pattern was corrected. A re-scan of every file, the uploads included, with the corrected pattern found no
+address beyond the three occurrences already reported, so the first report's section 8 and the redaction stand.
+Limitations (also printed with every run):
+- Security checks are patterns. A PASS means no listed pattern was found; it is not proof. Values of other shapes need
+  human review: IPv6, host names, account identifiers of other shapes, secrets without a key word.
+- Stale-wording checks know the old OI-01 and OI-05 phrases only. OPEN FOR RAMA markers are counted, not mapped to
+  items.
+- The manifest and the pinned hashes are fixed for this revision. A new file, for example the Source Inventory, needs
+  a new dated validator (the D-05 pattern).
+- The content checks V8 to V19 and V23 are carried over from the 2026-11-03 script unchanged.
+
+9. OLD VALIDATOR (G.9)
+validate_base_files_2026-11-03.py: SHA-256 e9b30765e408be753f444e484b27747910fb8b2b102209f5813d5a41d566c563, the value
+the Revision 2 correction report lists. Unchanged and not renamed.
+- On the unchanged Revision 2 baseline: 70 checks, 70 PASS, 0 FAIL, exit 0
+- For information only, on the Revision 3 set: 63 PASS and 7 FAIL (V3 for the six revised documents, and V24), exit 1,
+  no traceback. This is expected: it accepts Revisions 1 and 2 only, which is the reason for D-05.
+No historical report was changed.
+
+10. CONFIRMATIONS (G.10)
+- NO GitHub commit, push, merge, release or publication. algocore_system is still empty: a read-only git ls-remote at
+  10:15 IST returned no branches.
+- No access to trading-system-prod-snapshot or any other legacy repository; nothing was run, repaired or deployed.
+- No Pre-Phase, Phase 1 or V2 work was started.
+- No actual account identifier, VM IP address, credential, token or secret is in this report.
+- The Revision 2 baseline used for comparison was not modified (20 of 20 files, hash-checked).
+
+11. OPEN - LEFT FOR CHATGPT OR RAMA (G.11)
+O1 Publication set: the 23 files without the originals (READ FIRST). At publication, the folder
+   00_EXISTING_LEGACY_TECHNICAL_RECORDS/ will hold only its PUBLICATION_REDACTED_COPIES/ subfolder.
+O2 Revision convention used, not written into any document (OPEN FOR CONFIRMATION):
+   - file names and Date lines keep 2026-11-03, the creation date;
+   - the revision history carries 2026-11-04;
+   - revision numbers follow the review rounds, so 05, 06 and 07 go from Revision 1 to 3, with the note "This document
+     did not change in Revision 2".
+   Alternatives: new dated file names, or numbering each file separately. Recording the convention in Document 07,
+   section 4 or 5 was not requested.
+O3 README.md has no date suffix. Document 07, section 5 says such names "require reconciliation before final
+   publication". OPEN FOR RAMA (minor): keep it, so that GitHub shows it as the folder note, or rename it.
+O4 The decision IDs D-01 to D-05 resemble the earlier project's manual numbers A-001 to D-005 (06 section 3,
+   10 section 11). OPEN FOR RAMA (minor): keep them, or use a prefix such as DR-.
+O5 The register's evidence names ChatGPT instructions and reviews and Claude reports that are not in the publication
+   set (ChatGPT's review, section 9: do not publish handoff notes). OPEN FOR RAMA: where they are kept privately, for
+   example this Claude Project's library.
+O6 This report is not designated a project record, unlike the Revision 1 and 2 reports in
+   02_REVISION_AND_VALIDATION_HISTORY/. OPEN FOR CHATGPT/RAMA: if it should be one, the manifest and the validator
+   need a new version.
+O7 Pre-existing, not changed: OI-07 is OPEN, but its section (07 section 5) carries no OPEN FOR RAMA marker.
+O8 Before the first push, Claude still has to confirm its push access to algocore_system (setup record, section 3).
+
+STOP. Waiting for ChatGPT's review and Rama's next approval. This package is not approved for publication.

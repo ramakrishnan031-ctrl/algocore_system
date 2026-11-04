@@ -1,0 +1,166 @@
+BASE FILES 01 TO 10 - REVISION 1 REPORT (2026-11-03)
+For Rama and ChatGPT. Written 03-Nov-2026 by Claude, 19:02 IST (current-time service).
+Inputs: the ten base drafts of 03-Nov; ChatGPT's "INSTRUCTIONS TO CLAUDE - REVISE THE 10 PROJECT BASE FILES"
+(03-Nov); CLAUDE_REVIEW_OF_NEW_PROJECT_BASE_FILES_REV1_2026-11-03.txt; Rama's clarifications of 18:35 IST and his
+note of 18:50 IST (the stop-loss case only illustrates the kind of bug; the comparison applies to each and everything).
+Parts: 1 changelog, 2 open items, 3 conflicts and missing information, 4 source-to-destination mapping, 5 validation.
+Basis labels used below: SETTLED (Rama's clarification or ChatGPT's instruction), INTERPRETATION (Claude's reading),
+RECOMMENDATION (Claude's proposal, not decided), FORMAT (no change of meaning).
+
+1. CHANGELOG
+All files: renamed with the _2026-11-03 suffix; status "DRAFT - Revision 1"; revision history line added; escaped
+characters ("\&", "1\.") cleaned (FORMAT).
+01 Foundation & Scope
+ - New section 2: the production repository is the only legacy system; sbx and all others ignored (SETTLED).
+ - New section 5: the approved overall sequence; legacy documentation and V2 design never merged (SETTLED).
+ - Section 6 principles: two bullets added: configured/documented behaviour compared with the code for every item,
+   and every issue discussed with Rama (SETTLED: Rama 02-Nov rule and 18:50 note).
+ - New section 8: algocore_system (public) is the project repository; publication after ChatGPT approval (SETTLED).
+ - Sections renumbered (old 2-6 now 3, 4, 6, 7, 9).
+02 Phases & Master Workflow
+ - Section 1: table mapping the approved sequence onto Pre-Phase and Phases 1 to 3 (SETTLED).
+ - Section 2: Pre-Phase records the commit to be studied (RECOMMENDATION).
+ - Section 3: step 5 named "the study"; step 7 audit includes the comparison for every item and ChatGPT's challenge;
+   new step 9: every issue discussed with Rama, treatment or OPEN recorded; closure points to 05 section 11.2.
+ - Section 4: proposal, topic-by-topic discussion, revise until agreed and approved, freeze (SETTLED).
+ - Sections 5 and 6: Phase 3 starts after the freeze; gate reads "approved and frozen" (SETTLED).
+03 AI Roles
+ - Rama: decides each issue's treatment, or leaves it OPEN (SETTLED).
+ - ChatGPT: challenges the comparison and raises issues it finds (SETTLED).
+ - Claude: read-only local clone, never written to; comparison for every item; commit cited; every issue raised with
+   Rama; publishes to algocore_system after ChatGPT approval (SETTLED; commit citation RECOMMENDATION).
+ - Section 5: the "own assumptions" bullet reworded (FORMAT); Rama's standing rule of 01-Nov added: cross-check his
+   factual statements and suggest corrections (RECOMMENDATION: carried in from his standing rule).
+04 Topic Workflow & Continuity Protocol
+ - Section 4: steps aligned with 02 section 3 (study, ChatGPT challenge, audit with comparison, ChatGPT challenge,
+   Rama discussion, reconciliation, publication) (INTERPRETATION: the base files did not say where the comparison sits).
+ - New section 5 (the core addition): the rule (5.1); scope "each and everything", with the stop-loss case as one
+   illustration only (5.2); what the comparison looks for (5.3); what is recorded: source, code path, actual
+   implementation, effective value, evidence, result (5.4); every issue discussed with Rama, treatment recorded as
+   Phase 2 input, nothing fixed in Phase 1, no automatic V2 requirement (5.5) (SETTLED; 5.3 list RECOMMENDATION).
+ - Section 7: commit studied, and configured value beside effective value, added to the evidence standard.
+ - Sections 10 and 11: issues raised with Rama recorded; closure requires the comparison and the Rama discussion;
+   closure with unresolved issues points to 05 section 11.2.
+ - Sections renumbered (old 5-12 now 6-13).
+05 Governance & Decision Control
+ - Section 3: OPEN FOR RAMA marker defined; a RECOMMENDATION stays PROPOSED until Rama decides.
+ - Section 4: date wording tidied, meaning unchanged (FORMAT). Section 5: change control applies after the freeze.
+ - New section 10: review-round control as instructed, with a one-line definition of material and minor (definition
+   is RECOMMENDATION).
+ - New section 11: register responsibilities (11.1) and closure with unresolved issues (11.2), both RECOMMENDATION,
+   OPEN FOR RAMA; unresolved issues always stay visible (11.3, SETTLED by the instruction).
+06 Environment & Research Sources
+ - Section 3 rewritten as a repository table: prod repo via a local read-only clone (replaces "duplicate/sandbox
+   copy"); algocore_system public, creator OPEN FOR RAMA; trading-system-v2 status OPEN FOR RAMA, 952cd83 not
+   published; sbx and others ignored; public exposure accepted, no extra flagging, credential rule kept (SETTLED).
+ - Section 4 split: 4.1 evidence priority (unchanged, plus one sentence: documents and config are compared with the
+   code); new 4.2 runtime evidence limitation as instructed, with two examples (SETTLED).
+ - Section 6: "final repository hosting and visibility" removed (settled: algocore_system, public); added: commit to
+   be studied, algocore_system creator and layout, Claude's working environment (OPEN FOR RAMA).
+07 Repository & Record Management
+ - Section 2: algocore_system named; read-only clone replaces "protected / duplicate-sandbox"; the OPEN visibility
+   line removed (settled); creator OPEN FOR RAMA (SETTLED).
+ - Section 3: separation rule; proposed folder layout for algocore_system (RECOMMENDATION, OPEN FOR RAMA).
+ - Section 5: file-type names illustrative; ChatGPT proposes, Claude if not (SETTLED).
+ - Section 6: step 5 names algocore_system; commit messages end with the Co-Authored-By line only, no session link
+   (RECOMMENDATION: Rama's standing rule).
+ - Section 8: Sources added to the list; ownership points to 05 section 11.1.
+08 Legacy Study & Audit Methodology
+ - Section 1: prod repo only, read-only clone (SETTLED).
+ - Sections 4 and 5: chain extended with CONFIGURATION, OVERRIDE and EFFECTIVE VALUE (from Rama's 02-Nov rule);
+   configured value beside effective value; overrides, defaults and fallbacks.
+ - New section 6: the audit method for the comparison, six steps, every item, search by name (RECOMMENDATION:
+   method).
+ - Section 8 (old 7): comparison, Rama discussion and one combined topic document added; who-does-what points to 04.
+ - Section 9 (old 8): records kept as separate technical documentation; their statements are checked against the code
+   like any document (SETTLED; second point INTERPRETATION of Rama's "each and everything").
+ - New section 10: runtime evidence, pointing to 06 section 4.2. Section 11 (old 9): public exposure not an issue.
+   Section 12 (old 10): agreed treatment is Phase 2 input only.
+09 Design & Development Framework
+ - Section 2: starts from each issue's agreed treatment and open issues; proposal; topic by topic; resolve
+   ambiguities; until agreed and approved (SETTLED). Mapping of "change / modify" to REVISE or UPGRADE (OPEN FOR RAMA).
+ - New section 4: design freeze; change control after it; no coding against an unfrozen part (SETTLED: sequence).
+ - Section 7: guardrail added for configured behaviour that differs from actual behaviour (RECOMMENDATION).
+ - Sections renumbered (old 4-7 now 5-8).
+10 Master Index & Registers
+ - Section 2: file-name column. Section 3: "Issues raised with Rama" field. Section 4: closure rule points to 05.
+ - Sections 6 and 7: "raised with Rama" date; source, code path, actual implementation, effective value fields;
+   "Resolution or disposition" now "Agreed treatment (Phase 2 input), or OPEN" (SETTLED: instruction 4A).
+ - Section 8: commit; surviving runtime evidence listed as "external evidence" (SETTLED: instruction 4B).
+ - Section 9: points to 05 section 11.1. New section 11: open items OI-01 to OI-07.
+
+2. OPEN ITEMS (the same table as 10 section 11)
+OI-01 Who creates algocore_system, and its first folder layout (07 section 3 has a proposal), including where the five
+      technical records go. Rama. (ChatGPT has asked Rama the same.)
+OI-02 The earlier project's trading-system-v2 work (39 frozen manuals A-001 to D-005 and later records): retain as
+      reference material, or set aside. Rama.
+OI-03 Register responsibilities and update timing (05 section 11.1 recommendation). Rama.
+OI-04 Whether a topic can close with unresolved issues (05 section 11.2 recommendation). Rama.
+OI-05 Claude's working environment: a new Claude Project, or new instructions in the current one (whose instructions
+      say it does not document the legacy system). Rama.
+OI-06 Recording Rama's "change" and "modify" as REVISE or UPGRADE (09 section 2). Rama.
+OI-07 Names for the topic document types (07 section 5). ChatGPT proposes, Claude if ChatGPT does not; Rama.
+
+3. CONFLICTS AND MISSING INFORMATION (FOR CHATGPT)
+C1 "Every issue" or "every material issue": the instruction (4A) says material; Rama's 02-Nov rule says every issue,
+   and his 18:50 note says each and everything. The files follow Rama ("every issue", 04 section 5.5) and let issues
+   be presented together in the topic's issue list, so the discussion stays short.
+C2 Rama's 02-Nov rule added a label PHASE 2 INPUT / DISPOSITION. To avoid a new label, the files carry it as a
+   register field ("Agreed treatment (Phase 2 input), or OPEN", 10 section 7).
+C3 Project name: 01 says "Trading System - Legacy Manual & V2 Redesign"; the instruction's header says
+   "Trading_System-v2_redesign"; the repository is algocore_system. Not changed; say if 01 should change.
+M1 The five technical records (01_SYSTEM_OVERVIEW.md, 02_REPOSITORY_AND_FILE_MAP.md,
+   03_STARTUP_RUNTIME_AND_SCHEDULER.md, 03A_CRON_REGISTRY_TABLE.md, LEGACY_SYSTEM_MANUAL_INDEX.md) did not reach
+   Claude: they are not among this chat's attachments or in this Claude Project. The revision did not need their
+   content (08 section 9 keeps them as separate records). Once shared, Claude checks 08 sections 3 and 9 against them.
+
+4. SOURCE-TO-DESTINATION MAPPING
+4.1 Original sections (every original section is retained; "+" marks additions)
+01: 1>1 | 2>3 | 3>4 | 4>6+ | 5>7 | 6>9 | new 2, 5, 8
+02: 1>1+ | 2>2+ | 3>3 (steps 1-8 kept, 7 extended; new 9; old 9-12 now 10-13) | 4>4+ | 5>5+ | 6>6+
+03: 1>1+ | 2>2+ | 3>3+ | 4>4 | 5>5+ (one bullet reworded) | 6>6
+04: 1-3>1-3 | 4>4 (old steps 1-10 all kept; 5 split over 4 and 6; 6-7 over 5 and 7; 8-10 now 9-11) | new 5 |
+    5>6 | 6>7+ | 7>8 | 8>9 | 9>10+ | 10>11+ | 11>12+ | 12>13
+05: 1-9>1-9 (3, 4, 5 and 8 extended) | new 10, 11
+06: 1>1 | 2>2 | 3>3 (rewritten as a table; "duplicate/sandbox copy" replaced by the read-only clone, SETTLED) |
+    4>4.1+ | new 4.2 | 5>5 | 6>6 (visibility item removed as settled; three items added)
+07: 1>1 | 2>2 (two bullets replaced, SETTLED) | 3>3+ | 4>4 | 5>5+ | 6>6+ | 7>7 | 8>8+
+08: 1>1+ | 2>2 | 3>3 | 4>4+ | 5>5+ | new 6 | 6>7 | 7>8+ | 8>9+ | new 10 | 9>11+ | 10>12+
+09: 1>1 | 2>2+ | 3>3 | new 4 | 4>5+ | 5>6 | 6>7+ | 7>8
+10: 1>1 | 2>2+ | 3>3+ | 4>4 (closure line replaced by a pointer) | 5>5 | 6>6+ | 7>7+ | 8>8+ | 9>9 (pointer) |
+    10>10 | new 11
+4.2 Instruction requirements
+2.1-2.2 one legacy system, others ignored: 01 s2; 06 s3; 08 s1
+2.3 read-only clone: 06 s3; 07 s2; 03 s3; 04 s4 step 2; 08 s1
+2.4-2.5 public exposure accepted; no credential values: 06 s3 and s5; 08 s11
+2.6-2.7 algocore_system public; publish after ChatGPT approval: 01 s8; 06 s3; 07 s2 and s6
+2.8 no repository created or pushed: complied (part 5); 07 s2
+3 approved sequence; never merged: 01 s5; 02 s1, s3-s5; 09 s2 and s4; 07 s3
+4A configured versus actual: 04 s5 (rule) and s4; 08 s4-s6 (method); 02 s3; 03 s1-s3; 01 s6; 09 s7; 10 s7
+4B runtime limitation: 06 s4.2; 04 s5.4; 08 s10; 10 s8
+4C review rounds: 05 s10
+4D registers and closure: 05 s11; 04 s11; 07 s8; 10 s4, s9 and s11
+5 the five records kept separate: 08 s9; 10 s2
+6 old work OPEN; 952cd83 not published: 06 s3; 10 s11 (OI-02)
+7 file names: all ten files; 10 s2
+
+5. VALIDATION
+5.1 Script checks (validate_rev1.py, last run 19:03 IST): 22 checks, all PASS:
+ - the ten file names exact; UTF-8, LF, no tabs or trailing spaces; header, status, date and revision history in each;
+   sections numbered without gaps; no leftover escapes;
+ - 158 cross-references ("Document NN, section X", own "section X", "NN section X", related-documents lines) all
+   resolve to an existing document and section;
+ - no "sandbox" or "duplicate copy" study method left; algocore_system spelled one way; settled visibility not shown
+   as OPEN; phase names consistent; the six outcome labels identical in 02 and 09; the six evidence labels identical
+   in 04 and 08; the approved sequence complete in 01 and mapped in 02;
+ - the comparison rule stated once (04 s5) and referenced from 01, 02, 03, 08 and 09, scoped to everything with the
+   stop-loss case as one illustration; the runtime limitation stated once (06 s4.2) and referenced from 04 and 08;
+ - every OPEN FOR RAMA marker (04: 1, 05: 3, 06: 4, 07: 3, 09: 1, 10: 2) maps to an item in 10 s11;
+ - no credential value, IP address, account identifier, long key-like string, machine path or session link.
+ A planted bad reference, a planted bad section and a planted IP address were each caught (negative test).
+5.2 Read-through: the same per-topic order in 02 s3, 04 s4 and 08 s8 (study, ChatGPT challenge, audit with the
+ comparison, Rama discussion, one reconciled document, approval, publication); no rule stated differently in two files.
+5.3 Restrictions (instruction section 10): no Pre-Phase investigation; no legacy module read or analysed; no V2 design;
+ the legacy production repository and trading-system-v2 not opened or changed in this task; no repository created;
+ nothing pushed or published. The files are saved in this Claude Project's claude/new-project/ folder (private) and
+ sent to Rama for ChatGPT's review.

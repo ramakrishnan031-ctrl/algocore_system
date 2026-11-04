@@ -1,0 +1,89 @@
+BASE FILES - REVISION 5 REPORT (2026-11-04)
+The change report of the Revision 5 round (Document 07, section 3). Written by Claude on 04-Nov-2026, 12:52 IST.
+It is committed only after ChatGPT's review and Rama's approval of the Revision 5 correction set (Document 07,
+section 6.2); the commit message names that approval. The round started from commit 9898e8c (Revision 4).
+
+1. WHY
+A final semantic review of the ten foundation documents raised 27 findings: 0 blocker, 7 major, 13 minor and 7 for
+information (FR-01 to FR-27, section 6). Rama decided the open questions on 04-Nov-2026 (D-10 to D-17).
+
+2. DECISIONS (Decision Register)
+D-10 Working commits: ordinary DRAFT records may be committed and are reviewed afterwards; changes to the foundation
+     documents and the validator are reviewed first; approval needs ChatGPT's review and Rama's explicit approval.
+D-11 Phase 1 topic documents: ChatGPT reviews the package and reports to Rama in plain English; Rama approves or
+     rejects.
+D-12 OI-02 closed: every repository other than algocore_system and trading-system-prod-snapshot is ignored,
+     trading-system-v2 included.
+D-13 OI-03 closed: ChatGPT proposes and reviews the Master System Investigation Index, Claude keeps it and the
+     registers, and Rama decides; the update timing of each register is set.
+D-14 GitHub is the working repository until the Phase 2 design is completed and frozen (the end of D-06's period).
+D-15 The Revision 4 validator stays unchanged; validate_algocore_workspace_2026-11-04.py checks working trees.
+D-16 OI-08 and OI-09 closed: Pre-Phase prepares the application of Document 08; the index's minimum content.
+D-17 OI-10 closed: the repository keeps project knowledge and evidence, not prompts, instructions, discussions or
+     intermediate reviews. It supersedes the part of D-08 that kept them.
+D-18 Under D-17: the change reports of Revisions 1 to 4 are kept; the five redacted copies of the existing technical
+     records are removed as duplicates of the public originals, which are kept.
+Also changed: the Status of D-02 (now SUPERSEDED, by D-08 and D-18), of D-06 (its end point, D-14) and of D-08 (the
+parts superseded by D-17 and D-18).
+
+3. DOCUMENTS CHANGED (Document 09 unchanged; each revision history names its sections)
+01 §2, §8   02 §1, §2, §3, §6   03 §1-§3   04 §3, §4, §8, §11   05 §3, §5, §6, §11.1   06 §2, §3
+07 §2, §3, §5, §6, §7, §8   08 §8, §9   10 §1-§6, §8-§11
+In short: one commit and approval rule (07 §6); a Foundation -> Pre-Phase gate, and ChatGPT's review and Rama's
+explicit approval at every gate, Live deployment included (02 §6); a Pre-Phase procedure (02 §2); the Master Project
+Index and the Master System Investigation Index named apart (10 §1); register governance (05 §11.1); the ignored
+repositories (01 §2, 06 §3); the retention rule (07 §3).
+
+4. FILES
+Removed from the working tree under D-17; they stay in the Git history at commit 9898e8c:
+  CLAUDE_OI01_FOLDER_SETUP_AND_FILE_STAGING_INSTRUCTION_2026-11-04.txt
+  OI01_FOLDER_SETUP_AND_FILE_STAGING_REPORT_2026-11-04.txt
+  CHATGPT_REVIEW_OI01_STAGING_PACKAGE_2026-11-04.txt
+  CLAUDE_RESPONSE_TO_CHATGPT_OI01_REVIEW_2026-11-04.txt
+  CHATGPT_SUPPLEMENTAL_REVIEW_CLAUDE_RESPONSE_AND_ZIP_2026-11-04.txt
+  CLAUDE_CONSOLIDATED_OI01_FOUNDATION_CORRECTION_INSTRUCTION_2026-11-04.txt
+  CLAUDE_REV3_REVIEW_GITHUB_WORKSPACE_INSTRUCTION_2026-11-04.txt
+Removed under D-18, with their subfolder PUBLICATION_REDACTED_COPIES/; they stay in the same Git history:
+  the five redacted copies of 01_SYSTEM_OVERVIEW.md, 02_REPOSITORY_AND_FILE_MAP.md,
+  03_STARTUP_RUNTIME_AND_SCHEDULER.md, 03A_CRON_REGISTRY_TABLE.md and LEGACY_SYSTEM_MANUAL_INDEX.md.
+Not added: the instructions, reviews and responses of the final review and of this round.
+Added: validate_algocore_workspace_2026-11-04.py and this report.
+The history folder now holds the change reports of Revisions 1 to 5 (with the Revision 2 correction report) and the
+three validators; the repository holds 27 files.
+
+5. VALIDATION
+validate_algocore_workspace_2026-11-04.py, SHA-256:
+  680fc15e7be7560070939f4769edc5435f98b857265b2a0d10005807ebc22f1b
+  Staging copy:     95 of 95 checks pass; with --baseline, 96 of 96 checks pass; self-tests: 51 of 51 pass
+  Fresh Git clone:  95 of 95 checks pass; with --baseline, 96 of 96 checks pass; self-tests: 51 of 51 pass
+validate_base_files_2026-11-04.py, the validator of the Revision 4 baseline, fails on this tree only in the checks
+tied to its fixed folder and file lists, its pins and the removed copies (M1, M2, M3, M4, S9 fail), as expected.
+
+6. FINDINGS OF THE FINAL SEMANTIC REVIEW AND THEIR OUTCOME
+FR-01 No Foundation -> Pre-Phase gate or Pre-Phase procedure: both added (02 §2, §6).
+FR-02 Gates weaker than 05 §6; Live deployment without Rama: every gate needs ChatGPT and Rama (02 §6).
+FR-03 "Master Index" named two indexes: both named in full; 10 §1 explains 01 §5.
+FR-04 Which commits need prior approval: D-10; 07 §6.
+FR-05 No validation step; a fixed file list: 07 §6.1 and §6.5; the new validator (D-15).
+FR-06 OI-02 and OI-03 needed before Pre-Phase: both closed (D-12, D-13).
+FR-07 Claude Project library and instructions out of date: refreshed after the commit.
+FR-08 Obsolete first-publication sentence: the first push is recorded (07 §2).
+FR-09 File-name exceptions: stated (07 §5).
+FR-10 Pre-Phase row incomplete: five deliverables (02 §1).
+FR-11 Area 2 left out Pre-Phase: named (07 §3).
+FR-12 Two methodology authorities: Document 08 governs; Pre-Phase prepares its application (D-16).
+FR-13 Index content undefined: minimum content (10 §1; D-16).
+FR-14 End of D-06's period undefined: the Phase 2 design freeze (D-14).
+FR-15 Partial supersession undefined: 05 §3.
+FR-16 Status of the five records: kept unchanged; corrections go in the topic documents (08 §9).
+FR-17 Where AI records go: they are not kept (D-17; 07 §3).
+FR-18 Commit-author rule missing: 07 §6.4.
+FR-19 No folders in the document index: 10 §2.
+FR-20 Self-tests failed on a Git checkout: fixed in the new validator.
+FR-21 Review report outside GitHub: reviews are not kept (D-17).
+FR-22 "Proposed" wording: kept until the foundation is approved.
+FR-23 Approvals resting on chat messages: quoted in the register; the foundation approval confirms them.
+FR-24 Register practice ahead of OI-03: settled by D-13.
+FR-25 Origin of the five records: for Pre-Phase.
+FR-26 Licence: optional; no action.
+FR-27 "Publication copies" wording: the copies themselves are removed (D-18).

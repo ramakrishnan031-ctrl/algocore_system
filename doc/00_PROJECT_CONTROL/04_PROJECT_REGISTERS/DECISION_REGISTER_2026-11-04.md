@@ -2,8 +2,9 @@
 
 **Status:** DRAFT — for ChatGPT review
 **Date:** 2026-11-04
-**Revision history:** First version, 2026-11-04: decisions D-01 to D-05 (consolidated correction instruction of 04-Nov-2026). Second version, 2026-11-04: decisions D-06 to D-09, and the status of D-02 (review instruction of 04-Nov-2026 and Rama's direction of the same day).
+**Revision history:** First version, 2026-11-04: decisions D-01 to D-05 (consolidated correction instruction of 04-Nov-2026). Second version, 2026-11-04: decisions D-06 to D-09, and the status of D-02 (review instruction of 04-Nov-2026 and Rama's direction of the same day). Third version, 2026-11-04: decisions D-10 to D-18, the status of D-02, D-06 and D-08, and the note on evidence files (Rama's decisions of 04-Nov-2026).
 **Purpose and scope:** The project's Decision Register (Document 10, section 5). Each entry uses exactly the nine fields of Document 10, section 5. Prepared by Claude for ChatGPT's review; Rama decides (Document 05, section 1).
+**Evidence files:** Instructions, reviews and responses named as evidence are not kept as files in the repository (D-17). Those committed before Revision 5 remain in its Git history, at commit 9898e8c308e8ab8835efd3462aa2f1f97ba1760b; the others were never committed. Each entry states what decides it, and quotes Rama's words where they are the decision (Document 10, section 5).
 
 ## D-01 — OI-01: repository creator, folder layout and initial staging
 
@@ -31,7 +32,7 @@
 | Evidence | The four files named under Rationale. CLAUDE_CONSOLIDATED_OI01_FOUNDATION_CORRECTION_INSTRUCTION_2026-11-04.txt, D-02. |
 | Rama approval | Authorised by Rama through the consolidated correction instruction, which ChatGPT issued on Rama's instruction "Ok proceed." (04-Nov-2026), adopting ChatGPT's recommendation (supplemental review, section 10). |
 | Affected documents | 07 §3; 08 §9; the publication copies of the five existing technical records. |
-| Status | APPROVED. The part that keeps the originals private is SUPERSEDED by D-08 (2026-11-04); the redacted copies are kept. |
+| Status | SUPERSEDED (2026-11-04): the part that keeps the originals private by D-08, and the redacted copies by D-18, which removed them. |
 
 ## D-03 — Location of the Source Inventory
 
@@ -87,7 +88,7 @@
 | Evidence | CLAUDE_REV3_REVIEW_GITHUB_WORKSPACE_INSTRUCTION_2026-11-04.txt, section 2. Rama's message to ChatGPT of 04-Nov-2026, in the screenshot Rama gave Claude. |
 | Rama approval | Rama's direction, recorded by ChatGPT in the review instruction, and his "proceed" to Claude (04-Nov-2026, 10:29 IST). |
 | Affected documents | 07 §2. |
-| Status | APPROVED. A standing rule until the new system design is reached. |
+| Status | APPROVED. A standing rule until the Phase 2 new-system design is completed and frozen; that end point is defined by D-14 (2026-11-04), and the rest of this decision is unchanged. |
 
 ## D-07 — Security-issue reporting until Phase 1 is complete
 
@@ -115,7 +116,7 @@
 | Evidence | Rama's message quoted under Rationale. CLAUDE_REV3_REVIEW_GITHUB_WORKSPACE_INSTRUCTION_2026-11-04.txt, O1, O5, O6 and section 6 (superseded in part). |
 | Rama approval | Given by Rama directly to Claude after he read ChatGPT's review instruction ("proceed", 04-Nov-2026, 10:29 IST). Rama is the final decision authority (Document 05, section 1). |
 | Affected documents | 07 §2 and §3; 08 §9; the status of D-02; the redaction notes of the five copies; the validator's manifest. |
-| Status | APPROVED. |
+| Status | APPROVED. Two parts are SUPERSEDED (2026-11-04): keeping the ChatGPT and Claude instructions, reviews and reports in the repository, by D-17; and keeping the redacted copies beside the originals, by D-18. The rest stands: nothing the repository retains is kept private. |
 
 ## D-09 — Revision 3 open points: conventions, decision IDs and OI-07
 
@@ -131,4 +132,130 @@
 | Affected documents | 07 §4 and §5. |
 | Status | APPROVED. OI-07 stays OPEN. |
 
-**Related documents:** 05, 07 and 10.
+## D-10 — Working commits, foundation-controlled files and approval
+
+| Field | Entry |
+|---|---|
+| Decision ID | D-10 |
+| Date | 2026-11-04 |
+| Subject | Which commits need ChatGPT's prior review, and how a document or decision becomes approved (FR-04) |
+| Exact decision | A. Working records, and documents explicitly marked DRAFT that are not among the ten foundation documents and are not the validator, may be committed to algocore_system without ChatGPT's prior approval. Claude reports each commit to ChatGPT promptly; ChatGPT reviews it afterwards and identifies any correction needed. A working commit does not make a document approved or frozen, or a decision authoritative. B. Until Rama approves the foundation set, changes to the ten foundation documents and the validator are prepared locally and reviewed by ChatGPT before they are committed; the Revision 5 correction proposal stays local until ChatGPT has reviewed it and Rama has approved the correction set. The working-record rule is not used to bypass this safeguard. C. Rama's explicit decisions are recorded promptly in the Decision Register; an entry may be committed as a working record without ChatGPT's prior approval and is then reviewed by ChatGPT. No decision that Rama has not made is created or inferred. D. A document may be marked APPROVED or frozen, or treated as an authoritative governance decision, only after ChatGPT's review and Rama's explicit approval, subject to the topic-document workflow of D-11. Rama's direct instruction to make a specific commit is sufficient authority for that commit. Claude may not make material project decisions, close open items without Rama's explicit decision, or advance a project phase. Document 07, section 6 states the rule once; the other documents refer to it. |
+| Rationale | GitHub is the project's working repository (D-06), and the written rule that files are published only after ChatGPT's approval did not fit working records or commits that Rama directs himself (BASE_FILES_FINAL_SEMANTIC_REVIEW_2026-11-04.txt, FR-04). ChatGPT recommended Option A with explicit boundaries (CHATGPT_REVIEW_AND_RECOMMENDATIONS_FINAL_SEMANTIC_REVIEW_2026-11-04.txt, section 2); Claude's response asked that the ten foundation documents and the validator keep review before commit, and listed every document that restated the old rule (CLAUDE_RESPONSE_TO_CHATGPT_FINAL_REVIEW_RECOMMENDATIONS_2026-11-04.txt, C-01 and C-03). |
+| Evidence | The three files named under Rationale. CLAUDE_CONSOLIDATED_REVISION_5_PROPOSAL_INSTRUCTION_2026-11-04.txt, section 3 (D-10 / FR-04). Rama's messages to ChatGPT of 04-Nov-2026, in the screenshot Rama gave Claude at 11:38 IST. |
+| Rama approval | Rama's "Accepted for OI-03 & C-03" to ChatGPT (04-Nov-2026), on ChatGPT's text "Ordinary DRAFT working records can follow Option A; the Decision Register can record your decisions immediately and receive ChatGPT's review afterwards", recorded by ChatGPT in the consolidated Revision 5 instruction as Rama's decision on FR-04. Rama then confirmed Option A as a whole: "Accepted" (message to Claude, 04-Nov-2026, 12:26 IST), on ChatGPT's recommendation to approve the complete working-commit rule (CHATGPT_REVISION_5_REMAINING_DECISIONS_AND_OI10_DIRECTION_2026-11-04.txt, section 3, A). |
+| Affected documents | 01 §8; 02 §2 and §3; 03 §2 and §3; 04 §4; 05 §5; 06 §2 and §3; 07 §2, §6 and §7; 08 §8. |
+| Status | APPROVED. |
+
+## D-11 — Review and approval of Phase 1 topic documents
+
+| Field | Entry |
+|---|---|
+| Decision ID | D-11 |
+| Date | 2026-11-04 |
+| Subject | How a Phase 1 topic document and its package are reviewed and approved (C-02) |
+| Exact decision | Claude prepares each topic document and its evidence package. ChatGPT reviews every file in the package and reports the result to Rama in short, plain English, including any material defect or unresolved question. Rama then approves or rejects the topic document and package. ChatGPT's approval alone does not finalise a Phase 1 topic document. Rama does not perform the technical review; ChatGPT provides the independent review and a concise explanation. The phase gates still require the complete phase review and Rama's explicit approval. Recorded in Document 07, section 6. |
+| Rationale | Rama: "ChatGPT reviews all the files of Claude and informs rama/user about in shortly in plain english then rama/user will approve it" (message to ChatGPT, 04-Nov-2026). Claude had pointed out that Option A, as first recommended, would add Rama's approval of each topic document without asking him (CLAUDE_RESPONSE_TO_CHATGPT_FINAL_REVIEW_RECOMMENDATIONS_2026-11-04.txt, C-02). |
+| Evidence | Rama's message quoted under Rationale, in the screenshot Rama gave Claude at 11:38 IST. CLAUDE_CONSOLIDATED_REVISION_5_PROPOSAL_INSTRUCTION_2026-11-04.txt, section 3 (C-02). |
+| Rama approval | Rama's explicit decision, as quoted (04-Nov-2026). |
+| Affected documents | 02 §3; 03 §1, §2 and §3; 04 §4 and §11; 05 §11.1; 06 §2; 07 §6; 08 §8; 10 §3 and §4. |
+| Status | APPROVED. |
+
+## D-12 — OI-02: the other repositories, trading-system-v2 included
+
+| Field | Entry |
+|---|---|
+| Decision ID | D-12 |
+| Date | 2026-11-04 |
+| Subject | OI-02: the earlier project's repository trading-system-v2, and every other repository |
+| Exact decision | Every repository other than algocore_system (the project's repository) and trading-system-prod-snapshot (the legacy system under investigation, Document 01, section 2) is ignored for this project, trading-system-v2 and trading-system-sbx-snapshot included. They are not opened, cloned, browsed, inventoried, inspected or used; none of their records is used as governing or historical evidence; and no Source Inventory entry is made for them. Besides the legacy repository itself, the five existing technical records already in algocore_system (Document 08, section 9) remain the only admitted legacy records. This does not authorise Phase 1 investigation or any further legacy source discovery. OI-02 is closed. |
+| Rationale | Rama: "Other repos I mentioned that is sandbox system+records repo in GitHub, why do we need to look these, not required and also add trading system v2 also since we started to work on new repo Algocore_system" (message to ChatGPT, 04-Nov-2026). Claude had pointed out that Document 01, section 2 already said "all other repositories are ignored", while Document 06, section 3 kept trading-system-v2 open (CLAUDE_RESPONSE_TO_CHATGPT_FINAL_REVIEW_RECOMMENDATIONS_2026-11-04.txt, C-04). The legacy repository stays in scope: Rama's message excludes the other repositories, not the system under investigation. |
+| Evidence | Rama's message quoted under Rationale, in the screenshot Rama gave Claude at 11:38 IST. CLAUDE_CONSOLIDATED_REVISION_5_PROPOSAL_INSTRUCTION_2026-11-04.txt, section 3 (OI-02 / C-04 / C-05). |
+| Rama approval | Rama's explicit decision, as quoted (04-Nov-2026). |
+| Affected documents | 01 §2; 02 §2; 05 §11.1; 06 §3; 08 §9; 10 §8 and §11 (OI-02). |
+| Status | APPROVED. OI-02: CLOSED (Document 10, section 11). |
+
+## D-13 — OI-03: register and index governance
+
+| Field | Entry |
+|---|---|
+| Decision ID | D-13 |
+| Date | 2026-11-04 |
+| Subject | OI-03: who maintains, reviews and decides the registers and the Master System Investigation Index, and when they are updated |
+| Exact decision | ChatGPT identifies the investigation areas, proposes the content and structure of the Master System Investigation Index, reviews it independently and challenges its gaps. Claude maintains the index file in GitHub, incorporating only authorised content and changes. Rama approves the index at the Pre-Phase → Phase 1 gate. Claude maintains the project registers in GitHub. ChatGPT independently reviews register structure, evidence traceability, consistency and proposed status changes. Rama alone approves material decisions, register-governance rules, open-item closures and phase transitions. Claude does not change an open item from OPEN to CLOSED without Rama's explicit approval recorded in the Decision Register. The rule covers the six registers of Document 05, section 11.1 and the separate open items table of Document 10, section 11; the Open Issues Register (Phase 1 topic issues) and the open items table (foundation open items) are not merged. Update timing: (1) Decision Register, immediately after each explicit decision of Rama's, reviewed by ChatGPT after the update; (2) Source Inventory, during Pre-Phase source discovery and whenever an admitted source is added, removed or reclassified, with no entry for ignored repositories; (3) Master System Investigation Index, during Pre-Phase planning and after any topic, order or scope change that Rama approves; (4) Topic Completion Register, whenever a topic's status changes; (5) Audit Findings Register, with each relevant topic package and whenever a finding is corrected, superseded or otherwise changes; (6) Open Issues Register, with each topic package and immediately after Rama decides an issue's treatment; (7) open items table, immediately after Rama decides an open item, together with its Decision Register entry. OI-03 is closed. |
+| Rationale | ChatGPT's recommendation keeps repository editing with Claude and independent review with ChatGPT (CHATGPT_REVIEW_AND_RECOMMENDATIONS_FINAL_SEMANTIC_REVIEW_2026-11-04.txt, section 4). Claude's response suggested keeping ChatGPT's role for the index's content, already set by Document 03, section 2, and covering all six registers and the open items table (CLAUDE_RESPONSE_TO_CHATGPT_FINAL_REVIEW_RECOMMENDATIONS_2026-11-04.txt, C-06 and C-07). |
+| Evidence | The two files named under Rationale. CLAUDE_CONSOLIDATED_REVISION_5_PROPOSAL_INSTRUCTION_2026-11-04.txt, section 3 (OI-03). Rama's message to ChatGPT, in the screenshot Rama gave Claude at 11:38 IST. |
+| Rama approval | Rama: "Accepted for OI-03 & C-03" (message to ChatGPT, 04-Nov-2026), on ChatGPT's summary: ChatGPT identifies the investigation areas and proposes the index content; Claude maintains the index and all six project registers in GitHub; ChatGPT reviews them; Rama approves decisions, closures and the index at the phase gate. |
+| Affected documents | 02 §2; 03 §2 and §3; 05 §11.1; 07 §8; 10 §1, §6, §8, §9 and §11 (OI-03). |
+| Status | APPROVED. OI-03: CLOSED (Document 10, section 11). |
+
+## D-14 — End of GitHub's working period
+
+| Field | Entry |
+|---|---|
+| Decision ID | D-14 |
+| Date | 2026-11-04 |
+| Subject | When the period in which GitHub (algocore_system) is the project's working repository ends (D-06; FR-14) |
+| Exact decision | "GitHub is the active project workspace until the Phase 2 new-system design is completed and frozen." The end point is the completion and formal freeze of the Phase 2 design (Document 09, section 4), not the start of Phase 2. It is not an automatic stop to GitHub use after that point; any later repository or workflow arrangement can be decided separately, if needed. This defines the end of D-06's period; the rest of D-06 is unchanged. |
+| Rationale | D-06's "until the new system design is reached" named no event and could be read as the start or the freeze of the design (BASE_FILES_FINAL_SEMANTIC_REVIEW_2026-11-04.txt, FR-14; CLAUDE_RESPONSE_TO_CHATGPT_FINAL_REVIEW_RECOMMENDATIONS_2026-11-04.txt, C-10). Rama chose the freeze. |
+| Evidence | Rama: "For FR-14: B Until the Phase 2 design is completed and frozen" (message to ChatGPT, 04-Nov-2026), in the screenshot Rama gave Claude at 11:38 IST. CLAUDE_CONSOLIDATED_REVISION_5_PROPOSAL_INSTRUCTION_2026-11-04.txt, section 3 (FR-14 / D-06), which gives the quoted wording. |
+| Rama approval | Rama's explicit decision, as quoted (04-Nov-2026). |
+| Affected documents | 01 §8; 05 §3; 06 §3; 07 §2; the Status of D-06. |
+| Status | APPROVED. |
+
+## D-15 — Versioning of the validation script, Revision 5
+
+| Field | Entry |
+|---|---|
+| Decision ID | D-15 |
+| Date | 2026-11-04 |
+| Subject | Which validation script checks the working tree from Revision 5 on |
+| Exact decision | `validate_base_files_2026-11-04.py` stays byte-for-byte unchanged as the validator of the Revision 4 baseline. A new script, `validate_algocore_workspace_2026-11-04.py`, validates normal project working trees and, with `--baseline`, the controlled Revision 5 foundation baseline. Claude reports the validation result with each commit (Document 07, section 6). All validators are kept in `doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/`. This continues D-05. |
+| Rationale | The Revision 4 script checks a fixed list of files, so it fails on any new working record, and its self-tests fail on a Git checkout (BASE_FILES_FINAL_SEMANTIC_REVIEW_2026-11-04.txt, FR-05 and FR-20). |
+| Evidence | The review named under Rationale. CHATGPT_REVISION_5_REMAINING_DECISIONS_AND_OI10_DIRECTION_2026-11-04.txt, section 3, B. |
+| Rama approval | Rama: "Accepted" (message to Claude, 04-Nov-2026, 12:26 IST), on ChatGPT's recommendation to approve D-15. |
+| Affected documents | 07 §6.5; the validation scripts in `doc/00_PROJECT_CONTROL/02_REVISION_AND_VALIDATION_HISTORY/`. |
+| Status | APPROVED. |
+
+## D-16 — OI-08 and OI-09: Pre-Phase preparation for Document 08, and the index's minimum content
+
+| Field | Entry |
+|---|---|
+| Decision ID | D-16 |
+| Date | 2026-11-04 |
+| Subject | OI-08 and OI-09: how Pre-Phase prepares the application of Document 08, and the minimum content of the Master System Investigation Index |
+| Exact decision | OI-08: Pre-Phase prepares how Document 08, which remains the governing Phase 1 methodology, is applied to the indexed topics: their order, depth and deliverables; Pre-Phase does not apply Document 08 to individual modules. OI-09: for each Phase 1 topic, the Master System Investigation Index gives its scope, the components and paths it covers, the coverage items of Document 08, section 3 that it serves, its dependencies and its order. Both wordings are approved as proposed in Revision 5. OI-08 and OI-09 are closed. |
+| Rationale | Document 08 is the one Phase 1 methodology, and Pre-Phase only prepares its application; the index needs a defined content before Pre-Phase starts (BASE_FILES_FINAL_SEMANTIC_REVIEW_2026-11-04.txt, FR-12 and FR-13). |
+| Evidence | The review named under Rationale. CHATGPT_REVISION_5_REMAINING_DECISIONS_AND_OI10_DIRECTION_2026-11-04.txt, section 3, C and D. |
+| Rama approval | Rama: "Accepted" (message to Claude, 04-Nov-2026, 12:26 IST), on ChatGPT's recommendation to approve both as proposed. |
+| Affected documents | 02 §1 and §2; 07 §3; 10 §1 and §11 (OI-08, OI-09). |
+| Status | APPROVED. OI-08: CLOSED; OI-09: CLOSED (Document 10, section 11). |
+
+## D-17 — OI-10: what the repository retains
+
+| Field | Entry |
+|---|---|
+| Decision ID | D-17 |
+| Date | 2026-11-04 |
+| Subject | OI-10: which records the repository keeps permanently |
+| Exact decision | The repository keeps the project knowledge and evidence needed to understand, review, propose, design, develop, test and govern the new system: the ten foundation documents and the current governing decisions; the Decision Register, the Master Project Index, the Source Inventory and the other registers; the admitted source records, with their provenance; the Pre-Phase deliverables; the Phase 1 study, audit, reconciliation and final topic documents, with their evidence; the consolidated findings and unresolved issues that affect the new-system proposal; the approved Phase 2 design documents and later development, testing and acceptance records; and only the final approval and revision records that have durable governance or audit value. It does not keep as permanent records: standalone prompts and instructions sent to Claude or ChatGPT; follow-up instructions, chat discussions, routine handoff messages and conversational responses; superseded or intermediate review drafts and duplicate reports; and temporary ZIP files, staging copies and working manifests, once the approved files are committed and verified. A reusable rule in an instruction is written into the governing document it belongs to, and the instruction itself is not kept. The standalone instruction, review and response files are removed from the proposed repository, and only a concise Revision 5 change report is kept. This supersedes the part of D-08 that keeps the ChatGPT and Claude instructions, reviews and reports in the repository. OI-10 is closed. Recorded in Document 07, sections 2 and 3. |
+| Rationale | Rama: "No need to all the instructions or follow-up instruction/discussion files why? Core objective is Files to be saved which files are to be reviewed again for new system proposal, So avoid storing non-valued added files or which files not required for future new system redesign & development" (message to ChatGPT, 04-Nov-2026). |
+| Evidence | Rama's message quoted under Rationale, in the screenshot Rama gave Claude at 12:26 IST. CHATGPT_REVISION_5_REMAINING_DECISIONS_AND_OI10_DIRECTION_2026-11-04.txt, section 2 and section 3, E. |
+| Rama approval | Rama's direction, as quoted, and his "Accepted" (message to Claude, 04-Nov-2026, 12:26 IST). |
+| Affected documents | 07 §2, §3 and §7; 10 §5 and §11 (OI-10); the status of D-08; the history folder; the validator's file lists. |
+| Status | APPROVED. OI-10: CLOSED (Document 10, section 11). |
+
+## D-18 — Earlier revision reports kept; redacted copies removed
+
+| Field | Entry |
+|---|---|
+| Decision ID | D-18 |
+| Date | 2026-11-04 |
+| Subject | How the retention rule (D-17) applies to the earlier revision reports and to the redacted copies of the five existing technical records |
+| Exact decision | The change reports of Revisions 1 to 4, with the Revision 2 correction report, are kept: the foundation documents' revision histories and the Decision Register refer to them, and they are final revision records of lasting audit value (D-17). The five redacted copies of the existing technical records, in the subfolder `PUBLICATION_REDACTED_COPIES/` of `doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/`, are removed with that subfolder, because the five originals are public (D-08) and the copies duplicate them. The five originals are kept, unchanged. The removed copies stay in the repository's Git history. This supersedes the part of D-02 that keeps the copies, and the part of D-08 that keeps them beside the originals. |
+| Rationale | ChatGPT's review: the originals are already public, so the copies do not reduce what is exposed, and the original records are the authoritative evidence for the legacy study, the audit and the new-system proposal; the revision reports are referred to by the documents and give a durable audit trail. |
+| Evidence | CHATGPT_INDEPENDENT_REVIEW_REVISION_5_REVISED_PACKAGE_2026-11-04.txt, sections 2 to 4, and CLAUDE_REVISION_5_UPDATE_FOR_CHATGPT_REVIEW_2026-11-04.txt, P-1 and P-2; neither is kept as a file (D-17). |
+| Rama approval | Rama: "Accepted" (message to Claude, 04-Nov-2026, 12:48 IST), on ChatGPT's recommended reply: "Keep the Revision 1–4 reports as recommended. Remove the five redacted duplicate copies; retain the five original technical records." |
+| Affected documents | 05 §3 (example); 07 §3; 08 §9; the status of D-02 and D-08; the validator's folder and file lists. |
+| Status | APPROVED. |
+
+**Related documents:** 01, 02, 03, 04, 05, 06, 07, 08 and 10.

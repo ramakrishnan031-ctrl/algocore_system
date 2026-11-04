@@ -1,8 +1,8 @@
 # 06 — Technical Environment, Tools & Research Sources
 
-**Status:** DRAFT — Revision 3, for ChatGPT review
+**Status:** DRAFT — Revision 5, for ChatGPT review
 **Date:** 2026-11-03
-**Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 3, 2026-11-04: section 3 records that Rama created algocore_system; section 6 no longer lists OI-01 and OI-05, which are settled, and adds a technical reference on the Oracle Cloud user name (Decision Register, D-01 and D-04). This document did not change in Revision 2.
+**Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 3, 2026-11-04: section 3 records that Rama created algocore_system; section 6 no longer lists OI-01 and OI-05, which are settled, and adds a technical reference on the Oracle Cloud user name (Decision Register, D-01 and D-04). This document did not change in Revision 2. Revision 5, 2026-11-04: section 2 states each party's part in commits, reviews and approvals (D-10 and D-11); section 3 adds trading-system-v2 to the ignored repositories and names the admitted legacy sources (D-12, which closes OI-02), and states algocore_system's commit rule and working period (D-06, D-10 and D-14); changes are listed in the Revision 5 report. This document did not change in Revision 4.
 
 ## 1. Intended technical environment
 
@@ -20,13 +20,13 @@ Detailed software versions, infrastructure specifications, deployment design and
 ## 2. AI working environment
 
 ### ChatGPT
-Used for project coordination, investigation instructions, independent review, gap identification, technical verification and publication approval.
+Used for project coordination, investigation instructions, independent review, gap identification, technical verification, and the review of commits and topic packages (Document 07, section 6).
 
 ### Claude
-Used for repository inspection, technical fieldwork, study documents, audits, final file preparation and approved publication.
+Used for repository inspection, technical fieldwork, study documents, audits, final file preparation and commits to algocore_system (Document 07, section 6).
 
 ### Rama
-Provides access, transfers materials, clarifies requirements and approves decisions.
+Provides access, transfers materials, clarifies requirements, and approves decisions, topic documents and phase transitions.
 
 ## 3. Repositories
 
@@ -35,9 +35,10 @@ GitHub is the central collaboration and documentation platform.
 | Repository | Role in the project | How it is used |
 |---|---|---|
 | trading-system-prod-snapshot (public) | The only legacy system under investigation (Document 01, section 2). | Claude studies a local, read-only clone. Nothing is written back to the clone or to the repository; the legacy code is read, not run or deployed. Evidence cites the commit studied (Document 04, section 7). |
-| algocore_system (new, public) | The project's documents and approved deliverables (Document 07, section 2). | Files are published only after ChatGPT approval. Created by Rama on 03-Nov-2026 (Decision Register, D-01). |
-| trading-system-v2 (the earlier project's repository) | Holds the earlier project's 39 frozen manuals (A-001 to D-005) and later records. | Not modified, moved, deleted or published. Its status (retain as reference material, or set aside) is OPEN FOR RAMA. The earlier project's local, unpublished governance commit 952cd83 is not published as part of this project. |
-| trading-system-sbx-snapshot, and every repository not listed above | None. | Ignored (Rama, 03-Nov-2026). |
+| algocore_system (new, public) | The project's working repository: its documents, working records and approved deliverables (Document 07, section 2). | Commits follow Document 07, section 6 (Decision Register, D-10). It is the working repository until the Phase 2 new-system design is completed and frozen (D-06 and D-14). Created by Rama on 03-Nov-2026 (D-01). |
+| trading-system-v2 (the earlier project's repository), trading-system-sbx-snapshot (the testing repository), and every repository not listed above | None. | Ignored: not opened, cloned, browsed, inventoried, inspected or used, and none of their records is used as governing or historical evidence (Rama, 03-Nov-2026; trading-system-v2 added by Rama, 04-Nov-2026; Decision Register, D-12). |
+
+The admitted legacy sources are the legacy repository above and the five existing technical records already in algocore_system (Document 08, section 9), together with any surviving external evidence that Rama supplies (section 4.2). This does not authorise Phase 1 investigation or any further legacy source discovery (D-12).
 
 The production repository has been public for two months; Rama accepts this (03-Nov-2026). Its public exposure is not raised as an issue, and no additional security flagging is added. The credential rule of section 5 still applies to every project document.
 

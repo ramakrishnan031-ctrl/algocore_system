@@ -1,8 +1,8 @@
 # 04 — Topic Investigation Workflow & AI Continuity Protocol
 
-**Status:** DRAFT — Revision 2, mandatory procedure proposed for approval
+**Status:** DRAFT — Revision 5, mandatory procedure proposed for approval
 **Date:** 2026-11-03
-**Revision history:** Draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 2, 2026-11-03: the audit rule widened to the entire system, every area and flow, not only configuration settings (Rama, 03-Nov-2026); changes are listed in the Revision 2 report.
+**Revision history:** Draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 2, 2026-11-03: the audit rule widened to the entire system, every area and flow, not only configuration settings (Rama, 03-Nov-2026); changes are listed in the Revision 2 report. Revision 5, 2026-11-04: sections 3 and 8 and the cross-reference line name the Master System Investigation Index and the Master Project Index (Document 10, section 1); sections 4 and 11 state the topic review and approval steps, in which ChatGPT reviews the topic package and reports to Rama, and Rama approves or rejects it (Decision Register, D-11); changes are listed in the Revision 5 report. This document did not change in Revisions 3 and 4.
 
 ## 1. Purpose
 
@@ -24,7 +24,7 @@ Neither AI may assume that remembered conversation context is a substitute for r
 
 Before investigation begins:
 
-1. Identify the topic and its position in the Master Index.
+1. Identify the topic and its position in the Master System Investigation Index.
 2. Confirm the topic's purpose and scope.
 3. Identify what is included and excluded.
 4. Review related approved documents.
@@ -49,7 +49,9 @@ This is the procedure for each Phase 1 topic (Document 02, section 3). Follow th
 8. Every issue found is raised and discussed with Rama, and its agreed treatment, or its OPEN status, is recorded (section 5.5).
 9. Findings are reconciled with supporting evidence.
 10. Study and audit results are combined into the authoritative topic document, while retaining distinct study and audit sections.
-11. Publication follows the approval procedure (Document 07, section 6).
+11. Claude prepares the topic package: the topic document and its evidence.
+12. ChatGPT reviews every file of the package and reports the result to Rama in short, plain English, including any material defect or unresolved question.
+13. Rama approves or rejects the topic document and package. ChatGPT's review alone does not finalise it, and Rama does not perform the technical review. Approval and commits follow Document 07, section 6 (Decision Register, D-11).
 
 ## 5. Intended and actual behaviour — the whole-system audit
 
@@ -135,7 +137,7 @@ When a conversation becomes lengthy, a new conversation is opened, or context ma
 
 1. Reopen this protocol.
 2. Review the current topic record.
-3. Review the Master Index status.
+3. Review the topic status in the Master Project Index (Document 10) and the topic's place in the Master System Investigation Index.
 4. Review relevant approved decisions.
 5. Review the latest findings and evidence.
 6. Review open issues and outstanding instructions.
@@ -181,9 +183,9 @@ Before closure:
 - Every issue found has been raised with Rama, and its agreed treatment or OPEN status is recorded.
 - Study and audit findings are reconciled.
 - Unknowns and open questions are recorded.
-- Required review is complete.
-- Final document is approved for publication.
-- Publication is verified.
+- ChatGPT has reviewed every file of the topic package and reported the result to Rama (section 4).
+- Rama has approved the topic document and package (Document 07, section 6).
+- The approved document is committed, and ChatGPT has verified the commit.
 - Topic status is updated.
 
 Unresolved issues must not be hidden. Whether they prevent closure follows Document 05, section 11.2 (OPEN FOR RAMA) and Rama's authority.
@@ -196,4 +198,4 @@ The next topic must start using this same protocol. Previous decisions and unres
 
 This is a controlled project procedure. Neither AI may silently amend it. Proposed amendments require review and approval under Project Governance (Document 05).
 
-**Mandatory cross-reference:** AI Roles (03), Project Governance (05), Technical Environment & Research Sources (06), Legacy Study Methodology (08) and Master Index (10).
+**Mandatory cross-reference:** AI Roles (03), Project Governance (05), Technical Environment & Research Sources (06), Repository & Record Management (07), Legacy Study Methodology (08) and Master Project Index (10).

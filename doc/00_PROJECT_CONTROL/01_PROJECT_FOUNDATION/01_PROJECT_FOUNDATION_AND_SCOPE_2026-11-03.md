@@ -1,9 +1,9 @@
 # 01 — Project Foundation & Scope
 
 **Project:** Trading System — Legacy Manual & V2 Redesign
-**Status:** DRAFT — Revision 2, for ChatGPT review
+**Status:** DRAFT — Revision 5, for ChatGPT review
 **Date:** 2026-11-03
-**Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 2, 2026-11-03: the audit rule widened to the entire system, every area and flow, not only configuration settings (Rama, 03-Nov-2026); changes are listed in the Revision 2 report.
+**Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 2, 2026-11-03: the audit rule widened to the entire system, every area and flow, not only configuration settings (Rama, 03-Nov-2026); changes are listed in the Revision 2 report. Revision 5, 2026-11-04: section 2 adds trading-system-v2 to the ignored repositories (Decision Register, D-12); section 8 refers to the commit and approval rule of Document 07, section 6 and gives the end of GitHub's working period (D-10 and D-14); changes are listed in the Revision 5 report. This document did not change in Revisions 3 and 4.
 
 ## 1. Project purpose
 
@@ -15,7 +15,7 @@ The objective is to prevent the historical problems of inconsistent logic, dupli
 
 There is only one legacy system under investigation: the production repository trading-system-prod-snapshot (https://github.com/ramakrishnan031-ctrl/trading-system-prod-snapshot).
 
-The testing repository trading-system-sbx-snapshot and all other repositories are ignored (Rama, 03-Nov-2026).
+Apart from this repository and the project's own repository, algocore_system (section 8), every repository is ignored. This includes the testing repository trading-system-sbx-snapshot (Rama, 03-Nov-2026) and the earlier project's repository trading-system-v2 (Rama, 04-Nov-2026; Decision Register, D-12). Ignored repositories are not opened, cloned, inventoried or used as evidence.
 
 How the repository is studied (a local, read-only clone) is set out in Document 06, section 3.
 
@@ -67,7 +67,7 @@ Detailed engineering decisions remain subject to the later design phase.
 
 ## 8. Project repository
 
-The project's documents and approved deliverables are kept in a new public GitHub repository, algocore_system (Rama, 03-Nov-2026). Files are published there only after ChatGPT approval (Document 07, section 6).
+The project's documents, working records and approved deliverables are kept in a new public GitHub repository, algocore_system (Rama, 03-Nov-2026). It is the project's working repository until the Phase 2 new-system design is completed and frozen (Decision Register, D-06 and D-14). What may be committed there, and how a document is approved, follow Document 07, section 6 (D-10).
 
 ## 9. Project outcome
 

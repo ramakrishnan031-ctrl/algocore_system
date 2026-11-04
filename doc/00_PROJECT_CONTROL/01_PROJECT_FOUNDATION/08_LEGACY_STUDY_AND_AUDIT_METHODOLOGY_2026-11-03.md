@@ -1,8 +1,8 @@
 # 08 — Legacy Study & Audit Methodology
 
-**Status:** DRAFT — Revision 4, for ChatGPT review
+**Status:** DRAFT — Revision 5, for ChatGPT review
 **Date:** 2026-11-03
-**Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 2, 2026-11-03: the audit rule widened to the entire system, every area and flow, not only configuration settings (Rama, 03-Nov-2026); changes are listed in the Revision 2 report. Revision 3, 2026-11-04: section 9 names the approved folder of the existing technical records and of their publication copies (Decision Register, D-01 and D-02). Revision 4, 2026-11-04: section 9 records that the originals are public, beside their redacted copies (Decision Register, D-08).
+**Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 2, 2026-11-03: the audit rule widened to the entire system, every area and flow, not only configuration settings (Rama, 03-Nov-2026); changes are listed in the Revision 2 report. Revision 3, 2026-11-04: section 9 names the approved folder of the existing technical records and of their publication copies (Decision Register, D-01 and D-02). Revision 4, 2026-11-04: section 9 records that the originals are public, beside their redacted copies (Decision Register, D-08). Revision 5, 2026-11-04: section 8 states the topic review and approval steps (D-11); section 9 keeps the existing technical records unchanged, with corrections recorded in the topic documents, records that they and the legacy repository are the admitted legacy sources (D-12), and that their redacted copies were removed (D-18); changes are listed in the Revision 5 report.
 
 ## 1. Purpose
 
@@ -119,8 +119,8 @@ For each topic:
 7. Record defects, discrepancies, unknowns and open questions.
 8. Raise every issue with Rama, and record its agreed treatment or OPEN status (Document 04, section 5.5).
 9. Reconcile study and audit findings into one topic document, keeping distinct study and audit sections.
-10. Obtain ChatGPT review.
-11. Publish only after approval.
+10. ChatGPT reviews every file of the topic package and reports the result to Rama in short, plain English.
+11. Rama approves or rejects the topic document and package; approval and commits follow Document 07, section 6 (Decision Register, D-11).
 
 Who does each step is set out in Document 04, section 4.
 
@@ -134,11 +134,11 @@ The following remain separate Phase 1 technical documents:
 - `03A_CRON_REGISTRY_TABLE.md`
 - `LEGACY_SYSTEM_MANUAL_INDEX.md`
 
-They should be maintained as part of the legacy technical documentation collection. They are technical legacy documentation, not replacements for the ten project governance documents, and they keep their separate purpose.
+They are kept unchanged, as historical records, in the legacy technical documentation collection. Where Phase 1 finds a statement in them wrong, the relevant topic document records the correction, with its evidence, and cites the record. They are technical legacy documentation, not replacements for the ten project governance documents, and they keep their separate purpose.
 
-They are source material for Phase 1 topics. Like any other document, their statements are checked against the code (section 6).
+They are source material for Phase 1 topics and, besides the legacy repository itself, the only legacy records admitted by the foundation scope (Document 06, section 3; Decision Register, D-12). This does not authorise Phase 1 investigation. Like any other document, their statements are checked against the code (section 6).
 
-Their approved place in algocore_system is `doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/` (Document 07, section 3; Decision Register, D-01). Their redacted copies, with the trading-account identifiers and VM IP addresses masked, are in its subfolder `PUBLICATION_REDACTED_COPIES/` (D-02). The unchanged originals are kept in the folder itself and are public too (D-08). Their names do not carry the date suffix (Document 07, section 5).
+Their approved place in algocore_system is `doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/` (Document 07, section 3; Decision Register, D-01). They are kept there unchanged, in their original form, and are public (D-08); their redacted copies (D-02) were removed as duplicates (D-18). Their names do not carry the date suffix (Document 07, section 5).
 
 ## 10. Runtime evidence
 

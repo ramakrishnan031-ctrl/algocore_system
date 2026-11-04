@@ -1,8 +1,8 @@
 # 05 — Project Governance & Decision Control
 
-**Status:** DRAFT — Revision 3, for ChatGPT review
+**Status:** DRAFT — Revision 5, for ChatGPT review
 **Date:** 2026-11-03
-**Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 3, 2026-11-04: section 4 uses the field names of the Decision Register (Document 10, section 5); its guidance is unchanged. This document did not change in Revision 2.
+**Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 3, 2026-11-04: section 4 uses the field names of the Decision Register (Document 10, section 5); its guidance is unchanged. This document did not change in Revision 2. Revision 5, 2026-11-04: section 3 allows a decision to be superseded or clarified in part; sections 5 and 6 refer to the commit and approval rule of Document 07, section 6 and to the gates of Document 02, section 6 (Decision Register, D-10); section 11.1 records Rama's decision on who maintains, reviews and decides the six registers and the open items table, and when each is updated, which closes OI-03 (D-13); changes are listed in the Revision 5 report. This document did not change in Revision 4.
 
 ## 1. Authority
 
@@ -33,6 +33,8 @@ Use clear status labels:
 
 These labels describe decision status, not document workflow status. A RECOMMENDATION by ChatGPT or Claude remains PROPOSED until Rama decides it.
 
+A decision may be superseded in part, or have a part clarified by a later decision. The Decision Register's Status field then names that part and the later decision (for example, D-08 is superseded in part by D-17 and D-18, and the end of D-06's period is defined by D-14).
+
 ## 4. Decision record
 
 Every material decision should record these fields, which are the fields of the Decision Register (Document 10, section 5):
@@ -57,6 +59,8 @@ If a change affects an established decision, scope, requirement or governance ru
 
 After the design freeze (Document 09, section 4), any change to the frozen design follows this change control.
 
+How changes reach the repository, and how a document or decision becomes approved, follow Document 07, section 6 (Decision Register, D-10).
+
 Preserve revision history. Do not silently overwrite approved historical records.
 
 ## 6. Phase governance
@@ -70,6 +74,8 @@ Required controls:
 * Rama's explicit phase-transition approval.
 * Required documentation and records.
 * No premature overlap between phases.
+
+The gates, from the Foundation → Pre-Phase gate to Live deployment, and what each requires, are in Document 02, section 6.
 
 ## 7. Disagreement handling
 
@@ -111,22 +117,37 @@ Points carried forward are noted in the document's revision history (Document 07
 
 ## 11. Registers and topic closure
 
-### 11.1 Register responsibilities — RECOMMENDATION, OPEN FOR RAMA
+### 11.1 Register responsibilities and update timing
 
-The registers are defined in Document 10. Recommended responsibilities, following the roles of Document 03:
+Decided by Rama on 04-Nov-2026 (Decision Register, D-13, which closes OI-03). The registers are defined in Document 10; the roles follow Document 03.
 
-| Register | Maintains (prepares updates) | Verifies updates | Decides |
+| Register | Maintains | Reviews | Decides |
 |-|-|-|-|
-| Master System Investigation Index (Document 02, section 2) | ChatGPT (Document 03, section 2) | Claude, against the repository | Rama, with the Pre-Phase → Phase 1 gate (Document 02, section 6) |
-| Topic Completion Register (Document 10, section 3) | Claude, in each topic's final package | ChatGPT, in its publication review | Rama, at the phase gates |
+| Master System Investigation Index (Document 02, section 2) | ChatGPT identifies the investigation areas and proposes the content and structure; Claude keeps the file in GitHub, with authorised content and changes only | ChatGPT, independently, challenging gaps | Rama, at the Pre-Phase → Phase 1 gate (Document 02, section 6) |
+| Topic Completion Register (Document 10, section 3) | Claude | ChatGPT | Rama: each topic document (Document 07, section 6) and the phase gates |
 | Decision Register (Document 10, section 5) | Claude records each decision as Rama stated it | ChatGPT, against Rama's stated decision | Rama |
 | Open Issues Register (Document 10, section 6) | Claude | ChatGPT | Rama: treatment, or OPEN |
 | Audit Findings Register (Document 10, section 7) | Claude | ChatGPT | Rama: treatment, or OPEN |
-| Source Inventory (Document 10, section 8) | Claude | ChatGPT | — |
+| Source Inventory (Document 10, section 8) | Claude | ChatGPT | Rama, where a source is to be admitted, removed or reclassified (D-12) |
+| Open items table (Document 10, section 11) | Claude | ChatGPT | Rama |
 
-Recommended update timing: registers are updated with each topic's final package and published with it, after ChatGPT approval (Document 07, section 6).
+Rules:
 
-Only the first row's maintainer is already set (by Document 03). The rest of this section is a recommendation until Rama decides it.
+* ChatGPT reviews each register's structure, evidence traceability, consistency and proposed status changes. It does not edit the repository's registers, and the content it proposes for the Master System Investigation Index stays its own.
+* Claude never changes an open item from OPEN to CLOSED without Rama's explicit decision recorded in the Decision Register.
+* Rama alone approves material decisions, register-governance rules, open-item closures and phase transitions.
+* The Open Issues Register (the issues of Phase 1 topics) and the open items table (the foundation's open items) are kept separate.
+* Register updates are working records: Claude commits them as Document 07, section 6 allows, and ChatGPT reviews them afterwards.
+
+Update timing:
+
+1. Decision Register: immediately after each explicit decision of Rama's; ChatGPT reviews the entry after the update.
+2. Source Inventory: during Pre-Phase source discovery, and whenever an admitted source is added, removed or reclassified. Ignored repositories are not inventoried (D-12).
+3. Master System Investigation Index: during Pre-Phase planning, and after any topic, order or scope change that Rama approves.
+4. Topic Completion Register: whenever a topic's status changes (Document 10, section 4).
+5. Audit Findings Register: with each relevant topic package, and whenever a finding is corrected, superseded or otherwise changes.
+6. Open Issues Register: with each topic package, and immediately after Rama decides an issue's treatment.
+7. Open items table: immediately after Rama decides an open item, together with its Decision Register entry.
 
 ### 11.2 Topic closure with unresolved issues — RECOMMENDATION, OPEN FOR RAMA
 

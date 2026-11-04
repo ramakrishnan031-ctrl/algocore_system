@@ -1,8 +1,8 @@
 # 03 — AI Roles, Responsibilities & Operating Instructions
 
-**Status:** DRAFT — Revision 2, for ChatGPT review
+**Status:** DRAFT — Revision 5, for ChatGPT review
 **Date:** 2026-11-03
-**Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 2, 2026-11-03: the audit rule widened to the entire system, every area and flow, not only configuration settings (Rama, 03-Nov-2026); changes are listed in the Revision 2 report.
+**Revision history:** Consolidated baseline draft, 2026-11-03. Revision 1, 2026-11-03: Rama's clarifications of 03-Nov-2026, ChatGPT's revision instruction of 03-Nov-2026 and Claude's review (Revision 1); changes are listed in the Revision 1 report. Revision 2, 2026-11-03: the audit rule widened to the entire system, every area and flow, not only configuration settings (Rama, 03-Nov-2026); changes are listed in the Revision 2 report. Revision 5, 2026-11-04: section 1 adds Rama's approval of each Phase 1 topic document (Decision Register, D-11); section 2 gives ChatGPT the content of the Master System Investigation Index, the review of commits, registers and topic packages, and the review report to Rama (D-10, D-11 and D-13); section 3 gives Claude the commits allowed by Document 07, section 6, the topic evidence package, and the keeping of the index file and the registers (D-10, D-11 and D-13); changes are listed in the Revision 5 report. This document did not change in Revisions 3 and 4.
 
 ## 1. Project Owner — Rama
 
@@ -17,6 +17,7 @@ Responsibilities:
 * Discuss every issue raised in Phase 1 and decide its treatment, or leave it OPEN (Document 04, section 5.5).
 * Review important conclusions.
 * Approve decisions and final deliverables.
+* Approve or reject each Phase 1 topic document and its package, on ChatGPT's short, plain-English review report; Rama does not perform the technical review (Document 07, section 6; Decision Register, D-11).
 * Approve phase progression.
 
 ## 2. ChatGPT — Coordinator, Instruction Provider and Reviewer
@@ -25,17 +26,19 @@ Responsibilities:
 
 * Coordinate the overall investigation and project workflow.
 * Prepare detailed prompts, commands and instructions for Claude.
-* Identify investigation areas and prepare/maintain the Master System Investigation Index.
+* Identify investigation areas, propose the content and structure of the Master System Investigation Index, review it independently and challenge its gaps; Claude keeps the file (Document 05, section 11.1; Decision Register, D-13).
 * Review Claude findings for factual accuracy, evidence, completeness and consistency.
 * Review and challenge Claude's audit of actual against intended behaviour, and raise any issue it finds itself (Document 04, section 5).
 * Identify gaps, omissions, unsupported conclusions and contradictions.
 * Prepare follow-up instructions.
 * Independently investigate where useful.
 * Review study documents, audit reports and reconciled topic documents.
-* Approve documents for publication.
-* Verify publication, file path, contents and commit information.
+* Review every file of each Phase 1 topic package and report the result to Rama in short, plain English, including any material defect or unresolved question (Document 07, section 6).
+* Review working commits after they are made, and proposed changes to the ten foundation documents and the validator before they are committed; identify any correction needed (Document 07, section 6).
+* Review the registers' structure, evidence traceability, consistency and proposed status changes (Document 05, section 11.1).
+* Verify each commit's file paths, contents and commit details.
 
-ChatGPT does not own final file preparation or GitHub publication.
+ChatGPT does not own final file preparation, GitHub commits or the upkeep of the repository's registers.
 
 ## 3. Claude — Primary Fieldworker and Final File Preparer
 
@@ -51,10 +54,10 @@ Responsibilities:
 * Prepare detailed study documents.
 * Conduct technical audits and prepare reports.
 * Reconcile study and audit findings.
-* Prepare final topic documents.
+* Prepare final topic documents and their evidence packages.
 * Incorporate ChatGPT review instructions.
-* Publish to algocore_system only after ChatGPT approval.
-* Provide commit and publication details.
+* Keep the Master System Investigation Index file and the project registers in GitHub, with authorised content and changes only. Never change an open item from OPEN to CLOSED without Rama's explicit decision recorded in the Decision Register (Document 05, section 11.1; Decision Register, D-13).
+* Commit to algocore_system as Document 07, section 6 allows, and report each commit to ChatGPT promptly, with its details.
 
 ## 4. Joint working principles
 

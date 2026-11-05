@@ -1,0 +1,1059 @@
+# A01 evidence: the AUDIT's intended-behaviour sources
+
+**Status:** DRAFT — evidence for the A01 AUDIT, for ChatGPT's review
+**Date:** 2026-11-05
+**Revision history:** First version, 2026-11-05.
+**Purpose and scope:** The inventory of every admitted source that states or implies the intended behaviour of the fourteen A01 areas, with its date, kind and the A01 items it bears on; the origin of the requirement labels used in the A01 files; the conflicts between sources; and the statements that legacy documents attribute to Rama or the operator. It supports section 3 of the A01 AUDIT (item 3 of section 6 of ChatGPT's AUDIT direction of 2026-11-05) and decides nothing.
+**Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read from the local read-only clone on 05-Nov-2026; nothing was run.
+
+## 1. How the sources were found and classified
+
+### 1.1 What was searched
+
+- The legacy repository at the baseline: `docs/` (474 files: 354 `.md`, 70 `.txt`, 34 `.png`, 6 `.html`, 3 `.json`, 3 `.docx`, 2 `.yaml`, 2 `.bat`; SRC-19), `README.md` (SRC-36), `DEPLOYMENT.md` (SRC-37), `UNPUSHED_LEDGER.md` (SRC-38), `PATHS.md`, `AGENTS.md` and `GEMINI.md` (SRC-39; the last two are instruction files for AI assistants of the legacy project and are cited only as documents), `.env.example` (variable names only, SRC-35), `config/` (SRC-15), `deploy/` (SRC-18), `tests/` (SRC-31, as documents), `tasks/`, `ops_dashboard/docs/` and `reports/*.md`.
+- The comments, docstrings, function and variable names, log and alert texts of the fifteen A01 files (SRC-10), and, where an AUDIT item needed them, the stated intent at the A01 boundary in other topics' files; the owner topic is named in brackets at each such source.
+- Commit messages, read with `git show -s`, `git log --grep` and `git log -S`, for the origin of labels and for the history of the service unit. Every cited commit was confirmed to be an ancestor of the baseline.
+- The existing technical records in algocore_system (HISTORICAL; they describe the testing copy at a commit that is not in the clone): Record 01 (`01_SYSTEM_OVERVIEW.md`, SRC-40), Record 02 (`02_REPOSITORY_AND_FILE_MAP.md`, SRC-41; its entries for five A01 modules) and Record 03 (`03_STARTUP_RUNTIME_AND_SCHEDULER.md`, SRC-42), with the result IDs of the STUDY's evidence file `A01_LEGACY_RECORDS_CHECK_2026-11-04.md`.
+- The search terms (case-insensitive `git grep -c`, then `git grep -n` on the hits, over all tracked files at `970aabf`): the holiday guard and `is_trading_day`; `SERVICE_START_CUTOFF`, start cut-off, 18:15, service window; `TS_IGNORE_MARKET_WINDOW`; special session, Muhurat; `check_tz`, `ist_now`, `Asia/Kolkata`, `timedatectl`, host-local, `date.today`; NTP, clock skew; instance lock, single instance, port 5001; startup scenario, `detect_startup_scenario`, `CRASH_DETECTED`, warm restart, cold start; session row, `upsert_session`, `_write_session`; exit 6, `load_token`, `is_token_valid`, token gate; `--interactive`, `--dry-run`, `--status`, `--resume`, `resume.sh`, `clear_kill_switch`; startup reconcile, `reconcile_once`; kill switch with exit or stop; watchdog, supervise, thread died, `/health`; pre-alert, 14:45, FIX-130; margin sync, re-sync, FIX-164; self-exit, `_eod_self_exit_due`, FIX-189, `service_window_end`; `_shutdown(`, shutdown order, reverse order, SHUTDOWN event, System Stopping; `drain_flatten`, M-C8; `cancel_all_entry_orders`; `TimeoutStopSec`, `KillSignal`, `RestartPreventExitStatus`, `PrivateTmp`, `Restart=on-failure`, `RestartSec`, `StartLimit`; exit code; SIGTERM, SIGINT, signal handler; `EventBus`, `EventDispatchError`; `account_registry`, `accounts.csv`, `primary_account_tag`; `new_signal_id`, `truncate_tag_for_broker`; `PRODUCT_TO_INTENT`, `EMERGENCY_FLATTEN_PRODUCTS`; Python version strings; every label token of section 3; and `startup_module`, `main_module`, `locked_decisions`, "Foundation Rule".
+- Five AUDIT worksheets supplied the candidate sources: one inventory of intent sources by area and the sources used by the four item worksheets (entry, time and lock; startup and checks; runtime and shutdown; core modules). They were merged here without duplicates. Where a worksheet's citation was in doubt, the passage was read again at the baseline for this file; for example the two SU15 texts (they differ, IC-01), the FIX-128 commit and the order-monitor wiring at `main.py` L3006 (IC-43), the ledger #9 rule (IC-50), the "per spec" NTP comment (IC-14) and every statement attributed to Rama (section 5).
+- Nothing was run, imported or executed. Only read-only `git` commands and helper scripts outside the clone were used.
+
+### 1.2 The four kinds of source
+
+| Kind | Meaning |
+|---|---|
+| INTENT | A statement of intent: a decision, requirement, instruction, fix direction, operator procedure or design rule, in a document or a commit message. |
+| DESCRIPTION | A description of how the system works or worked, or of what was observed, in a document or record. |
+| DECLARATION | A configuration value, unit directive, docstring, comment, name, log or alert text in the code or in a configuration or deployment file. |
+| TEST | A test expectation or a test plan. It is documentary only: no test was run. |
+
+A qualifier in brackets narrows the kind, for example "(attributed to Rama)", "(proposal)", "(operator procedure)", "(design rule)", "(fix direction)", "(file values only)", "(record)" or "(superseded)".
+
+### 1.3 Dates
+
+- A bare date in a Date column is the last change of that path at the baseline: `git log -1 --format=%ad --date=short 970aabf -- <path>`. "First" is the date of the commit that added the path.
+- "Lines A to B" are the author dates of the cited lines, from `git blame --date=short` at the baseline (the date field only, never the line text). Comment blocks in long files carry these dates because the file date says little: `main.py` last changed on 2026-09-10, `utils/startup_checks.py` on 2026-07-17 and `config/system_config.yaml` on 2026-09-10.
+- "Commit D" is the date of a cited commit (`git show -s --format=%ad --date=short`).
+- Records SRC-40 to SRC-42 carry their own evidence date, 2026-09-18.
+
+### 1.4 What a source shows, and what it does not
+
+- Every document, comment, commit message, configuration value, unit directive and test cited here is HISTORICAL documentary evidence of what someone intended or believed at its date. A document or a declaration states intent. It is not proof that anything was installed, ran or was in force (Document 08, section 10; Document 06, section 4.2).
+- Claims in legacy documents about the virtual machines (the installed unit and its restart-prevent list, `PrivateTmp`, the time zone, NTP, the Python version, the environment variables, whether an option or an override was used) are reported by the legacy project and were not verified. What was in force at runtime is UNKNOWN / NOT ESTABLISHED.
+- Configured values are the values in the files at the baseline; the values in force are UNKNOWN / NOT ESTABLISHED.
+- Rama has made no statement to this project about A01 behaviour. A statement that a legacy document attributes to Rama is HISTORICAL documentary evidence (section 5), not a statement to this project.
+- Where no source states the intent, the AUDIT records "intended behaviour not established" and audits the code on its own (Document 04, section 5.3). This file never chooses between conflicting sources (section 4).
+
+### 1.5 Conventions and short names
+
+- IDs used in this file: IS-a.nn is intent source nn of area a (section 2); IC-nn is a conflict between sources (section 4.1); CD-nn is a source statement that only the code contradicts (section 4.2); RS-nn is a statement attributed to Rama or the operator (section 5). IC-nn is not the legacy label family IC1 to IC15 of Module 38 (section 3.2).
+- In the "Bears on" columns: C1 to C41 and R1 to R24 are the STUDY's concern and question numbers, which the AUDIT keeps; C7a to C7d, C10a to C10g, C36a to C36e and C38a and C38b are the AUDIT's splits of C7, C10, C36 and C38 (C10f is merged into C35); B-nn, S-nn, W-nn and M-nn are the AUDIT's other items of its four item parts (entry, time and lock; startup and checks; runtime and shutdown; core modules). Result IDs of the STUDY's records-check evidence file are written "records-check R1-nn" or "records-check R3-nn" so that they are not read as R questions.
+- Line references are to the baseline. "Record 01", "Record 02" and "Record 03" are SRC-40, SRC-41 and SRC-42.
+- Owner topics of files outside A01 are named in brackets (A02 to A20) as in the Master System Investigation Index; such passages are cited only for their stated intent at the A01 boundary.
+- Security: no credential value, token, account identifier, IP address, e-mail address or absolute machine path is copied. Per-account variable names are written `ZERODHA_API_KEY_<account-ID>`. Legacy crash-test scenario IDs are written with a hyphen (CT-0nn). Section 6.4 lists the cited passages that hold such material; they are cited by line only.
+
+The principal documents have short names:
+
+| Short name | Path | Date | What it is |
+|---|---|---|---|
+| LOCKED-YAML | `docs/locked_decisions.yaml` (3,074 lines) | 2026-07-22 (first 2026-04-17; its `meta.created` says 2026-04-14) | the "locked decisions" register: G1 to G10, Q1 to Q3, P1 to P18, principles, and the module sections E, EV, orders, CL, L, ID, RL, CC, product resolver, EOD, capital, alerts (CR, AW), RC, data, strategies (S), screening (SE, SS); 181 decisions per its meta; no `main_module` or `startup_module` section |
+| LOCKED-YAML-0 | `docs/web_claude/00_source_documents/locked_decisions.yaml` (451 lines) | 2026-04-17 | an earlier, shorter copy (the same G, Q and P content; no module sections) |
+| SPEC | `docs/v2_design_spec.md` (909 lines), the same blob as `docs/web_claude/00_source_documents/v2_design_spec.md` | 2026-04-17 | the consolidated v2 design specification; section 4 "Startup Sequence" L549 to L897 |
+| M33 | `docs/web_claude/01_module_instructions/module_33_startup_checks.txt` | 2026-04-17 | build instruction for `utils/startup_checks.py`; defines SC1 to SC15 |
+| M34 | `docs/web_claude/01_module_instructions/module_34_main.txt` | 2026-04-17 | build instruction for `main.py`; defines MAIN1 to MAIN25 |
+| M41 | `docs/web_claude/01_module_instructions/module_41_interactive_startup.txt` | 2026-04-17 | build instruction "Interactive Startup + Zerodha Login Flow"; records "Rama's decisions (locked)"; defines SU1 to SU20 (first version) |
+| M41C | `docs/web_claude/01_module_instructions/consolidated_module_41_with_context.txt` | 2026-04-17 | the consolidated Module 41 instruction; defines SU1 to SU20 (second version; different at several numbers, IC-01) |
+| M38 | `docs/web_claude/01_module_instructions/modules_38_39_40_final.txt` | 2026-04-17 | defines IC1 to IC15 (IC5 is the account-registry contract) |
+| M25 | `docs/web_claude/01_module_instructions/module_25_order_reconciler.txt` | 2026-04-17 | build instruction for the order reconciler (A12); its own RC numbering |
+| RDISC | `docs/web_claude/03_audit_responses/startup_flow_redesign_discussion.txt` | 2026-04-17 | "Rama's proposed flow" for startup, with an AI assistant's analysis and questions for Rama |
+| STEP2, STEP3, STEP4A | `docs/web_claude/05_deployment/step2_vm_venv_and_first_run.txt`, `step3_systemd_and_firewall.txt`, `step4a_systemd_restart_test.txt` | 2026-04-18 | the original VM deployment instructions (virtual environment, holiday-guard proof, systemd unit, restart tests) |
+| FIX3 | `docs/web_claude/05_deployment/fixes/fix3_holidays_schema_audit.txt` | 2026-04-18 | holiday-file schema fix instruction |
+| FRULES | `docs/foundation_engineering_rules.md` | 2026-08-06 (first 2026-04-17) | "Foundation Engineering Rules" 1.1 to 1.13, 3.1 to 3.8, 4 and 5 |
+| PRULES | `docs/trading_system_project_specific_rules.md` | 2026-04-17 | project-specific rules 1 to 15 |
+| PRELIVE | `docs/web_claude/03_audit_responses/trading_system_v2_audit_report.md` | 2026-04-21 | "Pre-Live Audit Report": BL-n and H-n items (April numbering) |
+| MEGA | `docs/web_claude/03_audit_responses/mega_memory_and_fix_plan.txt` | 2026-04-17 | fix plan with the BLOCKER items |
+| AUDIT-26APR | `docs/web_claude/03_audit_responses/full_system_audit_2026-04-26.md` | 2026-04-26 | CFG-n, DEAD-n, EXC-n and DUP-n items |
+| AUDIT-14JUN | `docs/audit/system_audit_14jun2026.md` | 2026-06-13 | F-items (F15, F18 to F40) fixed by FIX-166 and FIX-169 |
+| SECAUDIT-02JUL | `docs/audit/system_security_audit_02jul2026.md` | 2026-07-25 (first 2026-07-02) | B-1, C-2, E-4 and F-1 items |
+| AUDIT-04JUL | `docs/audit/full_system_audit_04july2026.md` | 2026-07-06 | H-n (July numbering) and M-xn items |
+| SMAP | `docs/SYSTEM_MAP.md` (2,065 lines) | 2026-09-02 (first 2026-06-18) | the legacy operational map (status banners, services, changelog) |
+| CTI | `docs/crash_test_info_04jun2026.md` | 2026-06-11 | crash-test information gathering (process model, unit, restart policy, error handling) |
+| CTD | `docs/web_claude/07_crash_test/03_detailed_scenarios.md` | 2026-06-11 | crash-test scenarios with expected outcomes |
+| UNIT | `deploy/systemd/trading-system.service` (A17) | 2026-08-23 (first 2026-04-19) | the repository's unit declaration |
+| TW | `deploy/token_watcher.sh` (A04) | 2026-06-19 (first 2026-04-22) | the headless starter, with its own exit-code contract |
+
+## 2. Sources by A01 area
+
+Each table lists the sources of one area. "What it states" is a paraphrase; where the code differs, the conflict or difference is named in "Bears on" (IC-nn, CD-nn) and recorded in section 4, and the result belongs to the AUDIT item.
+
+### 2.1 Area 1: process entry, module import, CLI options and their combinations
+
+| ID | Source (path and lines, or key) | Date | Kind | What it states | Bears on |
+|---|---|---|---|---|---|
+| IS-1.01 | `main.py` L1 to L21 (module docstring) | lines 2026-04-17 | DECLARATION | a single orchestration script; "Locked Decisions: MAIN1-MAIN25, SU1-SU20"; the invocation with seven options; exit codes 0 to 8 (7 described as live only; 5 includes "missing env var"; no 9) | C4, B-01, W-19, S-59; IC-40, IC-61, IC-62 |
+| IS-1.02 | `main.py` L176 to L212 (`_parse_args` help texts; header "CLI (MAIN2)") | lines 2026-04-17 | DECLARATION | `--mode` defaults to paper; `--resume` "Clear HARD_KILL/SOFT_KILL and allow startup from HALT scenario"; `--config` overrides the directory; `--status` "Print subsystem status and exit 0"; `--dry-run` "Run startup checks only; no trading"; `--version`; `--interactive` "account selector, login, mode picker (SU4)". The help does not say that `--resume` and `--interactive` also bypass the START window and leave the self-exit unarmed | C5, C24, B-04, B-05; IC-04 |
+| IS-1.03 | M34 MAIN1 to MAIN3, L18 to L47 | 2026-04-17 | INTENT | one entry point, "NOT a library — standalone script"; six flags (no `--interactive` yet); top-level handler: `TradingSystemError` gives 1, anything else 2; exit codes 0 to 5 | C4, B-04, B-29, M-24 |
+| IS-1.04 | M34 MAIN16 and MAIN17, L320 to L335 | 2026-04-17 | INTENT | `--status` loads the configuration and the state store read-only, prints scenario, kill state, positions, P&L, last STARTUP and SHUTDOWN, versions, exits 0, "No subsystems instantiated"; `--dry-run` runs phases 0a to 0d only, no subsystems, no threads; exit 0 if ok, 3 on a blocking failure | C5, B-15, S-09, S-17, R5; IC-04 |
+| IS-1.05 | M34 MAIN23 to MAIN25, L384 to L398 | 2026-04-17 | INTENT | top level only, "No other module imports main"; expect 400 to 600 lines (split above 600); the systemd unit is "a deployment concern", outside the module | C38b, C40; CD-03, CD-04 |
+| IS-1.06 | M41 L21 to L32 (decisions D and F of "Rama's decisions (locked)") | 2026-04-17 | INTENT (attributed to Rama) | one `main.py` with `--interactive`; interactive is the PC operator session, non-interactive (default) is the VM under systemd; VM live: connect by SSH and run `main.py --interactive --mode live`, then it runs headless; the PC is always interactive during the paper trial | C1, B-05, B-16, R1; RS-01 |
+| IS-1.07 | M41 SU4 and SU5, L72 to L89; M41C SU4 and SU5, L106 to L114 | 2026-04-17 | INTENT | the interactive invocations; the non-interactive default uses the primary account, reads the token file, exits 6 if it is missing or expired, and never prompts | C2, B-05, S-21; IC-39 |
+| IS-1.08 | RDISC Question D L103 to L116; L199 to L207 | 2026-04-17 | INTENT (proposal) | recommends option (iii), an `--interactive` flag: interactive on the PC; non-interactive for VM systemd restarts, with the primary account and the existing token file | C1, R1 |
+| IS-1.09 | STEP3 L27 to L42 | 2026-04-18 | INTENT | systemd runs the non-interactive mode (`--mode paper`; live is "Rama's manual override when ready"); "Systemd will NOT use --interactive" | B-40, R1; RS-04 |
+| IS-1.10 | UNIT L15 to L20 (A17) | lines 2026-04-22 to 2026-06-12 | DECLARATION | headless: account and mode auto-select to the primary account; `StandardInput=null` "so any accidental prompt fails fast instead of hanging"; `ExecStart` runs `main.py --mode live` (since 2026-06-12) | B-40, R1 |
+| IS-1.11 | `README.md` L59 to L60 | 2026-07-16 | DESCRIPTION | the entry point is `main.py --mode`; it "boots, reconciles against the broker, starts the workers, and self-exits cleanly after the service window" | C24, W-16 |
+| IS-1.12 | `docs/01_system_architecture.md` L11 to L57 | 2026-06-03 | DESCRIPTION | the startup flow: phase 0a parses arguments and loads the configuration, 0b holiday guard, 0c interactive steps, 0d "13 checks" (with a "RESUME" scenario), then wiring, threads and the main loop | S-06, S-40; IC-03, IC-29, IC-32 |
+| IS-1.13 | `docs/disaster_recovery.md` L110 to L113, L134 to L136, L227 | 2026-08-02 | INTENT (operator procedure) | after recreating the database "Run --interactive startup to verify login works"; token "Option B: Run interactive login" with `main.py --interactive`; rebuild step 11 "Test startup: python main.py --interactive" | C1, R1; CD-02 |
+| IS-1.14 | M34 MAIN4 L49 to L52; LOCKED-YAML decision L8 (lines L864 to L869) | 2026-04-17; 2026-07-22 | INTENT | the logger set-up is the FIRST call, "before any other module imports get_logger"; `setup_logging()` creates `logs/`. (`main.py` L2088, lines 2026-04-17, labels the argument parsing "Phase 0a: Logger setup (MAIN4)".) | C40, B-23, B-26; IC-03 |
+| IS-1.15 | `docs/web_claude/02_phase_instructions/v2_foundation_wrapup.txt` L35 to L38 | 2026-04-17 | INTENT (run commands) | `--mode paper --dry-run` "startup checks only"; `--status` "subsystem status"; `--mode live --resume` "post-HALT live start" | C5, R5, R19; IC-04, IC-65 |
+| IS-1.16 | `scripts/sr_level_export.py` L136 to L137 (outside A01) | 2026-07-12 | DECLARATION | imports `_build_market_data_kite`, `_make_sr_fetch_fn` and `_parse_hhmm` from `main` ("Reuse main.py's read-only market-data kite + rate-limited fetch closure") | C38b, C40, B-11, B-13; CD-03 |
+| IS-1.17 | Tests: `tests/unit/test_main.py` L384 to L416 (defaults and flags), L621 to L632 (`--version` 0; invalid mode 5), L681 to L685 (dry run 0 or 3), L976 to L980 (status 0, no subsystems); `tests/unit/test_interactive_startup.py` L163 to L257 (helpers; "q" gives 8; "n" or empty gives 7 in both modes) | 2026-08-28; 2026-07-25 | TEST | as named; no test drives `--interactive` through `main()`; the status test patches the constructors | C1, C4, C5, B-04, B-16 |
+| IS-1.18 | Record 03 L67 (an argparse `SystemExit` gives 5), L69 to L74 (the guards run before logging; "a clean exit here proves nothing about configuration"); Record 01 L43 (a single composition root) | 2026-09-18 | DESCRIPTION (record) | as stated (records-check R3-14; records-check R1-10 PARTLY, on line counts) | B-23, B-24 |
+
+### 2.2 Area 2: early guards (holiday, weekend, service window and start cutoff, special sessions), the IST clock, the host date, NTP and clock skew
+
+| ID | Source (path and lines, or key) | Date | Kind | What it states | Bears on |
+|---|---|---|---|---|---|
+| IS-2.01 | M41 L34 to L37 ("Pre-flight ordering (Rama's refinement)") | 2026-04-17 | INTENT (attributed to Rama) | the holiday and weekend check runs FIRST; on a non-trading day: a clean exit, no logs, no further checks, no threads | C10, B-24, B-26; RS-01; IC-03 |
+| IS-2.02 | M41 SU6 L91 to L110 | 2026-04-17 | INTENT | before the logger and the configuration: `today = today_ist_date()` (IST); weekend is Saturday and Sunday; a mini-parser of `nse_holidays_<year>.yaml`; the next trading day walks forward; the logger only after the check | C10a, B-24, B-33, R10; IC-05 |
+| IS-2.03 | M41C SU6 L116 to L136; SU20 tests L334 to L341 | 2026-04-17 | INTENT | `utils/holiday_guard.py`; "at VERY TOP of main(): `today = date.today()  # before time_authority exists`"; exit 0 before `setup_logging()`; test: a missing YAML "raises with clear message" | C10a, C10b, B-24, B-33; IC-05, IC-06 |
+| IS-2.04 | RDISC L9 to L27 (item 9), L155 to L159 | 2026-04-17 | INTENT (attributed to Rama) | on a holiday or weekend refuse to start and show the next trading day; no log files; no threads | C10, B-24; RS-03 |
+| IS-2.05 | `utils/holiday_guard.py` L1 to L13 (docstring "Locked Design Decisions: SU6"), L98 to L111 | lines 2026-04-17; file 2026-06-16 | DECLARATION | runs before the logger; reads the YAML directly (no Pydantic, no logging); a weekend is not a trading day whatever the list says; raises `FileNotFoundError` if the YAML for the year is absent | C10b, C10c, B-33; IC-06, IC-07 |
+| IS-2.06 | `main.py` L2098 ("Holiday guard (SU6) -- BEFORE setup_logging; zero log on non-trading day"), L2130 to L2132 (a Telegram message once a day, because the token watcher may restart the service on holidays), L2151 to L2152 ("missing holiday file: proceed with startup") | lines 2026-04-17 to 2026-05-06 | DECLARATION | as stated | C10b, C10d, B-24; IC-06, IC-07 |
+| IS-2.07 | FIX3 L28 to L31, L70 to L73 | 2026-04-18 | INTENT | the guard keeps its own mini-parser "by design (runs before logger setup per SU6)"; leave it alone | C11, B-33, R9; IC-08 |
+| IS-2.08 | FIX3 L56 to L68 | 2026-04-18 | INTENT | consumers that test `today_iso in cfg.nse_holidays.holidays` must compare dates (`any(h.date == today ...)` or `is_holiday(d)`) | C10g, S-47, R9; IC-09 |
+| IS-2.09 | `docs/audit/register_items_26jul2026.md` L8 to L62 | 2026-07-26 | DESCRIPTION (recorded, not decided) | `check_holiday_calendar` runs at every boot; 5 of its 8 outcomes are unreachable because `load_all` stops first; "same data read twice in one boot still has two OPPOSITE failure policies"; "a HARD boot requirement serving a SOFT purpose"; not fixed | C10b, S-55, R9; IC-06 |
+| IS-2.10 | `main.py` L1968 to L2015 (FIX-189 START window; the 25-Jul split into `SERVICE_START_CUTOFF` and the configured stop; `_within_service_window`: START guard only, time of day, independent of the host time zone) | lines 2026-06-19 to 2026-07-25 | DECLARATION (design rule) | the service must not run overnight; the start window is [08:00, 18:15); every legal stop time lies inside it; a stray start self-exits within one poll | C24, B-18, B-25; IC-10, IC-12 |
+| IS-2.11 | `main.py` L2154 to L2175 | lines 2026-06-19 to 2026-07-25 | DECLARATION | the guard is skipped for `--status`, `--dry-run`, `--interactive` and `--resume`, and "overridable via TS_IGNORE_MARKET_WINDOW=1 for emergencies"; the refusal message prints the START window and says "Token-watcher starts the service in-window" (it names two of the bypasses) | C24, C40, B-25, R18 |
+| IS-2.12 | `docs/audit/service_window_configurable_25jul2026.md` L71 to L126 (section 3), L76 to L119, L158 to L180, L256 to L260 | 2026-07-25 | INTENT (design record) | the guard runs before `load_all`, so it cannot read the configuration; moving `load_all` earlier was rejected (exit 0 would become exit 5, "a restart loop against a broken config"); the cutoff is bound to the schema's upper bound; accepted cost 16:00 to 18:15; `window_end` made required; written while exit 5 was still restarted; a same-day kill gives exit 4 | C4, B-18, B-20; IC-59 |
+| IS-2.13 | `docs/audit/service_window_extension_2026-07-24.md` L1 to L23 | 2026-07-25 | DESCRIPTION | a read-only analysis of moving the stop from 16:00 to 17:35; exit 0 is not restarted; the restart path is unaffected | B-18, W-16 |
+| IS-2.14 | `config/system_config.yaml` L103 to L112 (`trading_hours.market_open` "09:15", `market_close` "15:30", `service_window_end` "17:35", with its rationale: the PB-01 17:00 alert; bound `market_close <= value < 18:15`; revert value "16:00"); L27 to L49 (entry and EOD times) | lines 2026-04-21 to 2026-07-25; L27 to L49 lines 2026-04-17 to 2026-08-28 | DECLARATION (file values only) | as stated; the values in force are UNKNOWN / NOT ESTABLISHED | C11, C23, B-18; IC-10, IC-49 |
+| IS-2.15 | `config/system_config.yaml` L114 to L122 (FIX-094 `special_sessions`; only a commented Muhurat example, 18:15 to 19:15 with EOD 19:12) | lines 2026-05-17 | DECLARATION (file values only) | special sessions override the market hours for a date | C35, R11; IC-10 |
+| IS-2.16 | commit `ee91659` (FIX-094) | commit 2026-05-17 | INTENT | special sessions (Muhurat 18:15 to 19:15) override the hours and the EOD time; "Special session dates NOT considered holidays (exempts weekend check)"; `next_trading_day` recognises them; a Saturday session is not a holiday | C35, R11; IC-10 |
+| IS-2.17 | `docs/CONFIG_GUIDE.md` L206 to L211 (special sessions), L425 to L430 (clock: log, then Telegram alert, then SOFT_KILL; refuse to start above 30 s), L502 to L504 (the holiday calendar is consulted by market-day jobs and the entry engine) | 2026-07-28 | DESCRIPTION | as stated | C30, C35, R21; IC-18 |
+| IS-2.18 | LOCKED-YAML G4 L80 to L89 | 2026-07-22 (first 2026-04-17) | INTENT | a hybrid clock: the VM clock for every `now()` call; the broker clock validated periodically from existing API-call timestamps; tiers below 2 s normal, 2 to 5 s warn, 5 to 30 s alert and continue, above 30 s halt; a startup NTP check refuses to start above 30 s | C30, S-41, S-42, R21; IC-13, IC-14, IC-16, IC-18 |
+| IS-2.19 | LOCKED-YAML P1 L220 to L227; P1_market_windows_api L229 to L253 | 2026-07-22 | INTENT | entry 09:30 to 13:30, EOD 15:17; "All times sourced from core/market_windows.py — single source of truth, no hardcoded times anywhere else. Configurable"; "User explicitly specified 09:30-13:30"; `next_trading_day` raises `ValueError` beyond a 10-day cap | C11, C23, B-36, R17; RS-05; IC-08, IC-11, IC-49 |
+| IS-2.20 | SPEC L571 to L574 (phase 0d: the time authority, "NO broker call yet"); L667 to L672 (C.3 clock validation) | 2026-04-17 | INTENT | `margins()` is the first broker call; above 30 s exit(1); 5 to 30 s warn and retry once after 5 s; below 5 s proceed | C8, S-41, R8; IC-16 |
+| IS-2.21 | M33 SC5 L83 to L109; SC10 L192 to L200; SC14 L260 to L264 | 2026-04-17 | INTENT | the clock check reads a broker response timestamp and calls `assert_clock_at_startup`; the caller refuses to start per G4; the holiday check returns True on a holiday ("Caller decides to exit cleanly or continue (paper mode might still want to run)"); determinism: keep other clock dependencies out | C8, C10g, S-41, S-47; IC-09, IC-13 |
+| IS-2.22 | `core/time_authority.py` L1 to L42 (docstring), L94 to L99 (`now_ist`: "the ONLY function any module should call ... No datetime.now() elsewhere") | lines 2026-04-17 to 2026-07-14 | DECLARATION | the single source of time; the adapter calls `record_broker_skew()` after every broker call; the startup check is "Called by main.py before trading"; "Layer 1: imports ONLY stdlib"; it does not halt the system (it fires a callback; the caller decides) | C30, B-34, B-35; IC-19, IC-20 |
+| IS-2.23 | `core/market_windows.py` L1 to L15 (header), L22 to L35 (defaults pinned to P1_market_windows_api; 30-day look-ahead cap) | lines 2026-04-17 to 2026-05-16 | DECLARATION | a stateless authority; every query takes an explicit `now`; "No internal clock, no I/O, no globals"; Layer 1 | C39, B-36, B-37; IC-11; CD-09 |
+| IS-2.24 | FRULES 3.8 L221 to L225; 1.4 L31 to L38 | 2026-08-06 (first 2026-04-17) | INTENT | IST throughout, ISO dates; no hard-coded paths, dates or settings | C10a, C23; IC-05, IC-49 |
+| IS-2.25 | PRULES section 8, L79 to L83 | 2026-04-17 | INTENT | a single time source; a consistent time zone (IST) | C10a; IC-05 |
+| IS-2.26 | `docs/audit/clock_dependency_class_26jul2026.md` L84 to L98, L100 to L130 | 2026-07-26 | DESCRIPTION (recorded finding) | five production sites read the clock directly, including the boot guard's `date.today()`; "Foundation rule 3.8 ... has four exceptions, only one of which is acknowledged"; `config_loader` fixes the holiday-file year at import, "THE FIRST 08:15 BOOT OF 2027 DOES NOT START" (latent; pinned by a test, not fixed; A02) | C10a, C10c, B-24; IC-05 |
+| IS-2.27 | commit `be70985` (FIX-107) | commit 2026-05-18 | INTENT | "Use explicit IST offset for holiday file year lookup (timezone-safe)" (the startup check's year, `utils/startup_checks.py` L859 to L866) | C10a, S-46; IC-05 |
+| IS-2.28 | The VM's time zone and NTP: STEP3 L195 to L196 ("Cron uses system timezone, which is Asia/Kolkata as set in Step 1"), L377 to L379 ("Must show Asia/Kolkata"); `docs/06_deployment_guide.md` L27 (`timedatectl set-timezone Asia/Kolkata`); `DEPLOYMENT.md` L243 to L272 (NTP must slew, not step), L288 to L294 (no monotonic fallback in the time authority, by choice); SMAP L396 (heading: the VM time zone is Asia/Kolkata); CTI L775 to L776 (NTP "UNCERTAIN"; "IST timezone confirmed"); `docs/audit/day_reconstruction_15jul2026.md` L64 ("VM clock correct ... NTP drift 0.073s"); commit `3114326` ("the VM is NTP-synced") | 2026-04-18; 2026-06-18; 2026-07-16; 2026-09-02; 2026-06-11; 2026-07-15; commit 2026-06-29 | INTENT (set-up) and DESCRIPTION (claims) | the VM was meant to run on Asia/Kolkata with NTP, and is reported to have done so; the guard's host-local date depends on it; runtime UNKNOWN / NOT ESTABLISHED | C10a, C30, B-41, R10 |
+| IS-2.29 | `TS_IGNORE_MARKET_WINDOW`: `main.py` L2155 to L2156 ("for emergencies"), L4123 to L4128 (an operator override is never auto-stopped); SMAP L658, L2030; `docs/audit/BOOT_PROOF_75e637c_26-Aug-2026.md` L115 to L117 (the production process had no bypass on 26-Aug); used to make tests pass outside the window (`docs/audit/mc4_killswitch_lock_16jul2026.md` L82; `docs/audit/p1_health_require_hmac_done_17jul2026.md` L119; `docs/audit/p3s14_done_17jul2026.md` L188); absent from `.env.example` | 2026-06-19 to 2026-08-26 | DECLARATION and DESCRIPTION | an emergency and operator bypass, not an environment-file setting | C24, B-25, W-16, R18 |
+| IS-2.30 | `core/config_loader.py` L62 to L83, L94 to L98, L147 to L155, L1992 (A02) | 2026-09-10 | DECLARATION | the 18:15 bound and its two roles (start cutoff and upper bound of the stop time); the typing of special sessions (L1992: no schema validation of their keys and times) | C35, B-18; IC-10 |
+| IS-2.31 | `config/system_config.yaml` L86 to L89 (the MIS square-off cutoff, A12) | 2026-09-10 | DECLARATION (file text) | "KNOWN LIMITATION: absolute IST time; NOT session-relative": a special session moves `eod_squareoff_time` but not this cutoff | C35, R11; IC-10 |
+| IS-2.32 | `config/nse_holidays_2026.yaml` L1 to L15, L17 to L46 | 2026-04-17 | DECLARATION (file values only) | the Muhurat day is listed as a holiday by default, and the operator may override it; 15 dated entries | C10, C35, R11; IC-10 |
+| IS-2.33 | `broker/clock_skew_probe.py` L5 to L26, L135 to L137 (A04) | 2026-04-19 | DECLARATION | the skew tiers: soft kill, Telegram, log; a caveat on what the probe measures | C30, R21; IC-18 |
+| IS-2.34 | `broker/zerodha_adapter.py` L1705 to L1728 (A04) | lines 2026-04-17 to 2026-05-12 | DECLARATION | `get_server_time` reads the response Date header, with a local fallback; a broker failure must fail the clock check (L1705 to L1707) | C8, C30, S-41, R8; IC-13, IC-16 |
+| IS-2.35 | `utils/startup_checks.py` L33, L421 to L431, L515 to L528, L538, L857 to L861, L884 to L889, L1528 to L1544, L1567, L1630 to L1631 | 2026-07-17 | DECLARATION | the module never exits the process; the NTP decision table (the warning band gives `passed=False`, L520 to L523); the FIX-107 year; the holiday check's intent; "warn_sec=2, block_sec=5 per spec" (L1631) | C10g, C30, S-41, S-42, S-47; IC-14, IC-15 |
+| IS-2.36 | `alerts/telegram_notifier.py` L282 to L286 (A14); `config/system_config.yaml` L386 to L388, L415 to L420; commit `1af6124` (TASK-10) | 2026-07-27; 2026-09-10; commit 2026-06-18 | DECLARATION and INTENT | `telegram.enabled` is a master switch that suppresses ALL Telegram alerts; the token and channel variable names come from the configuration | C10e, C12; CD-19 |
+| IS-2.37 | `deploy/systemd/cron-watchdog.timer` L1 to L3 (A16); `AGENTS.md` L7; `GEMINI.md` L5 | 2026-06-23; 2026-06-04; 2026-06-03 | DECLARATION and DESCRIPTION | "the VM is Asia/Kolkata"; the agent files say the VM runs on IST (cited as documents only) | C10a, B-41, R10 |
+| IS-2.38 | `reports/daily_report.py` L96 to L113 (A15); `reports/daily_trade_review.py` L2846 to L2862 (A15); `scripts/liveness_probe.py` L124 to L135 | 2026-07-25; 2026-08-29; 2026-09-09 | DECLARATION | `utils.holiday_guard` named as the single holiday source; a missing YAML still blocks weekends | C10b, C11, B-33, R9; IC-07, IC-08 |
+| IS-2.39 | `scripts/fetch_daily_candles.py` L249 to L252 (A05) | 2026-09-09 | DECLARATION | the trade date must come from the time authority, not from the host time zone | C10a; IC-05 |
+| IS-2.40 | `screening/step_executor.py` L30 to L36 (A07) | 2026-07-25 | DECLARATION | production injects the configured market open | C11 |
+| IS-2.41 | `docs/audit/STOP_PROCEDURE_06-Aug-2026.md` L121 to L124 | 2026-08-06 | DESCRIPTION | the SU6 guard's date is captured once, before logging; a process running through midnight never asks again whether the new day is a trading day | C10a, C24 |
+| IS-2.42 | Tests: `tests/unit/test_interactive_startup.py` L70 to L80 (holiday and weekend exit 0 before logging), L108 (a missing YAML is swallowed and the start continues), L122, L140 (guard order); `tests/unit/test_holiday_guard.py` L48 to L115 (weekend False; a listed holiday False; a missing YAML raises; `get_holiday_name` None for a missing YAML); `tests/unit/test_service_window_config.py` L51 to L232 (default 16:00; deployed 17:35; bounds; the cutoff dominates every legal stop; the FIX-189 incidents refused; window end required); `tests/unit/test_startup_checks.py` L402 to L461 (clock pass and fail; a broker error fails), L883 to L913 (SC10: Saturday True; a configured holiday True with a list-of-strings fixture); `tests/unit/test_time_authority.py` L162 to L223 (tiers with WARN and ALERT callbacks), L346 (M-K4: callbacks preserved); `tests/unit/test_market_windows.py` (special sessions) | 2026-07-25; 2026-05-01; 2026-07-25; 2026-07-17; 2026-07-14; 2026-06-29 | TEST | as named; the SC10 fixture differs from the production object | C10, C30, C35, B-24, B-33, B-35, B-36, S-41, S-47; IC-09 |
+| IS-2.43 | Tests: `tests/unit/test_time_authority_sweep.py` (H-17 and E.1: the former `datetime.now()` sites now use `now_ist()`); `tests/unit/test_fix129_ntp_check.py` L94 to L135 (NTP outcomes; the warning band gives `passed=True`) | 2026-08-01; 2026-07-19 | TEST | as named | C10a, C30, S-42; IC-05, IC-15 |
+| IS-2.44 | Record 03 L69 to L74 (the guard uses the host's local date; the START window is independent of the host time zone); Record 03 L133 (the record's own "KNOWN DEFECT (parked)" on the loader's year); Record 01 L147 (records-check R1-38 PARTLY) | 2026-09-18 | DESCRIPTION (record) | as stated | C10a, C10c, B-24; IC-07 |
+
+### 2.3 Area 3: the single-instance lock
+
+| ID | Source (path and lines, or key) | Date | Kind | What it states | Bears on |
+|---|---|---|---|---|---|
+| IS-3.01 | `utils/instance_lock.py` L1 to L40 (docstring) | lines 2026-05-05 to 2026-07-17 | DECLARATION (design rule) | two instances would double every order, so the guard must hold; it must also never refuse a legitimate restart, because "main() exits 1 when the lock is refused, and the unit's RestartPreventExitStatus is "3 4" — so exit 1 is restarted" (L8, lines 2026-07-17); X5: a kernel-owned file lock, the PID informational, no `SO_REUSEADDR`, the lock file never unlinked | C31, B-27, B-30; IC-59 |
+| IS-3.02 | same file L53 to L55 ("FIX-081: Persistent socket lock"; `_LOCK_PORT = 5001  # Configurable via acquire_instance_lock(lock_port=...)`) and L140 to L142 (docstring: "default 5001, configurable via system_config.yaml or passed explicitly") | lines 2026-05-16 to 2026-07-17 | DECLARATION | two different statements of how the port is configured | C31, B-27, B-30, R22; IC-21 |
+| IS-3.03 | `main.py` L2182 ("Single-instance lock (prevents stale process conflicts)"), L3980 to L3982 (FIX-081: the port check was removed because the lock already holds the port) | lines 2026-05-05 to 2026-05-16 | DECLARATION | as stated | B-27, B-32; IC-25 |
+| IS-3.04 | FRULES 3.6 L203 to L214 | 2026-08-06 (first 2026-04-17) | INTENT | create a `.lock`; if it exists, stop and say "Already running"; this prevents double execution | C31, B-27 |
+| IS-3.05 | SPEC L558 to L559 (phase 0a: acquire the process lock through `utils/lock_manager`; another instance: print an error, exit(1)); SPEC L233 (`utils/lock_manager.py` "Process-level lock (prevents double run)") | 2026-04-17 | INTENT | the lock is the first step; exit 1 (the module is now `utils/instance_lock.py`) | C31, B-27; IC-03 |
+| IS-3.06 | SMAP L895 to L910 (Known duplicates and issues, item 2: 18-Jun and X5 of 17-Jul) | 2026-09-02 | DESCRIPTION (with guidance) | resume with `deploy/resume.sh`; "do NOT use a standalone `main.py --resume` (it competes for instance-lock port 5001)"; X5: "a standalone `main.py` is refused by BOTH layers"; the lock file is never unlinked; the PID is informational | C31, R19, R22; IC-22, IC-65; RS-16 |
+| IS-3.07 | `deploy/resume.sh` L2 to L7, L24 to L38; `scripts/clear_kill_switch.py` L5 to L9 (A13) | 2026-06-18 | DECLARATION (design rule) | stop the unit to release the lock; clear the kill in the database "WITHOUT ... acquiring the instance lock"; start again under systemd; use this instead of `main.py --resume` (the 18-Jun collision) | C31, R19; IC-24, IC-65 |
+| IS-3.08 | `docs/audit/service_window_extension_2026-07-24.md` L30 | 2026-07-25 | DESCRIPTION | the lock is "acquired by main.py and by the operator tool clear_kill_switch.py only"; no cron job takes it | C31; IC-24 |
+| IS-3.09 | commits `ab2c6d2` ("prevent stale process port conflicts (single instance enforcement)"), `f446939` (FIX-106), `65cd7df` (X5: "make the single-instance lock OS-owned (it could refuse a legitimate restart)"); `docs/audit/batch3_done_17jul2026.md` L194 (exit 1 is restarted under "3 4"), L227 (a different `lock_port` does not bypass the guard); `docs/audit/instance_lock_flake_mechanism_27jul2026.md` | commits 2026-05-05, 2026-05-18, 2026-07-17; files 2026-07-17, 2026-07-27 | INTENT and DESCRIPTION | as stated | C31, B-30 |
+| IS-3.10 | CTI L14 (`main.py`: "instance lock via socket", no PID file) | 2026-06-11 | DESCRIPTION (before X5) | as stated; superseded by X5 | B-30 |
+| IS-3.11 | `utils/instance_lock.py` L57 to L58, L89 to L93, L130 to L147, L206 to L208, L221 to L227 | lines 2026-05-05 to 2026-07-17 | DECLARATION | the lock is held for the process lifetime (L57 to L58, L133 to L138) and is "released ... on clean shutdown ... promptly" (L222 to L226) | B-28, B-30; IC-23 |
+| IS-3.12 | `config/system_config.yaml` L327 to L335 (`webhook.bind_host`, `webhook.bind_port`) | 2026-09-10 | DECLARATION (file values only) | the webhook server binds its own port, which is not the lock's fixed port | C31, B-32; IC-25 |
+| IS-3.13 | Tests: `tests/unit/test_instance_lock.py` L139 to L371 (a second concurrent instance refused; a restart after a crash or a clean exit not blocked; an unrelated live PID does not block; the layers are not advisory; no `SO_REUSEADDR`; a port conflict releases the file lock; release leaves the file in place); `tests/unit/test_phase17_batch3.py` L44 to L94 (FIX-081) | 2026-07-27; 2026-07-27 | TEST | as named; the tests pass explicit ports (no configuration path is tested) | C31, B-27, B-30 |
+| IS-3.14 | Record 03 L159 (a file lock plus a loopback TCP bind on port 5001) | 2026-09-18 | DESCRIPTION (record) | as stated | B-30 |
+| (none) | No admitted source discusses `PrivateTmp` in relation to the lock (searched: `PrivateTmp`, "private /tmp", hand-run, standalone, in the lock records and tests). The first unit already set `PrivateTmp=true` as "Security hardening" (STEP3 L115 to L119). | — | — | — | C31, R22; IC-22 |
+
+### 2.4 Area 4: startup phases and their order; startup checks and their outcomes; the scenario; the session row
+
+| ID | Source (path and lines, or key) | Date | Kind | What it states | Bears on |
+|---|---|---|---|---|---|
+| IS-4.01 | M34 MAIN4 to MAIN7, L49 to L93 | 2026-04-17 | INTENT | the phase order: 0a logger; 0b configuration (CL1, CL4); 0c store, time authority, kill switch, scenario detection (COLD and WARM logged; CRASH logged CRITICAL with a CRASH_DETECTED event; HALT requires `--resume`, else exit 4; with it `resume(reason="--resume flag", resumed_by="operator")`); a CL4 hash difference gives a CONFIG_DIFF event and a Telegram WARN; 0d `run_all_startup_checks` (clock, configuration files and secrets blocking; scanners and holiday warnings); not ok gives CRITICAL and exit 3; `--dry-run` prints the report and exits 0 | C6, S-04, S-06, S-08, S-16, S-18; IC-26 |
+| IS-4.02 | M34 MAIN12 L261 to L281 | 2026-04-17 | INTENT | phase 0h: a STARTUP event; upsert the session (mode, hash, kill state); INFO "System started" | C33, W-18; IC-37 |
+| IS-4.03 | M33 SC1 to SC15, L25 to L272 (SC1 L29 to L33, SC4 L59 to L81, SC9 L177 to L190, SC12 L212 to L250, SC15 L266 to L272), its build and test plan L278 to L359 | 2026-04-17 | INTENT | SC1: a pure library, "NO side effects beyond logging"; SC4 order: no session row gives COLD; HARD_KILL gives HALT; SOFT_KILL with its condition HALT, else WARM; a date other than today gives COLD; the same day with a SHUTDOWN gives WARM, else CRASH; SC9: required files incl. `nse_holidays_<YEAR>`; SC12: no abort on the first failure; blocking: files, secrets, clock, HALT; warnings: hash changed, holiday, scanners; scanners skipped on COLD, the webhook skipped before the start; SC15: state changes and process control belong to the caller | C6, C7, S-38, S-39, R7; IC-28, IC-30, IC-31; CD-11, CD-15 |
+| IS-4.04 | `utils/startup_checks.py` docstrings and comments: L1 to L37 (restates SC1 to SC15: "NO state mutations here"; "only reads and reports"), L198 to L213, L420 to L432, L514 to L528, L586 to L593, L660 to L672, L789 to L806, L850 to L861, L884 to L889, L916 to L929, L957 to L962, L973 to L988, L1017 to L1038 (Q4(b): LIVE requires a real kill switch), L1097 to L1112, L1196 to L1214 (FIX-099: check the disk "before logger initialization"; "Caller should exit with code 1"), L1314 to L1316, L1372 to L1381, L1469 to L1473 (FIX-151: "Blocking only when capital > 25K"), L1528 to L1545 (the runner's nine documented checks), L1587 ("Scanner connectivity -- skipped on COLD (no prior session to compare)"), L1631 | lines 2026-04-17 to 2026-07-17 | DECLARATION | each check's contract as stated | C6, C9, S-38 to S-56; IC-30, IC-32, IC-34, IC-35; CD-11, CD-14 |
+| IS-4.05 | LOCKED-YAML G5a L91 to L100; G5c L113 to L122; CL4 L761 to L770; P17 L370 to L376 | 2026-07-22 | INTENT | four scenarios, "Each scenario runs a different startup procedure", detected from the system events, the kill state and the session date; a hard kill ALWAYS requires `--resume`, a soft kill auto-resumes when its condition clears; per-file SHA-256 hashes "Used by Phase 0b to detect config changes between restarts and queue a Telegram alert"; P17: the pre-flight checks the scanners, the map, the webhook's own `/health` and duplicates, "CRITICAL on any failure" | C6, C7, S-07, S-43, S-44, S-45; IC-27, IC-29, IC-31, IC-33 |
+| IS-4.06 | SPEC sections 4.1 to 4.5, L553 to L854 | 2026-04-17 | INTENT | detection "MUST happen first"; HALT (HARD_KILLED) is tested before the session date; phase H: HARD_KILL without `--resume` gives exit(1); a manual resume is treated as crash recovery; phase C: a holiday gives exit(0), invalid strategies exit(1), a P17 failure CRITICAL and exit(1), C.2 authentication, C.3 clock, C.8 verifies that the threads are alive and Flask is bound, "SYSTEM ACTIVE"; phases W and R with their own reconciles | C6, C7, C8, S-06, S-07, R7; IC-17, IC-26, IC-28, IC-29, IC-33; CD-08 |
+| IS-4.07 | `main.py` L2218 to L2237 (P11 AC1 and AC2: the boot path is the only sanctioned migrator; refuse while the market is open), L2257 to L2265 (FIX-127: a prior-day kill is auto-cleared, "if the trigger was legitimate, startup reconciliation will re-trigger it within seconds"; FIX-154: scheduled kills auto-clear on a same-day restart if there are no open positions; "Emergency kills still require manual --resume"), L2283 to L2296 (HALT exit 4; the CL4 check "(MAIN6)"), L2304 to L2314 (the early session row; the comment at L2307 says the Phase 0h call updates it "with the final config_hash"), L4166 to L4168 (Phase 0h "(MAIN12)") | lines 2026-04-17 to 2026-07-14 | DECLARATION | as stated | C5, C6, C33, S-03, S-05, S-10; IC-04, IC-27 |
+| IS-4.08 | `capital/kill_switch.py` L315 to L328 (A13; "HEADLESS GUARANTEE (Rama's 2026-06-20 decision)"), L366 to L373 (`auto_clear_scheduled_kill`: "HARD_KILL is never auto-cleared") | lines 2026-05-30 to 2026-06-20; commit `a60868f` 2026-06-20 | INTENT (attributed to Rama) | every prior-day kill, of any type, is cleared at the next boot; "The system never blocks the next-day startup"; same-day kills persist; the scheduled clear never clears a HARD_KILL | C7, S-05, R19; RS-06; IC-27 |
+| IS-4.09 | `docs/audit/slice25_execution_plan_27jul2026.md` L309 to L325; `main.py` L4002 to L4030 ("S4 follow-up, ANSWERED 27-Jul-2026: DEGRADE, do not block the boot") | 2026-07-28; lines 2026-04-17 to 2026-07-27 | INTENT | the rule: fail fast when the failing condition can only arise from a deliberate act; degrade and alarm when the environment can cause it; the webhook self-check therefore degrades with an out-of-band CRITICAL; #16a blocks. Who answered is not named | C28, S-45, W-09; IC-33 |
+| IS-4.10 | `docs/audit/s4_boot_outage_17jul2026.md` L1 to L22 | 2026-07-17 | DESCRIPTION (incident) | the 17-Jul boot stopped on a 401 from `/health` (no trades that day); the origin of IS-4.09 | C28 |
+| IS-4.11 | `docs/web_claude/02_phase_instructions/phase_g_medium_fixes.txt` L86 to L99 (MED #10) | 2026-04-17 | INTENT | write the session row EARLIER in startup, so that a crash in mid-startup still sees today's session date; its premise is that "kill_state and last_shutdown_ts tell the story" | C6, C33, S-10; IC-04, IC-37 |
+| IS-4.12 | `docs/01_system_architecture.md` L23 to L36 (13 checks); CTI L860 to L873 (P.4, "14+" checks, including an F&O ban fetch and a port check); CTD CT-084 to CT-087, L1134 to L1174 (COLD "All 14+ startup checks run"; WARM "Faster startup (some checks skipped or lighter)"; a startup-check failure gives exit 3 and no restart) | 2026-06-03; 2026-06-11 | DESCRIPTION and TEST (plan) | as stated | C6, S-40; IC-29, IC-30, IC-32 |
+| IS-4.13 | FRULES 1.2 L19 to L23 (re-runs are safe, no manual clean-up), 1.7 L55 to L59 (resume-safe), section 5 L261 (deterministic restart) | 2026-08-06 (first 2026-04-17) | INTENT | as stated | C5, C6 |
+| IS-4.14 | `docs/audit/migration_on_open_rule_14jul2026.md` L65 to L75 | 2026-07-14 | INTENT | AC1 to AC4; "market open" means a weekday and 09:15 to 15:30 IST | C11, S-03; IC-04 |
+| IS-4.15 | `docs/temp_config_tracker.md` L37 to L41 | 2026-06-03 | DESCRIPTION | startup check #14 counts the TEMP markers; "Currently a WARNING. When capital > Rs 25K, consider promoting to a blocking failure" | S-56, R23; IC-34 |
+| IS-4.16 | AUDIT-04JUL L157, L187 | 2026-07-06 | DESCRIPTION | M-U1: the scanner check is skipped on COLD and therefore never ran; FIX-151's blocking rule is not implemented | C6, S-44, S-56, R6, R23; IC-30, IC-34 |
+| IS-4.17 | `docs/audit/batch_classification_16jul2026.md` L133 | 2026-07-16 | DESCRIPTION | FIX-151 not implemented; a careful-loop item | S-56, R23; IC-34 |
+| IS-4.18 | `docs/audit/wave7_nine_investigation_22jul2026.md` L40, L112 to L120 | 2026-07-22 | DESCRIPTION | the boot log shows COLD and then CRASH; the scanner check runs every morning; M-U1 is "not a defect" | C6, C7, S-44, R6; IC-30 |
+| IS-4.19 | `docs/audit/BOOT_PROOF_75e637c_26-Aug-2026.md` L163 to L189 | 2026-08-26 | DESCRIPTION | the double detection measured on one boot; "blast radius zero" | C6, S-06 |
+| IS-4.20 | `config/scan_webhook_map.yaml` (16 entries); `requirements.txt` L8; `config/accounts.csv` (shape only) | 2026-07-13; 2026-06-18; 2026-06-12 | DECLARATION (file values only) | the scanners that the check fetches; the pinned SDK version | C32, S-44, S-54 |
+| IS-4.21 | `core/schema.sql` L478 to L501 (A03) | 2026-08-23 | DECLARATION | the session table's columns and comments: `trade_type` INTRADAY or POSITIONAL; `kill_state` dropped (CFG-7); no `last_shutdown_ts` | C33, S-10, R20; IC-37 |
+| IS-4.22 | `core/state_store.py` L2474 to L2490 (A03) | 2026-08-28 | DECLARATION | the contracts of the session-row and SHUTDOWN helpers | C7a, C33, S-10, R7 |
+| IS-4.23 | Readers of the session row: `ops_dashboard/backend/services/summary_bar.py` L35 to L42; `ops_dashboard/backend/services/config_view.py` L410 to L411; `reports/daily_report.py` L136 to L138 (A15) | 2026-07-25; 2026-09-02; 2026-07-25 | DECLARATION | how the dashboard and the daily report read `account_id` and `trade_type`; the dashboard calls the value a "placeholder ... off-market" | C33, R20; IC-37 |
+| IS-4.24 | Tests: `tests/unit/test_startup_checks.py` L238 to L379 (SC4 cases), L366 (`StartupCheckFailed` inherits `TradingSystemError`), L1009 to L1205 (SC12 blocking and warnings; HALT gives `halt_requires_resume`; COLD skips the scanners), L1233 to L1310 (the instrument-cache check fails None alone; the aggregate skips None), L1396 to L1429 (Q4(b)); `tests/unit/test_main.py` L629 to L731 (HALT 4; resume; checks fail 3; dry run; CONFIG_DIFF WARN; CRASH event), L732 to L813, L916 to L935 (STARTUP event; INFO notification; the webhook check performed); `tests/unit/test_fix131_config_drift.py` L45 to L129; `tests/unit/test_fix136_batch9.py` L22 to L465; `tests/unit/test_revert_temp_config.py` L141 to L159; `tests/unit/test_mc1_live_seed_rehydrate.py` L423 | 2026-07-17; 2026-08-28; 2026-05-30; 2026-07-23; 2026-07-25; 2026-07-21 | TEST | as named | C6, C7, C9, B-22, S-06, S-08, S-39, S-56; IC-30, IC-36 |
+| IS-4.25 | Record 03 L76 to L126 (phases 0b to 0h), L141 to L152 ("15 checks run"), L149, L194; Record 01 L137 | 2026-09-18 | DESCRIPTION (record) | as stated (records-check R3-43, R3-79; R1-32 PARTLY) | S-40; IC-32 |
+
+### 2.5 Area 5: the token, broker-session and account-registry boundary at startup
+
+| ID | Source (path and lines, or key) | Date | Kind | What it states | Bears on |
+|---|---|---|---|---|---|
+| IS-5.01 | M41 SU5 L80 to L89, SU9 L169 to L188, SU14 L320 to L327, SU15 L329 to L338, SU17 L352 to L359 | 2026-04-17 | INTENT | headless: the primary account; the token from `data_store/session/zerodha_token.json`; missing or expired gives exit 6 with a message to run the login; `is_token_valid`: the file exists, the account matches, the date is today (IST), the token is not empty; SU15: 5 is "invalid args / config" | C2, S-21, R2; IC-17, IC-39, IC-40 |
+| IS-5.02 | M41C SU5 L112 to L114, SU14 L288 to L290, SU15 L292 to L301, SU17 L310 to L315 | 2026-04-17 | INTENT | the same; SU15: 5 is "invalid args / config / missing env var"; SU17: `load_token(token_path) -> dict or None`, "Parse JSON or return None on any error" | C2, C4, S-21, R2; IC-39, IC-40 |
+| IS-5.03 | RDISC Question F L132 to L143; L199 to L207; Question E L118 to L130 (a token-file format with the account for mismatch detection) | 2026-04-17 | INTENT (proposal) | the headless VM checks the token's account against the primary; expired or missing gives exit 6, an operator alert, a fresh login on the PC and a copy to the VM | C2, R2, R4; IC-60 |
+| IS-5.04 | SPEC C.2 L661 to L665 (before C.3, L667 to L672) | 2026-04-17 | INTENT | authentication first: load the token; expired: print the instruction, exit(1); verify the token-account binding; only then does the clock validation make the first broker call | C8, R8; IC-17, IC-39 |
+| IS-5.05 | `main.py` L118 to L172 (the FIX-062 flag; H-11: the canonical token path "MUST match the loader"; the `_invalidate_token` docstring: with the token renamed, "the next non-interactive live start fails fast at the is_token_valid() gate ... return 6"), L2345 to L2348 ("Build broker adapter early for clock check"; FIX-060: the rate limiter gets the shutdown event), L2355 to L2374 (pre-load the primary account to alias the account-specific key; handlers "Token file missing" give 6, a missing credential variable gives 6), L2524 to L2572 (non-interactive SU14: the primary account; the token gate gives 6; the I.4 broker pin gives 9, "Fail fast") | lines 2026-04-17 to 2026-07-06 | DECLARATION | as stated | C2, C3, C8, B-02, B-03, S-21, S-22, W-12; IC-17, IC-39, IC-40, IC-60, IC-62 |
+| IS-5.06 | `main.py` L219 to L232 (`required_startup_secrets` docstring) | lines 2026-07-02 | DECLARATION | the names that MUST be set in BOTH paper and live: `ZERODHA_API_KEY_<account-ID>`, `ZERODHA_API_SECRET_<account-ID>`, `TELEGRAM_BOT_TOKEN`, `WEBHOOK_SECRET` ("C-2 (02-Jul-2026)") | C12, B-06, S-15, S-50; IC-41 |
+| IS-5.07 | M34 MAIN19 L359 to L365; MAIN22 L377 to L382; M33 SC11 L202 to L210 | 2026-04-17 | INTENT (superseded) | the Kite client from `ZERODHA_API_KEY` and `ZERODHA_ACCESS_TOKEN`; the required secrets include `ZERODHA_ACCESS_TOKEN`, checked in phase 0d. Superseded by the account-namespaced names and the token file (M41C L46 to L49: access tokens removed from `.env`); `main.py` still writes both generic names into the process environment | C12, B-10, S-23 |
+| IS-5.08 | `.env.example` L17 to L50 (names only) | 2026-07-02 | DECLARATION | per-account `ZERODHA_API_KEY_<account-ID>`, `ZERODHA_API_SECRET_<account-ID>` and `ZERODHA_TOTP_<account-ID>` for five accounts; `TELEGRAM_BOT_TOKEN`; `TELEGRAM_CHANNEL_PRIMARY` and `TELEGRAM_CHANNEL_SECONDARY`; `TELEGRAM_PERSONAL_CHAT_ID`; `WEBHOOK_SECRET`; no `TS_IGNORE_MARKET_WINDOW` and no generic `ZERODHA_*` names | C12, S-50, R18 |
+| IS-5.09 | The account-registry contract: M41 SU2 and SU3 L52 to L70 (`account_id` "uppercase, unique, PK"; `is_primary` "exactly 1 row true"; `enabled` gates the selector); M41C SU2 and SU3 L85 to L104 ("Validate paper_capital > 0 for enabled accounts"); M38 IC1 L23 to L34, IC5 L84 to L104 ("At least 1 enabled account"; shares sum to 1.0; an unset environment variable: "log warning ... don't raise"; `get_primary_account()` is the "First enabled account"), IC6 L106 to L111 (a single account only in v2) | 2026-04-17 | INTENT | as stated | C12, C39, M-32 to M-36, S-58; IC-41, IC-42 |
+| IS-5.10 | `core/account_registry.py` L1 to L45 (the AR1 to AR11 docstring: load from the CSV; AR3 `primary()` is the `is_primary` row; AR6 `ConfigMissingError`; AR9 a single account in v2; AR11 `paper_capital > 0` for enabled rows), L48 to L68, L91 to L103, L216, L247 to L360 (AR12 and AR12b helpers that "never raise", added 2026-09-09) | lines 2026-04-17 to 2026-09-09 | DECLARATION | as stated | C39, M-32 to M-41, S-58; IC-42; CD-23 |
+| IS-5.11 | `config/accounts.csv` (shape only: ten columns, five rows, one primary and enabled; names of the credential variables, no values) | 2026-06-12 | DECLARATION (file values only) | as stated; the values in force are UNKNOWN / NOT ESTABLISHED | C12, C39, S-58 |
+| IS-5.12 | `utils/startup_checks.py` L1075 to L1079 (SC11) | 2026-07-17 | DECLARATION | the required-secrets check | C12, S-50 |
+| IS-5.13 | CTI L838 (P.1: `BrokerAuthError` gives "SOFT_KILL + token invalidation at shutdown"), L844 to L846 (P.2: exit 6 "Manual required") | 2026-06-11 | DESCRIPTION | as stated | C3, R3, R4; IC-60 |
+| IS-5.14 | AUDIT-04JUL H-11 L90 to L94 | 2026-07-06 | DESCRIPTION (finding to fix) | on `BrokerAuthError`, `_shutdown` renames the dead token "so the next boot fails fast and breaks the systemd restart loop"; the wrong path made the guard inert; fix the path | C3, W-12; IC-60 |
+| IS-5.15 | commit `14a889c` (FIX-062) | commit 2026-05-16 | INTENT | rename the token at shutdown to prevent an endless restart loop; "_broker_auth_failed flag set via critical failure callback" | C3, R3, W-11, W-12; IC-43 |
+| IS-5.16 | commit `7fc06ff` (FIX-163) | commit 2026-06-12 | INTENT | pre-load the primary account and the token file before building the Kite client, to alias the generic key and inject the access token; "Falls back to exit code 6 (no restart) on missing token or credential" | C2, C4, S-21, S-23, R2, R4; IC-40, IC-60 |
+| IS-5.17 | `scripts/zerodha_login.py` L36, L42, L49 to L57 (A04) | 2026-07-08 | DECLARATION | `load_dotenv()` at import; the token path; `load_token` returns None for a missing or unreadable file | C2, C40, S-23; IC-39 |
+| IS-5.18 | Tests: `tests/unit/test_fix062_token_invalidation.py` L88 to L112 (the critical callback, with source "order_monitor" and reason "BrokerAuthError x3 -- monitor stopping", sets the flag and soft-kills), L115 to L139 (a reason without the text does not); `tests/unit/test_h11_invalidate_token_path.py` L4 to L169 (the real path; an auth-failure shutdown invalidates; L8 to L15: the next boot fails fast and "the systemd restart loop breaks"); `tests/unit/test_zerodha_login.py` L106 to L108 (`load_token` returns None for a missing file) | 2026-07-06; 2026-07-06; 2026-07-08 | TEST | the order monitor's authentication failure is expected to reach the critical callback | C2, C3, W-11, W-12, R3; IC-39, IC-43, IC-60 |
+| IS-5.19 | `tests/unit/test_main.py` L755 to L772 (an unsupported or empty broker gives 9; "Zerodha" accepted), L799 to L830 (live requires `WEBHOOK_SECRET` and the namespaced keys) | 2026-08-28 | TEST | as named | B-06, S-22, S-50; IC-38 |
+| IS-5.20 | TW L14 ("All start attempts also require a fresh token for today"); SMAP L665 to L694 ("THE BOOT CHAIN": the 08:15 cron job writes only the token; the token watcher polls every 30 s and starts the service; "A FAILED TOKEN REFRESH IS SILENT") | 2026-06-19; 2026-09-02 | DECLARATION and DESCRIPTION | the start route depends on the token file | B-19, R4 |
+| IS-5.21 | Record 01 L17 (records-check R1-04 PARTLY); Record 03 L96 (an `accounts.csv` failure gives exit 3, R3-40), L102 (R3-46 PARTLY), L174 (R3-92 DIFFERS: the missing file), L181 to L198 (section 3.8, the token chain) | 2026-09-18 | DESCRIPTION (record) | as stated | C2, S-21 |
+
+### 2.6 Area 6: configuration loading and validation at the A01 boundary
+
+| ID | Source (path and lines, or key) | Date | Kind | What it states | Bears on |
+|---|---|---|---|---|---|
+| IS-6.01 | M34 MAIN5 L54 to L58 | 2026-04-17 | INTENT | `load_all(args.config or Path("config"))`; log the file count; the CL4 difference later, in phase 0c | S-01 |
+| IS-6.02 | LOCKED-YAML CL1 to CL6, L728 to L789 | 2026-07-22 | INTENT | a module-level `load_all`, called once in phase 0b, with sub-configurations passed to constructors; CL2 atomic, all or nothing ("A startup failure is always better than runtime errors"); CL3 `extra='forbid'`; CL4 hashes; CL5 no environment interpolation; CL6 one file (split above 600 lines) | C6, S-01, S-08; IC-06 |
+| IS-6.03 | `main.py` L2196 to L2216 (phase 0b "(MAIN5)": exit 5 with `_config_error_detail`; CV1 registration; the stop time parsed once, "one parse, one source of truth"), L2018 to L2038 (`_config_error_detail`: the reason must reach the boot log; never raises), L3428 to L3443 (Q4(c): re-run group A with the strategies; fail fast "BEFORE any structure-exit / zone infra is built"; exit 3), L3444 to L3465 (A5 and #16a: "fail-fast before any capital is reserved"; "Exit 3, like Q4(c): RestartPreventExitStatus="3 4", so a config block stops cleanly"), L4163 to L4164 (CV3: non-strict validation) | lines 2026-04-17 to 2026-08-23 | DECLARATION | as stated | C13, S-01, S-02, S-33, S-34, B-20, W-17; IC-59; CD-12 |
+| IS-6.04 | `core/config_auditor.py` L192 to L312 (A02; group-A codes: A1 BLOCK, A2 BLOCK, A4 "SNR-V2 SINGLE SL OWNER (Q4(c))" BLOCK, A5 "SLICE2.5 #16a" BLOCK, A3 WARN; L215 to L221 and L262 to L290 the A4 and A5 rules); `core/config_validator.py` L17 to L24 (A02; CV1 to CV4) | 2026-08-23; 2026-05-02 | DECLARATION | where the guards' labels are defined | S-33, S-34, W-17 |
+| IS-6.05 | `docs/audit/slice25_execution_plan_27jul2026.md` L309 to L325 | 2026-07-28 | INTENT | #16a gives BLOCK, fail fast (a deliberate act); the precedent "The hard ones BLOCK (fail-fast); the 'valid but pointless' ones WARN" | S-34; IC-33 |
+| IS-6.06 | commit `2f67bb8` | commit 2026-08-23 | INTENT (with a claim about the VM) | "OPS 2" applied on the VM on 23-Aug: `RestartPreventExitStatus` "3 4" became "3 4 5" "so a config REJECTED at load (main.py returns 5 ...) now settles in `failed` instead of restarting every RestartSec=10s"; the repository copy is "the GOVERNANCE half"; "Do not read this file as evidence of what is installed" | C4, B-40, R4; IC-59 |
+| IS-6.07 | AUDIT-26APR L47 to L58 (CFG-1: `trading_hours` entry and EOD times were "namesake config"; wire `MarketWindows` from `system_config.yaml`); SECAUDIT-02JUL L139 to L142 (F-1: `min_free_disk_gb` read from the wrong object); `main.py` L2468 ("F-1 (audit 02-Jul)") | 2026-04-26; 2026-07-25 | INTENT (fix directions) | configured values must be honoured | C11, C23, S-52 |
+| IS-6.08 | LOCKED-YAML P2 L255 to L261 and `principles.config_honor_principle` L424 to L427 | 2026-07-22 | INTENT | every configured limit must be enforced, alerted and reported; no "namesake" values | C23, C36b, R17, R21; IC-18, IC-49 |
+| IS-6.09 | `config/system_config.yaml` keys read at the A01 boundary: `trading_hours.*` L27 to L112; `force_intraday_only` L142; `trade_type` L149 (BOTH); `delivery_enabled` L155; `clock.*` L183 to L190; `webhook.bind_host` and `bind_port` L327 to L335; `kill_switch.*` L355 to L357; `logging.min_free_disk_gb` L466; `sr_detector.enabled` L509; `wait_for_retest_enabled` L529; `regime.enabled` L548; `allocator_mode` L565; `v3_chain_mode` L574; `watchlist.enabled` L620; `structure_exit_enabled` L634; `smart_tgt.enabled` L641 to L642; `drift_handler.*` L726 to L730; `circuit_breaker.force_close_time` L740 ("force-cancel all pending entries + close all positions"); `scanner_check_delay_sec` L753 | 2026-09-10 (lines 2026-04-17 to 2026-08-28) | DECLARATION (file values only) | as stated; the values in force are UNKNOWN / NOT ESTABLISHED | C23, C32, C33, C36, S-35; IC-37 |
+| IS-6.10 | `config/broker_limits.yaml` L32 to L33 | 2026-04-19 | DECLARATION (file values only) | `timeouts.connect_sec` and `read_sec` | C36b |
+| IS-6.11 | `core/config_loader.py` L1671 to L1690, L2184, L2434 (A02) | 2026-09-10 | DECLARATION | `smart_tgt.enabled` is the "master switch"; `connect_sec`; the type of `file_hashes` | C6, C36a, C36b, S-08; CD-16 |
+| IS-6.12 | `core/config_loader.py` L109 to L136 (A02); `core/mis_squareoff_timing.py` L36 to L37 (A12) | 2026-09-10; 2026-08-28 | DECLARATION | "the schema and the runtime cannot disagree" (the schema validates the MIS timing with a literal poll interval of 5); the boot must fail closed on an invalid MIS timing | M-24; CD-24 |
+| IS-6.13 | `docs/audit/register_items_26jul2026.md` L35 to L44 | 2026-07-26 | DESCRIPTION | a missing holiday file makes `load_all` raise `ConfigMissingError` and `main` return 5 | C10c, S-01; IC-06 |
+| IS-6.14 | Tests: `tests/unit/test_config_auditor.py` L87 (A4 (Q4(c))), L208 ("RestartPreventExitStatus="3 4" -> stops cleanly, no restart loop"); `tests/unit/test_service_window_config.py` L91 to L157 (rejected at load; the reason reaches the boot log) | 2026-08-23; 2026-07-25 | TEST | as named | S-01, S-33, B-20; IC-59 |
+| IS-6.15 | Record 03 section 3.4, L127 to L140; Record 01 L138 (records-check R1-33 PARTLY) | 2026-09-18 | DESCRIPTION (record) | as stated | S-01 |
+
+### 2.7 Area 7: construction, dependency wiring, callbacks and event subscriptions
+
+| ID | Source (path and lines, or key) | Date | Kind | What it states | Bears on |
+|---|---|---|---|---|---|
+| IS-7.01 | M34 MAIN8 L95 to L220 | 2026-04-17 | INTENT | "Construct subsystems (strict order)": 21 numbered objects with their constructor arguments (bus, adapter, fund manager initialised from `get_margins().net`, sizer, risk engine, market windows, notifier, feed, candle store, smart TGT, the ST13 reconnect chain, monitor, placer, reconciler, strategies, scorer and screener, EOD, entry gate, queue, processor, webhook receiver). The code's order differs and has many more objects (STUDY section 5.2) | S-37, C13; CD-13 |
+| IS-7.02 | M34 MAIN9 L222 to L229 | 2026-04-17 | INTENT | five subscriptions (OrderFilled and PositionClosed to the fund manager; OrderStateChanged to the reconciler; KillSwitchActivated and CapitalDriftDetected to a log); "Verify method names match" | C29, W-08; IC-44 |
+| IS-7.03 | M34 MAIN18 L336 to L357 | 2026-04-17 | INTENT | critical-failure and orphan callbacks: CRITICAL log, `soft_kill`, CRITICAL alert; gate release PRICE_HIT goes to `continue_from_gate`; TIMEOUT and QUOTE_UNAVAILABLE are only logged. The code also has force-close, API-failure hard-kill and daily-loss callbacks (A13) | C27, W-11; IC-43 |
+| IS-7.04 | LOCKED-YAML EV2 L543 to L551; G9 L158 to L167 | 2026-07-22 | INTENT | explicit `bus.subscribe()` at wiring time in `main.py`; direct calls by default; the bus only for four fan-out events | C29, M-02, W-08; IC-67 |
+| IS-7.05 | SPEC section 3.2.6 L501 to L509; C.7 L716 to L734 | 2026-04-17 | INTENT | `main.py` initialises core, broker, authentication, capital, data, screening, signals, orders, alerts, then the main loop; background threads start as their modules are initialised | S-37 |
+| IS-7.06 | `main.py` comments: L852 to L854 (effect telemetry B2: register only on the constructed path, "C2 discipline"), L2650 (FIX-166 F22: wire the adapter so `hard_kill` can exit positions), L2735 (FM19 and BL-9), L2991 ("Reconnect chain (ST13, MAIN8 step 11)"), L3849 to L3861 (BL-2: the drift handler is subscribed; "fund_manager has no on_order_filled/on_position_closed handlers. The reconciler is daemon-poll only (RC4 retired by 2026-04-26 audit)"), L3863 to L3866 (H-7: `post_wire_init` after the subscriptions), L3972 to L3973 ("signal_processor BEFORE entry_gate (BLOCKER #5 fix)"), L4217 to L4246 (B2 composition assertion) | lines 2026-04-17 to 2026-08-01 | DECLARATION | as stated | C15, C20, C29, W-08, W-09; IC-44, IC-45 |
+| IS-7.07 | `config/expected_managers.yaml` L1 to L24 (A15), L339 to L342 | 2026-08-04 | DECLARATION | the "single source of truth (C2/C6)" of the manager constructors in `main.py`; "A new manager ctor in main.py REQUIRES an entry here IN THE SAME DIFF"; states and mismatch classes; `sl_breach_monitor` expected absent, with no importers. Its `ctor:` line references are for an older tree | M-44, S-37 |
+| IS-7.08 | PRELIVE H-7 L1630 to L1640 (defer the EOD restart recovery to `post_wire_init()`), BL-2 L335 to L410 (drift-handler escalation replaces the log-only stub), H-20 L2582; MEGA L184 to L188 (BLOCKER #5: start the signal processor before the entry gate) | 2026-04-21; 2026-04-17 | INTENT (fix specs) | as stated | W-08, W-09; IC-45 |
+| IS-7.09 | MEGA L163 to L167 | 2026-04-17 | INTENT (fix spec) | BLOCKER #2: the candle store starts before the feed and is stopped in the shutdown | W-09, C20 |
+| IS-7.10 | commit `0cd1b14` (FIX-128) | commit 2026-05-30 | INTENT | Fix C: the order monitor counts consecutive API failures and hard-kills after 3 general broker errors; `main.py` wires `_make_api_failure_hard_kill_cb` and `_make_force_close_cb`; Fix D: the daily-loss sequence (alert, `eod.fire_now()`, soft kill); Fix E: the token monitor soft-kills on expiry ("not hard_kill") | C3, C27, W-11, R3; IC-43 |
+| IS-7.11 | `capital/fund_manager.py` L1474 to L1478 (A09) | lines 2026-04-26 | DECLARATION (design rule) | C.1: publish drift events only after releasing the capital lock, because a subscriber blocking on a downstream resource could deadlock | C22, C27; CD-26 |
+| IS-7.12 | `alerts/mis_squareoff_notifier.py` L233 to L241, L257 to L262 (A14) | 2026-08-28 | DECLARATION | a self-test at every boot; the poll thread runs independently | C13, S-31, W-01, R12 |
+| IS-7.13 | AUDIT-04JUL L113 (M-C1), L120 (M-C8: `hard_kill`'s retry loop runs on the caller's thread), L147 (M-K4: `configure()` wipes the callbacks), L156 (M-A2: synchronous alert sends) | 2026-07-06 | DESCRIPTION (findings that shaped the wiring) | as stated; M-K4 fixed (callbacks preserved on None) | B-09, B-35, W-11 |
+| IS-7.14 | Tests: `tests/unit/test_main.py` L552 to L602 (callbacks), L839 to L870 (subscriptions registered; the reconnect chain; paper skips the Kite client), L1060 to L1116 (the gate-release pipeline); `tests/unit/test_events.py` | 2026-08-28; 2026-05-12 | TEST | as named | W-08, W-11 |
+
+### 2.8 Area 8: the startup reconciliation and the kill-switch checks
+
+| ID | Source (path and lines, or key) | Date | Kind | What it states | Bears on |
+|---|---|---|---|---|---|
+| IS-8.01 | M34 MAIN10 L231 to L235; MAIN11 L237 to L243; test plan L442 to L444 | 2026-04-17 | INTENT | phase 0f: "order_reconciler._reconcile()  # SYNCHRONOUS one-shot"; UNRECOVERABLE actions trip the kill switch; "Check: if kill_switch.is_active(): log CRITICAL, exit 1"; phase 0g then starts the reconciler ("poll thread + event subscription") | C16, C41, W-03, R24; IC-47 |
+| IS-8.02 | LOCKED-YAML RC14 L2338 to L2344; RC1 L2205 to L2212 ("start() (startup reconcile + thread + event sub)"); RC13 L2329 to L2336 (not re-entrant; returns [] if a cycle is running); RC4 L2233 to L2240 (event-driven trigger); G1 L34 to L44 (unrecoverable gives a halt); G5b L102 to L111 | 2026-07-22 | INTENT | `start()` calls `reconcile_once()` synchronously before its daemon thread ("Crash-recovery SL check (G5b) must run before the first trade tick") | C16, C41, W-03, R24; IC-47 |
+| IS-8.03 | M25 L56 to L60 (RC4 lifecycle), L188 to L192 (RC13: on `start()` run one immediate reconcile), L194 to L200 (RC14: the interaction with the order monitor), L306 to L309 | 2026-04-17 | INTENT | the same startup reconcile, numbered differently (section 3) | C41, R24; IC-47 |
+| IS-8.04 | M33 L22 to L23 ("RC14 — Reconciler runs reconcile_once synchronously before poll thread starts (enforced by caller, not here)") | 2026-04-17 | INTENT | as stated | C41, W-03; IC-47 |
+| IS-8.05 | SPEC C.7 L723 to L724 (COLD: a one-shot reconcile for yesterday's leftovers), W.6 L774 to L779, R.5 L804 to L843 | 2026-04-17 | INTENT | as stated | C41, W-03 |
+| IS-8.06 | `main.py` L3868 to L3899 ("BUILD 1 INVARIANT (#12, 24-Jun)": the synchronous reconcile MUST precede `signal_processor.start()` and the webhook server; "The ~15s figure is the BACKGROUND reconciler poll (the 2nd+ reconcile), not this first one. DO NOT REORDER"; the FIX-186 sweep "must never block startup"; the kill check gives exit 1), L3965 to L3971 (the assert) | lines 2026-04-17 to 2026-06-24 | DECLARATION | as stated | C16, C40, C41, W-03; IC-47 |
+| IS-8.07 | `main.py` L2257 to L2259 (FIX-127: a legitimate kill will be re-triggered by the startup reconciliation within seconds) | lines 2026-05-30 | DECLARATION | the startup reconcile is expected to detect real problems again | S-05, W-03; IC-27 |
+| IS-8.08 | SMAP L1396 to L1397; commit `c69f1fd` (BUILD 1) | 2026-09-02; commit 2026-06-24 | DESCRIPTION | BUILD 1 item #12 (24-Jun): the purpose of the boot-order invariant | C16, W-03 |
+| IS-8.09 | `orders/order_reconciler.py` L424 to L426 (A12) | lines 2026-04-17 | DECLARATION | RC14: `start()` runs the startup reconcile before its thread | C41, W-03, R24; IC-47 |
+| IS-8.10 | CTI L889 (the startup reconciliation at phase 0f catches MANUAL_CLOSE and other drifts); `README.md` L59 to L60 | 2026-06-11; 2026-07-16 | DESCRIPTION | as stated | W-03 |
+| IS-8.11 | Tests: `tests/unit/test_main.py` L875 to L879 (named "startup reconciliation called before threads"; asserts only that `reconcile_once` was called), L881 to L892 (a kill active after the reconcile gives 1); `tests/unit/test_fix129_cold_start_safety.py`; `tests/unit/test_order_reconciler.py` (A12) | 2026-08-28; 2026-05-30; 2026-08-20 | TEST | as named; the order is promised by the test name, not asserted | C13, C16, W-03; CD-13 |
+| IS-8.12 | Record 03 L116 (records-check R3-60 PARTLY) | 2026-09-18 | DESCRIPTION (record) | as stated | W-03 |
+
+### 2.9 Area 9: workers and threads, the runtime loop, worker supervision, and what a kill should do to the process
+
+| ID | Source (path and lines, or key) | Date | Kind | What it states | Bears on |
+|---|---|---|---|---|---|
+| IS-9.01 | M34 MAIN13 L283 to L290; MAIN14 L292 to L297 | 2026-04-17 | INTENT | SIGINT and SIGTERM handlers set `_shutdown_event`; the main thread waits; all work runs in background threads; "Log INFO periodically (every N min): heartbeat — subsystems running"; a dedicated daemon EOD thread calls `eod.check_and_fire(now_ist())` every 5 s | C25, W-10, W-15; IC-47; CD-07 |
+| IS-9.02 | SPEC section 4.6 L856 to L868; C.8 L736 to L740 | 2026-04-17 | INTENT | the main loop runs every 5 s: check the kill switch, HARD_KILLED breaks the loop (shutdown), SOFT_KILLED continues managing positions; a heartbeat log; readiness verifies that all background threads are alive; the loop "sleeps until kill_switch fires or Ctrl+C" | C25, W-04, W-10, R13; IC-48; CD-07, CD-08 |
+| IS-9.03 | PRULES section 11 L103 to L109; section 7 L71 to L75 | 2026-04-17 | INTENT | recoverable: retry; uncertain: reconcile; critical: "Stop system immediately"; concurrency: atomic, no blocking flows, thread-safe. INTERPRETATION needed: "stop system" may mean stop trading (the kill switch) or stop the process | C25, R13; IC-48 |
+| IS-9.04 | FRULES 1.6 L44 to L53; section 4 L229 to L250 | 2026-08-06 (first 2026-04-17) | INTENT | every script logs a progress heartbeat; no silent failures; fail fast, loud and clear | C25, W-10; CD-07 |
+| IS-9.05 | `README.md` L52 to L53; `docs/decisions/11_absolute_kill_ladder.md` L58 to L69 | 2026-07-16; 2026-07-28 | DESCRIPTION (with attributed statements) | SOFT_KILL blocks new entries and allows exits; HARD_KILL blocks everything and flattens ("the emergency path"); Rama's description, SOFT "stop taking new trades / raise warnings" and HARD "emergency stop", is recorded as accurate; neither says that a kill ends the process | C25, R13; RS-07; IC-48 |
+| IS-9.06 | SECAUDIT-02JUL E-4 L132 to L135; `main.py` L4056 to L4058 ("E-4 (audit 02-Jul): expose the core daemon poll threads' liveness on /health") | 2026-07-25; lines 2026-07-08 | INTENT (fix direction) and DECLARATION | the core daemon threads had no liveness signal; the order monitor "deliberately stops itself on 3 failures ... and is only revived by a full process restart"; add liveness to `/health` | C25, W-13; CD-08 |
+| IS-9.07 | `broker/order_monitor.py` L524 to L527 (A04) | lines 2026-07-08 | DECLARATION | E-4: read-only liveness for `/health`; the monitor deliberately stops itself after 3 consecutive authentication failures, and surfacing that makes the stop visible to external uptime monitors | C25, W-04, W-13, R13 |
+| IS-9.08 | SMAP L196 (17-Jul liveness alarm: `scripts/liveness_probe.py` by cron at `*/5 9-15` on trading days; "nothing had EVER watched this unit's liveness"; window [09:00, 16:00); the 16:00 to 17:35 tail unwatched); `docs/expected_alarms.md` L195 to L204; `docs/audit/integrity_audit_2026.md` L3126 (hung but active: no `WatchdogSec`, "NO external detector") | 2026-09-02; 2026-08-06; 2026-08-01 | DESCRIPTION | external detection of a dead service, not of a dead worker or a hang | C25, W-04 |
+| IS-9.09 | `docs/audit/service_window_extension_2026-07-24.md` L11 to L13 | 2026-07-25 | DESCRIPTION | a soft kill at about 16:30 "persists overnight and auto-clears at the next 08:15 boot (noisy, harmless; the service is exiting at 17:35 anyway)" | C25, R13; IC-48 |
+| IS-9.10 | `docs/01_system_architecture.md` L139 to L152 (threading model: MainThread non-daemon; the workers daemon); CTI L114 to L115 (no task queue; thread pools), L848 to L849 (P.3: "Main loop is _shutdown_event.wait() — no exceptions possible here") | 2026-06-03; 2026-06-11 | DESCRIPTION | as stated | W-07, W-10; IC-48 |
+| IS-9.11 | AUDIT-14JUN F15 L167 to L168 | 2026-06-13 | DESCRIPTION | "all production threads are daemon threads" (written before the non-daemon flatten worker of 2026-07-16) | C19, W-07 |
+| IS-9.12 | `capital/kill_switch.py` L1189 to L1192 (A13); `tests/unit/test_mc8_async_hardkill.py` L782 | lines 2026-07-16; 2026-07-16 | DECLARATION and TEST | the flatten worker is non-daemon by design: a daemon thread "would be killed the instant the process decides to exit"; `_shutdown` drains it and this is the backstop | C19, W-05, W-07 |
+| IS-9.13 | Record 03 section 3.6, L153 to L162 (the instance lock; the list of poll threads) | 2026-09-18 | DESCRIPTION (record) | as stated | W-07 |
+
+### 2.10 Area 10: the end-of-day pre-alert, the 09:15 margin re-sync and the end-of-day self-exit
+
+| ID | Source (path and lines, or key) | Date | Kind | What it states | Bears on |
+|---|---|---|---|---|---|
+| IS-10.01 | `main.py` L896 to L901, L939 to L943 ("EOD pre-alert at 14:45 (FIX-130 Item 7)"; "send Telegram warning ~30 min before EOD squareoff"; "sleep until 14:45 IST then fire the EOD pre-alert (once/day)"); commit `0cc0009` (Item 7: "EOD pre-alert at 14:45 -- Telegram warning 30 min before EOD squareoff") | lines 2026-05-30; commit 2026-05-30 | DECLARATION and INTENT | as stated; the alert text says positions are "force-squared in ~30 min" (L912) | C23, R17; IC-49, IC-50 |
+| IS-10.02 | `tests/unit/test_fix130_eod_pre_alert.py` L59 to L128 | 2026-06-08 | TEST | an alert when positions are open, none otherwise; notifier None; the count; FIX-155c: the thread uses `is_trading_holiday(now)`. No source addresses delivery positions | C23, R17 |
+| IS-10.03 | `main.py` L982 to L994 (FIX-164 docstring: re-sync at the 09:15 market open, for a pre-market start with stale zero margins and a deposit after the start; only if started before 09:15); commit `9536a14` (the same; a Telegram message when the change exceeds Rs 1) | lines 2026-06-12; commit 2026-06-12 | INTENT | as stated; the time is fixed at 09:15 (Record 01 L100 says its source is `trading_hours.market_open`, records-check R1-23 PARTLY) | C22, C23, R16, R17; IC-49, IC-51 |
+| IS-10.04 | `tests/unit/test_fix164_market_open_margin_sync.py` L96 to L244 | 2026-06-12 | TEST | fires when started before 09:15; skipped after; notifies on a change; aborts on shutdown; skips holidays; a broker failure is caught | C22, C23 |
+| IS-10.05 | `docs/decisions/11_absolute_kill_ladder.md` L3 ("CLOSED 28-Jul-2026 — Option A, LEAVE AS-IS, NO code change"), L21 to L23 (Rama, 28-Jul: keep ₹1,000 soft and ₹2,500 hard), L85 to L97 (escalation is single-sample; `sync_from_broker` has one production caller, the 09:15 one-shot, so that source fires once a day) | 2026-07-28 | DESCRIPTION and INTENT (attributed to Rama) | the re-sync is a known input to the drift ladder; no source says whether a deposit-driven re-sync should reach a kill | C22, R16; RS-07; IC-51 |
+| IS-10.06 | `capital/drift_handler.py` L15 to L50 (DH1: only events whose source is in `_ESCALATING_SOURCES` escalate, "Today that's {"fund_manager"}"; reconciler events are logged at INFO), L66 to L70 (the escalating set: `fund_manager`, `fund_manager_self_check` from the reconciler's `_check7`, `fund_manager_bucket_overflow`), L164 to L175 (A09) | lines 2026-04-19; file 2026-08-01 | DECLARATION | as stated | C22, C29, M-11, R16; IC-51, IC-52 |
+| IS-10.07 | `main.py` L1042 to L1058 (FIX-189 self-exit: the service must not run all night; exit 0 once past the configured `service_window_end` AND flat; "it NEVER exits while any position has live exposure (OPEN/PARTIAL/PENDING_FILL)"; M-C8: never while a HARD_KILL flatten runs) | lines 2026-06-19 to 2026-07-25 | DECLARATION (design rule) | as stated; partly superseded by IS-10.08 | C26, C40, W-16; IC-53 |
+| IS-10.08 | `main.py` L1077 to L1113 ("EOD lifecycle: WHICH positions actually require THIS SERVICE? (25-Aug-2026)": DELIVERY on CNC, no; INTRADAY, yes; CONFLICT or UNRESOLVED, yes and report; "(Option A, Rama 25-Aug-2026.)"); commit `02a2a6b` (the same; NRML is not treated as broker-protected) | lines 2026-08-25; commit 2026-08-25 | INTENT (attributed to Rama) | a delivery carry must not hold the service open | C26, W-16; RS-09; IC-53 |
+| IS-10.09 | `main.py` L1103, L1151 to L1161 | lines 2026-08-25 | DECLARATION (design rule) | only CNC is broker-protected; this system never places NRML ("product_map has only INTRADAY->MIS and DELIVERY->CNC"), and the emergency sites treat NRML as an unrecognised anomaly to be flattened loudly | C26, M-26, M-30; IC-54, IC-73 |
+| IS-10.10 | `config/system_config.yaml` L96, L157 to L162 (`product_map`: INTRADAY "MIS", DELIVERY "CNC", COVER_ORDER "CO", BRACKET_ORDER empty), L361 (EOD poll interval 5) | 2026-09-10 | DECLARATION (file values only) | as stated | C26, M-26, W-15; IC-54 |
+| IS-10.11 | `main.py` L1061 to L1075 (M-C8: `_ACTIVE_FLATTEN_IN_PROGRESS`; a 15 s drain grace for EXTERNAL stops; the internal self-exit waits without limit for a flatten) | lines 2026-07-16 | DECLARATION | as stated | C17, C18, W-06, W-16; RS-14; IC-57 |
+| IS-10.12 | `main.py` L4123 to L4133 (the self-exit is "Armed only for normal service starts; skipped for operator/diagnostic starts that deliberately bypassed the window guard (--interactive/--resume/TS_IGNORE_MARKET_WINDOW=1), so an operator override is never auto-stopped") | lines 2026-06-19 to 2026-07-25 | DECLARATION (design rule) | an unarmed start ends only by an operator stop or a signal | C24, W-16, R18 |
+| IS-10.13 | SMAP L2016 to L2031 (changelog for commit `d61ece9`, 19-Jun: past the configured window end and flat, exit 0, no systemd restart, the token watcher's exit-0-today path skips, a clean night and a clean 08:30 start; "Never exits while a position is open ... count error → stays up"; armed only for normal starts) | 2026-09-02 | DESCRIPTION | as stated (the rule before 2026-08-25) | C26, W-16; IC-53 |
+| IS-10.14 | `config/system_config.yaml` L105 to L112 (17:35 because of the PB-01 17:00 alert; "was a hardcoded 16:00 in main.py, against Foundation Rule 1.4"; bounded; revert value) | lines 2026-07-25 | DECLARATION | as stated | B-18, W-16 |
+| IS-10.15 | TW L7 ("0 = clean EOD / holiday -> restart ONLY if the clean exit was a PRIOR day"), L182 to L187; `docs/05_incident_response.md` L69 to L71 ("a clean 17:35 self-exit is exit 0 → inactive (dead)", healthy) | 2026-06-19; 2026-08-06 | DECLARATION and DESCRIPTION | as stated | W-16, B-19 |
+| IS-10.16 | `docs/audit/service_window_configurable_25jul2026.md` L107 to L111 | 2026-07-25 | DESCRIPTION | a start after the stop time self-exits within one poll | C24, W-16 |
+| IS-10.17 | `docs/MASTER_PENDING_01-Aug-2026.md` L24 to L28; `docs/audit/STOP_PROCEDURE_06-Aug-2026.md` L145, L179, L194 | 2026-08-26; 2026-08-06 | DESCRIPTION (before 2026-08-25) | a carried delivery position deferred the self-exit; "A MANUAL STOP IS NOW REQUIRED EVERY TRADING NIGHT UNTIL F6 LANDS"; both kill clearers are boot-only | C26; RS-11 |
+| IS-10.18 | `tests/unit/test_kill_alerts_delivery_carveout.py` L1 to L26 (ledger #9, dated 2026-08-03 in its header); `main.py` L707 to L714; `docs/audit/ledger_3a_9_5_step1_03aug2026.md` L260 | 2026-09-03; lines 2026-08-03; 2026-08-03 | INTENT (ledger #9) and TEST | the two 15:15 alerts must not claim that EOD squares off everything: delivery (CNC) is carried by design; the test asserts the property at both sites | C23, R17; IC-50 |
+| IS-10.19 | Tests: `tests/unit/test_main.py` L1172 to L1255 (window; not due before the window end; due when past it and flat; not due when not flat; fail-safe on a count error; the thread sets the event when flat; stays up when not flat); `tests/unit/test_eod_lifecycle_pipeline_aware.py` L91 to L564 (a delivery-only carry lets the service exit; an intraday survivor stays; a conflict or unresolved identity stays and reports; only CNC is protected; production passes a resolver); `tests/unit/test_mc8_async_hardkill.py` L516 to L573 (no self-exit during a flatten; fail-safe); `tests/unit/test_service_window_config.py` L66, L182 to L196 (a late start self-exits) | 2026-08-28; 2026-08-25; 2026-07-16; 2026-07-25 | TEST | as named | C24, C26, W-16 |
+| IS-10.20 | Record 01 L100 (records-check R1-23 PARTLY); Record 03 L282 to L286 (section 3.11.2; "A carried position therefore prevents the clean shutdown", records-check R3-117 DIFFERS at the baseline) | 2026-09-18 | DESCRIPTION (record) | as stated | C26; IC-53 |
+
+### 2.11 Area 11: signals, shutdown order, joins and timeouts, pending-order cancellation and the flatten drain
+
+| ID | Source (path and lines, or key) | Date | Kind | What it states | Bears on |
+|---|---|---|---|---|---|
+| IS-11.01 | M34 MAIN15 L299 to L318; test plan L455 to L460 | 2026-04-17 | INTENT | "Clean shutdown order (reverse of start)": log; stop the signal processor ("stop accepting new work"); the entry gate; the webhook, "app.shutdown() if possible (Flask dev server doesn't support clean stop — acceptable for v2; daemon thread dies on process exit)"; smart TGT; reconciler; monitor; feed; "System stopping"; the SHUTDOWN event; `store.close()`; log; return 0 | C19, C20, W-05; IC-55, IC-58 |
+| IS-11.02 | SPEC section 4.6 L870 to L890 | 2026-04-17 | INTENT | X.1 the webhook returns 503 first; X.2 drain in-flight signals (10 s); X.3 stop the background threads in reverse order of initialisation (EOD, reconciler, monitor, feed, fund manager); X.4 the SHUTDOWN event ("what makes the next start a WARM restart"), "inside the same transaction as the final state"; X.5 release the lock, close the store, exit 0 | C7a, C19, C20, W-05, R7; IC-55, IC-58 |
+| IS-11.03 | `main.py` L115 to L116; L1567 to L1579 ("Signal handlers (MAIN13)"; Windows may not support SIGTERM); L1627 ("Reverse-order shutdown (MAIN15)"); L1628 ("FIX-060: Set shutdown event FIRST so rate limiter aborts immediately"); L1632 to L1642 (M-C8: drain the flatten worker FIRST, before teardown; an external stop gets a bounded grace, then a CRITICAL; "systemd will SIGKILL at TimeoutStopSec regardless"); L1658 to L1661 (B4 census at the clean-stop convergence point; "a crash day produces no census by design"); L1677 (FIX-062 token invalidation); L1681 to L1683 (H-16: stop the webhook receiver FIRST so new webhooks get 503); L1751 ("Flask has no clean stop (daemon thread dies on process exit)"); L1765 to L1766 (FIX-129 Item 45: cancel pending ENTRY orders before stopping the monitor; SL, TGT and EOD legs preserved); L1814 ("WAL checkpoint after all threads joined") | lines 2026-04-17 to 2026-08-01 | DECLARATION | as stated | C17, C19, C20, C21, W-05; IC-55, IC-56, IC-58 |
+| IS-11.04 | `main.py` L1066 to L1072 (the 15 s grace: `TimeoutStopSec=30`, "after which systemd SIGKILLs us"; "15s leaves the other half of the budget for the rest of _shutdown (WAL checkpoint + close)"; a longer flatten gets a CRITICAL, "that is the operator's call") | lines 2026-07-16 | DECLARATION (design rule) | `_shutdown` was meant to fit inside 30 s | C17, C18, W-06, R15; RS-14; CD-05 |
+| IS-11.05 | commit `07979fa` (FIX-060) | commit 2026-05-15 | INTENT | the rate limiter aborts its waits on shutdown, "Prevents indefinite blocking during graceful shutdown"; `main` sets the event first; the entry gate waits a bounded 3 s | C17, R15; IC-56 |
+| IS-11.06 | AUDIT-14JUN F31 L174 to L176; F32 L178 to L180; commit `c303e04` (FIX-169) | 2026-06-13; commit 2026-06-13 | INTENT (findings to fix) | F31: "Signal handlers installed after threads started ... SIGINT during startup bypasses clean shutdown"; F32: "Partial startup failure leaks DB connection — No try/finally around Phase 0e" | C13, C14, W-01, W-02, R12; IC-46; CD-06 |
+| IS-11.07 | `main.py` L3956 to L3957 ("FIX-169 F31: install signal handlers BEFORE starting threads so a SIGINT during startup triggers clean shutdown") | lines 2026-06-13 | DECLARATION | as stated | C14, W-01; IC-46 |
+| IS-11.08 | PRELIVE H-16 L2491 to L2510; `signals/webhook_receiver.py` L1167 to L1171 (A06) | 2026-04-21; lines 2026-04-19 | INTENT and DECLARATION | the shutdown must stop the webhook receiver first (new requests get 503), before `signal_processor.stop()` | C20, W-05; IC-55 |
+| IS-11.09 | CTI P.6 L891 to L910; P.7 L912 to L918; CTD CT-077 and CT-078, L1039 to L1064 | 2026-06-11 | DESCRIPTION and TEST (plan) | SIGINT and SIGTERM set the event; "Graceful shutdown sequence (30s TimeoutStopSec)" in 17 steps; an idle stop: SHUTDOWN, checkpoint, close, "System Stopping", exit 0; a stop during trading: webhook 503, stop the processor, "Cancels ENTRY orders (FIX-129 Item 45)", SL and TGT stay at the broker, "DOES NOT squareoff open positions", the next start is WARM | C18, C21, R14; CD-05 |
+| IS-11.10 | `docs/audit/system_flow_review_15jun2026.md` L78 | 2026-06-14 | DESCRIPTION | the shutdown: the webhook rejects new requests (503, H-16); pending ENTRY orders cancelled; open positions preserved; "WAL PASSIVE checkpoint after threads joined" | C19, C21, R14; IC-58 |
+| IS-11.11 | `broker/order_monitor.py` L531 to L545 (A04) | lines 2026-05-30 | DECLARATION | FIX-129 Item 45: cancel the ENTRY orders at a graceful shutdown, before `stop()`; SL, TGT and EOD legs are preserved | C21, R14 |
+| IS-11.12 | SMAP L1069 to L1075; `PATHS.md` L121 | 2026-09-02; 2026-09-03 | DESCRIPTION | M-C8: a non-daemon flatten drained before teardown; a 15 s grace because of `TimeoutStopSec=30`, then a CRITICAL | C17, C18, R15; CD-05 |
+| IS-11.13 | `docs/audit/HANDOFF_05-Aug-EVENING.md` L1256 to L1276 | 2026-08-05 | DESCRIPTION | `KillSignal=SIGINT` and no `KillMode`; the handler sets the event; `_shutdown()` has one call site; the census is written early, "far inside TimeoutStopSec=30" | C18, W-04, W-06; CD-05 |
+| IS-11.14 | `capital/kill_switch.py` L1266 to L1270 (A13) | lines 2026-07-16 | DECLARATION | `drain_flatten(timeout=None)` is "the INTERNAL eod-self-exit case"; an external SIGTERM passes a bounded grace, because systemd will SIGKILL at `TimeoutStopSec` | C17, W-05, W-06; IC-57 |
+| IS-11.15 | `core/state_store.py` L251 to L258 (A03) | lines 2026-04-17 to 2026-05-14 | DECLARATION | `close()` closes the calling thread's connection; "each thread should call close() before exiting"; the main thread last | C19, W-21; CD-17 |
+| IS-11.16 | `signals/signal_processor.py` L327 to L329, L2215 to L2222, L2236 to L2238 (A06) | lines 2026-04-17; 2026-06-13; 2026-09-10 | DECLARATION | `stop()` waits "up to 5s per SP4"; a shutdown aborts a gate placement (FIX-165e); the gate path is dormant ("nothing calls EntryGate.add()"; written on 2026-09-10, after the last recorded deployment) | C18, C20, W-05, W-06; CD-18 |
+| IS-11.17 | `ops_dashboard/docs/G3_0_CONTROL_PLANE_INVESTIGATION.md` L87 to L90; `docs/audit/STOP_PROCEDURE_05-Aug-2026.md` L25 to L30, L95 | 2026-07-03; 2026-08-06 | DESCRIPTION | `_shutdown` squares off nothing, cancels no GTT and releases no capital; a clean stop sends SIGINT and returns 0; "clean shutdown path (threads joined, DB flushed)"; "Nothing is flattened on shutdown" | C19, C21; IC-58 |
+| IS-11.18 | `docs/audit/service_window_extension_2026-07-24.md` L19 to L23 | 2026-07-25 | DESCRIPTION | the full reverse-order sequence; `cancel_all_entry_orders` finds nothing after the 15:17 square-off | C21, W-05 |
+| IS-11.19 | `docs/RUNBOOK.md` L28 to L53 | 2026-08-26 | INTENT (operator procedure) | graceful stop by `systemctl stop`, then check the SHUTDOWN event and that no orders are orphaned (CT-093 reported as the crash-test proof); kill recovery by `deploy/resume.sh` on the VM or `scripts/clear_kill_switch.py` on the PC; a previous-day kill auto-clears at the next 08:15 start | C21, R19; IC-27, IC-65 |
+| IS-11.20 | UNIT L22 to L25 (A17) | lines 2026-04-19 | DECLARATION | `KillSignal=SIGINT` "so main.py's Ctrl+C handler runs (clean shutdown, SHUTDOWN event, DB flush)"; `TimeoutStopSec=30` | C18, W-06, B-40; CD-05 |
+| IS-11.21 | Tests: `tests/unit/test_fix129_graceful_shutdown.py` L1 to L10, L82 to L150; `tests/unit/test_main.py` L339 to L341 (the handlers are mocked to set the event), L924 to L967; `tests/unit/test_mc8_async_hardkill.py` L414 to L485 | 2026-05-30; 2026-08-28; 2026-07-16 | TEST | ENTRY orders cancelled, exit legs preserved, a failure is not fatal; SHUTDOWN written, processor stopped, store closed, 0; the drain is bounded on an external SIGTERM, `_shutdown` asks the kill switch to drain before teardown and logs CRITICAL on an overrun | C17, C21, W-01, W-05 |
+| IS-11.22 | Record 03 L284 (teardown order), L286 ("Shutdown complete" is the only positive evidence; records-check R3-118 PARTLY) | 2026-09-18 | DESCRIPTION (record) | as stated | W-05 |
+
+### 2.12 Area 12: exit codes, the restart policy and the service unit (TimeoutStopSec, KillSignal, RestartPreventExitStatus, PrivateTmp)
+
+| ID | Source (path and lines, or key) | Date | Kind | What it states | Bears on |
+|---|---|---|---|---|---|
+| IS-12.01 | `main.py` L11 to L20; M34 MAIN3 L41 to L47; M41 SU15 L329 to L338; M41C SU15 L292 to L301; `docs/01_system_architecture.md` L162 to L174 | 2026-04-17 to 2026-06-03 | DECLARATION, INTENT and DESCRIPTION | exit-code tables: 0 to 5 in MAIN3; 0 to 8 elsewhere; 5 with or without "missing env var"; 6 "token missing (non-interactive)" in the architecture document | C4, W-19, S-59; IC-40, IC-61, IC-62 |
+| IS-12.02 | UNIT L7, L22 to L35, L42 to L46 (A17; not proof of installation) | lines 2026-04-19 to 2026-08-23 (L22 to L25 and L34 2026-04-19; L27 to L29 and L32 to L33 2026-05-05; L30 to L31 2026-06-18; L35 2026-08-23) | DECLARATION | `Type=simple`; SIGINT on stop; 30 s; "only restart on non-zero exit"; 0 no restart; 3 "would loop on same failure"; 4 HALT "manual --resume required" (the 18-Jun crash loop); 1 and 2 restart "so system can recover mid-day"; `Restart=on-failure`, `RestartSec=10`, `RestartPreventExitStatus=3 4 5`; `PrivateTmp=true` (security hardening). The comment does not mention 5; there is no start-rate limit | C4, C31, B-40, R4; IC-59, IC-63 |
+| IS-12.03 | The unit's history in commit messages: `316b335` (the first unit, with `StartLimitIntervalSec=300` and `StartLimitBurst=3`, "matches step3 deployment"); `ccde039` (`Restart=always`; StartLimit removed; "token-watcher handles the 'wait for fresh token' gating so an always-restart loop will not hammer with a stale token"); `398dbae` ("Restart=always caused infinite holiday alerts on weekends"; back to `on-failure` with `RestartPreventExitStatus=3`); `ebfe780` ("3" to "3 4"; applied to the live VM unit and the repository copy; settles in `failed`); `2f67bb8` ("3 4" to "3 4 5", IS-6.06) | commits 2026-04-19, 2026-04-22, 2026-05-05, 2026-06-18, 2026-08-23 | INTENT (with claims about the VM) | the restart policy's history and its stated reasons | C4, B-40, R4; IC-59, IC-60, IC-63 |
+| IS-12.04 | STEP3 L99 to L108, L115 to L119, L372 to L375; STEP4A L10 to L16 | 2026-04-18 | INTENT | the original unit: SIGINT, 30 s, `on-failure`, 10 s, StartLimit 3 in 300 s ("after 3 failures in 300s, systemd stops trying. Good."), `PrivateTmp=true`; tests expected: a clean SIGINT stop, an automatic restart after `kill -9`, "Restart budget works (3 fails in 300s stops retry)" | C4, B-40; IC-63 |
+| IS-12.05 | CTI L75 to L83, L109 to L112, L844 to L846 | 2026-06-11 | DESCRIPTION | the unit then: prevent list "3"; StartLimit not set (defaults); 1 and 2 restart automatically; "Manual required: exit code 3 ..., exit 4 ..., exit 6 (token missing in live mode)" | C4, R4; IC-59, IC-60 |
+| IS-12.06 | CTD CT-087 L1164 to L1174 (exit 3: no restart loop), CT-089 L1188 to L1198 (the restart-loop protection relies on the default `StartLimitBurst`, "StartLimitBurst not explicitly set") | 2026-06-11 | TEST (plan) | as stated | C4; IC-59, IC-63 |
+| IS-12.07 | The prevent list "3 4" in documents: SMAP L658, L671, L896, L1940; `docs/03_daily_operations_runbook.md` L156, L168 to L171; `docs/05_incident_response.md` L64 to L71; `docs/RUNBOOK.md` L46, L62, L139; `docs/disaster_recovery.md` L180 to L181; `docs/expected_alarms.md` L191; `docs/MASTER_PENDING_01-Aug-2026.md` L844, L1356; `docs/audit/THURSDAY_CONTINGENCY_06-Aug-2026.md` L38; `docs/decisions/ACTIONS_not_decisions.md` L78, L94; `ops_dashboard/docs/G3_0_CONTROL_PLANE_INVESTIGATION.md` L91 to L97; `docs/gui_project/G0_BACKEND_INVESTIGATION_REPORT.md` L161. "3 4 5" in force from 23-Aug: `docs/audit/ROLLBACK_AND_ATTENDANCE_23-Aug-2026.md` L758 | 2026-06-18 to 2026-09-02 | DESCRIPTION | exit 4 (HALT) "exits once and stays down" (`failed`), not a loop; `inactive (dead)` after exit 0 is healthy | C4, R4; IC-59 |
+| IS-12.08 | "3 4" in the code and tests: `main.py` L3456 to L3457; `utils/instance_lock.py` L8; `tests/unit/test_config_auditor.py` L208 | lines 2026-07-27; 2026-07-17; 2026-07-27 | DECLARATION and TEST | as stated (written before the 2026-08-23 change) | C4, B-30, S-34; IC-59 |
+| IS-12.09 | TW L4 to L15 (the exit-code contract), L40 to L51 (the window 08:00 to 16:00, "Mirrors the main.py guard"; `main.py` "is the authoritative backstop"), L144 to L188 (case 4, case 3 and a catch-all branch for 1, 2 and any other code), L149 (the HALT alert ends "then: main.py --resume"); A04's file | lines 2026-04-22 to 2026-06-19 | DECLARATION | 0: restart only if the exit was on a prior day; 4 today: no restart and one alert a day, a prior day: one clean start; 3 the same; 1 and 2: restart with back-off, at most 3 an hour; every start needs a fresh token | C4, B-19, R4, R19; IC-12, IC-64, IC-65 |
+| IS-12.10 | `docs/audit/integrity_audit_2026.md` L3118 to L3128 (a self-restart matrix: crash, exit 0, 3, 4, hung, the token never arrives, a start after the window; "two windows, coherent (starter narrower)") | 2026-08-01 | DESCRIPTION | as stated | B-19, R4; IC-12 |
+| IS-12.11 | SMAP L665 to L694 (the boot chain; "a clean exit 0 never self-restarts — which is why the ~17:35 self-exit ends the trading day") | 2026-09-02 | DESCRIPTION | as stated | W-16, R4 |
+| IS-12.12 | `docs/03_daily_operations_runbook.md` L140 to L158; `docs/05_incident_response.md` L48 to L58 | 2026-08-03; 2026-08-06 | INTENT (operator procedure) | `resume.sh` on the VM, `clear_kill_switch.py` on paper and the PC; never run `main.py --resume` directly | R19; IC-65 |
+| IS-12.13 | Record 03 section 3.2 L23 to L51 (the unit "as installed" on the testing VM: prevent "3 4 5"; the installed copy lacks two comment lines; a `watchman.conf` drop-in); section 3.7 L164 to L179 (the exit table; the record's own "KNOWN DEFECT (registered in chapter 22)": exit 6 is not prevented, so the unit restarts every 10 s without bound; the same for 1, 2, 7, 8 and 9) | 2026-09-18 | DESCRIPTION (record, testing VM) | as stated; it agrees with commit `2f67bb8` on the two comment lines | C4, B-40, R4; IC-60, IC-62 |
+| IS-12.14 | M34 MAIN25 L397 ("systemd service file (deployment concern)") | 2026-04-17 | INTENT | the unit lies outside the specification of `main.py` | B-40 |
+| (none) | `PrivateTmp`: declared since the first unit (STEP3 L119; UNIT L46); no admitted source discusses its effect on the instance lock or on any A01 path (searched). | — | — | — | C31, R22; IC-22 |
+
+### 2.13 Area 13: the event bus, IDs, exceptions, constants and the account registry
+
+| ID | Source (path and lines, or key) | Date | Kind | What it states | Bears on |
+|---|---|---|---|---|---|
+| IS-13.01 | LOCKED-YAML EV1 to EV6, L527 to L608 (EV1 L533 to L540: "No queue, no async, no background thread ... Async can be added later"); G9 L158 to L167 (direct calls by default; the bus "reserved ONLY for 4 fan-out events"; fan-out means 3 or more subscribers) | 2026-07-22 | INTENT | synchronous dispatch; explicit subscription; an envelope (uuid4 hex id, IST timestamp, source module); collect all errors, then raise `EventDispatchError`; no ordering guarantee; four event types, "No others added speculatively" | C29, M-01 to M-08; IC-67; CD-20 |
+| IS-13.02 | `core/events.py` L1 to L43 (module docstring) | lines 2026-04-17 to 2026-04-26 | DECLARATION | restates EV1 to EV6; EV7 retired (DEAD-2 removed OrderStateChanged); EV8 EodSquareoffComplete, "Published after the full EOD fire sequence completes"; EV9 OrderStatusChanged (BL-12), "Published by order_monitor on every successful OSM transition; consumed by order_manager"; "Does not use queues, threads, or async" | C29, M-05, M-12; IC-67, IC-68, IC-69 |
+| IS-13.03 | `core/events.py` L66 to L69, L147 to L156, L166, L173 to L181, L197 to L212, L225 to L229, L242 to L260 (the class docstring: `async_dispatch=True` (FIX-003) runs a subscriber in a single-threaded executor; async errors are logged and not raised), L275 to L285, L301 to L314, L348 | file 2026-05-19 (L253 to L259 lines 2026-05-12) | DECLARATION | the envelope; asynchronous dispatch; `shutdown` "Call at process exit"; per-event docstrings (EodSquareoffComplete "EOD5 step 6") | C29, M-03, M-04, M-10, M-12; IC-67, IC-68 |
+| IS-13.04 | SPEC L126; SMAP L305, L1660 to L1663 | 2026-04-17; 2026-09-02 | INTENT and DESCRIPTION | "Tiny EventBus for 4 fan-out events ONLY (G9)"; the bus is in-process only; the slippage recorder subscribes asynchronously | C29, M-03, M-06; IC-67 |
+| IS-13.05 | AUDIT-26APR L145 (DEAD-2: OrderStateChanged had no production subscriber); `tests/unit/test_events.py` L4 to L11, L372 to L398 (EV8), L415 to L487 (FIX-003 asynchronous dispatch) | 2026-04-26; 2026-05-12 | INTENT and TEST | as stated | C29, M-03, M-12; IC-67 |
+| IS-13.06 | `orders/order_manager.py` L149 to L153 (A10) | 2026-07-26 | DECLARATION | a subscriber must swallow its own errors, because the bus raises to the publisher | C29, M-08 |
+| IS-13.07 | `orders/eod_squareoff.py` L21 to L22 (A12) | 2026-08-04 | DECLARATION | EOD5: soft kill, cancel entries, exit positions, log the summary, publish EodSquareoffComplete, optional resume | C29, M-12; IC-68 |
+| IS-13.08 | `orders/order_placer.py` L694 to L700 (A10); `broker/order_monitor.py` L1217 to L1225, L1264 to L1266 (A04) | lines 2026-04-22 to 2026-05-14; file 2026-08-01 | DECLARATION | the placer subscribes to OrderStatusChanged for the zero-fill-then-cancel path ("Audit #7 + FIX-017"); the monitor publishes on a successful transition; the auto-step cases (FIX-155c) | C29, M-07, M-12; IC-69 |
+| IS-13.09 | `data/candle_store.py` L133 to L139 (A05) | 2026-07-06 | DECLARATION | `gc_sweep` is "Called on InstrumentsRefreshed event" | C29, M-07; CD-25 |
+| IS-13.10 | LOCKED-YAML ID1 to ID7, L905 to L1013 (ID5 L978: validators "Used by state_store and any layer that must reject malformed IDs at insert time"); `core/ids.py` L1 to L28; commit `9ddb632` (FIX-093: truncate the order tag to 16 characters for the Kite API); `tests/unit/test_ids.py` L273 to L301 | 2026-07-22; lines 2026-04-17; commit 2026-05-17; 2026-05-17 | INTENT, DECLARATION and TEST | a prefix and the full 32-character uuid4 hex; zero-argument generators; Layer 0, standard library only | C39, M-14, M-15; CD-10 |
+| IS-13.11 | `core/ids.py` L104 to L124 (`truncate_tag_for_broker`) | lines 2026-05-17 | DECLARATION | "Kite API enforces 20-char max on tag field, but empirical testing shows rejection at 17+ chars. Truncate to 16" | C39, M-16; IC-71 |
+| IS-13.12 | `broker/zerodha_adapter.py` L628 to L635, L1925 to L1931 (A04); `tests/unit/test_emergency_exit_tag_fix.py` L1 to L14 | lines 2026-07-01, 2026-07-02; 2026-07-01 | DECLARATION and TEST | the broker limit is 20 characters ("Invalid tags: max allowed tag length is 20"); the adapter truncates at the single submission point; "broker↔trade matching is by order_id, never the tag" (L634 to L635); the reconciler's tag-correlation recovery matches by the truncated tag (L1928 to L1929) | C39, M-16, M-17; IC-71, IC-72 |
+| IS-13.13 | `orders/order_reconciler.py` L217 to L235 (A12) | 2026-09-03 | DECLARATION | tag-based recovery of a timed-out or crashed entry; handling of 48-bit collisions | C39, M-16; IC-72 |
+| IS-13.14 | LOCKED-YAML E1 to E6, L449 to L525 (E4 L504: `core/time_authority.py` "ClockSkewTooLarge removed, imported from here"); `core/exceptions.py` L1 to L21 | 2026-07-22; lines 2026-04-17 | INTENT and DECLARATION | a single root, "Every custom exception in the system inherits from it"; SEVERITY per class; five sub-roots; concrete exceptions seeded to avoid "ad-hoc exception definitions scattering across modules"; `(message, **context)`; Layer 0; "Single authoritative location ... no custom exceptions are defined elsewhere" | C30, C39, M-18 to M-25; IC-19, IC-70 |
+| IS-13.15 | `core/exceptions.py` class docstrings (for example `ClockSkewTooLarge` L330 to L336) | lines 2026-04-17; file 2026-06-23 | DECLARATION | the "Raised by" lists; `ClockSkewTooLarge` is "Also raised (indirectly via callback) when runtime avg skew > halt_sec" | C30, C39, M-20, M-23; IC-20 |
+| IS-13.16 | `core/config_auditor.py` L68 to L72 (A02); `core/migrations.py` L136 to L137 (A03); `core/state_store.py` L120 to L143 (A03, EXC-1); `utils/startup_checks.py` L956 to L963 (EXC-2); AUDIT-26APR EXC-2 L128 to L133; `tests/unit/test_startup_checks.py` L366; `tests/unit/test_exceptions.py` L4 to L14 | 2026-08-23; 2026-07-26; 2026-08-28; 2026-07-17; 2026-04-26; 2026-07-17; 2026-04-17 | DECLARATION, INTENT and TEST | a deliberate `ValueError` (for Pydantic wrapping); `MigrationError(Exception)` outside the tree; EXC-1: store errors belong inside the tree for the safety net; EXC-2: `StartupCheckFailed` must inherit `ConfigError` | C39, M-19, M-24; IC-70 |
+| IS-13.17 | `core/constants.py` L1, L12 to L42 | lines 2026-08-02 | DECLARATION (design rule) | "Q4 / ledger #2 ... the ONLY products an emergency (HARD_KILL) flatten may sell"; "Delivery (CNC) SURVIVES the kill"; the invariant "no live INTRADAY position ... (Rama, 30-Jul)"; a single source shared by five call sites; NULL, NRML and unknown products flattened LOUDLY | C39, M-26 to M-31; RS-08; IC-73; CD-22 |
+| IS-13.18 | `docs/audit/q4_hard_kill_delivery_decision_30jul2026.md` L1 to L44 | 2026-07-30 | INTENT (attributed to Rama) | Rama's revised decision: HARD_KILL flattens only MIS and intraday; CNC survives; force-closing delivery is a separate explicit action | C39, M-27; RS-08 |
+| IS-13.19 | `capital/kill_switch.py` L564 to L571, L757 to L761, L1846 to L1851, L1978 to L1983 (A13) | 2026-09-03 | DECLARATION | the auto-clear and publish rules; "A KNOWN non-intraday product (NRML) exits under its own intent (H-5 correctness)"; Kite nets per product, so an exit must use the position's own product | C39, M-28, M-30; IC-73 |
+| IS-13.20 | `core/state_store.py` L798 to L800 (A03) | 2026-08-28 | DECLARATION | a warning against IN-list product filters | M-29; CD-22 |
+| IS-13.21 | The account registry: IS-5.09, IS-5.10 and IS-5.11; `tests/unit/test_account_registry.py` L362 to L396 (paper capital and label populated; an empty capital is a validation error) | 2026-06-13 | INTENT, DECLARATION and TEST | see area 5 | C39, M-32 to M-41; IC-42 |
+| IS-13.22 | `core/evidence_contract.py` L210 to L216, L456 to L458 (A15); `signals/webhook_receiver.py` L111 to L138 (A06) | 2026-09-11; 2026-09-09 | DECLARATION | an unresolved arm must make the record FAILED; WR4b uses the AR12 tag, and "unknown" is not stripped | C39, M-37 |
+| IS-13.23 | Package files `core/__init__.py` and `utils/__init__.py`: no intent source beyond the folder tree of SPEC section 2 (L116 to L298; for example L126 to L132 core modules, L233 to L235 utils modules) | 2026-04-17 | INTENT (structure only) | — | M-42 |
+| IS-13.24 | Tests: `tests/unit/test_drift_handler.py` L282 to L291; `tests/unit/test_e4_w10_pnl_contract.py` L570 to L577; `tests/unit/test_eod_lifecycle_pipeline_aware.py` L225 to L245; `tests/unit/test_kill_switch_product_filter.py` L197 to L204; `tests/unit/test_reconciler_co_refusal.py` L219 to L231 | 2026-04-19; 2026-07-17; 2026-08-25; 2026-08-04; 2026-08-02 | TEST | expected behaviour of the consumers of the A01 core modules, as documents only | C29, C39, M-11, M-26 to M-31 |
+| IS-13.25 | Record 02 (SRC-41), its entries for `core/events.py`, `core/ids.py`, `core/exceptions.py`, `core/constants.py` and `core/account_registry.py` | 2026-09-18 | DESCRIPTION (record) | consistent with the code; the unknowns it lists are resolved by the AUDIT items | C39, M-44 |
+
+### 2.14 Area 14: `scripts/check_tz.sh` and `scripts/ist_now.sh`
+
+| ID | Source (path and lines, or key) | Date | Kind | What it states | Bears on |
+|---|---|---|---|---|---|
+| IS-14.01 | `scripts/check_tz.sh` L2 to L19 (header), L37 | lines 2026-06-29 | DECLARATION | "T4: loud self-check that `TZ='Asia/Kolkata' date` is trustworthy in THIS shell"; Git Bash and MSYS2 lack zoneinfo; compares the suspect form's UTC offset with `now_ist()` through `ist_now.sh` (L37: the decision keys on the offset); passes on a Linux VM with zoneinfo and fails on the MSYS2 PC; "Diagnostic/deterrent only: deploy_preflight surfaces it but never blocks on it"; test hooks | C39, B-38 |
+| IS-14.02 | `scripts/ist_now.sh` L2 to L12 (header) | lines 2026-06-29 | DECLARATION | "the single approved operator 'what time is it (IST)?'"; reuses `now_ist()` (a fixed +05:30); never calls `date` with a zone name | B-39 |
+| IS-14.03 | commit `3114326` (T4) | commit 2026-06-29 | INTENT | the root cause of 29-Jun (Git Bash returned UTC); "App + VM were never at risk ... the VM is NTP-synced"; an operator-tooling guard only; no restart; the rule: never `TZ='Asia/Kolkata' date` in Git Bash | B-38, B-39, B-41, R10 |
+| IS-14.04 | `PATHS.md` L219 to L226 | 2026-09-03 (the passage is dated 29-Jun) | INTENT | the T4 rule; run `deploy_preflight.py` before any deploy or restart; `check_tz.sh` is the loud self-check; the application and the VM are unaffected | B-38, B-39 |
+| IS-14.05 | `scripts/deploy_preflight.py` L3 to L13 (outside A01) | 2026-06-29 | DECLARATION | the T4 operator preflight runs on the PC; the VM is the authoritative clock and market-state source; `check_tz.sh` runs "for VISIBILITY only" and never blocks | C39, B-38 |
+| IS-14.06 | `tests/unit/test_t4_deploy_preflight.py` L31 to L115 | 2026-06-29 | TEST | `evaluate` is pure logic; "tz check failure never blocks"; `ist_now` emits a valid IST time; `check_tz` fails on the broken UTC form and passes when the forms agree | B-38, B-39 |
+| (none) | No source in `config/` or `deploy/` invokes either script (STUDY section 10.10; confirmed by the same search). | — | — | — | C39, B-38, B-39 |
+
+## 3. The requirement labels
+
+### 3.1 Label families used in the A01 files: origin and definition
+
+The A01 files carry many label families. Several prefixes are reused for different things in different documents. The table gives the defining source that matches the A01 usage and every collision found. "Not defined" means that no defining passage was found in the repository at the baseline (searched with `git grep` over all tracked files and with `git log --grep` and `git log -S` over the commit messages).
+
+| Family | Used in the A01 files (examples) | Defined at (path, lines, date) | Notes, reuse and collisions |
+|---|---|---|---|
+| MAIN1 to MAIN25 | `main.py` L7 ("Locked Decisions: MAIN1-MAIN25"), L112, L176, L361, L382, L442, L638, L654, L1567, L1583, L1596, L1627, L2082, L2088, L2196, L2218, L2294, L2298, L2316, L2616, L2991, L3846, L3868, L3920, L4002, L4093, L4166, L4248, L4251, L4282; `tests/unit/test_main.py` L7 to L14; `signals/signal_processor.py` L1973, L2013 | M34 L14 to L398 (2026-04-17) | M34 L490 says to lock them "under main_module: section" of the locked-decisions register; LOCKED-YAML has no such section. The MAIN numbers in `main.py` keep M34's meanings, except that L2088 "Phase 0a: Logger setup (MAIN4)" heads the argument parsing (C40). MAIN13 heads both the signal handlers (L1567) and the runtime loop (L4248), as in M34. MAIN17 and MAIN22 to MAIN25 are not cited individually in the code. |
+| SU1 to SU20 | `main.py` L7, L210, L1835 to L1950, L2098, L2524 to L2544, L2581, L2754, L4207; `utils/holiday_guard.py` L9; `tests/unit/test_interactive_startup.py`; `broker/zerodha_adapter.py` L1306 ("pre-SU19") | Two definitions: M41 L43 to L391 and M41C L76 to L359 (both 2026-04-17) | They differ at SU1, SU6, SU10, SU12, SU15, SU17, SU19 and SU20 (IC-01). `main.py`'s "SU19" (L2581, L2754) and the adapter's "pre-SU19" follow M41C. Both say "Locked: SU1-SU20 under startup_module section" (M41 L467; M41C L394); there is no such section in LOCKED-YAML. |
+| SC1 to SC15 | `utils/startup_checks.py` L14 to L29 and throughout; `tests/unit/test_startup_checks.py` | M33 L25 to L272 (2026-04-17) | M33 L370: "Locked: SC1-SC15 under startup_module: section"; not in LOCKED-YAML. |
+| G1 to G10 (G2a and G2b, G5a to G5c) | `utils/startup_checks.py` (G4, G5a, G5c); `core/time_authority.py` L35 (G4); `core/events.py` L6 (G9); M33 L16 to L23; M34 L12 | LOCKED-YAML L28 to L180 (2026-07-22; first 2026-04-17; its meta says created 2026-04-14) | Collisions: "G5 redesign (G5a-G5d)" is a dashboard phase (commit `91cc207`, 2026-07-05; `ops_dashboard/docs/G5_REDESIGN_PHASE_B.md`); G1 to G6 are also campaign-practice rules in `docs/campaign_practices.md` (for example SMAP L690 "G3 — what this block does not repeat"; `core/constants.py` L15 "red-team G1", L41 "G2"; `docs/MASTER_PENDING_01-Aug-2026.md` L925 to L927, G1 and G2 on approval provenance). `main.py` L2767 "G3 capital_drift" uses the YAML meaning; the meaning of L4232 "effect-trail = _audit_send, G5" is not established. |
+| Q1 to Q3; Q4(a), Q4(b), Q4(c) | `main.py` L2881 (Q4(b)), L3428, L3444, L3455 to L3456 (Q4(c)); `utils/startup_checks.py` L1023 (Q4(b)); `core/constants.py` L12 (Q4) | Q1 to Q3: LOCKED-YAML L185 to L212. The lettered Q4 items have no single defining list: the 14-Jul "Q4 capital-safety hardenings" are listed without letters in `docs/audit/deployment_evidence_pb01_shadow_14jul2026.md` L8 and `docs/audit/pending_reconciliation_14jul2026.md` L173 (the gate-8 sector TOCTOU; the `kill_switch=None` boot fail-fast in LIVE; the structure-exit and trailing-SL two-owner guard); the letters appear in code and test comments (`tests/unit/test_gate8_sector_toctou.py` L1 Q4(a); `tests/unit/test_startup_checks.py` L1393 Q4(b)) and in commit `c1eea66` ("feat(q4c)", 2026-07-14) | "Q4" also names the 30-Jul HARD_KILL against DELIVERY decision (`docs/audit/q4_hard_kill_delivery_decision_30jul2026.md`, used by `core/constants.py` L12) and other Q4s (`docs/audit/batch_classification_16jul2026.md` L137; `docs/audit/check1_w8_design_26jul2026.md` L165; `docs/audit/ct_harness_safety_18jul2026.md` L72). The question list that the 14-Jul Q4 belongs to is not established. |
+| P1 to P18 (P1_market_windows_api, P7a, P8_P13, P9a and P9b, P11a and P11b) | `core/market_windows.py` L22 (P1_market_windows_api); `main.py` L4002 (P17); `utils/startup_checks.py` (P17) | LOCKED-YAML L214 to L411 (P17 L370 to L376) | SPEC L89: "raised by the system owner from direct experience" (RS-05). Collision: "P11 (14-Jul)" in `main.py` L2219 is the migration-on-open guard (AC1 to AC5; commit `ed1c4b9`; `docs/audit/migration_on_open_rule_14jul2026.md`), not the YAML P11a or P11b; "P0", "P1", "P2" and "P3" in `main.py` comments are fix tiers or batch items, not YAML P decisions. |
+| E1 to E6 | `core/exceptions.py` L9 to L15; `utils/startup_checks.py` (E1, E3) | LOCKED-YAML L449 to L525 | Collisions: "E4" in `main.py` L3120 and L3138 is the E4 and W10 P&L contract (`docs/decisions/01_e4_w10_pnl_contract.md`); "E-4" is an item of the 02-Jul security audit (`main.py` L4056); "E.1" is named with H-17 in `tests/unit/test_time_authority_sweep.py`; "E4 reboot drill" (03-Jul, SMAP). |
+| EV1 to EV6; EV7 to EV9 | `core/events.py` L9 to L41; `core/exceptions.py` (EV4) | EV1 to EV6: LOCKED-YAML L527 to L608. EV7 to EV9: defined only in the `core/events.py` docstring L27 to L37 | — |
+| CL1 to CL6 | `main.py` L2294 (CL4); `utils/startup_checks.py` (CL4); M34 L12, L54 | LOCKED-YAML L728 to L789 | — |
+| L1 to L10 (logging decisions) | `core/ids.py` L20 (L9); M34 L49 (L8) | LOCKED-YAML L791 to L903 (decision L8 at lines L864 to L869) | The labels look like line references. This file writes them "decision L8"; every other "L" followed by digits is a line number. |
+| ID1 to ID7 | `core/ids.py` L8 to L21 | LOCKED-YAML L905 to L1013 | — |
+| RC1 to RC20 | `main.py` L3861 ("RC4 retired"), L3868 ("MAIN10, RC14"); M33 L22; M34 L12, L231 | LOCKED-YAML L2204 to L2400 (RC14 L2338 to L2344: `start()` runs the startup reconcile; RC4 L2233 to L2240: the event-driven trigger; RC13: not re-entrant) | Collision with M25 (2026-04-17): there RC13 is the startup reconciliation on `start()` (L188 to L192), RC14 the interaction with the order monitor (L194 to L200) and RC4 the lifecycle with an event subscription (L56 to L60). `main.py`, M33 and M34 use the YAML meaning of RC14. |
+| EOD1 to EOD12 and the other YAML module families (RL, CC, PR, CR, AW, S1 to S15, SE, SS) | `core/events.py` (EOD5); `core/constants.py` and `main.py` L707, L718 (EOD6); `core/market_windows.py` L158 (S14) | LOCKED-YAML module sections (EOD L1398 to L1570; S L2604 to L2790; and so on); `orders/eod_squareoff.py` L14 to L30 restates EOD2 to EOD11 (A12) | Collisions: "S4" in `main.py` L4007 and `utils/startup_checks.py` is the 17-Jul `/health` authentication item (`docs/audit/s4_boot_outage_17jul2026.md`); "S1" is the 17-Jul market-day guard (`tests/unit/test_s1_market_day_guard.py` L1 to L14; AB-910 section 2.2); "S1" and "S2" are also the two deployment gates of 14-Jul (`docs/audit/deployment_evidence_pb01_shadow_14jul2026.md` L5). None of these is the YAML S1 or S4. |
+| AR1 to AR12, AR12b (account registry) | `core/account_registry.py` L10 to L24, L50 to L245, L250, L279 to L358 | Defined only in that module's docstring (L10 to L24, AR1 to AR11) and comments (L250 AR12, L328 AR12b, 2026-09-09); not in LOCKED-YAML or the module instructions | Collision: AR1 to AR9 are the "Accepted Risks" register in `docs/campaign_practices.md` (section R) and `docs/MASTER_PENDING_01-Aug-2026.md` L2396 to L2406; `capital/kill_switch.py` L1443, L1834, L1960 ("accepted risk AR8"); `core/cron_registry.py` L66 ("AR2-style"). The account contract itself comes from SU2, SU3 and IC5 (IC-42). |
+| IC1 to IC15 | `main.py` L2852 (IC7), L3088 (IC8); `utils/startup_checks.py` (IC13); `core/exceptions.py` (IC2) | M38 L21 onward (IC5 L84 to L104) | Not this file's IC-nn conflict numbers (section 3.2). |
+| Module-instruction lock families (KS, OM, SP, SH, ST, ZA, WR, FM, PR and others) | `core/events.py` (KS8, OM6, OM9); `main.py` L2395 (ZA16a), L2960 and L2963 (SH5), L2991 (ST13), L3611 (SP7), L2735 and L2780 (FM18, FM19); `signals/signal_processor.py` L329 (SP4); `signals/webhook_receiver.py` (WR4b); `config/system_config.yaml` L327 (WR14), L355 (KS7) | `docs/web_claude/01_module_instructions/module_NN_*.txt` (for example KS in module 18; OM in module 14; ST13 in module 32; SH5 in module 39; SP7 in modules 20 and 30), all 2026-04-17 | Individual members were not traced. |
+| DH1 to DHn | `capital/drift_handler.py` L14 to L50 | that module's docstring (A09; lines 2026-04-19) | The DH1 text and the module's own escalating set differ (IC-52). |
+| FIX-nnn (and "Item N", "Fix E", "FIX-155c", "FIX-165e") | throughout `main.py`; `utils/instance_lock.py` (FIX-081, FIX-106); `utils/holiday_guard.py` (FIX-110, FIX-181); `core/market_windows.py` (FIX-053, FIX-073, FIX-094, FIX-169, FIX-180, FIX-181); `core/ids.py` (FIX-093); `core/exceptions.py` (FIX-060); `core/constants.py` (FIX-182); `core/account_registry.py` (FIX-133, FIX-187); `utils/startup_checks.py` (FIX-096, FIX-099, FIX-107, FIX-129, FIX-135, FIX-136, FIX-151, FIX-169) | No register. Each number is introduced in a commit subject, for example FIX-060 `07979fa` (2026-05-15), FIX-062 `14a889c` (2026-05-16), FIX-094 `ee91659` (2026-05-17), FIX-107 `be70985` (2026-05-18), FIX-110 `0e75c89` (2026-05-18), FIX-127 `79ea97d` (2026-05-30), FIX-128 `0cd1b14` (2026-05-30), FIX-129 `5a52b74` (2026-05-30), FIX-130 `0cc0009` (2026-05-30), FIX-151 `37e6698` (2026-06-03), FIX-154 `b9b8ca0` (2026-06-07), FIX-163 `7fc06ff` (2026-06-12), FIX-164 `9536a14` (2026-06-12), FIX-169 `c303e04` (2026-06-13), FIX-181 `7f93c2f` (2026-06-16), FIX-188 `bc2491c` (2026-06-18), FIX-189 first in `2ac32ae` (2026-06-19; the window and self-exit parts in later commits, for example `d61ece9` the same day). FIX-100 to FIX-116 are tabulated in `docs/audit_2026-05-18_completed.md` (L33 FIX-106, L37 FIX-110). "Item N" is a numbered item of a batch commit message (FIX-130 Item 7; FIX-129 Items 27 and 45) | FIX-081 has no commit subject; it is described only in code comments and `docs/audit/batch3_done_17jul2026.md`. The sub-items Fnn of FIX-166 and FIX-169 (F06, F08, F13, F15, F17, F18 to F40) are defined in AUDIT-14JUN (F25 L102, F31 L174, F32 L178, F34 L186). Collisions: "F1 (16-Jul)" (`main.py` L2909, L3086: the SECTOR_EXPOSURE gate mode), "F-1" (SECAUDIT-02JUL L139: the disk floor), "F.1" (the April operational-readiness phase, commit `316b335`), "F6" (a delivery workstream named in `docs/MASTER_PENDING_01-Aug-2026.md` and the 06-Aug stop procedure) and "F / D-1b" (`main.py` L3338; UNPUSHED_LEDGER) are different items. |
+| H-n | `main.py` L126, L129, L140 (H-11), L1681 (H-16), L2395 (H-20), L3863 (H-7); `tests/unit/test_time_authority_sweep.py` (H-17) | Two numberings: PRELIVE (2026-04-21): H-7 L1630, H-11 L1729 (`risk_engine` uses `datetime.now()`), H-16 L2491, H-17 L2531 ("Multiple modules bypass time_authority"), H-20 L2582; AUDIT-04JUL (2026-07-06): H-11 L90 (`_invalidate_token` targets the wrong path) | `main.py`'s H-7, H-16 and H-20, and the sweep's H-17, follow the April report; `main.py`'s H-11 follows the July audit. `capital/drift_handler.py` L69 cites "H-1 / E.2" (numbering not traced). |
+| BL-n, EF-n | `main.py` (BL-1, BL-2, BL-6, BL-7b, BL-9, BL-10a, BL-12, BL-16, BL-19, BL-20, BL-21; EF-4, EF-7); `tests/unit/test_main.py` L784 to L816 (BL-15); `core/time_authority.py` (BL-21); `core/events.py` (BL-12); `utils/startup_checks.py` (BL-20, EF-7) | BL-n: PRELIVE (BL-1 L208, BL-2 L335, BL-12 L2100, BL-20 L3454, BL-21 L3526). EF-n: `docs/web_claude/03_audit_responses/extra_findings.md` (EF-1 L11, EF-4 L78, EF-5 L117, and so on) | — |
+| M-xn (M-C1 to M-C8, M-K1 to M-K4, M-A1 and M-A2, M-S, M-O, M-R, M-SC, M-U1, M-X) | `main.py` L1057 to L1066, L1258, L1344, L1623, L1632, L2055, L2640, L2737, L4143, L4275 (M-C8, M-C1, M-A2); `core/time_authority.py` (M-K4) | AUDIT-04JUL L113 (M-C1), L120 (M-C8), L144 (M-K1), L147 (M-K4), L156 (M-A2), L157 (M-U1); triage in `docs/audit/q5_wave7_backlog_triage_14jul2026.md` L34 | Collision: April commits use M-1, M-3 and M-4 (PRELIVE medium items); `docs/audit/HANDOFF_05-Aug-EVENING.md` L1269 uses "M3" for a verification step. |
+| MED #n | `main.py` L2304 (MED #10) | `docs/web_claude/02_phase_instructions/phase_g_medium_fixes.txt` (MED #10 L86 to L99, 2026-04-17) | — |
+| C-n, Cn, C.n | `main.py` L222, L2426 ("C-2 (02-Jul-2026)"), L854 ("C2 discipline"), L3757 ("C3 (25-Jul-2026)"); `capital/fund_manager.py` L1474 ("C.1 (2026-04-25)") | C-2: SECAUDIT-02JUL L84; C2 and C6: the effect-telemetry contract (`config/expected_managers.yaml` L2; `docs/audit/effect_verification_contract_01aug2026.md`); C3: `docs/audit/silent_failure_gaps_2026-07-25.md` L13, L113; C.1: an April fix item; C.2, C.3, C.7 and C.8 are also SPEC phase-C steps | None of these is the STUDY's C1 to C41 (section 3.2). |
+| B-n, Bn, B.n | `main.py` L2066 to L2067 ("B1", "B5, midnight day-floor"), L852, L1658 to L1661 ("B4", "B5 heartbeat deferred"), L2583, L3524, L3913, L4217 (B2), L2905 ("B-1 (02-Jul)"), L3953 ("B.1 (2026-04-25)") | B1: `docs/audit/boot_path_pair_design_20jul2026.md` L21, L30; B5 day floor: `docs/decisions/DESIGN_midnight_day_floor.md` L65; B2, B4 and B5 effect telemetry: `docs/audit/effect_telemetry_phaseB_build_01aug2026.md` L32, L49 to L51; B-1: SECAUDIT-02JUL L62; B.1: `docs/web_claude/03_audit_responses/deep_system_audit_2026-04-25.md` L53 | Two different "B5" inside `main.py` (L1661 effect telemetry; L2067 the day floor). Also "B2" is the startup-checks 401 tolerance in the boot-path design (refused), "B1" and "B2" appear in `docs/audit/deploy_behaviour_delta_prediction_14jul2026.md` L135, L143, and "B5" in the 30-Jul Q4 decision L33. |
+| W0 (W series) | `main.py` L2593 ("W0: config snapshot (daily-report redesign foundation)") | `PATHS.md` L579 ("Config snapshots — W0 (daily-report redesign foundation, 01-Jul, schema v41)"), L233, L603 (W2, W5 to W7 pending captures); `core/config_snapshotter.py` L4 to L31 (A02); `core/schema.sql` L1474 (A03) | W10 is part of the E4 and W10 contract; SPEC has phase-W steps (W.6). No single W-series list was found beyond `PATHS.md`. |
+| A1 to A5, A9 (configuration auditor, group A) | `main.py` L3434 (A4), L3446 (A5) | `core/config_auditor.py` L192 to L312 (A02; A4 L215 to L232, A5 L241 to L285) | Collisions: "A2/A4: v3_only scope" (`main.py` L3646, V3 allocation), "A2.3 frozen contract" (`main.py` L3924, the effect-verification contract), "A-1/E-1" (`broker/zerodha_adapter.py` L1926), "A-2" (`docs/ops/offmarket_deploy_plan_03jul2026.md`). The project's topic IDs A01 to A20 are a different scheme. |
+| CV1 to CV4 | `main.py` L2204 (CV1), L4163 (CV3) | `core/config_validator.py` L17 to L24 (A02) | Not in any document. |
+| X5, X8, AB-910 | `utils/instance_lock.py` L15 (X5); `main.py` L3925 (X8); `utils/startup_checks.py` (AB-910) | X items: `docs/audit/batch_classification_16jul2026.md` (X1 to X8, L193, L229); X5 executed in `docs/audit/batch3_done_17jul2026.md`; AB-910: the same classification (first commit `362e166`, 2026-07-16) | Collision: X8 is "4.9 charts in daily review" in the classification (L193) but "stays dark even if the feed wires" in the effect-verification contract (L163) and `config/expected_managers.yaml` L225. |
+| T4 (and T-1, T5) | `scripts/check_tz.sh` L3, `scripts/ist_now.sh` L3 (T4); `core/market_windows.py` L302, L322 (T-1); `config/system_config.yaml` L40 to L47 (T5) | T4: commit `3114326` (2026-06-29) and the script headers; T-1 appears with FIX-181 (commit `7f93c2f`, 2026-06-16) | No document defining the T series was found. |
+| NI-n | `main.py` L2914 to L2915, L3105, L3452 (NI-12, NI-3) | `docs/audit/ROLLBACK_AND_ATTENDANCE_23-Aug-2026.md` (one mention) | Definition not established. |
+| AC1 to AC5 | `main.py` L2220 to L2236 | commit `ed1c4b9` (2026-07-14, "migration guard ... (AC1-AC5)"); `docs/audit/migration_on_open_rule_14jul2026.md` | — |
+| AUDIT-26APR families (CFG-n, DEAD-n, DUP-n, EXC-n, ACC-n) | `main.py` L110 (DUP-1), L2508 (CFG-6); `core/market_windows.py` (CFG-1, CFG-5); `core/events.py` (DEAD-2); `utils/startup_checks.py` (EXC-2); `core/state_store.py` (EXC-1); `core/account_registry.py` (ACC-2); `core/schema.sql` (CFG-7) | AUDIT-26APR (CFG-1 L47, CFG-6 L102, EXC-2 L128, DEAD-2 L145, DUP-1 L181) | — |
+| SECAUDIT-02JUL families (B-1, C-2, E-4, F-1) | `main.py` L222, L2426, L2468, L2905, L4056; `broker/order_monitor.py` L524 (E-4) | SECAUDIT-02JUL (B-1 L62, C-2 L84, E-4 L132, F-1 L139) | — |
+| BUILD 1 (#12); BLOCKER #2, BLOCKER #5 | `main.py` L3869, L3881, L3965 (BUILD 1 #12); L3972 (BLOCKER #5) | BUILD 1: SMAP L1396 (24-Jun, "12 audited conflicts"), commit `c69f1fd` (2026-06-24); BLOCKER #2 and #5: MEGA L163 to L167, L184 to L188 | The text of item #12 itself was not found as a separate list entry. |
+| ledger #n | `main.py` L707 to L714 ("ledger #2 / Q4"), L1658, L2583, L3924, L4217 ("ledger #1"); `core/constants.py` L12 (ledger #2); `tests/unit/test_kill_alerts_delivery_carveout.py` L1 (ledger #9) | ledger #9 "ALERT FATIGUE / FALSE-SAFETY CLAIMS": `docs/audit/ledger_3a_9_5_step1_03aug2026.md` L260 (2026-08-03), which "Registers against §B.1 row #9"; `docs/MASTER_PENDING_01-Aug-2026.md` L11 names "the audit's 12-item debt ledger" | The defining table of the numbered rows was not traced; `docs/MASTER_PENDING_01-Aug-2026.md` L350 to L372 also speaks of "ledger rows" of a nine-row list. |
+| Programme and task names (SNR-V2, SLICE2.5, PB-01, V3 Step 10b, PHASE-3, TASK-n, OPS n) | `main.py` throughout; `config/system_config.yaml` L387 (TASK-10) | SMAP sections and `docs/v3/*` (for example `docs/v3/V3_STEP10_PIPELINE_PLUMBING_PLAN.md`); TASK-10: commit `1af6124` (2026-06-18); OPS 2: commit `2f67bb8` (2026-08-23) | Names of work streams, not requirements. |
+| Foundation Rule n.m | `config/system_config.yaml` L106 (1.4); `core/logger.py` L392 (1.7); `core/state_store.py` (1.3, 3.7); `alerts/critical.py` L68 (3.2); `docs/audit/clock_dependency_class_26jul2026.md` L97 (3.8) | FRULES | — |
+| Phase letters of the April build (F.1, I.4, E.1, E.7, EF-7, D.2) | `main.py` L2556 (I.4), L2763 (F.1, EF-7), L3901 (D.2) | the phase instructions in `docs/web_claude/02_phase_instructions/`; F.1 is commit `316b335` ("F.1, ops, operational readiness for paper trial") | Individual items were not traced. |
+
+### 3.2 The AUDIT's own identifiers and the legacy labels they resemble
+
+| AUDIT identifier | Meaning | Legacy labels with a similar form (not the same thing) |
+|---|---|---|
+| C1 to C41 (and the splits C7a to C7d, C10a to C10g, C36a to C36e, C38a and C38b) | the STUDY's concerns | C-2 (SECAUDIT-02JUL), C2 and C6 (effect telemetry), C3 (25-Jul silent-failure gaps), C.1 (fund manager), C.2 to C.8 (SPEC phase C) |
+| R1 to R24 | the STUDY's questions for Rama | R1 to R5 (Rama's rulings of 02-Aug, `docs/MASTER_PENDING_01-Aug-2026.md` L919 to L937); rulings 1 and 2 of 07-Aug (L350 to L372); SPEC phase-R steps (R.5); the records-check result IDs R1-nn and R3-nn |
+| B-nn | AUDIT items: entry, time and lock | B-1 (SECAUDIT-02JUL), B1, B2, B4 and B5 (boot-path design, effect telemetry, day floor), B.1 (25-Apr audit) |
+| S-nn | AUDIT items: startup and checks | S1 and S4 (17-Jul items), S1 and S2 (14-Jul deployment gates), YAML S1 to S15 (strategies) |
+| W-nn | AUDIT items: runtime and shutdown | W0, W2, W5 to W7 (daily-report captures), W10 (E4 and W10 contract), SPEC phase-W steps |
+| M-nn | AUDIT items: core modules | M-C1 to M-C8, M-K1 to M-K4, M-A1, M-A2, M-U1 and the other M-xn items of AUDIT-04JUL; M-1, M-3, M-4 (April); M3 (05-Aug handoff) |
+| IC-nn, CD-nn, IS-a.nn, RS-nn | this file's conflicts, code differences, sources and Rama-attributed statements | IC1 to IC15 (M38). No legacy text uses the forms IC-nn, CD-nn, IS-a.nn or RS-nn (searched; the only hit, "MIS-400" in `core/config_loader.py` L437, is not an identifier) |
+
+## 4. Conflicts between sources
+
+### 4.1 The conflicts
+
+Each conflict names the sources on each side with their lines and dates, says what each states, gives the code fact it bears on and the AUDIT items it affects. Both sides are presented; none is chosen. "Code fact" states what the code does; it is not a choice between the sources. The conflicts are grouped by area in the order of section 2.
+
+#### Area 1
+
+**IC-01. Two definitions of SU1 to SU20.**
+- (A) M41 L43 to L391 (2026-04-17). (B) M41C L76 to L359 (2026-04-17).
+- They differ at: SU1 (A: a holiday check added first in the startup checks; B: a new `utils/holiday_guard.py`); SU6 (A: the IST date `today_ist_date()`, L94; B: `date.today()`, L126; IC-05); SU10 (A: "exit with error naming the env var", L198, no code; B: "exit 5", L193); SU12 (IC-02); SU15 (A: 5 is "invalid args / config", L335; B: "invalid args / config / missing env var", L298; IC-40); SU17 (B adds `load_token` that returns None on any error, L310 to L315; IC-39); SU19 (A: tests, L367; B: the fund manager's paper-capital wiring, L321); SU20 (A: not in scope, L387; B: tests, L332). Both say they are locked "under startup_module section" (A L467; B L394); no such section exists (section 6.1).
+- Code fact: `main.py` follows B for SU6 (L2100) and SU19 (L2581, L2754), and so does the adapter's "pre-SU19" comment (`broker/zerodha_adapter.py` L1306).
+- Affects: B-01, B-16, B-24, C1, C2, C10a; R1.
+
+**IC-02. The interactive live confirmation (SU12).**
+- (A) M41 SU12 L269 to L288 (2026-04-17): type "CONFIRM LIVE", the exact phrase; a deviation goes back to step 4 or exits; live only. M41 L473 to L493 (notes for Rama): the exact phrase is "Extra friction on purpose".
+- (B) M41C SU12 L241 to L257 (2026-04-17): the exact phrase; otherwise exit 7 or a new prompt.
+- (C) RDISC L186 to L190 (2026-04-17, a proposal): "Confirm start in LIVE mode? [y/N]", live only.
+- (D) `main.py` L1928 to L1932 (the `_interactive_confirm` docstring, lines 2026-04-17 to 2026-04-22): "Unified confirm screen for both paper and live modes (SU12)"; `tests/unit/test_interactive_startup.py` L217 to L249 (2026-07-25): y or n, exit 7 in both modes.
+- Code fact: `main.py` L1928 to L1946 asks y or n in both modes and exits 7; the interactive branch cannot be reached at the baseline (C1).
+- Affects: B-16, C1, C4; IC-61.
+
+**IC-03. The first step at process start.**
+- (A) SPEC phase 0a L558 to L559 (2026-04-17): acquire the process lock first; another instance gives exit(1).
+- (B) M34 MAIN4 L49 to L52 (2026-04-17) and LOCKED-YAML decision L8, lines L864 to L869 (2026-07-22): `setup_logging()` is the first call, "before any other module imports get_logger".
+- (C) M41 L34 to L37 and SU6 (M41 L91 to L110; M41C L116 to L136) (2026-04-17): the holiday and weekend check comes first, before the logger, so that a holiday creates no log file.
+- (D) `main.py` L2154 to L2156 (lines 2026-06-19 to 2026-07-25): the FIX-189 START window, also before logging.
+- (E) `docs/01_system_architecture.md` L16 to L17 (2026-06-03): phase 0a parses the arguments and loads the configuration, before the holiday guard.
+- Code fact: `main.py` parses the arguments (L2089 to L2096), runs the holiday guard (L2098 to L2152), the START window (L2154 to L2176), sets up logging (L2178 to L2180), takes the lock (L2182 to L2186) and only then loads the configuration (L2196 to L2216); the subsystem modules are imported when `main.py` is imported, before all of these.
+- Affects: C31, C40, B-23, B-24, B-25, B-26, B-27; R5.
+
+**IC-04. The diagnostic options `--status` and `--dry-run`.**
+- (A) M34 MAIN16 L320 to L329 and MAIN17 L331 to L334 (2026-04-17); the help texts `main.py` L198, L202 (lines 2026-04-17); `docs/web_claude/02_phase_instructions/v2_foundation_wrapup.txt` L35 to L37 (2026-04-17): `--status` is read-only and builds no subsystem; `--dry-run` runs the startup checks only, with no subsystems and no threads.
+- (B) Later rules attached to the boot path that both options share, stated without an exception for them: P11 AC1 and AC2 (`main.py` L2219 to L2225, lines up to 2026-07-14: "THIS boot path is the ONLY sanctioned migrator"); FIX-127 and FIX-154 (`main.py` L2257 to L2265, lines 2026-05-30 to 2026-06-07: clear kills at boot); MED #10 (`docs/web_claude/02_phase_instructions/phase_g_medium_fixes.txt` L86 to L99, 2026-04-17; `main.py` L2304 to L2307: write the session row early). INTERPRETATION: neither side mentions the other.
+- Code fact: both options take the lock (`main.py` L2183), open the store as the migrator (L2233 to L2237), run the kill clears (L2260, L2265) and the detection (L2268), which can write a CRASH event or return 4 for a HALT (L2283 to L2296); `--status` returns at L2299 to L2302; `--dry-run` goes on to the session-row write (L2308) and the aggregate (L2451), which calls the broker, the scanners and NTP, and returns at L2476 to L2482.
+- Affects: C5, B-15, S-09, S-17; R5.
+
+#### Area 2
+
+**IC-05. The holiday guard's date source.**
+- (A) The IST date: M41 SU6 L91 to L110, L94 `today_ist_date()` (2026-04-17); FRULES 3.8 L221 to L225 (2026-08-06); PRULES section 8 L79 to L83 (2026-04-17). On the same side later: FIX-107 (commit `be70985`, 2026-05-18) made the startup check's holiday-file year IST-safe; `scripts/fetch_daily_candles.py` L249 to L252 (2026-09-09); the H-17 sweep tests (`tests/unit/test_time_authority_sweep.py`, 2026-08-01).
+- (B) The host's date: M41C SU6 L116 to L136, L126 `today = date.today()  # before time_authority exists` (2026-04-17).
+- Recorded, not decided: `docs/audit/clock_dependency_class_26jul2026.md` L84 to L98 (2026-07-26) lists the guard as an unacknowledged exception to rule 3.8.
+- Code fact: `main.py` L2100 `today = date.today()` (lines 2026-04-17), the host's local date; the rest of the boot uses IST (L2161, L2255).
+- Affects: C10a, B-24, B-33, B-41; R10.
+
+**IC-06. A missing holiday file: two opposite failure policies.**
+- (A) `utils/holiday_guard.py` L12 (lines 2026-04-17) and M41C SU20 L334 to L341 (2026-04-17): a missing YAML raises.
+- (B) `main.py` L2151 to L2152 (lines up to 2026-05-06) and `tests/unit/test_interactive_startup.py` L108 (2026-07-25): a missing file is swallowed and the start proceeds.
+- (C) LOCKED-YAML CL2, within L728 to L789 (2026-07-22): loading is all or nothing through `load_all`, which returns 5 when the current year's file is missing (`docs/audit/register_items_26jul2026.md` L35 to L44).
+- Recorded, not decided: `docs/audit/register_items_26jul2026.md` L59 to L62 (2026-07-26): "two OPPOSITE failure policies".
+- Code fact: the guard's handler (`main.py` L2151 to L2152) proceeds; `load_all` then stops the boot with exit 5 (L2196 to L2216) when the current year's file is missing.
+- Affects: C10b, C10c, B-24, B-33, S-01, S-55; R9.
+
+**IC-07. A weekend with a missing holiday file.**
+- (A) A weekend is never a trading day, whatever the file says: SU6 (M41 L91 to L110; M41C L116 to L136; 2026-04-17); `utils/holiday_guard.py` L1 to L13 (lines 2026-04-17); comments in other topics' files say that a missing YAML still blocks weekends (`reports/daily_report.py` L96 to L113, 2026-07-25; `reports/daily_trade_review.py` L2846 to L2862, 2026-08-29; `scripts/liveness_probe.py` L124 to L135, 2026-09-09); Record 01 L147 (2026-09-18).
+- (B) `main.py` L2152, "missing holiday file: proceed with startup" (lines up to 2026-05-06), and its test, which covers a weekday (`tests/unit/test_interactive_startup.py` L108, 2026-07-25).
+- Code fact: on a weekend `is_trading_day` returns False (`main.py` L2102) and `next_trading_day` (L2103) raises `FileNotFoundError` when its search reaches a year without a file; the handler at L2151 to L2152 also covers L2103, so the start proceeds past the guard (and `load_all` stops it only when the missing file is the current year's; STUDY section 9.5).
+- Affects: C10b, B-24, B-33; R9.
+
+**IC-08. Which holiday reader is authoritative.**
+- (A) FIX3 L28 to L31, L70 to L73 (2026-04-18): the guard keeps its own parser by design, because it runs before the logger (SU6); comments in other topics' files name `utils.holiday_guard` the single holiday source (`reports/daily_report.py` L96 to L113; `reports/daily_trade_review.py` L2846 to L2862; `scripts/liveness_probe.py` L124 to L135).
+- (B) LOCKED-YAML P1 L220 to L227 and P1_market_windows_api L229 to L253 (2026-07-22); SPEC L128 (2026-04-17): `core/market_windows.py` is the "Single source of truth for ALL market times".
+- Code fact: two readers parse the same file: the guard (`utils/holiday_guard.py`, used at `main.py` L2101 to L2152) and the configuration loader that feeds `MarketWindows` (`main.py` L441 to L443, L2317).
+- Affects: C11, B-12, B-33, B-36, S-12; R9.
+
+**IC-09. How configured holidays are compared.**
+- (A) FIX3 L56 to L68 (2026-04-18): compare dates, not ISO strings; M33 SC10 test plan L341 to L344 (2026-04-17): "Configured holiday -> True".
+- (B) `tests/unit/test_startup_checks.py` L883 to L913, with a list-of-strings fixture at L896 to L905 (2026-07-17): a string comparison.
+- Code fact: `check_market_holiday_today` compares an ISO string with the holiday collection (`utils/startup_checks.py` L887 to L888, L898 to L902), while `main.py` passes a `MarketWindows` object that holds dates (`core/market_windows.py` L67).
+- Affects: C10g, S-47; R9.
+
+**IC-10. Special sessions.**
+- (A) Commit `ee91659` (FIX-094, 2026-05-17): special sessions, a Saturday session included, are trading days ("exempts weekend check"); Muhurat 18:15 to 19:15; `config/system_config.yaml` L114 to L122 (lines 2026-05-17): the commented example; `config/nse_holidays_2026.yaml` L1 to L15 (2026-04-17): the operator may override the Muhurat holiday.
+- (B) SU6 (M41 L91 to L110; M41C L116 to L136): a weekend exits 0 before anything else; the FIX-189 START window [08:00, 18:15) (`main.py` L1968 to L2015, lines 2026-06-19 to 2026-07-25); the bound `service_window_end < 18:15` (`config/system_config.yaml` L105 to L112; `core/config_loader.py` L62 to L83).
+- Related: `config/system_config.yaml` L86 to L89 says that a special session does not move the MIS cutoff (A12).
+- Code fact: the guard exits 0 on a weekend without reading the special sessions (`main.py` L2101 to L2150); the START guard refuses a start at or after 18:15 (L2154 to L2176); `_load_special_sessions` (L446 to L470) has no schema validation (`core/config_loader.py` L1992).
+- Affects: C35, B-24, B-25, B-33, B-36, S-12; R11.
+
+**IC-11. The look-ahead cap for the next trading day.**
+- (A) LOCKED-YAML P1_market_windows_api L237 to L247 (2026-07-22): `next_trading_day` raises `ValueError` beyond 10 days.
+- (B) `core/market_windows.py` L33 to L35 (lines up to 2026-05-16) and `tests/unit/test_market_windows.py` (2026-06-29): a 30-day cap.
+- Code fact: `MarketWindows` stops at 30 days; `next_trading_day` in `utils/holiday_guard.py` has no cap (STUDY section 9.5).
+- Affects: C39, B-33, B-36.
+
+**IC-12. The START window and the token-watcher window.**
+- (A) TW L40 to L51 (lines 2026-06-19): the watcher starts the service only from 08:00 to 16:00 IST, "Mirrors the main.py guard"; SMAP L669 (2026-09-02); SMAP L658: the FIX-189 window 08:00 to 16:00 and a self-exit after 16:00.
+- (B) `main.py` L1968 to L2015 (lines 2026-06-19 to 2026-07-25): [08:00, 18:15); `config/system_config.yaml` L112: the stop at 17:35.
+- Judged "coherent (starter narrower)" in `docs/audit/integrity_audit_2026.md` L3118 to L3128 (2026-08-01).
+- Code fact: `_within_service_window` uses [08:00, 18:15) (`main.py` L2000 to L2015); the watcher's test is at TW L47 to L51.
+- Affects: C24, B-18, B-19, B-25; R18.
+
+**IC-13. What the startup clock check measures.**
+- (A) An NTP check: LOCKED-YAML G4 L80 to L89 (2026-07-22); M41 SU7 L119 (2026-04-17): "Clock NTP skew (G4)".
+- (B) A broker timestamp: M33 SC5 L83 to L109 (2026-04-17); `broker/zerodha_adapter.py` L1705 to L1728 (A04): the response's Date header.
+- Code fact: the aggregate runs both: `check_clock_skew` against the broker (30 s) and `check_ntp_sync` against an NTP pool host (blocking at 5 s) (`utils/startup_checks.py` L1630 to L1641).
+- Affects: C8, C30, S-41, S-42.
+
+**IC-14. The NTP blocking threshold.**
+- (A) LOCKED-YAML G4 L80 to L89 (2026-07-22): refuse to start above 30 s.
+- (B) `utils/startup_checks.py` L1630 to L1631 (FIX-129 Item 27, lines 2026-05-30): "warn_sec=2, block_sec=5 per spec"; no such specification was found in `docs/` (section 6.2).
+- Code fact: `check_ntp_sync` is called with `warn_sec=2.0` and `block_sec=5.0` (L1632 to L1637); the configured 30 s (`clock.*`, `config/system_config.yaml` L183 to L190) applies to the broker-clock check.
+- Affects: C30, S-42; R21.
+
+**IC-15. The result in the NTP warning band.**
+- (A) `utils/startup_checks.py` L520 to L523 (the docstring, lines 2026-05-30): a drift in the warning band gives `passed=False`, non-blocking.
+- (B) `tests/unit/test_fix129_ntp_check.py` L94 to L135 (2026-07-19): `passed=True` in the band.
+- Code fact: the function returns `passed=True` in the band, and the runner records a warning (L1640 to L1641).
+- Affects: C30, S-42.
+
+**IC-16. The startup clock check: retry, exit code and broker errors.**
+- (A) SPEC C.3 L667 to L672 (2026-04-17): `margins()` is the first broker call; above 30 s exit(1); 5 to 30 s warn and retry once after 5 s.
+- (B) LOCKED-YAML G4 L80 to L89 and M33 SC5 L83 to L109: refuse to start above 30 s, with no retry; M33 test plan L315: "Broker adapter raises -> passed=False"; `broker/zerodha_adapter.py` L1705 to L1707: a broker failure must fail the clock check.
+- Code fact: one attempt; any broker exception is reported as a clock-skew failure; a blocking failure gives exit 3 (`utils/startup_checks.py` L436, L459 to L468; `main.py` L2451, then the abort at L2484 onward).
+- Affects: C8, C30, S-41; R8.
+
+**IC-17. Token validity before the first broker call.**
+- (A) SPEC C.2 L661 to L665, before C.3 (2026-04-17); M41 SU14 L320 to L327 (2026-04-17): a headless start checks the token before the phases (exit 6).
+- (B) M41 SU7 L112 to L142 (interactive, 2026-04-17): the checks first, then the login; `main.py` L2345, "Build broker adapter early for clock check" (lines 2026-04-17).
+- Code fact: the clock check's broker call in the aggregate (`main.py` L2451; `utils/startup_checks.py` L436) runs before the token gate (`main.py` L2546 to L2552).
+- Affects: C8, S-21, S-41; R8.
+
+**IC-18. The clock-skew tiers.**
+- (A) All tiers act: LOCKED-YAML G4 L80 to L89 (warn; alert and continue; halt); `config/system_config.yaml` L183 to L190 (lines 2026-04-17 to 2026-04-19: a log warning, a Telegram alert, a soft kill); `docs/CONFIG_GUIDE.md` L425 to L430 (2026-07-28); `broker/clock_skew_probe.py` L5 to L26 (A04, 2026-04-19); LOCKED-YAML P2 L255 to L261 (configured values must act).
+- (B) Only the critical tier: M34 MAIN21 L372 to L375 (2026-04-17: "Registers critical-skew callback"); `main.py` L361 (lines 2026-04-17); `core/time_authority.py` L29 to L32 (Outputs: "Fires on_critical_skew callback on runtime halt threshold").
+- Code fact: only `on_critical_skew` is wired (`main.py` L364 to L378); the alert-tier callback (`core/time_authority.py` L245 to L246) is never set.
+- Affects: C30, B-09, B-35; R21.
+
+**IC-19. The time authority's own claims.**
+- (A) `core/time_authority.py` L14 to L15 (the adapter calls `record_broker_skew()` after every broker call), L36 ("Layer 1: imports ONLY stdlib"), L94 to L99 ("No datetime.now() elsewhere") (lines 2026-04-17 to 2026-07-14); SPEC L392 ("(datetime, zoneinfo) [stdlib only]", 2026-04-17).
+- (B) PRELIVE BL-21 L3526 to L3529 (2026-04-21): `record_broker_skew()` is never called and runtime drift monitoring is dormant; LOCKED-YAML E4 L504 (2026-07-22): `core/time_authority.py` imports `ClockSkewTooLarge` from `core/exceptions.py`.
+- Code fact: the module imports `core.exceptions`; only the probe records skew; it uses a fixed +05:30 offset, not zoneinfo; 35 lines elsewhere call `datetime.now(` (STUDY section 9.1).
+- Affects: C30, B-34, B-35.
+
+**IC-20. `ClockSkewTooLarge` at runtime.**
+- (A) `core/exceptions.py` L330 to L336 (lines 2026-04-17): "Also raised (indirectly via callback) when runtime avg skew > halt_sec".
+- (B) `core/time_authority.py` L29 to L32, L40 (lines 2026-04-17 to 2026-07-14): it raises only in the startup check; at runtime it fires the callback and "Does not halt the system".
+- Code fact: `core/time_authority.py` L243 to L246 fires the callback and `main.py` L364 to L368 soft-kills; nothing raises `ClockSkewTooLarge` at runtime.
+- Affects: C30, B-35, M-23.
+
+#### Area 3
+
+**IC-21. How the lock port is configured.**
+- (A) `utils/instance_lock.py` L140 to L142 (the docstring): "default 5001, configurable via system_config.yaml or passed explicitly".
+- (B) The same file L55: "Configurable via acquire_instance_lock(lock_port=...)" (lines 2026-05-16 to 2026-07-17).
+- Code fact: `main.py` L2183 passes no port; no configuration key exists; the port is fixed at 5001 (`utils/instance_lock.py` L53 to L55).
+- Affects: C31, B-27, B-30; R22.
+
+**IC-22. The lock's authority and `PrivateTmp`.**
+- (A) SMAP L905 to L906 (2026-09-02): "a standalone `main.py` is refused by BOTH layers"; the X5 docstring (`utils/instance_lock.py` L1 to L40, lines up to 2026-07-17) and `tests/unit/test_instance_lock.py` (2026-07-27): the file layer is authoritative and refuses on its own.
+- (B) UNIT L46 (lines 2026-04-19): `PrivateTmp=true`. INTERPRETATION of systemd semantics (STUDY section 6.2): the service's lock file is then private to the service, so a copy run by hand outside it uses another lock file and conflicts only on the port. No source considers `PrivateTmp` (sections 2.3 and 2.12).
+- Code fact: the lock file lies in the system temporary directory (`utils/instance_lock.py` L50 to L51); the port is fixed (L218).
+- Affects: C31, B-27, B-30; R22.
+
+**IC-23. How long the lock is held.**
+- (A) `utils/instance_lock.py` L57 to L58, L133 to L138: for the process lifetime.
+- (B) The same file L222 to L226: "released ... on clean shutdown ... promptly" (lines 2026-05-05 to 2026-07-17).
+- Code fact: `main()` releases the lock when `_main_locked` returns (`main.py` L2187 to L2190), before the process ends.
+- Affects: B-28, B-30, C31.
+
+**IC-24. Which processes take the lock.**
+- (A) `docs/audit/service_window_extension_2026-07-24.md` L30 (2026-07-25): the lock is acquired by `main.py` "and by the operator tool clear_kill_switch.py".
+- (B) `scripts/clear_kill_switch.py` L5 to L6 and `deploy/resume.sh` L28 (2026-06-18); SMAP L907 (2026-09-02): the operator tool takes no instance lock.
+- Code fact: `scripts/clear_kill_switch.py` imports no lock function (searched).
+- Affects: C31, B-27.
+
+**IC-25. FIX-081's premise about the webhook port.**
+- (A) `main.py` L3980 to L3982 (lines 2026-05-05 to 2026-05-16): the webhook-port check was removed because the lock already holds the port.
+- (B) `config/system_config.yaml` L335 (`webhook.bind_port`, file value 5000) and `utils/instance_lock.py` L53 to L55 (`_LOCK_PORT = 5001`): the webhook binds a different port.
+- Code fact: the lock binds 5001; the webhook server binds the configured port; nothing checks the webhook port before the server starts.
+- Affects: B-32, C31.
+
+#### Area 4
+
+**IC-26. The HALT exit code.**
+- (A) SPEC H.1 L619 to L621 (2026-04-17): HARD_KILL without `--resume` gives exit(1).
+- (B) M34 MAIN6 (within L49 to L93; L72) and M41 SU15 L334, M41C SU15 L297 (2026-04-17): exit 4.
+- Code fact: `main.py` L2283 to L2290 returns 4.
+- Affects: C4, S-06, W-19.
+
+**IC-27. A prior-day HARD_KILL at the next boot.**
+- (A) LOCKED-YAML G5c L113 to L122 (2026-07-22): "hard_kill ALWAYS requires manual --resume flag"; SPEC H.1 L619 to L621 (2026-04-17).
+- (B) `capital/kill_switch.py` L315 to L328 (A13, lines 2026-05-30 to 2026-06-20): the "HEADLESS GUARANTEE (Rama's 2026-06-20 decision)", every prior-day kill is cleared at boot whatever its type; `main.py` L2257 to L2260 (FIX-127, lines 2026-05-30); TW L9 to L11 (lines 2026-04-22 to 2026-06-18): a prior-day HALT gets one clean start; `docs/RUNBOOK.md` L47 to L48 (2026-08-26).
+- Code fact: `main.py` L2260 calls `clear_stale_state` at every boot; a same-day emergency kill still needs `--resume` (L2262 to L2264); the scheduled clear never clears a HARD_KILL (`capital/kill_switch.py` L366 to L373). The kill-switch internals belong to A13.
+- Affects: C7b, S-05; R19; RS-06.
+
+**IC-28. The detection order when there is no session row.**
+- (A) SPEC L598 to L611 (2026-04-17): HARD_KILLED gives HALT first, before the session-date test.
+- (B) M33 SC4 L59 to L79 (2026-04-17) and `tests/unit/test_startup_checks.py` L238 to L379 (2026-07-17): no session row gives COLD first.
+- Code fact: `detect_startup_scenario` returns COLD before it reads a persisted HARD_KILL when there is no session row (`utils/startup_checks.py`; STUDY C7).
+- Affects: C7b, S-06.
+
+**IC-29. Per-scenario startup procedures.**
+- (A) LOCKED-YAML G5a L91 to L100 (2026-07-22): "Each scenario runs a different startup procedure"; SPEC phases H, C, W and R, L614 to L854 (2026-04-17); CTD CT-085 L1145 to L1154 (2026-06-11): a WARM start is "Faster startup (some checks skipped or lighter)"; `docs/01_system_architecture.md` L26 (2026-06-03): a fifth scenario, RESUME.
+- (B) M34 MAIN6 (within L49 to L93, 2026-04-17): one procedure, in which the scenario changes the logging, the CRASH event and the HALT rule; M33 SC2 L35 (2026-04-17): four scenarios, no RESUME.
+- Code fact: one start path; the scenario changes only the logging, the CRASH event, the HALT handling and the scanner skip (STUDY section 6.3).
+- Affects: C6, C7, S-06, S-07.
+
+**IC-30. The scanner check on a COLD start.**
+- (A) Skipped on COLD: M33 SC12 L231 (2026-04-17); `utils/startup_checks.py` L1538 and L1587 ("no prior session to compare", lines 2026-04-17 to 2026-04-19); `tests/unit/test_startup_checks.py` L1009 to L1205 (2026-07-17).
+- (B) CTD CT-084 L1134 to L1144 (2026-06-11): on COLD "All 14+ startup checks run"; AUDIT-04JUL L157 (M-U1, 2026-07-06): the skip meant that the check never ran; `docs/audit/wave7_nine_investigation_22jul2026.md` L40, L112 to L120 (2026-07-22): it runs every morning and M-U1 is "not a defect".
+- Code fact: the early session-row write (`main.py` L2308) makes the aggregate's own detection (L2451) see today's row, so the aggregate never sees COLD on the first start of a day (STUDY C6).
+- Affects: C6, S-39, S-44; R6.
+
+**IC-31. The scanner check's outcome and method.**
+- (A) LOCKED-YAML P17 L370 to L376 (2026-07-22): the pre-flight checks the scanners by HTTP HEAD, "CRITICAL on any failure"; M41 SU7 L118 to L142 (2026-04-17): any failed check, the scanner check included, gives exit 3.
+- (B) M33 SC12 L212 to L250 (2026-04-17): the scanner check is a warning.
+- Code fact: `_http_fetch` uses GET (`main.py` L235 to L261); a scanner failure is a warning in the aggregate (`utils/startup_checks.py` L1587 onward).
+- Affects: B-07, C32, S-44.
+
+**IC-32. How many startup checks there are.**
+- (A) The runner's docstring, `utils/startup_checks.py` L1528 to L1545 (lines 2026-04-17 to 2026-04-19): nine checks.
+- (B) `docs/01_system_architecture.md` L23 to L36 (2026-06-03): 13 checks; CTI L860 to L873 (2026-06-11): "14+", with an F&O ban fetch and a port check; `docs/temp_config_tracker.md` L39 (2026-06-03): the TEMP check is "#14"; Record 03 L141 to L152 (2026-09-18): "15 checks run"; M33 SC12 L212 to L250 (2026-04-17): its own list.
+- Code fact: the runner's numbered steps run to 16 (`utils/startup_checks.py` L1630 to L1660); AUDIT item S-40 gives the count.
+- Affects: S-39, S-40.
+
+**IC-33. The webhook self-check's outcome.**
+- (A) M34 MAIN11 L254 to L259 (2026-04-17): an unreachable webhook gives CRITICAL and exit 1; LOCKED-YAML P17 L372: "CRITICAL on any failure"; SPEC C.1 L653 to L659 (2026-04-17): a Telegram CRITICAL and exit(1).
+- (B) The 27-Jul S4 answer: `main.py` L4006 to L4030 (lines up to 2026-07-27) and `docs/audit/slice25_execution_plan_27jul2026.md` L309 to L316 (2026-07-28): degrade and alarm; do not block the boot.
+- Code fact: the self-check degrades with an out-of-band CRITICAL (`main.py` L4002 to L4033).
+- Affects: C28, S-45, W-09.
+
+**IC-34. The TEMP-marker check.**
+- (A) `utils/startup_checks.py` L1469 to L1472 (FIX-151 docstring, lines 2026-06-03): a warning, "Blocking only when capital > 25K (checked by caller in run_all_startup_checks)".
+- (B) `docs/temp_config_tracker.md` L39 to L41 (2026-06-03): "Currently a WARNING. When capital > Rs 25K, consider promoting to a blocking failure"; AUDIT-04JUL L187 (2026-07-06) and `docs/audit/batch_classification_16jul2026.md` L133 (2026-07-16): documented, not implemented.
+- Code fact: the runner only records a warning (`utils/startup_checks.py` L1643 to L1646); no capital test exists.
+- Affects: S-56; R23.
+
+**IC-35. The disk check: when it runs and what exit it gives.**
+- (A) `utils/startup_checks.py` L1196 to L1214 (FIX-099 docstring, lines 2026-05-17): call it "BEFORE setup_logging()"; on failure "Caller should exit with code 1".
+- (B) The FIX-169 F34 wiring (`utils/startup_checks.py` L1524 to L1526, L1648 to L1653; `main.py` L2466 to L2467; lines 2026-06-13): the check runs inside the aggregate, after logging, as a blocking failure.
+- Code fact: as in (B): the boot aborts with exit 3 (`main.py` L2484 onward).
+- Affects: S-52, C4.
+
+**IC-36. The instrument-cache failure path.**
+- (A) `main.py` L2434 to L2438 (the BL-20 comment, lines 2026-04-19): an instrument file that cannot be loaded should give a blocking exit 3.
+- (B) The runner's docstring `utils/startup_checks.py` L1540 to L1541 ("skipped if instrument_cache is None — caller is expected to have handled load failure separately") and `tests/unit/test_startup_checks.py` L1253, L1310 (2026-07-17): the aggregate skips a None cache.
+- Code fact: the cache stays None (`main.py` L2439 to L2449); the aggregate skips the check (`utils/startup_checks.py` L1608); the later assert gives exit 2 (`main.py` L2506).
+- Affects: C9, S-19, S-48.
+
+**IC-37. The session row's content.**
+- (A) M34 MAIN12 L269 to L275 (2026-04-17): the session upsert carries the mode, the hash and the kill state; MED #10 (`docs/web_claude/02_phase_instructions/phase_g_medium_fixes.txt` L86 to L99, 2026-04-17): "kill_state and last_shutdown_ts tell the story"; M33 build step L278 to L294 (2026-04-17): the session fields.
+- (B) `core/schema.sql` L478 to L501 (A03, 2026-08-23): `kill_state` was dropped by CFG-7 (L488), there is no `last_shutdown_ts`, and `trade_type` is INTRADAY or POSITIONAL; `config/system_config.yaml` L149: `trade_type` BOTH; `ops_dashboard/backend/services/summary_bar.py` L37 (2026-07-25): the stored account is a "placeholder ... off-market".
+- Code fact: `_write_session` writes the literals `account_id='default'` and `trade_type='INTRADAY'` at every write (`main.py` L629 to L632, lines 2026-04-17 to 2026-04-26); the detection reads the kill switch's own state and the SHUTDOWN events, not a kill state in the session row.
+- Affects: C33, B-14, S-10, W-18; R20.
+
+**IC-38. The broker pin's example.**
+- (A) `main.py` L2556 to L2560 (the I.4 comment, lines 2026-04-26): lists "Zerodha" among the values that would silently pass.
+- (B) `tests/unit/test_main.py` L755 to L772 (2026-08-28): "Zerodha" is accepted.
+- Code fact: the pin lower-cases the value and accepts "zerodha" in any case; anything else gives 9 (`main.py` L2561 to L2572).
+- Affects: S-22.
+
+#### Area 5
+
+**IC-39. The exit code for a missing token.**
+- (A) Exit 6: M41 SU5, SU14 and SU15 (L80 to L89, L320 to L338) and M41C SU5, SU14 and SU15 (L112 to L114, L288 to L301) (2026-04-17); RDISC L139 (2026-04-17); CTI L846 (2026-06-11); `main.py` L143 to L146 (the `_invalidate_token` docstring, lines 2026-07-06) and L2364 to L2370 (handlers, lines 2026-06-12 to 2026-06-13); commit `7fc06ff` (2026-06-12).
+- (B) Exit 1: SPEC C.2 L663 (2026-04-17), for an expired token.
+- (C) M41C SU17 L314 to L315 (2026-04-17): `load_token` returns None on any error, as `scripts/zerodha_login.py` L49 to L57 (A04, 2026-07-08) does.
+- Code fact: `main.py` L2362 to L2363 subscripts the None result, so a missing or unreadable file raises `TypeError`, which neither handler (L2364, L2371) catches; the top-level handler gives exit 2 (L4285 to L4293).
+- Affects: C2, C4, B-03, S-21, S-23; R2.
+
+**IC-40. The exit code for a missing credential variable.**
+- (A) 5: `main.py` L17 (lines 2026-04-17): "invalid args / config / missing env var"; M41C SU15 L298 and SU10 L193 (2026-04-17).
+- (B) Not 5, or no code given: M41 SU15 L335 (2026-04-17): 5 is "invalid args / config" only; M41 SU10 L198: "exit with error naming the env var".
+- (C) 6: commit `7fc06ff` (FIX-163, 2026-06-12): "exit code 6 (no restart) on missing token or credential"; Record 03 L174 (2026-09-18).
+- Code fact: a missing credential variable in the live pre-load gives 6 (`main.py` L2371 to L2374); in the aggregate it is a blocking failure, exit 3; a `KeyError` at L2629 gives 2 (AUDIT item M-24).
+- Affects: C2, C4, C12, B-06, S-15, S-50.
+
+**IC-41. An unset credential variable: a warning or a blocking failure.**
+- (A) M38 IC5 L92 to L93 (2026-04-17): log a warning, "don't raise".
+- (B) `main.py` L219 to L232 (the `required_startup_secrets` docstring, lines 2026-07-02): the names MUST be set.
+- Code fact: the required-secrets check is blocking in the aggregate (`utils/startup_checks.py` L1075 to L1079); in the live pre-load a `KeyError` gives exit 6 (`main.py` L2361, L2371 to L2374).
+- Affects: C12, B-06, S-15, S-50.
+
+**IC-42. The account-registry contract.**
+- (A) M38 IC5 L90, L102 to L103 (2026-04-17): at least one enabled account; the primary is the "First enabled account".
+- (B) M41 SU2 L55, L58 (2026-04-17): `account_id` is unique, a primary key, and exactly one row has `is_primary`; `core/account_registry.py` AR3 (within L1 to L45): `primary()` is the `is_primary` row.
+- Code fact: the primary row need not be enabled, and duplicate IDs are accepted (the ID map keeps the later row; the row list keeps both) (AUDIT items M-34, M-35).
+- Affects: C39, M-32, M-34, M-35, S-58.
+
+**IC-43. Where the order monitor's critical failure goes.**
+- (A) To the critical-failure callback, which sets the token-invalidation flag and soft-kills: commit `14a889c` (FIX-062, 2026-05-16): the flag is "set via critical failure callback"; `tests/unit/test_fix062_token_invalidation.py` L88 to L112 (2026-07-06): source "order_monitor", reason "BrokerAuthError x3 -- monitor stopping"; CTI L838 (2026-06-11): `BrokerAuthError` gives "SOFT_KILL + token invalidation at shutdown".
+- (B) To a hard kill: commit `0cd1b14` (FIX-128 Fix C, 2026-05-30): the order monitor hard-kills after 3 consecutive general broker errors, and `main.py` wires `_make_api_failure_hard_kill_cb`; that factory's docstring, `main.py` L732 (lines 2026-05-30): "circuit breaker hard_kill on 3 consecutive API failures".
+- Code fact: the order monitor's `on_critical_failure` is the hard-kill factory (`main.py` L3006, lines 2026-05-30); only the live feed goes through `_make_critical_failure_cb` (L2930 to L2932), whose flag test needs "BrokerAuthError" in the reason (L665 to L667).
+- Affects: C3, C27, W-11, W-12; R3.
+
+#### Area 7
+
+**IC-44. The phase 0e subscriptions.**
+- (A) M34 MAIN9 L222 to L229 (2026-04-17): five subscriptions.
+- (B) `main.py` L3849 to L3861 (lines 2026-04-19 to 2026-04-26): two subscriptions, because "fund_manager has no on_order_filled/on_position_closed handlers. The reconciler is daemon-poll only (RC4 retired by 2026-04-26 audit)"; AUDIT-26APR DEAD-2 L145 (2026-04-26).
+- Code fact: two subscriptions (`main.py` L3847, L3858).
+- Affects: C29, W-08.
+
+**IC-45. The start order of the signal processor and the entry gate.**
+- (A) M34 MAIN11 L237 to L259 (2026-04-17): the gate before the processor.
+- (B) MEGA BLOCKER #5 L184 to L188 (2026-04-17) and `main.py` L3972 to L3973 (lines 2026-04-17): "signal_processor BEFORE entry_gate (BLOCKER #5 fix)".
+- Code fact: the processor starts first (`main.py` L3974 to L3975).
+- Affects: C20, W-09.
+
+**IC-46. Where the signal handlers are installed.**
+- (A) M34 MAIN13 L283 to L290 (2026-04-17): with the runtime loop.
+- (B) AUDIT-14JUN F31 L174 to L176 (2026-06-13) and `main.py` L3956 to L3957 (lines 2026-06-13): BEFORE the threads start.
+- Code fact: `_install_signal_handlers` runs at `main.py` L3958, after at least seven thread starts in live (the MIS notifier and pollers, the sweeper, the candle timer and two feed threads; twelve with the file-value flags, plus the third-party ticker thread) (AUDIT item W-01).
+- Affects: C14, W-01.
+
+#### Area 8
+
+**IC-47. The startup reconcile.**
+- (A) One synchronous reconcile in `main.py`: M34 MAIN10 L231 to L235 (2026-04-17), followed by a kill check and exit 1; `main.py` L3877 to L3878 (lines 2026-06-24): "the 2nd+ reconcile" is the background poll.
+- (B) `start()` itself reconciles synchronously before its thread: LOCKED-YAML RC14 L2338 to L2344 and RC1 L2205 to L2212 (2026-07-22); M25 RC13 L188 to L192 (2026-04-17); M33 L22 to L23 (2026-04-17); `orders/order_reconciler.py` L424 to L426 (A12, lines 2026-04-17).
+- Code fact: both run: `reconcile_once` (`main.py` L3880) with the kill check after it (L3894 to L3899), then `order_reconciler.start()` (L3961), which reconciles again synchronously, with no kill check after it.
+- Affects: C16, C41, W-03; R24.
+
+#### Area 9
+
+**IC-48. Whether a kill stops the process.**
+- (A) SPEC section 4.6 L861 to L868 (2026-04-17): HARD_KILLED breaks the main loop and shuts down; PRULES section 11 L109 (2026-04-17): "Critical — Stop system immediately" (INTERPRETATION: this may mean stop trading).
+- (B) `docs/decisions/11_absolute_kill_ladder.md` L58 to L69 (2026-07-28) and `README.md` L52 to L53 (2026-07-16): a soft kill blocks entries and lets exits run, a hard kill blocks all orders and flattens; `docs/audit/service_window_extension_2026-07-24.md` L11 to L13 (2026-07-25): a soft kill "persists overnight"; "the service is exiting at 17:35 anyway"; CTI L848 to L849 (2026-06-11): the main loop is `_shutdown_event.wait()`.
+- Code fact: the main thread only waits on `_shutdown_event` (`main.py` L4249); no kill path sets the event (AUDIT item W-04).
+- Affects: C25, W-04, W-10; R13.
+
+#### Area 10
+
+**IC-49. Fixed times in the helper threads.**
+- (A) No fixed times: LOCKED-YAML P1 L222 (2026-07-22): "no hardcoded times anywhere else. Configurable"; FRULES 1.4 L31 to L38; `config/system_config.yaml` L105 to L106 (lines 2026-07-25): a hard-coded 16:00 was "against Foundation Rule 1.4"; AUDIT-26APR CFG-1 L47 to L58 (2026-04-26); Record 01 L100 (2026-09-18): the re-sync takes `trading_hours.market_open`.
+- (B) Fixed times: commit `0cc0009` (FIX-130 Item 7, 2026-05-30): the pre-alert at 14:45, "30 min before EOD squareoff"; commit `9536a14` (FIX-164, 2026-06-12): the re-sync at the 09:15 market open.
+- Code fact: the literals 14:45 (`main.py` L943) and 09:15 (L994), and the "~30 min" text (L912); the EOD time and the market open are configured values (`config/system_config.yaml` L27 to L49, L103 to L104).
+- Affects: C11, C23; R17.
+
+**IC-50. The pre-alert's wording and ledger #9.**
+- (A) Ledger #9: `docs/audit/ledger_3a_9_5_step1_03aug2026.md` L260 (2026-08-03); `tests/unit/test_kill_alerts_delivery_carveout.py` L1 to L26 (header dated 2026-08-03; file 2026-09-03); `main.py` L707 to L714 (lines 2026-08-03): no alert may claim that the EOD square-off closes all positions, because delivery (CNC) is carried by design.
+- (B) FIX-130 Item 7 (commit `0cc0009`, 2026-05-30; `main.py` L896 to L928, lines 2026-05-30 to 2026-06-10): the 14:45 pre-alert lists every open trade and says "force-squared in ~30 min".
+- Code fact: the pre-alert's query takes every OPEN trade with a fill (`main.py` L903 to L907); its text (L912, L922) is outside the ledger #9 test, which covers the two 15:15 alerts.
+- Affects: C23; R17.
+
+**IC-51. The 09:15 re-sync and the drift ladder.**
+- (A) FIX-164 (`main.py` L982 to L994, lines 2026-06-12; commit `9536a14`, 2026-06-12): the re-sync picks up a deposit made after a pre-market start, with a Telegram message when the change exceeds Rs 1.
+- (B) `docs/decisions/11_absolute_kill_ladder.md` L85 to L97 (2026-07-28) and DH1, `capital/drift_handler.py` L15 to L24 (A09, lines 2026-04-19): a `fund_manager` drift event is an escalating, single-sample input to the soft- and hard-kill ladder, and the only production caller of `sync_from_broker` is the 09:15 one-shot. Neither side addresses the direction of the change; the handler tiers by its absolute size.
+- Code fact: the re-sync (`main.py` L1014 to L1016) calls `sync_from_broker`, which publishes `CapitalDriftDetected` with source `fund_manager` when the total changes by more than 1.0 (STUDY C22).
+- Affects: C22; R16.
+
+**IC-52. Which drift sources escalate.**
+- (A) Only `fund_manager`: DH1, `capital/drift_handler.py` L15 to L17 (lines 2026-04-19: "Today that's {"fund_manager"}"; reconciler events are logged at INFO); `main.py` L3849 to L3852 (lines 2026-04-19 to 2026-04-26): "Only fund_manager-sourced events trigger kill_switch escalation; reconciler-sourced events log at INFO".
+- (B) Three sources: the same file L66 to L70 (lines 2026-04-19): `fund_manager`, `fund_manager_self_check` (from the reconciler's `_check7`, BL-3) and `fund_manager_bucket_overflow`.
+- Code fact: the handler escalates for the three sources of L66 to L70 (A09).
+- Affects: C22, C29, M-11.
+
+**IC-53. The self-exit rule.**
+- (A) Never exit while a position is open: `main.py` L1052 to L1055 (lines 2026-06-19): "it NEVER exits while any position has live exposure (OPEN/PARTIAL/PENDING_FILL)"; SMAP L658, L2028 to L2029 (2026-09-02); Record 03 L286 (2026-09-18).
+- (B) `main.py` L1077 to L1113 (lines 2026-08-25) and commit `02a2a6b` (2026-08-25), "(Option A, Rama 25-Aug-2026.)": a cleanly identified CNC delivery carry does not hold the service open.
+- Code fact: the self-exit gate asks which positions require this service (`main.py` L1115 onward; AUDIT item C26); the older block comment was not updated (C40).
+- Affects: C26, C40, W-16; RS-09.
+
+**IC-54. The product map in the EOD-gate comment.**
+- (A) `main.py` L1155 to L1156 (lines 2026-08-25): "product_map has only INTRADAY->MIS and DELIVERY->CNC".
+- (B) `config/system_config.yaml` L157 to L162 (2026-09-10): the map also has COVER_ORDER "CO" (and an empty BRACKET_ORDER).
+- Code fact: the configured map has three non-empty entries; `_BROKER_PROTECTED_PRODUCTS` holds CNC only (`main.py` L1161).
+- Affects: C26, M-26.
+
+#### Area 11
+
+**IC-55. The shutdown order.**
+- (A) M34 MAIN15 L299 to L318 (2026-04-17): headed "reverse of start", it stops the signal processor first, then the entry gate, the webhook and the rest; `main.py` L1627 (lines 2026-04-17): "Reverse-order shutdown (MAIN15)".
+- (B) SPEC X.1 to X.3, L870 to L882 (2026-04-17): the webhook returns 503 first, then a 10 s drain of signals, then the background threads in reverse order of initialisation; PRELIVE H-16 L2491 to L2510 (2026-04-21) and `signals/webhook_receiver.py` L1167 to L1171 (A06, lines 2026-04-19): stop the webhook receiver first.
+- (C) BLOCKER #5 (MEGA L184 to L188; `main.py` L3972 to L3973): the processor starts before the gate, so the reverse order would stop the gate before the processor.
+- Code fact: the webhook stops first (H-16), then the processor (`main.py` L1690), and the gate later (L1748) (STUDY C20).
+- Affects: C20, W-05.
+
+**IC-56. The shutdown event first, or the flatten drain first.**
+- (A) FIX-060 (`main.py` L1628, lines 2026-05-15; commit `07979fa`, 2026-05-15): set the shutdown event first, so that rate-limited waits abort.
+- (B) M-C8 (`main.py` L1632 to L1642 and L1066 to L1074, lines 2026-07-16): drain the flatten worker first, for up to 15 s, before teardown.
+- Code fact: the event is set at L1629 and the drain runs at L1643, so a throttled broker call of the flatten worker can abort during the drain; no record reconciles the two (the M-C8 records were searched).
+- Affects: C17; R15.
+
+**IC-57. The drain's internal case.**
+- (A) `capital/kill_switch.py` L1266 to L1270 (A13, lines 2026-07-16): `drain_flatten(timeout=None)` is the internal self-exit case.
+- (B) `main.py` L1066 to L1075 (lines 2026-07-16): the internal self-exit path "never hits this: it waits (unbounded) via the flatten gate"; `_shutdown` always passes the 15 s grace.
+- Code fact: `_shutdown` calls `drain_flatten` with 15 s on every path (`main.py` L1643 to L1656); the internal wait happens at the self-exit gate instead.
+- Affects: C17, C18, W-05, W-06, W-16.
+
+**IC-58. "Threads joined" at shutdown.**
+- (A) `main.py` L1814 (lines 2026-05-15 to 2026-05-30): "WAL checkpoint after all threads joined"; `docs/audit/system_flow_review_15jun2026.md` L78 (2026-06-14): "after threads joined"; `ops_dashboard/docs/G3_0_CONTROL_PLANE_INVESTIGATION.md` L87 to L88 (2026-07-03): "threads joined, DB flushed"; SPEC X.3, within L870 to L882 (2026-04-17): stop the background threads, the EOD scheduler included.
+- (B) M34 MAIN15 L299 to L318 (2026-04-17) and `main.py` L1751 (lines 2026-04-17): the webhook server has no clean stop and its "daemon thread dies on process exit".
+- Code fact: `main.py` joins no thread; the EOD poller, the MIS pollers, the servers and the pools are never stopped (STUDY C19).
+- Affects: C19, W-05.
+
+#### Area 12
+
+**IC-59. The restart-prevent list.**
+- (A) "3 4 5": UNIT L35 (lines 2026-08-23); commit `2f67bb8` (2026-08-23); `docs/audit/ROLLBACK_AND_ATTENDANCE_23-Aug-2026.md` L758 (2026-08-26); Record 03 L36 (the testing VM, 2026-09-18).
+- (B) "3 4": `main.py` L3456 to L3457 (lines 2026-07-27); `utils/instance_lock.py` L8 (lines 2026-07-17); `tests/unit/test_config_auditor.py` L208 (lines 2026-07-27); the documents of IS-12.07 (2026-06-18 to 2026-09-02, some changed after 23-Aug, for example `docs/RUNBOOK.md`, 2026-08-26); `docs/audit/service_window_configurable_25jul2026.md` L76 to L119 (2026-07-25, written while exit 5 was restarted).
+- (C) "3": CTI L82, L111 and CTD L1168 (2026-06-11).
+- (D) UNIT's own comment L27 to L32 explains 0, 3, 4, 1 and 2, not 5.
+- Code fact (a declaration only): UNIT L33 to L35; what was installed is UNKNOWN / NOT ESTABLISHED (commit `2f67bb8` reports a change made on the VM on 23-Aug).
+- Affects: C4, B-30, B-40, S-34, W-19; R4.
+
+**IC-60. Exit 6 and restarts.**
+- (A) Exit 6 stops the restarts: the `_invalidate_token` docstring and the H-11 comment (`main.py` L143 to L146, L126 to L133, lines 2026-07-06); `tests/unit/test_h11_invalidate_token_path.py` L8 to L15 (2026-07-06): "the systemd restart loop breaks"; commit `7fc06ff` (FIX-163, 2026-06-12): "exit code 6 (no restart)"; CTI P.2 L844 to L846 (2026-06-11): "Manual required: ... exit 6"; RDISC L139 to L140 (2026-04-17): exit 6 brings an operator alert; AUDIT-04JUL H-11 L90 to L94 (2026-07-06).
+- (B) Exit 6 is restarted: UNIT L33 to L35 (lines 2026-05-05 to 2026-08-23): 6 is not in the prevent list, so systemd restarts it every 10 s; commit `ccde039` (2026-04-22): the token watcher gates stale tokens; Record 03 L179 (2026-09-18): its own "KNOWN DEFECT", exit 6 restarts every 10 s without bound.
+- Code fact: `main.py` returns 6 at L2370, L2374 and L2552; the token path can also give 2 (IC-39).
+- Affects: C2, C3, C4, B-03, B-40, W-12; R2, R4.
+
+**IC-61. The scope of exit 7.**
+- (A) Live only: `main.py` L19 (module docstring, lines 2026-04-17); M41 SU15 L337 and M41C SU15 L300 (2026-04-17): "live mode confirmation cancelled".
+- (B) Both modes: `main.py` L1928 to L1932 (the `_interactive_confirm` docstring, lines 2026-04-17 to 2026-04-22); `tests/unit/test_interactive_startup.py` L217 to L249 (2026-07-25).
+- Code fact: `main.py` L1946 exits 7 in either mode; the branch cannot be reached at the baseline (C1).
+- Affects: C4, B-16.
+
+**IC-62. Exit 9.**
+- (A) Every exit-code list omits 9: `main.py` L11 to L20; M34 MAIN3 L41 to L47; M41 and M41C SU15; `docs/01_system_architecture.md` L162 to L174; UNIT L27 to L32.
+- (B) The I.4 comment, `main.py` L2556 to L2560 (lines 2026-04-26): fail fast on an unsupported broker; Record 03 L177 (2026-09-18) lists 9.
+- Code fact: `main.py` L2572 returns 9.
+- Affects: C4, S-22, W-19; R4.
+
+**IC-63. A start-rate limit.**
+- (A) A limit: STEP3 L107 to L108, L372 to L375 and STEP4A L16 (2026-04-18): StartLimit 3 in 300 s; the first unit, commit `316b335` (2026-04-19); CTD CT-089 L1188 to L1198 (2026-06-11): the restart-loop protection relies on a start limit, "StartLimitBurst not explicitly set".
+- (B) No limit: commit `ccde039` (2026-04-22) removed it with `Restart=always`; commit `398dbae` (2026-05-05) went back to `on-failure` without restoring it.
+- Code fact (a declaration only): UNIT at the baseline has no `StartLimitIntervalSec` or `StartLimitBurst`.
+- Affects: C4, B-40; R4.
+
+**IC-64. The token-watcher contract and the prevent list.**
+- (A) TW L4 to L15 (lines 2026-04-22 to 2026-06-18): a contract for 0, 4, 3, and 1 or 2.
+- (B) UNIT L35 (lines 2026-08-23): "3 4 5", so an exit 5 leaves the unit `failed`.
+- Code fact (declarations only): a `failed` unit with exit 5 falls into the watcher's catch-all branch for 1, 2 and other codes (TW L168 to L177) and is restarted up to 3 times an hour when a fresh token exists; exits 6 and 9 are restarted by systemd itself (the unit is then `activating`), so the watcher does nothing (TW L140 to L142). The watcher is A04's file and the unit A17's.
+- Affects: C4, B-19, B-40; R4.
+
+**IC-65. The HALT recovery procedure.**
+- (A) Use `deploy/resume.sh` on the VM, never `main.py --resume` beside the service: `deploy/resume.sh` L4 to L7 and `scripts/clear_kill_switch.py` L5 to L9 (2026-06-18); SMAP L902 to L904 (2026-09-02); `docs/05_incident_response.md` L48 to L59 (2026-08-06); `docs/RUNBOOK.md` L44 to L63 (2026-08-26); `docs/03_daily_operations_runbook.md` L140 to L158 (2026-08-03); `PATHS.md` L69 (2026-09-03; dated 28-Jul: "RECOVERY = deploy/resume.sh").
+- (B) `main.py --resume`: TW L149 (lines 2026-06-18): the HALT alert ends "then: main.py --resume"; M34 MAIN2 (2026-04-17): `--resume` clears HARD_KILL; the help text `main.py` L176 to L212 (lines 2026-04-17); `docs/web_claude/02_phase_instructions/v2_foundation_wrapup.txt` L38 (2026-04-17): "post-HALT live start"; CTD CT-064 L877 to L887 (2026-06-11): "Restart with --resume flag"; SMAP L899 (the 18-Jun recovery was an operator `--resume`, RS-16).
+- Code fact: `--resume` is a supported option (`main.py` L2283 to L2296 resume with `resumed_by="operator"`); a copy run by hand competes for the lock port (C31).
+- Affects: C31, B-04, B-05; R19; RS-16.
+
+**IC-66. The Python version on the VM.**
+- (A) STEP2 L14, L79, L87 (2026-04-18): Python 3.14.3.
+- (B) `docs/06_deployment_guide.md` L26, L33 (2026-06-18) and `docs/disaster_recovery.md` L192 to L195 (2026-08-02): python3.11.
+- (C) `docs/gui_project/G0_BACKEND_INVESTIGATION_REPORT.md` L221 (2026-07-03): "Python 3.12.3 on the VM shared venv".
+- Code fact: none; the version bears on exit-time behaviour (STUDY section 12.3, item 4); the version in force is UNKNOWN / NOT ESTABLISHED.
+- Affects: B-41, C19, C34, M-10.
+
+#### Area 13
+
+**IC-67. The event-bus contract: dispatch and event types.**
+- (A) Synchronous, four types: LOCKED-YAML EV1 L533 to L540 (2026-07-22): "No queue, no async, no background thread"; EV6 and G9 L158 to L167: four types, "No others added speculatively"; `core/events.py` L5 to L7, L24 to L26, L40 to L41 (lines 2026-04-17 to 2026-04-26): "Does not use queues, threads, or async"; SPEC L126 (2026-04-17): "Tiny EventBus for 4 fan-out events ONLY".
+- (B) Asynchronous where needed, more types: LOCKED-YAML EV1: "Async can be added later"; the `EventBus` class docstring, `core/events.py` L253 to L259 (lines 2026-05-12): `async_dispatch=True` (FIX-003) runs a subscriber in a single-threaded executor; `tests/unit/test_events.py` L415 to L487 (2026-05-12); SMAP L1660 to L1663 (2026-09-02): the slippage recorder subscribes asynchronously; `core/events.py` L27 to L37: EV7 to EV9 add event types.
+- Code fact: asynchronous single-worker executors exist and eight event types are defined (STUDY section 10.4; AUDIT items M-03, M-07).
+- Affects: C29, M-03, M-05, M-06, M-07, M-10.
+
+**IC-68. When `EodSquareoffComplete` is published.**
+- (A) EV8, `core/events.py` L32 to L33 (lines 2026-04-17 to 2026-04-26): "Published after the full EOD fire sequence completes".
+- (B) The class docstring `core/events.py` L175 ("EOD5 step 6") and EOD5 in `orders/eod_squareoff.py` L21 to L22 (A12, 2026-08-04): the publish comes before the optional resume.
+- Code fact: the EOD module publishes before the optional resume (A12; AUDIT item M-12).
+- Affects: C29, M-12.
+
+**IC-69. Who consumes `OrderStatusChanged`.**
+- (A) EV9, `core/events.py` L34 to L37 (lines 2026-04-17 to 2026-04-26): "Published by order_monitor on every successful OSM transition; consumed by order_manager".
+- (B) `orders/order_placer.py` L698 to L700 (A10, lines 2026-04-22 to 2026-05-14): the placer also subscribes, for the zero-fill-then-cancel path ("Audit #7 + FIX-017").
+- Code fact: two subscribers, the manager and the placer; the monitor's auto-step success (`broker/order_monitor.py` L1272 to L1279, A04) returns without publishing.
+- Affects: C29, M-07, M-12.
+
+**IC-70. Where custom exceptions are defined.**
+- (A) Only in `core/exceptions.py`, all under the root: LOCKED-YAML E1 and E4, within L449 to L525 (2026-07-22); `core/exceptions.py` L4 to L7 (lines 2026-04-17); EXC-1 (`core/state_store.py` L120 to L143) and EXC-2 (AUDIT-26APR L128 to L133) agree.
+- (B) `core/config_auditor.py` L68 to L72 (A02, 2026-08-23): a deliberate `ValueError`, for Pydantic wrapping.
+- Code fact: thirteen custom classes in nine other production files, some outside the `TradingSystemError` tree (for example `MigrationError`, `MisSquareoffConfigError`, `EffectCompositionError`), which turns exit 1 into exit 2 (AUDIT items M-19, M-24).
+- Affects: C39, M-19, M-24.
+
+**IC-71. The broker tag length.**
+- (A) `core/ids.py` L108 to L109 (FIX-093 docstring, lines 2026-05-17): the broker enforces 20 characters, "but empirical testing shows rejection at 17+ chars".
+- (B) `broker/zerodha_adapter.py` L628 to L633 (A04, lines 2026-07-01) and `tests/unit/test_emergency_exit_tag_fix.py` L1 to L14 (2026-07-01): the broker's limit is 20 ("Invalid tags: max allowed tag length is 20").
+- Code fact: every path truncates to 16 (`core/ids.py` L124; the adapter's guard); the broker's real behaviour is UNKNOWN / NOT ESTABLISHED (A04).
+- Affects: C39, M-16.
+
+**IC-72. Whether broker matching uses the tag.**
+- (A) `broker/zerodha_adapter.py` L634 to L635 (A04, lines 2026-07-01): "broker↔trade matching is by order_id, never the tag, so truncation loses no traceability".
+- (B) The same file L1928 to L1929 (lines 2026-07-02) and `orders/order_reconciler.py` L217 to L235 (A12, 2026-09-03): the tag-correlation recovery matches a timed-out or crashed entry to its trade by the truncated tag.
+- Code fact: the reconciler's recovery uses the tag (A12; AUDIT item M-16).
+- Affects: C39, M-16, M-17.
+
+**IC-73. NRML at the emergency sites.**
+- (A) An unrecognised product, flattened loudly: `core/constants.py` L39 to L41 (lines 2026-08-02); `main.py` L1157 to L1159 (lines 2026-08-25).
+- (B) A known product with its own intent: `capital/kill_switch.py` L1846 to L1851 (A13): "A KNOWN non-intraday product (NRML) exits under its own intent (H-5 correctness)"; the same file L1978 to L1983: the broker nets per product, so an exit must use the position's own product.
+- Code fact: `PRODUCT_TO_INTENT` maps NRML to DELIVERY (`main.py` L1154 to L1155 states this), so the kill switch's exit for NRML uses the DELIVERY product, not NRML (AUDIT item M-30).
+- Affects: C39, M-28, M-30.
+
+### 4.2 Statements that only the code contradicts (not conflicts between sources)
+
+These are intent statements with no opposing source; the difference from the code is an AUDIT result and belongs to the items named. They are listed so that no difference noted by the worksheets is lost.
+
+| ID | Source (path and lines; date) | What it states | What the code does (lines) | AUDIT items |
+|---|---|---|---|---|
+| CD-01 | M41 SU7 to SU13, L112 to L318; M41C L138 to L286 (2026-04-17) | the interactive order: pre-flight, account, token or login, mode, confirmation, start | `main.py` L2536 to L2542: account, mode, confirmation, then login; the branch cannot be reached at the baseline | C1, B-16 |
+| CD-02 | `docs/disaster_recovery.md` L110 to L113, L134 to L136, L227 (2026-08-02) | recovery and rebuild steps run `main.py --interactive` | the interactive branch reads a name it never binds (`main.py` L2534) | C1; R1 |
+| CD-03 | M34 MAIN23 L384 to L386 (2026-04-17) | "No other module imports main" | `scripts/sr_level_export.py` L136 to L137 and 20 test files import it | C38b, C40 |
+| CD-04 | M34 MAIN24 L388 to L391 (2026-04-17) | 400 to 600 lines; split above 600 | `main.py` has 4,293 lines | (size only) |
+| CD-05 | `main.py` L1066 to L1072 (lines 2026-07-16); CTI L893 (2026-06-11); `docs/audit/HANDOFF_05-Aug-EVENING.md` L1273 to L1276 (2026-08-05); UNIT L25 | the shutdown fits inside `TimeoutStopSec=30` | the fixed maximum waits of the steps that always run add up to 71 s (STUDY section 8.4) | C18, W-06; R15 |
+| CD-06 | AUDIT-14JUN F32 L178 to L180 (2026-06-13); the "FIX-169 F32" `store.close()` markers in `main.py` (for example L2301, L2481) | a partial start must not leak the store connection | exception paths leave the store open; the returns at L2552 and L2572 do not close it | C13, C14, S-25, W-02; R12 |
+| CD-07 | M34 MAIN13 L283 to L290; SPEC section 4.6 L861 to L868 (2026-04-17); FRULES 1.6 L44 to L53 and section 4 | a periodic heartbeat log | none (`main.py` L4249 only waits) | C25, W-10 |
+| CD-08 | SPEC C.8 L736 to L740 (2026-04-17) | readiness verifies that all background threads are alive | no liveness check at readiness; liveness only on `/health` (SECAUDIT-02JUL E-4) | C25, W-13 |
+| CD-09 | `core/market_windows.py` L6 to L8 (lines 2026-04-17) | "No internal clock, no I/O, no globals" | the module functions call `now_ist()` when no time is passed (L275 to L333) | B-37 |
+| CD-10 | LOCKED-YAML ID5 L978 (2026-07-22); `core/ids.py` docstring | the validators are used by the store at insert time | no production caller (STUDY section 10.5) | C39, M-15 |
+| CD-11 | M33 SC1 L29 to L33 and SC15 (2026-04-17); `utils/startup_checks.py` L10 to L12, L15 (lines 2026-04-17) | a pure library, "no side effects beyond logging", "only reads and reports" | the side effects listed in the STUDY's checks catalogue, section 7 | S-38 |
+| CD-12 | `main.py` L3449 to L3450 (lines 2026-07-27) | A5 fails fast "before any capital is reserved" | capital is initialised and rehydrated earlier (`main.py` L2761 to L2825) | C13, S-34 |
+| CD-13 | M34 MAIN8 and MAIN11 (2026-04-17); the test name `test_startup_reconciliation_called_before_threads` (`tests/unit/test_main.py` L875, 2026-08-28) | every start comes after the startup reconcile | several workers start during phase 0e; no source records the change | C13, W-01, W-09; R12 |
+| CD-14 | the docstrings of `check_config_files_present` (before parsing and before the time authority) and `check_db_permissions` (before the store opens) in `utils/startup_checks.py` (2026-07-17) | an order of calls | `main.py` calls both later (inside the aggregate) | S-46, S-51 |
+| CD-15 | M33 SC4 step 4 (within L59 to L81, 2026-04-17) and the function's docstring | a session date other than today gives COLD | the code tests "earlier than today" | C7c, S-06 |
+| CD-16 | `config/system_config.yaml` L641 to L642 and `core/config_loader.py` L1671 to L1690 (`smart_tgt.enabled`, the "master switch"); M34 MAIN8 step 10 | the configured switch governs the smart TGT | `SmartTgtManager(enabled=True)` is hard-coded (`main.py` L2979) and the placer does not check the flag | C36a, S-28 |
+| CD-17 | `core/state_store.py` L251 to L258 (A03, lines 2026-04-17 to 2026-05-14) | each thread closes its own connection; the main thread last | no worker closes; `_shutdown` makes one main-thread close | C19, W-21 |
+| CD-18 | `signals/signal_processor.py` L327 to L329 (A06, lines 2026-04-17) | `stop()` waits "up to 5s per SP4" | a 10 s join and an unbounded executor wait | C18, W-06 |
+| CD-19 | `config/system_config.yaml` L387 (TASK-10); commit `1af6124` (2026-06-18); `alerts/telegram_notifier.py` L282 to L286 (A14, 2026-07-27) | the master switch silences ALL Telegram alerts | the holiday guard sends directly (`main.py` L2144), without reading the switch | C10e |
+| CD-20 | LOCKED-YAML G9 L161 (fan-out means 3 or more subscribers) and EV6 ("affects: orders/order_monitor.py (subscribes to OrderFilled)") | the bus is for fan-out events | the subscriber counts are lower, and the order monitor publishes `OrderFilled` rather than subscribing | C29, M-06 |
+| CD-21 | LOCKED-YAML E2 (within L449 to L525) | SEVERITY serves logging and alert routing | only `core/logger.py` reads it | M-21 |
+| CD-22 | `core/constants.py` L1 ("broker modules"), L15 to L16 ("there is no second copy to drift") (lines 2026-08-02) | the constants' consumers; one copy only | other importers; copies at `core/state_store.py` L1036, L1163, L1246, against the same file's L798 to L800 | C39, M-29, M-31 |
+| CD-23 | `core/account_registry.py` L7 ("used by ZerodhaAdapter"), L55 ("Unique identifier"), L98 to L102 (the `load()` raise list), L343 to L344 (the AR12b contract) | the registry's consumers and contracts | other importers; duplicate IDs accepted; a short or blank row raises `AttributeError`, which is not in the list (L148 to L153); `str(None)` at L315 | C39, M-33, M-34, M-38, M-40 |
+| CD-24 | `core/config_loader.py` L113 to L116 (A02, 2026-09-10) | "the schema and the runtime cannot disagree" | the schema validates with a literal poll interval of 5 (L131), while `main.py` L3334 and L3345 use the configured value | M-24 |
+| CD-25 | `core/instrument_cache.py` L206 (A05, "Avoid circular import"); `data/candle_store.py` L138 (A05, `gc_sweep` "Called on InstrumentsRefreshed event") | an import constraint; an event-driven sweep | the import graph differs from the comment (AUDIT item M-43); `InstrumentsRefreshed` has no production subscriber, and its only publisher has no production caller | C29, M-07, M-43 |
+| CD-26 | `capital/fund_manager.py` L1474 to L1478 (A09, C.1, lines 2026-04-26) | publish drift events only after releasing the capital lock, to avoid a deadlock | the daily-loss callback runs inside the fund manager's lock (`capital/fund_manager.py` L1261 to L1368) and calls `eod.fire_now`, which makes broker calls | C22, C27 |
+
+### 4.3 A conflict noted on the paper side only
+
+`tests/unit/test_main.py` L784 to L816 (BL-15, 2026-08-28: paper mode does not require `WEBHOOK_SECRET`) against `main.py` L219 to L232 (C-2: required in both modes). It concerns paper mode only and was not traced further (Live only; A19 owns the tests).
+
+## 5. Statements attributed to Rama or the operator in legacy documents
+
+All of these are HISTORICAL documentary evidence at their dates. None is a statement made to this project; Rama has made no statement to this project about A01 behaviour. Where a document says that the wording was not Rama's own, that is stated.
+
+| ID | Path and lines | Date | What is attributed (paraphrase) | Bears on |
+|---|---|---|---|---|
+| RS-01 | M41 L5 to L40 ("Rama's decisions (locked)") | 2026-04-17 | A: the token by a browser-assisted manual login, no TOTP automation in v2; B and C: `accounts.csv` with a `paper_capital` column, ignored in live mode, where the capital comes from the broker; D and F: one `main.py` with `--interactive`; interactive is the PC operator session and non-interactive (the default) the VM under systemd; VM live: connect by SSH and run `main.py --interactive --mode live`, then it runs headless; the PC is always interactive during the paper trial; "Pre-flight ordering (Rama's refinement)": the holiday and weekend check FIRST, then a clean exit with no logs, no further checks and no threads. (M41 L473 to L493 are notes written for Rama, not his statements: they repeat the VM live route and call the exact "CONFIRM LIVE" phrase "Extra friction on purpose".) | C1, C10, C39 (M-36: a positive paper capital is required even in live), R1; IC-02, IC-03 |
+| RS-02 | M41C L14 to L16, L34 to L36, L42, L51 to L54 | 2026-04-17 | Rama deferred the chaos tests until after the paper trial; wants five accounts with a `paper_capital` column and "will place the final CSV at config/accounts.csv"; wants `--interactive` with account selection, a token check, mode selection, the holiday guard and a welcome banner | C1, C39, B-17, R1 |
+| RS-03 | RDISC L5 to L27 ("Rama's proposed flow"), L210 to L236 (decisions needed from Rama) | 2026-04-17 | pre-flight checks; account selection; a token generated from the API key, secret and TOTP (item 5; decision A of RS-01 replaced it) and copied to the VM; paper or live; on a holiday or weekend, refuse to start, show the next trading day, create no log files and start no threads; live capital from the broker; a token-account mismatch blocks; then headless. The document lists Questions A to E for Rama and calls itself a discussion, not a build instruction; his answers are not recorded there | C1, C10, R1, R2 |
+| RS-04 | STEP3 L37 to L40 | 2026-04-18 | systemd runs `--mode paper`; live is "Rama's manual override when ready" | B-40, R1 |
+| RS-05 | LOCKED-YAML P1 L223 ("User explicitly specified 09:30-13:30"); SPEC L89 (P1 to P18 "raised by the system owner from direct experience with the existing system") | 2026-07-22; 2026-04-17 | the entry window and "no hardcoded times" among the owner's architecture points (the P17 pre-flight check included) | C11, C23, C32, R17; IC-31, IC-49 |
+| RS-06 | `capital/kill_switch.py` L318 to L325 (A13); `docs/decisions/11_absolute_kill_ladder.md` L79 to L83 | lines 2026-06-20; 2026-07-28 | "HEADLESS GUARANTEE (Rama's 2026-06-20 decision)": a new trading day always starts clean; every prior-day kill is cleared whatever its type; the system never blocks the next-day start; same-day kills persist | C7b, S-05, R19; IC-27 |
+| RS-07 | `docs/decisions/11_absolute_kill_ladder.md` L3, L7, L21 to L23, L67 to L69 | 2026-07-28 | the decision "CLOSED 28-Jul-2026 — Option A, LEAVE AS-IS, NO code change", recorded as "what Rama decided"; Rama (28-Jul, 15:04): keep ₹1,000 for the soft kill and ₹2,500 for the hard kill; his description of the rungs, SOFT "stop taking new trades / raise warnings" and HARD "emergency stop", recorded as accurate | C22, C25, R13, R16; IC-48, IC-51 |
+| RS-08 | `docs/audit/q4_hard_kill_delivery_decision_30jul2026.md` L25 to L31; `core/constants.py` L12 to L16 | 2026-07-30; lines 2026-08-02 | Rama (30-Jul, revising Q4): HARD_KILL flattens only MIS and intraday positions; CNC delivery survives; force-closing delivery must be a separate explicit action; "MIS must close same-day" | C26, C39, M-27; IC-73 |
+| RS-09 | `main.py` L1078 to L1086; commit `02a2a6b` | lines 2026-08-25; commit 2026-08-25 | "(Option A, Rama 25-Aug-2026.)": the EOD self-exit gate asks what requires this service; a delivery carry must not hold the service open | C26, W-16; IC-53 |
+| RS-10 | `docs/MASTER_PENDING_01-Aug-2026.md` L919 to L937 (Rama's rulings R1 to R5, ratified 02-Aug, "RAMA'S OWN decisions") | 2026-08-26 | the gate for the delivery flip, the deploy slots and a script change; no A01 behaviour | none (listed for completeness) |
+| RS-11 | `docs/MASTER_PENDING_01-Aug-2026.md` L24, L28; `docs/audit/STOP_PROCEDURE_05-Aug-2026.md` L4 to L5, L13 to L15; `docs/audit/STOP_PROCEDURE_06-Aug-2026.md` L4, L166 to L167, L230 to L238, L251 | 2026-08-26; 2026-08-06; 2026-08-06 | the service was stopped on Rama's authorisation "in his own words" (06-Aug, 20:32); a manual stop was needed every trading night until F6, because a carried position deferred the self-exit; for 05-Aug the GO was Rama's, but "The stated reason was AUTHORED BY ChatGPT and ADOPTED by Rama"; "The stop is Rama's to authorise and Rama's to run" | operations, not design: C21, C26; IS-10.17 |
+| RS-12 | `docs/audit/service_window_configurable_25jul2026.md` L3 to L5, L170, L266 | 2026-07-25 | the build instruction "MAKE THE SERVICE SHUTDOWN TIME CONFIGURABLE, SET IT TO 17:35" (25-Jul, 00:31; the issuer is not named); an extra range check "is beyond the letter of the instruction and is Rama's to reject"; a Monday action for Rama: confirm that the service is alive at about 17:10 | C24, B-18, B-20, W-16 |
+| RS-13 | `docs/audit/deployment_evidence_pb01_shadow_14jul2026.md` L5 | 2026-07-14 | "Rama's explicit GO" for the 14-Jul deploy that shipped the Q4 boot guards | the provenance of Q4(b) and Q4(c): S-33, S-49 |
+| RS-14 | `main.py` L1066 to L1072 (M-C8) | lines 2026-07-16 | a flatten that outlives the 15 s grace on an external stop "gets a CRITICAL: positions may remain open, and that is the operator's call" | C17, C18, R15 |
+| RS-15 | `main.py` L2291; M34 MAIN6 L73 to L76 | lines 2026-04-17; 2026-04-17 | `--resume` is recorded as resumed by the "operator" (`resumed_by="operator"`) | S-06, R19 |
+| RS-16 | SMAP L895 to L904 (item 2, 18-Jun) | 2026-09-02 | the emergency SOFT_KILL of 18-Jun "was cleared (operator `--resume`)" and the service was handed back to systemd; the same passage directs later resumes to `deploy/resume.sh` | C31, R19; IC-65 |
+
+Excluded as not bearing on A01: `docs/foundation_engineering_rules.md` L101 (Rama's capital invariant, A09); SMAP L735 to L736 (Rama's off-market window for deploys by SSH); `docs/audit/BOOT_PROOF_75e637c_26-Aug-2026.md` L7 (Rama authorised moving the rollback target); commit `2f67bb8` ("Rama's call" on when to push); `docs/MASTER_PENDING_01-Aug-2026.md` L350 to L372 (Rama's rulings 1 and 2 of 07-Aug: the authority for the control inventory and a shared symbol namespace).
+
+## 6. Sources cited but not in the repository, and material not read
+
+### 6.1 Cited, but not in the repository
+
+Checked with `git ls-tree -r 970aabf`:
+
+- `docs/audit/DEPLOY_742d9da_23-Aug-2026.md`, cited by commit `2f67bb8` as the record of the 23-Aug change made on the VM. Not in the repository, so that change is known only from the commit message (IC-59).
+- `utils/lock_manager.py`, named by SPEC L233 and L558 to L559. It does not exist at the baseline; the lock is `utils/instance_lock.py`.
+- `data_store/session/zerodha_token.json`, the token file named by SU5 and the code. A runtime file, never in the repository; its content is not needed.
+- The `main_module:` and `startup_module:` sections of the locked-decisions register, where M34 L490, M33 L370, M41 L467 and M41C L394 say MAIN, SC and SU were locked. Neither copy of the register has them. Whether they existed elsewhere (for example in an assistant's memory store) is not established.
+- The external operator register `MASTER_PENDING_REGISTER_*.txt`, excluded from git (`docs/audit/register_items_26jul2026.md` L3 to L4).
+- Record 03's "chapter 22", its defect register (Record 03 L6, L179). Not admitted: only five record files are admitted (SRC-44).
+
+### 6.2 Labels, lists and specifications cited, but not found
+
+- A list that defines the lettered Q4 items, the T series, the NI series, BUILD 1 item #12 or the numbered ledger rows as such; the question list to which the 14-Jul "Q4" belongs; a commit subject that introduces FIX-081 (section 3.1).
+- The "spec" behind "warn_sec=2, block_sec=5 per spec" (`utils/startup_checks.py` L1631): searched for in `docs/`, not found (IC-14).
+- The answers to RDISC's Questions A to E (RS-03): not recorded in that document; M41's "Rama's decisions (locked)" (RS-01) is the next record of those subjects.
+
+### 6.3 Material not read, and why
+
+- The 34 PNG files under `docs/audit/approval_19aug/`, `docs/audit/approval_final_19aug/` and `docs/audit/s06_rerender_24aug/`: binary screenshots; their names point to dashboard approval screens, outside A01.
+- The three `.docx` files in `docs/web_claude/06_live_operations/` (`monday_commands_runbook.docx`, `monday_paper_playbook.docx`, `paper_to_live_transition_plan.docx`): binary documents, which `git grep` does not search; they may describe how the operator started and stopped the system, so they are a coverage gap for areas 1, 11 and 12.
+- The six `.html`, three `.json` and two `.bat` files under `docs/`: covered only by the text searches; none was cited.
+- `docs/archive/` beyond the search hits; Record 02 beyond its five module entries, the cron appendix 03A (SRC-43) and the manual index (SRC-44), which are not A01 records; the full bodies of the long registers (SMAP, `docs/MASTER_PENDING_01-Aug-2026.md`, `docs/audit/integrity_audit_2026.md`, `UNPUSHED_LEDGER.md`, `docs/campaign_practices.md`) beyond the passages cited.
+- Runtime material does not exist for this project: the VMs, the installed units and their drop-ins, the journal, the logs, the databases, the crontab and the environment files are unavailable, so every runtime statement stays UNKNOWN / NOT ESTABLISHED. Third-party code (systemd, the Python interpreter, waitress, the broker SDK) is not in the repository.
+
+### 6.4 Cited passages that hold sensitive material
+
+These passages are cited by line only and never quoted, because they hold account identifiers, personal names, an e-mail address, IP addresses, absolute machine paths or example token values: RDISC L118 to L130, L151, L194; M41 L150 to L167, L237 to L246; M41C L28, L161 to L168; SMAP L396, L913 to L914; `main.py` L2356; UNIT L10 to L19; `.env.example` (variable names only); `tests/unit/test_main.py` L348 to L352; `config/system_config.yaml` L327 to L334; Record 03 L3, L31 to L32; the message of commit `7fc06ff`; `AGENTS.md` and `GEMINI.md`.

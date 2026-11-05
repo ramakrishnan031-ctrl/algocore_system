@@ -2,7 +2,7 @@
 
 **Status:** DRAFT — for ChatGPT review
 **Date:** 2026-11-04
-**Revision history:** First version, 2026-11-04: decisions D-01 to D-05 (consolidated correction instruction of 04-Nov-2026). Second version, 2026-11-04: decisions D-06 to D-09, and the status of D-02 (review instruction of 04-Nov-2026 and Rama's direction of the same day). Third version, 2026-11-04: decisions D-10 to D-18, the status of D-02, D-06 and D-08, and the note on evidence files (Rama's decisions of 04-Nov-2026). Fourth version, 2026-11-04: decisions D-19 and D-20, the Foundation → Pre-Phase gate (Rama's decisions of 04-Nov-2026). Fifth version, 2026-11-04: decision D-21, the Phase 1 study baseline and the reference system (Rama's decision of 04-Nov-2026). Sixth version, 2026-11-04: decision D-22, Pre-Phase Deliverable 1 (Rama's decision of 04-Nov-2026). Seventh version, 2026-11-04: decisions D-23 to D-25, the Phase 1 topic sequence, OI-04 and OI-07 (Rama's decisions of 04-Nov-2026). Eighth version, 2026-11-04: decision D-26, the approval of Revision 6 (Rama's decision of 04-Nov-2026). Ninth version, 2026-11-04: decision D-27, the Pre-Phase → Phase 1 gate (Rama's decision of 04-Nov-2026). Tenth version, 2026-11-04: D-27's exact decision and evidence distinguish the Revision 6 commit, at which the deliverables' content was approved, from the gate commit that marked them APPROVED (ChatGPT's verification of the two commits, 04-Nov-2026); the decision is unchanged.
+**Revision history:** First version, 2026-11-04: decisions D-01 to D-05 (consolidated correction instruction of 04-Nov-2026). Second version, 2026-11-04: decisions D-06 to D-09, and the status of D-02 (review instruction of 04-Nov-2026 and Rama's direction of the same day). Third version, 2026-11-04: decisions D-10 to D-18, the status of D-02, D-06 and D-08, and the note on evidence files (Rama's decisions of 04-Nov-2026). Fourth version, 2026-11-04: decisions D-19 and D-20, the Foundation → Pre-Phase gate (Rama's decisions of 04-Nov-2026). Fifth version, 2026-11-04: decision D-21, the Phase 1 study baseline and the reference system (Rama's decision of 04-Nov-2026). Sixth version, 2026-11-04: decision D-22, Pre-Phase Deliverable 1 (Rama's decision of 04-Nov-2026). Seventh version, 2026-11-04: decisions D-23 to D-25, the Phase 1 topic sequence, OI-04 and OI-07 (Rama's decisions of 04-Nov-2026). Eighth version, 2026-11-04: decision D-26, the approval of Revision 6 (Rama's decision of 04-Nov-2026). Ninth version, 2026-11-04: decision D-27, the Pre-Phase → Phase 1 gate (Rama's decision of 04-Nov-2026). Tenth version, 2026-11-04: D-27's exact decision and evidence distinguish the Revision 6 commit, at which the deliverables' content was approved, from the gate commit that marked them APPROVED (ChatGPT's verification of the two commits, 04-Nov-2026); the decision is unchanged. Eleventh version, 2026-11-05: decisions D-28 (the names of the topic folders) and D-29 (the index's stale methodology label), Rama's decisions of 05-Nov-2026.
 **Purpose and scope:** The project's Decision Register (Document 10, section 5). Each entry uses exactly the nine fields of Document 10, section 5. Prepared by Claude for ChatGPT's review; Rama decides (Document 05, section 1).
 **Evidence files:** Instructions, reviews and responses named as evidence are not kept as files in the repository (D-17). Those committed before Revision 5 remain in its Git history, at commit 9898e8c308e8ab8835efd3462aa2f1f97ba1760b; the others were never committed. Each entry states what decides it, and quotes Rama's words where they are the decision (Document 10, section 5).
 
@@ -383,5 +383,33 @@
 | Rama approval | Rama chose "Approve the gate, start Phase 1 (Recommended)" when Claude asked: "Pre-Phase → Phase 1 gate: do you approve the five Pre-Phase deliverables together (source inventory, system overview, workflows, investigation index, methodology plan) and authorise Phase 1 to start?" (Claude chat, 04-Nov-2026, between 19:25 and 19:31 IST). |
 | Affected documents | The five Pre-Phase deliverables (their status lines); 02 §2 and §6. |
 | Status | APPROVED. Pre-Phase is complete; Phase 1 is authorised. The next gate is Phase 1 → Phase 2 (Document 02, section 6). |
+
+## D-28 — The names of the Phase 1 topic folders
+
+| Field | Entry |
+|---|---|
+| Decision ID | D-28 |
+| Date | 2026-11-05 |
+| Subject | The names of the Phase 1 topic folders (Document 07, section 3) |
+| Exact decision | From A02 onwards, each Phase 1 topic folder under `doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/TOPIC_WISE_DOCUMENTATION/` is named `<TOPIC_ID>_<TOPIC_NAME_IN_UPPERCASE_WITH_UNDERSCORES>`: the topic ID of the approved Master System Investigation Index, then the topic's title in capitals with its words joined by underscores, as A01's folder `A01_SYSTEM_ORCHESTRATION_STARTUP_RUNTIME_AND_SHUTDOWN` already is. The topic documents keep the file names of D-25. The rule is written into Document 07 at its next revision (Document 05, section 5). |
+| Rationale | Document 07, section 3 sets one subfolder per topic but no name. ChatGPT's review of the A01 STUDY recommended making A01's folder name a repeatable convention, subject to Rama's confirmation. |
+| Evidence | ChatGPT's A01 STUDY review, 05-Nov-2026, section 5.3 (not kept as a file, D-17); A01's folder, created at commit `97ec3367821d4e1c57ddc835e8a05791f7176d05`. |
+| Rama approval | Rama chose "Yes, use that pattern (Recommended)" when Claude asked, on 05-Nov-2026: "Topic folder names from A02 onwards: should every topic folder be named like A01's, i.e. `<TOPIC_ID>_<TOPIC NAME IN CAPITALS WITH UNDERSCORES>` (for example A02_CONFIGURATION_...), as ChatGPT recommends? I'd record it as a decision and add it to Document 07 at its next revision." |
+| Affected documents | 07 §3 and §5 (at its next revision); the Phase 1 topic folders. |
+| Status | APPROVED. Applied from A02; A01's folder already follows it. |
+
+## D-29 — The stale methodology label in the Master System Investigation Index
+
+| Field | Entry |
+|---|---|
+| Decision ID | D-29 |
+| Date | 2026-11-05 |
+| Subject | The index's reference to "Document 08, Revision 5" |
+| Exact decision | The index's "Basis and labels" line, which names "Document 08, Revision 5" as the governing methodology while Document 08 is at Revision 6 (D-26), is not corrected on its own: the correction is made at the next authorised update of the index. Document 08 as approved at Revision 6 governs meanwhile. |
+| Rationale | Revision 6 changed only Document 08's section 8 (the names of the topic documents), so A01's scope and method do not change. The index is APPROVED and is not edited silently (Document 05, section 5). ChatGPT recommended carrying the correction to the next authorised index update unless Rama wanted a separate correction now. |
+| Evidence | The index, line 7; Document 08's revision history; Claude's A01 STUDY handoff of 04-Nov-2026 and ChatGPT's A01 STUDY review of 05-Nov-2026, section 5.2 (not kept as files, D-17). |
+| Rama approval | Rama chose "At the next index update (Recommended)" when Claude asked, on 05-Nov-2026: "The approved investigation index still says "Document 08, Revision 5" (Document 08 is now Revision 6; only its file-naming section changed). When should this label be corrected?" |
+| Affected documents | The Master System Investigation Index (at its next authorised update). |
+| Status | APPROVED. The correction is pending the next authorised update of the index. |
 
 **Related documents:** 01, 02, 03, 04, 05, 06, 07, 08, 09 and 10.

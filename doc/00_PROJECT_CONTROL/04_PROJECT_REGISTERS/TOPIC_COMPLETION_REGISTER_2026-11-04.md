@@ -2,7 +2,7 @@
 
 **Status:** DRAFT — for ChatGPT review
 **Date:** 2026-11-04
-**Revision history:** First version, 2026-11-04: the register created when topic A01 was opened; A01 IN PROGRESS (Document 05, section 11.1, update timing 4). Second version, 2026-11-04: A01's STUDY and evidence files committed as DRAFT; A01 stays IN PROGRESS. Third version, 2026-11-05: ChatGPT's review passed A01's STUDY for the AUDIT, and the AUDIT started; A01 stays IN PROGRESS.
+**Revision history:** First version, 2026-11-04: the register created when topic A01 was opened; A01 IN PROGRESS (Document 05, section 11.1, update timing 4). Second version, 2026-11-04: A01's STUDY and evidence files committed as DRAFT; A01 stays IN PROGRESS. Third version, 2026-11-05: ChatGPT's review passed A01's STUDY for the AUDIT, and the AUDIT started; A01 stays IN PROGRESS. Fourth version, 2026-11-05: A01's AUDIT committed as DRAFT for ChatGPT's review; A01 stays IN PROGRESS.
 **Purpose and scope:** The project's Topic Completion Register (Document 10, section 3): one entry per Phase 1 topic of the approved Master System Investigation Index, with the fourteen fields of Document 10, section 3 and the topic statuses of Document 10, section 4. Claude maintains it and ChatGPT reviews it; Rama decides each topic document and the phase gates (Document 05, section 11.1). It is updated whenever a topic's status changes (update timing 4), and Claude keeps each entry's document fields current. An entry is added when its topic is opened.
 
 ## A01 — System orchestration, startup, runtime and shutdown
@@ -15,10 +15,10 @@
 | Phase | Phase 1 (authorised by Rama, D-27) |
 | Status | IN PROGRESS, since 2026-11-04: opened on ChatGPT's A01 investigation direction of 04-Nov-2026 (Document 04, section 4, step 1). The AUDIT stage (step 6) since 2026-11-05, on ChatGPT's A01 AUDIT direction of 05-Nov-2026. |
 | STUDY | `A01_STUDY_2026-11-04.md`, DRAFT, with seven evidence files in the topic's `evidence/` subfolder (listed in the STUDY, section 13.2). ChatGPT's review of 05-Nov-2026 passed it for the AUDIT (step 5); it stays DRAFT until Rama approves the topic package. |
-| AUDIT | In preparation: `A01_AUDIT_2026-11-05.md`, with any further evidence files in `evidence/`, for ChatGPT's review (step 7). |
+| AUDIT | `A01_AUDIT_2026-11-05.md`, DRAFT, with its evidence file `evidence/A01_AUDIT_INTENT_SOURCES_2026-11-05.md`, committed for ChatGPT's review (step 7). |
 | RECONCILED TOPIC RECORD | Not started (step 10). |
 | Issues raised with Rama | None yet (Document 04, section 5.5). |
-| Open issues | None recorded. The STUDY collects questions about intent for Rama (its section 14) and neutral concerns for the AUDIT (its section 12.2); none has been raised with Rama yet (Document 04, section 5.5). |
+| Open issues | None recorded. The AUDIT lists the findings for discussion with Rama (its section 10) and the questions about intent that remain open (its section 9); none has been raised with Rama yet: they are consolidated after ChatGPT's review of the AUDIT (Document 04, section 5.5). |
 | Reviewer | ChatGPT (Document 04, section 4, steps 5, 7 and 12). |
 | Approval | None yet. Rama approves or rejects the topic document and package (Document 07, section 6.3). |
 | Publication reference | Topic folder: `doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/TOPIC_WISE_DOCUMENTATION/A01_SYSTEM_ORCHESTRATION_STARTUP_RUNTIME_AND_SHUTDOWN/`. The approved topic document's path and commit are entered after its approval and commit (Document 07, section 6.3). |

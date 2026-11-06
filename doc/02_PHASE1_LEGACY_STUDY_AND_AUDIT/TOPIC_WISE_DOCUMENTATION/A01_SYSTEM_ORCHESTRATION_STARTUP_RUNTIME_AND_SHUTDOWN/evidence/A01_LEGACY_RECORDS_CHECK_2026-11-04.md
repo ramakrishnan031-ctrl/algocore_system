@@ -1,8 +1,8 @@
 # A01 evidence: the existing technical records checked against the code
 
-**Status:** DRAFT — evidence for the A01 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A01 STUDY, approved by Rama on 2026-11-06 with the A01 topic package (Decision Register, D-30)
 **Date:** 2026-11-04
-**Revision history:** First version, 2026-11-04. Corrected, 2026-11-04: after an independent check of the statements against the code.
+**Revision history:** First version, 2026-11-04. Corrected, 2026-11-04: after an independent check of the statements against the code. Approved by Rama on 2026-11-06 with the A01 topic package (Decision Register, D-30): status marked APPROVED; content unchanged.
 **Purpose and scope:** The check of the two existing technical records that describe A01 matters, `01_SYSTEM_OVERVIEW.md` and `03_STARTUP_RUNTIME_AND_SCHEDULER.md` (Document 08, section 9), against the code at the baseline: one row per claim, with the record line, the claim, the code evidence and the result. It supports the STUDY, Appendix A (index rule 6; Decision Register, D-21).
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read from the local read-only clone on 04-Nov-2026; nothing was run. The two records were read, unchanged, in `doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/` (184 and 321 lines).
 

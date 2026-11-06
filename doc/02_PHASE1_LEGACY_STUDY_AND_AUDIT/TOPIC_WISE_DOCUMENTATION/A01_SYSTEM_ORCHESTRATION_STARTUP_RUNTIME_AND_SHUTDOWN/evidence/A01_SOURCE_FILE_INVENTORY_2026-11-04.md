@@ -1,8 +1,8 @@
 # A01 evidence: the A01 source files at the study baseline
 
-**Status:** DRAFT — evidence for the A01 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A01 STUDY, approved by Rama on 2026-11-06 with the A01 topic package (Decision Register, D-30)
 **Date:** 2026-11-04
-**Revision history:** First version, 2026-11-04.
+**Revision history:** First version, 2026-11-04. Approved by Rama on 2026-11-06 with the A01 topic package (Decision Register, D-30): status marked APPROVED; content unchanged.
 **Purpose and scope:** Identifies the fifteen A01 paths of the Master System Investigation Index (entry A01; Appendix A for the two scripts) at the study baseline: size, Git object, SHA-256 and history, and the A01 changes made after the last recorded deployment (Decision Register, D-21). It supports the STUDY, sections 3 and 13.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 04-Nov-2026 from the local read-only clone with `git show`, `git rev-parse`, `git ls-tree`, `git log` and `git diff`. Nothing in the clone was written or run.
 

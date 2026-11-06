@@ -1,8 +1,8 @@
 # A01 evidence: workers, callback wiring and shutdown
 
-**Status:** DRAFT — evidence for the A01 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A01 STUDY, approved by Rama on 2026-11-06 with the A01 topic package (Decision Register, D-30)
 **Date:** 2026-11-04
-**Revision history:** First version, 2026-11-04. Corrected, 2026-11-04: after an independent check of the statements against the code, in two passes.
+**Revision history:** First version, 2026-11-04. Corrected, 2026-11-04: after an independent check of the statements against the code, in two passes. Approved by Rama on 2026-11-06 with the A01 topic package (Decision Register, D-30): status marked APPROVED; content unchanged.
 **Purpose and scope:** Every thread, thread pool, server and child process started by or through `main.py`, with its creator, start condition, target, daemon flag, owner, stop and join behaviour and failure handling; the event-bus subscriptions and callbacks that `main.py` wires; the runtime wait and the signal handlers; and `_shutdown` step by step. It supports the STUDY, sections 7, 8 and 12 (Q17 to Q28 of ChatGPT's A01 direction). The internals of each worker belong to its owner topic and are not traced.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read from the local read-only clone on 04-Nov-2026; nothing was run.
 

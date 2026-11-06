@@ -1,8 +1,8 @@
 # A01 evidence: catalogue of the startup checks in utils/startup_checks.py
 
-**Status:** DRAFT — evidence for the A01 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A01 STUDY, approved by Rama on 2026-11-06 with the A01 topic package (Decision Register, D-30)
 **Date:** 2026-11-04
-**Revision history:** First version, 2026-11-04. Corrected, 2026-11-04: after an independent check of the statements against the code.
+**Revision history:** First version, 2026-11-04. Corrected, 2026-11-04: after an independent check of the statements against the code. Approved by Rama on 2026-11-06 with the A01 topic package (Decision Register, D-30): status marked APPROVED; content unchanged.
 **Purpose and scope:** Every check function in `utils/startup_checks.py` (1,692 lines): its lines, what it checks, its pass, warning, failure and skip outcomes, retries, its call sites, and whether anything calls it; the scenario detection; the aggregate runner and how `main.py` consumes its report. It supports the STUDY, sections 6, 10 and 12 (Q12, Q13, Q15 and Q32 of ChatGPT's A01 direction).
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read from the local read-only clone on 04-Nov-2026; nothing was run.
 

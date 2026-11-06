@@ -1,8 +1,8 @@
 # A01 evidence: who imports the A01 modules, and who names the A01 scripts
 
-**Status:** DRAFT — evidence for the A01 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A01 STUDY, approved by Rama on 2026-11-06 with the A01 topic package (Decision Register, D-30)
 **Date:** 2026-11-04
-**Revision history:** First version, 2026-11-04.
+**Revision history:** First version, 2026-11-04. Approved by Rama on 2026-11-06 with the A01 topic package (Decision Register, D-30): status marked APPROVED; content unchanged.
 **Purpose and scope:** The static importers of the ten A01 Python modules other than `main.py`, and the files that name the two A01 scripts, at the study baseline. It supports the STUDY, sections 3, 10 and 11 (Q31 to Q33 of ChatGPT's A01 direction). An import shows that a file can use a module; it does not show that the code ran (Document 06, section 4.2).
 **Source:** trading-system-prod-snapshot at commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb`, searched on 04-Nov-2026 in the local read-only clone with `git grep -nE` over `*.py` for the three import forms `from <package>.<module> import`, `import <package>.<module>` and `from <package> import ... <module>`, at any indentation (so imports inside functions are included). Not covered: imports built at run time (for example with `importlib`) and uses through another module's re-export. Nothing was run.
 

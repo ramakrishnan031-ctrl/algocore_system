@@ -1,8 +1,8 @@
 # A01 evidence: the startup trace, from process invocation to the runtime wait
 
-**Status:** DRAFT — evidence for the A01 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A01 STUDY, approved by Rama on 2026-11-06 with the A01 topic package (Decision Register, D-30); its row M8 is corrected by the RECONCILED TOPIC RECORD, section 6
 **Date:** 2026-11-04
-**Revision history:** First version, 2026-11-04. Corrected, 2026-11-04: after an independent check of the statements against the code.
+**Revision history:** First version, 2026-11-04. Corrected, 2026-11-04: after an independent check of the statements against the code. Approved by Rama on 2026-11-06 with the A01 topic package (Decision Register, D-30): status marked APPROVED; content unchanged.
 **Purpose and scope:** Every startup step of `main.py` in code order, from the module import to the runtime wait at L4249, one row per step, and the table of the objects that startup constructs. It supports the STUDY, sections 5, 6 and 12 (Q5, Q10 to Q16 and Q34 of ChatGPT's A01 direction). Live only: paper-only branches are marked and not traced.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read from the local read-only clone on 04-Nov-2026; nothing was run.
 

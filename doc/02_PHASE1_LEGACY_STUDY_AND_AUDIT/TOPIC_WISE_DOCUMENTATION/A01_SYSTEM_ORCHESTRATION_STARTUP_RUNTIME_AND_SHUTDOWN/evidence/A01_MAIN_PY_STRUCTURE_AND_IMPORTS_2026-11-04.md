@@ -1,8 +1,8 @@
 # A01 evidence: main.py structure, phase markers and imports
 
-**Status:** DRAFT — evidence for the A01 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A01 STUDY, approved by Rama on 2026-11-06 with the A01 topic package (Decision Register, D-30)
 **Date:** 2026-11-04
-**Revision history:** First version, 2026-11-04.
+**Revision history:** First version, 2026-11-04. Approved by Rama on 2026-11-06 with the A01 topic package (Decision Register, D-30): status marked APPROVED; content unchanged.
 **Purpose and scope:** The top-level definitions of `main.py` with their line ranges and roles, the section and phase markers inside `_main_locked`, and every import statement with its line, enclosing function and owner topic. It supports the STUDY, sections 3, 5 and 13 (Q1 and Q5 to Q8 of ChatGPT's A01 direction).
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read from the local read-only clone on 04-Nov-2026; nothing was run.
 

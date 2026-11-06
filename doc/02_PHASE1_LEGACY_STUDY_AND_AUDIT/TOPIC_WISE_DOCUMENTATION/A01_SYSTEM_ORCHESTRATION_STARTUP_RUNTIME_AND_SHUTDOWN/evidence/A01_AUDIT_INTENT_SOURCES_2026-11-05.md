@@ -1,8 +1,8 @@
 # A01 evidence: the AUDIT's intended-behaviour sources
 
-**Status:** DRAFT — evidence for the A01 AUDIT, for ChatGPT's review
+**Status:** APPROVED — evidence for the A01 AUDIT, approved by Rama on 2026-11-06 with the A01 topic package (Decision Register, D-30)
 **Date:** 2026-11-05
-**Revision history:** First version, 2026-11-05. Corrected, 2026-11-05: RS-12 attaches "Rama's to reject" to the error-detail helper, as its source does at L170, not to the range check. Corrected, 2026-11-05: after an independent check of the statements against the code and the sources; and after a second-pass check of those corrections; revised, 2026-11-05: the three operations documents read and the dashboard captures checked (ChatGPT's AUDIT review, section 6).
+**Revision history:** First version, 2026-11-05. Corrected, 2026-11-05: RS-12 attaches "Rama's to reject" to the error-detail helper, as its source does at L170, not to the range check. Corrected, 2026-11-05: after an independent check of the statements against the code and the sources; and after a second-pass check of those corrections; revised, 2026-11-05: the three operations documents read and the dashboard captures checked (ChatGPT's AUDIT review, section 6). Approved by Rama on 2026-11-06 with the A01 topic package (Decision Register, D-30): status marked APPROVED; content unchanged.
 **Purpose and scope:** The inventory of every admitted source that states or implies the intended behaviour of the fourteen A01 areas, with its date, kind and the A01 items it bears on; the origin of the requirement labels used in the A01 files; the conflicts between sources; and the statements that legacy documents attribute to Rama or the operator. It supports section 3 of the A01 AUDIT (item 3 of section 6 of ChatGPT's AUDIT direction of 2026-11-05) and decides nothing.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read from the local read-only clone on 05-Nov-2026; nothing was run.
 

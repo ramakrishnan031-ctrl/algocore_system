@@ -2,12 +2,12 @@
 
 **Status:** DRAFT — for ChatGPT review
 **Date:** 2026-11-05
-**Revision history:** First version, 2026-11-05: the register created at A01's issue discussion (Document 04, section 4, step 8), with the 24 entries of the A01 AUDIT's section 10(b); batch 1 (A01-01 to A01-04) raised with Rama on 05-Nov-2026 and his answers recorded for his confirmation. Second version, 2026-11-05: batch 1 confirmed by Rama at the read-back (three attempts in total, not four; exit 5 and Option A are his recollection of the old system's intent), so its agreed treatments are AGREED; batch 2 (A01-05 to A01-08) raised and answered, and recorded for his confirmation; A01-04's start-limit wording qualified after ChatGPT's review of the first version (no explicit start limit in the unit file; a manager-level override is UNKNOWN / NOT ESTABLISHED). Third version, 2026-11-05: batch 2 confirmed by Rama at the read-back (the history of A01-05 to A01-08 stays OPEN; their treatments are AGREED); batch 3 (A01-09, A01-15, A01-18 and A01-20) raised and answered, and recorded for his confirmation; the start-limit wording confirmed by Rama, with the documented systemd default and the INTERPRETATION labelled separately; ChatGPT's reviews of 05-Nov-2026 noted. Fourth version, 2026-11-05: batch 3 confirmed at the read-back, with A01-18's rule clarified (every Muhurat session is skipped, whatever the day; a full normal session on a weekend or holiday is not excluded by it), so its treatment is AGREED; batch 4 (A01-10, A01-11, A01-14 and A01-19) raised and answered: history OPEN, with ChatGPT's recommendations for the new system recorded as PROPOSED, not decided. Fifth version, 2026-11-05: batch 4 confirmed at the read-back; batch 5 (A01-16, A01-17, A01-21 and A01-22) raised and answered: history OPEN, with ChatGPT's recommendations for the new system recorded as PROPOSED, not decided. Sixth version, 2026-11-05: at batch 5's read-back Rama stated that he does not remember the legacy intent of its four entries and accepted his own new-system inputs for them (AGREED, with his additional Phase 2 discussion point for A01-22); batch 6 (A01-12, A01-13, A01-23 and A01-24) raised and answered: history OPEN (not remembered), new-system inputs accepted and recorded for his confirmation. All 24 entries have now been raised. Seventh version, 2026-11-06: batch 6 confirmed by Rama at the read-back (06-Nov-2026), so its four treatments are AGREED; ChatGPT's reviews of the sixth version noted. Eighth version, 2026-11-06: the treatment round (06-Nov-2026): Rama adopted the choices recommended in ChatGPT's independent review of the treatment-round file, with the full qualification behind each; the treatments of A01-01, A01-10, A01-11 and A01-19 are AGREED; A01-14 is AGREED in part (the killed-state principle), with its soft-kill and hard-kill details and IC-48 OPEN; A01-09, A01-15 and A01-20 stay OPEN for Phase 2; his decisions on the AUDIT's section 10(a) findings are noted in the A01 section (they are recorded in the Audit Findings Register with the A01 topic package). Ninth version, 2026-11-06, with the A01 topic package: a repeated phrase corrected in A01-09, A01-15 and A01-20 ("In the treatment round in the treatment round"); ChatGPT's review of the treatment records noted; the Audit Findings Register and the RECONCILED TOPIC RECORD named. A01-25 added: a recording-only entry for C32, approved by Rama on 06-Nov-2026, so that C32's OPEN treatment is recorded with the fields of Document 05, section 11.2 (D-24); it reopens no decision. No other decision, status or count changed. Committed with the A01 topic package, which Rama approved on 06-Nov-2026 (Decision Register, D-30).
+**Revision history:** First version, 2026-11-05: the register created at A01's issue discussion (Document 04, section 4, step 8), with the 24 entries of the A01 AUDIT's section 10(b); batch 1 (A01-01 to A01-04) raised with Rama on 05-Nov-2026 and his answers recorded for his confirmation. Second version, 2026-11-05: batch 1 confirmed by Rama at the read-back (three attempts in total, not four; exit 5 and Option A are his recollection of the old system's intent), so its agreed treatments are AGREED; batch 2 (A01-05 to A01-08) raised and answered, and recorded for his confirmation; A01-04's start-limit wording qualified after ChatGPT's review of the first version (no explicit start limit in the unit file; a manager-level override is UNKNOWN / NOT ESTABLISHED). Third version, 2026-11-05: batch 2 confirmed by Rama at the read-back (the history of A01-05 to A01-08 stays OPEN; their treatments are AGREED); batch 3 (A01-09, A01-15, A01-18 and A01-20) raised and answered, and recorded for his confirmation; the start-limit wording confirmed by Rama, with the documented systemd default and the INTERPRETATION labelled separately; ChatGPT's reviews of 05-Nov-2026 noted. Fourth version, 2026-11-05: batch 3 confirmed at the read-back, with A01-18's rule clarified (every Muhurat session is skipped, whatever the day; a full normal session on a weekend or holiday is not excluded by it), so its treatment is AGREED; batch 4 (A01-10, A01-11, A01-14 and A01-19) raised and answered: history OPEN, with ChatGPT's recommendations for the new system recorded as PROPOSED, not decided. Fifth version, 2026-11-05: batch 4 confirmed at the read-back; batch 5 (A01-16, A01-17, A01-21 and A01-22) raised and answered: history OPEN, with ChatGPT's recommendations for the new system recorded as PROPOSED, not decided. Sixth version, 2026-11-05: at batch 5's read-back Rama stated that he does not remember the legacy intent of its four entries and accepted his own new-system inputs for them (AGREED, with his additional Phase 2 discussion point for A01-22); batch 6 (A01-12, A01-13, A01-23 and A01-24) raised and answered: history OPEN (not remembered), new-system inputs accepted and recorded for his confirmation. All 24 entries have now been raised. Seventh version, 2026-11-06: batch 6 confirmed by Rama at the read-back (06-Nov-2026), so its four treatments are AGREED; ChatGPT's reviews of the sixth version noted. Eighth version, 2026-11-06: the treatment round (06-Nov-2026): Rama adopted the choices recommended in ChatGPT's independent review of the treatment-round file, with the full qualification behind each; the treatments of A01-01, A01-10, A01-11 and A01-19 are AGREED; A01-14 is AGREED in part (the killed-state principle), with its soft-kill and hard-kill details and IC-48 OPEN; A01-09, A01-15 and A01-20 stay OPEN for Phase 2; his decisions on the AUDIT's section 10(a) findings are noted in the A01 section (they are recorded in the Audit Findings Register with the A01 topic package). Ninth version, 2026-11-06, with the A01 topic package: a repeated phrase corrected in A01-09, A01-15 and A01-20 ("In the treatment round in the treatment round"); ChatGPT's review of the treatment records noted; the Audit Findings Register and the RECONCILED TOPIC RECORD named. A01-25 added: a recording-only entry for C32, approved by Rama on 06-Nov-2026, so that C32's OPEN treatment is recorded with the fields of Document 05, section 11.2 (D-24); it reopens no decision. No other decision, status or count changed. Committed with the A01 topic package, which Rama approved on 06-Nov-2026 (Decision Register, D-30). Tenth version, 2026-11-08: the A02 section added with A02-01 to A02-12, the 12 questions of the A02 AUDIT's section 12(b) (DRAFT, for ChatGPT's review); A02-07 raised early with Rama on 08-Nov-2026 (informed; no decision); the A01 section unchanged.
 **Purpose and scope:** The project's Open Issues Register (Document 10, section 6): the issues of the Phase 1 topics that need Rama's intent or decision, each with the ten fields of Document 10, section 6. It is separate from the foundation's open items (Document 10, section 11). Claude maintains it and ChatGPT reviews it; Rama decides each issue's treatment, or leaves it OPEN (Document 05, section 11.1). It is updated with each topic package and immediately after Rama decides an issue's treatment (Document 05, section 11.1, update timing 6). An unresolved issue stays here, visible, until it is resolved or Rama decides its treatment (Document 05, section 11.3).
 
 ## How entries are recorded
 
-- **Issue ID:** `<TOPIC_ID>-NN`. A01's numbers follow the order of the A01 AUDIT's section 10(b). Each heading keeps the AUDIT's own issue IDs and the STUDY's R numbers, so that every entry can be traced to its AUDIT record.
+- **Issue ID:** `<TOPIC_ID>-NN`. A01's numbers follow the order of the A01 AUDIT's section 10(b); A02's follow the order of the A02 AUDIT's section 12(b). Each heading keeps the AUDIT's own issue IDs and the STUDY's R numbers, so that every entry can be traced to its AUDIT record.
 - **Three kinds of statement are kept apart** in each entry's Resolution field:
   1. FACT / HISTORICAL: what the legacy repository establishes, taken from the AUDIT and its evidence file, and never changed to agree with an answer;
   2. Rama's statement about the legacy system: how it was operated, or what it was meant to do (an intent source under Document 04, section 5.1, with its date);
@@ -425,3 +425,202 @@
 | Next action | Carried forward to Phase 2 as an OPEN design concern, without presuming a design outcome (Document 05, sections 11.2 and 11.3; Document 04, section 12). A treatment would need Rama's explicit decision, as a separate change of scope. |
 | Status | History: not asked (no history question; intended behaviour not established). Treatment: OPEN QUESTION (left open by Rama's decision of 06-Nov-2026). |
 | Resolution | (1) FACT / HISTORICAL: as in Evidence, unchanged; C32's classification (ISSUE; INTERPRETATION; its durations UNKNOWN / NOT ESTABLISHED) is unchanged in the AUDIT and in the Audit Findings Register. (2) No statement by Rama about the legacy system. (3) Treatment for the new system: none; OPEN by Rama's decision, in the words he adopted from ChatGPT's review of the treatment-round file (section 8): "C32: Keep as recorded; no new treatment line." No boot-time limit, latency target or design treatment is inferred. |
+
+## A02 — Configuration and effective settings
+
+**Source:** `A02_AUDIT_2026-11-08.md` (DRAFT, for ChatGPT's review, Document 04, section 4, step 7), section 12(b), with the STUDY's questions reviewed in its section 11, and its evidence file `evidence/A02_AUDIT_INTENT_SOURCES_2026-11-06.md`, both in `doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/TOPIC_WISE_DOCUMENTATION/A02_CONFIGURATION_AND_EFFECTIVE_SETTINGS/`. Section and record references below without a file name are to that AUDIT; line references are to the legacy repository at the baseline `970aabf` (D-21). 12 entries: the 12 questions of section 12(b), covering the AUDIT's 13 items that need Rama's intent or decision (A02-06 covers F-18 and V-12). They are proposed with the topic's STUDY and AUDIT; they are put to Rama at A02's issue discussion, after ChatGPT's review (Document 04, section 4, step 8), except where the Raised field says otherwise.
+
+| Issue ID | AUDIT IDs | Raised with Rama | Status |
+|---|---|---|---|
+| A02-01 | F-22 (STUDY question 1; IC-32, IC-33) | Not yet | History: OPEN QUESTION; treatment: OPEN QUESTION |
+| A02-02 | T-08 (STUDY question 6) | Not yet | History: OPEN QUESTION; treatment: OPEN QUESTION |
+| A02-03 | T-09 (STUDY question 6) | Not yet | History: OPEN QUESTION; treatment: OPEN QUESTION |
+| A02-04 | T-10 (STUDY question 6) | Not yet | History: OPEN QUESTION; treatment: OPEN QUESTION |
+| A02-05 | T-11 (STUDY question 6) | Not yet | History: OPEN QUESTION; treatment: OPEN QUESTION |
+| A02-06 | F-18, V-12 (STUDY question 9) | Not yet | History: OPEN QUESTION; treatment: OPEN QUESTION |
+| A02-07 | F-19 | 08-Nov-2026 (informed; no decision) | History: OPEN QUESTION; treatment: OPEN QUESTION |
+| A02-08 | V-08 | Not yet | History: OPEN QUESTION; treatment: OPEN QUESTION |
+| A02-09 | V-14 | Not yet | History: OPEN QUESTION; treatment: OPEN QUESTION |
+| A02-10 | K-03 | Not yet | History: OPEN QUESTION; treatment: OPEN QUESTION |
+| A02-11 | K-07 (the SL-offset part) | Not yet | History: OPEN QUESTION; treatment: OPEN QUESTION |
+| A02-12 | K-34 | Not yet | History: OPEN QUESTION; treatment: OPEN QUESTION |
+
+### A02-01 — F-22 (STUDY question 1; IC-32, IC-33)
+
+| Field | Entry |
+|---|---|
+| Issue ID | A02-01 |
+| Topic | A02 |
+| Question or discrepancy | Which daily loss limit was intended for Live: the file value 0.03, or the revert table's "production" value 0.05? And did the deployment guide's step "Revert TEMP config values ... --apply --confirm" at the switch from Paper to Live still apply after 14-Jun-2026? (The same question covers `gap_fade_long.min_score`: 0 in the file against 60 in the table.) |
+| Evidence | FACT (AUDIT 8.3, F-22): file values `risk.daily_loss_limit_pct` 0.03 (`config/system_config.yaml` L316) and `min_score` 0 (`config/strategies/gap_fade_long.yaml` L41); the table `TEMP_REVERTS` holds 0.05 and 60 (`scripts/revert_temp_config.py` L46 to L54, L91 to L99). INTERPRETATION (re-implementation, not run): with `--apply --confirm` at the baseline the script would set the daily loss limit to 0.05 (F-20). HISTORICAL: 0.05 in the table, the TEMP tracker and the deployment guide (all 2026-06-03); 0.03 in the file, commit `b27f767` (2026-06-14), which attributes it to Rama's locked decision, and the system map (IC-32); 0 restored by commit `1e41f99` (IC-33). |
+| Impact | Following the deployment guide at the baseline would loosen the daily loss limit from 3 % to 5 % of capital at the next restart. Whether the script was ever run is UNKNOWN / NOT ESTABLISHED (F-25). |
+| Owner | Rama decides; Claude records. Topic: A02 (the file, the script and the table). |
+| Raised with Rama | Not yet; at A02's issue discussion (Document 04, section 4, step 8). |
+| Next action | Put to Rama after ChatGPT's review of the A02 STUDY and AUDIT. |
+| Status | History: OPEN QUESTION (OPEN FOR RAMA). Treatment: OPEN QUESTION. |
+| Resolution | None yet. (1) FACT / HISTORICAL as in Evidence, unchanged. (2) No statement by Rama about the legacy system. (3) No treatment. |
+
+### A02-02 — T-08 (STUDY question 6)
+
+| Field | Entry |
+|---|---|
+| Issue ID | A02-02 |
+| Topic | A02 |
+| Question or discrepancy | Does locked decision S5 ("every strategy YAML must explicitly declare all fields; no reliance on Pydantic defaults") still govern the strategy files, given later comments that rely on the defaults? |
+| Evidence | FACT (AUDIT 7.3, T-08): every one of the 16 files omits 5 or 6 schema keys (the four `trailing_sl_*` in all 16, `v3_playbook` in 15, `sl_gap_buffer_pct` in 12), so the code defaults apply; nothing checks presence. HISTORICAL: LOCKED-YAML S5 L2666 to L2674 and M27 S5 (2026-04-17); the schema docstring `strategies/schema.py` L46; later comments rely on defaults (T-08). |
+| Impact | None on behaviour at the baseline (the defaults equal the "off" values); the files are not self-documenting as S5 intends. |
+| Owner | Rama decides; Claude records. Topic: A02. |
+| Raised with Rama | Not yet; at A02's issue discussion. |
+| Next action | Put to Rama after ChatGPT's review. |
+| Status | History: OPEN QUESTION (OPEN FOR RAMA). Treatment: OPEN QUESTION. |
+| Resolution | None yet. |
+
+### A02-03 — T-09 (STUDY question 6)
+
+| Field | Entry |
+|---|---|
+| Issue ID | A02-03 |
+| Topic | A02 |
+| Question or discrepancy | Do S6's ATR stop-loss and target methods remain the intent for the three positional (DELIVERY) strategies, which the files set to a fixed 2 % stop and a 1.5 R target? |
+| Evidence | FACT (AUDIT 7.3, T-09): the positional files match S6 on intent, order protocol, multipliers, smart target and pullback wait; they differ on `sl_method` (FIXED_PCT, 2 %), `tgt_method` (RISK_REWARD, 1.5) and `entry_end_time` (15:00 against 14:30). HISTORICAL: LOCKED-YAML S6 L2676 to L2688 and M27 (2026-04-17); the target change is replaced by the later dated decision BL-16; the stop-loss change is described only by its own files' comments (T-09). Related: T-12 (the schema accepts ATR methods that the consumer does not implement). |
+| Impact | At the file values the positional strategies use a fixed 2 % stop and a 1.5 R target; whether they trade is decided by the strategy-control layers (A07). |
+| Owner | Rama decides; Claude records. Topic: A02 (files and headers); A06 for the ATR branches. |
+| Raised with Rama | Not yet; at A02's issue discussion. |
+| Next action | Put to Rama after ChatGPT's review, with T-12 for treatment. |
+| Status | History: OPEN QUESTION (OPEN FOR RAMA). Treatment: OPEN QUESTION. |
+| Resolution | None yet. |
+
+### A02-04 — T-10 (STUDY question 6)
+
+| Field | Entry |
+|---|---|
+| Issue ID | A02-04 |
+| Topic | A02 |
+| Question or discrepancy | Which gap_go stop-loss was intended: S13's `sl_pct` 0.01, or the files' 0.012? |
+| Evidence | FACT (AUDIT 7.3, T-10): `gap_go_long` and `gap_go_short` declare `sl_pct` 0.012; the other S13 values match or are replaced by a later standardisation (R:R 1.5). HISTORICAL: LOCKED-YAML S13 L2757 to L2769 (2026-04-17). |
+| Impact | At the file value the gap_go stop distance is 1.2 % instead of 1 % (before the consumer's bounds and buffer). |
+| Owner | Rama decides; Claude records. Topic: A02. |
+| Raised with Rama | Not yet; at A02's issue discussion. |
+| Next action | Put to Rama after ChatGPT's review. |
+| Status | History: OPEN QUESTION (OPEN FOR RAMA). Treatment: OPEN QUESTION. |
+| Resolution | None yet. |
+
+### A02-05 — T-11 (STUDY question 6)
+
+| Field | Entry |
+|---|---|
+| Issue ID | A02-05 |
+| Topic | A02 |
+| Question or discrepancy | Was the uniform 15:00 entry end of 15 strategy files meant to be temporary, and which entry windows were intended for Live? |
+| Evidence | FACT (AUDIT 7.3, T-11): all 16 files declare start 09:25; 15 declare end 15:00 and pb01 11:00. INTERPRETATION: with `trading_hours.entry_start` 10:00 and `entry_end` 15:00, the effective window of the 15 enabled strategies is 10:00 to 15:00. HISTORICAL: S3 and M27 (defaults 09:30 to 13:30), S6 (positional end 14:30); commit `38fa4e9` (2026-05-31) set per-strategy windows (gap_fade to 09:45, gap_go to 11:00, positional to 14:00, others to 15:00); the start 09:25 is stated by the latest source (16-Jul-2026); seven files' own comments describe the 15:00 end (T-11). |
+| Impact | At the file values every enabled strategy may enter until 15:00, including those whose earlier windows ended at 09:45, 11:00 or 14:00 to 14:30. |
+| Owner | Rama decides; Claude records. Topic: A02 (files); A01 for the market-windows comment. |
+| Raised with Rama | Not yet; at A02's issue discussion. |
+| Next action | Put to Rama after ChatGPT's review. |
+| Status | History: OPEN QUESTION (OPEN FOR RAMA). Treatment: OPEN QUESTION. |
+| Resolution | None yet. |
+
+### A02-06 — F-18 and V-12 (STUDY question 9)
+
+| Field | Entry |
+|---|---|
+| Issue ID | A02-06 |
+| Topic | A02 |
+| Question or discrepancy | Was it intended that tracked configuration files hold account identifiers, holders' names, e-mail addresses, an IP literal, an SSH fingerprint and home-directory paths, and that the W0 snapshot stores the e-mail addresses, the IP literal and the scanner URLs unredacted on every boot? |
+| Evidence | FACT (AUDIT 8.3, F-18; 6.3, V-12): the locations are listed in F-18 and in the STUDY, section 9.6 (no value reproduced); the snapshot's redaction replaces a value only where its key contains a secret marker, which none of these keys does (`core/config_snapshotter.py` L60 to L83). The intent for credential values is stated and met (placeholders in `.env.example`; the pre-commit scanner); no source addresses personal and network data. |
+| Impact | Not established; it depends on who can read the repository and the snapshot table. FACT (08-Nov-2026): the snapshot repository is public on GitHub. |
+| Owner | Rama decides; Claude records. Topic: A02 (files, redaction); A17 (repository security); A03 (the table's retention). |
+| Raised with Rama | Not yet; at A02's issue discussion. |
+| Next action | Put to Rama after ChatGPT's review, together with A02-07. |
+| Status | History: OPEN QUESTION (OPEN FOR RAMA). Treatment: OPEN QUESTION. |
+| Resolution | None yet. |
+
+### A02-07 — F-19
+
+| Field | Entry |
+|---|---|
+| Issue ID | A02-07 |
+| Topic | A02 |
+| Question or discrepancy | How should the credential-shaped values in the snapshot repository be treated: in the history of `config/accounts.csv` (commit `bcf03b5`) and `.env.example` (commit `9f58848`), and in the tracked document `docs/web_claude/03_audit_responses/response_54_audit_accounts_nse.txt` L211 to L220, handed to A17 (AUDIT section 10)? The repository is public. |
+| Evidence | FACT (AUDIT 8.3, F-19; shapes and lengths only, no value read or written): at `bcf03b5` the three credential-name columns of `accounts.csv` row 1 hold values, the last of TOTP-seed shape; `a3994fc` replaced them; at `9f58848` the template holds 10 non-placeholder values; the tracked document holds values under a broker API-key name and three other-broker credential names. FACT (`list_repos`, 08-Nov-2026): the repository's visibility is public. HISTORICAL (C1-INV, 2026-07-02): exposure "INTERNAL ONLY"; the API secrets, TOTP seeds, bot token and webhook secret were rotated that day, the API keys were not; the part F handoff (AUDIT 8.5) records, by an equality check, that the document's broker API-key value equals the primary account's API-key value in `.env.example` at `9f58848`, which C1-INV calls active (not rotated). |
+| Impact | Not established: whether any value is still valid is UNKNOWN / NOT ESTABLISHED. This project neither reads nor rotates them, and the legacy repository is not changed (D-12). |
+| Owner | Rama decides; Claude records. Topic: A02 (the two files' history); A17 (repository security). |
+| Raised with Rama | 08-Nov-2026: Claude told Rama that the repository is public and where the values are (no value given), and suggested that he regenerate any credential still in use and consider making the repository private (noting that this could affect ChatGPT's access); recorded as a suggestion, not a decision. No decision yet. |
+| Next action | Rama's decision; at the latest at A02's issue discussion. |
+| Status | History: OPEN QUESTION (OPEN FOR RAMA). Treatment: OPEN QUESTION. |
+| Resolution | None yet. Claude's suggestion of 08-Nov-2026 is PROPOSED (Document 05, section 3). |
+
+### A02-08 — V-08
+
+| Field | Entry |
+|---|---|
+| Issue ID | A02-08 |
+| Topic | A02 |
+| Question or discrepancy | Which coverage was intended for the configuration auditor? It reads 9 of the 42 `SystemConfig` sections and none of the other seven sub-configs or the file hashes. |
+| Evidence | FACT (AUDIT 6.3, V-08): only `app_config.system` is passed (`core/config_auditor.py` L838 to L839); `broker_costs`, `broker_limits`, `slippage`, `scoring`, `scan_webhook_map`, `chartink_scanners`, `nse_holidays` and `file_hashes` are not inspected (group B reads the raw `scoring_weights.yaml` only). HISTORICAL: `docs/CONFIG_GUIDE.md` L547 to L548 ("checks your config makes sense as a whole"); the module docstring lists the groups; no source states the intended coverage beyond the listed rules. |
+| Impact | Not established; a contradiction among the uninspected sections is not reported by the auditor. |
+| Owner | Rama decides; Claude records. Topic: A02. |
+| Raised with Rama | Not yet; at A02's issue discussion. |
+| Next action | Put to Rama after ChatGPT's review. |
+| Status | History: OPEN QUESTION (OPEN FOR RAMA). Treatment: OPEN QUESTION. |
+| Resolution | None yet. |
+
+### A02-09 — V-14
+
+| Field | Entry |
+|---|---|
+| Issue ID | A02-09 |
+| Topic | A02 |
+| Question or discrepancy | Was configuration-change detection meant to cover the strategy files and `accounts.csv` (and the other files outside the eight-file registry)? |
+| Evidence | FACT (AUDIT 6.3, V-14): 43 of the 51 tracked `config/` files are hashed by neither the CL4 file hashes nor the W0 snapshot, among them the 16 strategy files and `accounts.csv`. INTERPRETATION: a change to a strategy's window or `enabled` flag, to `accounts.csv` or to `security.yaml` produces no CONFIG_DIFF event, no Telegram warning and no new W0 row. HISTORICAL: LOCKED-YAML CL4 L761 to L770 ("Config drift between restarts is a real operational hazard"), with CL1 and CL2 defining the set as the eight files. |
+| Impact | Not established. |
+| Owner | Rama decides; Claude records. Topic: A02 (the hashed set); A01 (the comparison and alert). |
+| Raised with Rama | Not yet; at A02's issue discussion. |
+| Next action | Put to Rama after ChatGPT's review. |
+| Status | History: OPEN QUESTION (OPEN FOR RAMA). Treatment: OPEN QUESTION. |
+| Resolution | None yet. |
+
+### A02-10 — K-03
+
+| Field | Entry |
+|---|---|
+| Issue ID | A02-10 |
+| Topic | A02 |
+| Question or discrepancy | Which fill-monitor poll cadence was intended: P14's 15 seconds, or the file's and M14's 2 seconds? |
+| Evidence | FACT (AUDIT 9.3, K-03): `order_monitor.poll_interval_sec` is 2 in the file (since `bcf03b5`, 17-Apr-2026) and 2 seconds reaches the monitor; the reconciler's 15 seconds agrees with P14. HISTORICAL: LOCKED-YAML P14 L343 to L350 (15 s, 2026-04-17) against M14 OM2 L16 to L25 (2 s, 2026-04-17): same-dated sources. |
+| Impact | Not established; the effect on the broker request budget is A04's. |
+| Owner | Rama decides; Claude records. Topic: A02 (the key); A04 (the monitor). |
+| Raised with Rama | Not yet; at A02's issue discussion. |
+| Next action | Put to Rama after ChatGPT's review. |
+| Status | History: OPEN QUESTION (OPEN FOR RAMA). Treatment: OPEN QUESTION. |
+| Resolution | None yet. |
+
+### A02-11 — K-07 (the SL-offset part)
+
+| Field | Entry |
+|---|---|
+| Issue ID | A02-11 |
+| Topic | A02 |
+| Question or discrepancy | Was the crash-recovery path's fixed stop-loss limit offset (the constant `DEFAULT_SL_LIMIT_OFFSET_PCT`, 0.005) meant to ignore `capital.sl_limit_offset_pct`? |
+| Evidence | FACT (AUDIT 9.3, K-07): the EOD residual exit, the reconciler flatten and the structure-exit flatten use `EMERGENCY_EXIT_BUFFER_PCT` and the crash-recovery stop-loss uses `DEFAULT_SL_LIMIT_OFFSET_PCT` (`orders/price_math.py` L124, L159), equal to the file values (0.01 and 0.005). HISTORICAL: `orders/price_math.py` L119 to L124 says the emergency buffer is "Overridable via capital.emergency_exit_buffer_pct", so that part's intent is established (K-07, ISSUE); for the stop-loss offset no source settles whether the recovery path's constant is intended. |
+| Impact | None at the file values; a tuned value would diverge silently between the configured exits and the recovery path. |
+| Owner | Rama decides; Claude records. Topic: A02 (the key); A12 (the reconciler). |
+| Raised with Rama | Not yet; at A02's issue discussion. |
+| Next action | Put to Rama after ChatGPT's review. |
+| Status | History: OPEN QUESTION (OPEN FOR RAMA). Treatment: OPEN QUESTION. |
+| Resolution | None yet. |
+
+### A02-12 — K-34
+
+| Field | Entry |
+|---|---|
+| Issue ID | A02-12 |
+| Topic | A02 |
+| Question or discrepancy | Was the slippage model (`config/slippage_model.yaml`) meant to enter Live cost calculations, as its header and the configuration guide say, or only paper fills, as LOCKED-YAML P12 says? |
+| Evidence | FACT (AUDIT 9.3, K-34): the file has no Live consumer; the cost path ignores it; it is required by `load_all` in every mode (F-29). HISTORICAL: the file header L3 and L5 (2026-04-17: "applied to paper mode fills and cost calculations"; names a file that does not exist); CFG-GUIDE L668 to L669; against LOCKED-YAML P12 L335 ("Paper mode applies slippage to fills", no cost role). |
+| Impact | None on Live cost figures beyond the stated difference. |
+| Owner | Rama decides; Claude records. Topic: A02; A04 (the calculator and slippage engine). |
+| Raised with Rama | Not yet; at A02's issue discussion. |
+| Next action | Put to Rama after ChatGPT's review. |
+| Status | History: OPEN QUESTION (OPEN FOR RAMA). Treatment: OPEN QUESTION. |
+| Resolution | None yet. |

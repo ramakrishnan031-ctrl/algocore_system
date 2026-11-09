@@ -1,8 +1,8 @@
 # A02 evidence: The existing technical records' configuration claims checked against the code
 
-**Status:** DRAFT — evidence for the A02 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A02 STUDY, approved by Rama on 2026-11-09 with the A02 topic package (Decision Register, D-31)
 **Date:** 2026-11-06
-**Revision history:** First version, 2026-11-06.
+**Revision history:** First version, 2026-11-06. Approved by Rama on 2026-11-09 with the A02 topic package (Decision Register, D-31): status marked APPROVED; content unchanged.
 **Purpose and scope:** This file records the check of every configuration statement in the five existing legacy technical records (Records 01, 02, 03 and 03A and the manual index) against the code and configuration files at the baseline: 234 claims, each with a result label, the counts by record and result, the DIFFERS and PARTLY items in full, and the records' open questions that the baseline code answers. It supports the A02 STUDY sections on the existing records and how far they can be relied on, and gives the record cross-references used in the other A02 STUDY sections.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 06-Nov-2026 from the local read-only clone with `git show`, `git grep`, `git log` and the standard library's `ast`, in scripts kept outside the clone; nothing in the clone was written or run. Statements about pydantic and PyYAML behaviour rest on the libraries' documented rules and on tests of synthetic inputs outside the clone (pydantic 2.13.5, against the pinned 2.13.0; PyYAML 6.0.3, the pinned version; `requirements.txt` L6 to L7); they are INTERPRETATION, and the versions installed on the VM are UNKNOWN / NOT ESTABLISHED.
 

@@ -1,8 +1,8 @@
 # A02 evidence: The configuration loader: schema, load flow, defaults and errors
 
-**Status:** DRAFT — evidence for the A02 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A02 STUDY, approved by Rama on 2026-11-09 with the A02 topic package (Decision Register, D-31)
 **Date:** 2026-11-06
-**Revision history:** First version, 2026-11-06.
+**Revision history:** First version, 2026-11-06. Approved by Rama on 2026-11-09 with the A02 topic package (Decision Register, D-31): status marked APPROVED; content unchanged.
 **Purpose and scope:** This file records what `core/config_loader.py` does: its module map, the full schema of its 65 models field by field (types, defaults, enforced constraints and presence in the baseline files), the `load_all` load flow, the code defaults that apply at the baseline, error behaviour, precedence, caching, callers, the post-deployment commit `5f75c9b`, and the configuration-side facts for the A01 handoffs C10a, C10b, C35, C12, M-24, M-19, M-20 and C7d/S-11. It supports the A02 STUDY sections on the central loader and schema, load and error behaviour, defaults and precedence, consumers, and the A01 handoffs.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 06-Nov-2026 from the local read-only clone with `git show`, `git grep`, `git log` and the standard library's `ast`, in scripts kept outside the clone; nothing in the clone was written or run. Statements about pydantic and PyYAML behaviour rest on the libraries' documented rules and on tests of synthetic inputs outside the clone (pydantic 2.13.5, against the pinned 2.13.0; PyYAML 6.0.3, the pinned version; `requirements.txt` L6 to L7); they are INTERPRETATION, and the versions installed on the VM are UNKNOWN / NOT ESTABLISHED.
 

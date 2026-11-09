@@ -1,8 +1,8 @@
 # A02 evidence: Key-to-consumer map, part 1: `config/system_config.yaml` lines 1 to 358
 
-**Status:** DRAFT — evidence for the A02 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A02 STUDY, approved by Rama on 2026-11-09 with the A02 topic package (Decision Register, D-31)
 **Date:** 2026-11-06
-**Revision history:** First version, 2026-11-06.
+**Revision history:** First version, 2026-11-06. Approved by Rama on 2026-11-09 with the A02 topic package (Decision Register, D-31): status marked APPROVED; content unchanged.
 **Purpose and scope:** Records, for every leaf key in lines 1 to 358 of `config/system_config.yaml` (sections L21 to L357), its file value at the baseline, its loader field (type, default, constraints) and every consumer found in the code (call site, how it is read, owner topic). It also lists the exceptions: keys with no consumer, keys read but absent, values that a consumer overrides, transforms or ignores, settings read differently in different places, and direct readers of the file. It supports the STUDY's sections on the effective settings and their consumers.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 06-Nov-2026 from the local read-only clone with `git show`, `git grep`, `git log` and the standard library's `ast`, in scripts kept outside the clone; nothing in the clone was written or run. Statements about pydantic and PyYAML behaviour rest on the libraries' documented rules and on tests of synthetic inputs outside the clone (pydantic 2.13.5, against the pinned 2.13.0; PyYAML 6.0.3, the pinned version; `requirements.txt` L6 to L7); they are INTERPRETATION, and the versions installed on the VM are UNKNOWN / NOT ESTABLISHED.
 

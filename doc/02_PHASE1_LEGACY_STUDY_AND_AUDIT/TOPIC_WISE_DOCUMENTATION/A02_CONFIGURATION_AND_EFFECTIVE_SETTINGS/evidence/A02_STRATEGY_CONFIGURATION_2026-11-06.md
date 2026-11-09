@@ -1,8 +1,8 @@
 # A02 evidence: Strategy configuration: schema, loading, conformance of the strategy files, and the A07 handoff
 
-**Status:** DRAFT — evidence for the A02 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A02 STUDY, approved by Rama on 2026-11-09 with the A02 topic package (Decision Register, D-31)
 **Date:** 2026-11-06
-**Revision history:** First version, 2026-11-06. Corrected, 2026-11-08: after the independent check of the A02 STUDY against the code (two line references).
+**Revision history:** First version, 2026-11-06. Corrected, 2026-11-08: after the independent check of the A02 STUDY against the code (two line references). Approved by Rama on 2026-11-09 with the A02 topic package (Decision Register, D-31): status marked APPROVED; content unchanged.
 **Purpose and scope:** This file records the strategy schema (`strategies/schema.py`), the strategy loader (`strategies/loader.py`) and the non-test callers and direct readers of the strategy files found with `git grep`, a static conformance check of the 16 strategy YAML files against the schema, the readers of `config/strategy_direction_registry.yaml` and `config/scoring_weights.yaml`, and the strategy fields read by consumers, as a handoff to A07. It supports the A02 STUDY sections on the strategy schema and loading, the conformance of the strategy files, and the A07 handoff.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 06-Nov-2026 from the local read-only clone with `git show`, `git grep`, `git log` and the standard library's `ast`, in scripts kept outside the clone; nothing in the clone was written or run. Statements about pydantic and PyYAML behaviour rest on the libraries' documented rules and on tests of synthetic inputs outside the clone (pydantic 2.13.5, against the pinned 2.13.0; PyYAML 6.0.3, the pinned version; `requirements.txt` L6 to L7); they are INTERPRETATION, and the versions installed on the VM are UNKNOWN / NOT ESTABLISHED.
 

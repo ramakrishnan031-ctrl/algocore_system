@@ -1,7 +1,7 @@
 # A02 evidence: intended-behaviour sources for the A02 AUDIT
-**Status:** DRAFT — evidence for the A02 AUDIT, for ChatGPT's review
+**Status:** APPROVED — evidence for the A02 AUDIT, approved by Rama on 2026-11-09 with the A02 topic package (Decision Register, D-31)
 **Date:** 2026-11-06
-**Revision history:** First version, 2026-11-06, completed on 08-Nov-2026 after a pause at a usage limit.
+**Revision history:** First version, 2026-11-06, completed on 08-Nov-2026 after a pause at a usage limit. Approved by Rama on 2026-11-09 with the A02 topic package (Decision Register, D-31): status marked APPROVED; content unchanged.
 **Purpose and scope:** The inventory of every admitted legacy source that states or implies the intended behaviour of the A02 configuration paths and keys, with the conflicts between those sources, the statements that only the code contradicts, and the statements attributed to Rama or the operator, so that the five A02 AUDIT code fragments can cite intent without re-searching; it decides nothing.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 06-Nov-2026 from the local read-only clone; nothing in it was written or run.
 

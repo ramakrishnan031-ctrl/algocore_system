@@ -1,8 +1,8 @@
 # A02 evidence: The configuration files, their readers and provenance, environment-variable names, and the TEMP-revert script
 
-**Status:** DRAFT — evidence for the A02 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A02 STUDY, approved by Rama on 2026-11-09 with the A02 topic package (Decision Register, D-31)
 **Date:** 2026-11-06
-**Revision history:** First version, 2026-11-06. Corrected, 2026-11-08: after the independent check of the A02 STUDY against the code (the rows named in that check).
+**Revision history:** First version, 2026-11-06. Corrected, 2026-11-08: after the independent check of the A02 STUDY against the code (the rows named in that check). Approved by Rama on 2026-11-09 with the A02 topic package (Decision Register, D-31): status marked APPROVED; content unchanged.
 **Purpose and scope:** This file records the 50 A02 configuration files under `config/` (identity, purpose, structure, provenance, readers, writers and behaviour on missing or malformed input), where sensitive material sits in them (location only), the files the code expects but the repository does not hold, the configuration sources outside `config/`, every environment-variable site in non-test Python with the `.env.example` key names, and a static trace of `scripts/revert_temp_config.py`. It supports the STUDY sections on the configuration file set and its provenance, environment variables and secrets handling, and the TEMP-revert script.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 06-Nov-2026 from the local read-only clone with `git show`, `git grep`, `git log` and the standard library's `ast`, in scripts kept outside the clone; nothing in the clone was written or run. Statements about pydantic and PyYAML behaviour rest on the libraries' documented rules and on tests of synthetic inputs outside the clone (pydantic 2.13.5, against the pinned 2.13.0; PyYAML 6.0.3, the pinned version; `requirements.txt` L6 to L7); they are INTERPRETATION, and the versions installed on the VM are UNKNOWN / NOT ESTABLISHED.
 

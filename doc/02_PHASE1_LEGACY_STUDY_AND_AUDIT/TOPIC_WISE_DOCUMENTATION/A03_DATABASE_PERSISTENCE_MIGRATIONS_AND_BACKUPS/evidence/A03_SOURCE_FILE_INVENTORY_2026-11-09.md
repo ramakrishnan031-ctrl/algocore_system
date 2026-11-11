@@ -1,8 +1,8 @@
 # A03 evidence: the A03 source files at the study baseline
 
-**Status:** DRAFT — evidence for the A03 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A03 STUDY, approved by Rama on 2026-11-11 with the A03 topic package (Decision Register, D-32)
 **Date:** 2026-11-09
-**Revision history:** First version, 2026-11-09.
+**Revision history:** First version, 2026-11-09. Approved by Rama on 2026-11-11 with the A03 topic package (Decision Register, D-32): status marked APPROVED; content unchanged.
 **Purpose and scope:** Identifies the A03 paths of the Master System Investigation Index (entry A03; Appendix A for the six scripts) at the study baseline: size, Git object, SHA-256 and history of the eleven tracked paths; the two runtime persistence paths, which are not tracked; and the A03 changes made after the last recorded deployment (Decision Register, D-21). It supports the STUDY's inventory sections.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 09-Nov-2026 from the local read-only clone with `git show`, `git rev-parse`, `git ls-tree`, `git log` and `git diff`. Nothing in the clone was written or run.
 

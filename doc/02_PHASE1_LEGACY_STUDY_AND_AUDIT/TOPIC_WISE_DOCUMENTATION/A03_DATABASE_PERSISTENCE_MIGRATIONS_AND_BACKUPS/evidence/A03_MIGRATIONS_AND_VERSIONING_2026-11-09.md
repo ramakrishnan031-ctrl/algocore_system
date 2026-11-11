@@ -1,8 +1,8 @@
 # A03 evidence: Migrations and schema versioning
 
-**Status:** DRAFT — evidence for the A03 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A03 STUDY, approved by Rama on 2026-11-11 with the A03 topic package (Decision Register, D-32)
 **Date:** 2026-11-09
-**Revision history:** First version, 2026-11-09: written by a read-only helper as STUDY part P03, checked statement by statement by a separate helper, and corrected by a third pass (STUDY, section 1.5). Corrected, 2026-11-09: after the independent check of the STUDY (STUDY, section 1.5).
+**Revision history:** First version, 2026-11-09: written by a read-only helper as STUDY part P03, checked statement by statement by a separate helper, and corrected by a third pass (STUDY, section 1.5). Corrected, 2026-11-09: after the independent check of the STUDY (STUDY, section 1.5). Approved by Rama on 2026-11-11 with the A03 topic package (Decision Register, D-32): status marked APPROVED; content unchanged.
 **Purpose and scope:** How the schema is applied and versioned on open, the migration steps of `core/migrations.py`, their guards, callers, atomicity and failure routes. Statement IDs `P03-Snnn` are kept for traceability; the STUDY cites them.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 09-Nov-2026 from the local read-only clone; nothing in it was written or run.
 

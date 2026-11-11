@@ -1,8 +1,8 @@
 # A03 evidence: SQL outside the state store: runtime modules
 
-**Status:** DRAFT — evidence for the A03 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A03 STUDY, approved by Rama on 2026-11-11 with the A03 topic package (Decision Register, D-32)
 **Date:** 2026-11-09
-**Revision history:** First version, 2026-11-09: written by a read-only helper as STUDY part P06a, checked statement by statement by a separate helper, and corrected by a third pass (STUDY, section 1.5).
+**Revision history:** First version, 2026-11-09: written by a read-only helper as STUDY part P06a, checked statement by statement by a separate helper, and corrected by a third pass (STUDY, section 1.5). Approved by Rama on 2026-11-11 with the A03 topic package (Decision Register, D-32): status marked APPROVED; content unchanged.
 **Purpose and scope:** The SQL issued outside the state-store methods by the 30 runtime modules (`main.py` included), with the table-by-table writers and readers. Statement IDs `P06a-Snnn` are kept for traceability; the STUDY cites them.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 09-Nov-2026 from the local read-only clone; nothing in it was written or run.
 

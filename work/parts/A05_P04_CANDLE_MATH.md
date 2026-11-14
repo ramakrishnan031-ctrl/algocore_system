@@ -1,6 +1,6 @@
 # A05 STUDY part P04: `core/candle_math.py` — functions, candle contract, calculations and callers
 
-**Status:** WORKING DRAFT (helper output; not a project record)
+**Status:** WORKING DRAFT (helper output, checked and corrected by a separate helper; not a project record)
 
 **Baseline:** trading-system-prod-snapshot, branch main, commit 970aabf3c78d777d9d34549e021f7c8e756c7bdb
 
@@ -261,21 +261,21 @@ P04-S092. FACT (consumers that use these values without computing them): `regime
 
 ## 14. Boundaries with A08, A15 and A18; inherited items; the existing technical record
 
-P04-S093. FACT (Rama's decision B of 14-Nov-2026): A05 studies this module's functions, inputs, outputs, candle contract, calculations, edge cases and actual callers; A08 and A18 keep the use and technical meaning of their own calculations. This part records, per consumer, only the interface: what is called, with which arguments, on which candles from which source.
+P04-S093. FACT (Rama's decision B of 14-Nov-2026, recorded in the Topic Completion Register, L90): A05 studies this module's functions, inputs, outputs, candle contract, calculations, edge cases and actual callers; A08 and A18 keep the use and technical meaning of their own calculations. This part records, per consumer, only the interface: what is called, with which arguments, on which candles from which source.
 
 | Consumer | Owner (index) | A05 side, recorded here | Left to the owner |
 |---|---|---|---|
 | `core/daily_stats.py` | A15 | calls 1 and 2; the daily `Candle` objects and their source (P04-S069) | the date filter, the statistics and their use |
 | `scripts/forward_shadow_record.py` | A18 | the historical fetch, `Candle.from_kite` and the call (P04-S069); the record file only as a boundary (P04-S070) | the research record and the M-S4 scoring |
 | `regime/engine.py` | A18 | calls 3 to 9; the index candles and their source (P04-S071, P04-S072) | the three axes, the thresholds and the regime's meaning |
-| `sr_detector/zone_builder.py`, `sr_detector/detector.py` | A08 | call 10; the scoped 5-minute candles and their source (P04-S073, P04-S074) | the anchors, the opening range and their use |
+| `sr_detector/zone_builder.py`, `sr_detector/detector.py` | A08 | call 10; the scoped fine candles (5-minute by default) and their source (P04-S073, P04-S074) | the anchors, the opening range and their use |
 | `v3_chain/pb01_entry.py`, `v3_chain/pb01_runner.py`, `v3_chain/runner.py` | A18 | calls 11 to 14; the 30- and 60-minute candles and their source (P04-S075 to P04-S078) | the truncation, the gates, the scores and the records |
 | `sr_detector/fetch.py`, `sr_detector/models.py` | A08 | the row-to-`Candle` contract and the fetcher cache, as boundary evidence (P04-S013, P04-S071, P04-S077) | fetch orchestration and conversion |
 | `scripts/sr_level_export.py` (added in the check) | A08 (index Appendix A L308) | the second route to call 10, with the anchors switched on: its fetch closure, session bounds and window (P04-S102) | the export, its levels and their use |
 
 P04-S094. FACT (the A05 source file inventory, section 4): `core/daily_stats.py` is listed as an A15 path that A05 reads as "a `core/candle_math.py` importer (decision B)", and `sr_detector/fetch.py` and `sr_detector/models.py` as A08 paths read "for the historical row-to-Candle contract only (decision C)". This part read them on that basis.
 
-P04-S095. FACT (the project records searched for `candle_math`, `true_range`, `session_vwap`, `ema_series` and `resample`): besides the index (entry A05), the Topic Completion Register's A05 scope (L90), the A05 source file inventory and the existing technical record of P04-S096, the only project record that names the module is A02's K-26 (the A02 AUDIT of 2026-11-08, K-26 at L2170 to L2182, the module named at L2174; the Audit Findings Register, row K-26, L322; the A02 RECONCILED TOPIC RECORD lists K-26 in group G1 at L255 without naming the module): `watchlist.entry_tf` has no reader, with the comment "retest timeframe (built via candle_math.resample)" as its intent source; ISSUE; owners A02 and A18; agreed on 09-Nov-2026. This part's P04-S080 agrees with it and leaves it where it is. FACT (the direction for this part): none of the 33 handoffs belongs wholly to this part. The one inherited point checked here, A04 CG-27, does not reach the module because the module uses no tick size (P04-S062).
+P04-S095. FACT (the project records searched for `candle_math`, `true_range`, `session_vwap`, `ema_series` and `resample`): besides the index (entry A05), the Topic Completion Register's A05 scope (L90), the A05 source file inventory and the existing technical record of P04-S096, the only project record that names the module is A02's K-26 (the A02 AUDIT of 2026-11-08, K-26 at L2170 to L2182, the module named at L2174; the Audit Findings Register, row K-26, L322; the A02 RECONCILED TOPIC RECORD lists K-26 in group G1 at L255 without naming the module): `watchlist.entry_tf` has no reader, with the comment "retest timeframe (built via candle_math.resample)" as its intent source; ISSUE; owners A02 and A18; agreed on 09-Nov-2026. This part's P04-S080 agrees with it and leaves it where it is. FACT (its scope list; the 33 handoffs to A05 are listed in the Topic Completion Register, L90): none of the 33 handoffs belongs wholly to this part. The one inherited point checked here, A04 CG-27 (one of A04's handoffs listed there), does not reach the module because the module uses no tick size (P04-S062).
 
 P04-S096. FACT (for part P11; no verdict given here): the existing technical record `02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/02_REPOSITORY_AND_FILE_MAP.md` L151 to L166 has an entry for this module. Its import list (six non-test modules and two tests), key symbols, inputs and outputs are the ones found in sections 2 to 11, and it already notes that `adx` "reuses the TR formula inline (213-217)". Its three "Unknowns" are addressed here: the `Candle` field set and time-zone convention (P04-S013); whether callers derive session bounds from `core.market_windows` (`resample` has no caller, P04-S058; in the trading process the detector receives `MarketWindows`'s fixed `market_open` and `market_close`, parsed from `system.trading_hours`, and the export script parses the same keys itself, P04-S073, P04-S102); and reliance on `session_vwap`'s zero-volume skip (its one caller, P04-S074; the reliance itself is A08's). Its `regime.engine` entry (L1106) lists as unknowns whether `fetch_by_token` exists with that signature and what it returns, and the semantics of `adx`, `atr`, `ema_series` and `true_range_series`; both are addressed here (P04-S071; sections 3, 5 and 6) (added in the check).
 
@@ -319,7 +319,7 @@ P04-S101. UNKNOWN / NOT ESTABLISHED: the timestamp convention of the live `Candl
 2. Was `resample` meant to build the PB-01 retest timeframe, as the two `entry_tf` comments say, or was fetching 5-minute candles directly the intended design? (Note for the coordinator: A02 K-26 already records the key, with "Rama: not needed"; this question is about `resample`'s intended role, and may be dropped if K-26 is taken as covering it.)
 3. Was `resample`'s "partial" flag meant to cover only the session-tail bucket, or also a bucket that is still forming when the function is called?
 4. Were the Wilder ATR, ADX and RSI values meant to be the same for the same instrument and period on every path, whatever history each caller fetches?
-5. Was `session_vwap` meant to give the same value as the broker quote's `average_price`, which live screening uses as "VWAP", or to be a separate measure?
+5. Was `session_vwap` meant to give the same value as the broker quote's `average_price`, which the secondary screener uses as "VWAP", or to be a separate measure?
 6. Was the fetch layer meant to guarantee oldest-first, de-duplicated candles to these functions, or was the broker's row order to be relied on?
 
 ## 18. Where the direction's questions are answered
@@ -340,3 +340,58 @@ P04-S101. UNKNOWN / NOT ESTABLISHED: the timestamp convention of the live `Candl
 | G4 Where data is cached or transformed (the calculation part) | P04-S070, P04-S077, P04-S078 |
 | I4 Rate limits and concurrency (the module's side) | P04-S065, P04-S069, P04-S071, P04-S102 |
 | Inherited items (A04 CG-27; none wholly here) | P04-S062, P04-S095 |
+
+## 19. Check log
+
+Statements checked: 101 (P04-S001 to P04-S101), each against its cited source: the legacy files at `970aabf` (re-read with `git show`, `git grep` with the mandatory exclusions, `git log` and `git blame`, hashes and dates only; nothing run or imported); the project records in `/home/claude/algocore_system`, branch main; the published kiteconnect 5.1.0 source for the one library point relied on (`connect.py` L655 to L670, behind P02-S065); and the two vendor pages, re-read on 14-Nov-2026. Python built-in behaviour behind the INTERPRETATION statements was checked with a script of the check's own (built-ins only; nothing from the legacy repository). Result: 64 correct as written, 37 corrected, 0 withdrawn; 2 added (P04-S102, P04-S103).
+
+| ID | What changed | Why |
+|---|---|---|
+| Header | Status line changed to the checked form | the check's own rule |
+| P04-S004 to P04-S006 | the files, searches and project records read in the check added | section 1 must list what the statements rest on |
+| P04-S010 | "L26 and L28" made "L26 to L28"; the creation commit and the three later importer commits added with hashes and dates (`536172c`, `474e10b`, `5a71fb6`, `6bca493`) | `git blame` gives L27 to `536172c` too; the header-versus-importers point needs every importing commit |
+| P04-S012 | "applies no rounding" made "calls no rounding function", with the three integer conversions of `resample` named (L409, L414, L441); "module-level names" made "names it defines" | `int()` truncates at L409 and L414; imported names are also module-level names |
+| P04-S013 | INTERPRETATION added: a missing, `None` or 0 volume becomes 0 (`sr_detector/models.py` L42) | an edge of the candle contract that the module's `session_vwap` and `resample` meet |
+| P04-S014 | noted that `partial_last` reads the output bars' `ts` (L332) | precision |
+| P04-S016 | the `DAILY_TF` search made repository-wide, tests included | verified in the check; the claim "not used anywhere" now matches its search |
+| P04-S017 | the agreement with the A05 source file inventory limited to `core/candle_math.py` | the inventory's section 5 does not cover `sr_detector/models.py` |
+| P04-S025, P04-S032, P04-S039, P04-S043 | "depends on every candle" limited to periods of 2 or more; the `period` 1 results stated (last true range, last value, last DX, RSI of the last delta) | with `period` 1 the factor `(period - 1)` is 0 and `k` is 1; the original claims were universal |
+| P04-S054 | "unflagged unless it is also the session-tail slot" | L445 to L448 flag a forming bucket that is the tail slot |
+| P04-S056 | edge case (f) added: the flag zone from the first candle that has one, against kept candles of another convention | Python semantics (naive and aware datetimes never equal), checked on the built-ins |
+| P04-S058 | label order fixed: HISTORICAL for the docstring (L367), FACT for the code and the search | the statement began "FACT ... HISTORICAL" |
+| P04-S061 | the NaN text split into a FACT (no check) and an INTERPRETATION per function: spreads in ATR, EMA and VWAP; gives DX 0.0 in `adx` (L211, L212, L230, L236); gives gains and losses of 0.0 in `rsi` (L276, L277); ignored after a bucket's first candle in `resample` (L419, L421) | comparisons with NaN are false, so "spreads through sums and divisions" did not hold for `adx`, `rsi` and `resample` |
+| P04-S062, P04-S099 | A04 AUDIT line numbers added (L4967, L4991; L4693) | precision |
+| P04-S066 | the basis for "no caller passes `CandleData`" added (the only non-test `Candle` constructions; the `CandleData` consumers do not import the module); call 10's two routes noted | the claim's evidence was not stated |
+| P04-S067 | `compute_daily_stats`'s date guard (`core/daily_stats.py` L58) added beside the PB-01 and V3 truncation | the statement said "only the PB-01 and V3 chain callers" drop bars before the module |
+| P04-S068 | `regime/__init__.py` L7 (docstring) added to the non-test files naming the module; index line for A15 (L183); row 10 notes two routes | the repository search shows L7, which the list omitted |
+| P04-S069 | the dry-run case added; the `try` block (L211 to L213) and the `except` (L214 to L215) cited separately | precision |
+| P04-S070 | "the live secondary screener" made "the secondary screener (A07's)"; same in point 15 and question 5 | "live" could read as a runtime claim |
+| P04-S072, P04-S075, P04-S076 | tracked YAML values labelled "committed values; effective values UNKNOWN"; P04-S072 "L53 to L55" made "L53 to L54"; P04-S076's worker path given as `_run` (L121 to L134), `_enrich` (L153 to L155), `_build_record` (L157) | label rule for committed settings; the fetch is in `_build_record`, and L135 is blank |
+| P04-S073 | `_build_anchors` condition corrected (the fine fetch inside it needs the session bounds and a candidate timestamp, L217 to L219); schema defaults and interval check added (`core/config_loader.py` L1220 to L1234); the bounds' source added (`main.py` L2319 to L2324); the anchors' switch labelled "committed value; effective value UNKNOWN"; pointer to P04-S102 | `_build_anchors` runs whenever the anchors are on; the coordinator asked for that label on the switch |
+| P04-S074 | "5-minute bars" made "fine bars (5-minute by default)" | the export route takes the interval from its command line |
+| P04-S080 | "only occurrences" made "only non-test occurrences"; the A02 K-26 record quoted with paths and lines (A02 AUDIT L2170 to L2182; Audit Findings Register L322, AGREED 09-Nov-2026; A02 RECONCILED TOPIC RECORD L255); the legacy documents that list `entry_tf` as unread added as HISTORICAL | the coordinator asked for the A02 record path and line; documents also mention the key |
+| P04-S086 | each quote attributed to its own file and line (STEP5 L58 says "unwired"); call 11's other uses added (`v3_chain/pb01_entry.py` L197, L215 to L217) and its route to the would-be runner (L231, L252; `v3_chain/pb01_runner.py` L104) | the second quote was STEP7 L35's; the boundary fact was incomplete |
+| P04-S088 | `docs/SYSTEM_MAP.md` L783 to L785; "refers to an earlier version" labelled INTERPRETATION | the quoted text runs to L785; the inference was shown as FACT |
+| P04-S091 | reduced to boundary facts with owners; `main.py` L583 marked paper-only (inside `_make_paper_quote_provider`, L473, used only `if is_paper`, L2394); the screening step's comparison logic removed (A07's) | the coordinator's two-VWAPs point; paper-only branches are not traced |
+| P04-S093 | decision B cited to the Topic Completion Register, L90; table row added for `scripts/sr_level_export.py`; "5-minute" made "fine (5-minute by default)" | the decision's record; the route found in the check |
+| P04-S095 | K-26 lines made exact (the module named at L2174; RECONCILED L255); the handoffs cited to the Topic Completion Register, L90, instead of a working instruction | precision; working instructions are not cited as sources |
+| P04-S096 | the session-bounds answer made exact; the record's `regime.engine` unknowns (L1106) added | precision; more for part P11 |
+| P04-S097 | committed-value label; the export script added | completeness |
+| Section 15 | points 7, 10, 15, 16 and 17 revised to match the corrected statements (point 16 now boundary-only, with the switch's committed value); point 19 added | consistency |
+| Section 18 | B6, B8, I5, G1 and G2, and I4 rows extended; a C2 row added | the added statements |
+
+Statements added in the check:
+
+- P04-S102: `scripts/sr_level_export.py` (A08's; no declared invocation) is a second non-test route to call 10, building a detector with the anchors switched on in a copy of the settings, over the same broker historical closure and `Candle.from_kite`.
+- P04-S103: the lookback window of each call (90, 400, 1, 1, 10 and 180 days) and the line where each is set (defaults, schema and tracked YAML).
+
+Not verified, and why:
+
+- Whether any path ran, and the effective settings: runtime facts without surviving evidence, and the local overlays were not read; they stay UNKNOWN / NOT ESTABLISHED.
+- The vendor pages were read through a fetch tool that returns an extract of the page; the quoted strings were confirmed in that extract only.
+- P04-S004's list of ranges read by the drafting helper: every line a statement cites was re-read; that the helper read each listed range was not re-checked.
+- P04-S083's description of how `atr` and `rsi` appear in seven other test files: spot-checked, not every occurrence.
+- P02-S066 (dateutil's behaviour) is part P02's INTERPRETATION; dateutil's source is not available here.
+- The legacy Python version stays UNKNOWN (P04-S099); the built-in checks ran on the local Python 3.13.
+
+Observation outside this part's scope (not studied; for the coordinator to route to A15): the docstring of `_candle_date` (`core/daily_stats.py` L28 to L29) says a candle without `ts` "sorts before any real date → excluded", while the filter at L58 keeps every candle whose date string sorts before `trading_date`, which the empty string does.

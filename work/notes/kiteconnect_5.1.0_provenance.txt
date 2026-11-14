@@ -1,0 +1,21 @@
+kiteconnect 5.1.0 - provenance of the distribution read as data (decision G; corrected direction section 7)
+Inspection date: 14-Nov-2026 12:54 IST
+Release page: https://pypi.org/project/kiteconnect/5.1.0/ ; metadata: https://pypi.org/pypi/kiteconnect/5.1.0/json (HTTP 200)
+Artifact read: kiteconnect-5.1.0-py3-none-any.whl, 25214 bytes, uploaded 2026-03-27T16:45:44Z (PyPI)
+SHA-256 (PyPI digest = local sha256sum): bcfd71703981675e191fbf4f3fe1e2c737edfaafe429ec6eb62c7f98fb27666c
+Other artifact (not read): kiteconnect-5.1.0.tar.gz, 26281 bytes, SHA-256 90f75c04c7225dabe8f307661f813eee78179aaa8cb8c27c8ee51a4dcf9b1f84
+Provenance metadata: PyPI JSON gives provenance = null for both files: no build-provenance attestation exists; none is claimed.
+Yanked: no. License (metadata): MIT.
+Method: pip download --no-deps --only-binary=:all: (a wheel is a zip; nothing built, installed, imported or run); extracted with
+Python zipfile (path check) into its own new directory, made read-only; source text read only.
+Module files (lines; SHA-256):
+ kiteconnect/__init__.py 115 a0e4c1273f432b3c2e5603fff2bb415b7353fdabb6c6367f5b39f5cb8d5f475a
+ kiteconnect/__version__.py 8 fb4420a4b89ddb344dc9ecd29bfebe7d24d3fa68dd511ede59006e0822739587
+ kiteconnect/connect.py 956 a4c221a1e3e67963fe1c97fcb103c75d5c6c2a95bc60a8b7a710fe724b3f565c
+ kiteconnect/exceptions.py 80 95028b5e9bad5b07ac87b8f4e5e3b6a36a7c4a001b220d26353748b694840cff
+ kiteconnect/ticker.py 863 5b491b554eb31f419ef8bdc93ae26672f1f6fd162eb6acefa83706eb29f6f87d
+Declared dependencies (METADATA): autobahn[twisted]==19.11.2 (Twisted itself not pinned by the wheel), service_identity>=18.1.0,
+requests>=2.18.4, six>=1.11.0, pyOpenSSL>=17.5.0, python-dateutil>=2.6.1.
+Legacy pins (requirements.txt at 970aabf): L8 kiteconnect==5.1.0; requests==2.33.1 (L9); no autobahn or Twisted pin.
+Limits: the wheel's text is the published 5.1.0 implementation; it does not establish which package was installed on the VM,
+what the broker's server sent in the legacy period, or that production exercised any path.

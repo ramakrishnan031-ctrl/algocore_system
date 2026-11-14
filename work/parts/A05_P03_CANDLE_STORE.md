@@ -313,3 +313,27 @@ P03-S125. UNKNOWN / NOT ESTABLISHED: the effective values (as opposed to the com
 8. Was the in-memory history meant to hold 390 candles (LF14) or 500?
 9. Was an instrument refresh during a running process meant to clean up the candle store's state (FIX-092, `gc_sweep`) and to refresh its token-to-symbol map?
 
+## 17. Where the direction's questions are answered
+
+| Question | Statements |
+|---|---|
+| B1 Which component turns ticks into candles; which intervals | P03-S019, P03-S029, P03-S035, P03-S036, P03-S062, P03-S063, P03-S101 |
+| B2 Timestamp convention (open or close time, time zone, boundary, source time against receipt time) | P03-S029 to P03-S031, P03-S036 to P03-S039, P03-S045, P03-S066, P03-S079 |
+| B3 OHLCV, volume deltas, zero-volume intervals, partial candles | P03-S014, P03-S015, P03-S041, P03-S056, P03-S066, P03-S072, P03-S080 |
+| B4 Gaps, duplicates, late and out-of-order ticks, corrections | P03-S031, P03-S032, P03-S041, P03-S056, P03-S105, P03-S108 |
+| B5 When a candle is final; can it be revised | P03-S012, P03-S022, P03-S047, P03-S108 |
+| B6 Live against historical consistency (live side only; historical side: part P06) | P03-S082, P03-S109 |
+| B7 Rounding, price precision, tick-size inputs | P03-S017, P03-S018 |
+| B8 Exact callers and consumers (live side; A08's use stays A08's) | P03-S064, P03-S067, P03-S071, P03-S085 to P03-S094 |
+| E1 What the live candle writer writes, reads, updates, deletes | P03-S075, P03-S076, P03-S081 |
+| E2 The live writer's handoff: table, fields, units, timestamp, interval, source, validation | P03-S069, P03-S076 to P03-S080, P03-S083 |
+| E3 and E5 Reconciliation with A03's record; unknowns not resolved | P03-S077, P03-S081, P03-S082, P03-S098 to P03-S100, P03-S120 |
+| G3 Normal, degraded, error, retry, restart and stale flows (candle paths) | P03-S101 to P03-S107 |
+| I5 Tick and candle calculations (A04 CG-27 boundary) | P03-S015, P03-S017, P03-S018 |
+| I6 Storage boundary with A03 (live candles: timestamp meaning, time zone, interval, finality, source, semantics) | P03-S076 to P03-S083, P03-S098 |
+| Also touched: A3, A4 (the store's side of tick timestamps and ordering) | P03-S029 to P03-S034, P03-S066 |
+| Also touched: A5, A6 (reconnect; threads and locks) | P03-S055 to P03-S061 |
+| Also touched: D5 (stale in-memory mapping, candle-store side) | P03-S025, P03-S028 |
+| Inherited handoffs A01 C14, C15, C29, C37 | P03-S095 to P03-S097 (with P03-S021 to P03-S023, P03-S027, P03-S049, P03-S057) |
+| Inherited handoffs A03 Y-06 and A03-43, D-05, Q-16 | P03-S098 to P03-S100 (with P03-S079, P03-S083) |
+

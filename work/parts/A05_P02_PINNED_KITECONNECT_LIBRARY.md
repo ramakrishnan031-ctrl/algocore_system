@@ -356,7 +356,7 @@ P02-S098. INTERPRETATION, the provisional LTP-packet point (basis P02-S050, P02-
 
 1. The feed's forced reconnect calls `close()`, while the library's `close()` calls `stopTrying()` before closing; the feed's comments expect the library to reconnect by itself (P02-S025, P02-S086).
 2. The feed passes `reconnect_delay_sec` (5) as the library's `reconnect_max_delay`, which is the ceiling of a growing delay and the library's minimum; the `live_feed` reconnect keys in `config/system_config.yaml` are not passed at the construction site (P02-S085).
-3. The `reconnect` parameter is never read; `send_noreconnect` stops the reactor only in debug mode and can fire more than once by the library's code (P02-S018, P02-S036, P02-S037).
+3. The `reconnect` parameter is never read; `send_noreconnect` calls a `stop()` only in debug mode, and on the factory, which defines none in `ticker.py`; and by the library's own code `on_noreconnect` is not limited to one call (P02-S018, P02-S036, P02-S037).
 4. On a reconnect with tracked tokens, subscribe and mode messages are sent twice, once by the feed and once by the library (P02-S033, P02-S089).
 5. A failed send inside the feed's `_on_connect` makes the library begin closing the connection while the feed logs that the feed is live (P02-S089).
 6. Library calls that reach autobahn and Twisted are made from threads other than the reactor thread, with no hand-off (P02-S088); the identity the feed stores as `_ticker_thread_id` is the consumer thread's (P02-S087).
@@ -370,6 +370,8 @@ P02-S098. INTERPRETATION, the provisional LTP-packet point (basis P02-S050, P02-
 14. Error-mapping edge cases: an error body without `error_type` raises `TypeError`; `UserException`, `MarginException` and `HoldingException` would surface as `GeneralException`; network failures arrive as requests exceptions, not `NetworkException` (P02-S059, P02-S061, P02-S083).
 15. Whether the WebSocket TLS connection verified the server's certificate depends on Twisted's `ClientContextFactory` (P02-S021).
 16. The library's only liveness check is pong-based and depends on pongs arriving; it has no no-data timeout (P02-S038 to P02-S040).
+17. The library reads every packet field as unsigned, while the current page types them as signed `int32` and `int16` (P02-S099).
+18. The feed's own `unsubscribe()` and `set_mode()` have no caller outside tests (P02-S100).
 
 ## 8. UNKNOWN / NOT ESTABLISHED
 
@@ -384,7 +386,7 @@ P02-S098. INTERPRETATION, the provisional LTP-packet point (basis P02-S050, P02-
 
 1. When the feed forces a close of a silent connection, was the library meant to reconnect by itself, or was the system meant to start a new connection? (P02-S086)
 2. Was the feed's `reconnect_delay_sec` of 5 seconds meant as the wait between reconnect attempts or as the longest wait, and were the `live_feed` reconnect settings in `system_config.yaml` meant to reach the feed? (P02-S085)
-3. Live ticks were requested in LTP mode, which carries no exchange time and no volume. Was the time of receipt meant to be the tick time, and was volume meant to come from somewhere else? (P02-S090)
+3. The feed's code requests LTP mode, whose packets, as the published library parses them, carry no exchange time and no volume. Was the time of receipt meant to be the tick time, and was volume meant to come from somewhere else? (P02-S090)
 4. For historical candles, were request times meant to be Indian wall-clock times, and were candle times meant to be stored with or without their +05:30 offset? (P02-S091, P02-S092)
 5. Were the scheduled scripts meant to use the library's 7-second default timeout and no pacing of their own, or the same timeout and pacing as the trading process? (P02-S094)
 
@@ -392,8 +394,8 @@ P02-S098. INTERPRETATION, the provisional LTP-packet point (basis P02-S050, P02-
 
 | Question | Statements (library side) |
 |---|---|
-| A3 (decoding, validation, time stamps, normalisation of ticks) | P02-S043 to P02-S051, P02-S090, P02-S098 |
-| A5 (reconnect, resubscribe, disconnect, stale feed) | P02-S018, P02-S024 to P02-S026, P02-S030, P02-S033, P02-S035 to P02-S041, P02-S085, P02-S086, P02-S089 |
+| A3 (decoding, validation, time stamps, normalisation of ticks) | P02-S042 to P02-S051, P02-S090, P02-S098, P02-S099 |
+| A5 (reconnect, resubscribe, disconnect, stale feed) | P02-S018, P02-S024 to P02-S026, P02-S030, P02-S033, P02-S035 to P02-S041, P02-S085, P02-S086, P02-S089, P02-S100 |
 | A6 (queues, buffers, worker threads, back-pressure) | P02-S022, P02-S023, P02-S032, P02-S034, P02-S087, P02-S088, P02-S095 |
 | A7 (failure, timeout, retry and recovery outcomes) | P02-S026, P02-S028, P02-S029, P02-S032, P02-S035 to P02-S037, P02-S041 to P02-S044, P02-S059 to P02-S061, P02-S066, P02-S069, P02-S072, P02-S084, P02-S091 to P02-S094 |
 | B2 (time stamp source in packets and historical rows) | P02-S049, P02-S050, P02-S064 to P02-S066, P02-S071, P02-S072, P02-S078, P02-S080, P02-S082, P02-S090 to P02-S092 |
@@ -401,9 +403,9 @@ P02-S098. INTERPRETATION, the provisional LTP-packet point (basis P02-S050, P02-
 | C3 (retries, pacing, timeout, partial responses) | P02-S056, P02-S058, P02-S059, P02-S066, P02-S083, P02-S091, P02-S092, P02-S094 |
 | C4 (same time stamp, time zone and OHLCV contract as live candles) | P02-S047 to P02-S050, P02-S065, P02-S066, P02-S090 to P02-S092 |
 | D1 (instrument-dump parsing) | P02-S067 to P02-S069, P02-S081, P02-S093 |
-| F1 (external sources, endpoints, formats) | P02-S019, P02-S021, P02-S053, P02-S056, P02-S058, P02-S063, P02-S067, P02-S070, P02-S073, P02-S076 to P02-S083 |
-| F3 (documented contract against legacy-period behaviour) | P02-S010, P02-S050, P02-S066, P02-S072, P02-S076 to P02-S083 |
-| F4 (current external facts, labelled) | P02-S076 to P02-S083 |
+| F1 (external sources, endpoints, formats) | P02-S019, P02-S021, P02-S053, P02-S056, P02-S058, P02-S063, P02-S067, P02-S070, P02-S073, P02-S076 to P02-S083, P02-S099 |
+| F3 (documented contract against legacy-period behaviour) | P02-S010, P02-S050, P02-S066, P02-S072, P02-S076 to P02-S083, P02-S099 |
+| F4 (current external facts, labelled) | P02-S076 to P02-S083, P02-S099 |
 | I3 (quote and historical requests: batching, limits, response interpretation, missing or malformed rows) | P02-S063 to P02-S066, P02-S070 to P02-S072, P02-S082, P02-S083, P02-S091, P02-S092, P02-S096 |
 | Inherited: A01 W-24 | P02-S022, P02-S023, P02-S034, P02-S095 |
 | Inherited: A04 RD-33 (library side) | P02-S070 to P02-S072, P02-S082, P02-S096 |

@@ -30,3 +30,6 @@ Resume rule: a part whose file exists continues from the first section not marke
 - P04 check log: a docstring/filter mismatch in core/daily_stats.py L28-L29 vs L58 is outside A05's scope: route to A15
   as a boundary note (not a finding).
 - P01 Q4 and P04 Q2 for Rama may duplicate A02 records (IC-40/K-30; K-26): drop or cross-reference at assembly.
+- Verified by Claude (15:50 IST): scripts/sr_level_export.py L139 `load_all(str(ROOT / "config"))` -> core/config_loader.py
+  L2457 load_all, L2481 `path = config_dir / filename` -> TypeError (str / str) before L141; L143 builds the handle with
+  kite_client=None (None). P04-S102 to be qualified at assembly: the route exists in code but the script stops at L139.

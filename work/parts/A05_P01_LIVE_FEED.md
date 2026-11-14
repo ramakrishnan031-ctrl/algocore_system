@@ -225,3 +225,92 @@ P01-S099. FACT (`capital/kill_switch.py` L563, L625 to L626; owner A13): `soft_k
 P01-S100. FACT (`scripts/healthcheck_server.py` L110 to L120; `ops_dashboard/backend/services/capacity.py` L124, L294 to L295, `config_view.py` L34, L255, `audit.py` L90, `system_logs.py` L86; owner A15): the health server reports the feed without gating (P01-S087); the dashboard files read the `live_feed` configuration section or use "live_feed" as a section or log-source label, and none touches the feed object.
 
 P01-S101. HISTORICAL (`scripts/preflight/checks/engine.py` L14 to L17; owner A20): a docstring mention only (P01-S088).
+
+## 10. Pacing, limits and concurrency (I4, the feed side)
+
+P01-S102. FACT (L10 to L23; P01-S008): the feed uses no rate limiter and makes no REST call; its only broker traffic is the library's WebSocket. A04's RL-05 (the historical closure) and RL-06 (script clients without a shared limit) have no counterpart in this module; other A05 parts answer them for the historical and script paths.
+
+P01-S103. FACT (L188 to L197, L352 to L353; P01-S019): the feed paces nothing itself: `subscribe` sends slices of 50 tokens back to back, `_on_connect` re-sends the whole set in one message, and reconnect pacing is left to the library, with 10 tries and a 5 s maximum delay from the code defaults (library behaviour: see P02).
+
+P01-S104. FACT (P01-S026; grep of `KiteTicker` outside tests and documents): the trading process builds one `KiteTicker` per `connect()` call and calls `connect()` once (`main.py` L3947); no script or other module in the repository opens a WebSocket feed. How many WebSocket connections existed on the account at runtime is UNKNOWN / NOT ESTABLISHED.
+
+P01-S105. INTERPRETATION (code reading; Python semantics): `_subscribed` and `_callbacks` are guarded by `_lock` and `_last_tick_at` by `_last_tick_lock`; `_connected`, `_disconnect_time`, `_reconnect_notified`, `_reconnect_count` and `_watchdog_alert_fired` are plain attributes written from the library's callbacks, the consumer or the watchdog without a lock (for example `_watchdog_alert_fired` is set at L767 without the lock under which `_on_ticks` clears it, L269 to L274). `subscribe` reads `_connected` after releasing the lock (L185), so a connect between L183 and L185 can send a new token twice, once from `_on_connect` and once from `subscribe`.
+
+## 11. Tests (HISTORICAL; intent and behaviour evidence only, not run)
+
+P01-S106. HISTORICAL (`tests/unit/test_live_feed.py`, 969 lines): the tests replace `KiteTicker` with a `MockTicker` (L26 to L86) whose `connect` calls `on_connect` at once (L48 to L52); no test uses the real library. They assert: subscription tracking, idempotence and the registry (L155 to L232); connection state (L234 to L255, L456 to L463); that callbacks receive the queued ticks (L257 to L298); that a full queue calls `soft_kill("LIVEFEED_QUEUE_FULL")` once, with a mock kill switch injected into `_kill_switch` (L300 to L346); the reconnect notifications, the 10-minute gap and the no-reconnect critical failure (L347 to L455); subscription while connected or disconnected (L474 to L496, L623 to L650); concurrent subscribe and unsubscribe (L498 to L540); `_on_connect` re-subscription, its failure log "re-subscribe after connect FAILED" without raising, and its count log (L542 to L682); the B.6 watchdog with stub windows (tick age, paper skip, a stale alert that closes the mock ticker, silence outside the window, reset on resume; L683 to L834); FIX-059 slicing (L835 onwards).
+
+P01-S107. HISTORICAL (`tests/unit/test_fix064_flag_based_reconnect.py`, 416 lines): the watchdog sets the flag rather than closing (L53); the consumer closes from its own thread (L113, L147); several flag sets give one close (L190); `test_reconnection_after_flag_close` (L223 to L267) asserts only that the fake ticker's `close` was called once; the flag is cleared even on an exception (L268); no watchdog in paper mode (L304); no close without a ticker (L331); the full flow (L368).
+
+P01-S108. HISTORICAL (`tests/unit/test_fix134_ws_reconnect.py`, 156 lines): the reconnect count (L26); the no-reconnect soft kill with an injected kill switch (L34); notifications after an explicit `set_notifier` (L40, L50); re-subscription (L60); paper skip (L75); `LiveFeedConfig` defaults 10, 1 and 30 (L80 to L85); `test_backoff_sequence` (L87 to L94), which checks a formula computed inside the test and calls no feed code; the FIX-189 off-hours and in-session cases (L111, L132).
+
+P01-S109. HISTORICAL (`tests/unit/test_b1_consumer_health_unblocked.py`, 183 lines): the consumer health check runs when no tick has arrived (L80); a healthy consumer is not restarted (L100); no consumer yet is a no-op (L114); the tick-age alarm stays silent without ticks (L129) and fires once ticks were seen (L151); paper mode starts no watchdog (L173).
+
+P01-S110. HISTORICAL (`tests/unit/test_alert_delivery_phase1.py` L74 to L125): a stub built without `__init__` injects a notifier and a kill switch (L78 to L92) and drives `_on_noreconnect`; the tests assert the delivery record (L101), that the soft kill fires when the notifier raises (L110) and, by source inspection, that it comes before the alert (L122).
+
+P01-S111. HISTORICAL (`tests/unit/test_main.py` L315, L548 to L572, L853 to L856, L901 to L904; `tests/unit/test_order_placer_fix061.py` L116 to L152, L297 to L327; `tests/unit/test_healthcheck_server.py` L210 to L238; `ops_dashboard/tests/conftest.py` L224): `main.py` tests replace `LiveFeedManager` with a mock and assert that `set_on_reconnect_callback` and `connect` are called once, and that the critical-failure callback with source "live_feed" soft-kills and alerts; no test drives `_tick_dispatcher` (grep of `tests/`). The placer tests assert that an LTP validation error subscribes `[12345]` and registers the callback once, and that other errors do not subscribe. The health-server test asserts that a disconnected feed still gives HTTP 200. The dashboard fixture carries `max_reconnect_attempts: 10`.
+
+P01-S112. INTERPRETATION: the tests that assert kill-switch and notifier behaviour inject objects that `main.py` does not wire (P01-S106, P01-S108, P01-S110), and none uses the real library, so they show intent for the injected case only; none establishes runtime behaviour.
+
+## 12. Legacy documents about the feed (HISTORICAL)
+
+P01-S113. HISTORICAL (`docs/locked_decisions.yaml` L2403 to L2496, lines of 2026-04-17): LF1 to LF8 specify the feed: the constructor with defaults 10 and 5 and "No state_store, no config_loader dependencies" (LF2, L2418 to L2426); KiteTicker's built-in reconnect with "we configure the limits" (LF3, L2428 to L2438); MODE_LTP by default and re-subscription on connect (LF4, L2440 to L2449); "Queue full: drop oldest tick" (LF5, L2451 to L2460); the four-key normalised tick (LF6, L2462 to L2472); the reconnect protocol (LF7, L2474 to L2486); imports limited to kiteconnect, the standard library and `core.time_authority` (LF8, L2488 to L2496). The same text is in `docs/web_claude/01_module_instructions/module_26_live_feed_candle_store.txt` (2026-04-17).
+
+P01-S114. HISTORICAL (`docs/audit/tick_candle_dormancy_25jul2026.md`, 297 lines, last changed `a2b5810`, 2026-07-25): the document says the boot path "was NEVER WIRED" to subscribe (L11 to L16), reports counts of log lines that it says it read on the production machine up to its date (L84 to L96), argues that MODE_LTP is sufficient and that MODE_FULL would activate a volume defect (L249 to L260), and notes that "no owner is defined for subscription" (L292). Its log source is not in the repository, so its counts are a document's statements only.
+
+P01-S115. HISTORICAL (`docs/SYSTEM_MAP.md` L82, blame `e754c7e`, 2026-07-25; commit `e754c7e` "docs(sync): §C -- the tick-feed DECISION, with its reopen trigger" changed only this file): the entry declares the live tick-to-candle feed "DELIBERATELY DORMANT", "a DECISION, NOT A BACKLOG ITEM", with a reopen trigger: (a) a live safety dependency on ticks, or (b) material change to the entry work.
+
+P01-S116. HISTORICAL (`docs/audit/integrity_audit_2026.md` L116 to L121 and L256 to L272, lines of 2026-08-01; `docs/MASTER_PENDING_28-Jul-2026.txt` L470 to L478, file last changed 2026-08-01): the integrity audit reports the dormancy as "CONFIRMED" at its date and raises IA-P1-06, that the dormancy is "un-enforced" because the exit-retry caller "can silently end it"; the pending list restates the dormancy and the decision `e754c7e`.
+
+P01-S117. HISTORICAL (`docs/audit/system_security_audit_02jul2026.md` L134 to L135, L160; file last changed 2026-07-25): the health endpoint did not then cover the feed (later "E-4", `main.py` L4056 to L4059), and "`live_feed` watchdog thread is itself unsupervised".
+
+P01-S118. FACT and UNKNOWN / NOT ESTABLISHED (P01-S035 to P01-S038): the documents above do not replace the code reading. At the baseline: No token is subscribed at boot. A later subscription depends on the exit-retry path. Whether that path ever ran in production is UNKNOWN / NOT ESTABLISHED.
+
+## 13. Inherited handoffs: the A05 side only (IDs and classifications as in the originating records)
+
+P01-S119. A01 C37 (A01 AUDIT section 6.1, C37: ISSUE; owner "A01 wiring; A18, A08, A06, A05 and A11 for the internals"; handoff wording (f): "no per-tick isolation; whether the live feed isolates callbacks is A05's"). A05 side: FACT (L602 to L618): each callback is isolated in its own try; INTERPRETATION (P01-S056): ticks are not isolated within a callback, so one failing tick ends `_tick_dispatcher` for the rest of its batch. For C37 (g): the reconnect callback is called outside any try (P01-S063).
+
+P01-S120. A01 B-36 (A01 AUDIT section 6.1, B-36: ISSUE for the cap conflict and the unused helpers; MATCH for the time-zone contract; owner "A01; the callers' owners (A05 live feed, ...)"). A05 side: FACT (L445, L749; `core/time_authority.py` L58 to L59, L94 to L100; `core/market_windows.py` L139 to L141, L149 to L150): the feed passes `now_ist()`, an aware datetime at the fixed UTC+05:30 offset, straight to `is_market_open` and `is_entry_allowed`, which read its `time()` and `date()`; the "now" the feed passes stays IST.
+
+P01-S121. A01 W-24 (A01 AUDIT section 6.2, W-24: UNKNOWN / NOT ESTABLISHED; owner "A01 (call site); A05, A06, A17"). A05 side: FACT (P01-S014, P01-S023): the feed's own threads are the daemon consumer, watchdog and restarted-consumer threads; `disconnect()` joins only the watchdog and calls `ticker.close()`. The ticker thread is the library's: library side see P02; Twisted behaviour UNKNOWN / NOT ESTABLISHED.
+
+P01-S122. A01 C14 (A01 AUDIT section 6.1, C14: ISSUE; owner "A01 (A03 for the close semantics; A17 for the unit)"). A05 side: FACT (`main.py` L3947, L3958; P01-S014): `live_feed.connect()` starts the consumer, the watchdog and the library's thread before `_install_signal_handlers()` runs.
+
+P01-S123. A01 C15 (A01 AUDIT section 6.1, C15: ISSUE; owner "A01 for the orchestration; which calls can raise is for A12, A04, A05, A06, A07, A11 and A15"). A05 side for `live_feed.connect` (`main.py` L3947, unguarded): FACT (L136 to L151): `connect()` has no try. INTERPRETATION (Python semantics): `Thread.start()` at L147 and L692 can raise `RuntimeError` when a thread cannot be started; whether `KiteTicker(...)` (L512 to L517) or `self._ticker.connect(threaded=True)` (L151) can raise is library behaviour: see P02. Any such exception reaches `main.py` L3947; if it comes from L150 or L151, the consumer and watchdog threads are already running. In paper mode `connect()` returns before all of these (paper-only). `candle_store.start()` (L3922) and `candle_store.set_token_map(...)` (L3946) are the candle and instrument-cache parts' to answer.
+
+P01-S124. A04 CL-09 (A04 AUDIT CL-09: ISSUE (minor), with a MATCH part; owner "A01 (the wiring and the comment); A04 (the client's token)"). The direction's description of the A05 side (the feed's failure paths, what reaches the operator, the unwired kill switch and notifier) is the A04 AUDIT's handoff P07-S216 ("other topic A05 (A01 for the wiring); handoff", A04 AUDIT handoff table and section 5 line for A05), in which CL-09 is the A04 side. A05 side: FACT (`main.py` L2929; `data/live_feed.py` L57, L514): the feed reads `ZERODHA_ACCESS_TOKEN` once at construction and keeps it for the process; `_access_token` is assigned only at L57, so the feed has no way to take a new token; the published library builds its socket URL from the key and token once, in its constructor (`ticker.py` L441 to L446; reuse on reconnect: see P02). The failure paths and what reaches the operator: P01-S069 to P01-S072.
+
+P01-S125. A04 CL-27 (A04 AUDIT CL-27: MATCH (point 13 REJECTED as an issue); FACT; INTERPRETATION; owner "A01 (wiring); A05 (feed)"; handoff wording: "what the feed does with its credentials is A05's", and for A05 "the feed's own `KiteTicker` and its `""` defaults"). A05 side: P01-S011: the feed accepts an empty key or token without a check, logs only that a value is missing, starts its threads and hands the values to `KiteTicker`; the outcome is library and server behaviour (see P02; UNKNOWN / NOT ESTABLISHED for the server).
+
+P01-S126. A02 K-30 (A02 AUDIT K-30: ISSUE; FACT; owner "A02; A01 (wiring); A05"; register: AGREED, batch T5 group G1). A05 side: P01-S090 to P01-S092.
+
+## 14. Claims from the earlier checkpoint, verified
+
+P01-S127. CONFIRMED with an addition: `LiveFeedManager` is built at `main.py` L2927 (to L2938) with no `kill_switch` argument, and no non-test code calls `set_notifier` on it (P01-S032, P01-S071). Addition: its `on_critical_failure` reaches the kill switch and the notifier through `_make_critical_failure_cb` (P01-S069).
+
+P01-S128. CONFIRMED: `subscribe` and the re-subscription set MODE_LTP at `data/live_feed.py` L191 and L353.
+
+P01-S129. CONFIRMED with corrections: the re-subscription block is L340 to L364 (send L340 to L353; failure branch L354 to L364), not L340 to L356; it re-sends only LiveFeedManager's own set, which is empty at start (L82; P01-S035), but the published library also re-subscribes its own map on a reconnect (P01-S034).
+
+P01-S130. CONFIRMED: the comment at L178 to L179 calls any `subscribe` call "the dormancy tripwire"; the constructor comment L59 to L61 says the same of the counter.
+
+P01-S131. CONFIRMED: the only non-test caller of `live_feed.subscribe` is `orders/order_placer.py` L3404, in the FIX-061 exit-retry path (P01-S036).
+
+P01-S132. CORRECTED: `tick_age_seconds` is L673 to L679; the watchdog is L681 to L790, not L681 to L758 (`_start_watchdog` L681 to L696; `_watchdog_loop` L698 to L790, with the stale alert, the critical-failure call and the force-reconnect flag at L758 to L790). Feed health also includes `_check_consumer_health` (L626 to L667, called at L729), the consumer's forced close (L548 to L562) and `is_connected()`, which `main.py` reports without gating (L4070). `tick_age_seconds` has no reader outside the watchdog.
+
+## 15. Flow summary (G3): normal, degraded, error, reconnect, restart and stale paths
+
+P01-S133. FACT (sections 3 to 5) (normal, live): construction (`main.py` L2927), dispatcher registration (L2971), reconnect chain (L2992), then `connect()` (L3947) starts the consumer, the watchdog and the ticker; the first `_on_connect` marks the feed connected and sends nothing, because `_subscribed` is empty. The watchdog runs the consumer health check every 10 s, and the tick-age check stays unarmed. No token is subscribed at boot. A later subscription depends on the exit-retry path. Whether that path ever ran in production is UNKNOWN / NOT ESTABLISHED. INTERPRETATION: if it ran, the token is sent with MODE_LTP and ticks would pass `_on_ticks`, the queue and the consumer to `_tick_dispatcher` (candle store, shadow tracker) and to the placer's callback.
+
+P01-S134. INTERPRETATION (degraded): a full queue drops each new tick with two CRITICAL lines (P01-S044 to P01-S046); ticks with no token or a zero price are dropped at DEBUG (P01-S048); a failing consumer callback loses the rest of its batch for that callback, with one CRITICAL line (P01-S056); a dead consumer is restarted at the next watchdog interval (P01-S085).
+
+P01-S135. INTERPRETATION (error): `_on_error` only logs (P01-S060); exceptions in `_on_ticks`, `_on_reconnect` and `_on_noreconnect` go to the library (P01-S043, P01-S074; see P02); exceptions in `subscribe` go to the caller, whose `try` logs them (P01-S030, P01-S037).
+
+P01-S136. INTERPRETATION (reconnect): a close marks the feed disconnected and stamps the time (P01-S059); each library attempt logs a WARNING, the first per disconnect calls `candle_store.mark_reconnect` and `smart_tgt.on_reconnect` (P01-S063), and attempts beyond a 600 s gap call the critical-failure callback (P01-S064); a successful connection re-sends the tracked tokens with MODE_LTP (P01-S033, with the library's own re-subscription, P01-S034); exhausted attempts lead to `_on_noreconnect`, which escalates in market hours and only logs a WARNING outside them (P01-S065 to P01-S067), after which the feed stays down for the process (P01-S073).
+
+P01-S137. INTERPRETATION (restart): the feed never rebuilds its connection itself (P01-S073); a new process builds a new feed whose `_subscribed` is empty, because the set lives only in memory (L82; no store in the module), so a token subscribed by an earlier process is not carried over. Within a process only the consumer thread is restarted (P01-S085); the watchdog thread is not (P01-S086).
+
+P01-S138. INTERPRETATION (stale): only after a first non-empty batch, while connected and inside the entry window, a 30 s silence gives one CRITICAL alert, one critical-failure call (SOFT_KILL and CRITICAL notification) and a forced `close()` (P01-S078 to P01-S083); whether a reconnection follows is library behaviour (see P02), and if none follows the watchdog falls silent (P01-S084). Before any tick has arrived there is no stale detection at all (P01-S078).
+
+P01-S139. FACT (P01-S023, P01-S028) (shutdown): `_shutdown` calls `disconnect()`, which stops the feed's threads' loops, closes the ticker with any error swallowed, and joins only the watchdog.
+

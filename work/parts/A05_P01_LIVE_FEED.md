@@ -284,13 +284,13 @@ P01-S120. FACT (handoff A01 B-36; A01 AUDIT section 6.1, B-36: ISSUE for the cap
 
 P01-S121. FACT and UNKNOWN / NOT ESTABLISHED (handoff A01 W-24; A01 AUDIT section 6.2, W-24: UNKNOWN / NOT ESTABLISHED; owner "A01 (call site); A05, A06, A17"). A05 side: FACT (P01-S014, P01-S023): the feed's own threads are the daemon consumer, watchdog and restarted-consumer threads; `disconnect()` joins only the watchdog and calls `ticker.close()`. The ticker thread is the library's: library side see P02; Twisted behaviour UNKNOWN / NOT ESTABLISHED.
 
-P01-S122. FACT (handoff A01 C14; A01 AUDIT section 6.1, C14: ISSUE; owner "A01 (A03 for the close semantics; A17 for the unit)"). A05 side: FACT (`main.py` L3947, L3958; P01-S014): `live_feed.connect()` starts the consumer, the watchdog and the library's thread before `_install_signal_handlers()` runs.
+P01-S122. FACT (handoff A01 C14; A01 AUDIT section 6.1, C14: "ISSUE. FACT (...); INTERPRETATION (...). Not a KNOWN DEFECT"; owner "A01 (A03 for the close semantics; A17 for the unit)"). A05 side: FACT (`main.py` L3947, L3958; P01-S014): in live mode `live_feed.connect()` starts the consumer and the watchdog and, through the library, the reactor thread when the reactor is not yet running (`ticker.py` L529 to L535; P02-S022), all before `_install_signal_handlers()` runs (L3958).
 
 P01-S123. FACT and INTERPRETATION (handoff A01 C15; A01 AUDIT section 6.1, C15: ISSUE; owner "A01 for the orchestration; which calls can raise is for A12, A04, A05, A06, A07, A11 and A15"). A05 side for `live_feed.connect` (`main.py` L3947, unguarded): FACT (L136 to L151): `connect()` has no try. INTERPRETATION (Python semantics): `Thread.start()` at L147 and L692 can raise `RuntimeError` when a thread cannot be started; whether `KiteTicker(...)` (L512 to L517) or `self._ticker.connect(threaded=True)` (L151) can raise is library behaviour: see P02. Any such exception reaches `main.py` L3947; if it comes from L150 or L151, the consumer and watchdog threads are already running. In paper mode `connect()` returns before all of these (paper-only). `candle_store.start()` (L3922) and `candle_store.set_token_map(...)` (L3946) are the candle and instrument-cache parts' to answer.
 
-P01-S124. FACT (handoff A04 CL-09; A04 AUDIT CL-09: ISSUE (minor), with a MATCH part; owner "A01 (the wiring and the comment); A04 (the client's token)"). The direction's description of the A05 side (the feed's failure paths, what reaches the operator, the unwired kill switch and notifier) is the A04 AUDIT's handoff P07-S216 (A04 AUDIT section 6, Part AU, L886: "other topic A05 (A01 for the wiring); handoff"; L1283: "the live feed's authentication failure reaches the operator as a reconnect or tick-age failure, and the feed's own kill-switch call and notifier are left unwired by `main.py` ... No A04 defect"), in which CL-09 is the A04 side. A05 side: FACT (`main.py` L2929; `data/live_feed.py` L57, L514): the feed reads `ZERODHA_ACCESS_TOKEN` once at construction and keeps it for the process; `_access_token` is assigned only at L57, so the feed has no way to take a new token; the published library builds its socket URL from the key and token once, in its constructor (`ticker.py` L443 to L448; reuse on reconnect: see P02). The failure paths and what reaches the operator: P01-S069 to P01-S072.
+P01-S124. FACT (handoff A04 CL-09, as each record states it; IDs and classifications quoted unchanged): (1) A04 AUDIT section 5.3, CL-09 (L620 to L633), "The live client keeps the token of the first read; the L2576 environment write reaches only the feed, not the "broker code" its comment names": "ISSUE (minor), with a MATCH part. FACT; HISTORICAL; INTERPRETATION (the rewrite window)"; owner "A01 (the wiring and the comment); A04 (the client's token)"; "Rama: not needed". Its A05-relevant facts: "after L2576 the only reader of `ZERODHA_ACCESS_TOKEN` in the trading process is the live feed (L2929)", and the client's token "is not compared with the token the gate checks and the feed receives (later reads)". (2) Audit Findings Register, row CL-09: classification "ISSUE; FACT; INTERPRETATION; HISTORICAL"; AUDIT reference "5.3, CL-09"; treatment "A04 treatment group TG2 (AGREED, 13-Nov-2026)"; status AGREED. (3) A04 RECONCILED TOPIC RECORD section 15.2 (L402 to L411): CL-09 is listed under A05 (row "CL-09, CL-12, CL-15, CL-27, RD-21, RD-33, RL-05, RL-06, CG-04, CG-25, CG-27") and under A01; A04 "keeps and counts its own side of each item; the owner traces its own logic and records any finding there". (4) The feed's failure paths reach A05 through a different A04 item, the disposition of point 21, P07-S216, of the A04 evidence part P07 (`evidence/A04_AUTHENTICATION_TOKEN_AND_CLOCK_SKEW_2026-11-11.md` L523): A04 AUDIT section 6.2.1, L886: "other topic A05 (A01 for the wiring); handoff", with "The A04 side, the token handed to the feed from the third read, is CL-09's and shows no A04 defect; the feed's texts and its unwired arguments are A05's and A01's (P07-S098, P07-S107)"; and the AUDIT's handoff list, section 6.5, L1283: "the live feed's authentication failure reaches the operator as a reconnect or tick-age failure, and the feed's own kill-switch call and notifier are left unwired by `main.py` (P07-S098, P07-S099, P07-S107; P07-S216); the token handed to the feed comes from the third read (CL-09). No A04 defect." INTERPRETATION (reading of the four records): CL-09 concerns the token handover; the failure paths come from P07-S216, whose A04 side is CL-09's; this part reclassifies neither. A05 side for CL-09: FACT (`main.py` L2929; `data/live_feed.py` L57, L514): the feed reads `ZERODHA_ACCESS_TOKEN` once at construction and keeps it for the process; `_access_token` is assigned only at L57, so the feed has no way to take a new token; the published library builds its socket URL from the key and token once, in its constructor, and nothing in the library changes it later (`ticker.py` L443 to L448, L474; P02-S019); whether a reconnect made by the factory's retry reuses that URL is Twisted and autobahn behaviour, UNKNOWN / NOT ESTABLISHED. A05 side for P07-S216: P01-S069 to P01-S072.
 
-P01-S125. FACT and INTERPRETATION (handoff A04 CL-27; A04 AUDIT CL-27: MATCH (point 13 REJECTED as an issue); FACT; INTERPRETATION; owner "A01 (wiring); A05 (feed)"; handoff wording: "what the feed does with its credentials is A05's", and for A05 "the feed's own `KiteTicker` and its `""` defaults"). A05 side: P01-S011: the feed accepts an empty key or token without a check, logs only whether each value is set, starts its threads and hands the values to `KiteTicker`; the outcome is library and server behaviour (see P02; UNKNOWN / NOT ESTABLISHED for the server).
+P01-S125. FACT and INTERPRETATION (handoff A04 CL-27; A04 AUDIT CL-27: MATCH (point 13 REJECTED as an issue); FACT; INTERPRETATION; owner "A01 (wiring); A05 (feed)"; handoff wording: "what the feed does with its credentials is A05's", and for A05 "the feed's own `KiteTicker` and its `""` defaults"). A05 side: P01-S011: the feed accepts an empty key or token without a check, logs only whether each value is set, starts its threads and hands the values to `KiteTicker`; the outcome is library and server behaviour (see P02, P02-S097; UNKNOWN / NOT ESTABLISHED for the server). FACT (A04 AUDIT section 5.4, CL-27): A04 records that in the non-interactive start, the only reachable one, "the `""` defaults cannot be reached there (an unset key ended the start at L2361, an empty token fails the gate at L2547)".
 
 P01-S126. FACT (handoff A02 K-30; A02 AUDIT K-30: ISSUE; FACT; owner "A02; A01 (wiring); A05"; register: AGREED, batch T5 group G1). A05 side: P01-S090 to P01-S092.
 
@@ -310,9 +310,9 @@ P01-S132. FACT (earlier-checkpoint claim; result: CORRECTED): `tick_age_seconds`
 
 ## 15. Flow summary (G3): normal, degraded, error, reconnect, restart and stale paths
 
-P01-S133. FACT (sections 3 to 5) (normal, live): construction (`main.py` L2927), dispatcher registration (L2971), reconnect chain (L2992), then `connect()` (L3947) starts the consumer, the watchdog and the ticker; the first `_on_connect` marks the feed connected and sends nothing, because `_subscribed` is empty. The watchdog runs the consumer health check every 10 s, and the tick-age check stays unarmed. No token is subscribed at boot. A later subscription depends on the exit-retry path. Whether that path ever ran in production is UNKNOWN / NOT ESTABLISHED. INTERPRETATION: if it ran, the token is sent with MODE_LTP and ticks would pass `_on_ticks`, the queue and the consumer to `_tick_dispatcher` (candle store, shadow tracker) and to the placer's callback.
+P01-S133. FACT (sections 3 to 5) (normal, live): construction (`main.py` L2927), dispatcher registration (L2971), reconnect chain (L2992), then `connect()` (L3947) starts the consumer, the watchdog and the ticker; when the library first calls `_on_connect`, the feed is marked connected and sends nothing, because `_subscribed` is empty. The watchdog runs the consumer health check every 10 s, and the tick-age check stays unarmed. No token is subscribed at boot. A later subscription depends on the exit-retry path. Whether that path ever ran in production is UNKNOWN / NOT ESTABLISHED. INTERPRETATION: if it ran, the token is sent with MODE_LTP and ticks would pass `_on_ticks`, the queue and the consumer to `_tick_dispatcher` (candle store, shadow tracker) and to the placer's callback.
 
-P01-S134. INTERPRETATION (degraded): a full queue drops each new tick with two CRITICAL lines (P01-S044 to P01-S046); ticks with no token or a zero price are dropped at DEBUG (P01-S048); a failing consumer callback loses the rest of its batch for that callback, with one CRITICAL line (P01-S056); a dead consumer is restarted at the next watchdog interval (P01-S085).
+P01-S134. INTERPRETATION (degraded): a full queue gives two CRITICAL lines for each new tick and drops the tick when the retry put also fails (P01-S044 to P01-S046); ticks with no token or a zero price are dropped at DEBUG (P01-S048); a failing consumer callback loses the rest of its batch for that callback, with one CRITICAL line (P01-S056); a dead consumer is restarted at the next watchdog interval (P01-S085).
 
 P01-S135. INTERPRETATION (error): `_on_error` only logs (P01-S060); exceptions in `_on_ticks`, `_on_reconnect` and `_on_noreconnect` go to the library (P01-S043, P01-S074; see P02); exceptions in `subscribe` go to the caller, whose `try` logs them (P01-S030, P01-S037).
 
@@ -341,16 +341,18 @@ P01-S139. FACT (P01-S023, P01-S028) (shutdown): `_shutdown` calls `disconnect()`
 13. The three `live_feed` keys do not reach the feed (A02 K-30), and the dashboard shows `max_reconnect_attempts` as the "reconnect cap" (P01-S090 to P01-S092).
 14. `_check_consumer_health` restarts the consumer without limit although its docstring says "once", and makes no notification (P01-S085).
 15. The watchdog thread has no supervisor (P01-S086).
-16. The feed passes the library's `timestamp` through unchanged, and the dispatcher substitutes the receipt time `now_ist()` when it is missing; the candle part may examine this mix of time sources (P01-S042, P01-S055).
+16. The feed passes the library's `exchange_timestamp` (or `timestamp`) through unchanged, and the dispatcher substitutes `now_ist()` read at dispatch on the consumer thread when it is missing, which in the published parser is the case for every LTP packet; the candle part may examine this mix of time sources (P01-S042, P01-S055, P01-S149).
 17. `_disconnect_time` is overwritten at each close, so the gap may be measured from the latest close (P01-S059).
 18. The feed accepts empty credentials without a check (P01-S011; A04 CL-27 is a MATCH for the reachable path).
 19. The feed's reason texts never contain "BrokerAuthError", so `_mark_auth_failed()` cannot be reached from the feed (P01-S070).
-20. `float(raw.get("last_price", 0.0))` raises inside `_on_ticks`, outside any try, when the value is `None` (P01-S043).
+20. `float(raw.get("last_price", 0.0))` raises inside `_on_ticks`, outside any try, when the value is `None` or not numeric; the published 5.1.0 parser does not produce such a value (P01-S043).
 21. Whether `disconnect()` during market hours can lead the library to report `on_noreconnect`, and so to the in-hours escalation during a shutdown, needs P02 (P01-S023, P01-S067).
-22. The module imports `core.effect_telemetry`, `core.logger` and `alerts.delivery`, beyond the import list of LF8 (P01-S008, P01-S113).
+22. The module imports `core.effect_telemetry`, `core.logger` and `alerts.delivery`, beyond the import list of LF8 in `docs/locked_decisions.yaml`; the module-instruction version of LF8 also lists `core.logger` (P01-S008, P01-S113).
 23. The effect registry and some comments cite line numbers that do not match the baseline (P01-S098).
 24. Several flags shared between threads are written without a lock (P01-S105).
 25. The effect counter counts every `subscribe` call, repeated or not, and reaches the operator only as a census line at shutdown (P01-S012, P01-S039).
+26. The tests' evidence for the forced reconnect is weaker than their names: the B.6 stale-alert test's `close()` assertion is met by `disconnect()`, and the FIX-064 reconnection test calls `_on_reconnect` itself (P01-S107, P01-S151).
+27. `_on_noreconnect` has no once-only guard, while the published library does not ensure a single `on_noreconnect` call (P01-S150).
 
 ## 17. UNKNOWN / NOT ESTABLISHED
 
@@ -373,7 +375,7 @@ P01-S146. UNKNOWN / NOT ESTABLISHED: the thread on which the library ran the fee
 1. Was the feed meant to receive the kill switch (the FIX-029 and FIX-134 comments) and the notifier (`set_notifier`; the L129 comment "set via set_notifier() from main.py"), or was the critical-failure callback meant to be its only route to a soft kill and an alert?
 2. When the tick queue is full, what was intended: dropping the oldest tick (LF5), a soft kill that keeps the ticks (FIX-029), or something else?
 3. Was the "deliberately dormant" decision of 25-Jul-2026 (`e754c7e`) meant to allow the exit-retry path to subscribe a token and so start the tick flow, as the code allows?
-4. Which reconnect settings were meant to govern the feed: the constructor defaults of LF2 and LF3 (10 attempts, 5 s) or the `live_feed` keys in `config/system_config.yaml` (10 attempts, back-off 1 s to 30 s)?
+4. Which reconnect settings were meant to govern the feed: the constructor defaults of LF2 and LF3 (10 attempts, 5 s) or the `live_feed` keys in `config/system_config.yaml` (10 attempts, back-off 1 s to 30 s)? (Note for the coordinator: A02 already records this conflict as IC-40 with K-30, "Rama: not needed", treated in batch T5 group G1, AGREED 09-Nov-2026; this question may not be needed.)
 5. Was the tick-age watchdog meant to cover only the entry window or the whole market session, and was it meant to stay unarmed until the first tick?
 6. Was the watchdog's forced reconnect meant to rely on the library reconnecting by itself after `close()`?
 7. When the reconnect attempts run out in market hours, was the feed meant to stay down for the rest of the session (recovery by a restart), or to be rebuilt within the process?
@@ -384,24 +386,24 @@ P01-S146. UNKNOWN / NOT ESTABLISHED: the thread on which the library ran the fee
 
 | Question | Statements |
 |---|---|
-| A1 Actual Live entry point; who constructs and starts it | P01-S016, P01-S026, P01-S027, P01-S094 |
-| A2 Upstream feed and API; subscription; symbol and token mapping | P01-S017 to P01-S022, P01-S029 to P01-S039, P01-S058 |
-| A3 Decoding, validation, timestamping, normalisation | P01-S040 to P01-S043, P01-S048, P01-S055 (packet decoding itself: P02) |
+| A1 Actual Live entry point; who constructs and starts it | P01-S016, P01-S026, P01-S027, P01-S094, P01-S147 |
+| A2 Upstream feed and API; subscription; symbol and token mapping | P01-S017 to P01-S022, P01-S029 to P01-S039, P01-S058, P01-S147, P01-S148 |
+| A3 Decoding, validation, timestamping, normalisation | P01-S040 to P01-S043, P01-S048, P01-S055, P01-S149 (packet decoding itself: P02) |
 | A4 Duplicate, out-of-order, delayed, missing, malformed ticks | P01-S043, P01-S048, P01-S049, P01-S081 |
-| A5 Reconnect, resubscribe, disconnect, stale-feed paths | P01-S023, P01-S033, P01-S034, P01-S059 to P01-S067, P01-S073, P01-S077 to P01-S084, P01-S136, P01-S138 |
+| A5 Reconnect, resubscribe, disconnect, stale-feed paths | P01-S023, P01-S033, P01-S034, P01-S059 to P01-S067, P01-S073, P01-S077 to P01-S084, P01-S136, P01-S138, P01-S150 |
 | A6 Queues, buffers, worker threads, back-pressure | P01-S014, P01-S015, P01-S044 to P01-S047, P01-S050, P01-S051, P01-S105 |
-| A7 Failure, timeout, retry, recovery outcomes | P01-S018, P01-S044 to P01-S046, P01-S062 to P01-S074, P01-S080, P01-S083 to P01-S086, P01-S123 |
-| A8 What the feed publishes, to whom; ordering and identity | P01-S047, P01-S050, P01-S052 to P01-S057 |
+| A7 Failure, timeout, retry, recovery outcomes | P01-S018, P01-S044 to P01-S046, P01-S062 to P01-S074, P01-S080, P01-S083 to P01-S086, P01-S123, P01-S150 |
+| A8 What the feed publishes, to whom; ordering and identity | P01-S047, P01-S050, P01-S052 to P01-S057, P01-S149 |
 | G3 Normal, degraded, error, reconnect, restart and stale flows (the feed) | P01-S133 to P01-S139 |
-| I1 Instrument identity and mapping (the feed side) | P01-S036, P01-S037, P01-S058 |
+| I1 Instrument identity and mapping (the feed side) | P01-S036, P01-S037, P01-S058, P01-S148 |
 | I4 Rate limits and concurrency (the feed side) | P01-S019, P01-S029, P01-S102 to P01-S105 |
 | Handoff A01 C37 | P01-S119 (P01-S050, P01-S056, P01-S063) |
 | Handoff A01 B-36 | P01-S120 (P01-S082) |
 | Handoff A01 W-24 | P01-S121 (P01-S014, P01-S023) |
 | Handoff A01 C14 | P01-S122 |
 | Handoff A01 C15 | P01-S123 |
-| Handoff A04 CL-09 (with P07-S216) | P01-S124 (P01-S069 to P01-S072) |
-| Handoff A04 CL-27 | P01-S125 (P01-S011) |
+| Handoff A04 CL-09 (with P07-S216) | P01-S124 (CL-09: P01-S147; P07-S216: P01-S069 to P01-S072) |
+| Handoff A04 CL-27 | P01-S125 (P01-S011, P01-S147) |
 | Handoff A02 K-30 | P01-S126 (P01-S090 to P01-S092) |
 | Earlier-checkpoint claims | P01-S127 to P01-S132 |
 

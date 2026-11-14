@@ -7,8 +7,8 @@ corrected statement by statement by a separate helper; backups to wip/a05-fieldw
 
 | Part | Subject | Draft | Check |
 |---|---|---|---|
-| P01 | Live feed and tick intake (data/live_feed.py; main.py feed wiring) | running | - |
-| P02 | Pinned kiteconnect 5.1.0 library (ticker; client methods A05 uses) | running | - |
+| P01 | Live feed and tick intake (data/live_feed.py; main.py feed wiring) | done 13:27 IST (146 statements) | running |
+| P02 | Pinned kiteconnect 5.1.0 library (ticker; client methods A05 uses) | done 13:24 IST (98 statements) | running |
 | P03 | Candle store and live candles (data/candle_store.py; dispatcher; consumers) | - | - |
 | P04 | core/candle_math.py functions, contracts, callers | - | - |
 | P05 | Instrument cache (core/instrument_cache.py; preload; consumers) | - | - |

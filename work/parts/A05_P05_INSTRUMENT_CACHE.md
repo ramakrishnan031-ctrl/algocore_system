@@ -360,3 +360,61 @@ P05-S117. UNKNOWN / NOT ESTABLISHED: the effective values (as opposed to the com
 | Also touched: A2 (the token for the exit-retry subscription) | P05-S066, P05-S080 |
 | Inherited handoffs A01 C9, C29, M-43 and C38b | P05-S081 to P05-S084 (with P05-S034, P05-S035 to P05-S039, P05-S053, P05-S054, P05-S069) |
 | Inherited handoffs A04 CG-27, CG-04, CG-25, RD-21, RD-33 | P05-S085 to P05-S089, P05-S118 |
+
+## 17. Check log
+
+**Statements checked:** 118: the 117 statements of the draft (P05-S001 to P05-S117), each re-read against its cited source (the legacy code at `970aabf` through `git show`, the project records in the project repository, or the vendor page), and P05-S118, added in the check. **Corrected:** 29. **Withdrawn:** 0. **Added:** 1. **Confirmed without change:** 88. The draft copy is kept in the drafts folder of the parts.
+
+**Method of the check:** `core/instrument_cache.py` re-read in whole and every cited line range re-read with `git show 970aabf:<path>`, output filtered for identifier-shaped text and machine paths; every search repeated with the mandatory exclusions (restricted to Python files where minified third-party JavaScript matched); own standard-library scripts, run with `python3 -I` under the local Python 3.13, for the `csv`, conversion, comparison, exception-hierarchy, `dict`, `getattr` and guard-form behaviours, for the counts of the past tracked versions of `config/instruments.csv` (read from `git show` text; counts only, no symbol or row printed), for the bindings of `instrument_cache` in `main.py` and for the import lists (`ast.parse` only); `git blame --porcelain` read for hashes and dates only; the local standard library's `pathlib` source read as text; the vendor page re-read with a web fetch on 14-Nov-2026. Nothing in the legacy repository was written, checked out, run or imported.
+
+**Changes:**
+
+| ID | What changed | Why |
+|---|---|---|
+| P05-S003 | lines re-read or added in the check listed | several statements cite lines that the draft's list omitted |
+| P05-S004 | added L337 of the forensics document, two test grep lines and the specification's L76 to L90 | used by corrected statements |
+| P05-S006 | C38b record range L2057 to L2068 changed to L2057 to L2066; index lines L218 to L219 (A18) added | L2067 to L2068 belong to the next record; P05-S068 now cites A18 |
+| P05-S007 | the check's own scripts named | method record |
+| P05-S008 | commit subject of `bcf03b5` given in full | the draft truncated it |
+| P05-S018 | "any iterable" narrowed to a re-iterable collection, with the one-shot-iterator case; the script's L141 marked as not reached | L93 and L94 iterate the argument again after L92; the script stops at L139 |
+| P05-S024 | the lower-casing of the `is_fno` text for its comparison noted | the draft said that no value is otherwise normalised |
+| P05-S034 | `csv.Error` lines L126 changed to L127 (header read) and L140; the labels of the 0-byte and bad-value rows split into FACT (the raise or the arm) and INTERPRETATION (the `csv` or conversion semantics) | L126 only constructs the reader; reasoning was shown as FACT |
+| P05-S038 | added the third occurrence of `InstrumentsRefreshed` (`data/candle_store.py` L138, a docstring) and the exact-type dispatch basis (`core/events.py` L315, L318, L322) | the draft's "occurs only" list was incomplete |
+| P05-S060 | the structure-exit manager is built only when the zone cache and warmer exist, inside a `try` (L3808 to L3812) | the draft gave only the flag |
+| P05-S064 | rows 5 and 10: a `None` cache added to the fallback cases; row 21: the builder stops at L139 | `orders/order_placer.py` L2214 to L2215; `orders/smart_tgt_manager.py` L736 to L747; P05-S069 |
+| P05-S067 | precondition added: the callback exists only after an earlier successful exit-retry subscription | L3402 to L3409: a retry for a missing symbol never registers the callback |
+| P05-S068 | the use of the value assigned to A18 (`V3Signal`, `ScoredCandidate`), not A06 | `signals/signal_processor.py` L1578 to L1603, L1619 to L1644; index L219 |
+| P05-S069 | the first failing line is L139 (`TypeError` at `core/config_loader.py` L2481), not L141; A01 C38b's record and classification kept as recorded | code reading of L139 and of `load_all` (L2441 to L2481) |
+| P05-S070 | added the slippage engine's import (L48), the owner A09 of `orders/price_math.py` and `orders/sl_breach_monitor.py` L69 | completeness; owner per the index |
+| P05-S071 | added the paper-only slippage engine's read of `tick_size` (L142) | completeness |
+| P05-S075 | added `utils/startup_checks.py` L919 (a docstring) | completeness of the search result |
+| P05-S078 | the header text also occurs in `tests/unit/test_phase19_batch3.py` L195 and `tests/unit/test_zerodha_adapter.py` L877; two account files are tracked, not one | an unanchored search; `git ls-tree` |
+| P05-S079 | byte size added; counts re-made in the check | verification record (every count confirmed) |
+| P05-S084 | L139 instead of L141 as the first failure; C38b range | as P05-S069 |
+| P05-S089 | pointer to P05-S118 | new statement |
+| P05-S092 | `scripts/sr_level_export.py` named as a reader that stops first | completeness |
+| P05-S094 | exit outcomes split (a thin file: exit 3; the dry-run return of 0 limited to the present-but-unloadable case) | the draft's "a dry run returns 0" was too broad |
+| P05-S098 | the words "F&O uses contract lot" attributed to the module's field comment, not to the test; the thread loop described exactly | the test's docstring (L286) has other words; L367 to L376 |
+| P05-S102 | the specification's base class of `InstrumentNotFoundError` (`ConfigError`, IC4) against the code's (`TradingSystemError`) added | a difference missing from the comparison |
+| P05-S107 | the entry's heading and lines (L1414 to L1415); it names FIX-181 and FIX-170 | precision |
+| P05-S108 | line date 2026-07-12 changed to 2026-07-11 | `git blame` of L243 |
+| P05-S109 | the document's 75,749 B equals the size of the last tracked version; whether it was that version is UNKNOWN / NOT ESTABLISHED | blob size |
+| P05-S110 | FIX-092 is also named in tests; "no document under `docs/`" widened to every tracked document; L337 added for the sweep | full search |
+| Section 13 | points 5 and 8 updated | follows P05-S069 and P05-S118 |
+| Section 16 | P05-S118 added to the I1 and A04-handoff rows | follows P05-S118 |
+| Header | Status line | check done |
+
+**Statement added:** P05-S118 (after P05-S089): current external context on keys, the vendor page's advice to key instruments by exchange and trading symbol and its warning that exchanges may reuse tokens; for A04 RD-33 and I1.
+
+**Results on the points given special care:**
+1. A01 C9's A05 side: each row of the P05-S034 table re-derived from the code and from own standard-library checks; the catch at `main.py` L2445 takes every class; exit 3 for an absent file (step 1) or a thin file (step 9); exit 2 through the assert at L2506 for a present but unloadable file when no other step blocks; with `--dry-run`, 0 in that case and 3 for an absent or thin file. A01 C9's classification (ISSUE; KNOWN DEFECT; FACT) is kept as recorded.
+2. What the loader lets through: confirmed (token 0 and negative tokens, any `exchange` text including "BSE", unrecognised `is_fno` text read as False, `nan` and `inf` ticks, the later row winning for a repeated symbol or token). With the mandatory exclusions, `\.exchange\b` matches no non-test Python line and `\.is_fno\b` matches only `broker/slippage_engine.py` L90 (paper-only).
+3. Past tracked versions of `config/instruments.csv`: every count confirmed by an own script reading the `git show` text, without printing any symbol or row (`bcf03b5`: 5 rows; `9f58848` and the parent of `2b4d976`, one blob: 2228 rows, all NSE, lot size 1, `is_fno` 206 true and 2022 false, six tick values, 144 rows with token 0 as the only repeated token, no repeated symbol, 2086 blank sectors, 12 sectors); each kept HISTORICAL and never presented as the deployed file.
+4. `reload`: no non-test caller; returns a new object; publishes a count-only event; nothing subscribes (exact-type dispatch; the class is named only at its definition, in `reload` and in one docstring); the A01 C29 (f) wording verified.
+5. Consumer mismatches: the signal processor's `_sector_for` (names the cache does not define, so always "UNKNOWN") and the exit-retry `is not None` tests against a cache that raises, confirmed at the call lines; consequences kept as INTERPRETATION, with the required live-feed wording; owners per the index (`broker/slippage_engine.py` A04; `orders/price_math.py` A09; `v3_chain/` and `allocation/` A18).
+6. `scripts/sr_level_export.py`: by code reading L139 fails first (`TypeError` at `core/config_loader.py` L2481); A01 C38b recorded L141; its record and classification kept.
+7. A04 CG-27: the cache refuses ticks of 0 or less with `ConfigSchemaError`; `nan` and `inf` pass; the downstream guard forms recorded only as interface facts.
+
+**Could not verify:** what the draft's helper actually read (the lists of P05-S003 and P05-S004), beyond confirming that every cited line exists and says what the statements say; behaviour under the production Python version (UNKNOWN / NOT ESTABLISHED, A01 B-41), as every semantic point was confirmed under the local Python 3.13 only; the vendor page's content in the legacy period.
+
+**Notes for assembly (outside this part; nothing changed for them here):** part P03's P03-S027 lists the occurrences of `InstrumentsRefreshed` without the `gc_sweep` docstring line (`data/candle_store.py` L138) that its P03-S026 quotes, the same small point as P05-S038; the writer's docstring states a rule for symbols not matched in the broker's dump (token 0, lot size 1, tick 0.05; `scripts/refresh_instruments.py` L25, RI12), which bears on the 144 token-0 rows of the past tracked file and is part P07's to study.

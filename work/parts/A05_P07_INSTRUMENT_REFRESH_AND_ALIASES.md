@@ -171,3 +171,38 @@ P07-S051. FACT (L429 to L446, `_cron_main`): the `__main__` block calls `sys.exi
 P07-S052. FACT (`utils/cron_heartbeat.py`, A16's module; interface only): the holiday guard asks `utils.holiday_guard.is_trading_day(<today in IST>, Path("config"))` and, on any exception, falls back to "Monday to Friday" (L192 to L199); on a non-trading day it records a SKIPPED heartbeat with the message "non-trading day (weekend/NSE holiday)" (L201 to L208). The timer records one heartbeat on exit with the job name, the status (SUCCESS unless the job set another, or FAILED with "<exception class>: <message>" when any exception, `SystemExit` included, leaves the block), the duration and the message (L140 to L154); `record_heartbeat` returns False without raising when `data_store/trading_system.db`, relative to the working directory, does not exist or the insert fails (L80 to L95). With `alert=True` the timer then calls `alerts.cron_alerts.alert_job_result(<job>, <status>, ...)` and ignores any exception from it (L156 to L171); it never suppresses the job's exception (L173). What the alert function sends is A14's (`alerts/cron_alerts.py`, not read); HISTORICAL (commit `75d5e99`, 2026-06-18): "HeartbeatTimer(alert=True) sends a per-job alert on exit (FAILED always; SUCCESS only for critical jobs)", and the registry marks this job `critical: true` (`config/cron_registry.yaml` L310).
 
 P07-S053. INTERPRETATION (G3, the flows of a refresh; basis P07-S046 to P07-S052 and part P05): normal: on a trading day, one run reads the tracked reference files, makes one API call, writes the target by rename and records SUCCESS. Degraded: missing sector files or F&O list, a partial dump or unmatched symbols still give a successful run with blank sectors, "false" flags or token-0 rows (within 20 percent), and only stdout shows the unmatched count. Error: every failure before the write leaves the previous target untouched, so the trading process's next start loads the previous file whatever its age (it checks no age, part P05, P05-S063 and P05-S092); the signals are the exit status, the heartbeat row and the per-job alert call (where the database and alert path work), and the cron log; the refresh-specific alert sends nothing (P07-S036). Retry: none inside the script; the next attempt is the next declared run, a manual run or the pre-flight's fix (section 10). Restart: a running trading process does not reload a refreshed file (part P05, P05-S093). Stale reference data: every run uses the reference files as they are on the machine (section 9).
+
+## 9. The tracked reference files under `config/reference_data/` (A02 owns the files; names, sizes, dates and header lines only)
+
+P07-S054. FACT (`git ls-tree -r -l 970aabf -- config/reference_data/`; `git log` per file; header lines only, for the files the script reads): 18 files are tracked, 209571 bytes in all (the A05 source file inventory, L69, gives the same total); every one was added at `bcf03b5` (2026-04-17) and none has changed since.
+
+| File (under `config/reference_data/`) | Bytes | Read by the script | Header line | Lines with the header |
+|---|---|---|---|---|
+| `security_master_file.csv` | 204514 | yes, `_load_security_master` (default of `--security-master`) | P07-S014 | 2802 |
+| `index_members/fno_symbols.csv` | 1669 | yes, `_load_fno_set` | `symbol` | 207 |
+| `index_members/nifty_bank.csv` | 129 | yes, BANK | `symbol` | 15 |
+| `index_members/nifty_fin_services.csv` | 179 | yes, FIN_SERVICES | `symbol` | 21 |
+| `index_members/nifty_auto.csv` | 138 | yes, AUTO | `symbol` | 16 |
+| `index_members/nifty_fmcg.csv` | 125 | yes, FMCG | `symbol` | 16 |
+| `index_members/nifty_healthcare.csv` | 184 | yes, HEALTHCARE | `symbol` | 21 |
+| `index_members/nifty_it.csv` | 72 | yes, IT | `symbol` | 11 |
+| `index_members/nifty_metal.csv` | 132 | yes, METAL | `symbol` | 16 |
+| `index_members/nifty_oil_gas.csv` | 106 | yes, OIL_GAS | `symbol` | 16 |
+| `index_members/nifty_pharma.csv` | 187 | yes, PHARMA | `symbol` | 21 |
+| `index_members/nifty_realty.csv` | 92 | yes, REALTY | `symbol` | 11 |
+| `index_members/nifty_private_bank.csv` | 105 | yes, PRIVATE_BANK | `symbol` | 11 |
+| `index_members/nifty_psu_bank.csv` | 96 | yes, PSU_BANK | `symbol` | 13 |
+| `index_members/nifty50.csv` | 415 | no | not read | not read |
+| `index_members/nifty100.csv` | 806 | no | not read | not read |
+| `index_members/nifty_next50.csv` | 398 | no | not read | not read |
+| `index_members/nifty_midcap_select.csv` | 224 | no | not read | not read |
+
+All 14 read files are valid UTF-8 without a byte-order mark and have LF line ends (in the repository). Their data rows were not read in this part.
+
+P07-S055. FACT (the four files the script does not read): `nifty50.csv`, `nifty100.csv`, `nifty_next50.csv` and `nifty_midcap_select.csv` are not in `_SECTOR_INDEX_PRIORITY` (L72 to L85) and no non-test code names `reference_data`, `index_members` or `security_master` other than this script (search of section 1). A02 F-27 records them as held unread ("MATCH. FACT. No source says why they are kept", A02 AUDIT L1726); HISTORICAL: TASK3 (L119 to L121) says "Skip (these are market-cap indices, not sectors)".
+
+P07-S056. HISTORICAL and UNKNOWN / NOT ESTABLISHED (content dates and freshness): no file name and no header line carries an as-of date; the only dates are the commit dates (all 2026-04-17); TASK3 (L9 to L12) says "Rama has placed NSE official files (security master + sector index members)" at these paths. Whether the copies on the VM were the tracked ones, and how current they were at any refresh in the legacy period, is UNKNOWN / NOT ESTABLISHED. INTERPRETATION (P07-S012 to P07-S018 and the search above): no code in the repository downloads or rewrites these files, so every refresh uses the universe, sector lists and F&O list as they are on the machine; with the tracked copies, those are as of the commit of 2026-04-17, while tokens, lot sizes and tick sizes come fresh from the dump of the day.
+
+P07-S057. INTERPRETATION (what stale reference files do to the output; basis P07-S022 to P07-S024): a symbol listed by the exchange after the security master was taken is absent from the output (the universe comes only from the security master); a symbol renamed or delisted since then stays in the output and, if the dump no longer has it, is written with token 0, lot size 1 and tick 0.05; a change of index membership or F&O eligibility since then is not reflected in `sector` or `is_fno`. Whether any of this happened in the legacy period is UNKNOWN / NOT ESTABLISHED.
+
+P07-S058. FACT (test fixtures of the same kind; HISTORICAL use): `tests/fixtures/reference_data/` holds five small files, `security_master_small.csv` (428 bytes) and `index_members/fno_symbols.csv` (21), `nifty_bank.csv` (25), `nifty_it.csv` (20) and `nifty_private_bank.csv` (16); they are read only by `tests/unit/test_refresh_instruments.py` (L26 to L27), never by the script's defaults.

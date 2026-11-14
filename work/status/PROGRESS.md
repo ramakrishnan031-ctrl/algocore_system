@@ -7,10 +7,10 @@ corrected statement by statement by a separate helper; backups to wip/a05-fieldw
 
 | Part | Subject | Draft | Check |
 |---|---|---|---|
-| P01 | Live feed and tick intake (data/live_feed.py; main.py feed wiring) | done 13:27 IST (146 statements) | running |
-| P02 | Pinned kiteconnect 5.1.0 library (ticker; client methods A05 uses) | done 13:24 IST (98 statements) | running |
-| P03 | Candle store and live candles (data/candle_store.py; dispatcher; consumers) | - | - |
-| P04 | core/candle_math.py functions, contracts, callers | - | - |
+| P01 | Live feed and tick intake (data/live_feed.py; main.py feed wiring) | done 13:27 IST (146 statements) | done 13:56 IST (151 statements; 40 corrected, 5 added) |
+| P02 | Pinned kiteconnect 5.1.0 library (ticker; client methods A05 uses) | done 13:24 IST (98 statements) | done 13:50 IST (100 statements; 38 corrected, 2 added) |
+| P03 | Candle store and live candles (data/candle_store.py; dispatcher; consumers) | running | - |
+| P04 | core/candle_math.py functions, contracts, callers | running | - |
 | P05 | Instrument cache (core/instrument_cache.py; preload; consumers) | - | - |
 | P06 | Historical candle access (main.py closure; limiter bucket; A08 boundary) | - | - |
 | P07 | Instrument refresh and alias tool (refresh_instruments.py; find_symbol_aliases.py) | - | - |

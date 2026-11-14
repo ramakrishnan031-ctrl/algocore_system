@@ -1,8 +1,8 @@
 # A04 evidence: order monitor and order state machine
 
-**Status:** DRAFT — evidence for the A04 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A04 STUDY, approved by Rama on 2026-11-14 with the A04 topic package (Decision Register, D-33)
 **Date:** 2026-11-11
-**Revision history:** First version, 2026-11-11: written by a read-only helper as STUDY part P06, checked statement by statement by a separate helper, and corrected by a third pass.
+**Revision history:** First version, 2026-11-11: written by a read-only helper as STUDY part P06, checked statement by statement by a separate helper, and corrected by a third pass. Approved by Rama on 2026-11-14 with the A04 topic package (Decision Register, D-33): status marked APPROVED; content unchanged.
 **Purpose and scope:** This file records, for the A04 STUDY, what `broker/order_monitor.py` and `broker/order_state_machine.py` do at the baseline: their stated purpose against what the code does; the polling thread and the event flow; what the monitor reads from the broker through the Zerodha adapter; how each broker order status is mapped into the order state machine (OSM) and into the events the monitor publishes; which transitions are allowed and enforced; the cancellation, timeout, partial-fill, rejection, empty-history, orphan, error and restart branches; the persistence boundary (the `orders` table writes made from the monitor's events, whose storage is A03's); and a comparison of the status vocabularies of these two files, the adapter and their direct callers (direction question 16). It records A04's side of the prior-topic items that describe these flows. It does not classify (that is the AUDIT) and does not take over the order lifecycle decisions (A10), exits (A11), end of day and reconciliation (A12), kill-switch actions (A13) or alerts (A14).
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb`, read from the local read-only clone. Nothing in the clone was written or run. No credential, token or account value is reproduced (D-07).
 

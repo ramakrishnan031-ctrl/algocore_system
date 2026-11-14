@@ -1,8 +1,8 @@
 # A04 evidence: the existing technical records checked against the code
 
-**Status:** DRAFT — evidence for the A04 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A04 STUDY, approved by Rama on 2026-11-14 with the A04 topic package (Decision Register, D-33)
 **Date:** 2026-11-11
-**Revision history:** First version, 2026-11-11: written by a read-only helper as STUDY part P12, checked statement by statement by a separate helper, and corrected by a third pass.
+**Revision history:** First version, 2026-11-11: written by a read-only helper as STUDY part P12, checked statement by statement by a separate helper, and corrected by a third pass. Approved by Rama on 2026-11-14 with the A04 topic package (Decision Register, D-33): status marked APPROVED; content unchanged.
 **Purpose and scope:** The broker, authentication and broker-state claims of the five existing legacy technical records (Records 01, 02, 03 and 03A and the manual index) checked one by one against the code at the baseline: the broker adapters, the rate limiter, the order monitor and order state machine, the token monitor, authentication recovery, product resolution, costs, slippage, the clock-skew probe, the position helpers, the token watcher, the two morning scripts, the token refresh, login and copy scripts, and the declared schedules of the token jobs. Each claim has a record line, a short paraphrase, the code evidence and one of five results. The file answers direction question 23 for the records (do historical records agree with the code), lists the records' open questions that the code answers, and gives the counts by record and result. Statement IDs `P12-Snnn` are kept for traceability; the STUDY cites them.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb`, read from the local read-only clone. Nothing in the clone was written or run. No credential, token or account value is reproduced (D-07).
 

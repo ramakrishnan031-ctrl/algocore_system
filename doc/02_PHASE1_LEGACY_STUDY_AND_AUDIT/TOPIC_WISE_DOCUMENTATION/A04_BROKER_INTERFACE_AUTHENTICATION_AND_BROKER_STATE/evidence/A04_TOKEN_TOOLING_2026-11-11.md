@@ -1,8 +1,8 @@
 # A04 evidence: token tooling outside the trading process
 
-**Status:** DRAFT — evidence for the A04 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A04 STUDY, approved by Rama on 2026-11-14 with the A04 topic package (Decision Register, D-33)
 **Date:** 2026-11-11
-**Revision history:** First version, 2026-11-11: written by a read-only helper as STUDY part P08, checked statement by statement by a separate helper, and corrected by a third pass.
+**Revision history:** First version, 2026-11-11: written by a read-only helper as STUDY part P08, checked statement by statement by a separate helper, and corrected by a third pass. Approved by Rama on 2026-11-14 with the A04 topic package (Decision Register, D-33): status marked APPROVED; content unchanged.
 **Purpose and scope:** This part records, flow by flow, what the five token-tooling files outside the trading process do at the baseline: the VM-side headless token refresh `scripts/auto_refresh_token.py`, the VM-side token watcher `deploy/token_watcher.sh`, the two PC-side morning starters `deploy/zerodha_morning.bat` and `deploy/zerodha_morning.ps1`, and the PC-side copy script `scripts/copy_token_to_vm.bat`. For each file it records the steps, where the code shows it runs, its inputs (names and path patterns only), the token file it writes or copies (path pattern only), its file handling, how it signals success and failure, its ordering and overlap with the other tooling and with the trading process's own token handling (part P07), and its partial-failure behaviour. It answers direction questions 6 and 8 from repository evidence, records the A04 side of the prior-topic items that describe these flows, and lists what cannot be established. It classifies nothing as MATCH, ISSUE or KNOWN DEFECT (that is the AUDIT's work).
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb`, read from the local read-only clone. Nothing in the clone was written or run. No credential, token or account value is reproduced (D-07).
 

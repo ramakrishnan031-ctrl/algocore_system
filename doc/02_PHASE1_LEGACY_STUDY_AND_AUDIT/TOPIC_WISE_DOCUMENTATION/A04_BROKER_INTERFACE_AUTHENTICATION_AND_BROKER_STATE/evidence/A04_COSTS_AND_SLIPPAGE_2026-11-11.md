@@ -1,8 +1,8 @@
 # A04 evidence: costs and slippage
 
-**Status:** DRAFT — evidence for the A04 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A04 STUDY, approved by Rama on 2026-11-14 with the A04 topic package (Decision Register, D-33)
 **Date:** 2026-11-11
-**Revision history:** First version, 2026-11-11: written by a read-only helper as STUDY part P10, checked statement by statement by a separate helper, and corrected by a third pass.
+**Revision history:** First version, 2026-11-11: written by a read-only helper as STUDY part P10, checked statement by statement by a separate helper, and corrected by a third pass. Approved by Rama on 2026-11-14 with the A04 topic package (Decision Register, D-33): status marked APPROVED; content unchanged.
 **Purpose and scope:** This part answers direction question 19 for the A04 STUDY. It records what `broker/cost_calculator.py` and `broker/slippage_engine.py` compute (formulas, inputs, units, rounding, defaults and the broker-specific and statutory assumptions they carry), the configuration they consume (`config/broker_costs.yaml`, `config/slippage_model.yaml`), every non-test consumer of both modules and where each result goes, and which consumers are Live (or mode-agnostic), paper-only or unused. It records A04's side of the A02 handoffs K-21 (units) and K-34 (the calculator and the slippage engine), of Open Issues Register entry A02-12, and of the other prior-topic items met, keeping their IDs and classifications. It is a STUDY part: it records what the code does and lists points for the AUDIT; it does not classify MATCH, ISSUE or KNOWN DEFECT. The downstream business use of the results (trade finalisation, capital release, reconciliation, reports) belongs to the owner topics named at each point and is not audited here.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb`, read from the local read-only clone. Nothing in the clone was written or run. No credential, token or account value is reproduced (D-07).
 

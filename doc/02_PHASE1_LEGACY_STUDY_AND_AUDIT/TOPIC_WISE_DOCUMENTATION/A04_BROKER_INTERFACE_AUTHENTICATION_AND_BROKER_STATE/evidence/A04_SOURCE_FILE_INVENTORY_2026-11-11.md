@@ -1,8 +1,8 @@
 # A04 evidence: the A04 source files at the study baseline
 
-**Status:** DRAFT — evidence for the A04 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A04 STUDY, approved by Rama on 2026-11-14 with the A04 topic package (Decision Register, D-33)
 **Date:** 2026-11-11
-**Revision history:** First version, 2026-11-11.
+**Revision history:** First version, 2026-11-11. Approved by Rama on 2026-11-14 with the A04 topic package (Decision Register, D-33): status marked APPROVED; content unchanged.
 **Purpose and scope:** Identifies the A04 paths of the Master System Investigation Index (entry A04; Appendix A for the three scripts) at the study baseline: size, Git object, SHA-256 and history of the eighteen tracked paths; the related paths that other topics own, which A04 reads at the boundary only; and the A04 changes made after the last recorded deployment (Decision Register, D-21). It supports the STUDY's inventory sections.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 11-Nov-2026 from the local read-only clone with `git show`, `git rev-parse`, `git ls-tree`, `git log` and `git diff`. Nothing in the clone was written or run. No credential, token or account value is reproduced (Document 08, section 11; D-07).
 

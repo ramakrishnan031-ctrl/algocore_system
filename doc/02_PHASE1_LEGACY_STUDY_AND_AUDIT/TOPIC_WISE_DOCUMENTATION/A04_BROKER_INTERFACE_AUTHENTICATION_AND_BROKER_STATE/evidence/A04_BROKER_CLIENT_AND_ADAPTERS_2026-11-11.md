@@ -1,8 +1,8 @@
 # A04 evidence: broker client construction, selection, configuration and adapter contracts
 
-**Status:** DRAFT — evidence for the A04 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A04 STUDY, approved by Rama on 2026-11-14 with the A04 topic package (Decision Register, D-33)
 **Date:** 2026-11-11
-**Revision history:** First version, 2026-11-11: written by a read-only helper as STUDY part P01, checked statement by statement by a separate helper, and corrected by a third pass.
+**Revision history:** First version, 2026-11-11: written by a read-only helper as STUDY part P01, checked statement by statement by a separate helper, and corrected by a third pass. Approved by Rama on 2026-11-14 with the A04 topic package (Decision Register, D-33): status marked APPROVED; content unchanged.
 **Purpose and scope:** Evidence for the A04 STUDY on how the broker client is built, selected, configured and shared, and on the typed contract that the broker adapters offer to their callers. It covers the Zerodha adapter's module header, constants and result data classes, its constructor and late-binding setters, the AngelOne adapter and the `broker` package file; every non-test place in the repository where a `ZerodhaAdapter`, an `AngelOneAdapter` or a Kite client is constructed, with the credential types and locations each uses and how the instance reaches its consumers; account selection at the boundary of `core/account_registry.py` (A01's); and the configuration keys and environment-variable names that the eighteen A04 paths read. It answers direction questions 1, 2, 3, 4 and 21. The adapter's order actions (P02), reads (P03), rate limiting (P05) and the token lifecycle (P07, P08) are noted only where the constructor wires them.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb`, read from the local read-only clone. Nothing in the clone was written or run. No credential, token or account value is reproduced (D-07).
 

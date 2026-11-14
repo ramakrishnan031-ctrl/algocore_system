@@ -1,8 +1,8 @@
 # A04 evidence: prior-topic handoffs and carried-forward open issues
 
-**Status:** DRAFT — evidence for the A04 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A04 STUDY, approved by Rama on 2026-11-14 with the A04 topic package (Decision Register, D-33)
 **Date:** 2026-11-11
-**Revision history:** First version, 2026-11-11: written by a read-only helper as STUDY part P11, checked statement by statement by a separate helper, and corrected by a third pass.
+**Revision history:** First version, 2026-11-11: written by a read-only helper as STUDY part P11, checked statement by statement by a separate helper, and corrected by a third pass. Approved by Rama on 2026-11-14 with the A04 topic package (Decision Register, D-33): status marked APPROVED; content unchanged.
 **Purpose and scope:** The crosswalk of every prior-topic item handed to A04: the 39 A01 items of the A01 RECONCILED TOPIC RECORD, section 15 (row A04); the 11 A02 items of the A02 RECONCILED TOPIC RECORD, section 15.2 (row A04), with the A02 STUDY's section 12 (row A04); the 8 A03 items of the A03 RECONCILED TOPIC RECORD, section 15.2 (row A04); the Open Issues Register entries that name A04 as owner or part-owner; and the A01 agreed Phase 2 inputs that the investigation direction's question 9 names. For each item it records the prior topic's classification, treatment and status exactly as the Audit Findings Register records them, the boundary question that A04 must answer on its side, the A04 STUDY part that covers that side, and the legacy file and lines that the prior record cites. It classifies nothing anew, changes no prior ID, classification, treatment or status, and does not audit any owner's logic (direction, section 5; Document 04, section 5).
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb`, read from the local read-only clone. Nothing in the clone was written or run. No credential, token or account value is reproduced (D-07).
 

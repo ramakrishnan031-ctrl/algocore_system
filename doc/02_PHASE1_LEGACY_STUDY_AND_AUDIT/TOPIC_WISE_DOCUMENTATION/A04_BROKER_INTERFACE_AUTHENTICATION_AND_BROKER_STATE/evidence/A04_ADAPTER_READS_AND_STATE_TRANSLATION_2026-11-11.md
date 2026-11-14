@@ -1,8 +1,8 @@
 # A04 evidence: adapter reads and broker-state translation
 
-**Status:** DRAFT — evidence for the A04 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A04 STUDY, approved by Rama on 2026-11-14 with the A04 topic package (Decision Register, D-33)
 **Date:** 2026-11-11
-**Revision history:** First version, 2026-11-11: written by a read-only helper as STUDY part P03, checked statement by statement by a separate helper, and corrected by a third pass.
+**Revision history:** First version, 2026-11-11: written by a read-only helper as STUDY part P03, checked statement by statement by a separate helper, and corrected by a third pass. Approved by Rama on 2026-11-14 with the A04 topic package (Decision Register, D-33): status marked APPROVED; content unchanged.
 **Purpose and scope:** Records, flow by flow, what the Zerodha adapter's read methods do in Live: the Kite SDK method each one calls, the request inputs, the response fields used, how each field and each broker status string is translated into the adapter's frozen data classes or plain dicts (units, types, defaults for missing values), the filters applied (product, exchange, status), the margin cache (key, lifetime, invalidation), and every failure path with what the caller receives (exception, empty list, zero, stale cache or sentinel). It answers direction questions 15 and 17 for the read side only; the decisions that consumers take with the results belong to A09 to A13 and are cross-referenced, not audited. Paper-mode branches are marked paper-only and not traced. This is a STUDY part: it records what the code does and lists neutral points for the AUDIT; it does not classify MATCH, ISSUE or KNOWN DEFECT.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb`, read from the local read-only clone. Nothing in the clone was written or run. No credential, token or account value is reproduced (D-07).
 

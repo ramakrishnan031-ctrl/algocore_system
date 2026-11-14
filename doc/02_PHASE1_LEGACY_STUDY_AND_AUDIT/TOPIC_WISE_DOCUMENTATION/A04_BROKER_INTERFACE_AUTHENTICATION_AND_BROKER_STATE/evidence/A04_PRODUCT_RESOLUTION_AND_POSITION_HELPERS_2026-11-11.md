@@ -1,8 +1,8 @@
 # A04 evidence: product resolution and position helpers
 
-**Status:** DRAFT — evidence for the A04 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A04 STUDY, approved by Rama on 2026-11-14 with the A04 topic package (Decision Register, D-33)
 **Date:** 2026-11-11
-**Revision history:** First version, 2026-11-11: written by a read-only helper as STUDY part P09, checked statement by statement by a separate helper, and corrected by a third pass.
+**Revision history:** First version, 2026-11-11: written by a read-only helper as STUDY part P09, checked statement by statement by a separate helper, and corrected by a third pass. Approved by Rama on 2026-11-14 with the A04 topic package (Decision Register, D-33): status marked APPROVED; content unchanged.
 **Purpose and scope:** This part records what the legacy code does to turn a semantic product intent (INTRADAY, DELIVERY, COVER_ORDER, BRACKET_ORDER) into a broker product code (MIS, CNC, CO), how exchange, symbol and broker identifiers reach the broker, where product codes are derived or compared outside the resolver, and what the three position helpers (`broker_net_qty`, `determine_close_direction`, `cancel_co_bracket`) take in, return and lose before their callers in A10, A12 and A13 act on the result. It answers direction questions 14 and 18 from repository evidence and records the A04 side of the prior-topic items it meets (A02 K-01, K-05, K-06; A01 M-29, M-30; A03 R-06; Open Issues Register A02-15). It does not classify (that is the AUDIT) and does not take over the callers' business decisions.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb`, read from the local read-only clone. Nothing in the clone was written or run. No credential, token or account value is reproduced (D-07).
 

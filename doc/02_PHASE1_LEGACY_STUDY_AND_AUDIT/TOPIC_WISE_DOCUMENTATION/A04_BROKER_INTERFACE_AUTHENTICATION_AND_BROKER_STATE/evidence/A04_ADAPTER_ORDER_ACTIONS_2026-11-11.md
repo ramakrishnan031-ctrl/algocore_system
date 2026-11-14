@@ -1,8 +1,8 @@
 # A04 evidence: adapter order actions
 
-**Status:** DRAFT — evidence for the A04 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A04 STUDY, approved by Rama on 2026-11-14 with the A04 topic package (Decision Register, D-33)
 **Date:** 2026-11-11
-**Revision history:** First version, 2026-11-11: written by a read-only helper as STUDY part P02, checked statement by statement by a separate helper, and corrected by a third pass.
+**Revision history:** First version, 2026-11-11: written by a read-only helper as STUDY part P02, checked statement by statement by a separate helper, and corrected by a third pass. Approved by Rama on 2026-11-14 with the A04 topic package (Decision Register, D-33): status marked APPROVED; content unchanged.
 **Purpose and scope:** Records what the order actions of the Zerodha adapter (`broker/zerodha_adapter.py`) do at the study baseline, flow by flow: the translation of broker exceptions, the adapter's own handling of HTTP 429, `place_order` with its validation, tick resolution and snapping, `cancel_order`, `modify_order`, and the GTT actions (`place_gtt`, `modify_gtt`, `get_gtt`, `get_gtts`, `delete_gtt`), with every paper-only path marked and not traced. It answers the adapter side of direction questions 10, 11 and 13, records the post-deployment change of commit `8f9afe0`, lists the callers and what each does with the result, and records the A04 side of the prior-topic items these flows meet. It does not classify anything (that is the AUDIT's work) and does not audit the callers' own logic, which belongs to A10 to A13.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb`, read from the local read-only clone. Nothing in the clone was written or run. No credential, token or account value is reproduced (D-07).
 

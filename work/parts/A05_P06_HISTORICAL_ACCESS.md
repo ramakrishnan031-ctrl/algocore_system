@@ -188,9 +188,17 @@ P06-S062. FACT (summary of P06-S016, P06-S056 to P06-S061; part P02, P02-S056 fo
 | Caller | Owner | Client | Through a limiter | Interval(s) | Dates passed |
 |---|---|---|---|---|---|
 | `main.py` L432 (the closure) | A05 (call); A01 (wiring); A08 and A18 (consumers) | the adapter's client (10 s configured timeout, 50-connection pool) | yes: the trading process's limiter, `historical` bucket | `minute`, `5minute`, `30minute`, `60minute`, `day` as requested | aware IST `datetime` values |
-| `scripts/fetch_daily_candles.py` L90, L183 | A05 (part P08) | its own | see part P08 | see part P08 | see part P08 |
+| `scripts/fetch_daily_candles.py` L90, L183 | A05 (part P08 traces it) | its own (L276; default 7 s) | no (a 0.35 s sleep after each attempt, L106, L208) | `minute` (L92, L187) | naive `datetime` values (part P02, P02-S092) |
 | `scripts/forward_shadow_record.py` L120 | A18 | its own (default 7 s) | yes, its own limiter in its own process | `minute`, `day` | naive `datetime` values |
 | `scripts/gemini_data_integrity_check.py` L158 | A15 | its own (default 7 s) | no | `minute` | strings |
 | `scripts/reconstruct_excursions.py` L306 | A15 | its own (default 7 s) | no | `minute` | naive `datetime` values |
 | `scripts/sr_corp_action_spotcheck.py` L70 | A08 | its own (default 7 s) | no | `day` | naive `datetime` values |
 | `scripts/sr_level_export.py` (via the closure) | A08 | none (the handle is None) | its own limiter, never reached by a broker call | as the detector requests | as the detector requests (naive as-of time) |
+
+## 10. Corporate actions, adjustments and source substitution (C5)
+
+P06-S063. FACT (searches of P06-S006): no code in the A05 paths or in the boundary files (`main.py`, `sr_detector/fetch.py`, `sr_detector/models.py`, `data/`, `core/candle_math.py`, `core/instrument_cache.py`, `scripts/fetch_daily_candles.py`) adjusts prices or volumes, handles splits, bonuses or dividends, or refers to ex-dates; the `main.py` hits for "split" concern capital buckets (L1349, L2691, L2722 to L2723, L3446) and are unrelated. In all non-test code, the only corporate-action code is `scripts/sr_corp_action_spotcheck.py` (A08's), a check, not an adjustment (named only; P06-S060).
+
+P06-S064. HISTORICAL (`scripts/sr_corp_action_spotcheck.py` L4 to L15, L94 to L96; `PATHS.md` L422): the script is described as a "one-time verification" to "Confirm whether kite.historical_data() returns split/bonus-ADJUSTED equity candles by default", to be run "ONCE against a known-split stock on the VM" with the result noted "in SYSTEM_MAP"; `PATHS.md` calls it a "one-time split-adjust check (VM/live)". FACT (search of documents for `spotcheck|spot-check|split-adjust|split adjust|bonus-adjust|adjusted candles|unadjusted`): no document at the baseline records a result. UNKNOWN / NOT ESTABLISHED: whether the broker's historical candles were adjusted for corporate actions in the legacy period; this part does not infer it. FACT, current external context (read 14-Nov-2026): the current historical page, as read, says nothing about adjustment.
+
+P06-S065. FACT (P06-S016, P06-S024 to P06-S026, P06-S044): there is no source substitution on this path: when the handle is missing or a fetch fails, the consumer receives nothing, not candles from another source (for example the database's candle table or the live candle store), and no missing candle is filled in.

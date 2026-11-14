@@ -233,3 +233,80 @@ P08-S095. HISTORICAL (`docs/audit/regime_phase0_index_ingestion_17jul2026.md` L1
 P08-S096. HISTORICAL (`docs/audit/tick_candle_dormancy_25jul2026.md` L203 to L212; `config/expected_managers.yaml` L219 to L225 through part P03, P03-S084): a document says the script "runs from cron at 15:40 Mon–Fri — after the 15:30 close", reports "275,129 rows, 482 symbols, 19-Jun → 24-Jul, all interval_sec=60, all is_synthetic=0" in production, and says "Volume is TRUE DELTA here (measured 25-Jul ...)"; the manager registry says "the 15:40 fetch covers the table with TRUE delta volume". These are claims of the legacy team about data and about the broker's volume field; neither the rows nor the measurement survives in the repository.
 
 P08-S097. HISTORICAL (`docs/audit/trade_review_txt_retirement_STOP_25jul2026.md` L5, L42 to L44, L51): a document calls the candle CSV "an active data SOURCE for the 16:05 daily report", lists three such files with sizes for 22, 23 and 24 Jul 2026 on the machine, and cites the script's docstring on "--candle-dir" (compare P08-S047).
+
+## 11. Points the AUDIT may examine (neutral)
+
+1. The index fetch's docstring says it "never raises", while its database insert sits outside its `try`, so a storage error there also stops the day's stock candles (P08-S025, P08-S090).
+2. Neither script reports a run that stored nothing as a failure: the daily script's per-symbol failures are only printed, and both end with status 0 and a SUCCESS heartbeat; the heartbeat's functional status is never set (P08-S020, P08-S067, P08-S069).
+3. The daily script's `ts` is the broker's label (the start of the minute on the vendor's current examples), the live writer's would be the close by the host clock, and the schema comment says "candle close"; the key compares text (P08-S042; A03 Y-06, A03-43).
+4. `OR IGNORE` keeps the first-written values on a re-run and drops a row with a null value silently, while the printed count includes skipped rows; the `IntegrityError` handler is not reached at the baseline schema (P08-S038; A03 Q-16).
+5. No check of the time of day: a run before the session ends can store candles that are never replaced (P08-S031).
+6. The stock window starts at 09:00 and the index window at 09:15 (P08-S030).
+7. The CSV is written in place before the insert; after a re-run or a failed insert the CSV and the table can disagree; the report reads the CSV only when the table has no row for the date, and stored index rows keep it from doing so (P08-S043 to P08-S046; A03 G-12).
+8. The docstring names a `--candle-dir` option that the report does not have (P08-S047).
+9. "Traded symbols" means signals in exactly `PROCESSED` status when the script runs, dated by `date(triggered_at)`, which converts the stored `+05:30` time to UTC (P08-S027).
+10. The broker calls have no limiter, a fixed 0.35-second sleep, the library's 7-second timeout and no retry; one instrument dump serves every date of a backfill (P08-S032, P08-S033, P08-S035; A04 RL-06, A04-28).
+11. The exchange is a literal `"NSE"`, and the map is keyed by `tradingsymbol` only (P08-S035; A04 RD-21).
+12. Comments say the volume column's DEFAULT handles index volume; the INSERT always passes the column (P08-S049).
+13. The insert's connection does not create the analytics tables (P08-S040).
+14. The script prints two fields of the broker's profile answer, `user_id` and `user_name`, to standard output (L279), which the declared command appends to the job's log file (P08-S016, P08-S021).
+15. The ban-list parser accepts a short but well-formed list without any sign, skips malformed rows silently, keeps quote characters, and fails on a byte-order mark (P08-S054).
+16. Ban-list re-runs on one day add rows and never remove them; a sentinel stays after a later success (P08-S063).
+17. A configuration failure silently restores the literal URL and turns `fail_closed` off, with no log line (P08-S062; A02 K-31).
+18. The ban-list INFO records are never written (no logging handler), so a successful run leaves no log line (P08-S068).
+19. The ban list has no reader in non-test code (P08-S064; A03 H-17).
+20. The ban-list fetch has one attempt per day, at the declared 08:35, and `--date` cannot store any date other than the one the file names (P08-S061, P08-S070).
+21. Two legacy sources give different fetch times for the ban list, 08:30 (schema comment) and 08:35 (script and declaration) (P08-S059).
+22. The ban-list script opens the live database write-capable before it fetches anything (P08-S061, P08-S079; A03 D-05).
+23. Both scripts depend on the working directory for the `config` folder and the heartbeat's database path; the declared commands set it (P08-S013, P08-S021, P08-S062, P08-S070).
+
+## 12. UNKNOWN / NOT ESTABLISHED
+
+- Whether either script ran in production, when, how often, under which working directory, and with what outcome; no log, heartbeat row, marker file, CSV or database row survives in the repository. The legacy documents' row counts and file listings are HISTORICAL claims only (P08-S095 to P08-S097).
+- The convention and form of the broker's candle labels in the legacy period (start or end of the minute; with a `+0530` offset or without) (P08-S042).
+- Whether the server returned candles between 09:00 and 09:15 for stocks, whether a candle labelled 15:30 or 15:31 was included, whether `to` was inclusive, and whether a still-forming candle could be returned (P08-S030, P08-S031).
+- Whether the server ever sent a null volume or price, or the same minute twice in one answer (P08-S029, P08-S038).
+- The broker's historical rate limit in the legacy period, how it was counted across processes, and whether the 15:40 run overlapped the trading process (A04 RL-14; P08-S034).
+- The installed packages (kiteconnect, python-dotenv, requests, PyYAML) and the Python version on the legacy machine (P08-S010, P08-S026).
+- The effective configuration on the legacy machine: `config/index_universe.yaml` and the `fno_ban` section as deployed, and any overlay (overlays were not read; A02).
+- Whether `analytics.db` existed with its tables at every run, and whether the main file held a leftover `candles` table (P08-S037, P08-S040).
+- How requests applied the single timeout values, chose the body's text encoding and followed redirects, beyond its documentation (P08-S033, P08-S055).
+- The NSE file's timing, form, encoding and any byte-order mark in the legacy period; whether the 08:35 run found the day's file; whether NSE blocked the script's requests (P08-S054, P08-S057, P08-S070).
+- Whether the Telegram alerts of the ban-list script were configured and delivered (A15) (P08-S065).
+- Whether the retention script deleted old `candles` rows (P08-S075).
+- Whether any symbol traded without a `PROCESSED` signal on the day, and so had no stock candles fetched (P08-S027).
+
+## 13. Draft questions about intent for Rama (what was intended; no answers proposed)
+
+1. In the `candles` table, was a candle's time meant to mark the start of the minute or its end, and was it meant to mean the same for the daily fetch and the live candle writer? (P08-S042)
+2. Was the daily fetch meant to cover only symbols with `PROCESSED` signals, or every symbol the system traded that day, including signals that ended in `TIMEOUT` or another status? (P08-S027)
+3. Was the stock window meant to start at 09:00 while the index window starts at 09:15? (P08-S030)
+4. When symbols fail or nothing is fetched, was the run meant to be reported as a failure (exit status or heartbeat), or was a printed list of failures intended? (P08-S020)
+5. On a re-run for the same date, were stored candles meant to be replaced by the broker's latest values, or kept as first stored? (P08-S038, P08-S044)
+6. Was the F&O ban list meant to be read by any part of the legacy system (it has no reader), and was a partial or shrinking list meant to be detected? (P08-S054, P08-S063, P08-S064)
+7. If the day's ban file was not yet available at 08:35, was another attempt that morning intended? (P08-S070)
+
+## 14. Where the direction's questions are answered
+
+| Question | Statements |
+|---|---|
+| C1, script side (every historical-data call site, wrapper and caller) | P08-S016, P08-S017, P08-S024, P08-S028, P08-S072 |
+| C2, script side (interval, date range, pagination, lookback, batching, limits) | P08-S012, P08-S014, P08-S024, P08-S028, P08-S030, P08-S032, P08-S035 |
+| C3, script side (retries, pacing, timeout, partial responses) | P08-S029, P08-S031 to P08-S033 |
+| C4 (the daily candles' timestamp, time zone and OHLCV contract) | P08-S041, P08-S042, P08-S084 |
+| D6 (F&O ban list: acquisition, parsing, persistence, consumers) | P08-S050 to P08-S071 |
+| E1 (what is written, read, updated, deleted) | P08-S026, P08-S036, P08-S043, P08-S058, P08-S060, P08-S072 to P08-S077 |
+| E2 (fields, units, timestamp meaning, interval, source, validation per handoff) | P08-S041 to P08-S043, P08-S045, P08-S063 |
+| E3 (reconciled with A03's records, for `candles` and `fno_ban`) | P08-S037, P08-S059, P08-S079 to P08-S085 |
+| E4 (A03 storage matters against A05 data and normalisation matters) | P08-S038, P08-S042, P08-S044, P08-S054, P08-S071 |
+| F1 (external sources, endpoints, file format, refresh) | P08-S050, P08-S051, P08-S053, P08-S056 |
+| F2 (availability, response checks, stale and missing data, fallbacks) | P08-S053 to P08-S056, P08-S061, P08-S067, P08-S070 |
+| F3 (documented contract against legacy-period behaviour) | P08-S050, P08-S057, P08-S070 |
+| F4 (current external facts, labelled) | P08-S057; P08-S032 (through part P02) |
+| I3 (historical and instrument requests: batching, limits, response handling; A04 boundary) | P08-S016, P08-S017, P08-S024, P08-S028, P08-S029, P08-S032, P08-S035 |
+| I4 (pacing, limiter use, retries, parallel calls, other processes; RL-06) | P08-S032 to P08-S034, P08-S088 |
+| I6 (the write boundary with A03: timestamp meaning, zone, interval, finality, source) | P08-S036 to P08-S042, P08-S084 |
+| G3, script failure paths (normal, degraded, error, retry, restart, stale) | P08-S019, P08-S020, P08-S025, P08-S039, P08-S040, P08-S061, P08-S066 to P08-S070 |
+| G1 and G2 (consumers and their owners) | P08-S045, P08-S046, P08-S072 to P08-S077 |
+| Inherited handoffs (A02 K-31; A03 D-05, H-16, H-17, Q-16, U-24, Y-06 with A03-43, G-12; A04 CL-12, CL-15, RL-06 with A04-28, RD-21) | P08-S078 to P08-S089 |
+| Tests and legacy documents (HISTORICAL) | P08-S090 to P08-S097 |

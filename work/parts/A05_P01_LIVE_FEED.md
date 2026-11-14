@@ -1,6 +1,6 @@
 # A05 STUDY part P01: The live feed and tick intake
 
-**Status:** WORKING DRAFT (helper output; not a project record)
+**Status:** WORKING DRAFT (helper output, checked and corrected by a separate helper; not a project record)
 
 **Baseline:** trading-system-prod-snapshot, branch main, commit 970aabf3c78d777d9d34549e021f7c8e756c7bdb
 
@@ -166,7 +166,7 @@ P01-S070. FACT (L422 to L424, L477 to L480, L774 to L777): the feed's three reas
 
 P01-S071. FACT (`main.py` L2927 to L2938; P01-S032) (A04 handoff P07-S216, the feed side): the feed's own kill-switch calls (L311 to L312, L482 to L483, L662 to L663) and its notifier (L396 to L408, L456 to L469, L494 to L504) are unwired: `main.py` passes no `kill_switch` and never calls `set_notifier`. INTERPRETATION: in the wired system only the three paths that call `on_critical_failure` (a gap above 600 s at a reconnect attempt; reconnects exhausted in market hours or when the market check raised; the tick-age watchdog) reach the kill switch and the operator's notifier, each through `_make_critical_failure_cb`; the queue-full and consumer-restart-failure paths reach only the log.
 
-P01-S072. INTERPRETATION (A04 handoff P07-S216, the feed side; CL-09's A05 side is the token, P01-S124; code reading): the feed has no authentication-specific branch. A WebSocket refused for its key or token can show in the feed as closes, errors and reconnect attempts and, when the attempts run out, as `_on_noreconnect` (how the library and autobahn map a refused handshake to these callbacks: library behaviour, see P02, P02-S097; UNKNOWN / NOT ESTABLISHED there). If instead the server stopped sending while leaving the socket open (server behaviour UNKNOWN / NOT ESTABLISHED), the failure could show only as the tick-age alarm, which is armed only after a first non-empty batch (P01-S078 to P01-S081). A04 names both routes ("a reconnect or tick-age failure": A04 evidence P07-S099; A04 AUDIT section 6.5, L1283). What reaches the operator is then, in market hours or when the market check raised: CRITICAL log lines, a SOFT_KILL and a CRITICAL notification through the critical-failure callback, and an INFO "suppressed" record for the feed's own alert; outside market hours: one WARNING log line and no notification. In both cases the earlier attempts leave WARNING log lines, and if attempts continue beyond a 600 s gap, each such attempt adds a critical-failure call. No text names the token as the cause except the off-hours WARNING's "token likely expired" (HISTORICAL, L451 to L453).
+P01-S072. INTERPRETATION (A04 handoff P07-S216, the feed side; CL-09's A05 side is the token, P01-S124; code reading): the feed has no authentication-specific branch. A WebSocket refused for its key or token can show in the feed as closes, errors and reconnect attempts and, when the attempts run out, as `_on_noreconnect` (how the library and autobahn map a refused handshake to these callbacks: library behaviour, see P02, P02-S097; UNKNOWN / NOT ESTABLISHED there). If instead the server stopped sending while leaving the socket open (server behaviour UNKNOWN / NOT ESTABLISHED), the failure could show only as the tick-age alarm, which is armed only after a first non-empty batch (P01-S078 to P01-S081). A04 names both routes ("a reconnect or tick-age failure": A04 evidence P07-S099; A04 AUDIT section 6.5, L1283). On the reconnect route, what reaches the operator when the attempts run out is, in market hours or when the market check raised: CRITICAL log lines, a `soft_kill` call and a CRITICAL notification through the critical-failure callback, and an INFO "suppressed" record for the feed's own alert; outside market hours: one WARNING log line and no notification. On the tick-age route (inside the entry window): one CRITICAL line, one critical-failure call and a forced `close()` (P01-S080). In both cases the earlier attempts leave WARNING log lines, and if attempts continue beyond a 600 s gap, each such attempt adds a critical-failure call. No text names the token as the cause except the off-hours WARNING's "token likely expired" (HISTORICAL, L451 to L453).
 
 P01-S073. INTERPRETATION (code reading): after `_on_noreconnect` the feed stays disconnected for the rest of the process unless the library reconnects by itself (library behaviour, see P02: in the published source nothing in the library starts a new connection cycle after `on_noreconnect`, P02-S037; what Twisted's retry does past the limit is UNKNOWN / NOT ESTABLISHED): nothing in `data/live_feed.py` calls `connect()` or `_create_ticker()` again (`_create_ticker` is called only at L150, `connect` only from `main.py` L3947), the watchdog skips its checks while `_connected` is False (L742 to L743), and `tick_age_seconds()` keeps growing unread. Recovery then needs a new process (A01's restart model).
 
@@ -407,3 +407,80 @@ P01-S146. UNKNOWN / NOT ESTABLISHED: the thread on which the library ran the fee
 | Handoff A02 K-30 | P01-S126 (P01-S090 to P01-S092) |
 | Earlier-checkpoint claims | P01-S127 to P01-S132 |
 
+## 20. Check log
+
+**Checked by:** a separate read-only helper, 14-Nov-2026 (IST), against `970aabf` (`git show`, `git grep` with the mandatory exclusions, `git log`, `git blame`), the published `kiteconnect` 5.1.0 source (text only), and the project records on `algocore_system` main. The original draft is kept at `parts/drafts/A05_P01_LIVE_FEED_DRAFT.md`. Scratch copies: `a05_tools/scratch/P01_check/`. Nothing legacy was run, imported, built or tested; no broker, API or network call was made.
+
+**Count:** 146 statements checked: 106 correct as drafted, 40 corrected in place, 0 withdrawn; 5 statements added (P01-S147 to P01-S151), each verified. The file now holds 151 statements. Section 16 (points), section 18 (question 4) and section 19 (the answers table) were also corrected.
+
+### 20.1 Changes
+
+| ID | What changed | Why |
+|---|---|---|
+| P01-S006 | "last changed at `970aabf` by `37336bc`" reworded: up to `970aabf`, the last commit that changed the file is `37336bc` | could be read as a change made in commit `970aabf` |
+| P01-S008 | added the `__future__` import (L10) and the local `import threading` in `_consume_ticks` (L544) | import list incomplete |
+| P01-S012 | the census is emitted after the flatten drain, not "at the entry of `_shutdown`" (`main.py` L1643 to L1675); "prints" corrected to INFO lines on the `effect_census` logger (`core/effect_telemetry.py` L302 to L303); "the only telemetry signal" narrowed to the only effect-telemetry signal, written only when `_shutdown` runs ("A crash day produces no census", L41); the other traces are log lines | source shows a different order and output channel |
+| P01-S013 | code text corrected to `queue.Queue(maxsize=self.TICK_QUEUE_CAPACITY)` (10,000); stored parameters and `_fx_subscribe` added | L89 reads the class constant; the list was incomplete |
+| P01-S015 | library citation widened to `ticker.py` L45 to L90, L168 to L201, L649 to L698 (P02-S031, P02-S034) | the factory handlers were not cited |
+| P01-S018 | added: the published `reconnect` parameter is never read (P02-S018) | verified in `ticker.py` L403 to L470 |
+| P01-S023 | library lines L546 to L565; `stopTrying()` only when a factory exists, `sendClose` only when a socket object exists (P02-S024) | the library guards both calls |
+| P01-S028 | shutdown order corrected: `_shutdown` sets the event (L1629) and drains the flatten worker (L1643 to L1656) before the census (L1665), and stops many managers (L1684 to L1786) before the feed | the draft's "census first, then the order monitor" omitted these steps |
+| P01-S033 | the INTERPRETATION "nothing in the feed triggers one" corrected: the watchdog's forced `close()` is the feed's own attempt (armed and in-window only); the library's `_close` before re-raise cited (P02-S028, P02-S089) | `data/live_feed.py` L548 to L562, L735 to L790 |
+| P01-S034 | P02-S033's reading of the call order added; autobahn timing kept UNKNOWN | consistency with P02 |
+| P01-S036 | pointer to the code's conditions (P01-S148); `_add_to_exit_retry` has no other caller (grep) | only the docstring was given |
+| P01-S037 | added `main.py` L3088 (`order_placer.set_instrument_cache`), so the cache condition is met in the wired system; range extended to L3429 | the condition was stated without showing it is met |
+| P01-S041 | the `or` expression described exactly: the second value when the first is absent or falsy; None when both keys are absent | Python `a or b` can return a falsy non-None value |
+| P01-S042 | "does not convert `last_price`" corrected (`float()` at L295); the LTP keys cited from P02-S049, P02-S050; pointer to P01-S149 | L295 converts; P02 states the keys |
+| P01-S043 | added: the published parser always yields a float `last_price` and dict depth entries (`ticker.py` L739 to L746, L780 to L838), so the raising conditions do not arise from it; callback-exception handling UNKNOWN (P02-S032) | verified in the library source |
+| P01-S045 | opening label "HISTORICAL against FACT" changed to "HISTORICAL (...) and FACT (...)" | only the allowed labels may be used |
+| P01-S056 | the feed logs the exception (`log_exception`, L608) as well as one CRITICAL line | source |
+| P01-S069 | range L672 to L684 (the ERROR log is L684); the `notifier` (L2628) and `kill_switch` (L2243) are always built in `_main_locked` | precision; supports "reaches the notifier" |
+| P01-S072 | label no longer ties the failure paths to CL-09; "can show only as closes, errors and reconnects" corrected: a silent open socket would show only as the tick-age alarm (armed after a first batch); A04 P07-S099 and AUDIT L1283 name both routes; the operator outcome given per route; P02-S097 cited | A04 records "a reconnect or tick-age failure"; the draft's "only" excluded a route that the code has |
+| P01-S073 | added P02-S037: nothing in the published library starts a new cycle after `on_noreconnect`; Twisted past the limit UNKNOWN | verified `ticker.py` L168 to L201 |
+| P01-S081 | "one SOFT_KILL and one CRITICAL notification" corrected to one `soft_kill` call and one CRITICAL `notifier.send` call (outcomes A13's and A14's) | the feed makes calls; their effect is not shown here |
+| P01-S082 | "a holiday check" corrected to "a weekend-or-holiday check" (`core/market_windows.py` L93 to L106); special-session times L87 to L89 | the check also tests weekends |
+| P01-S087 | code text corrected: `"connected": _alive(live_feed.is_connected)` (False if the call raises, L4061 to L4065) | the draft showed a paraphrase as code |
+| P01-S090 | "from the YAML" corrected: from the system configuration the dashboard reads (`config_reader.get_system_config`, L108) | the file source is not shown |
+| P01-S098 | label split: the reason text HISTORICAL; the line-reference mismatch FACT | the mismatch is shown by the source |
+| P01-S105 | writers of the unlocked flags corrected: the library's callbacks, the watchdog or the thread that calls `disconnect()` (L161); the consumer writes `_ticker_thread_id` only | the consumer writes none of the listed flags |
+| P01-S106 | `MockTicker` is L26 to L80 (patched in at L126 and L626) | L81 to L83 are not the class |
+| P01-S107 | `test_reconnection_after_flag_close` (L223 to L260) also calls `_on_reconnect` itself and asserts `_reconnect_notified` (L254 to L258); it does not show a reconnection after `close()` | the draft's "asserts only" was wrong |
+| P01-S110 | stub lines L79 to L91; no market windows in the stub | precision |
+| P01-S113 | "The same text is in module_26 ..." corrected: the same decisions in different wording (L23 to L81, `bcf03b5`); its LF5 (L62) and its LF8 import list, which also names `time` and `core.logger` (L78 to L81) | the texts differ, which matters for point 22 |
+| P01-S114 | citation L11 to L16 corrected to L11 to L14 | L15 to L16 concern other consumers |
+| P01-S115 | reopen trigger (b) as written: the entry work materially changes and the exits are re-derived | the second condition was omitted |
+| P01-S117 | E-4 is the security audit's own finding (L132 to L135), which `main.py` L4056 to L4059 later cites; L160 cited | "later E-4" misplaced the label |
+| P01-S119 | C37's classification quoted in full ("ISSUE overall (the sub-results above). FACT and INTERPRETATION") | original classification kept as recorded |
+| P01-S120 | B-36's classification completed ("FACT; sources conflict (IC-11)") | original classification kept as recorded |
+| P01-S122 | C14's classification quoted; "in live mode"; the library thread only when the reactor is not yet running (`ticker.py` L529 to L535, P02-S022) | original classification kept; the library thread is conditional |
+| P01-S124 | rewritten (caller point 1): each record quoted exactly: the A04 AUDIT 5.3 CL-09 record (title, classification, owner, "Rama: not needed"); the Audit Findings Register row (ISSUE; FACT; INTERPRETATION; HISTORICAL; TG2, AGREED 13-Nov-2026); the A04 RECONCILED TOPIC RECORD 15.2 rows; P07-S216 at AUDIT 6.2.1 L886 and 6.5 L1283, both in full; the reading labelled INTERPRETATION; URL reuse on a reconnect UNKNOWN; the claim about "the direction's description" removed | the draft quoted L1283 with an ellipsis, gave only the AUDIT's classification, did not cite the register or 15.2, and asserted the content of the direction, which is not in the files available to the checker |
+| P01-S125 | added CL-27's recorded reachability ("the `""` defaults cannot be reached there ...", A04 AUDIT 5.4); P02-S097 cited | the A04 record's own finding was missing |
+| P01-S133 | "the first `_on_connect` marks the feed connected" reworded as "when the library first calls `_on_connect`, ..." | avoids wording that reads as a runtime event |
+| P01-S134 | a full queue gives two CRITICAL lines per tick and drops the tick when the retry put also fails | the retry put can succeed |
+| Section 16 | point 16: the substitute time is `now_ist()` at dispatch, missing for every LTP packet (P01-S149), not "the receipt time"; point 20: the published parser never yields such a value; point 22: the module-instruction LF8 lists `core.logger`; points 26 and 27 added | accuracy against the sources; new statements |
+| Section 18 | question 4: note that A02 already records the conflict (IC-40 with K-30, "Rama: not needed", batch T5 group G1, AGREED 09-Nov-2026) | to avoid asking Rama about a decided item |
+| Section 19 | rows A1, A2, A3, A5, A7, A8, I1, CL-09 and CL-27 extended with P01-S147 to P01-S150 | new statements |
+
+### 20.2 Statements added
+
+| ID | Placed in | Content |
+|---|---|---|
+| P01-S147 | section 3, after P01-S028 | `main.py`'s six constructor arguments; the credential-variable names (the row's `api_key_env` field; `ZERODHA_ACCESS_TOKEN`, written at L2363 and L2575 to L2576); what is not passed (brief item 2) |
+| P01-S148 | section 4, after P01-S039 | the code's conditions for the exit-retry subscription (`orders/order_placer.py` L3337 to L3359) (brief item 3) |
+| P01-S149 | section 5, after P01-S058 | the LTP packet's consequence for the feed's tick and the dispatcher: `timestamp` None, so `now_ist()` at dispatch; `volume` None, so 0 (brief item 5) |
+| P01-S150 | section 6, after P01-S074 | `_on_noreconnect` has no once-only flag, while the published library does not ensure a single `on_noreconnect` call (P02-S037) |
+| P01-S151 | section 11, after P01-S112 | the B.6 stale-alert test's `close()` assertion is met by `disconnect()`; no consumer runs in that test |
+
+### 20.3 The four points the coordinator asked to verify
+
+1. **CL-09 and P07-S216.** Confirmed: the A04 AUDIT's CL-09 record (section 5.3, L620 to L633) concerns the token handover; the feed's failure paths come from the disposition of P07-S216 (section 6.2.1, L886; section 6.5, L1283), whose A04 side is CL-09's. The A04 RECONCILED TOPIC RECORD section 15.2 lists CL-09 under A05 and A01. The Audit Findings Register row CL-09 gives "ISSUE; FACT; INTERPRETATION; HISTORICAL", treatment group TG2 (AGREED, 13-Nov-2026). P01-S124 now quotes each record and its classification unchanged; nothing is reclassified. The A04 AUDIT gives the classification as "ISSUE (minor), with a MATCH part. FACT; HISTORICAL; INTERPRETATION (the rewrite window)"; the register row does not repeat "(minor)" or the MATCH part. Both are quoted as written.
+2. **Code claims.** Confirmed: the queue-full path drops the newest tick (L303 to L322) while the docstring (L265) and LF5 say the oldest; the feed calls each callback once with the whole batch and `_tick_dispatcher` loops with no per-tick `try` (L602 to L618; `main.py` L2964 to L2969; A01 C37 (f)); the `""` defaults are at `main.py` L2928 to L2929 and not in `data/live_feed.py`; the re-subscription block is L340 to L364 and the watchdog runs to L790; exactly three paths call `on_critical_failure` (L422, L477, L774), all into `_make_critical_failure_cb` (`main.py` L2930 to L2932, the only call site besides the definition at L657).
+3. **Consistency with P02.** No disagreement found. The P02 statements that P01 relies on exist and say the same, and each was checked against `ticker.py`: `close()` calls `stop_retry()` and then `_close()` (P02-S024; L546 to L565); the reconnect defaults and bounds (P02-S014 to P02-S017; L374 to L441); the unused `reconnect` parameter (P02-S018); the URL built once (P02-S019; L443 to L448); the reactor thread only when the reactor is not running (P02-S022; L528 to L535); `subscribe` and `set_mode` call `_close` and re-raise (P02-S028; L567 to L628); the library's own resubscription (P02-S030; L630 to L647, L681 to L690); the callback chains (P02-S031; L45 to L90, L168 to L201, L649 to L698); `on_noreconnect` with `debug=False` (P02-S036, P02-S037; L192 to L201); the LTP packet keys and the missing `timestamp` key (P02-S046, P02-S049, P02-S050; L739 to L842). P02 was not edited.
+4. **Required wording.** The required live-feed wording appears exactly in P01-S038, P01-S118, P01-S133, P01-S140 and P01-S149. No statement claims that ticks were or were not received, or that candles were or were not built; the dormancy counts appear only as a document's or a comment's statements (HISTORICAL; P01-S077, P01-S114).
+
+### 20.4 Could not verify, and notes
+
+- ChatGPT's A05 direction text is not in the files available to the checker. The draft's statement about what "the direction's description of the A05 side" contains could not be checked, so it was removed (P01-S124); the records' own wording stands instead.
+- P01-S003 lists what the drafting helper read. As a statement of method it was spot-checked (every cited range exists and holds what the statements use) but cannot be fully verified.
+- Twisted and autobahn behaviour, the server's behaviour and every runtime event remain UNKNOWN / NOT ESTABLISHED, as the part states.
+- Security: one grep print showed an identifier-bearing line (not reproduced). One `git blame` print showed the author field (not reproduced); later blame output was cut to hashes and dates. No identifier, value or machine path is in this file; the backup scan reports no hits. G-19 is not mentioned.

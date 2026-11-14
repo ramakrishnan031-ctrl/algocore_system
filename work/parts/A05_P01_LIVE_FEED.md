@@ -12,9 +12,9 @@ P01-S001. FACT (method): every legacy statement below cites path and line(s) at 
 
 P01-S002. FACT (files read in whole): `data/live_feed.py` L1 to L790.
 
-P01-S003. FACT (files read in part): `main.py` L40, L66, L70, L657 to L684, L1599 to L1612, L1770 to L1800, L2193 (function head), L2318 to L2330, L2520 to L2584, L2900 to L3010, L3060 to L3082, L3910 to L3960, L4050 to L4086, L4240 to L4293; `orders/order_placer.py` L582, L652 to L653, L1107, L1201, L2825 (function head), L2905 to L2913, L3330 to L3340, L3361 to L3424, L3431 to L3460, L4041; `orders/shadow_tracker.py` L17, L108, L123, L139, L221 to L249; `core/state_store.py` L285 to L312; `core/market_windows.py` L128 to L152; `core/time_authority.py` L55 to L60, L94 to L101; `core/config_loader.py` L1816 to L1821, L2018 to L2028; `config/system_config.yaml` L736 to L753; `config/expected_managers.yaml` L200 to L222; `capital/kill_switch.py` L563, L618 to L632; `scripts/healthcheck_server.py` L100 to L125; `scripts/preflight/checks/engine.py` L1 to L40; `ops_dashboard/backend/services/capacity.py` L120 to L130, L290 to L300. Pinned library (text only): `/home/claude/a05_ext/kiteconnect_5.1.0_src/kiteconnect/ticker.py` L1 to L28, L40 to L66, L138 to L160, L204 to L215, L375 to L470, L472 to L491, L496 to L700; `__version__.py` L5. Further reads for tests, documents and project records are listed in the sections that use them.
+P01-S003. FACT (files read in part): `main.py` L40, L66, L70, L657 to L684, L1599 to L1612, L1770 to L1800, L2193 (function head), L2318 to L2330, L2520 to L2584, L2900 to L3010, L3060 to L3082, L3910 to L3960, L4050 to L4086, L4240 to L4293; `orders/order_placer.py` L582, L652 to L653, L1107, L1201, L2825 (function head), L2905 to L2913, L3330 to L3340, L3361 to L3424, L3431 to L3460, L4041; `orders/shadow_tracker.py` L17, L108, L123, L139, L221 to L249; `core/state_store.py` L285 to L312; `core/market_windows.py` L128 to L152; `core/time_authority.py` L55 to L60, L94 to L101; `core/config_loader.py` L1816 to L1821, L2018 to L2028; `config/system_config.yaml` L736 to L753; `config/expected_managers.yaml` L200 to L222; `capital/kill_switch.py` L563, L618 to L632; `scripts/healthcheck_server.py` L100 to L125; `scripts/preflight/checks/engine.py` L1 to L40; `ops_dashboard/backend/services/capacity.py` L120 to L130, L290 to L300. Pinned library (text only): `/home/claude/a05_ext/kiteconnect_5.1.0_src/kiteconnect/ticker.py` L1 to L28, L40 to L66, L138 to L160, L204 to L215, L375 to L470, L472 to L491, L496 to L700; `__version__.py` L5. Also read in part: `alerts/delivery.py` L60 to L125; `core/effect_telemetry.py` L28 to L40, L76 to L112 (and grep of L219 to L295); `orders/eod_squareoff.py` L501; `ops_dashboard/backend/services/config_view.py` L34, L255, `audit.py` L90, `system_logs.py` L86; `deploy/token_watcher.sh` L44 (grep line only). Tests (documents only, never run): `tests/unit/test_live_feed.py` (L1 to L160 and the test list; assertions of L257 to L969 by search), `tests/unit/test_fix064_flag_based_reconnect.py`, `tests/unit/test_fix134_ws_reconnect.py`, `tests/unit/test_b1_consumer_health_unblocked.py`, `tests/unit/test_h9_candle_offbyone_landmine.py` (test list), `tests/unit/test_alert_delivery_phase1.py` L74 to L125, `tests/unit/test_main.py` L548 to L572, L853 to L910, `tests/unit/test_order_placer_fix061.py` (search), `tests/unit/test_healthcheck_server.py` L210 to L239, `ops_dashboard/tests/conftest.py` L224. Legacy documents (data only): `docs/locked_decisions.yaml` L2403 to L2500; `docs/audit/tick_candle_dormancy_25jul2026.md` (filtered read); `docs/SYSTEM_MAP.md` L82 (filtered); `docs/audit/integrity_audit_2026.md` L112 to L124, L254 to L272; `docs/MASTER_PENDING_28-Jul-2026.txt` L470 to L478; `docs/audit/system_security_audit_02jul2026.md` (search lines); `docs/web_claude/01_module_instructions/module_26_live_feed_candle_store.txt` (search lines). Project records (read-only): A01 AUDIT 2026-11-05 sections 6.1 (C14, C15, C37, B-36) and 6.2 (W-24); A02 AUDIT 2026-11-08 K-30 and its rows at L2341, L2377; A02 evidence `A02_KEY_CONSUMER_MAP_PART2_2026-11-06.md` L444 to L452 and `A02_AUDIT_INTENT_SOURCES_2026-11-06.md` L221, L287; A04 AUDIT 2026-11-13 CL-09, the CL-27 row, section 6 L886 and L1283; A04 evidence `A04_AUTHENTICATION_TOKEN_AND_CLOCK_SKEW_2026-11-11.md` L201, L202, L232, L523; the Audit Findings Register rows C14, C15, C37, B-36, W-24, K-30, CL-09; the Master System Investigation Index topic headings and the A05, A11 and A18 entries.
 
-P01-S004. FACT (search patterns used, all with the mandatory exclusions): `live_feed|LiveFeedManager|_ticker_thread_id|tick_age_seconds|reconnect_count`; `_live_feed\b|live_feed\.[a-z_]+|checkpoint\(`; `max_reconnect_attempts|reconnect_backoff_(base|max)_seconds|tick_stale_threshold|watchdog_check_interval|subscription_batch_size|reconnect_delay_sec`; `system\.live_feed|cfg\.live_feed|config\.live_feed`; `_add_to_exit_retry\(|_on_ltp_tick_for_retry`; `class MarketWindows|def is_market_open|def is_entry_allowed`; `def soft_kill`; in `main.py` only: `live_feed|LiveFeedManager|_tick_dispatcher|tick_age_seconds|reconnect_count|set_notifier|is_connected\(|access_token|api_key`.
+P01-S004. FACT (search patterns used, all with the mandatory exclusions): `live_feed|LiveFeedManager|_ticker_thread_id|tick_age_seconds|reconnect_count`; `_live_feed\b|live_feed\.[a-z_]+|checkpoint\(`; `max_reconnect_attempts|reconnect_backoff_(base|max)_seconds|tick_stale_threshold|watchdog_check_interval|subscription_batch_size|reconnect_delay_sec`; `system\.live_feed|cfg\.live_feed|config\.live_feed`; `_add_to_exit_retry\(|_on_ltp_tick_for_retry`; `class MarketWindows|def is_market_open|def is_entry_allowed`; `def soft_kill`; in `main.py` only: `live_feed|LiveFeedManager|_tick_dispatcher|tick_age_seconds|reconnect_count|set_notifier|is_connected\(|access_token|api_key`, `\.subscribe\(`, `_make_critical_failure_cb\(`; repository-wide (non-test, non-document): `\.(unsubscribe|set_mode|unregister_callback|tick_age_seconds|reconnect_count|set_notifier|set_on_reconnect_callback|register_callback)\b|checkpoint\(live_feed`, `set_notifier\(`, `MODE_FULL|MODE_QUOTE|MODE_LTP`, `(feed|_lf|lf)\.subscribe\(|getattr\([^)]*feed|KiteTicker`; in `tests/`: `live_feed|LiveFeedManager|KiteTicker|_on_ticks|tick_queue`, `_tick_dispatcher`; in `docs/`: `live_feed|LiveFeedManager|KiteTicker|tick feed|tick path|dorman` (case-insensitive). In the project records: the handoff IDs and `live_feed`.
 
 P01-S005. FACT (method, library): the pinned library statements are about the PUBLISHED `kiteconnect` 5.1.0 source only (`__version__.py` L5 reads "5.1.0"). They do not establish which package ran on the legacy machine. Twisted and autobahn source were not available: their behaviour is UNKNOWN / NOT ESTABLISHED. The library's packet parsing, reconnect algorithm and threading are P02's work; this part writes "library behaviour: see P02" for them.
 
@@ -313,4 +313,85 @@ P01-S137. INTERPRETATION (restart): the feed never rebuilds its connection itsel
 P01-S138. INTERPRETATION (stale): only after a first non-empty batch, while connected and inside the entry window, a 30 s silence gives one CRITICAL alert, one critical-failure call (SOFT_KILL and CRITICAL notification) and a forced `close()` (P01-S078 to P01-S083); whether a reconnection follows is library behaviour (see P02), and if none follows the watchdog falls silent (P01-S084). Before any tick has arrived there is no stale detection at all (P01-S078).
 
 P01-S139. FACT (P01-S023, P01-S028) (shutdown): `_shutdown` calls `disconnect()`, which stops the feed's threads' loops, closes the ticker with any error swallowed, and joins only the watchdog.
+
+## 16. Points the AUDIT may examine (neutral)
+
+1. The queue-full path drops the newest tick and writes two CRITICAL lines per tick, while LF5 and the docstring describe dropping the oldest and FIX-029 describes a soft kill; no kill switch is wired (P01-S044 to P01-S046).
+2. The feed's own kill-switch calls (queue full, reconnects exhausted, consumer restart failure) and its notifier are not wired; its "WebSocket DEAD" alert ends as a "suppressed" record, and the off-hours no-reconnect case leaves one WARNING line (P01-S062, P01-S066 to P01-S068, P01-S071).
+3. The watchdog's forced reconnect relies on `close()`, which in the published source first calls `stop_retry()`; whether a reconnection follows needs P02's findings and Twisted evidence (P01-S083, P01-S084).
+4. After exhausted reconnects, or a forced close with no reconnection, nothing in the feed reconnects, the watchdog skips while disconnected, and the health endpoint reports the feed without gating (P01-S073, P01-S084, P01-S087).
+5. The tick-age alarm arms only after the first non-empty batch and checks only inside the entry window, while `_on_noreconnect` uses the market window (P01-S078, P01-S079, P01-S082).
+6. The reconnect callback to the candle store and the target manager fires at the first attempt, before any reconnection, outside a try (P01-S063).
+7. The 600 s gap test calls the critical-failure callback again at every later attempt of the same outage (P01-S064).
+8. The re-subscription in `_on_connect` is one unsliced message while `subscribe` slices by 50; the library also re-subscribes; the CRITICAL text promises a retry that depends on a later connect (P01-S029, P01-S033, P01-S034).
+9. `set_mode` overrides are not remembered, and every re-subscription applies MODE_LTP (P01-S032).
+10. `_tick_dispatcher` has no per-tick isolation (P01-S056; A01 C37).
+11. The weak-reference registry's `is` tests cannot match a bound method (P01-S053).
+12. `_ticker_thread_id` holds the consumer's identity, not the library thread's, and the state-store guard that reads it has no caller that passes the feed (P01-S047, P01-S097).
+13. The three `live_feed` keys do not reach the feed (A02 K-30), and the dashboard shows `max_reconnect_attempts` as the "reconnect cap" (P01-S090 to P01-S092).
+14. `_check_consumer_health` restarts the consumer without limit although its docstring says "once", and makes no notification (P01-S085).
+15. The watchdog thread has no supervisor (P01-S086).
+16. The feed passes the library's `timestamp` through unchanged, and the dispatcher substitutes the receipt time `now_ist()` when it is missing; the candle part may examine this mix of time sources (P01-S042, P01-S055).
+17. `_disconnect_time` is overwritten at each close, so the gap may be measured from the latest close (P01-S059).
+18. The feed accepts empty credentials without a check (P01-S011; A04 CL-27 is a MATCH for the reachable path).
+19. The feed's reason texts never contain "BrokerAuthError", so `_mark_auth_failed()` cannot be reached from the feed (P01-S070).
+20. `float(raw.get("last_price", 0.0))` raises inside `_on_ticks`, outside any try, when the value is `None` (P01-S043).
+21. Whether `disconnect()` during market hours can lead the library to report `on_noreconnect`, and so to the in-hours escalation during a shutdown, needs P02 (P01-S023, P01-S067).
+22. The module imports `core.effect_telemetry`, `core.logger` and `alerts.delivery`, beyond the import list of LF8 (P01-S008, P01-S113).
+23. The effect registry and some comments cite line numbers that do not match the baseline (P01-S098).
+24. Several flags shared between threads are written without a lock (P01-S105).
+25. The effect counter counts every `subscribe` call, repeated or not, and reaches the operator only as a census line at shutdown (P01-S012, P01-S039).
+
+## 17. UNKNOWN / NOT ESTABLISHED
+
+P01-S140. UNKNOWN / NOT ESTABLISHED: whether the exit-retry path ever ran in production, and therefore whether any token was ever subscribed, any tick received or the tick-age alarm ever armed. No token is subscribed at boot. A later subscription depends on the exit-retry path. Whether that path ever ran in production is UNKNOWN / NOT ESTABLISHED.
+
+P01-S141. UNKNOWN / NOT ESTABLISHED: which `kiteconnect` package, and which Twisted and autobahn versions, ran on the legacy machine; every library statement here is about the published 5.1.0 source (P01-S005).
+
+P01-S142. UNKNOWN / NOT ESTABLISHED: Twisted's and autobahn's behaviour: `stopTrying()` after `close()`, the reactor thread at shutdown, the order of `onConnect` and `onOpen`, and the handling of exceptions raised in the feed's callbacks (P01-S023, P01-S034, P01-S074, P01-S083).
+
+P01-S143. UNKNOWN / NOT ESTABLISHED: what the broker's server accepted or sent in the legacy period: its handling of an empty or expired key or token, the content of MODE_LTP packets (timestamp, volume, depth) and connection limits (P01-S011, P01-S042).
+
+P01-S144. UNKNOWN / NOT ESTABLISHED: whether, in production, the queue ever filled, the consumer ever died or was restarted, the watchdog ever alerted or forced a close, reconnects or exhausted reconnects ever happened, or the feed ever caused a soft kill or a notification; the repository holds no surviving runtime evidence of these.
+
+P01-S145. UNKNOWN / NOT ESTABLISHED: the trading-hours values in force, which set the feed's window tests (local overlays were not read; A01 B-36 records the value in force as UNKNOWN / NOT ESTABLISHED).
+
+P01-S146. UNKNOWN / NOT ESTABLISHED: the thread on which the library ran the feed's callbacks at runtime, and whether `live_feed.connect()` ever raised at boot (P01-S015, P01-S123).
+
+## 18. Draft questions about intent for Rama
+
+1. Was the feed meant to receive the kill switch (the FIX-029 and FIX-134 comments) and the notifier (`set_notifier`; the L129 comment "set via set_notifier() from main.py"), or was the critical-failure callback meant to be its only route to a soft kill and an alert?
+2. When the tick queue is full, what was intended: dropping the oldest tick (LF5), a soft kill that keeps the ticks (FIX-029), or something else?
+3. Was the "deliberately dormant" decision of 25-Jul-2026 (`e754c7e`) meant to allow the exit-retry path to subscribe a token and so start the tick flow, as the code allows?
+4. Which reconnect settings were meant to govern the feed: the constructor defaults of LF2 and LF3 (10 attempts, 5 s) or the `live_feed` keys in `config/system_config.yaml` (10 attempts, back-off 1 s to 30 s)?
+5. Was the tick-age watchdog meant to cover only the entry window or the whole market session, and was it meant to stay unarmed until the first tick?
+6. Was the watchdog's forced reconnect meant to rely on the library reconnecting by itself after `close()`?
+7. When the reconnect attempts run out in market hours, was the feed meant to stay down for the rest of the session (recovery by a restart), or to be rebuilt within the process?
+8. Was the candle store meant to be told of a reconnect at the first attempt, as LF7 states, or once the connection is back?
+9. Was a feed disconnect meant to show on the health endpoint as information only (non-gating), as the E-4 comment says?
+
+## 19. Where the direction's questions are answered
+
+| Question | Statements |
+|---|---|
+| A1 Actual Live entry point; who constructs and starts it | P01-S016, P01-S026, P01-S027, P01-S094 |
+| A2 Upstream feed and API; subscription; symbol and token mapping | P01-S017 to P01-S022, P01-S029 to P01-S039, P01-S058 |
+| A3 Decoding, validation, timestamping, normalisation | P01-S040 to P01-S043, P01-S048, P01-S055 (packet decoding itself: P02) |
+| A4 Duplicate, out-of-order, delayed, missing, malformed ticks | P01-S043, P01-S048, P01-S049, P01-S081 |
+| A5 Reconnect, resubscribe, disconnect, stale-feed paths | P01-S023, P01-S033, P01-S034, P01-S059 to P01-S067, P01-S073, P01-S077 to P01-S084, P01-S136, P01-S138 |
+| A6 Queues, buffers, worker threads, back-pressure | P01-S014, P01-S015, P01-S044 to P01-S047, P01-S050, P01-S051, P01-S105 |
+| A7 Failure, timeout, retry, recovery outcomes | P01-S018, P01-S044 to P01-S046, P01-S062 to P01-S074, P01-S080, P01-S083 to P01-S086, P01-S123 |
+| A8 What the feed publishes, to whom; ordering and identity | P01-S047, P01-S050, P01-S052 to P01-S057 |
+| G3 Normal, degraded, error, reconnect, restart and stale flows (the feed) | P01-S133 to P01-S139 |
+| I1 Instrument identity and mapping (the feed side) | P01-S036, P01-S037, P01-S058 |
+| I4 Rate limits and concurrency (the feed side) | P01-S019, P01-S029, P01-S102 to P01-S105 |
+| Handoff A01 C37 | P01-S119 (P01-S050, P01-S056, P01-S063) |
+| Handoff A01 B-36 | P01-S120 (P01-S082) |
+| Handoff A01 W-24 | P01-S121 (P01-S014, P01-S023) |
+| Handoff A01 C14 | P01-S122 |
+| Handoff A01 C15 | P01-S123 |
+| Handoff A04 CL-09 (with P07-S216) | P01-S124 (P01-S069 to P01-S072) |
+| Handoff A04 CL-27 | P01-S125 (P01-S011) |
+| Handoff A02 K-30 | P01-S126 (P01-S090 to P01-S092) |
+| Earlier-checkpoint claims | P01-S127 to P01-S132 |
 

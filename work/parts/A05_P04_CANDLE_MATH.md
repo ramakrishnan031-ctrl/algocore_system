@@ -72,7 +72,7 @@ P04-S023. FACT (L121 to L123): `method="sma"` returns `sum(real[-period:]) / per
 
 P04-S024. FACT (L125 to L129): `method="wilder"` (the default) seeds `ATR = sum(real[:period]) / period` (the mean of the first `period` true ranges, L126), then for each later true range applies `ATR = (ATR * (period - 1) + TR) / period` (L127 to L128), and returns the final value (L129). HISTORICAL (L96 to L98): "Seed = mean of the first ``period`` prev-close true ranges; then ``ATR_t = (ATR_{t-1} * (period - 1) + TR_t) / period``." The docstring and the code agree.
 
-P04-S025. FACT (L117 to L129): the result is a Python `float` at full precision; nothing is rounded. INTERPRETATION (the formula): it is in the price units of the candles (a mean of price differences). The `"sma"` value depends only on the last `period + 1` candles. The `"wilder"` value depends on every candle passed, because the seed is taken at the start of the input and each later candle enters the recursion; the same instrument and period give different values for different lookback lengths or start dates, and the effect of the seed decays geometrically by `(period - 1) / period` per later candle.
+P04-S025. FACT (L117 to L129): the result is a Python `float` at full precision; nothing is rounded. INTERPRETATION (the formula): it is in the price units of the candles (a mean of price differences). The `"sma"` value depends only on the last `period + 1` candles. For a `period` of 2 or more, the `"wilder"` value depends on every candle passed, because the seed is taken at the start of the input and each later candle enters the recursion; the same instrument and period give different values for different lookback lengths or start dates, and the effect of the seed decays geometrically by `(period - 1) / period` per later candle. With `period` 1 that factor is 0, and both methods return the last true range.
 
 P04-S026. INTERPRETATION (Python semantics, L114): `len(candles)` requires a sized sequence; a generator raises `TypeError`. A non-numeric value raises in `true_range_series` (P04-S020). Nothing in `atr` catches an exception; error handling is the caller's (section 10).
 
@@ -90,7 +90,7 @@ P04-S030. FACT (L165 to L181): `ema_series(values: Sequence[float], period: int)
 
 P04-S031. FACT (L184 to L188): `ema(values, period) -> Optional[float]` returns the last element of `ema_series(values, period)`, or `None` when that list is empty. It has the same validation (through `ema_series`) and no default period.
 
-P04-S032. INTERPRETATION (Python semantics, L173): `values` can be any iterable of numbers or numeric strings; `None` raises `TypeError`. As with the Wilder ATR (P04-S025), the result depends on the whole input, because the seed is taken at the start; the seed's weight decays by `(1 - k)` per later value. Nothing is rounded. Every non-test caller passes candle closes (section 10).
+P04-S032. INTERPRETATION (Python semantics, L173): `values` can be any iterable of numbers or numeric strings; `None` raises `TypeError`. As with the Wilder ATR (P04-S025), for a `period` of 2 or more the result depends on the whole input, because the seed is taken at the start; the seed's weight decays by `(1 - k)` per later value. With `period` 1, `k` is 1 and `ema` returns the last value. Nothing is rounded. Every non-test caller passes candle closes (section 10).
 
 ## 6. Average directional index: `adx` and its inner `_wilder`
 
@@ -106,7 +106,7 @@ P04-S037. FACT (L228 to L236): for each triple of smoothed values: if the smooth
 
 P04-S038. FACT (L238 to L243): if fewer than `period` DX values exist it returns `None` (L238 to L239); otherwise `ADX` is seeded with the mean of the first `period` DX values (L240) and smoothed with `ADX = (ADX × (period - 1) + DX) / period` over the remaining DX values (L241 to L242); the final value is returned (L243), unrounded. INTERPRETATION (arithmetic on P04-S033, P04-S034, P04-S036): with `n >= 2 × period + 1` candles there are `n - period >= period + 1` DX values, so the check at L238 cannot be true when it is reached; with exactly `2 × period + 1` candles one smoothing step follows the seed.
 
-P04-S039. INTERPRETATION (the formula): each DX lies between 0 and 100 because both directional movements are non-negative, so the ADX, a weighted mean of DX values, lies between 0 and 100; it is dimensionless. Like the Wilder ATR, it depends on every candle passed (P04-S025). A window in which every true range is zero (flat prices with no gaps) gives smoothed `TR = 0` and `DX = 0.0` (L230 to L232), not an error.
+P04-S039. INTERPRETATION (the formula): each DX lies between 0 and 100 because both directional movements are non-negative, so the ADX, a weighted mean of DX values, lies between 0 and 100; it is dimensionless. Like the Wilder ATR, for a `period` of 2 or more it depends on every candle passed (P04-S025); with `period` 1 each smoothed total equals its latest value (L223) and the ADX is the last DX, which comes from the last two candles. A window in which every true range is zero (flat prices with no gaps) gives smoothed `TR = 0` and `DX = 0.0` (L230 to L232), not an error.
 
 ## 7. Relative strength index: `rsi`
 

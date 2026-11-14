@@ -285,3 +285,19 @@ P03-S118. HISTORICAL (grep lines only): `docs/audit/integrity_audit_2026.md` (`4
 14. Documents against code: LF11 (volume), LF12 (no synthetic candles), LF13 (nine fields) and LF14 (390) against the code (P03-S114); the manager registry's line references (P03-S084); the breach monitor's docstring claiming dispatcher wiring (P03-S092).
 15. The candle interval is a literal in `main.py`, not a setting (P03-S062, P03-S063).
 
+## 15. UNKNOWN / NOT ESTABLISHED
+
+P03-S119. UNKNOWN / NOT ESTABLISHED: whether any tick ever reached the candle store in production, and therefore whether any live candle, real or synthetic, was ever built, passed to a consumer or written. No token is subscribed at boot. A later subscription depends on the exit-retry path. Whether that path ever ran in production is UNKNOWN / NOT ESTABLISHED.
+
+P03-S120. UNKNOWN / NOT ESTABLISHED: whether `_persist_candle` ever ran and whether any live-written row ever existed in `candles` (A03 Y-06 records the same); the legacy documents' row counts are a document's statements only (P03-S115, P03-S117).
+
+P03-S121. UNKNOWN / NOT ESTABLISHED: which packet types the broker's server sent in the legacy period for MODE_LTP subscriptions, and so whether a non-zero `volume` or an `exchange_timestamp` ever reached the dispatcher (part P01, P01-S143; part P02, P02-S050).
+
+P03-S122. UNKNOWN / NOT ESTABLISHED: the Python version and the host clock's behaviour (time zone, NTP steps) on the production machine (A01 AUDIT, B-41), and therefore the clock used by `Event.wait` and whether early or late closes, merged or split intervals occurred (P03-S037).
+
+P03-S123. UNKNOWN / NOT ESTABLISHED: whether, at runtime, the timer thread ever died, a close callback ever raised, the synthetic-only WARNING was ever logged, `mark_reconnect` was ever called, or `gc_sweep` was ever reached by any means outside the repository's code.
+
+P03-S124. UNKNOWN / NOT ESTABLISHED: the runtime size of the instrument cache, and so of the token map and of the lock-held scan once a minute (P03-S060); and how long the trading process ran each day, and so whether after-hours synthetic candles arose (P03-S103).
+
+P03-S125. UNKNOWN / NOT ESTABLISHED: the effective values (as opposed to the committed values) of `structure_exit.structure_exit_enabled` and `smart_tgt.volume_dependent_trails`, because local overlays are not in the repository (P03-S085, P03-S088).
+

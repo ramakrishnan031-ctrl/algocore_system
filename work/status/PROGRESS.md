@@ -11,8 +11,8 @@ corrected statement by statement by a separate helper; backups to wip/a05-fieldw
 | P02 | Pinned kiteconnect 5.1.0 library (ticker; client methods A05 uses) | done 13:24 IST (98 statements) | done 13:50 IST (100 statements; 38 corrected, 2 added) |
 | P03 | Candle store and live candles (data/candle_store.py; dispatcher; consumers) | done 14:25 IST (125 statements) | done 14:58 IST (128 statements; 34 corrected, 3 added) |
 | P04 | core/candle_math.py functions, contracts, callers | done 14:28 IST (101 statements) | done 15:00 IST (103 statements; 37 corrected, 2 added) |
-| P05 | Instrument cache (core/instrument_cache.py; preload; consumers) | running | - |
-| P06 | Historical candle access (main.py closure; limiter bucket; A08 boundary) | running | - |
+| P05 | Instrument cache (core/instrument_cache.py; preload; consumers) | done 15:35 IST (117 statements) | running |
+| P06 | Historical candle access (main.py closure; limiter bucket; A08 boundary) | done 15:26 IST (82 statements) | running |
 | P07 | Instrument refresh and alias tool (refresh_instruments.py; find_symbol_aliases.py) | - | - |
 | P08 | Daily candles and F&O ban scripts (fetch_daily_candles.py; fetch_fno_ban.py) | - | - |
 | P09 | Configuration keys A05 reads (A02 crosswalk) | - | - |

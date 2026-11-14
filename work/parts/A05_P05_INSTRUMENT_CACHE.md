@@ -327,3 +327,34 @@ P05-S115. UNKNOWN / NOT ESTABLISHED: the order at runtime of the day's refresh a
 P05-S116. UNKNOWN / NOT ESTABLISHED: whether `reload` or `scripts/sr_level_export.py` was ever run by any means outside the repository's code; whether a symbol missing from the cache ever reached the exit-retry path (No token is subscribed at boot. A later subscription depends on the exit-retry path. Whether that path ever ran in production is UNKNOWN / NOT ESTABLISHED.); and how often, at runtime, any consumer took its fallback for a missing symbol or token (P05-S064 to P05-S072; the legacy document of P05-S107 is a document's statement only).
 
 P05-S117. UNKNOWN / NOT ESTABLISHED: the effective values (as opposed to the committed values) of the feature flags that decide which S&R objects receive the cache (P05-S060), because local overlays are not in the repository (part P09; A02).
+
+## 15. Draft questions about intent for Rama
+
+1. Was the instrument file meant to hold only NSE equities, or also F&O contracts (as the module specification's sample row shows) or BSE instruments?
+2. Was `is_fno` meant to mark an instrument that is itself a futures or options contract, or an equity that has F&O contracts?
+3. When `instruments.csv` is present but cannot be read or parsed, was the start meant to stop as a startup-check failure (exit 3, as for a missing file), or in some other way?
+4. Was one malformed row meant to stop the whole load, or to be skipped and reported while the other rows load?
+5. Were rows with token 0 meant to be kept in the cache, and if so, how were the consumers meant to treat them?
+6. Was the running trading process meant to pick up a refreshed instrument file during the day (the FIX-092 `reload` design), or only at its next start?
+7. Was a symbol missing from the cache meant to be handled the same way by every consumer, and was it meant to raise an alert?
+8. Was the cache's `symbol` meant to be exactly the broker's NSE trading symbol, and were lookups meant to be exact as to case and spaces?
+9. Was the signal processor meant to take the sector from the cache's `sector` method?
+10. Was the minimum of 1000 rows the intended guard against a thin or stale file, and was the cache itself meant to check the file's age?
+
+## 16. Where the direction's questions are answered
+
+| Question | Statements |
+|---|---|
+| D3 Aliases, exchange and segment mapping, token assignment, duplicates, missing fields, invalid rows | P05-S013, P05-S014, P05-S017, P05-S022 to P05-S029, P05-S034, P05-S080, P05-S090 |
+| D4 Cache format, readers, refresh lifecycle, stale-data detection, failure behaviour | P05-S019 to P05-S034, P05-S051 to P05-S055, P05-S063, P05-S073 to P05-S078, P05-S092, P05-S106 |
+| D5 Stale in-memory mappings after refresh or failure | P05-S035, P05-S036, P05-S057, P05-S062, P05-S063, P05-S093 |
+| D7 Supported exchanges, segments, instrument classes (cache side) | P05-S014, P05-S028, P05-S079, P05-S086, P05-S087, P05-S091, P05-S108 |
+| I1 Instrument identity and mapping (exchange, symbol, tradingsymbol, token; no, multiple or stale match) | P05-S013, P05-S014, P05-S017, P05-S041, P05-S042, P05-S047, P05-S066 to P05-S068, P05-S089, P05-S090 |
+| I2 Instrument coverage (F&O and BSE presence UNKNOWN without evidence) | P05-S079, P05-S086 to P05-S088, P05-S091, P05-S108, P05-S111 |
+| E1 What A05 reads (the cache read; the cache writes nothing) | P05-S021, P05-S051, P05-S062, P05-S076, P05-S078 |
+| G1 and G2 Instrument-metadata producers and consumers, owners and handoff boundaries | P05-S056 to P05-S062, P05-S064 to P05-S075, P05-S095 |
+| G3 Load-failure, degraded, restart and stale-data flows | P05-S051 to P05-S055, P05-S063, P05-S072, P05-S093, P05-S094 |
+| Also touched: I5 and B7 (tick-size input; A04 CG-27) | P05-S028, P05-S029, P05-S085 |
+| Also touched: A2 (the token for the exit-retry subscription) | P05-S066, P05-S080 |
+| Inherited handoffs A01 C9, C29, M-43 and C38b | P05-S081 to P05-S084 (with P05-S034, P05-S035 to P05-S039, P05-S053, P05-S054, P05-S069) |
+| Inherited handoffs A04 CG-27, CG-04, CG-25, RD-21, RD-33 | P05-S085 to P05-S089 |

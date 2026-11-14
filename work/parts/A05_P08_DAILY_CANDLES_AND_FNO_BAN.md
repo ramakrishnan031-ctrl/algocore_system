@@ -1,0 +1,17 @@
+# A05 STUDY part P08: The daily candles script and the F&O ban-list script
+
+**Status:** WORKING DRAFT (helper output; not a project record)
+
+**Baseline:** trading-system-prod-snapshot, branch main, commit 970aabf3c78d777d9d34549e021f7c8e756c7bdb
+
+**Scope:** `scripts/fetch_daily_candles.py` (read in whole, L1 to L346) and `scripts/fetch_fno_ban.py` (read in whole, L1 to L378), Live only: their constants, every function, their broker and HTTP calls (call volume, pacing, timeouts, retries, error handling), what each writes (the `candles` table, the CSV file `data_store/candles/candle_data_<date>.csv`, the `fno_ban` table) and with which timestamp meaning, their exit behaviour and cron entry functions; the one reader of the CSV (`reports/daily_report.py`, only the columns it reads); the readers and writers of the two tables and the CSV in non-test code (one statement each); the change to the daily candles script after `7d4970a` (in neutral words); the inherited handoffs A02 K-31, A03 D-05, H-16, H-17, Q-16, U-24, Y-06 (with Open Issues Register A03-43), G-12, A04 CL-12, CL-15, RL-06 (with A04-28) and RD-21 (the A05 side only; IDs and classifications kept); tests and legacy documents for both scripts (HISTORICAL). Boundaries: A03 owns the table schemas, the connection layer and the storage format; A04 owns the broker client, the credential rule and the broker-wide limiter; A15 owns the daily report and the alert and heartbeat telemetry; A16 owns the schedules and the cron registry; A02 owns configuration sources and precedence. Labels as in Document 04, section 6.
+
+## 1. Scope, files read and method
+
+P08-S001. FACT (method): every legacy statement below cites path and line(s) at baseline `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (written `970aabf` from here on). The local clone's HEAD equals `970aabf` (checked with `git rev-parse HEAD`). Legacy files were read only with `git show 970aabf:<path>` (copied to this part's scratch folder for line-numbered reading), `git grep -n -E ... 970aabf` with the four mandatory exclusion pathspecs (non-test, non-document searches also excluded `tests/**`, `docs/**` and `**/*.md`; all output was filtered for identifier-shaped text and machine paths), `git log`, `git diff` (filtered) and `git blame` (hashes and dates only). Nothing legacy was run, imported, built or tested. No broker call was made. The token file, the account file, environment files and local overlays were not opened.
+
+P08-S002. FACT (files read in whole): `scripts/fetch_daily_candles.py` L1 to L346 (Git blob `4a149615dc48ad1342f5b406d4728728631dd7c8`) and `scripts/fetch_fno_ban.py` L1 to L378 (blob `8416cd9c71b17b2cb949b559ed6321156f1622fe`). (The full list of files read in part is completed in P08-S004 at the end of the work.)
+
+P08-S003. FACT (method): statements about what an expression does with particular values are INTERPRETATION from Python or SQLite semantics, with the basis stated. Statements about the published kiteconnect 5.1.0 library rest on its source read as text (`/home/claude/a05_ext/kiteconnect_5.1.0_src/kiteconnect/connect.py`) and on part P02; they are facts about the published source only, not about the package installed on the legacy machine or about what the broker's server sent in the legacy period. The behaviour of `requests`, `python-dotenv`, `PyYAML` and the Python `csv` module beyond their documented interfaces was not read from source.
+
+P08-S004. FACT (files read in part): to be completed at the end of the work.

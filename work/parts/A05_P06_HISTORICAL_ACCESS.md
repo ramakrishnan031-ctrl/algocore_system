@@ -241,6 +241,14 @@ P06-S081. HISTORICAL (`tests/unit/test_sr_detector_fetch.py` L1 to L108, text on
 
 P06-S082. HISTORICAL (`tests/unit/test_sr_detector_observer.py` L7, L94, L114, search lines): the observer tests state that "a failing fetch never raises and logs a fetch_failed row" and that "an empty result still writes one (fetch_failed) row"; the detector's row is A08's.
 
+P06-S083. HISTORICAL (added in the check; `docs/SYSTEM_MAP.md` L286 and `PATHS.md` L183, both on the PB-01 work of 12-Jul-2026; `v3_chain/pb01_entry.py` docstring L21): the PB-01 entry stage's "T0c decision = OhlcFetcher poll (`fetch_interval("5minute", lookback_days=1)`), NOT LiveFeed+CandleStore", because "`CandleStore.on_tick` sums cumulative `volume_traded` across ticks → not a correct per-candle traded volume, which the G-CONFIRM volume test needs; and watchlist symbols aren't in the live subscription"; "`truncate_to_asof(candles,"5minute",now)` is the G-FORMING-CANDLE chokepoint (drops the still-forming bar)" (emphasis of the original omitted); the docstring: "(`truncate_to_asof` drops a still-forming bar). We never decide on a live candle." FACT (`v3_chain/pb01_entry.py` L176 to L177, L306 to L308; A18's, boundary evidence): the entry stage fetches `fetch_interval(symbol, "5minute", lookback_days=1)` and passes the result through `truncate_to_asof(c5, "5minute", now)`. The documents' reasons and their expectation that a still-forming bar can arrive are documents' statements: they do not establish what the server returned (P06-S041); the live store's volume is part P03's subject (P03-S066) (B6).
+
+P06-S084. HISTORICAL (added in the check; `docs/audit/pb01_simulation_feasibility_2026-07-24.md` L35, 24-Jul-2026): the document says the system "stores only 1-minute candles" and that their timestamps are "clean and boundary-aligned (`09:15:00, 09:16:00, …` contiguous per session, MEASURED)", so that grouping "`[09:15..09:19]→09:15` ... matches the broker's 5-min boundaries". A document's statement about stored candles (the store written by the daily-candle script, part P08). A first one-minute label of 09:15:00 fits a start-of-interval label (P06-S049), but the statement does not establish the form or the meaning of the server's timestamps in the legacy period, or how the script converted them (part P08) (B2, C4).
+
+P06-S085. HISTORICAL (added in the check; the other hits of the document search of P06-S006, one line each; data only, output filtered for identifiers): `docs/audit/q10_part_b_backfill_20jul2026.md` L11 to L14, L67 to L68 (20-Jul-2026) states that the historical-data call "is actively succeeding" and that "the paid historical add-on is live", inferring it from stored candles and a scheduled script's result, and that the regime engine fetches "live from Kite, NOT the `candles` DB table": a document's inference, not evidence of what the closure received (C6); `docs/audit/regime_computability_verification_20jul2026.md` L22, L43, L65 to L67 and `docs/audit/regime_direction_preference_investigation_20jul2026.md` L27 to L28 describe the regime fetch as `OhlcFetcher.fetch_by_token(256265, "day", 400)` over the `historical_data` closure, which agrees with the code (P06-S035); `docs/v3/V3_STEP10_PIPELINE_PLUMBING_PLAN.md` L81 is a plan row for the regime input ("Verify live index access (T4)"); `docs/audit/effect_verification_contract_01aug2026.md` L89 lists the four `OhlcFetcher` constructions as infrastructure, with line numbers that are not the baseline's; `docs/web_claude/03_audit_responses/deep_system_audit_2026-04-25.md` L73 (25-Apr-2026) says "NSE provides minute volume via Kite's `get_historical_data`" (compare P06-S079); `docs/audit/receiver_auth_c6_scoping_2026-07-25.md` L164 concerns the boot-wiring failure path of the PB-01 objects (A01's and A18's); `docs/audit/eod_email_findings_06aug2026.md` L117 and `docs/campaign_practices.md` L1022 concern another script's "broker_fetch_failed" and are unrelated to historical data; `docs/audit/regime_thesis_validation_18jul2026.md` L16, L78 concern whether the broker call could be made on the machine on that date and are not examined here (outside this part).
+
+P06-S086. HISTORICAL (added in the check; `docs/broker_integration_audit_2026-06-02.md` L100, L111 to L112, L120, 02-Jun-2026): a legacy audit reports that a codebase search found no corporate-action detection ("returns zero results in production code") and concludes "No corporate action detection, price adjustment, or morning validation exists". Its subject is stored prices and open positions, not historical candles, and it predates the S&R code (P06-S010: `dea336a`, 2026-06-27). It agrees with P06-S063 for the code it describes and says nothing about the broker's historical data (C5).
+
 ## 13. Points the AUDIT may examine (neutral)
 
 1. The closure has no `try`, no translation and no 429 path; every failure, including a pacing timeout or a shutdown abort in which no broker call was made, ends as one WARNING worded "historical_data failed" and None in A08's fetcher (P06-S016, P06-S021, P06-S025; A04 RL-05).
@@ -276,7 +284,7 @@ P06-S082. HISTORICAL (`tests/unit/test_sr_detector_observer.py` L7, L94, L114, s
 - Whether the broker's historical candles were adjusted for corporate actions in the legacy period (P06-S064).
 - What the broker's historical volume field meant (per interval or otherwise); only a document's claim exists (P06-S079).
 - What "spec C" of the SNR-DETECTOR-V1 specification says; the document is not in the repository (P06-S073).
-- Whether `scripts/sr_level_export.py`, `scripts/sr_corp_action_spotcheck.py` and the other scripts of section 9 were run, and when (P06-S057 to P06-S061).
+- Whether `scripts/sr_level_export.py`, `scripts/sr_corp_action_spotcheck.py` and the other scripts of section 9 were run, and when; for `sr_level_export.py`, also whether its imports (including `main`) succeeded in the installed environment (P06-S057 to P06-S061).
 
 ## 15. Draft questions about intent for Rama (what was intended; no answers proposed)
 
@@ -294,15 +302,16 @@ P06-S082. HISTORICAL (`tests/unit/test_sr_detector_observer.py` L7, L94, L114, s
 | C1 (every historical-data call site, wrapper, caller) | P06-S011 to P06-S016, P06-S055 to P06-S062 |
 | C2 (interval, date range, pagination, lookback, batching, response limits) | P06-S017, P06-S034 to P06-S042 |
 | C3 (retries, pacing, timeout, partial responses) | P06-S013, P06-S017 to P06-S019, P06-S024 to P06-S029, P06-S043 |
-| C4 (same timestamp, time zone and OHLCV contract as live candles?) | P06-S043 to P06-S053 |
-| C5 (adjustments, corporate actions, missing data, source substitution) | P06-S063 to P06-S065 |
-| C6 (code capability against production calls) | P06-S014, P06-S030 to P06-S033, P06-S080; section 14 |
-| B6 (live against historical aggregation consistency) | P06-S051, P06-S052, P06-S054 |
-| B2, historical side (timestamp convention) | P06-S040, P06-S048 to P06-S052 |
-| B3 and B7, historical side (partial candles; rounding and precision) | P06-S041, P06-S045 |
+| C4 (same timestamp, time zone and OHLCV contract as live candles?) | P06-S043 to P06-S053, P06-S084 |
+| C5 (adjustments, corporate actions, missing data, source substitution) | P06-S063 to P06-S065, P06-S086 |
+| C6 (code capability against production calls) | P06-S014, P06-S030 to P06-S033, P06-S080, P06-S085; section 14 |
+| B6 (live against historical aggregation consistency) | P06-S051, P06-S052, P06-S054, P06-S083 |
+| B2, historical side (timestamp convention) | P06-S040, P06-S048 to P06-S052, P06-S084 |
+| B3 and B7, historical side (partial candles; rounding and precision) | P06-S041, P06-S045, P06-S083 |
 | I3 (historical requests: batching, limits, response interpretation, missing or malformed rows; the A04 boundary) | P06-S013, P06-S016, P06-S025, P06-S026, P06-S040 to P06-S046, P06-S069, P06-S071 |
 | I4, historical side (pacing, limiter use, retries, parallel calls, other processes; RL-05, RL-06) | P06-S017 to P06-S023, P06-S027, P06-S057 to P06-S062, P06-S069, P06-S070 |
 | I1, historical side (instrument identity on the historical request) | P06-S035, P06-S071 |
 | I6 and E1, historical side (what is written and read) | P06-S047 |
 | G3, historical side (normal, degraded, error, retry, restart and stale flows) | P06-S014, P06-S019, P06-S025 to P06-S029, P06-S033, P06-S065 |
 | Inherited handoffs (A01 B-11, C38a, C38b; A04 RL-05, RL-06, RL-07, RL-14, RD-33) | P06-S066 to P06-S072 |
+| Legacy documents and tests (HISTORICAL) | P06-S073 to P06-S086 |

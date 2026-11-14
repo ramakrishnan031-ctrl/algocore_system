@@ -266,3 +266,22 @@ P03-S116. HISTORICAL (`docs/audit/ma2_ms3_md1_25jul2026.md`, 367 lines, `a2b5810
 P03-S117. HISTORICAL (`docs/SYSTEM_MAP.md` L82, last changed `7d4970a`, 2026-09-02; L213; L489): the 25-Jul-2026 entry calls the live tick-to-candle feed "DELIBERATELY DORMANT. THIS IS A DECISION, NOT A BACKLOG ITEM", gives a reopen trigger, repeats the synthetic-candle "stickiness" and the "MODE_FULL ordering trap" (M-D1), and says `_persist_candle` "should stay dark even if the feed is ever wired"; L213 lists `data/candle_store.py::CandleStore` as the "Live 1m candle builder". Its runtime counts are a document's statements only. No token is subscribed at boot. A later subscription depends on the exit-retry path. Whether that path ever ran in production is UNKNOWN / NOT ESTABLISHED.
 
 P03-S118. HISTORICAL (grep lines only): `docs/audit/integrity_audit_2026.md` (`4603b75`, 2026-08-01) L261 to L270 describes the same stickiness and `_persist_candle` registration, and L373 records H-9 as "CLOSED BY REMOVAL"; `docs/audit/regime_phase0_index_ingestion_17jul2026.md` (`c8a2e6c`, 2026-07-17) L15 to L16 describes a "LIVE tick path" from the feed through `CandleStore.on_tick` to `_persist_candle`; `docs/web_claude/01_module_instructions/module_26_live_feed_candle_store.txt` (`bcf03b5`, 2026-04-17) is the module build instruction (L84 to L92, L163, L177). In all, 39 files under `docs/` match `candle_store|CandleStore` (grep `-l`); the 32 not named in P03-S114 to P03-S118 were not read.
+
+## 14. Points the AUDIT may examine (neutral)
+
+1. Volume: the store adds the per-tick `volume` argument (P03-S015); the dispatcher passes the feed's `volume_traded` value when present and 0 otherwise (P03-S064 to P03-S066); the current vendor page calls that field "Volume traded for the day" (P03-S072). The sources disagree on intent: LF11 "volume = 0 ... not tracked" (P03-S114), the FIX-135 comments "accumulated from ticks" (P03-S011), the tests' per-tick increments (P03-S112) and the M-D1 record "HELD" (P03-S116).
+2. The meaning and form of the live `ts`: an end-of-interval host time with microseconds, the same for all candles of a close (P03-S045, P03-S079), against the schema comment "ISO-8601 IST candle close" and the other writers' forms (A03 Y-06; P03-S082).
+3. Window membership by dispatch order rather than exchange or receipt time; the unused `ts` argument and `window_start` field (P03-S016, P03-S029 to P03-S032).
+4. Close timing: no check that the boundary was reached and no record of the last boundary closed, so a long close can merge intervals and an early wake can split one (P03-S037).
+5. Synthetic candles: carried forward without limit and without a session check, stored in history (where they can push out real candles), passed to every consumer, none of which reads `is_synthetic`, and persisted by the live writer (P03-S041, P03-S047, P03-S094, P03-S103).
+6. The synthetic-only guard does not react to a feed that never delivers a tick (P03-S043).
+7. The timer thread has no exception guard, no health check and no restart (P03-S023, P03-S050).
+8. Close callbacks run synchronously on the timer thread, including a database insert per candle; callback errors are logged without a traceback and insert errors at DEBUG only (P03-S048, P03-S069, P03-S078).
+9. `stop()` neither joins nor emits the open candles, and the shutdown closes the store after the candle store is only signalled to stop (P03-S022, P03-S073, P03-S074).
+10. The token map is a boot-time copy of every cached instrument, never refreshed; the FIX-092 clean-up chain is unwired (P03-S025, P03-S027, P03-S095).
+11. Reconnect: the open candles are discarded at the first reconnect attempt, the next candle may be partial and is not marked, gap minutes become synthetic candles, and nothing is refilled (P03-S056, P03-S057, P03-S105).
+12. `start()` has no guard against a second call (P03-S021); `get_candles` returns the whole history for `n=0` (P03-S054; no caller does this).
+13. The lock is held while every mapped token is scanned once a minute (P03-S060).
+14. Documents against code: LF11 (volume), LF12 (no synthetic candles), LF13 (nine fields) and LF14 (390) against the code (P03-S114); the manager registry's line references (P03-S084); the breach monitor's docstring claiming dispatcher wiring (P03-S092).
+15. The candle interval is a literal in `main.py`, not a setting (P03-S062, P03-S063).
+

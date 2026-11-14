@@ -156,7 +156,7 @@ P04-S059. FACT (sections 3 to 8): no function sorts its input or checks its orde
 
 P04-S060. INTERPRETATION (sections 3 to 8; question B4): `true_range_series`, `atr`, `ema_series`, `ema`, `adx` and `rsi` read no time, so consecutive list elements are treated as consecutive bars whatever their time distance; a missing bar, a session break or a day break is not detected. No function removes duplicates or handles a late or corrected candle. Only `resample` reports gaps (empty in-session slots on dates that have data, P04-S052), and it never fills them. No function knows whether a candle is final: a still-forming last candle is used like a final one. Where a caller filters or truncates its candles first, that is the caller's logic (section 10).
 
-P04-S061. FACT (sections 3 to 8; L33 to L42; question B7): no function rounds a value, quantises a price or snaps it to a tick. Prices are converted with `float`, and results are returned as Python floats at full precision; `resample` converts volumes with `int`. The module reads no tick size and uses no `Decimal` arithmetic. INTERPRETATION: results carry the ordinary binary floating-point error of float sums and divisions, which no function corrects. FACT (boundary only): some callers round values derived from these results, for example the regime engine's evidence rounds the ADX to two decimals (`regime/engine.py` L186, L278) and the PB-01 would-be runner rounds its stop price to four decimals (`v3_chain/pb01_runner.py` L135).
+P04-S061. FACT (sections 3 to 8; L33 to L42; question B7): no function rounds a value, quantises a price or snaps it to a tick. Prices are converted with `float`, and results are returned as Python floats at full precision; `resample` converts volumes with `int`. The module reads no tick size and uses no `Decimal` arithmetic. INTERPRETATION: results carry the ordinary binary floating-point error of float sums and divisions, which no function corrects. INTERPRETATION (Python semantics, checked on the built-ins only): no function checks for NaN or infinity; a NaN spreads through sums and divisions, while in the true range's `max` it is returned only when it is the first term (`high - low`), so its effect depends on its position. FACT (boundary only): some callers round values derived from these results, for example the regime engine's evidence rounds the ADX to two decimals (`regime/engine.py` L186, L278) and the PB-01 would-be runner rounds its stop price to four decimals (`v3_chain/pb01_runner.py` L135).
 
 P04-S062. FACT (A04 AUDIT of 2026-11-13, the CG-27 match record and section 14.5): A04 CG-27 concerns the tick helpers of `broker/slippage_engine.py` L147 to L186 and the tick guards they rely on, and hands A05 "the instrument cache's refusal of a non-positive tick, on which the helpers' safety rests". FACT (P04-S012, P04-S061): `core/candle_math.py` uses no tick size, so CG-27 does not reach this module (the instrument cache's tick check is part P05's).
 
@@ -273,3 +273,63 @@ P04-S094. FACT (the A05 source file inventory, section 4): `core/daily_stats.py`
 P04-S095. FACT (the project records searched for `candle_math`, `true_range`, `session_vwap`, `ema_series` and `resample`): besides the index (entry A05), the Topic Completion Register's A05 scope (L90), the A05 source file inventory and the existing technical record of P04-S096, the only project record that names the module is A02's K-26 (the A02 AUDIT of 2026-11-08, L2170 to L2185; the Audit Findings Register, row K-26, L322): `watchlist.entry_tf` has no reader, with the comment "retest timeframe (built via candle_math.resample)" as its intent source; ISSUE; owners A02 and A18; agreed on 09-Nov-2026. This part's P04-S080 agrees with it and leaves it where it is. FACT (the direction for this part): none of the 33 handoffs belongs wholly to this part. The one inherited point checked here, A04 CG-27, does not reach the module because the module uses no tick size (P04-S062).
 
 P04-S096. FACT (for part P11; no verdict given here): the existing technical record `02_PHASE1_LEGACY_STUDY_AND_AUDIT/00_EXISTING_LEGACY_TECHNICAL_RECORDS/02_REPOSITORY_AND_FILE_MAP.md` L151 to L166 has an entry for this module. Its import list (six non-test modules and two tests), key symbols, inputs and outputs are the ones found in sections 2 to 11, and it already notes that `adx` "reuses the TR formula inline (213-217)". Its three "Unknowns" are addressed here: the `Candle` field set and time-zone convention (P04-S013); whether callers derive session bounds from `core.market_windows` (`resample` has no caller, P04-S058; the detector passes `MarketWindows` bounds to `intraday_anchors`, P04-S073); and reliance on `session_vwap`'s zero-volume skip (its one caller, P04-S074; the reliance itself is A08's).
+
+## 15. Points the AUDIT may examine (neutral)
+
+1. The header's purpose, inputs, outputs and "Wiring : NONE yet" lines name two helpers and no wiring, while the file defines seven public functions and six non-test modules import it; the header and the first imports came in the same commit (P04-S007 to P04-S010).
+2. `adx`'s docstring and `docs/SYSTEM_MAP.md` say it reuses `true_range_series`; it computes the same true range inline (P04-S035, P04-S085, P04-S090).
+3. `DAILY_TF` is defined and never used; `resample` tests a literal tuple (P04-S016).
+4. `atr` has no default period ("no default period is baked in here"), while `adx` and `rsi` default to 14 (P04-S016).
+5. `session_vwap` reads no time, so its "session" scope rests on the caller; its one caller scopes by wall-clock date and session but not by completeness (P04-S028, P04-S074).
+6. No function checks the order of its input, removes duplicates or detects gaps, and nothing in the fetch chain sorts the broker's rows; the order the server sent is UNKNOWN / NOT ESTABLISHED (P04-S059, P04-S060, P04-S067).
+7. The Wilder ATR, ADX and RSI and the EMA depend on the length and start of the input, and the callers fetch different windows (90 calendar days of daily candles; 400 days of index daily candles; 10 days of 30-minute candles; 180-day structure windows), so the same indicator and period can give different values on different paths (P04-S025, P04-S032, P04-S039, P04-S043; P04-S069 to P04-S076).
+8. In `resample`, "partial" covers only the session-tail overrun: a still-forming or incomplete bucket is not flagged, for a call during the session every later slot is reported empty, a daily bar carries the session-open time, and the function is not told the base timeframe (P04-S046, P04-S054, P04-S055).
+9. `resample` places each base candle by its `ts`, so the result depends on whether candles are stamped at their start or their close; the tests use start-stamped candles, while the live `CandleData` field comment says close time; `resample` has no non-test caller (P04-S015, P04-S057, P04-S058, P04-S082; Rama's decision B).
+10. `resample` and `intraday_anchors` use each candle's wall-clock time without zone conversion, and `resample` raises on mixed naive and aware candles (P04-S056, P04-S074).
+11. `watchlist.entry_tf` and its two "built via candle_math.resample" comments, while the entry stage uses a literal and `resample` would reject `"5minute"` (A02 K-26, kept; P04-S079, P04-S080, P04-S095).
+12. The regime engine passes the whole fetched intraday window to `adx`, without a date or session filter; with `intraday_lookback_days` 1 that window is the last 24 hours (P04-S071, call 9 of P04-S068). The meaning for the day-type axis is A18's.
+13. Through the fetcher cache, candles passed to the module can be up to 30 minutes old by default, and the cache key ignores the lookback (P04-S077; the cache is A08's).
+14. The schemas do not check that every period passed is positive (`ema_fast`, `ema_slow`, `adx_period`, `atr_period`, `htf_ema_period`); a bad value raises `ValueError` inside the module and is caught by the callers' wrappers (P04-S072, P04-S075).
+15. The live screener's ATR and RSI inputs are `None`, no screening module imports the module, and the `daily_symbol_stats` helpers have no non-test caller, while legacy documents describe the M-S4 "substrate" as shipped (P04-S070, P04-S088; A07's, A03's, A15's and A18's).
+16. Two quantities are called VWAP: the broker's average traded price in live screening and the typical-price VWAP of the S&R anchors (P04-S091).
+17. Values are returned unrounded and never snapped to a tick; there is no NaN or infinity check (P04-S061; CG-27: P04-S062).
+18. The legacy documents' test counts (26, 31) and "unwired" statements describe an earlier state (P04-S084).
+
+## 16. UNKNOWN / NOT ESTABLISHED
+
+P04-S097. UNKNOWN / NOT ESTABLISHED: whether any of the fourteen call sites ever ran in production. The tracked `config/system_config.yaml` declares the regime engine disabled, the detector enabled but its anchors disabled, the V3 chain in `"shadow"` and the watchlist enabled, and the forward-shadow script is a declared cron job; the effective settings (local overlays were not read) and any runtime record are not evidence here (P04-S069, P04-S071 to P04-S076).
+
+P04-S098. UNKNOWN / NOT ESTABLISHED: the order of the rows, their timestamp convention (start or end of the interval), their time-zone form (aware or naive) and whether a still-forming candle was included, in what the broker's server sent in the legacy period (P04-S067; P02-S066).
+
+P04-S099. UNKNOWN / NOT ESTABLISHED: the Python version installed on the legacy machine (the A04 AUDIT of 2026-11-13 keeps it UNKNOWN, row P10-S158). The interpretations here rely on long-standing Python 3 behaviour of `float`, `int`, `max`, `datetime.combine`, naive and aware comparison, and `typing.TYPE_CHECKING`.
+
+P04-S100. UNKNOWN / NOT ESTABLISHED: whether any value computed by these functions reached a stored record in production (the regime state file, the V3 and PB-01 would-be JSON-lines files, the forward-shadow file, the detector's rows). No such file is tracked at the baseline (`git ls-tree -r 970aabf` under `data_store/`).
+
+P04-S101. UNKNOWN / NOT ESTABLISHED: the timestamp convention of the live `CandleData` objects at runtime (part P03). It would matter here only if they were passed to `resample`, which has no non-test caller (P04-S015, P04-S057).
+
+## 17. Draft questions about intent for Rama
+
+1. Were the functions of `core/candle_math.py` meant to be applied to live, tick-built candles as well as to broker historical candles, or to historical candles only? (At the baseline all fourteen calls use historical candles.)
+2. Was `resample` meant to build the PB-01 retest timeframe, as the two `entry_tf` comments say, or was fetching 5-minute candles directly the intended design? (Note for the coordinator: A02 K-26 already records the key, with "Rama: not needed"; this question is about `resample`'s intended role, and may be dropped if K-26 is taken as covering it.)
+3. Was `resample`'s "partial" flag meant to cover only the session-tail bucket, or also a bucket that is still forming when the function is called?
+4. Were the Wilder ATR, ADX and RSI values meant to be the same for the same instrument and period on every path, whatever history each caller fetches?
+5. Was `session_vwap` meant to measure the same quantity as the broker's average traded price that live screening uses as "VWAP", or a separate measure?
+6. Was the fetch layer meant to guarantee oldest-first, de-duplicated candles to these functions, or was the broker's row order to be relied on?
+
+## 18. Where the direction's questions are answered
+
+| Question | Statements |
+|---|---|
+| B6 The calculation contract shared by live and historical candles, if any | P04-S013 to P04-S015, P04-S057, P04-S066, P04-S067, P04-S078, P04-S101 |
+| B7 Rounding, price precision, tick-size inputs | P04-S012, P04-S025, P04-S029, P04-S032, P04-S038, P04-S042, P04-S056, P04-S061 to P04-S063 |
+| B8 Exact callers and consumers (calculation callers) | P04-S068 to P04-S078, P04-S080, P04-S092 to P04-S094 |
+| I5 Tick and candle calculations; A04 CG-27; separate from A08's later use | P04-S018 to P04-S058 (the formulas), P04-S059 to P04-S065 (the common contract), P04-S062 (CG-27), P04-S093 (the A08 and A18 boundary) |
+| B2 Timestamp convention (the `resample` side) | P04-S049, P04-S055 to P04-S057, P04-S067, P04-S082 |
+| B3 OHLCV aggregation and partial candles (the `resample` side) | P04-S050, P04-S051, P04-S054, P04-S055 |
+| B4 Gaps, duplicates, late or out-of-order input | P04-S020, P04-S051, P04-S052, P04-S059, P04-S060 |
+| B5 When a candle is final; revision (the `resample` side) | P04-S054, P04-S055, P04-S060 |
+| C4 Same contract as live candles (the calculation side) | P04-S066 |
+| G1, G2 Producer-to-consumer map and owners (the calculation part) | P04-S068, P04-S093, P04-S094 |
+| G4 Where data is cached or transformed (the calculation part) | P04-S070, P04-S077, P04-S078 |
+| I4 Rate limits and concurrency (the module's side) | P04-S065, P04-S069, P04-S071 |
+| Inherited items (A04 CG-27; none wholly here) | P04-S062, P04-S095 |

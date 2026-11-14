@@ -1,6 +1,6 @@
 # A05 STUDY part P02: The pinned kiteconnect 5.1.0 library: the ticker and the client methods A05 uses
 
-**Status:** WORKING DRAFT (helper output; not a project record)
+**Status:** WORKING DRAFT (helper output, checked and corrected by a separate helper; not a project record)
 **Baseline:** trading-system-prod-snapshot, branch main, commit 970aabf3c78d777d9d34549e021f7c8e756c7bdb
 **Scope:** the published `kiteconnect` 5.1.0 distribution, read as text only (never installed, imported, built or run): its provenance and the legacy pin (section 2); `kiteconnect/ticker.py` in whole (section 3); the `kiteconnect/connect.py` methods that A05 code calls, with `exceptions.py` (section 4); the current Kite Connect v3 documentation pages that bear on those library facts (section 5); a mapping of every A05 call site and the feed's `KiteTicker` use to the library facts (section 6). Library side only: what the legacy callers do with the results belongs to the other A05 parts (P01 feed, P06 historical closure, P07 instrument refresh, P08 daily candles) and to A04 (client construction, rate limiter).
 **Prepared:** 14-Nov-2026 (IST), read-only helper for part P02.
@@ -457,7 +457,7 @@ P02-S098. INTERPRETATION, the provisional LTP-packet point (basis P02-S050, P02-
 | P02-S088 | pointer to P02-S100 added | completeness |
 | P02-S090 | added that C7 has no caller outside tests (P02-S100) | precision |
 | P02-S091 | "so rows carry no `oi`" became "a row gets an `oi` key only if the server nevertheless sends a seventh value" | the server's behaviour is not established by the library |
-| P02-S093 | typed columns corrected: `last_price` and `strike` are also `float` (the draft's "every other column as text" included them); "last row wins" given per script (`fetch_daily_candles.py` L286; `refresh_instruments.py` L150 to L155, rows of segment `NSE` or `NSE-EQ` only) | factual error in the draft (P02-S068 L827 to L828) |
+| P02-S093 | typed columns corrected: `last_price` and `strike` are also `float` (the draft's "every other column as text" included them); "last row wins" given per script (`fetch_daily_candles.py` L286; `refresh_instruments.py` L150 to L155, rows of segment `NSE` or `NSE-EQ` only) | factual error in the draft (`connect.py` L827 to L828; P02-S068) |
 | P02-S095 | "no name" became "no name passed"; "only `stop()` stops the reactor" became "the only `reactor.stop()` call in kiteconnect's code is in `KiteTicker.stop()` (L560), the debug-only factory call aside" | precision (P02-S036) |
 | P02-S096 | the keys "go to the server as repeated `i` parameters" became "are handed to requests as the list value of `i`" (the repeated-`i` encoding is requests', not read); "only `timestamp` and `last_trade_time` are converted" became "of the fields the current page lists, only those two are among the seven names `_format_response` converts" | requests not read; `_format_response` converts seven names (L418) |
 | P02-S097 | "the connection attempt goes out as" became "the URL handed to autobahn is" | whether and how it goes out is autobahn's |

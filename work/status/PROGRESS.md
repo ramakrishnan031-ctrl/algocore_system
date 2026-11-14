@@ -23,3 +23,10 @@ corrected statement by statement by a separate helper; backups to wip/a05-fieldw
 Order: pairs (P01,P02) (checks P01,P02) (P03,P04) (checks) (P05,P06) (checks) (P07,P08) (checks) (P09,P10) (checks)
 (P11,P12) (checks); then the STUDY and evidence files are assembled and checked independently.
 Resume rule: a part whose file exists continues from the first section not marked done in status/<part>.status.
+
+## Assembly notes (to settle when the STUDY is assembled)
+- P04-S102 says scripts/sr_level_export.py reaches session_vwap; P06-S061 (and A01 C38b) show the script fails before any
+  fetch (L139 TypeError; A01 recorded L141). Verify at the baseline and reconcile in P04's evidence (assembly correction).
+- P04 check log: a docstring/filter mismatch in core/daily_stats.py L28-L29 vs L58 is outside A05's scope: route to A15
+  as a boundary note (not a finding).
+- P01 Q4 and P04 Q2 for Rama may duplicate A02 records (IC-40/K-30; K-26): drop or cross-reference at assembly.

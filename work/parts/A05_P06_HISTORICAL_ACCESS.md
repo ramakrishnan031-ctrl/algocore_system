@@ -240,3 +240,38 @@ P06-S080. HISTORICAL (`docs/audit/regime_phase0_index_ingestion_17jul2026.md` L4
 P06-S081. HISTORICAL (`tests/unit/test_sr_detector_fetch.py` L1 to L108, text only, never run): the tests state the intended behaviour with fakes: the closure "paces via rate_limiter("historical")" and then calls the client (L54 to L61); with no client it returns `[]` and takes no token (L64 to L69); the fetcher returns `Candle` objects and serves a repeat request from its cache within the TTL (L72 to L87); it fails safe on a fetch error, a token-lookup error and an empty answer (L90 to L108). The fake rows have naive `date` values, newest first (L15 to L20, L37). This file has no test of a limiter timeout or abort through the closure, of an aware `date`, or of a malformed row.
 
 P06-S082. HISTORICAL (`tests/unit/test_sr_detector_observer.py` L7, L94, L114, search lines): the observer tests state that "a failing fetch never raises and logs a fetch_failed row" and that "an empty result still writes one (fetch_failed) row"; the detector's row is A08's.
+
+## 13. Points the AUDIT may examine (neutral)
+
+1. The closure has no `try`, no translation and no 429 path; every failure, including a pacing timeout or a shutdown abort in which no broker call was made, ends as one WARNING worded "historical_data failed" and None in A08's fetcher (P06-S016, P06-S021, P06-S025; A04 RL-05).
+2. An empty broker answer and every kind of failure reach the consumer in the same form (None, or a missing interval); an empty answer logs nothing (P06-S026).
+3. The historical `ts` (the server's label; the start of the interval by the current examples and by a consumer's own code) and the live `ts` (the host's time at the close, the end of the interval) share one name and differ in meaning, precision and source (P06-S049 to P06-S052).
+4. Whether a historical `ts` is aware or naive depends only on the server's string; `Candle.from_kite` does not normalise it; two consumers align or strip the zone by wall-clock digits (P06-S045, P06-S050, P06-S053).
+5. Every window ends at the call time, so the last candle may be still forming; nothing on the A05 side marks or drops it (P06-S041).
+6. All consumer threads of the trading process share one `historical` bucket at the committed 2 per second with a burst of 2, below the current documented 3 per second; the scripts pace separately or not at all (P06-S017, P06-S022, P06-S023, P06-S062; A04 RL-06).
+7. A consumer thread can block for up to 30 s per interval waiting for a token, and a three-interval request can do so three times in turn (P06-S018, P06-S029).
+8. The shutdown event is looked at only while a caller waits: a fetch that starts during shutdown goes to the broker when a token is free (P06-S019).
+9. The fetcher's cache key leaves out the lookback window; at the committed constructions this has no effect (P06-S028; A08's fetcher).
+10. The regime fetcher takes its cache TTL from `sr_detector.cache_ttl_sec`, not from the `regime` section (P06-S035).
+11. The boot WARNING about a missing handle cannot be logged in Live, where the handle is always the adapter's client (P06-S014).
+12. `scripts/sr_level_export.py` already fails at L139, before the L141 of A01 C38b (P06-S061; for the script's owner).
+13. No code adjusts for corporate actions, and no result of the one-time adjustment check is recorded (P06-S063, P06-S064).
+14. A `Candle` does not say which instrument, interval or source it came from, and its volume cannot tell a missing value from zero (P06-S045).
+15. The comment above the flags ("Both default OFF") describes two flags, while the condition has six and `sr_detector.enabled` is committed `true` (P06-S033).
+16. Legacy documents state the historical pacing as "~3/s" or "≤3 req/sec" and the shadow recorder's limiter as "the SAME" (P06-S057, P06-S077, P06-S078; A04 RL-06, RL-07).
+
+## 14. UNKNOWN / NOT ESTABLISHED
+
+- The effective values of the six flags, the `historical` bucket, the lookbacks, the TTLs and the client timeout on the legacy machine (committed values only were read; overlays not read; A02) (P06-S017, P06-S030).
+- Whether the closure was built in production, which consumers ran, whether any historical fetch was made, how many, and with what outcome; no log survives in the repository (C6) (P06-S029, P06-S032).
+- The form of the candle timestamps the server sent in the legacy period (with a `+0530` offset or without), and whether they marked the start or the end of the interval (P06-S049, P06-S051).
+- Whether the server's answers included a still-forming candle for the current interval (P06-S041).
+- Whether the server accepted the windows and intervals used in one request, and any per-interval limit of the legacy period (P06-S042).
+- The broker's historical rate limit in the legacy period and what it was counted against (A04 RL-14) (P06-S023).
+- Whether 429s, timeouts, pacing timeouts or shutdown aborts occurred on this path (A04 evidence, P05-S171) (P06-S025).
+- How requests applies the client's single timeout, and whether one `requests.Session` is safe for concurrent use by several threads (A01 C38a) (P06-S013, P06-S022).
+- dateutil's parsing, beyond its documented behaviour (part P02, P02-S066).
+- Whether the broker's historical candles were adjusted for corporate actions in the legacy period (P06-S064).
+- What the broker's historical volume field meant (per interval or otherwise); only a document's claim exists (P06-S079).
+- What "spec C" of the SNR-DETECTOR-V1 specification says; the document is not in the repository (P06-S073).
+- Whether `scripts/sr_level_export.py`, `scripts/sr_corp_action_spotcheck.py` and the other scripts of section 9 were run, and when (P06-S057 to P06-S061).

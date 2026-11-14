@@ -13,8 +13,8 @@ corrected statement by statement by a separate helper; backups to wip/a05-fieldw
 | P04 | core/candle_math.py functions, contracts, callers | done 14:28 IST (101 statements) | done 15:00 IST (103 statements; 37 corrected, 2 added) |
 | P05 | Instrument cache (core/instrument_cache.py; preload; consumers) | done 15:35 IST (117 statements) | done 16:07 IST (118 statements; 29 corrected, 1 added) |
 | P06 | Historical candle access (main.py closure; limiter bucket; A08 boundary) | done 15:26 IST (82 statements) | done 16:06 IST (86 statements; 31 corrected, 4 added) |
-| P07 | Instrument refresh and alias tool (refresh_instruments.py; find_symbol_aliases.py) | running | - |
-| P08 | Daily candles and F&O ban scripts (fetch_daily_candles.py; fetch_fno_ban.py) | running | - |
+| P07 | Instrument refresh and alias tool (refresh_instruments.py; find_symbol_aliases.py) | done 16:44 IST (94 statements; resumed once after a server restart) | running |
+| P08 | Daily candles and F&O ban scripts (fetch_daily_candles.py; fetch_fno_ban.py) | done 16:42 IST (97 statements; resumed once after a server restart) | running |
 | P09 | Configuration keys A05 reads (A02 crosswalk) | - | - |
 | P10 | The 33 inherited handoffs and the 5 open issues naming A05 | - | - |
 | P11 | The five existing technical records checked against the code | - | - |
@@ -35,3 +35,5 @@ Resume rule: a part whose file exists continues from the first section not marke
   kite_client=None (None). P04-S102 to be qualified at assembly: the route exists in code but the script stops at L139.
 - P03-S027 misses the InstrumentsRefreshed mention in the gc_sweep docstring (data/candle_store.py L138) (P05 check note).
 - sr_level_export.py: P05 and P06 checks both confirm L139 fails first (A01 C38b's L141 'would fail if reached').
+- .env.example is never opened (strict .env* rule); its contents are taken from the A02 records (A02 F-14).
+- P08-S016: the script prints the broker profile's identity fields (names only) to stdout: keep as a neutral output fact; no security framing in AUDIT points (D-07).

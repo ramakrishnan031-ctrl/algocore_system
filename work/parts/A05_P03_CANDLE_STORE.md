@@ -301,3 +301,15 @@ P03-S124. UNKNOWN / NOT ESTABLISHED: the runtime size of the instrument cache, a
 
 P03-S125. UNKNOWN / NOT ESTABLISHED: the effective values (as opposed to the committed values) of `structure_exit.structure_exit_enabled` and `smart_tgt.volume_dependent_trails`, because local overlays are not in the repository (P03-S085, P03-S088).
 
+## 16. Draft questions about intent for Rama
+
+1. Was a live candle's `volume` meant to be the quantity traded within that minute, a running total for the day, or not tracked at all (LF11 says "not tracked"; the FIX-135 comments say "accumulated from ticks")?
+2. Was a live candle's time stamp meant to mark the start of its minute or its end, and was it meant to be the exact minute boundary or the moment the close ran?
+3. Was a tick meant to be placed in a minute by the exchange's time, by the time the system received it, or by the time it was processed?
+4. Were synthetic flat candles meant to continue without limit for a token that has gone silent, including outside market hours, or only within the session or for a limited time?
+5. Were the candle consumers (the SL trail and the structure exit) meant to treat synthetic candles the same as real ones?
+6. After a feed reconnect, was the minute in progress meant to be discarded, and were the minutes of the gap meant to be filled with synthetic candles?
+7. Was the live candle writer meant to stay dormant while the candle store runs (the "X8: this writer must stay dark" comment), and, if the tick feed were ever wired, which writer was meant to own the `candles` table?
+8. Was the in-memory history meant to hold 390 candles (LF14) or 500?
+9. Was an instrument refresh during a running process meant to clean up the candle store's state (FIX-092, `gc_sweep`) and to refresh its token-to-symbol map?
+

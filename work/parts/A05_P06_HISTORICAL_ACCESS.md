@@ -275,3 +275,32 @@ P06-S082. HISTORICAL (`tests/unit/test_sr_detector_observer.py` L7, L94, L114, s
 - What the broker's historical volume field meant (per interval or otherwise); only a document's claim exists (P06-S079).
 - What "spec C" of the SNR-DETECTOR-V1 specification says; the document is not in the repository (P06-S073).
 - Whether `scripts/sr_level_export.py`, `scripts/sr_corp_action_spotcheck.py` and the other scripts of section 9 were run, and when (P06-S057 to P06-S061).
+
+## 15. Draft questions about intent for Rama (what was intended; no answers proposed)
+
+1. Was a historical candle's time meant to mark the start of its interval, and was it meant to keep the broker's +05:30 offset or to be used as a plain Indian clock time? Was each consumer meant to handle the difference from the live candle's close-time stamp itself? (P06-S049 to P06-S053)
+2. Were the consumers meant to be able to tell an empty answer, a pacing timeout, a shutdown abort and a broker error apart, or was one "no candles" outcome intended for all of them? (P06-S025, P06-S026)
+3. Was a still-forming last candle meant to be left out of historical windows that end at the moment of the call, and if so, by the fetch layer or by each consumer? (P06-S041)
+4. Was the `historical` bucket's 2 requests per second meant as a margin below the broker's limit, and was it meant to cover every feature of the trading process together? (P06-S017, P06-S022, P06-S023)
+5. Were historical candles meant to be adjusted for splits and bonuses before use, and where was the result of the one-time check meant to be recorded? (P06-S063, P06-S064)
+6. Were the windows (180 days for the 30- and 60-minute intervals, 400 days for the daily index, 2 days for one-minute candles) meant to fit one request each, and which broker limit did the "minute cap" comment refer to? (P06-S042)
+
+## 16. Where the direction's questions are answered
+
+| Question | Statements |
+|---|---|
+| C1 (every historical-data call site, wrapper, caller) | P06-S011 to P06-S016, P06-S055 to P06-S062 |
+| C2 (interval, date range, pagination, lookback, batching, response limits) | P06-S017, P06-S034 to P06-S042 |
+| C3 (retries, pacing, timeout, partial responses) | P06-S013, P06-S017 to P06-S019, P06-S024 to P06-S029, P06-S043 |
+| C4 (same timestamp, time zone and OHLCV contract as live candles?) | P06-S043 to P06-S053 |
+| C5 (adjustments, corporate actions, missing data, source substitution) | P06-S063 to P06-S065 |
+| C6 (code capability against production calls) | P06-S014, P06-S030 to P06-S033, P06-S080; section 14 |
+| B6 (live against historical aggregation consistency) | P06-S051, P06-S052, P06-S054 |
+| B2, historical side (timestamp convention) | P06-S040, P06-S048 to P06-S052 |
+| B3 and B7, historical side (partial candles; rounding and precision) | P06-S041, P06-S045 |
+| I3 (historical requests: batching, limits, response interpretation, missing or malformed rows; the A04 boundary) | P06-S013, P06-S016, P06-S025, P06-S026, P06-S040 to P06-S046, P06-S069, P06-S071 |
+| I4, historical side (pacing, limiter use, retries, parallel calls, other processes; RL-05, RL-06) | P06-S017 to P06-S023, P06-S027, P06-S057 to P06-S062, P06-S069, P06-S070 |
+| I1, historical side (instrument identity on the historical request) | P06-S035, P06-S071 |
+| I6 and E1, historical side (what is written and read) | P06-S047 |
+| G3, historical side (normal, degraded, error, retry, restart and stale flows) | P06-S014, P06-S019, P06-S025 to P06-S029, P06-S033, P06-S065 |
+| Inherited handoffs (A01 B-11, C38a, C38b; A04 RL-05, RL-06, RL-07, RL-14, RD-33) | P06-S066 to P06-S072 |

@@ -82,4 +82,12 @@ P04-S027. FACT (L136 to L158): `session_vwap(candles) -> Optional[float]`. For e
 
 P04-S028. FACT (L149 to L158): the function reads no `ts` and no `open`, and filters nothing by date or time; the word "session" in its name is not enforced by the code. HISTORICAL (L142 to L144, docstring): "The caller scopes `candles` to the intended session/window (e.g. today's in-session bars) — this function is a pure reducer over whatever it is given". The one non-test caller scopes the candles itself (section 10, call 9).
 
-P04-S029. INTERPRETATION (the formula): the value is a typical-price approximation per bar, weighted by bar volume; it is not the exchange's average traded price. A candle with a negative volume is skipped, not rejected. Nothing is rounded; the result is in the candles' price units. A `None` in any read attribute raises `TypeError` (from `float(None)`).
+P04-S029. INTERPRETATION (the formula): the value is a typical-price approximation per bar, weighted by bar volume; it is not the exchange's average traded price. A candle with a negative volume is skipped, not rejected. Nothing is rounded; the result is in the candles' price units. A `None` volume raises `TypeError` (from `float(None)`, L150); a `None` price raises only on a candle with positive volume, because the prices of a skipped candle are not read (L151 to L153).
+
+## 5. Exponential moving average: `ema_series` and `ema`
+
+P04-S030. FACT (L165 to L181): `ema_series(values: Sequence[float], period: int) -> List[float]` takes plain numbers, not candles. It raises `ValueError` for a `period` that is not an `int`, is a `bool`, or is not positive (L171 to L172). It converts every value with `float` (L173) and returns `[]` when there are fewer values than `period` (L174 to L175). Otherwise: smoothing factor `k = 2 / (period + 1)` (L176); seed = `sum(vals[:period]) / period`, the simple mean of the first `period` values (L177); then, for each later value `v`, `EMA_t = v × k + EMA_(t-1) × (1 - k)` (L178 to L180). The list has `len(values) - period + 1` elements; its first element belongs to input index `period - 1`.
+
+P04-S031. FACT (L184 to L188): `ema(values, period) -> Optional[float]` returns the last element of `ema_series(values, period)`, or `None` when that list is empty. It has the same validation (through `ema_series`) and no default period.
+
+P04-S032. INTERPRETATION (Python semantics, L173): `values` can be any iterable of numbers or numeric strings; `None` raises `TypeError`. As with the Wilder ATR (P04-S025), the result depends on the whole input, because the seed is taken at the start; the seed's weight decays by `(1 - k)` per later value. Nothing is rounded. Every non-test caller passes candle closes (section 10).

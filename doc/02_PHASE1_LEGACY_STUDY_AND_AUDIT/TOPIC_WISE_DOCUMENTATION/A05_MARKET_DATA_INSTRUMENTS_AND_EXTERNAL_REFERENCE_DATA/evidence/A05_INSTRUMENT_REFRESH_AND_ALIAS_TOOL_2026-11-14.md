@@ -1,8 +1,8 @@
 # A05 evidence: the instrument refresh, the external reference data and the alias tool
 
-**Status:** DRAFT — evidence for the A05 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A05 STUDY, approved by Rama on 2026-11-17 with the A05 topic package (Decision Register, D-35)
 **Date:** 2026-11-14
-**Revision history:** First version, 2026-11-14: written by a read-only helper as STUDY part P07, then checked statement by statement against its sources and corrected by a separate read-only helper (the check log is the last section); assembled as evidence by Claude.
+**Revision history:** First version, 2026-11-14: written by a read-only helper as STUDY part P07, then checked statement by statement against its sources and corrected by a separate read-only helper (the check log is the last section); assembled as evidence by Claude. Approved by Rama on 2026-11-17 with the A05 topic package (Decision Register, D-35): status marked APPROVED; content unchanged.
 **Purpose and scope:** What `scripts/refresh_instruments.py` does to build `config/instruments.csv` from its sources (the tracked security master, sector and F&O files, and the broker's NSE instrument dump): the join, the source of each column, validation, the write, its failure paths and invocations; and what `scripts/find_symbol_aliases.py` does, with its alias-file target, with A05's side of the inherited items met there (STUDY part P07).
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 14-Nov-2026 from the local read-only clone. Nothing in the clone was written or run. No credential, token, account identifier or machine path is reproduced (Document 08, section 11; D-07).
 

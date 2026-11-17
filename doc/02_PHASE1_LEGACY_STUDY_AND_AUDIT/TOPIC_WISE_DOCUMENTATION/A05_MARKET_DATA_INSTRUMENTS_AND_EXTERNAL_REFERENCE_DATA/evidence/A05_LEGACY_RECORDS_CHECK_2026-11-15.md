@@ -1,8 +1,8 @@
 # A05 evidence: the five existing technical records checked against the code
 
-**Status:** DRAFT — evidence for the A05 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A05 STUDY, approved by Rama on 2026-11-17 with the A05 topic package (Decision Register, D-35)
 **Date:** 2026-11-15
-**Revision history:** First version, 2026-11-15: written by a read-only helper as STUDY part P11, then checked statement by statement against its sources and corrected by a separate read-only helper (the check log is the last section); assembled as evidence by Claude.
+**Revision history:** First version, 2026-11-15: written by a read-only helper as STUDY part P11, then checked statement by statement against its sources and corrected by a separate read-only helper (the check log is the last section); assembled as evidence by Claude. Approved by Rama on 2026-11-17 with the A05 topic package (Decision Register, D-35): status marked APPROVED; content unchanged.
 **Purpose and scope:** Every claim of the five existing technical records (Document 08, section 9) about A05's subject matter, checked against the code at the baseline: AGREES, PARTLY AGREES, DIFFERS, NOT CHECKABLE or BASELINE DIFFERENCE, with the counts per record and the data flow the records describe; the records themselves are not edited (STUDY part P11).
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 15-Nov-2026 from the local read-only clone. Nothing in the clone was written or run. No credential, token, account identifier or machine path is reproduced (Document 08, section 11; D-07).
 

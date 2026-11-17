@@ -1,8 +1,8 @@
 # A05 evidence: the 33 inherited items and the Open Issues Register entries that name A05
 
-**Status:** DRAFT — evidence for the A05 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A05 STUDY, approved by Rama on 2026-11-17 with the A05 topic package (Decision Register, D-35)
 **Date:** 2026-11-15
-**Revision history:** First version, 2026-11-15: written by a read-only helper as STUDY part P10, then checked statement by statement against its sources and corrected by a separate read-only helper (the check log is the last section); assembled as evidence by Claude.
+**Revision history:** First version, 2026-11-15: written by a read-only helper as STUDY part P10, then checked statement by statement against its sources and corrected by a separate read-only helper (the check log is the last section); assembled as evidence by Claude. Approved by Rama on 2026-11-17 with the A05 topic package (Decision Register, D-35): status marked APPROVED; content unchanged.
 **Purpose and scope:** The 33 items that A01 to A04 handed to A05 (Rama's decision A of 14-Nov-2026), each with its record references, owners, classification, status and treatment exactly as recorded, its A05-side question and the A05 statements that record its A05 side; the five Open Issues Register entries naming A05; and the cross-checks of the handoff lists. G-19 is cited by ID only; U-25 is an A08-owned pointer (decision E) (STUDY part P10).
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 15-Nov-2026 from the local read-only clone. Nothing in the clone was written or run. No credential, token, account identifier or machine path is reproduced (Document 08, section 11; D-07).
 

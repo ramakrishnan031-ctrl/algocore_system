@@ -1,8 +1,8 @@
 # A05 evidence: producers, readers and writers of every A05 artefact; duplication; observability hand-offs
 
-**Status:** DRAFT — evidence for the A05 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A05 STUDY, approved by Rama on 2026-11-17 with the A05 topic package (Decision Register, D-35)
 **Date:** 2026-11-15
-**Revision history:** First version, 2026-11-15: written by a read-only helper as STUDY part P12, then checked statement by statement against its sources and corrected by a separate read-only helper (the check log is the last section); assembled as evidence by Claude.
+**Revision history:** First version, 2026-11-15: written by a read-only helper as STUDY part P12, then checked statement by statement against its sources and corrected by a separate read-only helper (the check log is the last section); assembled as evidence by Claude. Approved by Rama on 2026-11-17 with the A05 topic package (Decision Register, D-35): status marked APPROVED; content unchanged.
 **Purpose and scope:** A repository-wide, search-based map of who produces, reads, writes, updates or deletes each A05 artefact (ticks, live candles, historical candles, the instrument master, aliases, the F&O ban list, the candles table, the candle CSV files, reference files and market-data health signals), with each site's owning topic; the places that do the same market-data job separately; and the observability hand-offs to A15 and A16 (STUDY part P12).
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 15-Nov-2026 from the local read-only clone. Nothing in the clone was written or run. No credential, token, account identifier or machine path is reproduced (Document 08, section 11; D-07).
 

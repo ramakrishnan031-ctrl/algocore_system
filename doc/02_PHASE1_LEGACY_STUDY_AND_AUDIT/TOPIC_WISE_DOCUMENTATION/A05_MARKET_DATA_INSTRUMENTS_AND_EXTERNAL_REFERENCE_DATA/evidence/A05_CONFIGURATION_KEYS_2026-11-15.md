@@ -1,8 +1,8 @@
 # A05 evidence: configuration keys and environment-variable names read by A05 code
 
-**Status:** DRAFT — evidence for the A05 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A05 STUDY, approved by Rama on 2026-11-17 with the A05 topic package (Decision Register, D-35)
 **Date:** 2026-11-15
-**Revision history:** First version, 2026-11-15: written by a read-only helper as STUDY part P09, then checked statement by statement against its sources and corrected by a separate read-only helper (the check log is the last section); assembled as evidence by Claude.
+**Revision history:** First version, 2026-11-15: written by a read-only helper as STUDY part P09, then checked statement by statement against its sources and corrected by a separate read-only helper (the check log is the last section); assembled as evidence by Claude. Approved by Rama on 2026-11-17 with the A05 topic package (Decision Register, D-35): status marked APPROVED; content unchanged.
 **Purpose and scope:** Every configuration key, hard-coded setting and environment-variable name (names only) that A05 code reads: read site, code default, definition and committed value (effective values UNKNOWN), whether the value reaches its use, keys defined but read nowhere, and the cross-check against the A02 records, with A05's configuration side of A02 F-14, F-35, K-30 and K-31 (STUDY part P09).
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 15-Nov-2026 from the local read-only clone. Nothing in the clone was written or run. No credential, token, account identifier or machine path is reproduced (Document 08, section 11; D-07).
 

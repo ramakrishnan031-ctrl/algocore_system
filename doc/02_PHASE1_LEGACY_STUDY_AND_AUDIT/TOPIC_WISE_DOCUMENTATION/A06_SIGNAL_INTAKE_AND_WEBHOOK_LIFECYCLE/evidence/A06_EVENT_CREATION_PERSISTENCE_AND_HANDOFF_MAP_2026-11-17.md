@@ -2,7 +2,7 @@
 
 **Status:** DRAFT — evidence for the A06 STUDY, for ChatGPT's review
 **Date:** 2026-11-17
-**Revision history:** First version, 2026-11-17: written by a read-only helper as STUDY part P05, then checked statement by statement against its sources and corrected by a separate read-only helper (the check log is the last section); assembled as evidence by Claude.
+**Revision history:** Revision 1, 2026-11-18: P05-S031 reading (b) reworded after ChatGPT's STUDY review finding M-01 (the called logic stays with A07, A01 and A09; the line stays open). First version, 2026-11-17: written by a read-only helper as STUDY part P05, then checked statement by statement against its sources and corrected by a separate read-only helper (the check log is the last section); assembled as evidence by Claude.
 **Purpose and scope:** When a signal event is created and persisted (receiver and processor); the `signals` table writes, status values, updates through the pipeline, transaction boundaries and failure cases; the evidence recorder P1/P2/P3 capture (A06 side); the exact handoff point to A07 and the contract passed; an interface-only map of every later call-out from `signals/signal_processor.py` (including the late-bound setters and `continue_from_gate` / `continue_from_retest`); the A04 rate-limiter boundary (`try_acquire`). Rama's decision A applies: the logic after the handoff is mapped, not audited (STUDY part P05).
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 17-Nov-2026 from the local read-only clone. Nothing in the clone was written or run. No credential, token, account identifier or machine path is reproduced (Document 08, section 11; D-07).
 
@@ -489,7 +489,9 @@ Downstream strategy selection, screening and trade-decision logic belong to A07.
 screening" are not in the index's A06 entry (a wording difference for the coordinator; the index governs).
 INTERPRETATION: read against the code, these records admit two lines: (a) the dequeue and the start of `_process_one` (the "queued signal handed" on), which
 would place the strategy lookup (L933 to L953, "strategy selection") on A07's side; or (b) the screening call at L998,
-which P04 used as its working end (P04-S033), with the lookup and the strategy-level gates studied by A06 as intake.
+which P04 used as its working end (P04-S033), with the strategy lookup and the processor's orchestration up to that
+call recorded on A06's intake side, while the logic called at the intervening interfaces stays with its owners
+(strategy control and screening A07, the per-strategy entry window A01, the strategy governor A09).
 Which line the STUDY adopts is OPEN QUESTION (boundary; for the coordinator and Rama under decision A); this part
 records both and the contract at each (P05-S032, P05-S033).
 

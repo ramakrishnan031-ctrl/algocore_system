@@ -1,0 +1,5 @@
+# Source comparison of A07_FOCUSED_QUESTIONS.md (Claude's working evidence)
+Direction file as received: eb27ab297b46509b0a0e234954654636602608507a8200c942cc261b84b12a4b (sha256), 228 lines.
+Command: diff <(sed -n '118,158p' DIRECTION) <(the fenced block of A07_FOCUSED_QUESTIONS.md)
+Result: no differences (exit 0).
+Question numbers found: 1 2 3 4 5 6 7 8 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 (the second "8" is the heading "8. FOCUSED INVESTIGATION QUESTIONS")

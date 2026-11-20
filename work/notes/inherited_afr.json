@@ -1,0 +1,579 @@
+{
+ "A01:C11": {
+  "inafr": true,
+  "comp": "`main.py`",
+  "finding": "Market-open, holiday, time, token and path rules are repeated with different rules.",
+  "cls": "ISSUE; FACT, INTERPRETATION, OPEN QUESTION",
+  "treat": "Group D (AGREED, 06-Nov-2026, with its exceptions); A01-09 (OPEN)",
+  "status": "AGREED in part; OPEN QUESTION in part (A01-09: the exact calendar failure behaviour)",
+  "audit_file": "A01_AUDIT_2026-11-05.md",
+  "audit_lines": [
+   153,
+   382,
+   810,
+   2158
+  ]
+ },
+ "A01:C14": {
+  "inafr": true,
+  "comp": "`main.py`",
+  "finding": "The stop-signal handlers are set only after 7 to 12 threads have started; no failed start runs the shutdown routine.",
+  "cls": "ISSUE; FACT, INTERPRETATION",
+  "treat": "Group B (AGREED, 06-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A01_AUDIT_2026-11-05.md",
+  "audit_lines": [
+   156,
+   385,
+   859,
+   2161
+  ]
+ },
+ "A01:C15": {
+  "inafr": true,
+  "comp": "`main.py`",
+  "finding": "The late start-up steps are unguarded; a failure there leaves the workers and the webhook server running.",
+  "cls": "ISSUE; FACT, INTERPRETATION",
+  "treat": "Group B (AGREED, 06-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A01_AUDIT_2026-11-05.md",
+  "audit_lines": [
+   157,
+   386,
+   870
+  ]
+ },
+ "A01:C20": {
+  "inafr": true,
+  "comp": "`main.py`",
+  "finding": "The \"reverse-order shutdown\" comment is untrue (no harm established).",
+  "cls": "ISSUE; FACT",
+  "treat": "Group E (AGREED, 06-Nov-2026, with its exceptions)",
+  "status": "AGREED",
+  "audit_file": "A01_AUDIT_2026-11-05.md",
+  "audit_lines": [
+   162,
+   391,
+   925,
+   2166
+  ]
+ },
+ "A01:B-28": {
+  "inafr": true,
+  "comp": "`main.py`",
+  "finding": "The instance lock is released slightly before the process ends, against \"held for the whole life\".",
+  "cls": "ISSUE; FACT, INTERPRETATION",
+  "treat": "Group E (AGREED, 06-Nov-2026, with its exceptions)",
+  "status": "AGREED",
+  "audit_file": "A01_AUDIT_2026-11-05.md",
+  "audit_lines": [
+   453,
+   1244,
+   2196
+  ]
+ },
+ "A01:B-08": {
+  "inafr": false,
+  "audit_file": "A01_AUDIT_2026-11-05.md",
+  "audit_lines": [
+   458,
+   1952,
+   2199
+  ]
+ },
+ "A02:V-06": {
+  "inafr": true,
+  "comp": "`core/config_auditor.py`",
+  "finding": "The auditor swallows errors in its probes, so the A5 boot gate can pass silently, and a skipped group B is shown as PASS",
+  "cls": "ISSUE; INTERPRETATION",
+  "treat": "Batch T2 group G2 (AGREED, 09-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A02_AUDIT_2026-11-08.md",
+  "audit_lines": [
+   693,
+   911
+  ]
+ },
+ "A02:V-23": {
+  "inafr": false,
+  "audit_file": "A02_AUDIT_2026-11-08.md",
+  "audit_lines": [
+   861
+  ]
+ },
+ "A02:T-14": {
+  "inafr": true,
+  "comp": "`strategies/schema.py`",
+  "finding": "Strategy fields that are configured and that nothing reads (A02's part of the A07 handoff)",
+  "cls": "ISSUE; FACT; OPEN QUESTION",
+  "treat": "Batch T3 group G3 (AGREED, 09-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A02_AUDIT_2026-11-08.md",
+  "audit_lines": [
+   1156,
+   1311,
+   1312,
+   1313
+  ]
+ },
+ "A02:T-20": {
+  "inafr": true,
+  "comp": "`config/scoring_weights.yaml`",
+  "finding": "`scoring_weights.yaml` is \"the single source\", while copies and fallbacks exist elsewhere",
+  "cls": "ISSUE; FACT",
+  "treat": "Batch T3 group G3 (AGREED, 09-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A02_AUDIT_2026-11-08.md",
+  "audit_lines": [
+   1240,
+   1324,
+   1325,
+   1326
+  ]
+ },
+ "A02:F-11": {
+  "inafr": true,
+  "comp": "`config/`",
+  "finding": "`main.py --config` overrides the configuration directory only for some readers",
+  "cls": "ISSUE; FACT; INTERPRETATION",
+  "treat": "Batch T4 group G2 (AGREED, 09-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A02_AUDIT_2026-11-08.md",
+  "audit_lines": [
+   1521,
+   1769
+  ]
+ },
+ "A02:K-05": {
+  "inafr": true,
+  "comp": "`config/system_config.yaml`",
+  "finding": "The three delivery-gate flags are read with different predicates and defaults",
+  "cls": "ISSUE; FACT; INTERPRETATION",
+  "treat": "Batch T5 group G3 (AGREED, 09-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A02_AUDIT_2026-11-08.md",
+  "audit_lines": [
+   1876,
+   2356
+  ]
+ },
+ "A02:K-27": {
+  "inafr": true,
+  "comp": "`config/scoring_weights.yaml`",
+  "finding": "The `v3_chain` thresholds share names and values with `scoring_weights.yaml`, and the dashboard presents one as the eligibility bar",
+  "cls": "ISSUE; FACT; INTERPRETATION",
+  "treat": "Batch T5 group G2 (AGREED, 09-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A02_AUDIT_2026-11-08.md",
+  "audit_lines": [
+   2184,
+   2374
+  ]
+ },
+ "A03:D-05": {
+  "inafr": true,
+  "comp": "`core/state_store.py`",
+  "finding": "Processes documented or commented as read-only open the live database write-capable, and every gate-passing `StateStore` open writes it",
+  "cls": "ISSUE; FACT; INTERPRETATION; HISTORICAL",
+  "treat": "A03 treatment group TG1 (AGREED, 11-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A03_AUDIT_2026-11-10.md",
+  "audit_lines": [
+   406
+  ]
+ },
+ "A03:D-09": {
+  "inafr": true,
+  "comp": "`utils/cron_heartbeat.py`",
+  "finding": "A script run with `--db` records its heartbeat to the default relative path, not to that database",
+  "cls": "ISSUE; FACT; INTERPRETATION; HISTORICAL",
+  "treat": "A03 treatment group TG1 (AGREED, 11-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A03_AUDIT_2026-11-10.md",
+  "audit_lines": [
+   462
+  ]
+ },
+ "A03:H-16": {
+  "inafr": true,
+  "comp": "`core/state_store.py`",
+  "finding": "`daily_symbol_stats`: the comment says the screener reads it; nothing writes or reads it",
+  "cls": "ISSUE; FACT",
+  "treat": "A03 treatment group TG7 (AGREED, 11-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A03_AUDIT_2026-11-10.md",
+  "audit_lines": [
+   947
+  ]
+ },
+ "A03:H-17": {
+  "inafr": true,
+  "comp": "`orders/slippage_recorder.py`",
+  "finding": "Tables written but never read in non-test code",
+  "cls": "ISSUE; FACT",
+  "treat": "A03 treatment group TG7 (AGREED, 11-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A03_AUDIT_2026-11-10.md",
+  "audit_lines": [
+   961
+  ]
+ },
+ "A03:H-50": {
+  "inafr": true,
+  "comp": "`core/state_store.py`",
+  "finding": "`gate_state` has no live writer: the pullback gate's `add()` is never called",
+  "cls": "ISSUE; FACT",
+  "treat": "A03 treatment group TG7 (AGREED, 11-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A03_AUDIT_2026-11-10.md",
+  "audit_lines": [
+   1031
+  ]
+ },
+ "A03:P-02": {
+  "inafr": true,
+  "comp": "`core/state_store.py`",
+  "finding": "`update_signal_status` discards the status time stamp that SP9 and P16 require",
+  "cls": "ISSUE; FACT; HISTORICAL",
+  "treat": "A03 treatment group TG5 (AGREED, 11-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A03_AUDIT_2026-11-10.md",
+  "audit_lines": [
+   1591
+  ]
+ },
+ "A03:P-11": {
+  "inafr": true,
+  "comp": "`orders/order_reconciler.py`",
+  "finding": "Callers combine separately committed range calls; a stop between them leaves partial state, in places permanently",
+  "cls": "ISSUE; FACT; INTERPRETATION",
+  "treat": "A03 treatment group TG2 (AGREED, 11-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A03_AUDIT_2026-11-10.md",
+  "audit_lines": [
+   1714
+  ]
+ },
+ "A03:Q-11": {
+  "inafr": true,
+  "comp": "`screening/retest_monitor.py`",
+  "finding": "A failed release of a parking row (retest or gate) leaves the row stored while the in-memory entry is gone and the pipeline has continued; a restart rehydrates it",
+  "cls": "ISSUE; FACT; INTERPRETATION",
+  "treat": "A03 treatment group TG2 (AGREED, 11-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A03_AUDIT_2026-11-10.md",
+  "audit_lines": [
+   2039
+  ]
+ },
+ "A03:Q-12": {
+  "inafr": true,
+  "comp": "`orders/smart_tgt_manager.py`",
+  "finding": "Memory changes before unwrapped store calls (smart target), a memory-only removal (gate), and an unused delete",
+  "cls": "ISSUE; FACT; INTERPRETATION",
+  "treat": "A03 treatment group TG2 (AGREED, 11-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A03_AUDIT_2026-11-10.md",
+  "audit_lines": [
+   2053
+  ]
+ },
+ "A03:Q-22": {
+  "inafr": true,
+  "comp": "`core/daily_stats.py`",
+  "finding": "Eight methods without a non-test caller, two of them with docstrings that describe a wiring that does not exist",
+  "cls": "ISSUE; FACT",
+  "treat": "A03 treatment group TG7 (AGREED, 11-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A03_AUDIT_2026-11-10.md",
+  "audit_lines": [
+   2183
+  ]
+ },
+ "A03:Q-45": {
+  "inafr": false,
+  "audit_file": "A03_AUDIT_2026-11-10.md",
+  "audit_lines": [
+   2272
+  ]
+ },
+ "A03:U-24": {
+  "inafr": true,
+  "comp": "`scripts/fetch_fno_ban.py`",
+  "finding": "`fetch_fno_ban.py`: per-symbol transactions store a partial ban list without a marker",
+  "cls": "ISSUE; FACT; INTERPRETATION",
+  "treat": "A03 treatment group TG2 (AGREED, 11-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A03_AUDIT_2026-11-10.md",
+  "audit_lines": [
+   3067
+  ]
+ },
+ "A03:U-25": {
+  "inafr": true,
+  "comp": "`core/state_store.py`",
+  "finding": "`sr_detector_backfill.py`: \"a later run picks it up\" against date-limited reads",
+  "cls": "ISSUE; FACT",
+  "treat": "A03 treatment group TG14 (AGREED, 11-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A03_AUDIT_2026-11-10.md",
+  "audit_lines": [
+   3081
+  ]
+ },
+ "A03:E-08": {
+  "inafr": true,
+  "comp": "`scripts/strategy_registry_officer.py`",
+  "finding": "An existing but unreadable direction-registry state file falls back silently to the tracked seed",
+  "cls": "ISSUE; FACT; INTERPRETATION",
+  "treat": "A03 treatment group TG10 (AGREED, 11-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A03_AUDIT_2026-11-10.md",
+  "audit_lines": [
+   3703
+  ]
+ },
+ "A04:OA-22": {
+  "inafr": true,
+  "comp": "`broker/zerodha_adapter.py`",
+  "finding": "Varieties: `modify_order` always sends \"regular\" while the design trails a cover order's stop through it; `cancel_order` defaults to \"regular\" for callers that pass no variety",
+  "cls": "ISSUE; FACT; INTERPRETATION",
+  "treat": "A04 treatment group TG14 (AGREED, 13-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A04_AUDIT_2026-11-13.md",
+  "audit_lines": [
+   2367
+  ]
+ },
+ "A04:RD-12": {
+  "inafr": true,
+  "comp": "`orders/smart_tgt_manager.py`",
+  "finding": "`get_quote`: an absent price becomes 0.0 while absent optional fields become `None`, and some callers read the 0.0 as a price; a requested symbol missing from the answer is dropped without a signal",
+  "cls": "ISSUE; FACT; INTERPRETATION",
+  "treat": "A04 treatment group TG15 (AGREED, 13-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A04_AUDIT_2026-11-13.md",
+  "audit_lines": [
+   2768
+  ]
+ },
+ "A04:RL-11": {
+  "inafr": true,
+  "comp": "`main.py`",
+  "finding": "UNKNOWN: concurrent use of the one Live client and its HTTP session by many threads (A01 C38a's A04 side)",
+  "cls": "UNKNOWN / NOT ESTABLISHED",
+  "treat": "OPEN",
+  "status": "UNKNOWN / NOT ESTABLISHED (no treatment)",
+  "audit_file": "A04_AUDIT_2026-11-13.md",
+  "audit_lines": [
+   3519
+  ]
+ },
+ "A04:PR-23": {
+  "inafr": false,
+  "audit_file": "A04_AUDIT_2026-11-13.md",
+  "audit_lines": [
+   4569
+  ]
+ },
+ "A04:CG-05": {
+  "inafr": true,
+  "comp": "`broker/cost_calculator.py`",
+  "finding": "Every round trip is costed as a BUY at the entry and a SELL at the exit, so for a SHORT trade the sell-side STT and the buy-side stamp duty fall on the opposite legs",
+  "cls": "ISSUE; FACT; INTERPRETATION",
+  "treat": "A04 treatment group TG26 (AGREED, 13-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A04_AUDIT_2026-11-13.md",
+  "audit_lines": [
+   4784
+  ]
+ },
+ "A05:CM-07": {
+  "inafr": true,
+  "comp": "`core/candle_math.py`",
+  "finding": "UNKNOWN: two different values are called VWAP, and no source says which one the system meant",
+  "cls": "UNKNOWN / NOT ESTABLISHED; FACT; INTERPRETATION; HISTORICAL; OPEN QUESTION",
+  "treat": "OPEN",
+  "status": "UNKNOWN / NOT ESTABLISHED (no treatment)",
+  "audit_file": "A05_AUDIT_2026-11-15.md",
+  "audit_lines": [
+   1295
+  ]
+ },
+ "A05:CM-22": {
+  "inafr": false,
+  "audit_file": "A05_AUDIT_2026-11-15.md",
+  "audit_lines": [
+   1379
+  ]
+ },
+ "A05:FB-01": {
+  "inafr": true,
+  "comp": "`scripts/fetch_fno_ban.py`",
+  "finding": "A list for the day can be stored in part with nothing to mark it: a row that fails to store is only logged, and rows the parser skips or a body cut after a complete line are not detected; the run ends with exit 0 and no sentinel, even with `fail_closed` on (A0",
+  "cls": "ISSUE; FACT; INTERPRETATION; HISTORICAL",
+  "treat": "A05 treatment group TG16 (AGREED, 17-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A05_AUDIT_2026-11-15.md",
+  "audit_lines": [
+   2838
+  ]
+ },
+ "A05:FB-02": {
+  "inafr": true,
+  "comp": "`scripts/fetch_fno_ban.py`",
+  "finding": "A second successful run on the same date replaces the rows it lists and deletes none, so the stored list can be the union of two lists; a fail-closed sentinel written by an earlier failed run that day stays after a later success and keeps every symbol banned f",
+  "cls": "ISSUE; FACT; INTERPRETATION; HISTORICAL",
+  "treat": "A05 treatment group TG16 (AGREED, 17-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A05_AUDIT_2026-11-15.md",
+  "audit_lines": [
+   2852
+  ]
+ },
+ "A05:FB-07": {
+  "inafr": true,
+  "comp": "`scripts/fetch_fno_ban.py`",
+  "finding": "UNKNOWN, with a MATCH part: the parser handles the documented format and rejects the documented bad bodies; what it does with forms outside that format (a leading byte-order mark, quoted fields, impossible dates, repeated or unknown symbols) matters only if NS",
+  "cls": "UNKNOWN / NOT ESTABLISHED; FACT; INTERPRETATION; HISTORICAL",
+  "treat": "OPEN",
+  "status": "UNKNOWN / NOT ESTABLISHED (no treatment)",
+  "audit_file": "A05_AUDIT_2026-11-15.md",
+  "audit_lines": [
+   2922
+  ]
+ },
+ "A05:FB-14": {
+  "inafr": false,
+  "audit_file": "A05_AUDIT_2026-11-15.md",
+  "audit_lines": [
+   2959
+  ]
+ },
+ "A06:WA-06": {
+  "inafr": true,
+  "comp": "`signals/webhook_receiver.py`",
+  "finding": "`triggered_at` is read as IST, as the sources say; a time-only text is dated with the day of receipt even when it is later than the moment of receipt, and no check refuses a time ahead of the receiver's clock; the `%p` match depends on the process locale",
+  "cls": "ISSUE; FACT; INTERPRETATION; HISTORICAL",
+  "treat": "A06 treatment group TG1 (AGREED, 19-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A06_AUDIT_2026-11-18.md",
+  "audit_lines": [
+   1974
+  ]
+ },
+ "A06:WA-07": {
+  "inafr": true,
+  "comp": "`signals/webhook_receiver.py`",
+  "finding": "Trigger prices \"nan\" and \"inf\" pass the positive-price check, which has no finiteness, upper-bound or tick test; a symbol is refused only when empty, although WR10 names \"empty/malformed\"; no instrument check",
+  "cls": "ISSUE; FACT; INTERPRETATION; HISTORICAL",
+  "treat": "A06 treatment group TG1 (AGREED, 19-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A06_AUDIT_2026-11-18.md",
+  "audit_lines": [
+   2024
+  ]
+ },
+ "A06:PQ-02": {
+  "inafr": true,
+  "comp": "`signals/signal_processor.py`",
+  "finding": "`stop()`: the executor wait has no limit, against SP4's \"5s timeout\" and the docstring's \"up to 5s\"; every drained or backlogged signal runs intake, screening, sizing, risk and reservation before the pre-placement `SHUTDOWN` reject; a timed-out join could leav",
+  "cls": "ISSUE; FACT; INTERPRETATION; HISTORICAL",
+  "treat": "A06 treatment group TG7 (AGREED, 19-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A06_AUDIT_2026-11-18.md",
+  "audit_lines": [
+   3539
+  ]
+ },
+ "A06:PQ-08": {
+  "inafr": true,
+  "comp": "`signals/signal_processor.py`",
+  "finding": "Texts in the processor and its configuration that the code contradicts, not counted elsewhere: the \"naive datetime\" docstring, the plain-dict map comments, the 60-second default, the resume paths' \":607 60s expiry\", the \"60s signal expiry\" allocator comments, ",
+  "cls": "ISSUE (minor); FACT; HISTORICAL",
+  "treat": "A06 treatment group TG16 (AGREED, 19-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A06_AUDIT_2026-11-18.md",
+  "audit_lines": [
+   3892
+  ]
+ },
+ "A06:PQ-13": {
+  "inafr": false,
+  "audit_file": "A06_AUDIT_2026-11-18.md",
+  "audit_lines": [
+   3990
+  ]
+ },
+ "A06:PQ-14": {
+  "inafr": false,
+  "audit_file": "A06_AUDIT_2026-11-18.md",
+  "audit_lines": [
+   3991
+  ]
+ },
+ "A06:PQ-15": {
+  "inafr": false,
+  "audit_file": "A06_AUDIT_2026-11-18.md",
+  "audit_lines": [
+   3992
+  ]
+ },
+ "A06:EV-02": {
+  "inafr": true,
+  "comp": "`signals/signal_processor.py`",
+  "finding": "A failing status write leaves a status that misdescribes the signal: `PLACEMENT_FAILED` for a signal never checked or for an order handed to the placer; `PROCESSING` after a screener reject; `PASSED` after an allocator drop (case (d), added in the check)",
+  "cls": "ISSUE; FACT; INTERPRETATION; HISTORICAL",
+  "treat": "A06 treatment group TG9 (AGREED, 19-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A06_AUDIT_2026-11-18.md",
+  "audit_lines": [
+   4308
+  ]
+ },
+ "A06:EV-11": {
+  "inafr": true,
+  "comp": "`main.py`",
+  "finding": "The four other entry points into the processor run outside its executor: uncounted, not awaited by `stop()`, with no guard against a second resumption; their bypass of the age check, screening and claim release is as stated",
+  "cls": "ISSUE (latent); FACT; INTERPRETATION; HISTORICAL",
+  "treat": "A06 treatment group TG6 (AGREED, 19-Nov-2026)",
+  "status": "AGREED",
+  "audit_file": "A06_AUDIT_2026-11-18.md",
+  "audit_lines": [
+   4709
+  ]
+ },
+ "A06:EV-19": {
+  "inafr": false,
+  "audit_file": "A06_AUDIT_2026-11-18.md",
+  "audit_lines": [
+   4918
+  ]
+ },
+ "A06:ET-06": {
+  "inafr": true,
+  "comp": "`signals/entry_throttle.py`",
+  "finding": "which of several near-simultaneous approvals the throttle admits is decided by who takes its lock first, after risk approval and reservation, not by receipt order, `triggered_at` or score; the one legacy decision on this (DEC10) is \"OPEN \u2014 Rama's call\" at the ",
+  "cls": "UNKNOWN / NOT ESTABLISHED; FACT; INTERPRETATION; HISTORICAL; OPEN QUESTION",
+  "treat": "None (UNKNOWN / NOT ESTABLISHED items receive no treatment)",
+  "status": "UNKNOWN / NOT ESTABLISHED (no treatment)",
+  "audit_file": "A06_AUDIT_2026-11-18.md",
+  "audit_lines": [
+   5152
+  ]
+ },
+ "A06:ET-13": {
+  "inafr": false,
+  "audit_file": "A06_AUDIT_2026-11-18.md",
+  "audit_lines": [
+   5202
+  ]
+ },
+ "A06:XA-11": {
+  "inafr": false,
+  "audit_file": "A06_AUDIT_2026-11-18.md",
+  "audit_lines": [
+   6541
+  ]
+ }
+}

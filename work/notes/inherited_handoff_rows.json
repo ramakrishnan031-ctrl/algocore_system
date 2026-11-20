@@ -1,0 +1,186 @@
+{
+ "A01:C11": [
+  [
+   2158,
+   [
+    "C11",
+    "A04, A07, A11, A12, A15, A20",
+    "parallel derivations of market hours, holidays, time parsing, token reads, strategies and the NTP check",
+    "A04: token-monitor market hours; A11: TGT-retry module defaults; A12: reconciler market hours; A15: dashboard clock and watchman constants; A20: the pre-flight NTP check; A07: strategy loading with and without `force_intraday_only`"
+   ]
+  ]
+ ],
+ "A01:C14": [],
+ "A01:C15": [],
+ "A01:C20": [
+  [
+   2166,
+   [
+    "C20",
+    "A06, A07, A03",
+    "the shutdown order is a documentation mismatch",
+    "the processor and gate behaviour at stop (A06, A07); SPEC X.4's same-transaction SHUTDOWN marker (A03)"
+   ]
+  ]
+ ],
+ "A01:B-28": [
+  [
+   2196,
+   [
+    "B-28",
+    "A13; A06, A07",
+    "the lock is released before interpreter finalisation",
+    "the non-daemon flatten worker; gate-release tasks at exit"
+   ]
+  ]
+ ],
+ "A01:B-08": [
+  [
+   2199,
+   [
+    "B-08",
+    "A14, A07",
+    "the boot-abort alert wiring",
+    "delivery; strategy validation"
+   ]
+  ]
+ ],
+ "A02:V-06": [],
+ "A02:V-23": [],
+ "A02:T-14": [
+  [
+   1311,
+   [
+    "T-14",
+    "A07",
+    "`pullback_wait_tolerance_pct`, `pullback_wait_timeout_sec` (comments only at `screening/entry_gate.py` L69 to L70), `active_days`, the ATR multipliers: configured, no reader; `screening/secondary_screener.py` reads `min_volume_surge`, `min_adr_pct`, `max_spread_pct` (L235 to L238, L461 to L464), `min_score` (L317 to L321, L501 to L505); `strategies/control.py` reads `intent`, `enabled` (L76 to L77)"
+   ]
+  ]
+ ],
+ "A02:T-20": [
+  [
+   1324,
+   [
+    "T-20",
+    "A07",
+    "signal-age constants 30 s and 60 s in `screening/step_executor.py` L406 to L423 against P9a's 90 s; `getattr` defaults in `secondary_screener.py` L96 to L102"
+   ]
+  ]
+ ],
+ "A02:F-11": [
+  [
+   1769,
+   [
+    "F-11",
+    "A06; A15; A12; A07; A01",
+    "Readers in the trading process that ignore `--config`: `signals/webhook_receiver.py` L265; `core/effect_telemetry.py` L63; `orders/eod_squareoff.py` L696; `core/strategy_direction.py` L43 to L44; `core/account_registry.py::_read_primary_row` L308 to L310."
+   ]
+  ]
+ ],
+ "A02:K-05": [
+  [
+   2356,
+   [
+    "K-05",
+    "A16, A15, A04, A06, A07",
+    "the status table's and the dashboard's \"delivery on\" predicates without `delivery_enabled` (the owners apply the KNOWN DEFECT test to \"never lies\"); the adapter lock tests `delivery_enabled` alone"
+   ]
+  ]
+ ],
+ "A02:K-27": [
+  [
+   2374,
+   [
+    "K-27",
+    "A15, A07, A18",
+    "the \"Minimum Eligible Score\" label on two sources"
+   ]
+  ]
+ ],
+ "A03:D-05": [],
+ "A03:D-09": [],
+ "A03:H-16": [],
+ "A03:H-17": [],
+ "A03:H-50": [],
+ "A03:P-02": [],
+ "A03:P-11": [],
+ "A03:Q-11": [],
+ "A03:Q-12": [],
+ "A03:Q-22": [],
+ "A03:Q-45": [],
+ "A03:U-24": [],
+ "A03:U-25": [],
+ "A03:E-08": [],
+ "A04:OA-22": [],
+ "A04:RD-12": [],
+ "A04:RL-11": [],
+ "A04:PR-23": [],
+ "A04:CG-05": [],
+ "A05:CM-07": [],
+ "A05:CM-22": [],
+ "A05:FB-01": [],
+ "A05:FB-02": [],
+ "A05:FB-07": [],
+ "A05:FB-14": [],
+ "A06:WA-06": [],
+ "A06:WA-07": [],
+ "A06:PQ-02": [],
+ "A06:PQ-08": [],
+ "A06:PQ-13": [
+  [
+   3990,
+   [
+    "PQ-13",
+    "Expiry on the resume paths (A07's gate path, A18's retest path; the A06 expiry rule)",
+    "`continue_from_retest` docstring L2376 to L2384 and comment L2396 (`9f56b07`, 2026-06-27): re-checks kill switch, window, strategy control and governor, \"NOT the :607 60s expiry -- this is a park-and-resume\" (IS-83); `continue_from_gate` docstring L2011 to L2019 (2026-04-17 and 2026-05-14): Steps 1 to 4 bypassed, \"Kill-switch and market-window are re-checked as a last-mile gate\" (IS-83); PROC comment L213 to L216 (2026-08-01): the two resume dispatch sites are \"production-unreachable\" (IS-91; a runtime claim, UNKNOWN as a fact)",
+    "L2033 to L2048 and L2392 to L2405: `PROCESSING`, kill switch, window, shadow guard; no age check on either path; `_signal_expiry_sec` is used only at L222, L917 and L920 (search)",
+    "P04-S042; P05-S043 to P05-S046",
+    "MATCH (no age check, as the retest docstring states and the gate docstring's list of checks implies). Owners A07 (gate) and A18 (retest); A06 (the expiry rule). The stale \":607 60s\" text is PQ-08 (4); STUDY question 22's resumption half: answered by evidence for the retest path, no source for the gate path. EV-11 records the same bypass as a MATCH part inside its ISSUE record (18.1 point 67); this row covers the A06 expiry rule (18.1 point 50's worker side, handed by part WA) and is not a second count of EV-11"
+   ]
+  ]
+ ],
+ "A06:PQ-14": [
+  [
+   3991,
+   [
+    "PQ-14",
+    "The strategy lookup (L933 to L953; ownership OPEN FOR RAMA, STUDY section 17 point 1)",
+    "M30 SPW3, L58 to L68 (2026-04-17), which states that it is \"NOT a new module \u2014 it's an UPDATE\" of the processor (L9 to L10) and replaces M20 SP6 step 2's \"Old: scan_webhook_map -> intent + side + strategy params\" (where M20 L74 named the reject \"UNKNOWN_SCANNER\"): \"scan_webhook_map[scanner_name] -> {strategy: \"name\"}\", `strategy_obj = strategies[strategy_name]`, \"Reject REJECTED_UNKNOWN_STRATEGY if strategy_name missing\" (IS-92); PROC docstring SPW3 L31; M20 SP10: strategies loaded once at construction (IS-165)",
+    "L933: `self._scan_webhook_map.get(scanner_name)`, exact and case-sensitive; L939 to L942: `strategy` from a dict or an attribute; L943 to L953: three `UNKNOWN_STRATEGY` outcomes (no entry; no strategy; not loaded); no default strategy; the maps copied at construction (L207 to L208). INTERPRETATION (P04-S031): under `main.py` the \"no entry\" branch is reachable only if the mapping changed after construction, the \"no strategy\" branch cannot be reached with `ScannerEntry` objects, and \"not loaded\" is reachable when a map strategy has no loaded file; the processor never reads `scanner_type`",
+    "P04-S006, P04-S007, P04-S030, P04-S031",
+    "MATCH (the later SPW3 label and mechanics; M20's earlier label is replaced by name). Owner: OPEN FOR RAMA (A06 under reading (b), A07 under reading (a)). Recording this row adopts neither reading (added in the check): it is written so that the lookup is audited under either line, as the STUDY studied it (section 17, point 1); if Rama chooses reading (a), the row and its evidence pass to A07's AUDIT and leave this part's count; A02 (the map and the strategy files). Not counted here: the unrun S10 check and the per-signal `UNKNOWN_STRATEGY` it leads to (A02 T-02, part XA; CD-22; STUDY question 25 answered by evidence at its date); the scanner name stored as `strategy` (WI-17)"
+   ]
+  ]
+ ],
+ "A06:PQ-15": [
+  [
+   3992,
+   [
+    "PQ-15",
+    "Field survival from the queue item to the screening call",
+    "Receiver docstring L6 to L7 (2026-04-17): \"(signal_id, scanner_name, symbol, price, triggered_at) tuples\" (WI-31); M20 SP6 L62 to L63: `_process_one(signal_id, scanner_name, symbol, trigger_price, triggered_at)`; PROC docstring L871 to L873: the tuple or the FIX-069 dict with `retry_count`; M30 SPW3 L66 to L67 and L70 to L75: intent and direction from `strategy_obj`; the call `secondary_screener.screen(signal_id, symbol, scanner_name, trigger_price, triggered_at, direction=..., intent=..., strategy=strategy_obj, market_data=None)`",
+    "L78 (`_SIGNAL_TUPLE_FIELDS`: the receiver's `price` is named `trigger_price`); L878 to L887 (dict by key or exactly five values; `retry_count` 0 for a tuple); L998 to L1004: the screening call as M30 states it; no field of the item is changed before it; the worker's `now` (L910) is new; direction and intent come from the strategy object; received time, `expires_at`, fingerprint and payload stay in the `signals` row and are never read back (P05-S006). A naming difference only (`price` and `trigger_price`)",
+    "P04-S024, P04-S026, P04-S033, P04-S034; P05-S006",
+    "MATCH. Owner A06 (up to the call; the call's logic A07's). Not counted here: the re-accept item that carries the current request's values under the earlier id (WD-04); the \"naive datetime\" docstring (PQ-08 (1)); the put side (WI-31)"
+   ]
+  ]
+ ],
+ "A06:EV-02": [],
+ "A06:EV-11": [],
+ "A06:EV-19": [
+  [
+   4918,
+   [
+    "EV-19",
+    "The pipeline order up to screening and the contract at each candidate handoff line (the line itself OPEN FOR RAMA)",
+    "The processor's docstring L4 to L8 (\"pre-flight -> strategy lookup -> secondary screen -> ...\"), SPW3 L31 (\"step2=strategy lookup via map; step3=secondary_screener\"), L43 (it does not \"receive signals\") (IS-72, IS-92); M30 SPW3 L58 to L68: the lookup through the map, `REJECTED_UNKNOWN_STRATEGY` when missing (IS-92); M19 WR16 and the receiver docstring L28: no strategy lookup at the receiver (IS-51); the receiver's 5-tuple (module docstring L6 to L7; WR9)",
+    "L895 to L1006 in this order: `PROCESSING`; kill switch (A13); global window (A01); age check (A06); shadow guard (A11); the lookup L933 to L953 with `UNKNOWN_STRATEGY` on each miss; strategy control (A07), per-strategy window (A01), governor (A09), each added later between the lookup and the screener; screening L998 (A07). Line (a) contract: the 5-tuple `(signal_id, scanner_name, symbol, trigger_price, triggered_at)` or the FIX-069 dict with `retry_count` (P05-S032). Line (b) contract: `screen(signal_id, symbol, scanner_name, trigger_price, triggered_at, direction=..., intent=..., strategy=strategy_obj, market_data=None)`, returning a frozen `ScreeningResult`; the screener writes the status (P05-S033, P05-S034)",
+    "P05-S030 to P05-S034; P04-S030 to P04-S034",
+    "MATCH (the order and the contracts follow the sources). Owner: A06 up to the line, A07 after it; which reading holds is OPEN FOR RAMA (STUDY section 17 point 1; section 5.1); neither is adopted. The docstring's \"naive datetime\" against the IST-aware value is IC-27 (part PQ, 18.1 point 57); the direction's wording difference is noted in the STUDY (P05-S031; EV-16 withdrawn in the check)"
+   ]
+  ]
+ ],
+ "A06:ET-06": [],
+ "A06:ET-13": [],
+ "A06:XA-11": []
+}

@@ -1,0 +1,37 @@
+A07 backup.sh - operational test record, Revision 4 (Claude, 20-Nov-2026)
+Method: a sandbox copy generated from the exact script by a program that changes only five path lines (backup clone,
+source, tools, settings file, lock) and switches off the two URL-format lines (they need a github.com address; tested
+separately as S2 on the unmodified lines). Sandbox /tmp/bt: a local bare "remote" with main and wip/a07-fieldwork, a
+backup clone on wip/a07-fieldwork, a source tree with the nine required folders, the real scan.py, and a sandbox
+settings file with a test identity. Nothing touched GitHub or the real repositories; the real script was not run.
+Every case that adds content uses fresh content, so a push is really attempted.
+
+| Test | Condition | Result | Exit |
+|---|---|---|---|
+| T1 | normal run | BACKUP OK; commit author and co-author taken from the settings file | 0 |
+| T11 | rerun, nothing changed | BACKUP OK, no new commit | 0 |
+| T2 | backup clone on main | REFUSED: not on wip/a07-fieldwork | 10 |
+| T3 | origin with two push URLs | REFUSED: exactly one approved push URL | 10 |
+| T4 | origin pointing at another repository | REFUSED: exactly one approved fetch URL | 10 |
+| T5 | stray file outside work/ | REFUSED: changes outside work/ | 10 |
+| T6 | required source folder missing | REFUSED | 10 |
+| T7 | scan.py missing | REFUSED | 10 |
+| T8 | IP-address-shaped string in a part file | BLOCKED: scan hits | 2 |
+| T9 | insteadOf rewrite redirecting the approved address | REFUSED (expanded URL check) | 10 |
+| T10 | remote rejects the push (server-side hook) | REFUSED: push failed or was rejected by a hook; remote unchanged | 10 |
+| T13 | local pre-commit hook rejects | REFUSED: commit rejected by a configured hook; nothing left staged; remote unchanged | 10 |
+| T14 | local pre-push hook rejects | REFUSED: push rejected by a hook | 10 |
+| T15 | settings file missing | REFUSED | 10 |
+| T16 | unknown key in settings file | REFUSED | 10 |
+| T17 | required settings key missing | REFUSED | 10 |
+| S2 | unmodified format lines, non-github address in settings | REFUSED: not a github.com https .git URL | 10 |
+| T12 | rerun after removing the faults | BACKUP OK; the new files present on the remote branch | 0 |
+Throughout: the remote's main never changed; the settings file never appeared in the backup.
+Disclosed: a first attempt of T10 and T13 in this revision reused existing content, so no commit or push was
+attempted; both were rerun with fresh content (results above). After a rejected push the local backup commit
+stays and is pushed by the next successful run (for T13 the sandbox clone was reset to the remote first so that T13
+started clean). In Revision 3 an earlier T10 using file permissions was invalid (root); replaced.
+Real environment: the session's two git URL rewrites (the two SSH forms of the github.com address, to
+https://github.com/) do not match the approved address; the project clone's fetch and push URL lists each hold one
+address. References read 20-Nov-2026: git-scm.com/docs/git-remote (get-url expands insteadOf/pushInsteadOf; --all);
+git-scm.com/docs/git-push (pushes to all pushurls; pre-push hook; --no-verify bypasses it, no longer used).

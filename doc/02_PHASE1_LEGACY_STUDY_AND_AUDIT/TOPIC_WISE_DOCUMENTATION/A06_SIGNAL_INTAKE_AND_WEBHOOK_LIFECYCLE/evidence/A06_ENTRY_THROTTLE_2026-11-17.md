@@ -1,8 +1,8 @@
 # A06 evidence: the entry throttle
 
-**Status:** DRAFT — evidence for the A06 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A06 STUDY, approved by Rama on 2026-11-20 with the A06 topic package (Decision Register, D-37)
 **Date:** 2026-11-17
-**Revision history:** First version, 2026-11-17: written by a read-only helper as STUDY part P06, then checked statement by statement against its sources and corrected by a separate read-only helper (the check log is the last section); assembled as evidence by Claude.
+**Revision history:** First version, 2026-11-17: written by a read-only helper as STUDY part P06, then checked statement by statement against its sources and corrected by a separate read-only helper (the check log is the last section); assembled as evidence by Claude. Approved by Rama on 2026-11-20 with the A06 topic package (Decision Register, D-37): status marked APPROVED; content unchanged.
 **Purpose and scope:** `signals/entry_throttle.py` in whole (algorithm, units, windows, limits, state, locking, time source, `metrics()`, configuration and code defaults, failure behaviour, boundary conditions); its construction in `signals/signal_processor.py` and its three call sites, at the level needed to understand the throttle (Rama's decision B of 17-Nov-2026: the screening, fund-reservation and admission decisions stay with A07 and A09); concurrency of `admit()`; the A06 side of A04-31. Direction questions 11 (entry throttle), 12 and 14 (throttle side). The receiver's per-address limiter is P03's; the processor's intake, retries and workers are P04's; status writes and the call-out map are P05's (STUDY part P06).
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 17-Nov-2026 from the local read-only clone. Nothing in the clone was written or run. No credential, token, account identifier or machine path is reproduced (Document 08, section 11; D-07).
 

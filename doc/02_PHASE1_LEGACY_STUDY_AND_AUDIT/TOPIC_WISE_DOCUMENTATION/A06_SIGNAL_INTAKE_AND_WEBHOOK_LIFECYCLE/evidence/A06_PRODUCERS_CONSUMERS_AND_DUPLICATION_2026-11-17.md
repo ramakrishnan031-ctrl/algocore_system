@@ -1,8 +1,8 @@
 # A06 evidence: producers, consumers, storage handoffs and duplication
 
-**Status:** DRAFT — evidence for the A06 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A06 STUDY, approved by Rama on 2026-11-20 with the A06 topic package (Decision Register, D-37)
 **Date:** 2026-11-17
-**Revision history:** First version, 2026-11-17: written by a read-only helper as STUDY part P11, then checked statement by statement against its sources and corrected by a separate read-only helper (the check log is the last section); assembled as evidence by Claude.
+**Revision history:** First version, 2026-11-17: written by a read-only helper as STUDY part P11, then checked statement by statement against its sources and corrected by a separate read-only helper (the check log is the last section); assembled as evidence by Claude. Approved by Rama on 2026-11-20 with the A06 topic package (Decision Register, D-37): status marked APPROVED; content unchanged.
 **Purpose and scope:** every A06 artefact (the HTTP request, the internal signal object, the queue item, the `signals` rows, the `webhook_audit` rows, the EOD-webhook heartbeat, counters/metrics, alerts) as a producer-to-consumer map; the A03 storage handoffs for `signals`, `webhook_audit` and the EOD-webhook heartbeat store; places that do the same intake job separately (duplication record). Direction questions 20 (storage side), 23 and 27 (duplication and consistency, record only). Readers and writers owned by other topics are recorded at the interface only (call site, what crosses, owner) (STUDY part P11).
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 17-Nov-2026 from the local read-only clone. Nothing in the clone was written or run. No credential, token, account identifier or machine path is reproduced (Document 08, section 11; D-07).
 

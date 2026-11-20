@@ -1,8 +1,8 @@
 # A06 evidence: the A06 source files at the study baseline
 
-**Status:** DRAFT — evidence for the A06 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A06 STUDY, approved by Rama on 2026-11-20 with the A06 topic package (Decision Register, D-37)
 **Date:** 2026-11-17
-**Revision history:** First version, 2026-11-17. Corrected the same day, before the STUDY was committed: section 5 named the three unchanged A06 files wrongly (found by the independent check of the STUDY; verified with `git diff 7d4970a 970aabf`).
+**Revision history:** First version, 2026-11-17. Corrected the same day, before the STUDY was committed: section 5 named the three unchanged A06 files wrongly (found by the independent check of the STUDY; verified with `git diff 7d4970a 970aabf`). Approved by Rama on 2026-11-20 with the A06 topic package (Decision Register, D-37): status marked APPROVED; content unchanged.
 **Purpose and scope:** Identifies the A06 paths of the Master System Investigation Index (entry A06; Appendix A for the one script) at the study baseline: size, Git object, SHA-256 and history of each path; the A06 call sites in `main.py`, which A01 owns as a file (index rule 8); the declared invocations of the script, as declarations only; the related paths that other topics own, which A06 reads at the boundary only (Rama's decisions A to E of 17-Nov-2026, on ChatGPT's review of the first fieldwork checkpoint); and the A06 changes made after the last recorded deployment (Decision Register, D-21). It supports the STUDY's inventory and decides nothing.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 17-Nov-2026 from the local read-only clone with `git show`, `git ls-tree`, `git log`, `git grep` and `git diff`. Nothing in the clone was written or run, and no endpoint, scanner URL, broker or API was contacted. No credential, token, account identifier or machine path is reproduced (Document 08, section 11; D-07); a line that carries an account identifier is cited by line only.
 

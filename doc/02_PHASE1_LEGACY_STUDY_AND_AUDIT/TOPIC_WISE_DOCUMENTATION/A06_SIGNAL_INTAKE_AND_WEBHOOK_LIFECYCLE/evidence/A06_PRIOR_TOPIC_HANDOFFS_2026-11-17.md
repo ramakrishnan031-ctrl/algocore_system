@@ -1,8 +1,8 @@
 # A06 evidence: the 52 inherited items and the 11 register entries naming A06
 
-**Status:** DRAFT — evidence for the A06 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A06 STUDY, approved by Rama on 2026-11-20 with the A06 topic package (Decision Register, D-37)
 **Date:** 2026-11-17
-**Revision history:** First version, 2026-11-17: written by a read-only helper as STUDY part P09, then checked statement by statement against its sources and corrected by a separate read-only helper (the check log is the last section); assembled as evidence by Claude.
+**Revision history:** First version, 2026-11-17: written by a read-only helper as STUDY part P09, then checked statement by statement against its sources and corrected by a separate read-only helper (the check log is the last section); assembled as evidence by Claude. Approved by Rama on 2026-11-20 with the A06 topic package (Decision Register, D-37): status marked APPROVED; content unchanged.
 **Purpose and scope:** The 52 items handed to A06 by the A01 to A05 RECONCILED TOPIC RECORDS (A01 20, A02 14, A03 6, A04 7, A05 5), as listed in the A06 entry of the Topic Completion Register; the 11 Open Issues Register entries naming A06 as owner or part-owner; A05 IN-08 (its KNOWN DEFECT conditions offered to A06), A05's note that screening is A07's, A01's sweeper and server lifecycle facts and A04's `try_acquire` wiring note (A06 investigation direction, section 5). For each item: the originating record's statement as recorded, what A06 must establish, and which A06 part and statement IDs record its A06 side. Nothing is re-classified; IDs, owners, classifications, statuses and treatments are unchanged. The A06 facts themselves are established by parts P01 to P08 (and P11, not yet written); this part does not repeat them (STUDY part P09).
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 17-Nov-2026 from the local read-only clone. Nothing in the clone was written or run. No credential, token, account identifier or machine path is reproduced (Document 08, section 11; D-07).
 

@@ -225,4 +225,17 @@ Neutral questions for the A07 AUDIT, each citing the statements it rests on. "Bo
 - P06-AP17 — Unreachable details of `add()` (recorded for completeness): the telemetry increment precedes the duplicate test; the `added_at` fallback stores an offset string against the "naive IST" column comment (A03 H-11); the two writes are separate transactions (P06-S038 to P06-S040).
 - P06-AP18 — Fixed cadence: the poll interval (5.0 s) and worker count (2) are constructor defaults that no configuration reaches, consistent with P11a's "every 5s" (P06-S009, P06-S024, P06-S025). Is a code-fixed cadence what was intended (a MATCH candidate)?
 
+## 17. UNKNOWN / NOT ESTABLISHED items
+
+Each item names the evidence that would settle it. None of that evidence is in the repository at the baseline; both machines are terminated.
+
+- P06-U01 — Whether any `gate_state` rows existed in the production database (the fixed wording, P06-S045), and so whether the gate ever polled or released an entry in production. Would settle it: a surviving copy of the production database (`gate_state`, and `signals` rows with `GATE_` statuses) or production logs with "EntryGate.rehydrate: ... entries restored", "EntryGate: released" or "Gate PRICE_HIT".
+- P06-U02 — Whether `continue_from_gate`, and its strategy-control call at L2062, ever executed in production (P06-S091, P06-S096; P02-U04). Would settle it: production logs ("Gate signal ... rejected at", "continue_from_gate failed for") or signal status sequences beginning `GATE_RELEASED_PRICE_HIT`.
+- P06-U03 — Which commit and configuration ran in production (D-21), and so whether the six pullback strategies traded on the direct path as the baseline code implies (P06-S046, P06-S047). Would settle it: deployment records and production logs for those strategies.
+- P06-U04 — The production Python version, on which the `cancel_futures` argument (P06-S071 (c)) and the exit-time join of executor threads (P06-S090) depend (A01 B-41). Would settle it: an environment record of the production machine.
+- P06-U05 — Whether a `gate_state` row could have entered the production database from outside the committed code (a database restored or copied from elsewhere, manual SQL, a test or drill run against the production file) (P06-S045). Would settle it: database provenance records or Rama's statement (P06-R2).
+- P06-U06 — Whether the broker ever returned a quote entry without `last_price` (a 0.0 at the gate, P06-S056; A04 RD-12, "UNKNOWN / NOT ESTABLISHED (P03-S272)"). Would settle it: broker response logs.
+- P06-U07 — Whether a `release_gate_state` failure (P06-S065; A03 Q-11), a silent discard in the poll loop (P06-S049), or a limiter-abort release during a stop (P06-S089) ever occurred. Would settle it: production logs ("release_gate_state failed", "consecutive quote failures"), which would not show the silent discards.
+- P06-U08 — The runtime counts that the legacy entry IA-P2-01 reports for 01-Aug-2026 (zero `GATE_` statuses, zero `gate_state` rows, 26 gate starts, P06-S014). Would settle it: the database and the 23 logs that the entry says it read.
+
 <!-- P06 continues -->

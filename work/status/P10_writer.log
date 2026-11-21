@@ -1,1 +1,3 @@
 START P10 writer 2026-11-21 12:32:24 IST
+2026-11-21 12:49:43 IST RESTART noted: server restart stopped the writer at about 12:49 IST before any section was saved; resuming from the transcript, re-checking against the sources; helper scripts and search outputs in status/ (p10_*.py, p10_doc_hits.txt, p10_doc_cited_by_parts.txt, p10_t2.txt, p10_t36.txt) kept
+2026-11-21 12:50:18 IST section 1 (method, sources, boundaries) done: P10-S001 to P10-S009

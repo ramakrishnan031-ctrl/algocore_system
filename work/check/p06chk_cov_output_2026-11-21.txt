@@ -1,0 +1,83 @@
+statements S: 129 (min S001, max S129); AP: 19; U: 8; R: 2
+cited P06 IDs: 158, all defined
+
+(a) definitions in screening/entry_gate.py: 17
+  constant _MAX_QUOTE_FAILURES                      L46-L46: OK P06-S018
+  class    WatchEntry                               L54-L76: OK P06-S019, P06-S022, P06-S029, P06-S031, P06-S044, P06-S067, P06-S094, P06-S113, P06-S122
+  class    EntryGate                                L83-L537: OK P06-S006, P06-S008, P06-S014, P06-S024, P06-S044, P06-S045, P06-S075, P06-S126
+  method   EntryGate.__init__                       L108-L138: OK P06-S023
+  method   EntryGate.start                          L144-L177: OK P06-S027, P06-S033, P06-S034, P06-S043, P06-S078, P06-S104, P06-S110
+  method   EntryGate.rehydrate_from_gate_state      L179-L239: OK P06-S029, P06-S043, P06-S126
+  method   EntryGate.stop                           L241-L258: OK P06-S069, P06-S071, P06-S078, P06-S111
+  method   EntryGate.clear_all                      L260-L279: OK P06-S056, P06-S072, P06-S075, P06-S076, P06-S078, P06-S079, P06-S081, P06-S082, P06-S103, P06-S104, P06-S114, P06-S117 ...
+  method   EntryGate.is_running                     L281-L282: OK P06-S042, P06-S043
+  method   EntryGate.add                            L288-L323: OK P06-S015, P06-S026, P06-S032, P06-S036, P06-S039, P06-S043, P06-S044, P06-S066, P06-S079, P06-S082, P06-S102, P06-S103 ...
+  method   EntryGate._persist_gate_state            L325-L348: OK P06-S040, P06-S044
+  method   EntryGate.remove                         L350-L361: OK P06-S041, P06-S043, P06-S056, P06-S079, P06-S081, P06-S082, P06-S103, P06-S118, P06-S127, P06-S128
+  method   EntryGate.watchlist                      L363-L366: OK P06-S042, P06-S043, P06-S079
+  method   EntryGate.size                           L368-L371: OK P06-S042, P06-S043, P06-S079
+  method   EntryGate._poll_loop                     L377-L405: OK P06-S048
+  method   EntryGate._check_one                     L411-L468: OK P06-S049, P06-S050, P06-S051, P06-S055, P06-S057, P06-S066, P06-S067, P06-S079, P06-S081, P06-S120, P06-S126, P06-S129
+  method   EntryGate._release                       L474-L537: OK P06-S021, P06-S022, P06-S056, P06-S057, P06-S060, P06-S061, P06-S066, P06-S071, P06-S079, P06-S081, P06-S082, P06-S086 ...
+
+(a2) interface records of continue_from_gate
+  signature (L2010)                                           : OK P06-S091
+  only non-test caller (_gate_release_worker, main.py L873)   : OK P06-S091
+  inputs read from the entry (L2027 to L2099)                 : OK P06-S093
+  return value None                                           : OK P06-S098
+  statuses written                                            : OK P06-S098
+  decision order at call level                                : OK P06-S095
+  strategy_will_trade at L2062 cross-referenced to P02        : OK P06-S096
+  failure contract                                            : OK P06-S099
+  handoff to A09 and A10                                      : OK P06-S097
+  no guard against second resumption                          : OK P06-S100, P06-S117
+
+(b) assigned focused questions
+  Q12: P06-S126 present=True; full wording quoted=True
+  Q10: P06-S127 present=True; full wording quoted=True
+  Q11: P06-S128 present=True; full wording quoted=True
+
+fixed entry-gate wording, word for word: 3 occurrence(s)
+  in P06-S006
+  in P06-S045
+  in P06-S126
+
+(c) inherited items of P06's row (P01-S074)
+  A01 C14   : P06-S109
+  A01 C15   : P06-S110
+  A01 C20   : P06-S111
+  A01 B-28  : P06-S112
+  A02 T-14  : P06-S113
+  A03 H-50  : P06-S114
+  A03 P-02  : P06-S115
+  A03 P-11  : P06-S116
+  A03 Q-11  : P06-S117
+  A03 Q-12  : P06-S118
+  A03 Q-45  : P06-S119
+  A04 RD-12 : P06-S120
+  A04 RL-11 : P06-S121
+  A06 WA-07 : P06-S122
+  A06 PQ-13 : P06-S123
+  A06 EV-11 : P06-S124
+  A06 ET-13 : P06-S125
+  17 of 17 items cross-referenced
+
+files cited outside the gate's interface set (boundary review):
+   broker/order_monitor.py
+   docs/audit/integrity_audit_2026.md
+   ops_dashboard/backend/services/trade_logs.py
+   reports/daily_report.py
+   reports/signal_status.py
+   scripts/copy_gate.py
+   scripts/eod_cleanup.py
+   tests/crash_test/invariant_checker.py
+   tests/crash_test/state_machine_validator.py
+   tests/integration/test_hardening_scenarios.py
+   tests/unit/test_entry_gate.py
+   tests/unit/test_eod_squareoff.py
+   tests/unit/test_evidence_contract.py
+   tests/unit/test_main.py
+   tests/unit/test_signal_processor.py
+   tests/unit/test_slice2_strategy_control.py
+
+RESULT: PASS

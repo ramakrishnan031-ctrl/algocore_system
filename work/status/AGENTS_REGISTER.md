@@ -16,5 +16,7 @@ only after both helpers of the current pair have handed back (final notification
 | 4 | P04 | checker | (held locally) | 21-Nov-2026 10:24 | DONE (hand-back 10:45; disclosed: one redirect outside the work folder, denied by the permission system, no file created) |
 | 5 | P05 | writer | (held locally) | 21-Nov-2026 10:46 | DONE (hand-back 11:13) |
 | 5 | P06 | writer | (held locally) | 21-Nov-2026 10:46 | DONE (hand-back 11:09) |
-| 6 | P05 | checker | (held locally) | 21-Nov-2026 11:14 | RUNNING |
+| 6 | P05 | checker | (held locally) | 21-Nov-2026 11:14 | DONE (hand-back 11:38) |
 | 6 | P06 | checker | (held locally) | 21-Nov-2026 11:14 | DONE |
+| 7 | P07 | writer | (held locally) | 21-Nov-2026 11:38 | RUNNING |
+| 7 | P08 | writer | (held locally) | 21-Nov-2026 11:38 | RUNNING |

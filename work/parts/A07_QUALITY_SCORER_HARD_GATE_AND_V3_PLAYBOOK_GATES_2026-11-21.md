@@ -69,7 +69,7 @@
 
 | Key (`scoring.`) | A07 reader | How read | Fallback in A07 code | Schema default | Committed value |
 |---|---|---|---|---|---|
-| `steps.<name>` (10) | scorer L87; screener L103 to L106 (`_step_weights`, used at L497 and L542) | `getattr(steps_cfg, name)`; `dict(scoring_config.steps.model_dump())` | none (scorer); `{}` when `scoring_config` is `None` (screener) | none (required) | 15, 10, 10, 10, 15, 10, 5, 5, 10, 10 |
+| `steps.<name>` (10) | scorer L87; screener L103 to L106 (`_step_weights`, used at L497 and L542) | `getattr(steps_cfg, name)`; `dict(scoring_config.steps.model_dump())` | none (scorer); `{}` when `scoring_config` is `None` or has no `steps` attribute (screener L103 to L106; completed in the check) | none (required) | 15, 10, 10, 10, 15, 10, 5, 5, 10, 10 |
 | `min_pass_score` | scorer L134, L148; screener L320 through `score_result.min_pass_score` | attribute | none | none (required) | 60 |
 | `high_score_threshold` | scorer L122 | attribute | none | none (required) | 80 |
 | `medium_score_threshold` | scorer L123 | attribute | none | none (required) | 65 |

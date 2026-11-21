@@ -9,3 +9,4 @@
 2026-11-21 11:24:31 IST section 8 checked (S069-S077, S129): 5 confirmed, 3 corrected (S071 quote, S074 searches added, S129 completed), 1 re-labelled (S075 FACT and INTERPRETATION); point (a) confirmed
 2026-11-21 11:25:10 IST section 9 checked (S078-S083): 6 confirmed, 0 corrected (lock blocks verified by AST helper)
 2026-11-21 11:26:43 IST section 10 checked (S084-S090): 4 confirmed, 3 corrected (S086 unreachable example; S088 M-C8 drain; S089 window start)
+2026-11-21 11:27:56 IST section 11 checked (S091-S102): 10 confirmed, 2 corrected (S094 comment premise; S101 call list); D-39 P2 boundary kept

@@ -106,3 +106,17 @@ instructions 29 and 30, v3 plans, SYSTEM_MAP, MASTER_PENDING), PATHS.md, README.
 intent for an A07 component, with the passage location and what it states (brief). The 36 tests (A19): what each
 states as expected behaviour for A07 code (one line each; never run). Answer Q24 (which intent sources exist;
 conflicts preserved) and Q26 (inventory completeness: anything A07-owned missed by the source file inventory?).
+
+## ADDENDUM 1 (21-Nov-2026, after pair 1) — which inherited items each part cross-references
+- Authoritative assignment: the P01 file `/home/claude/a07/parts/A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md`, section 2.8
+  (statement P01-S074), as corrected by the P01 checker. Every writer from P03 onwards reads its own row there and
+  cross-references each listed item (ID, source record, and what A07's code does at the cited baseline lines); its
+  checker verifies each one. Items keep their owners, IDs, classifications, treatments and statuses.
+- The P02 checker adds statements for any item in P02's row that the P02 writer did not cover (marked "added in the
+  check").
+- A01 B-08, A03 U-24, A03 U-25 and A03 H-17 (its A07 side) go to P09: record the A07 side if one exists at the
+  baseline, or "no A07 side found", without changing the source records; B-08's boundary point (the validation it
+  names is in `strategies/loader.py`, which the index gives to A02) is reported, not resolved.
+- The two handoff points without item IDs (P01-S072): the PAPER_ONLY demotion goes to P07; A06 TG14's "end-of-day
+  route's excluded-symbol check" goes to P09 (find the code if any; otherwise UNKNOWN / NOT ESTABLISHED).
+- P10 also uses P01's list of records that name A07 as an owner outside the 51 (in the P01 file) when answering Q26.

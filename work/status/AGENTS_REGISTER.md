@@ -6,5 +6,7 @@ only after both helpers of the current pair have handed back (final notification
 
 | Pair | Part | Role | Agent ID | Started (IST) | State |
 |---|---|---|---|---|---|
-| 1 | P01 | writer | (held locally) | 21-Nov-2026 09:06 | RUNNING |
+| 1 | P01 | writer | (held locally) | 21-Nov-2026 09:06 | DONE (hand-back 09:32) |
 | 1 | P02 | writer | (held locally) | 21-Nov-2026 09:06 | DONE (hand-back 09:29; disclosed: two temporary /tmp files of strategy names, deleted) |
+| 2 | P01 | checker | (held locally) | 21-Nov-2026 09:33 | RUNNING |
+| 2 | P02 | checker | (held locally) | 21-Nov-2026 09:33 | RUNNING |

@@ -17,4 +17,4 @@ only after both helpers of the current pair have handed back (final notification
 | 5 | P05 | writer | (held locally) | 21-Nov-2026 10:46 | DONE (hand-back 11:13) |
 | 5 | P06 | writer | (held locally) | 21-Nov-2026 10:46 | DONE (hand-back 11:09) |
 | 6 | P05 | checker | (held locally) | 21-Nov-2026 11:14 | RUNNING |
-| 6 | P06 | checker | (held locally) | 21-Nov-2026 11:14 | RUNNING |
+| 6 | P06 | checker | (held locally) | 21-Nov-2026 11:14 | DONE |

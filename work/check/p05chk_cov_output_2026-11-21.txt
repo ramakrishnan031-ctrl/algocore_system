@@ -1,0 +1,48 @@
+(d) statements: 119 (P05-S001 to P05-S119); duplicates: none; gaps: none
+(d) statements whose text does not begin with an allowed label: none
+(d) Points for the AUDIT: 28 (1 to 28); gaps: none; duplicates: none
+(d) UNKNOWN items: 13 (1 to 13); gaps: none; duplicates: none
+(d) questions for Rama: 3 (1 to 3); gaps: none; duplicates: none
+(a) definitions (path, kind, name, baseline line -> statement IDs):
+    screening/quality_scorer.py constant _G2_CEILING_TRIPWIRE L19: 1 -> S022
+    screening/quality_scorer.py class ScoreResult L26: 7 -> S008, S009, S015, S025, S026, S104, S114
+    screening/quality_scorer.py class QualityScorer L37: 5 -> S016, S026, S056, S064, S102
+    screening/quality_scorer.py method QualityScorer.__init__ L48: 1 -> S016
+    screening/quality_scorer.py method QualityScorer.score L71: 5 -> S023, S024, S026, S056, S102
+    screening/hard_gate.py constant GATE_AT_CIRCUIT L32: 1 -> S039
+    screening/hard_gate.py constant GATE_CIRCUIT_PROXIMITY L33: 1 -> S039
+    screening/hard_gate.py constant GATE_STALE L34: 2 -> S039, S104
+    screening/hard_gate.py constant DEFAULT_FRESHNESS_MAX_SEC L37: 5 -> S033, S034, S039, S041, S107
+    screening/hard_gate.py class GateVerdict L41: 15 -> S010, S040, S042, S070, S072, S073, S075, S076, S082, S084, S086, S088 ...
+    screening/hard_gate.py function circuit_proximity_reason L53: 6 -> S010, S042, S048, S054, S102, S111
+    screening/hard_gate.py nested function circuit_proximity_reason._pos_num L73: 4 -> S048, S052, S109, S111
+    screening/hard_gate.py class HardGate L119: 19 -> S010, S033, S035, S040, S041, S054, S098, S101, S102, S104, S105, S106 ...
+    screening/hard_gate.py method HardGate.__init__ L123: 2 -> S033, S041
+    screening/hard_gate.py method HardGate.evaluate L139: 4 -> S042, S061, S065, S098
+    screening/hard_gate.py function rescaled_total L178: 7 -> S055, S056, S060, S063, S064, S065, S102
+    screening/hard_gate.py function tier_for L197: 6 -> S057, S060, S063, S065, S102, S105
+    screening/hard_gate.py function rescale_min_score L206: 6 -> S058, S060, S063, S102, S104, S105
+    screening/hard_gate.py constant GATE_RR L231: 2 -> S070, S094
+    screening/hard_gate.py constant GATE_HTF L232: 2 -> S070, S094
+    screening/hard_gate.py constant GATE_EXTREME L233: 2 -> S070, S094
+    screening/hard_gate.py function _is_long L236: 3 -> S052, S070, S074
+    screening/hard_gate.py function gate_rr L240: 15 -> S070, S071, S072, S078, S087, S090, S092, S094, S095, S096, S104, S105 ...
+    screening/hard_gate.py function gate_htf L297: 8 -> S070, S071, S082, S090, S092, S094, S096, S105
+    screening/hard_gate.py function gate_extreme L340: 10 -> S070, S071, S084, S092, S094, S096, S100, S104, S105, S113
+    screening/hard_gate.py constant GATE_CONFIRM L365: 1 -> S070
+    screening/hard_gate.py constant GATE_PULLBACK L366: 1 -> S070
+    screening/hard_gate.py function gate_confirm L369: 10 -> S070, S071, S086, S089, S090, S092, S096, S097, S104, S105
+    screening/hard_gate.py function gate_pullback L422: 8 -> S070, S071, S088, S090, S092, S096, S097, S105
+    screening/secondary_screener.py method SecondaryScreener._screen_v3_enforce L435: 2 -> S004, S118
+    screening/secondary_screener.py method SecondaryScreener._log_v3_shadow_compare L530: 3 -> S004, S045, S118
+(a) definitions: 31; not named in any statement: none
+(b) Q8 answered in P05-S113: full wording quoted exactly: True; statements cited: 3; element probe: {'hard gate': True, 'score': True, 'advance': True, 'defer': True, 'names': True, 'comments': True}
+(b) Q9 answered in P05-S114: full wording quoted exactly: True; statements cited: 20; element probe: {'threshold': True, 'unit': True, 'formula': True, 'weight': True, 'aggregat': True, 'rounding': True, 'boundar': True, 'configured': True, 'effective': True, 'as declared': True}
+(b) Q17 answered in P05-S115: full wording quoted exactly: True; statements cited: 6; element probe: {'regime/': True, 'v3_chain/': True, 'read back': True, "A07's integration": True, "A18's internal logic": True}
+(c) T-20 (P01-S026): cross-referenced in P05-S107 
+(c) K-27 (P01-S029): cross-referenced in P05-S108 
+(c) RD-12 (P01-S047): cross-referenced in P05-S109 
+(c) WA-06 (P01-S059): cross-referenced in P05-S110 
+(c) WA-07 (P01-S060): cross-referenced in P05-S111 
+(c) PQ-08 (P01-S062): cross-referenced in P05-S112 
+RESULT: PASS

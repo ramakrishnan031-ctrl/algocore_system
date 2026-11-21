@@ -16,3 +16,6 @@ P05 checker progress log (file checked: /home/claude/a07/parts/A07_QUALITY_SCORE
 2026-11-21 11:34:02 IST section 14 checked (AP01-AP26): 20 confirmed, 6 amended (AP03, AP04, AP09, AP10, AP11, AP15); 2 added (AP27, AP28)
 2026-11-21 11:34:29 IST section 15 checked (U01-U10): 10 confirmed; 3 added (U11 timeouts, U12 spec existence, U13 narrow bands)
 2026-11-21 11:34:55 IST section 16 checked (R1-R3): 2 confirmed, 1 amended (R1); AP27 wording refined
+2026-11-21 11:37:03 IST coverage script p05chk_cov.py PASS (31 definitions named; Q8 Q9 Q17 answered; 6/6 inherited items; S001-S119 no gaps); label pass: S009 and AP19 wording made neutral; scan 0 hits on part file and check log
+2026-11-21 11:37:42 IST Check log section appended to the part file (counts: 115 checked, 93 confirmed, 22 corrected, 0 re-labelled, 0 withdrawn, 4 added; AP 28, U 13, R 3); check log file complete
+DONE P05 checker 2026-11-21 11:37:42 IST

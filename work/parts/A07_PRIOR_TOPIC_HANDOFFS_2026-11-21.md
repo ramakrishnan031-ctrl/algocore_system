@@ -271,3 +271,23 @@ P01-S112. OPEN QUESTION (for the AUDIT): for A04 RD-12, does the A07 code distin
 P01-S113. OPEN QUESTION (for the AUDIT): for A06 ET-06 and A06-02, does any A07 code set an order among simultaneous screening verdicts or gate releases (the processor's workers, the step pool, the two-worker gate-release pool), and is that recorded as FACT about the code only, with no ranking inferred? (P01-S069, P01-S085)
 
 P01-S114. OPEN QUESTION (for Claude and ChatGPT; coverage): 25 of the 51 items are named in no part brief and are assigned here by location only (P01-S074); are the assigned parts to be told, so that each item's A07 side is recorded once and cited by its ID? (P01-S074)
+
+## 6. UNKNOWN / NOT ESTABLISHED items
+
+P01-S115. UNKNOWN / NOT ESTABLISHED: whether production ran any commit after `7d4970a`, and so whether the two A07 files changed after it (`screening/secondary_screener.py`, `scripts/strategy_registry_officer.py`) were ever in force (A07 source file inventory L128). Evidence that would settle it: the deployed commit recorded on the production machine (both machines are terminated; Document 06, section 4.2).
+
+P01-S116. UNKNOWN / NOT ESTABLISHED: whether `gate_state` rows existed in the production database, on which every gate-path item depends (P01-S111; the fixed entry-gate wording). Evidence: a copy of the production trading database from the legacy period.
+
+P01-S117. UNKNOWN / NOT ESTABLISHED: the effective production values of the configuration that A07's inherited items depend on (`trade_type`, `force_intraday_only`, `delivery_enabled`, `scoring.*`, `mis_filter.*`, the strategy files' `enabled`, `direction`, `intent`, `order_protocol`); the committed values are FACT about the files only (COMMON brief, section 2). Evidence: the configuration files as deployed on the production machine.
+
+P01-S118. UNKNOWN / NOT ESTABLISHED: whether the scheduled A07 scripts ran, and with which `--db` or `--db-path` (A03 D-05, D-09; Open Issues Register A03-10, A03-11); the cron declarations are declarations only (A07 source file inventory, section 3). Evidence: production cron logs, heartbeat rows or the scripts' outputs.
+
+P01-S119. UNKNOWN / NOT ESTABLISHED: the actual Chartink scanner conditions with which A05-25 asks A07 to compare the screening components; no supplied conditions are among this part's sources. Evidence: the conditions as Rama supplies them (screenshots or an export), admitted to the Source Inventory only on his decision (D-39, P3).
+
+P01-S120. UNKNOWN / NOT ESTABLISHED: whether the A03 records meant U-24, U-25 and H-17 to have an A07 side (P01-S090 to P01-S092). Evidence: none in the records; a recorded decision or note (P01-S124).
+
+P01-S121. UNKNOWN / NOT ESTABLISHED: the A07 part of A02 K-27 that its owner field intends (P01-S093). Evidence: none in the records.
+
+P01-S122. UNKNOWN / NOT ESTABLISHED: whether the pattern search of P01-S073 found every record of the six AUDITs that names A07 as an owner. Evidence: a field-by-field review of the six AUDITs (Q26; P10 or the AUDIT).
+
+P01-S123. HISTORICAL (record): four of the 51 are themselves classified UNKNOWN / NOT ESTABLISHED and receive no treatment: A04 RL-11 (AFR L830), A05 CM-07 (AFR L1001), A05 FB-07 (AFR L1060) and A06 ET-06 (AFR L1209). Their classifications are unchanged here; A07 records its side only (P01-S048, P01-S052, P01-S056, P01-S069).

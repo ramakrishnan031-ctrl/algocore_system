@@ -100,8 +100,8 @@
 
 ### 6.2 What `_build_market_data` returns
 
-- P04-S060 FACT: `_build_market_data(self, quote)` (`secondary_screener.py` L380 to L418) sets `ltp = quote.last_price` (L386); reads `upper` and `lower` with `getattr(quote, "upper_circuit", None)` and `getattr(quote, "lower_circuit", None)` (L390 to L391); sets `circuit_state = "upper_circuit"` if `upper is not None and ltp >= upper` (L392 to L393), else `"lower_circuit"` if `lower is not None and ltp <= lower` (L394 to L395), else `""` (L389); and returns a new dictionary of 17 keys (L397 to L418).
-- P04-S061 FACT (the 17 keys, L397 to L418; "A04 source" is the `Quote` field of P04-S057; steps 7 and 10 read no market data, section 7):
+- P04-S060 FACT: `_build_market_data(self, quote)` (`secondary_screener.py` L380 to L418) sets `ltp = quote.last_price` (L386); reads `upper` and `lower` with `getattr(quote, "upper_circuit", None)` and `getattr(quote, "lower_circuit", None)` (L390 to L391); sets `circuit_state = "upper_circuit"` if `upper is not None and ltp >= upper` (L392 to L393), else `"lower_circuit"` if `lower is not None and ltp <= lower` (L394 to L395), else `""` (L389); and returns a new dictionary of 16 keys (L397 to L418; corrected in the check from 17, by an `ast` count of the returned dictionary's keys).
+- P04-S061 FACT (the 16 keys, L397 to L418, corrected in the check from 17; "A04 source" is the `Quote` field of P04-S057; steps 7 and 10 read no market data, section 7):
 
 | Key | Value set by `_build_market_data` | A04 source and its empty value | Read by step |
 |---|---|---|---|

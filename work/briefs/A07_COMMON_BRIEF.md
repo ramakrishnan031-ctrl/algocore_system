@@ -30,6 +30,10 @@ you never repair, run or redesign anything. Your part brief says what to write (
 ## 2. Hard rules
 - NO RAW ASSUMPTIONS (Rama's standing rule): every statement rests on a cited source line. If you cannot cite it,
   write UNKNOWN / NOT ESTABLISHED or OPEN QUESTION. Never fill a gap from memory or by guessing a formula.
+- Rama's instruction of 21-Nov-2026 to every helper: do not assume anything. Where a fact is needed, search the
+  authoritative public source (official documentation pages) and cite it with the date read; where only Rama can
+  answer, write the question in your file's "Questions about intent for Rama" section and in your hand-back (you
+  cannot ask him directly; Claude relays it). Never proceed on a guess.
 - Write permissions (D-39): the legacy clone `/home/claude/repos/legacy` is strictly read-only, and so is the project
   clone `/home/claude/algocore_system`: no helper edits any tracked project file, register, foundation document, the
   Master System Investigation Index, or any branch, and no helper commits, pushes or merges anything itself. Helpers

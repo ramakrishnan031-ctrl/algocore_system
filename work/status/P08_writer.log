@@ -8,3 +8,4 @@ START P08 writer 2026-11-21 11:39:25 IST
 2026-11-21 11:58:03 IST section 7 (values fixed in A07 code) done: P08-S057 to P08-S058
 2026-11-21 11:58:07 IST section 8 (readers that disagree) done: P08-S059
 2026-11-21 11:58:59 IST section 9 (configured-to-effective trace, Q9) done: P08-S060 to P08-S063
+2026-11-21 12:00:14 IST section 10 (nine inherited items cross-referenced) done: P08-S064 to P08-S072

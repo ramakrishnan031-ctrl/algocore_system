@@ -1,0 +1,34 @@
+PATHS.md: P03 P05 P04 P02 P07
+README.md: P04
+UNPUSHED_LEDGER.md: P02
+docs/02_strategy_yaml_guide.md: P04
+docs/06_deployment_guide.md: P04
+docs/MASTER_PENDING_01-Aug-2026.md: P05 P02
+docs/MASTER_PENDING_28-Jul-2026.txt: P05
+docs/MASTER_PENDING_30-Jul-2026.md: P05
+docs/SYSTEM_MAP.md: P05 P02 P07 P08
+docs/audit/audit_05jul2026.md: P02 P07
+docs/audit/batch_classification_16jul2026.md: P02
+docs/audit/daily_report_redesign_phase0_data_audit_30jun2026.md: P07
+docs/audit/day_reconstruction_15jul2026.md: P07
+docs/audit/full_system_audit_04july2026.md: P02
+docs/audit/integrity_audit_2026.md: P05 P04 P06 P08
+docs/audit/ma2_ms3_md1_25jul2026.md: P04 P02
+docs/audit/pb01_simulation_feasibility_2026-07-24.md: P05
+docs/audit/registry_seed_state_split_10aug2026.md: P02
+docs/audit/strategy_direction_registry_done_17jul2026.md: P07
+docs/audit/system_health_audit_15jul2026.md: P07
+docs/expected_alarms.md: P07
+docs/gui_project/G0_BACKEND_INVESTIGATION_REPORT.md: P04 P07
+docs/locked_decisions.yaml: P05 P04 P08
+docs/report_data_contract.md: P07
+docs/v3/V3_STEP10_PIPELINE_PLUMBING_PLAN.md: P05
+docs/v3/V3_STEP4_HARDGATE_SCORER_PLAN.md: P05
+docs/web_claude/01_module_instructions/module_27_strategies.txt: P04
+docs/web_claude/01_module_instructions/module_28_scorer_executor.txt: P05 P04
+docs/web_claude/01_module_instructions/module_29_secondary_screener.txt: P03
+docs/web_claude/01_module_instructions/module_31_entry_gate.txt: P06
+docs/web_claude/01_module_instructions/module_33_startup_checks.txt: P06
+docs/web_claude/01_module_instructions/module_34_main.txt: P06
+docs/web_claude/03_audit_responses/deep_system_audit_2026-04-24_closure.md: P06
+docs/web_claude/05_deployment/step2_vm_venv_and_first_run.txt: P04

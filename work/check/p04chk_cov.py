@@ -77,11 +77,15 @@ def main():
     nums = [int(s[5:]) for s in order]
     gaps = sorted(set(range(1, max(nums) + 1)) - set(nums))
     dups = sorted({n for n in nums if nums.count(n) > 1})
-    added = [s for s in order if "added in the check" in st[s][1][:140]]
+    added = []
+    for s_ in order:
+        m_ = re.match(r"^[A-Z /]+\(([^)]*)\)", st[s_][1])
+        if m_ and "added in the check" in m_.group(1):
+            added.append(s_)
     out_of_place = [order[i] for i in range(1, len(order)) if nums[i] < nums[i - 1]]
     print(f"(d) numbering: S001..S{max(nums):03d}; gaps={gaps}; duplicates={dups}; "
           f"statements after a higher number (added at the end of their section): {out_of_place}; "
-          f"statements marked 'added in the check' near their start: {added}")
+          f"statements whose label note says 'added in the check': {added}")
     bad = []
     for sid in order:
         t = st[sid][1]

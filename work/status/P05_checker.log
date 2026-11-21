@@ -10,3 +10,4 @@ P05 checker progress log (file checked: /home/claude/a07/parts/A07_QUALITY_SCORE
 2026-11-21 11:31:00 IST section 8 checked (S070-S092): 18 confirmed, 5 corrected (S078, S080, S087, S089, S092 NaN qualifications); gate_rr figures recomputed, all confirmed
 2026-11-21 11:31:21 IST section 9 checked (S093-S101): 8 confirmed, 1 corrected (S095 citation)
 2026-11-21 11:31:41 IST section 10 checked (S102-S104): 2 confirmed, 1 corrected (S104 (i) qualified; (r), (s) added)
+2026-11-21 11:32:22 IST section 11 checked (S105-S106): 1 confirmed, 1 corrected (S105 proximity cell); 1 added (S119 in section 5.3: direction-independent decision; narrow band refuses all)

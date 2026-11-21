@@ -1,7 +1,7 @@
 # A07 evidence: the entry gate and its resume contract
 **Status:** DRAFT — evidence for the A07 STUDY, for ChatGPT's review
 **Date:** 2026-11-21
-**Revision history:** First version, 2026-11-21.
+**Revision history:** First version, 2026-11-21. Checked and corrected in place by the P06 checker, 2026-11-21 (21 statements corrected, 2 re-labelled, 2 re-labelled and corrected, none added; 1 Point for the AUDIT added; see the final section "Check log").
 **Purpose and scope:** Part P06 of the A07 STUDY fieldwork. It records what `screening/entry_gate.py` does at the baseline, in full (the `WatchEntry` fields, the constructor, `start` and the rehydration from `gate_state`, `add` and its persistence calls, `remove`, the poll loop, `_check_one` with its quote read and quote-failure count, the release reasons, `_release` and the callback, `stop`, `clear_all`, threading and locking), as Rama's decision P2 directs (Decision Register D-39). At the interface only it records the callback's wiring in `main.py` (A01's file: L865 to L893, L3839 to L3844, L3975, L1748), the inputs, outputs, statuses, decision contract and A09 handoff of A06's `SignalProcessor.continue_from_gate` (`signals/signal_processor.py` L2010 onwards; its internal orchestration stays A06's), the `strategy_will_trade` call at L2062 (logic in part P02), and A12's end-of-day call site of `clear_all`. It answers focused questions Q10, Q11 and Q12 for the gate, and cross-references the 17 inherited items of P06's row in P01-S074. It decides nothing and changes no earlier record.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb`, read on 2026-11-21 from the local read-only clone with git show/grep/log/diff. Nothing was written or run; no endpoint was contacted; the four credential-holding file patterns were excluded from every search; no credential, account identifier or machine path is reproduced.
 
@@ -245,3 +245,43 @@ Only where no source states the intent or the fact. Claude relays them; this par
 
 - P06-R1 (P06-AP01, P06-AP15) — The six strategies marked `pullback_wait_enabled: true` (first pullback long and short, open-high breakdown short, open-low breakout long, VWAP bounce long, VWAP rejection short) were designed to wait at the entry gate for a pullback, but at the baseline nothing sends any signal to the gate, so they enter directly from the trigger-based prices. Which describes your understanding while the system ran: A: you knew the gate was not connected and accepted the direct entry for these strategies; B: you believed these strategies waited at the gate; C: you were not aware either way; Other / qualify. (No source states your decision; the legacy entry IA-P2-01 of 01-Aug-2026 records the gap and leaves the choice "wire vs ..." to a future decision.)
 - P06-R2 (P06-U05) — Did you ever restore or copy a database file into the production system, edit the production database by hand, or run tests or drills against the production database file? A: never; B: yes (please say when and what); C: not sure; Other. (This decides whether any `gate_state` row could have come from outside the committed code; no repository source records it.)
+
+## Check log
+
+Checked on 2026-11-21 (IST) by the P06 checker, who did not write this file, under the CHECKER brief; the full record is `/home/claude/a07/check/A07_P06_CHECK_LOG_2026-11-21.md`. Every statement was checked against its cited baseline lines (`git show 970aabf:<path>`) or record; nothing was run; the legacy clone and the project clone were not written.
+
+**Counts:** statements checked 129 (P06-S001 to P06-S129); confirmed 104; corrected 21; re-labelled 2; re-labelled and corrected 2; withdrawn 0; added 0 (completions are inside existing statements, marked "added in the check"). Points for the AUDIT: 4 corrected (AP02, AP06, AP12, AP16), 1 added (AP19; total 19). UNKNOWN items 8 and questions for Rama 2, unchanged.
+
+**Coverage script** (`/home/claude/a07/check/p06chk_cov.py`, `python3 -I -B`; output `p06chk_cov_output_2026-11-21.txt`): RESULT PASS. 129 statements without gap or duplicate; 158 cited P06 IDs all defined; all 17 definitions of `screening/entry_gate.py` named (the constant, `WatchEntry`, `EntryGate` and its 14 methods); the ten interface records of `continue_from_gate` under D-39 P2 present (S091, S093, S095 to S100); Q12, Q10 and Q11 answered with their full wording (S126 to S128); 17 of 17 inherited items of P06's row cross-referenced (S109 to S125); the fixed entry-gate wording present word for word (S006, S045, S126).
+
+**Scan:** `python3 -I /home/claude/a07_tools/scan.py` on this file: SCAN HITS: 0.
+
+**Boundaries (D-39 P2):** the gate is recorded in full; the `main.py` wiring and `continue_from_gate` are recorded at the interface only (inputs, outputs, statuses, decision contract, handoff to A09 and A10), not their internal orchestration; `strategy_will_trade` at L2062 is cross-referenced to P02. Kept.
+
+**Corrections** (old -> new (source)):
+- P06-S012: the quotation was given as the commit's title -> subject "feat: Phase B audit fixes (P1 pre-live, 6 items)", the quotation is a body item (`git show -s 13b3d093a7e931be61c478d9a0c297221960596f`).
+- P06-S015: completed -> the `expected_managers.yaml` line references `main.py:3318` and `screening/entry_gate.py:283` do not match the baseline (L3839; L288, L301) (`config/expected_managers.yaml` L179, L181).
+- P06-S022: completed -> the only other `WatchEntry` instance is the `replace` copy in `_release` (L528).
+- P06-S024: "reads that section only for the placer and the screener" -> the order monitor (L3011), the placer (L3074 to L3076, L3083), the slippage-override validation (L3222), the hard gate (L3246) and the screener (L3288) (`main.py` L2998 to L3012, L3220 to L3228, L3242 to L3247).
+- P06-S025: consumers aligned with P06-S024.
+- P06-S032: "neither case can arise from the gate's own writer" -> the writer validates nothing and would store such values if its caller supplied them; `add` has no non-test caller (L328 to L347).
+- P06-S047: completed -> the SNR-V2 retest divert (L1042 to L1056, A08's) can end the run first; it leads to the retest monitor, not the gate.
+- P06-S053: made precise -> the test is made at each check, the first in the first poll cycle after `main.py` L3975; wall-clock elapsed time (P06-S052).
+- P06-S066: "the gate's own writer cannot produce such a row" -> only if its caller passed a non-dict `extras`; added: a stored text `null` gives `extras = None` with the same effect (L206 to L207, L347).
+- P06-S071: "Added in version 3.9" -> "Changed in version 3.9: Added the *cancel_futures* parameter." (concurrent.futures documentation page, read 2026-11-21).
+- P06-S074: completed -> the eight whole-baseline searches for attribute writes, constructor keywords, `setattr`, setters, `__dict__`/`vars()`, `EodSquareoff(` constructions and history (`git log -S`, `git log -G`): no non-test code sets the gate on the square-off object, in any committed version of `main.py`.
+- P06-S075: INTERPRETATION -> FACT (no reachable non-test caller of `clear_all()`) and INTERPRETATION (the consequence for stored rows).
+- P06-S086: example "`entry.extras.get` with a non-dict `extras`" -> unreachable, because `_release` builds a new dict at L528 first; example now `submit` or a log call.
+- P06-S088: completed -> the M-C8 flatten drain (`main.py` L1632 onwards) before the webhook stop.
+- P06-S089: the window "begins at L1629" -> it begins when `_shutdown_event` (the limiter's event, `main.py` L2348) is first set, normally by the signal handler (L1571 to L1573) or the end-of-day self-exit loop (L1489 to L1525).
+- P06-S094: completed -> HISTORICAL comment premise "WatchEntry.direction is always "LONG"/"SHORT"" (processor L2102 to L2103), not enforced.
+- P06-S101: "no call outside its store, quote function, logger and callback" -> also the telemetry handle and the time authority (L42 to L44, L124).
+- P06-S107: two table rows qualified (the "check raises" row; the `clear_all` row now notes its caller is not wired).
+- P06-S114: label -> FACT for the EOD difference (rests on P06-S075); completed with A03 H-50's "rows written before the path went dormant" against the history search (A03 AUDIT L1037; P06-S044).
+- P06-S116: quotation "stated design for the gate" -> "stated design for the gate and retest" (A03 AUDIT L1720).
+- P06-S117: label -> FACT for the EOD difference (rests on P06-S075).
+- P06-S119: label -> FACT for the EOD difference; completed: Open Issues Register A03-37 part (a) names `delete_gate_state`.
+- P06-S120: completed -> A04 RD-12's cross-reference line (L2779) "not reached under `main.py`'s wiring, never fed" against row L2895 and the fixed wording.
+- P06-S128: completed (e) -> the release itself overwrites any current status with `GATE_RELEASED_*` (`core/state_store.py` L2995 to L2998).
+- P06-S129: completed -> every version from `13b3d093a7e931be61c478d9a0c297221960596f` to the baseline restores the stored `added_at` unchanged (L218; L223 at the baseline).
+- P06-AP02: the A03 MATCH row Q-45 (L2272) added; P06-AP06 and P06-AP12: made neutral questions; P06-AP16: the stale `expected_managers.yaml` line references added; P06-AP19: added (differences inside the approved A03 H-50 and A04 RD-12 records, reported, not resolved).

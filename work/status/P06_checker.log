@@ -16,3 +16,5 @@
 2026-11-21 11:30:47 IST note: section 14 counts are 12 confirmed, 2 corrected (S116, S120), 2 re-labelled and corrected (S114, S119), 1 re-labelled (S117); the previous line was a tally slip; the check log table is authoritative
 2026-11-21 11:31:12 IST section 15 checked (S126-S128): 2 confirmed, 1 corrected (S128 (e) completed); Q12, Q10, Q11 answered against full wording
 2026-11-21 11:32:09 IST sections 16-18 checked: AP 14 confirmed, 4 corrected (AP02, AP06, AP12, AP16), 1 added (AP19); U01-U08 and R1-R2 confirmed
+2026-11-21 11:34:25 IST coverage script run (17 of 17 definitions named; 10 continue_from_gate interface records; Q12, Q10, Q11 with full wording; 17/17 inherited items; fixed wording x3; S001-S129 no gaps; RESULT PASS); scan 0 on part file and check log; check log sections 3-6 written; Check log section appended to the part file; revision history updated
+DONE P06 checker 2026-11-21 11:34:25 IST

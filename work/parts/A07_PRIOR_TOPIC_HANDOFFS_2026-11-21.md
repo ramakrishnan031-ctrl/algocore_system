@@ -291,3 +291,11 @@ P01-S121. UNKNOWN / NOT ESTABLISHED: the A07 part of A02 K-27 that its owner fie
 P01-S122. UNKNOWN / NOT ESTABLISHED: whether the pattern search of P01-S073 found every record of the six AUDITs that names A07 as an owner. Evidence: a field-by-field review of the six AUDITs (Q26; P10 or the AUDIT).
 
 P01-S123. HISTORICAL (record): four of the 51 are themselves classified UNKNOWN / NOT ESTABLISHED and receive no treatment: A04 RL-11 (AFR L830), A05 CM-07 (AFR L1001), A05 FB-07 (AFR L1060) and A06 ET-06 (AFR L1209). Their classifications are unchanged here; A07 records its side only (P01-S048, P01-S052, P01-S056, P01-S069).
+
+## 7. Questions about intent for Rama
+
+P01-S124. FACT and OPEN FOR RAMA: this part's work on the records raises no question about how the legacy system was meant to work: every intent question in the 10 register entries has already been put to Rama and recorded (OPEN, or decided for A06-08), and none is reopened here. Two record and boundary points cannot be settled from the records; they are listed for Claude and ChatGPT to put to Rama only if the AUDIT cannot settle them from the records (they are not history questions, and nothing is decided here):
+1. OPEN FOR RAMA (records boundary): are A03 U-24, U-25 and H-17 to be recorded in A07 as items with no A07 side (each was listed under A07 because a joint handoff cell names A07), or does any of them have an A07 side to be traced? (P01-S090 to P01-S092, P01-S099, P01-S120)
+2. OPEN FOR RAMA (records boundary): A01 B-08's "A07 strategy validation" points at `scan_strategy_errors` in `strategies/loader.py`, which the index assigns to A02; which topic records that side? (P01-S095, P01-S100)
+
+P01-S125. FACT (reminder, not a new question): the Chartink scanner conditions for the A05-25 comparison are material only Rama can supply; D-39 (P3) already records that the comparison is made when he supplies them, that A07 proceeds meanwhile, and that without them the comparison is UNKNOWN / NOT ESTABLISHED (P01-S084, P01-S119).

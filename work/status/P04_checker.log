@@ -11,3 +11,4 @@
 2026-11-21 10:39:17 IST section 9 checked (S108-S115): 4 confirmed, 4 corrected (S108, S110, S113; S113 unreachability of REJECTED_SIGNAL_AGE confirmed)
 2026-11-21 10:39:25 IST note: section 9 counts are 5 confirmed, 3 corrected (S108, S110, S113); the previous line's 4/4 was a tally slip; check log table is authoritative
 2026-11-21 10:39:47 IST section 10 checked (S116-S122): 7 confirmed, 0 corrected; 1 added (S171, pipeline_timeout_sec has no reader; A06 PQ-01)
+2026-11-21 10:40:21 IST section 11 checked (S123-S139): 14 confirmed, 3 corrected (S126, S128, S136); 8 of 8 inherited items covered

@@ -1,5 +1,5 @@
 statements found: 172
-(d) numbering: S001..S172; gaps=[]; duplicates=[]; in order=False
+(d) numbering: S001..S172; gaps=[]; duplicates=[]; statements after a higher number (added at the end of their section): ['P04-S123']; statements whose label note says 'added in the check': ['P04-S171', 'P04-S172']
 (d) statements without a leading label: []
 
 (a) definitions of screening/step_executor.py and _build_market_data
@@ -26,21 +26,21 @@ statements found: 172
 (a) not named in any statement: none
 
 (b) focused questions (sections whose heading names the question)
-  Q8: sections -> ['7. The ten steps (Q8 and Q9 for each step)', '9. How the step results are used: hard gate, score, or neith']; statements P04-S067..P04-S115 (9)
-  Q9: sections -> ['7. The ten steps (Q8 and Q9 for each step)', '8. Thresholds and constants: from configuration to the value']; statements P04-S067..P04-S107 (9)
+  Q8: sections -> ['7. The ten steps (Q8 and Q9 for each step)', '7. The ten steps (Q8 and Q9 for each step) / 7.1 Step 1 `vol', '7. The ten steps (Q8 and Q9 for each step) / 7.10 Step 10 `s', '7. The ten steps (Q8 and Q9 for each step) / 7.2 Step 2 `vwa', '7. The ten steps (Q8 and Q9 for each step) / 7.3 Step 3 `atr', '7. The ten steps (Q8 and Q9 for each step) / 7.4 Step 4 `rsi', '7. The ten steps (Q8 and Q9 for each step) / 7.5 Step 5 `pri', '7. The ten steps (Q8 and Q9 for each step) / 7.6 Step 6 `sec', '7. The ten steps (Q8 and Q9 for each step) / 7.7 Step 7 `tim', '7. The ten steps (Q8 and Q9 for each step) / 7.8 Step 8 `spr', '7. The ten steps (Q8 and Q9 for each step) / 7.9 Step 9 `cir', '9. How the step results are used: hard gate, score, or neith']; statements P04-S067..P04-S115 (41)
+  Q9: sections -> ['7. The ten steps (Q8 and Q9 for each step)', '7. The ten steps (Q8 and Q9 for each step) / 7.1 Step 1 `vol', '7. The ten steps (Q8 and Q9 for each step) / 7.10 Step 10 `s', '7. The ten steps (Q8 and Q9 for each step) / 7.2 Step 2 `vwa', '7. The ten steps (Q8 and Q9 for each step) / 7.3 Step 3 `atr', '7. The ten steps (Q8 and Q9 for each step) / 7.4 Step 4 `rsi', '7. The ten steps (Q8 and Q9 for each step) / 7.5 Step 5 `pri', '7. The ten steps (Q8 and Q9 for each step) / 7.6 Step 6 `sec', '7. The ten steps (Q8 and Q9 for each step) / 7.7 Step 7 `tim', '7. The ten steps (Q8 and Q9 for each step) / 7.8 Step 8 `spr', '7. The ten steps (Q8 and Q9 for each step) / 7.9 Step 9 `cir', '8. Thresholds and constants: from configuration to the value']; statements P04-S067..P04-S107 (41)
   Q13: sections -> ['10. Failure behaviour of the executor (Q13 for the executor)']; statements P04-S116..P04-S171 (8)
-  Q8 hard gate / immediate reject: P04-S108, P04-S109, P04-S110, P04-S114
-  Q8 scores / rankings: P04-S108, P04-S109, P04-S110, P04-S111, P04-S112, P04-S113
+  Q8 hard gate / immediate reject: P04-S082, P04-S108, P04-S109, P04-S110, P04-S114
+  Q8 scores / rankings: P04-S070, P04-S073, P04-S078, P04-S084, P04-S088, P04-S094, P04-S095, P04-S108, P04-S109, P04-S110, P04-S111, P04-S112, P04-S113
   Q8 advance or defer: P04-S109
-  Q8 names, comments vs semantics: P04-S110, P04-S111, P04-S114
-  Q9 thresholds: P04-S067, P04-S100, P04-S106
-  Q9 units: P04-S102, P04-S103, P04-S104, P04-S105
-  Q9 formulae: P04-S103
-  Q9 weights: P04-S106, P04-S107
-  Q9 score aggregation: P04-S107
-  Q9 rounding: NONE
-  Q9 boundary conditions: P04-S106
-  Q9 configured to effective: P04-S067, P04-S100, P04-S101, P04-S105, P04-S107
+  Q8 names, comments vs semantics: P04-S068, P04-S074, P04-S076, P04-S077, P04-S081, P04-S085, P04-S090, P04-S094, P04-S095, P04-S096, P04-S097, P04-S098, P04-S110, P04-S111, P04-S114
+  Q9 thresholds: P04-S067, P04-S068, P04-S069, P04-S072, P04-S075, P04-S077, P04-S081, P04-S085, P04-S087, P04-S091, P04-S094, P04-S096, P04-S100, P04-S106
+  Q9 units: P04-S069, P04-S072, P04-S074, P04-S075, P04-S077, P04-S081, P04-S090, P04-S096, P04-S102, P04-S103, P04-S104, P04-S105
+  Q9 formulae: P04-S074, P04-S084, P04-S090, P04-S096, P04-S103
+  Q9 weights: P04-S071, P04-S084, P04-S086, P04-S089, P04-S093, P04-S099, P04-S106, P04-S107
+  Q9 score aggregation: P04-S087, P04-S096, P04-S107
+  Q9 rounding: P04-S107
+  Q9 boundary conditions: P04-S068, P04-S072, P04-S074, P04-S077, P04-S083, P04-S087, P04-S090, P04-S096, P04-S106
+  Q9 configured to effective: P04-S067, P04-S069, P04-S070, P04-S075, P04-S088, P04-S091, P04-S092, P04-S100, P04-S101, P04-S105, P04-S107
   Q13 missing: P04-S116, P04-S122
   Q13 malformed: P04-S117
   Q13 stale: P04-S118, P04-S119

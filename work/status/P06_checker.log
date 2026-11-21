@@ -11,3 +11,4 @@
 2026-11-21 11:26:43 IST section 10 checked (S084-S090): 4 confirmed, 3 corrected (S086 unreachable example; S088 M-C8 drain; S089 window start)
 2026-11-21 11:27:56 IST section 11 checked (S091-S102): 10 confirmed, 2 corrected (S094 comment premise; S101 call list); D-39 P2 boundary kept
 2026-11-21 11:28:25 IST section 12 checked (S103-S106): 4 confirmed, 0 corrected
+2026-11-21 11:28:46 IST section 13 checked (S107-S108): 1 confirmed, 1 corrected (S107 two rows qualified)

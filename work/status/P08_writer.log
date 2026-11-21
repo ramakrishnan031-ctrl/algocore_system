@@ -4,3 +4,4 @@ START P08 writer 2026-11-21 11:39:25 IST
 2026-11-21 11:53:19 IST section 3 (system configuration keys) done: P08-S020 to P08-S035
 2026-11-21 11:54:14 IST section 4 (scoring configuration keys) done: P08-S036 to P08-S041
 2026-11-21 11:56:04 IST section 5 (strategy fields; A02 AUDIT L1320 check) done: P08-S042 to P08-S049
+2026-11-21 11:57:08 IST section 6 (paths, registry, script options, environment) done: P08-S050 to P08-S056

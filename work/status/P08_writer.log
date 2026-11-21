@@ -13,3 +13,5 @@ START P08 writer 2026-11-21 11:39:25 IST
 2026-11-21 12:02:39 IST section 12 (Points for the AUDIT) done: P08-AP01 to P08-AP13
 2026-11-21 12:02:42 IST section 13 (UNKNOWN items) done: P08-U01 to P08-U06
 2026-11-21 12:02:45 IST section 14 (questions for Rama) done: P08-R1 to P08-R2
+2026-11-21 12:04:49 IST review pass: wording corrections (S022 default counts, S037 five v3 values, S057 lead-in, S060 direction row, S072 reference, S074 quotation shortened, S002/S003 sources completed); self-check (status/p08_selfcheck.py, python3 -I -B): 74 statements S001 to S074, no gaps or duplicates, labels valid, Q9 full wording present, 9 of 9 inherited items in section 10, A02 AUDIT L1320 cited, 115 peer IDs cited all defined, 13 AP, 6 U, 2 R; scan 0 hits
+DONE P08 writer 2026-11-21 12:04:49 IST

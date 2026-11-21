@@ -140,4 +140,35 @@
 - P06-S101 FACT (the receiver's claim; HISTORICAL docstring L2018 to L2019): "in_flight tracking is NOT released here -- the EntryGate already manages it". FACT: the gate holds no in-flight or claim state and calls no claim-release function (`screening/entry_gate.py` L1 to L537 has no `in_flight` name and no call outside its store, quote function, logger and callback). INTERPRETATION: the docstring's premise is not met by the gate; how the receiver's claim is released for a gated signal is A06's (A06 AUDIT ET-13 records that "the gate and retest paths leave the claim to their own owners, as their docstrings state").
 - P06-S102 FACT (telemetry at the interface, A15's counters): the processor's dispatch counter is incremented only on the `_process_one` route (L1423), and the comment L213 to L216 says the resume sites are "deliberately uncounted; their awakening surfaces at the gate units"; the gate's counter is incremented only by `add()` (P06-S026). INTERPRETATION: a resumption that starts from a rehydrated row increments neither counter, so the dormancy tripwire of `config/expected_managers.yaml` L177 to L183 ("acted>0 = someone wired it") would not show it.
 
+## 12. Statuses, rows and readers on the gate path
+
+- P06-S103 FACT (the `signals.status` values that the gate itself writes, exactly): `GATE_WAITING` (L312, from `add`, which has no non-test caller), `GATE_RELEASED_PRICE_HIT`, `GATE_RELEASED_TIMEOUT` and `GATE_RELEASED_QUOTE_UNAVAILABLE` (L502 to L504, through `release_gate_state`, L512), and, unreachable from the module's own calls, `GATE_RELEASED_<reason>` (L506, P06-S061). Every gate status write sets `rejection_reason` to NULL (P06-S038, P06-S062). No gate status is written on a poll cycle that does not release, on rehydration, on `remove` or on `clear_all`.
+- P06-S104 FACT (the `gate_state` row's lifecycle in the code): written by `add` (`INSERT OR REPLACE`, P06-S040); read at `start` (P06-S029) and by the daily report (`reports/daily_report.py` L131 to L134, A15's, inside a `try` that falls back to an empty list); deleted with the status update by `_release` (P06-S062), all rows by `clear_all` (P06-S072, not wired, P06-S075), and as a child of a pruned signal by `scripts/eod_cleanup.py` (P06-S077). The store's `delete_gate_state` (`core/state_store.py` L2975 to L2980) has no non-test caller (search; A03 AUDIT Q-12).
+- P06-S105 INTERPRETATION (the status sequence of a gated signal, from the code; only the rehydration route is reachable, P06-S045): rehydration writes nothing, so the signal keeps whatever status it held when the process stopped; a release then writes one `GATE_RELEASED_*` status; for `PRICE_HIT` the resumption writes `PROCESSING` and then, by A06's routes, one or more of `RESERVED`, `PROCESSED_NO_PLACER`, `TIMEOUT`, `PROCESSED`, `REJECTED_<check>` or `PLACEMENT_FAILED` (P06-S098). Between the gate's write and `PROCESSING`, the status `GATE_RELEASED_PRICE_HIT` stands while the work waits in the two-worker pool queue.
+- P06-S106 FACT (readers of the gate statuses outside A07, interface only; part P09 owns the full map): `reports/signal_status.py` L80 classifies any status starting with `GATE_` as "other"; `ops_dashboard/backend/services/trade_logs.py` L179 tests the `GATE_` prefix among non-trade statuses. The crash-test validators list `REJECTED_ENTRY_GATE` as a known terminal status (`tests/crash_test/state_machine_validator.py` L51, L77; `tests/crash_test/invariant_checker.py` L102); no non-test code writes that string (search with the four exclusions, `docs/` set aside), and the validators' lists contain no `GATE_` status.
+
+## 13. Failure behaviour on the gate path (summary)
+
+- P06-S107 FACT (summary table; each row cites the statements that establish it):
+
+| Condition | What the gate does | Statements |
+|---|---|---|
+| `gate_state` read fails at start | ERROR log; nothing restored; start continues | P06-S029 |
+| A row fails to parse | WARNING; row skipped in memory, left in the table, skipped again at each start | P06-S029, P06-S030 |
+| A row is old, has odd direction, non-finite or zero prices, or a tolerance out of the schema range | restored as it is; no test | P06-S030, P06-S032, P06-S056 |
+| Time-out passed | `TIMEOUT` release at the first check, before any quote read | P06-S050, P06-S053 |
+| Quote read raises (broker error, limiter time-out or abort, missing symbol) | count + 1; WARNING; at 3 consecutive, ERROR and `QUOTE_UNAVAILABLE` release | P06-S050, P06-S055, P06-S056 |
+| Quote `last_price` is 0.0 | treated as a price; resets the count; no hit unless the window contains 0 | P06-S056 |
+| Check raises outside its `try` | exception discarded by the poll loop, no log; entry stays and is checked again | P06-S049, P06-S057 |
+| A check takes longer than 7 s | wait abandoned silently; check continues; a second check of the same entry may start | P06-S049 |
+| `release_gate_state` fails | ERROR log; row and old status stay; entry already gone from memory; callback still runs | P06-S065 |
+| `_release` raises after the store call (non-dict `extras` on `PRICE_HIT`) | no callback; signal left at `GATE_RELEASED_PRICE_HIT`; no log | P06-S066 |
+| Callback raises | ERROR log; gate continues | P06-S067, P06-S086 |
+| `continue_from_gate` raises out of its handlers | ERROR log by the pool worker only | P06-S099 |
+| `add` persistence fails | ERROR log; memory insert kept (no non-test caller) | P06-S036, P06-S038 |
+| `clear_all` store call fails | memory already cleared; exception to the caller (caller's handler logs) | P06-S072, P06-S073 |
+| `stop` with work in flight | 5 s join, 3 s sleep; running and queued checks continue | P06-S069, P06-S071 |
+
+- P06-S108 INTERPRETATION: no failure on the gate path is retried by the gate; failures are logged (or, in two routes, silently discarded: P06-S049 (a), P06-S066) and converted into either a later poll attempt, a release, or no action. No failure raises an alert or a notifier message from the gate (the module imports no notifier; L32 to L44).
+
 <!-- P06 continues -->

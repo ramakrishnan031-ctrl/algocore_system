@@ -120,3 +120,14 @@ conflicts preserved) and Q26 (inventory completeness: anything A07-owned missed 
 - The two handoff points without item IDs (P01-S072): the PAPER_ONLY demotion goes to P07; A06 TG14's "end-of-day
   route's excluded-symbol check" goes to P09 (find the code if any; otherwise UNKNOWN / NOT ESTABLISHED).
 - P10 also uses P01's list of records that name A07 as an owner outside the 51 (in the P01 file) when answering Q26.
+
+## ADDENDUM 2 (21-Nov-2026, after the P01 check) — handoff points without item IDs (P01-S126)
+Cite these records where your part traces the code (they carry no item ID; none is added to the 51 or re-owned):
+- P07: A02 AUDIT L540 (`scripts/compute_strategy_metrics.py` L302 to L306, the `load_config` call and its handler);
+  A02 AUDIT L1320 for the officer (L230) and `scripts/strategy_status.py` (L56 to L109).
+- P08: A02 AUDIT L1320, the strategy fields each `validate_strategy` caller reads.
+- P09: A06 RTR L130, L162 and L347 (a FIX-069 retry re-runs the A07 path; Q11, a signal evaluated twice); the
+  boundary summaries A03 RTR L147, A04 RTR L144, A05 RTR L205 and A06 RTR L214 (statuses and rows).
+- Assembly (STUDY section 17): A02 AUDIT L1320 for the direction map and taxonomy and A06 AUDIT L4009 for the
+  strategy-control gate (both already traced in P02); A06 RTR L663 and L735 (TG7, a Phase 2 input: not traced; the
+  shutdown facts are with C20 and PQ-02); A05 RTR L702 (records note on who owns screening; the index governs: A07).

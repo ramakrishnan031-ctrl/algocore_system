@@ -7,3 +7,4 @@ P05 checker progress log (file checked: /home/claude/a07/parts/A07_QUALITY_SCORE
 2026-11-21 11:28:24 IST section 5 checked (S039-S054): 15 confirmed, 1 corrected (S045)
 2026-11-21 11:28:45 IST section 6 checked (S055-S060): 4 confirmed, 2 corrected (S059 search widened, S060 range)
 2026-11-21 11:30:04 IST section 7 checked (S061-S069): 6 confirmed, 3 corrected (S067 IA-P2-05 at-circuit, S068 points/float/timeout, S069 qualified); 1 added (S118)
+2026-11-21 11:31:00 IST section 8 checked (S070-S092): 18 confirmed, 5 corrected (S078, S080, S087, S089, S092 NaN qualifications); gate_rr figures recomputed, all confirmed

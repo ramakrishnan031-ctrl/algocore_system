@@ -213,7 +213,9 @@
 | `gate_htf` | `HTF` | must-not, missing passes | close or EMA: PASS; swings: treated as empty | PASS | PASS (fail-open) | not (close beyond EMA against the side, strict, and last two swings against the side, strict) | close, EMA, last two swings |
 | `gate_extreme` | `EXTREME` | must-not, missing passes | PASS | not applicable (truthiness of the flag) | PASS (fail-open) | `extreme_flag` falsy | a detail text only |
 | `gate_confirm` | `CONFIRM` | must-have, missing fails | FAIL | can PASS (any of the seven values or the two thresholds) | FAIL "error" | close > level; body fraction >= minimum; volume >= multiple × baseline | close, level, body fraction, volume, baseline (after the first three tests) |
-| `gate_pullback` | `PULLBACK` | must-have, missing fails | FAIL (including `atr30`) | FAIL | FAIL "error" | session low <= level + proximity; lowest close >= hold floor | all inputs, proximity, floor, both booleans |
+| `gate_pullback` | `PULLBACK` | must-have, missing fails | FAIL (including `atr30`) | FAIL for the four data inputs, `proximity_pct` and `hold_buffer_atr_mult`; a NaN `proximity_atr_mult` is dropped by `max()` | FAIL "error" | session low <= level + proximity; lowest close >= hold floor | level, session low, lowest close, proximity, hold floor, both booleans (not the ATR or the multipliers) |
+
+  (Cells of the `gate_rr`, `gate_confirm` and `gate_pullback` rows qualified in the check: P05-S080, P05-S087, P05-S089.)
 
 ## 9. The callers of the playbook gates and helpers, at the interface only (A18's code; Q17)
 

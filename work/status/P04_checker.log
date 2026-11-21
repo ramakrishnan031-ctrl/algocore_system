@@ -9,3 +9,4 @@
 2026-11-21 10:38:00 IST note: section 7 counts are 27 confirmed, 6 corrected (the previous line's 26/7 was a tally slip; check log table is authoritative)
 2026-11-21 10:38:32 IST section 8 checked (S100-S107): 6 confirmed, 2 corrected (S103, S107)
 2026-11-21 10:39:17 IST section 9 checked (S108-S115): 4 confirmed, 4 corrected (S108, S110, S113; S113 unreachability of REJECTED_SIGNAL_AGE confirmed)
+2026-11-21 10:39:25 IST note: section 9 counts are 5 confirmed, 3 corrected (S108, S110, S113); the previous line's 4/4 was a tally slip; check log table is authoritative

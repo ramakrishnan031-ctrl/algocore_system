@@ -140,3 +140,5 @@ Cite these records where your part traces the code (they carry no item ID; none 
   P05 for the internals and P03 for the routes.
 - A scan hit in any helper's file blocks every helper's backup until it is fixed; a blocked helper waits, re-scans
   and retries (never edits another helper's file, never bypasses), as P03 did.
+- Cite legacy commits by their full 40-character hash where a 7-character prefix of 2 to 4 letters and 3 or more
+  digits would trip the identifier scan (it did once for P04); never weaken the scan.

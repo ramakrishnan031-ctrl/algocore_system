@@ -7,3 +7,4 @@
 - P03-AP21 settled by ADDENDUM 3 (_build_market_data -> P04; V3 internals -> P05).
 - Questions for Rama so far: P02 R1-R3; P03 R1-R2; P04 S169, S172; P05 R1-R3; P06 R1-R2; P07 R1-R4 (to be merged into one sheet); P08 R1-R2.
 - P07-AP21: index L114 says A09 may cite a capital/governor handoff of the metrics script; the code has none -> AUDIT point (index not changed).
+- P07-S099/AP21: index Appendix A L303 ("may set a strategy to PAPER_ONLY") and L114 (A09 handoff) differ from the code -> AUDIT points; index not changed.

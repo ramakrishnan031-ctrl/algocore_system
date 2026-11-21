@@ -6,3 +6,4 @@
 2026-11-21 10:08:42 IST section 6 (status strings and stored reason) written, P03-S070 to P03-S075
 2026-11-21 10:09:52 IST section 7 (_persist and _evidence_capture) written, P03-S076 to P03-S089; cross-references in S023 and S040 corrected
 2026-11-21 10:12:49 IST note: first backup of section 7 was BLOCKED by a scan hit in another helper's file (P04 file, line 29; not touched); retried after the hit was gone
+2026-11-21 10:13:18 IST section 8 (shutdown) written, P03-S090 to P03-S095

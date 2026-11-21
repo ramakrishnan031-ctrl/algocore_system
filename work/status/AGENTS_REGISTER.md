@@ -8,5 +8,7 @@ only after both helpers of the current pair have handed back (final notification
 |---|---|---|---|---|---|
 | 1 | P01 | writer | (held locally) | 21-Nov-2026 09:06 | DONE (hand-back 09:32) |
 | 1 | P02 | writer | (held locally) | 21-Nov-2026 09:06 | DONE (hand-back 09:29; disclosed: two temporary /tmp files of strategy names, deleted) |
-| 2 | P01 | checker | (held locally) | 21-Nov-2026 09:33 | RUNNING |
-| 2 | P02 | checker | (held locally) | 21-Nov-2026 09:33 | RUNNING |
+| 2 | P01 | checker | (held locally) | 21-Nov-2026 09:33 | DONE (hand-back 09:52) |
+| 2 | P02 | checker | (held locally) | 21-Nov-2026 09:33 | DONE (hand-back 09:52) |
+| 3 | P03 | writer | (held locally) | 21-Nov-2026 09:54 | RUNNING |
+| 3 | P04 | writer | (held locally) | 21-Nov-2026 09:54 | RUNNING |

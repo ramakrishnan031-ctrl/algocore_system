@@ -8,3 +8,4 @@
 2026-11-21 10:12:49 IST note: first backup of section 7 was BLOCKED by a scan hit in another helper's file (P04 file, line 29; not touched); retried after the hit was gone
 2026-11-21 10:13:18 IST section 8 (shutdown) written, P03-S090 to P03-S095
 2026-11-21 10:14:06 IST section 9 (inputs, exceptions and store failures; Q13) written, P03-S096 to P03-S102
+2026-11-21 10:14:36 IST section 10 (bypass, double evaluation, loss, ambiguity; Q11) written, P03-S103 to P03-S107

@@ -160,14 +160,14 @@
 | Time-out passed | `TIMEOUT` release at the first check, before any quote read | P06-S050, P06-S053 |
 | Quote read raises (broker error, limiter time-out or abort, missing symbol) | count + 1; WARNING; at 3 consecutive, ERROR and `QUOTE_UNAVAILABLE` release | P06-S050, P06-S055, P06-S056 |
 | Quote `last_price` is 0.0 | treated as a price; resets the count; no hit unless the window contains 0 | P06-S056 |
-| Check raises outside its `try` | exception discarded by the poll loop, no log; entry stays and is checked again | P06-S049, P06-S057 |
+| Check raises outside its `try` | exception discarded by the poll loop, no log; the entry stays and is checked again if the exception comes before `_release` removes it (no such route found for rehydrated entries; qualified in the check) | P06-S049, P06-S057 |
 | A check takes longer than 7 s | wait abandoned silently; check continues; a second check of the same entry may start | P06-S049 |
 | `release_gate_state` fails | ERROR log; row and old status stay; entry already gone from memory; callback still runs | P06-S065 |
 | `_release` raises after the store call (non-dict `extras` on `PRICE_HIT`) | no callback; signal left at `GATE_RELEASED_PRICE_HIT`; no log | P06-S066 |
 | Callback raises | ERROR log; gate continues | P06-S067, P06-S086 |
 | `continue_from_gate` raises out of its handlers | ERROR log by the pool worker only | P06-S099 |
 | `add` persistence fails | ERROR log; memory insert kept (no non-test caller) | P06-S036, P06-S038 |
-| `clear_all` store call fails | memory already cleared; exception to the caller (caller's handler logs) | P06-S072, P06-S073 |
+| `clear_all` store call fails | memory already cleared; exception to the caller (caller's handler logs); the only caller is not wired in the `main.py` build (added in the check) | P06-S072, P06-S073, P06-S075 |
 | `stop` with work in flight | 5 s join, 3 s sleep; running and queued checks continue | P06-S069, P06-S071 |
 
 - P06-S108 INTERPRETATION: no failure on the gate path is retried by the gate; failures are logged (or, in two routes, silently discarded: P06-S049 (a), P06-S066) and converted into either a later poll attempt, a release, or no action. No failure raises an alert or a notifier message from the gate (the module imports no notifier; L32 to L44).

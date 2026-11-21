@@ -13,3 +13,4 @@ P05 checker progress log (file checked: /home/claude/a07/parts/A07_QUALITY_SCORE
 2026-11-21 11:32:22 IST section 11 checked (S105-S106): 1 confirmed, 1 corrected (S105 proximity cell); 1 added (S119 in section 5.3: direction-independent decision; narrow band refuses all)
 2026-11-21 11:32:48 IST section 12 checked (S107-S112): 5 confirmed, 1 corrected (S107 completed); 6 of 6 inherited items covered
 2026-11-21 11:33:20 IST section 13 checked (S113-S115): 1 confirmed, 2 corrected (S113 count, S114 ceilings/bands/config-as-declared); Q8 Q9 Q17 answered
+2026-11-21 11:34:02 IST section 14 checked (AP01-AP26): 20 confirmed, 6 amended (AP03, AP04, AP09, AP10, AP11, AP15); 2 added (AP27, AP28)

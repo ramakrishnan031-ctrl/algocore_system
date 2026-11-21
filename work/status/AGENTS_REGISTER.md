@@ -13,4 +13,6 @@ only after both helpers of the current pair have handed back (final notification
 | 3 | P03 | writer | (held locally) | 21-Nov-2026 09:54 | DONE (hand-back 10:21; one backup briefly blocked by a scan hit in the P04 file, retried after P04 fixed it) |
 | 3 | P04 | writer | (held locally) | 21-Nov-2026 09:54 | DONE (hand-back 10:23; one backup blocked by a short legacy commit hash, rewritten in full) |
 | 4 | P03 | checker | (held locally) | 21-Nov-2026 10:24 | DONE (hand-back 10:43) |
-| 4 | P04 | checker | (held locally) | 21-Nov-2026 10:24 | RUNNING |
+| 4 | P04 | checker | (held locally) | 21-Nov-2026 10:24 | DONE (hand-back 10:45; disclosed: one redirect outside the work folder, denied by the permission system, no file created) |
+| 5 | P05 | writer | (held locally) | 21-Nov-2026 10:46 | RUNNING |
+| 5 | P06 | writer | (held locally) | 21-Nov-2026 10:46 | RUNNING |

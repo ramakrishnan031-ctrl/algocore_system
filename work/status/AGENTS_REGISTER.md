@@ -15,4 +15,4 @@ only after both helpers of the current pair have handed back (final notification
 | 4 | P03 | checker | (held locally) | 21-Nov-2026 10:24 | DONE (hand-back 10:43) |
 | 4 | P04 | checker | (held locally) | 21-Nov-2026 10:24 | DONE (hand-back 10:45; disclosed: one redirect outside the work folder, denied by the permission system, no file created) |
 | 5 | P05 | writer | (held locally) | 21-Nov-2026 10:46 | RUNNING |
-| 5 | P06 | writer | (held locally) | 21-Nov-2026 10:46 | RUNNING |
+| 5 | P06 | writer | (held locally) | 21-Nov-2026 10:46 | DONE (hand-back 11:09) |

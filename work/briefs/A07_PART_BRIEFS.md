@@ -131,3 +131,12 @@ Cite these records where your part traces the code (they carry no item ID; none 
 - Assembly (STUDY section 17): A02 AUDIT L1320 for the direction map and taxonomy and A06 AUDIT L4009 for the
   strategy-control gate (both already traced in P02); A06 RTR L663 and L735 (TG7, a Phase 2 input: not traced; the
   shutdown facts are with C20 and PQ-02); A05 RTR L702 (records note on who owns screening; the index governs: A07).
+
+## ADDENDUM 3 (21-Nov-2026, after the P03 writer) — overlapping scope between parts
+- `_build_market_data` (screening/secondary_screener.py): P04 owns its content (which fields come from the quote,
+  which are None); P03 records it at the call level only. The STUDY cites P04 for it.
+- `_screen_v3_enforce` and `_log_v3_shadow_compare`: P05 owns their internals; P03 records the routes into them at
+  the call level only (P03 section 5, E1 to E7). P05 cross-references P03's route statements by ID. The STUDY cites
+  P05 for the internals and P03 for the routes.
+- A scan hit in any helper's file blocks every helper's backup until it is fixed; a blocked helper waits, re-scans
+  and retries (never edits another helper's file, never bypasses), as P03 did.

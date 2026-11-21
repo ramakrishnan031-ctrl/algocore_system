@@ -12,3 +12,6 @@ P05 writer progress log (file: /home/claude/a07/parts/A07_QUALITY_SCORER_HARD_GA
 2026-11-21 11:10:08 IST section 12 (six inherited items) done: P05-S107 to P05-S112
 2026-11-21 11:11:15 IST section 13 (answers Q8, Q9, Q17) done: P05-S113 to P05-S115
 2026-11-21 11:11:58 IST section 14 (Points for the AUDIT) done: P05-AP01 to P05-AP26
+2026-11-21 11:12:32 IST sections 15 (UNKNOWN items P05-U01 to P05-U10) and 16 (questions for Rama P05-R1 to P05-R3) done
+2026-11-21 11:13:03 IST self-check (status/p05w_cov.py, python3 -I -B): 115 statements S001 to S115, no gaps or duplicates, labels valid, all definitions named, Q8 Q9 Q17 answered, 6 of 6 inherited items, scan 0 hits
+DONE P05 writer 2026-11-21 11:13:03 IST

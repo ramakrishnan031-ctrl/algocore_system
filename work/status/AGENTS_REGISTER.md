@@ -22,5 +22,5 @@ only after both helpers of the current pair have handed back (final notification
 | 7 | P08 | writer | (held locally) | 21-Nov-2026 11:38 | DONE (hand-back 12:05) |
 | 8 | P07 | checker | (held locally) | 21-Nov-2026 12:05 | DONE |
 | 8 | P08 | checker | (held locally) | 21-Nov-2026 12:05 | DONE (hand-back 12:30) |
-| 9 | P09 | writer | (held locally) | 21-Nov-2026 12:31 | RESUMED 12:50 after server restart (sections 1-10 saved) |
+| 9 | P09 | writer | (held locally) | 21-Nov-2026 12:31 | DONE (resumed after restart; hand-back 12:56) |
 | 9 | P10 | writer | (held locally) | 21-Nov-2026 12:31 | RESUMED 12:50 after server restart (no section saved yet) |

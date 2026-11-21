@@ -2,3 +2,4 @@ START P10 writer 2026-11-21 12:32:24 IST
 2026-11-21 12:49:43 IST RESTART noted: server restart stopped the writer at about 12:49 IST before any section was saved; resuming from the transcript, re-checking against the sources; helper scripts and search outputs in status/ (p10_*.py, p10_doc_hits.txt, p10_doc_cited_by_parts.txt, p10_t2.txt, p10_t36.txt) kept
 2026-11-21 12:50:18 IST section 1 (method, sources, boundaries) done: P10-S001 to P10-S009
 2026-11-21 12:54:02 IST section 2 (the five legacy technical records checked) done: P10-S010 to P10-S045
+2026-11-21 12:59:33 IST section 3 (legacy documents as intent sources, Q24) done: P10-S046 to P10-S065

@@ -101,7 +101,7 @@
 ### 6.2 What `_build_market_data` returns
 
 - P04-S060 FACT: `_build_market_data(self, quote)` (`secondary_screener.py` L380 to L418) sets `ltp = quote.last_price` (L386); reads `upper` and `lower` with `getattr(quote, "upper_circuit", None)` and `getattr(quote, "lower_circuit", None)` (L390 to L391); sets `circuit_state = "upper_circuit"` if `upper is not None and ltp >= upper` (L392 to L393), else `"lower_circuit"` if `lower is not None and ltp <= lower` (L394 to L395), else `""` (L389); and returns a new dictionary of 17 keys (L397 to L418).
-- P04-S061 FACT (the 17 keys, L397 to L418; "A04 source" is the `Quote` field of P04-S057):
+- P04-S061 FACT (the 17 keys, L397 to L418; "A04 source" is the `Quote` field of P04-S057; steps 7 and 10 read no market data, section 7):
 
 | Key | Value set by `_build_market_data` | A04 source and its empty value | Read by step |
 |---|---|---|---|
@@ -121,8 +121,6 @@
 | `sector` | `None` always (L415) | none | 6 |
 | `prev_close` | `None` always (L416) | none (the adapter maps no `ohlc.close`) | none |
 | `avg_volume_20d` | `None` always (L417) | none | 1 |
-
-Steps 7 and 10 read no market data (section 7).
 - P04-S062 HISTORICAL: the docstring (L381 to L385) cites SS7 ("Fields not in Quote are set to None; step_executor handles missing keys gracefully (SE8)") and SS8 ("Circuit state derived from quote fields if available"); the comments say the band values serve "the pre-fill circuit-proximity reject (NOCIL fix) + forensic snapshot. None when the quote does not carry them" (L403 to L404), that `vwap`, `open`, `day_high`, `day_low` are "populated from Quote fields (Kite API response)" (L407, "v2.1"), and that `atr`, `rsi`, `sector`, `prev_close`, `avg_volume_20d` are "Still not in Kite quote API; would need instruments cache" (L412). SS7 (P04-S014) had set `vwap`, `open`, `day_high` and `day_low` to `None` "(v2)" with providers promised for "v2.1"; the code populates those four from the quote and leaves the other five `None`.
 - P04-S063 FACT and current external context: the Kite page lists `ohlc.close`, "Closing price of the instrument from the last trading day" (P04-S058), while the comment L412 groups `prev_close` with the fields "Still not in Kite quote API"; the adapter's `Quote` has no close field (L208 to L222), and no step reads `prev_close` (search of `screening/step_executor.py` for `prev_close`: no match). For `atr`, `rsi`, `sector` and `avg_volume_20d` the page lists no attribute, as the comment says. No module under `screening/` imports `core/candle_math.py`, `core/daily_stats.py`, an instrument cache or any `daily_symbol` helper (search of `screening/`, `strategies/` and `core/strategy_direction.py` for `candle_math`, `daily_stats`, `daily_symbol`, `instrument_cache`, `InstrumentCache`: no match).
 - P04-S064 FACT: the dictionary does not carry the quote's `ts` (set by the adapter to `now_ist()` at the fetch, `broker/zerodha_adapter.py` L1771, L1791), the exchange `timestamp`, `last_trade_time` or any depth quantity; no step tests the age of the quote. The screener keeps a copy as `market_data_snapshot` (`secondary_screener.py` L198) and persists it (L629; P03's), so the five always-`None` keys are persisted as nulls.
@@ -131,9 +129,7 @@ Steps 7 and 10 read no market data (section 7).
 
 ## 7. The ten steps (Q8 and Q9 for each step)
 
-Each step method has the signature `(self, signal: dict, md: dict, thr: dict, direction: str) -> float`; `md` is the market-data dictionary (section 6), `thr` the thresholds dictionary and `direction` the upper-cased direction (P04-S030). "Live route" means the screener's default route with the dictionary of P04-S061; "file value" means the committed value (FACT about the file; effective production values are UNKNOWN / NOT ESTABLISHED, section 13). The thresholds dictionary is built by the screener from three strategy fields only (`secondary_screener.py` L235 to L239 and L461 to L465): `min_volume_surge`, `min_adr_pct`, `max_spread_pct` (section 8).
-
-- P04-S067 FACT (the clock used by steps 7 and 10; A01's code, interface only): `now_ist()` returns `datetime.now(tz=_IST)` (`core/time_authority.py` L94 to L99), where `_IST = timezone(timedelta(hours=5, minutes=30), name="IST")` (L58 to L59), a timezone-aware value with a fixed +05:30 offset. Steps 7 and 10 each call it when they run (L363, L413), so the two steps read the clock separately.
+- P04-S067 FACT (conventions of this section, and the clock used by steps 7 and 10): each step method has the signature `(self, signal: dict, md: dict, thr: dict, direction: str) -> float` (L247 to L249 and the nine others); `md` is the market-data dictionary (section 6), `thr` the thresholds dictionary and `direction` the upper-cased direction (P04-S030). The screener builds the thresholds dictionary from three strategy fields only, `min_volume_surge`, `min_adr_pct` and `max_spread_pct` (`secondary_screener.py` L235 to L239 and L461 to L465; section 8). Below, "live route" means the screener's default route with the dictionary of P04-S061, and "file value" means the committed value (FACT about the file; effective production values are UNKNOWN / NOT ESTABLISHED, section 13). The clock (A01's code, interface only): `now_ist()` returns `datetime.now(tz=_IST)` (`core/time_authority.py` L94 to L99), where `_IST = timezone(timedelta(hours=5, minutes=30), name="IST")` (L58 to L59), a timezone-aware value with a fixed +05:30 offset. Steps 7 and 10 each call it when they run (L363, L413), so the two steps read the clock separately.
 
 ### 7.1 Step 1 `volume_surge` (L247 to L256)
 

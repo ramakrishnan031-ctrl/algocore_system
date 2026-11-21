@@ -318,6 +318,8 @@ Each item names the evidence that would settle it. None of that evidence is in t
 - P03-U06 — Whether any exception ever left `screen()` in production and was recorded as `PLACEMENT_FAILED` (P03-S098). Would settle it: the processor's "Pipeline exception" ERROR lines with a screener frame in the traceback.
 - P03-U07 — Whether any signal was screened more than once in production (P03-S104; the FIX-069 re-run is part P09's). Would settle it: `screener_results` rows sharing a `signal_id`.
 - P03-U08 — The source of the comment's figure "68.99 % of the corpus is a REJECTED_SCORE_*" (P03-S089). Would settle it: the corpus or analysis the comment refers to, which is not in the repository traced here.
+- P03-U09 (added in the check) — Whether any screening call during a shutdown drain was ended by the limiter's shutdown abort and recorded `SKIPPED_QUOTE_UNAVAILABLE` (P03-S143). Would settle it: the screener's "quote_fn failed" ERROR lines with a `RateLimitAbortedError` traceback near a "Shutdown initiated" line.
+- P03-U10 (added in the check) — Whether the production database carried the `screener_results` foreign key and so whether an analytics INSERT could fail on it (P03-S142; A03's schema). Would settle it: a copy of the production schema (`sqlite_master`) or the screener's "state_store write failed" ERROR lines naming a foreign-key failure.
 
 ## 17. Questions about intent for Rama
 

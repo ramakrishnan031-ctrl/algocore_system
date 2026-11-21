@@ -1,0 +1,62 @@
+statements found: 172
+(d) numbering: S001..S172; gaps=[]; duplicates=[]; in order=False
+(d) statements without a leading label: []
+
+(a) definitions of screening/step_executor.py and _build_market_data
+  class    StepExecutorResult (L21): 2 statements: P04-S011, P04-S036
+  constant _DEFAULT_MARKET_OPEN (L36): 2 statements: P04-S016, P04-S017
+  class    StepExecutor (L39): 3 statements: P04-S011, P04-S013, P04-S019
+  method   StepExecutor.__init__ (L49): 2 statements: P04-S011, P04-S017
+  method   StepExecutor._new_executor (L75): 4 statements: P04-S011, P04-S016, P04-S017, P04-S024
+  method   StepExecutor._rotate_executor (L78): 6 statements: P04-S011, P04-S016, P04-S024, P04-S033, P04-S043, P04-S047
+  method   StepExecutor.run_all (L118): 21 statements: P04-S005, P04-S011, P04-S012, P04-S013, P04-S024, P04-S026, P04-S028, P04-S029, P04-S030, P04-S036, P04-S051, P04-S052, P04-S108, P04-S110, P04-S118, P04-S119, P04-S121, P04-S171, P04-S134, P04-S138, P04-S155
+  method   StepExecutor.shutdown (L221): 15 statements: P04-S002, P04-S011, P04-S016, P04-S043, P04-S044, P04-S045, P04-S049, P04-S050, P04-S051, P04-S052, P04-S119, P04-S122, P04-S133, P04-S134, P04-S156
+  method   StepExecutor._step_1_volume_surge (L247): 1 statements: P04-S031
+  method   StepExecutor._step_2_vwap_position (L258): 1 statements: P04-S031
+  method   StepExecutor._step_3_atr_filter (L271): 1 statements: P04-S031
+  method   StepExecutor._step_4_rsi_range (L283): 1 statements: P04-S031
+  method   StepExecutor._step_5_price_action (L318): 1 statements: P04-S031
+  method   StepExecutor._step_6_sector_strength (L331): 1 statements: P04-S031
+  method   StepExecutor._minutes_since_open (L338): 5 statements: P04-S011, P04-S016, P04-S018, P04-S087, P04-S089
+  method   StepExecutor._step_7_time_of_day (L359): 1 statements: P04-S031
+  method   StepExecutor._step_8_spread_check (L372): 1 statements: P04-S031
+  method   StepExecutor._step_9_circuit_check (L397): 1 statements: P04-S031
+  method   StepExecutor._step_10_signal_age (L406): 1 statements: P04-S031
+  method   SecondaryScreener._build_market_data (L380): 8 statements: P04-S002, P04-S005, P04-S055, P04-S060, P04-S061, P04-S082, P04-S126, P04-S147
+(a) not named in any statement: none
+
+(b) focused questions (sections whose heading names the question)
+  Q8: sections -> ['7. The ten steps (Q8 and Q9 for each step)', '9. How the step results are used: hard gate, score, or neith']; statements P04-S067..P04-S115 (9)
+  Q9: sections -> ['7. The ten steps (Q8 and Q9 for each step)', '8. Thresholds and constants: from configuration to the value']; statements P04-S067..P04-S107 (9)
+  Q13: sections -> ['10. Failure behaviour of the executor (Q13 for the executor)']; statements P04-S116..P04-S171 (8)
+  Q8 hard gate / immediate reject: P04-S108, P04-S109, P04-S110, P04-S114
+  Q8 scores / rankings: P04-S108, P04-S109, P04-S110, P04-S111, P04-S112, P04-S113
+  Q8 advance or defer: P04-S109
+  Q8 names, comments vs semantics: P04-S110, P04-S111, P04-S114
+  Q9 thresholds: P04-S067, P04-S100, P04-S106
+  Q9 units: P04-S102, P04-S103, P04-S104, P04-S105
+  Q9 formulae: P04-S103
+  Q9 weights: P04-S106, P04-S107
+  Q9 score aggregation: P04-S107
+  Q9 rounding: NONE
+  Q9 boundary conditions: P04-S106
+  Q9 configured to effective: P04-S067, P04-S100, P04-S101, P04-S105, P04-S107
+  Q13 missing: P04-S116, P04-S122
+  Q13 malformed: P04-S117
+  Q13 stale: P04-S118, P04-S119
+  Q13 contradictory: P04-S117
+  Q13 exceptions: P04-S119, P04-S122
+  Q13 unavailable market/context data: P04-S121
+  Q13 database failures: P04-S120
+  Q13 partial writes: P04-S120
+  Q13 surfaced/swallowed/logged/retried/converted: P04-S119, P04-S122
+
+(c) inherited items of P04's row of P01-S074
+  T-20: section 11 -> P04-S123, P04-S124; all -> 6
+  RD-12: section 11 -> P04-S125, P04-S126; all -> 5
+  CM-07: section 11 -> P04-S127, P04-S128, P04-S139; all -> 4
+  CM-22: section 11 -> P04-S127, P04-S129, P04-S130; all -> 4
+  WA-06: section 11 -> P04-S131, P04-S132; all -> 3
+  PQ-02: section 11 -> P04-S133, P04-S134; all -> 5
+  PQ-08: section 11 -> P04-S135, P04-S136; all -> 5
+  ET-06: section 11 -> P04-S137, P04-S138; all -> 4

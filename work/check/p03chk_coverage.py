@@ -76,6 +76,9 @@ def section_of(part_text, sid):
 def main():
     part_file, q_file, out_file = sys.argv[1:4]
     part = open(part_file, encoding="utf-8").read()
+    # the checker's own "Check log" section lists corrections by ID; it is not part of the statements
+    if "\n## Check log" in part:
+        part = part.split("\n## Check log", 1)[0]
     qtext = open(q_file, encoding="utf-8").read()
     st, starts = statements(part)
     lines = []

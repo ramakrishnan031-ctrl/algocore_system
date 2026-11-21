@@ -8,3 +8,5 @@ START P10 writer 2026-11-21 12:32:24 IST
 2026-11-21 13:03:28 IST section 6 (Q26 inventory completeness, incl. P01's 31 records) done: P10-S071 to P10-S079
 2026-11-21 13:03:51 IST section 7 (answers to Q24 and Q26, full wording) done: P10-S080 to P10-S081
 2026-11-21 13:05:37 IST sections 8 to 10 (Points for the AUDIT P10-AP01 to AP16; UNKNOWN P10-U01 to U08; question P10-R1) done; self-check status/p10_selfcheck.py: 81 statements S001 to S081, no gaps or duplicates, labels valid, Q24 and Q26 full wording present, 167 peer IDs cited all present in peer files; scan 0 hits
+2026-11-21 13:05:57 IST review pass: two wording corrections (P10-S009 restart note; one legacy word quoted in P10-S061); self-check and scan re-run clean
+DONE P10 writer 2026-11-21 13:05:57 IST (81 statements P10-S001 to P10-S081; 16 points; 8 unknowns; 1 question)

@@ -159,3 +159,47 @@
 - P08-S054 FACT (the metrics script's configuration load): `scripts/compute_strategy_metrics.py` `main` calls `load_config(config_dir)` (`core.config_loader.load_all`, imported at L32) inside a `try` and returns 1 with an error log on any exception (L302 to L306); the returned object is not assigned, and no configuration key is read anywhere in the file (L294 to L332; P08-S008). HISTORICAL (record): A02 hands this call and its handler to A07 (A02 AUDIT L540; P01-S126 item 1). INTERPRETATION: for this script the configuration directory acts only as a validity check before the metrics run; the function's behaviour is part P07's.
 - P08-S055 FACT (the account file in the officer's alert title): the officer imports `primary_account_tag` from `core.account_registry` (L44) and uses it in the alert title (L194); the function (A01's, `core/account_registry.py` L277) reads by default the repository's `config/accounts.csv` (its docstring, L286) and returns the primary account identifier. The file was not opened and no value is reproduced; the identifier is an alert label only and enters no strategy decision.
 - P08-S056 FACT (constants of the scripts that stand where configuration might be): `scripts/compute_strategy_metrics.py` `_SHARPE_DEMOTION_THRESHOLD = -0.3`, `_CONSECUTIVE_BAD_DAYS = 3`, `_ANNUALIZATION_FACTOR = math.sqrt(252)` (L37 to L39) and the `--lookback` default 30 (L59 to L62); no configuration key sets them (the file reads none, P08-S054). Their use (the Sharpe computation and the demotion test, `_check_demotion` L176 to L230) is part P07's.
+
+## 7. Values fixed in A07 code where a configuration key might be expected
+
+- P08-S057 FACT (no configuration key sets any of these at the baseline; on the live wiring the value used is the one written in the code, except where the last column says a configured value is passed instead):
+
+| Value | Where (baseline line) | Value in code | Configured value passed instead on the `main.py` wiring? | Recorded in |
+|---|---|---|---|---|
+| per-step timeout | `screening/step_executor.py` L53 (`step_timeout_sec`) | 5.0 s | no (`main.py` L3234 to L3237 passes none) | P04-S019, P04-S023 |
+| market-open fallback | L36 (`_DEFAULT_MARKET_OPEN`) | 09:15 | yes: `trading_hours.market_open` (P08-S032) | P04-S017 to P04-S022 |
+| step thresholds: RSI bands LONG 40 to 80, SHORT 20 to 60; time buckets 15, 60, 180 min; age limits 30 s and 60 s; price-action multiplier 2.0 | L306 to L316, L363 to L370, L419 to L423, L327 to L329 | as stated | no | P04-S100, P04-S106 |
+| threshold fallbacks for the three strategy fields | L255, L280, L394 | 1.5, 0.5, 0.1 | the strategy values are always passed (P04-S101) | P04-S100 to P04-S102 |
+| direction fallback | L132 | `"LONG"` | the screener always passes `direction` (P08-S048) | this part |
+| score-ceiling tripwire (telemetry only) | `screening/quality_scorer.py` L19 (`_G2_CEILING_TRIPWIRE`) | 65 | no; it only increments a counter (L139 to L140) | P05-S022 |
+| HardGate freshness default | `screening/hard_gate.py` L37 (`DEFAULT_FRESHNESS_MAX_SEC`) | 60.0 s | yes: `scoring.v3_freshness_max_sec` (L3245) | P05-S033, P05-S041 |
+| re-scale coefficients of `min_score` | L212 | 1.25 and 25.0 | no | P05-S058, P05-S106 |
+| circuit-band margin | `orders/price_math.py` L256 (`DEFAULT_CIRCUIT_MARGIN_PCT`, A09's constant), used at `screening/hard_gate.py` L85; imported but unused in the screener (L24) | 0.02 | no | P03-S021, P05-S105 |
+| the product code that the MIS filter acts on | `screening/secondary_screener.py` L570 | `"MIS"` | the resolver's output from `product_map` is compared with it (P08-S027) | P03-S032 |
+| the screener's V3 `getattr` defaults | L96 to L102 | `"off"`, `["circuit_check", "signal_age"]`, 50, 75, 56 | yes: the validated `app_config.scoring` (L3296) | P03-S015, P03-S016 |
+| entry-gate poll interval, worker count, quote-failure limit | `screening/entry_gate.py` L114, L115, L46 | 5.0 s, 2, 3 | no (`main.py` L3839 to L3844 passes none) | P06-S018, P06-S023 to P06-S025 |
+| entry-gate stop waits | L247, L255 | 5.0 s join, 3.0 s sleep | no | P06-S069, P06-S070 |
+| the resolver's trade-type set | `strategies/control.py` L33 (`VALID_TRADE_TYPES`) | `{"INTRADAY", "DELIVERY", "BOTH"}` | not applicable: defined and not read | P02-S011 |
+| the metrics script's demotion threshold, day count, annualisation factor, look-back | `scripts/compute_strategy_metrics.py` L37 to L39, L59 to L62 | -0.3, 3, sqrt(252), 30 days | no | P08-S056 (logic: part P07) |
+
+- P08-S058 HISTORICAL and INTERPRETATION (intent sources on where thresholds belong): `config/scoring_weights.yaml` L3 to L4 says "NO weights are hardcoded in screening/*.py — this file is the single source"; P9b asks for "All weights, thresholds, and tier boundaries in config/scoring_weights.yaml. NO scattered constants in screener code" (`docs/locked_decisions.yaml` L397; P04-S106, P05-S009); `screening/quality_scorer.py` L4 to L5 says "All weights and thresholds come from ScoringConfig ... NO inline constants (P9b)". INTERPRETATION: the weights and the score thresholds are in the file as stated, while the step thresholds, the re-scale coefficients and the margin of P08-S057 are in code; whether P9b's "thresholds" was meant to cover the step thresholds is not stated by any source read here (P04-S106, P05-S106).
+
+## 8. Readers of the same key that disagree, and whether the disagreement can act
+
+- P08-S059 FACT and INTERPRETATION (summary; each row cites the statement that holds the evidence):
+
+| Key or quantity | Readers and what differs | Can the difference act on A07's decisions at the committed files and the `main.py` wiring? |
+|---|---|---|
+| `force_intraday_only` | defaults: `SystemConfig` `True`, processor constructor `False`, auditor `False`, status table `True` (P08-S021) | no: the key is present in the file and `main.py` passes the validated value (P08-S022) |
+| `trade_type` | defaults `"INTRADAY"` (schema, processor, table) and `None` (auditor); validated on the trading path, unvalidated on the table route; the resolver treats an out-of-set value as BOTH (P02-S020, P02-S060) | no at the committed value `BOTH`; an invalid raw value would stop the trading process at boot but reach the table unchanged (P08-S015; P02-AP01) |
+| `delivery_enabled` | read by the broker lock and others, not by A07's resolver or the table (P08-S024; A02 K-05) | no at the committed value `true`; with `false` the table and the resolver would say WILL TRADE for a DELIVERY strategy that the broker refuses (P02-S061) |
+| when the strategy and system files are read | once at boot for the trading process; at each run for the status table, the taxonomy map and the direction map (P08-S010, P08-S011; P02-S051 (a)) | only after a file changes while the process runs; whether that happened is UNKNOWN |
+| `entry_gate.circuit_proximity_reject_enabled` | held twice, by the screener and by the HardGate, from the same key (P03-S020) | no: one key feeds both |
+| `min_volume_surge`, `min_adr_pct`, `max_spread_pct` (strategy) | schema defaults 1.3, 0.005, 0.005; executor fallbacks 1.5, 0.5, 0.1 (P04-S102); an A18 research module's own defaults 1.5 and 0.5 for the first two (`v3_chain/forward_shadow.py` L38 to L39) | no on A07's routes (the strategy values are always passed, P04-S101); the A18 copy is outside A07 and not traced |
+| `max_spread_pct` (two keys) | strategy field 0.005, compared with a percentage by step 8; `entry_gate.max_spread_pct` 0.5, "max bid-ask spread %", with no reader by that name (P08-S030, P08-S031) | the strategy key acts on every live screening at 0.005 % (P04-S105); the two keys do not interact |
+| the score thresholds (`min_pass_score`, `medium_score_threshold`, `high_score_threshold`) | the scorer reads the validated file; outside A07 the daily report falls back to 60, the dashboard to a key that does not exist, the parity script to default weights, and `v3_chain` holds seed copies of the same names and values (A02 T-20, K-27) | not on A07's decisions; the copies are display, research or seed values outside A07 (section 10) |
+| the `v3_*` keys | the screener's `getattr` defaults equal the schema defaults (P03-S016); the HardGate's default equals the schema and file (P05-S034) | no |
+| signal freshness | the step-10 constants 30 s and 60 s (code); `scoring.v3_freshness_max_sec` 60.0 (file); P9a's 90 s and the file comment L20 "≤ 90s" (A02 T-20; P04 section 7.10) | the step-10 constants act on the live OFF and shadow paths; the 60.0 key acts only in the shadow log line at the committed mode (P08-S038); no configured key carries 90 s |
+| the market-open time | file, schema and the executor's constant all 09:15; special sessions are not applied by the executor (P08-S032, P04-S022) | no at the committed file (no special session declared) |
+| the MIS product code | the configured `product_map` value and the literal `"MIS"` in the screener (P08-S027) | no at the committed map (`INTRADAY: "MIS"`) |
+| comments next to configured values | `config/system_config.yaml` L138 to L141 and L151 to L154 against the code and the values (P08-S025); `config/scoring_weights.yaml` L20 against step 10 (A02 T-20); the `mis_filter` comment's line references (P03-S037) | not on behaviour; the texts describe something other than what the code and values do |

@@ -269,3 +269,25 @@ Neutral questions for the A07 AUDIT, each citing the statements it rests on. "Bo
 - P02-AP17 — Registry write without a lock: `save_registry` uses a fixed temporary file name and no lock (P02-S104, P02-S113). Is a single writer guaranteed? Boundary: the schedule is A16's.
 - P02-AP18 — Text against code for the strategy-control call: the processor's comments name "LAYERS 1+3" while the call also applies LAYER 0 (P02-S118); the control docstring names two importers while four files call the function (P02-S030). Do these texts describe the code?
 - P02-AP19 — Window reject label: the global and the per-strategy window share the label `OUTSIDE_ENTRY_WINDOW` and differ only in the reason text (P02-S086); comments give `gap_fade_long` an 11:30 cut-off that its file does not have (P02-S090). Is the shared label intended? Boundary: the window logic is A01's, the label at the call site A06's; the comment is already handed to A01 by A02 T-11.
+
+## 12. UNKNOWN / NOT ESTABLISHED items
+
+Each item names the evidence that would settle it. None of that evidence is in the repository at the baseline; both machines are terminated.
+
+- P02-U01 — The values in force in production of `trade_type`, `force_intraday_only` and `delivery_enabled`, and of `intent` and `enabled` in the 16 strategy files (P02-S055, P02-S059). Would settle it: a surviving copy of the deployed `config/` tree, or a surviving `strategy_control.summary` log line (it records `trade_type`, `force_intraday_only` and both lists, P02-S041).
+- P02-U02 — Whether `strategy_will_trade` or its deferred import ever raised in production (P02-S028, P02-S035, P02-S046). Would settle it: surviving process logs (`strategy_control.summary_failed`, a `PLACEMENT_FAILED` signal whose reason is a strategy-control traceback, `cron_officer.strategy_status_failed`).
+- P02-U03 — Whether any signal was rejected as `REJECTED_TRADE_TYPE` or `REJECTED_STRATEGY_CONTROL`, and on which path (P02-S034, P02-S036, P02-S037). Would settle it: a surviving copy of the production `signals` table or of the evidence records (`P2_REJECT`).
+- P02-U04 — Whether the strategy-control checks of `continue_from_gate` (L2062) and `continue_from_retest` (L2411) ever executed (P02-S040). Would settle it: surviving `gate_state` rows or retest records and logs ("Gate signal ... rejected at", "Retest signal ... rejected at").
+- P02-U05 — Whether the PAPER_ONLY demotion condition was ever met or its alert sent (P02-S079, P02-S119). Would settle it: a surviving `strategy_metrics` table and the metrics job's log or alert history.
+- P02-U06 — Whether the registry state file existed on the production machine, what it held, and whether any run fell back to the seed (P02-S103, P02-S110). Would settle it: a surviving `data_store/strategy_direction_registry.yaml` and the officer's log.
+- P02-U07 — Whether a strategy file or `system_config.yaml` was edited on the machine between a boot and a status-table run, so whether the table and the gate ever differed (P02-S052). Would settle it: a surviving deployed tree with file times, or the briefing e-mails beside the boot log. (A02 T-21 holds the file side.)
+- P02-U08 — Whether two officer runs ever overlapped on the registry's temporary file (P02-S113). Would settle it: the cron logs and heartbeats (A16).
+- P02-U09 — Whether the production database's `signals.status` constraint matched the file schema that accepts `REJECTED*` (P02-S094). Would settle it: the production schema (A03).
+
+## 13. Questions about intent for Rama
+
+Only where no source states the intent. Claude relays them; this part does not ask Rama directly.
+
+- P02-R1 (P02-AP07) — For a DELIVERY strategy that is blocked both by the breaker (`force_intraday_only` on) and by `trade_type: INTRADAY`, which reject label was meant to appear: A: `TRADE_TYPE` (the trade-type mismatch shown distinctly); B: `STRATEGY_CONTROL` (the breaker first, as the code does); Other / qualify. The Phase-4 comment states why `TRADE_TYPE` exists (P02-S012) but no source states the intended order when both apply (P02-S019).
+- P02-R2 (P02-AP01) — When `trade_type` holds a value other than INTRADAY, DELIVERY or BOTH, what was the strategy-control check meant to do: A: let strategies trade as under BOTH (what the resolver does); B: let no strategy trade (fail closed); C: such a value was never expected to reach the check, because the configuration loader refuses it; Other / qualify. `VALID_TRADE_TYPES` is defined in the resolver but unused (P02-S011, P02-S020), and no source states the intended handling.
+- P02-R3 (P02-AP10) — History: what was "PAPER_ONLY" meant to mean for a strategy in the live system: A: the strategy stops taking live entries (like `enabled: false`); B: the strategy keeps running for records only, with no orders; C: the text was left over from an earlier paper-and-live design; Other / qualify. The docstring and alert use the word, but no tracked text defines the state (P02-S077, P02-S119).

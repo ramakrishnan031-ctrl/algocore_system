@@ -12,3 +12,4 @@ START P08 checker 2026-11-21 12:06:12 IST
 2026-11-21 12:25:44 IST section 11 checked (S073; corrected S073)
 2026-11-21 12:27:04 IST sections 12-14 checked (AP01-AP13, U01-U06, R1-R2; corrected AP01, AP05, AP11, U03; added AP14, AP15)
 2026-11-21 12:29:58 IST coverage script PASS (78 statements, 72 inventory entries covered, Q9 quoted and answered, 9/9 inherited items, all peer IDs exist); Check log section appended to the part file
+DONE P08 checker 2026-11-21 12:30:15 IST

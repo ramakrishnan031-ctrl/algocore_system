@@ -203,3 +203,47 @@
 | the market-open time | file, schema and the executor's constant all 09:15; special sessions are not applied by the executor (P08-S032, P04-S022) | no at the committed file (no special session declared) |
 | the MIS product code | the configured `product_map` value and the literal `"MIS"` in the screener (P08-S027) | no at the committed map (`INTRADAY: "MIS"`) |
 | comments next to configured values | `config/system_config.yaml` L138 to L141 and L151 to L154 against the code and the values (P08-S025); `config/scoring_weights.yaml` L20 against step 10 (A02 T-20); the `mis_filter` comment's line references (P03-S037) | not on behaviour; the texts describe something other than what the code and values do |
+
+## 9. From configured to effective: the trace for every key (Q9)
+
+- P08-S060 FACT and INTERPRETATION (the trace, key by key; "Configured" is FACT about the committed file; "Route" refers to P08-S009 to P08-S014; "Code-effective at the committed files" and "Acts on a decision" are INTERPRETATION from reading the code with the committed values, nothing run; the last column applies to every row: production-effective value UNKNOWN / NOT ESTABLISHED, P08-S019):
+
+| Key | Configured | Route into A07 code, and the transformation | Code-effective at the committed files | Acts on a strategy-control or screening decision at the committed values? |
+|---|---|---|---|---|
+| `trade_type` | `BOTH` (system L149) | L, then C (processor, three call sites); R (status table); kept as a `str`, compared exactly (P08-S020, P08-S021) | BOTH: no `TRADE_TYPE` reject | yes (control) |
+| `force_intraday_only` | `false` (L142) | L, then C; also S (log only) and R; `bool()` in the processor, truthiness in the resolver | breaker off | yes (control) |
+| `delivery_enabled` | `true` (L155) | not read by A07 code | none in A07 | no |
+| `mis_filter.enabled` | `true` (L179) | L, then C (screener), `bool()` | R1 evaluated for every signal | yes (whether R1 runs) |
+| `mis_filter.shadow` | `true` (L180) | L, then C (screener), `bool()` | no MIS reject; a would-drop is logged | yes (it prevents the R1 reject) |
+| `mis_filter.ttl_days` | `1` (L181) | L, then A12's blocklist; not read by A07 code | a symbol is blocked on the day of its block only (A12's rule) | only through R1's log line while `shadow` is true |
+| `product_map` (`zerodha`) | `INTRADAY: "MIS"`, `DELIVERY: "CNC"` (L159 to L160) | L, then A04's resolver closure; the result compared with A07's literal `"MIS"` | INTRADAY intents are candidates, DELIVERY intents never | only through R1's log line while `shadow` is true |
+| `entry_gate.circuit_proximity_reject_enabled` | `true` (L661) | L, then C (screener and HardGate), `bool()` | R3 active (margin 0.02, code) | yes (R3 reject) |
+| other `entry_gate.*` | L649 to L708 | not read by A07 code | none in A07 | no |
+| `trading_hours.market_open` | `"09:15"` (L103) | L, then A01's `MarketWindows`, then C (executor) as a `time` | 09:15 | yes (step 7's value enters the score) |
+| `special_sessions` | none declared (L117 to L122) | not applied by the executor | none | no |
+| `scoring.steps.*` | 15, 10, 10, 10, 15, 10, 5, 5, 10, 10 (scoring L11 to L20) | L, then C (scorer reads per call; screener copies once) | the score's weights; ceiling 65 on the live route | yes (score) |
+| `scoring.min_pass_score` | 60 (L22) | L, then C (scorer), returned in `ScoreResult`, read by the screener | the pass bar for all 16 strategies | yes (R7) |
+| `scoring.high_score_threshold`, `medium_score_threshold` | 80, 65 (L28 to L29) | L, then C (scorer) | `HIGH` unreachable; `MEDIUM` only at 65 | the tier enters the result; its use downstream is A09's |
+| `scoring.v3_hardgate_mode` | `"shadow"` (L39) | L, then C (screener), `str(getattr(...) or "off")` | shadow comparison runs; enforce branch not taken | it selects the branch; the result follows the OFF path |
+| `scoring.v3_gate_steps` | `[circuit_check, signal_age]` (L40) | L, then C (screener), `set(...)` | used in the shadow log's re-scaled total | no (log only) |
+| `scoring.v3_freshness_max_sec` | 60.0 (L41) | L, then C (HardGate), `float()` | used in the shadow log's gate reason | no (log only) |
+| `scoring.v3_min_pass_score` | 50 (L42) | L, then C (screener), `int()` | not used on the shadow path | no |
+| `scoring.v3_high_score_threshold`, `v3_medium_score_threshold` | 75, 56 (L43 to L44) | L, then C (screener), `int()` | used in the shadow log's NEW tier | no (log only) |
+| strategy `intent` | `INTRADAY` 13, `DELIVERY` 3 | S, then the resolver (`getattr`) and the screener (argument) | WILL TRADE under BOTH; the MIS test for INTRADAY intents | yes (control; R1's candidate test) |
+| strategy `enabled` | `true` 15, `false` 1 | S, then the resolver (`bool(getattr(...))`) | `pb01_breakout_retest` `DISABLED` | yes (control) |
+| strategy `direction` | `LONG` 10, `SHORT` 6 | S, then the processor's argument to the screener | steps 2 and 4, R3, the HardGate | yes (steps 2 and 4 and R3) |
+| strategy `name` | each file's stem | S, then the screener's `getattr` at `_persist` | stored with the screener's rows and evidence | no |
+| strategy `min_score` | 0 in all 16 | S, then the screener (attribute) | the global `min_pass_score` applies | yes (it selects the bar) |
+| strategy `min_volume_surge` | 1.2 to 2.0 | S, then `thresholds`, then step 1 | step 1 is 0.0 whatever the value (`avg_volume_20d` `None`) | no (on the live route) |
+| strategy `min_adr_pct` | 0.005 in all 16 | S, then `thresholds`, then step 3 | step 3 is 0.0 whatever the value (`atr` `None`) | no (on the live route) |
+| strategy `max_spread_pct` | 0.005 in all 16 | S, then `thresholds`, then step 8 | compared with a percentage: 0.005 % of the mid price | yes (step 8's value enters the score) |
+| strategy `pipeline`, `horizon` | as P02-S074 | V (taxonomy map, status table) | display text | no |
+| strategy `v3_playbook` | `true` 1, absent 15 (default `False`) | V (status table) | the row of `pb01_breakout_retest` is omitted | no (display) |
+| strategy `entry_start_time`, `entry_end_time`, `sl_pct`, `tgt_risk_reward` | as P08-S042 | V (status table) | display text in A07 | no in A07 (the window is A01's, the prices A06's and A09's) |
+| strategy `pullback_wait_enabled`, `pullback_wait_tolerance_pct`, `pullback_wait_timeout_sec` | 6 true / 10 false; 0.005; 180 | not read by A07 code (the first by A06's processor only) | the gate's tolerance and timeout come from `gate_state` rows only | no in A07 |
+| strategy `order_protocol` | `CO_PLUS_TGT` 13, `LIMIT_TRIPLE` 3 | not read by A07 code | none in A07 | no in A07 |
+| scripts' paths, options and environment | P08-S050 to P08-S056 | O | as P08-S050 | not on the trading path (registry state, metrics rows, labels) |
+
+- P08-S061 INTERPRETATION (what the trace shows): at the committed files and the `main.py` wiring, the configured values that act on a strategy-control or screening decision are `trade_type`, `force_intraday_only`, the strategies' `intent` and `enabled` (control); `mis_filter.enabled` with `mis_filter.shadow` (which together keep R1 from rejecting), `entry_gate.circuit_proximity_reject_enabled` (R3), the step weights, `min_pass_score` (selected by `min_score` 0), `trading_hours.market_open` (step 7), the strategies' `direction` and `max_spread_pct` (screening). Configured values that reach A07 code but act on no decision at the committed values are `mis_filter.ttl_days` and `product_map` (log only while shadow is on), `v3_gate_steps`, `v3_freshness_max_sec`, the two `v3_*` tier thresholds (log only), `v3_min_pass_score` (unused in shadow), `min_volume_surge` and `min_adr_pct` (their steps' inputs are always `None`), and the tier thresholds as far as the screener's pass decision goes. Configured values that do not reach A07 code at all are `delivery_enabled`, the `entry_gate` keys other than the circuit-proximity switch, `special_sessions`, the `pullback_wait_*` fields and `order_protocol`.
+- P08-S062 FACT: no A07 code re-reads a configuration file or a strategy file during the life of the trading process: the screener, scorer, executor, HardGate, gate and resolver receive their values at construction or through the processor's attributes, set once (P08-S013, P08-S037), and the strategies are loaded once (P08-S010); only the status table, the taxonomy map, the direction map and the two scripts read files at their own run time (P08-S011, P08-S050).
+- P08-S063 UNKNOWN / NOT ESTABLISHED: for every key in P08-S060, the production-effective value on either machine, on any day. What would settle it: a surviving copy of the deployed `config/` tree with its date, the boot log lines that print configuration (for example `strategy_control.summary` with `trade_type` and `force_intraday_only`, `main.py` L3176 to L3183, and the `EntryGate started` line, `screening/entry_gate.py` L174 to L177), the `file_hashes` recorded by the evidence recorder (`main.py` L3261), or stored screener rows showing `eligible_score` and scores (P03 section 7). None was found in the repository or the project records read for this part.

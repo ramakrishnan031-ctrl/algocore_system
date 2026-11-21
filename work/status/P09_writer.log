@@ -15,3 +15,5 @@
 2026-11-21 12:53:41 IST section 14 done (P09-S130 to S136)
 2026-11-21 12:54:51 IST section 15 done (P09-AP01 to AP25)
 2026-11-21 12:55:33 IST sections 16 and 17 done (P09-U01 to U11; P09-R1)
+2026-11-21 12:56:11 IST self-check p09_selfcheck.py PASS (136 statements, no gaps; all cited P01-P08 IDs exist; Q11 Q14 Q15 Q16 Q22 Q23 Q25 answered; 16 items + TG14 + ADDENDUM 2 cross-referenced); scan 0 hits
+DONE P09 writer 2026-11-21 12:56:11 IST

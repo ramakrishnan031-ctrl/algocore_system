@@ -1,0 +1,59 @@
+== (a) functions, methods and classes
+-- strategies/control.py: 2 function/method/class definitions
+   class    Verdict                      L48   -> P02-S010, P02-S013, P02-S014, P02-S022, P02-S026, P02-S045, P02-S097
+   function strategy_will_trade          L67   -> P02-S005, P02-S008, P02-S014, P02-S121, P02-S027, P02-S028, P02-S029, P02-S035, P02-S036, P02-S048, P02-S127
+   module-level names (information): 
+     VALID_TRADE_TYPES            L33   -> P02-S011
+     CAUSE_OK                     L41   -> P02-S012, P02-S013
+     CAUSE_DISABLED               L42   -> P02-S012, P02-S080
+     CAUSE_FORCE_BREAKER          L43   -> P02-S012
+     CAUSE_TRADE_TYPE             L44   -> P02-S012, P02-S029, P02-S033, P02-S092
+-- strategies/taxonomy.py: 2 function/method/class definitions
+   function taxonomy_label               L15   -> P02-S048, P02-S069, P02-S071
+   function build_taxonomy_map           L23   -> P02-S070, P02-S071
+   module-level names (information): 
+-- core/strategy_direction.py: 6 function/method/class definitions
+   function build_direction_map          L52   -> P02-S101, P02-S107, P02-S108
+   function canonical_direction          L74   -> P02-S102
+   function _read_registry               L84   -> P02-S103, P02-S129
+   function load_registry                L98   -> P02-S103, P02-S129
+   function save_registry                L124  -> P02-S104, P02-S113
+   function registered_direction         L138  -> P02-S105
+   module-level names (information): 
+     VALID_DIRECTIONS             L27   -> P02-S100, P02-S101
+     VALID_STATUSES               L28   -> P02-S100
+     VALID_HEALTH                 L29   -> P02-S100
+     DEFAULT_SEED_PATH            L43   -> P02-S100
+     DEFAULT_STATE_PATH           L44   -> P02-S100, P02-S103, P02-S104
+     DEFAULT_REGISTRY_PATH        L47   -> P02-S100
+-- strategies/__init__.py: 0 function/method/class definitions
+   (no function, method or class; the file itself is named in: P02-S002, P02-S027, P02-S114, P02-S117)
+   module-level names (information): 
+     __all__                      L6    -> P02-S114, P02-S115
+-- screening/__init__.py: 0 function/method/class definitions
+   (no function, method or class; the file itself is named in: P02-S002, P02-S115, P02-S117)
+   module-level names (information): 
+     __all__                      L5    -> P02-S114, P02-S115
+
+== (b) focused questions: sections whose heading names the question
+   Q1: 13 statements under headings naming Q1 (P02-S064 .. P02-S074)
+   Q2: 49 statements under headings naming Q2 (P02-S008 .. P02-S053)
+   Q3: 63 statements under headings naming Q3 (P02-S008 .. P02-S127)
+   Q4: 26 statements under headings naming Q4 (P02-S054 .. P02-S085)
+   Q5: 6 statements under headings naming Q5 (P02-S086 .. P02-S124)
+   Q16: 7 statements under headings naming Q16 (P02-S091 .. P02-S097)
+
+== (c) inherited items of P02's row (P01-S074)
+   C11    -> P02-S056, P02-S127
+   V-06   -> P02-S025, P02-S046, P02-AP12
+   V-23   -> P02-S047
+   T-14   -> P02-S125
+   F-11   -> P02-S107, P02-AP16
+   K-05   -> P02-S051, P02-S061, P02-S123, P02-S128, P02-AP04, P02-AP09
+   E-08   -> P02-S129
+   CG-05  -> P02-S126
+   PQ-14  -> P02-S064, P02-S128
+   XA-11  -> P02-S128
+
+statements: 129; points/unknowns/questions: 31
+RESULT: PASS (nothing missing)

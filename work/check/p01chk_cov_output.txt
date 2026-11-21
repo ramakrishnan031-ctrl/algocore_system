@@ -1,0 +1,23 @@
+PASS A01: 6 of 6 items have a row: C11 C14 C15 C20 B-28 B-08
+PASS A02: 7 of 7 items have a row: V-06 V-23 T-14 T-20 F-11 K-05 K-27
+PASS A03: 14 of 14 items have a row: D-05 D-09 H-16 H-17 H-50 P-02 P-11 Q-11 Q-12 Q-22 Q-45 U-24 U-25 E-08
+PASS A04: 5 of 5 items have a row: OA-22 RD-12 RL-11 PR-23 CG-05
+PASS A05: 6 of 6 items have a row: CM-07 CM-22 FB-01 FB-02 FB-07 FB-14
+PASS A06: 13 of 13 items have a row: WA-06 WA-07 PQ-02 PQ-08 PQ-13 PQ-14 PQ-15 EV-02 EV-11 EV-19 ET-06 ET-13 XA-11
+PASS 51 rows in all, each ID once (51)
+counts by topic: A01 6, A02 7, A03 14, A04 5, A05 6, A06 13
+PASS section 3: 10 of 10 register entries have a row: A02-03 A03-10 A03-11 A03-36 A03-37 A05-01 A05-25 A06-02 A06-08 A06-12
+PASS 2.8 row P02: 10 items listed, count cell 10
+PASS 2.8 row P03: 14 items listed, count cell 14
+PASS 2.8 row P04: 8 items listed, count cell 8
+PASS 2.8 row P05: 6 items listed, count cell 6
+PASS 2.8 row P06: 17 items listed, count cell 17
+PASS 2.8 row P07: 4 items listed, count cell 4
+PASS 2.8 row P08: 9 items listed, count cell 9
+PASS 2.8 row P09: 16 items listed, count cell 16
+PASS 2.8 row P10: 0 items listed, count cell 0
+PASS 2.8: every one of the 51 has at least one part (missing: [])
+PASS statements P01-S001 to P01-S126, each once, no gap (126)
+PASS every statement starts with one label (bad: [])
+PASS the P01 brief assigns no focused question (Q1 to Q26): coverage test (b) not applicable
+RESULT: ALL PASS

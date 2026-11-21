@@ -311,3 +311,62 @@ P01-S124. FACT (one leading label, re-labelled in the check; the two numbered po
 2. OPEN FOR RAMA (records boundary): A01 B-08's "A07 strategy validation" points at the startup check `check_strategy_configs` (`utils/startup_checks.py`, not an A07 path), which loads through A02's `StrategyLoader`, and at `scan_strategy_errors` in `strategies/loader.py`, which the index assigns to A02; which topic records that side? (P01-S095, P01-S100; corrected in the check)
 
 P01-S125. FACT (reminder, not a new question): the Chartink scanner conditions for the A05-25 comparison are material only Rama can supply; D-39 (P3) already records that the comparison is made when he supplies them, that A07 proceeds meanwhile, and that without them the comparison is UNKNOWN / NOT ESTABLISHED (P01-S084, P01-S119).
+
+## Check log
+
+Checked on 2026-11-21 (IST) by the P01 checker, who did not write this file. Method, tools and every decision: `/home/claude/a07/check/A07_P01_CHECK_LOG_2026-11-21.md`. Every statement was checked against its cited record line (the six RECONCILED TOPIC RECORDS and AUDITs, the Audit Findings Register, the Open Issues Register, the Decision Register, the Topic Completion Register, the A07 source file inventory, the part briefs) or legacy line at `970aabf` (`git show`; path-limited `git grep`; the four exclusions applied; nothing run).
+
+**Counts:** statements checked 125 (P01-S001 to P01-S125); confirmed 105; corrected 11; re-labelled 6; re-labelled and corrected 3; withdrawn 0; added 1 (P01-S126).
+
+**Corrections (old -> new, source):**
+- P01-S002: B-08's "section 2 row (L458)" -> "section 5 row (L458)" (A01 AUDIT heading L426, "5. Results beyond the 41 concerns").
+- P01-S010: label "HISTORICAL (record) and FACT (reading)" -> one leading label "HISTORICAL (record)", the method sentence FACT (COMMON brief section 4).
+- P01-S021: "section 2 row L458" -> "section 5 row L458"; code location "the validation on this path is `scan_strategy_errors`" -> the alert runs only when `check_strategy_configs` (`utils/startup_checks.py` L1266; blocking flag L1616 to L1618; `main.py` L2494) has failed, and `scan_strategy_errors` (`strategies/loader.py` L70; `main.py` L2496) names the files; A01 S-53's owners "A01; A02, A07" added (A01 AUDIT L488).
+- P01-S029: `screening/quality_scorer.py` "L30 and L33 (`min_pass_score`)" -> "L134 and L148 (`self._weights.min_pass_score`)" (L30 is a comment and L33 the `ScoreResult` field, at `970aabf`).
+- P01-S058: the A06 handoff tables' columns: L5209 has "Owner" and "What crosses from part ET (A06 counts only its own side)" and no "Records" column; L6545 has "Owner", "Interface fact recorded here", "Records" (A06 AUDIT L5209, L6545).
+- P01-S073: 27 -> 31 records outside the 51 whose owner cell names A07: A01 S-53, S-30, S-36 and W-11 added (A01 AUDIT section 5 table L488, L523, L527, L530; MATCH rows L1967, L1997, L2001, L2004).
+- P01-S074: the P09 row (13 -> 16) and the "no part" row (3 -> 0) updated to ADDENDUM 1 of the part briefs (B-08, U-24, U-25 and H-17's A07 side to P09); a row added for the two handoff points without item IDs (PAPER_ONLY demotion to P07; TG14's excluded-symbol check to P09; P01-S126's points unassigned); the paragraph qualified: 25 named in none of the briefs P02 to P10 (confirmed), 21 in no brief section or addendum (`A07_PART_BRIEFS.md`, P01 section and ADDENDUM 1).
+- P01-S090, P01-S091, P01-S092, P01-S096, P01-S097: label "HISTORICAL (record) and FACT" -> one leading label "HISTORICAL (record)" (inner sentences keep their labels); content confirmed.
+- P01-S093: `screening/quality_scorer.py` "L30, L33" -> "L134, L148" (as P01-S029).
+- P01-S095: leading label as P01-S090; "the validation on this path is `scan_strategy_errors`" -> `check_strategy_configs` with `scan_strategy_errors` (as P01-S021), A01 S-53 added; "No part brief names B-08" -> "No part brief P02 to P10 names B-08; ADDENDUM 1 sends it to P09".
+- P01-S100: the B-08 boundary question restated with `check_strategy_configs` and A01 S-53 (as P01-S095).
+- P01-S103: "the 27 records" -> "the 31 records" (P01-S073).
+- P01-S108: the words "copies the quote's `average_price` as `vwap`" attributed to the Open Issues Register, A05-01 Evidence (L2171), not to the CM-07 record, which reads "copies the quote record's `vwap`, taken from the quote's `average_price`" (A05 AUDIT L1301).
+- P01-S114: OPEN QUESTION -> FACT: settled by ADDENDUM 1 of the part briefs (21-Nov-2026).
+- P01-S122: note added on the four A01 items the first search missed (P01-S073).
+- P01-S124: label "FACT and OPEN FOR RAMA" -> "FACT" with the two points OPEN FOR RAMA; point 2 restated as P01-S095; point 1 given a note on ADDENDUM 1.
+- P01-S126 (added): further points that name A07 without an item ID (A02 AUDIT L540, L1320; A06 AUDIT L4009; A06 RTR L130, L162, L347, L663, L735, L214; A03 RTR L147; A04 RTR L144; A05 RTR L205, L702).
+
+**Coverage script** (`/home/claude/a07/check/p01chk_cov.py`; test (a), every function, method and class of the part's files, does not apply: P01 owns no code file and locates code only, as its brief says; test (b): the P01 brief assigns no focused question; test (c): all 51 items and all 10 entries, counts by topic):
+
+```
+PASS A01: 6 of 6 items have a row: C11 C14 C15 C20 B-28 B-08
+PASS A02: 7 of 7 items have a row: V-06 V-23 T-14 T-20 F-11 K-05 K-27
+PASS A03: 14 of 14 items have a row: D-05 D-09 H-16 H-17 H-50 P-02 P-11 Q-11 Q-12 Q-22 Q-45 U-24 U-25 E-08
+PASS A04: 5 of 5 items have a row: OA-22 RD-12 RL-11 PR-23 CG-05
+PASS A05: 6 of 6 items have a row: CM-07 CM-22 FB-01 FB-02 FB-07 FB-14
+PASS A06: 13 of 13 items have a row: WA-06 WA-07 PQ-02 PQ-08 PQ-13 PQ-14 PQ-15 EV-02 EV-11 EV-19 ET-06 ET-13 XA-11
+PASS 51 rows in all, each ID once (51)
+counts by topic: A01 6, A02 7, A03 14, A04 5, A05 6, A06 13
+PASS section 3: 10 of 10 register entries have a row: A02-03 A03-10 A03-11 A03-36 A03-37 A05-01 A05-25 A06-02 A06-08 A06-12
+PASS 2.8 row P02: 10 items listed, count cell 10
+PASS 2.8 row P03: 14 items listed, count cell 14
+PASS 2.8 row P04: 8 items listed, count cell 8
+PASS 2.8 row P05: 6 items listed, count cell 6
+PASS 2.8 row P06: 17 items listed, count cell 17
+PASS 2.8 row P07: 4 items listed, count cell 4
+PASS 2.8 row P08: 9 items listed, count cell 9
+PASS 2.8 row P09: 16 items listed, count cell 16
+PASS 2.8 row P10: 0 items listed, count cell 0
+PASS 2.8: every one of the 51 has at least one part (missing: [])
+PASS statements P01-S001 to P01-S126, each once, no gap (126)
+PASS every statement starts with one label (bad: [])
+PASS the P01 brief assigns no focused question (Q1 to Q26): coverage test (b) not applicable
+RESULT: ALL PASS
+```
+
+**Scan:** `python3 -I /home/claude/a07_tools/scan.py` on this file: `SCAN HITS: 0`. No account identifier, IP address, e-mail address, machine path or secret value; `config/accounts.csv`, `.env*`, `*.local.yaml`, `*token*.json` and the backup settings file not opened; no credential variable is named in this file.
+
+**Label pass:** every statement starts with one label (script); "should" occurs only inside quotations and inside the neutral questions of section 5; no runtime claim is made without evidence (sections 6 and 2: effective values and runs UNKNOWN / NOT ESTABLISHED).
+
+**Boundary points reported, not resolved:** A01 B-08's "A07 strategy validation" against the index's A02 loader and the startup check in `utils/startup_checks.py` (P01-S095, P01-S100, P01-S124 point 2); A03 U-24, U-25 and H-17 (P01-S090 to P01-S092); A02 K-27's unstated A07 part (P01-S093); the further ID-less points of P01-S126, whose parts are suggested by location only, for Claude to confirm.

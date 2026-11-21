@@ -6,3 +6,5 @@ only after both helpers of the current pair have handed back (final notification
 
 | Pair | Part | Role | Agent ID | Started (IST) | State |
 |---|---|---|---|---|---|
+| 1 | P01 | writer | a87416f1927c615d1 | 21-Nov-2026 09:06 | RUNNING |
+| 1 | P02 | writer | a1f344048b055b337 | 21-Nov-2026 09:06 | RUNNING |

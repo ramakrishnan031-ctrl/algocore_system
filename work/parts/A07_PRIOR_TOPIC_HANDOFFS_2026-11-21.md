@@ -254,13 +254,13 @@ Neutral questions for the A07 AUDIT, each citing the statements it rests on. Non
 
 P01-S099. OPEN QUESTION (for the AUDIT): does A07 have any side of A03 U-24, U-25 and H-17 beyond the absence of an A07 reader of the F&O ban list and of the S&R backfill, and should A07's records state that side, or its absence, explicitly? (P01-S034, P01-S042, P01-S043, P01-S090 to P01-S092)
 
-P01-S100. OPEN QUESTION (for the AUDIT; boundary): which topic examines the "strategy validation" that A01 B-08 hands to A07, given that the validation on that path is `scan_strategy_errors` in `strategies/loader.py`, which the index assigns to A02? (P01-S021, P01-S095)
+P01-S100. OPEN QUESTION (for the AUDIT; boundary): which topic examines the "strategy validation" that A01 B-08 hands to A07, given that the validation on that path is the startup check `check_strategy_configs` in `utils/startup_checks.py` (not an A07 path), which loads through A02's `StrategyLoader`, with `scan_strategy_errors` in `strategies/loader.py`, which the index assigns to A02, naming the failing files, and that A01 S-53 names the owners "A01; A02, A07" for the check? (P01-S021, P01-S095; corrected in the check)
 
 P01-S101. OPEN QUESTION (for the AUDIT): what is A07's part of A02 K-27, whose owner field names "A07 and A18" without a part and whose code path names no A07 line? (P01-S029, P01-S093)
 
 P01-S102. OPEN QUESTION (for the AUDIT): the A06 records written before D-38 still describe the A06-to-A07 line and the strategy lookup's owner as OPEN FOR RAMA (PQ-14, EV-19, XA-11); should every A07 statement that relies on the start line cite D-38, as the Topic Completion Register does (L128)? (P01-S010, P01-S064, P01-S068, P01-S071, P01-S086)
 
-P01-S103. OPEN QUESTION (for the AUDIT; completeness): should A07's STUDY or AUDIT cite the 27 records outside the 51 whose owner cell names A07, and is the pattern search that found them complete? The question bears on Q26 (P10). (P01-S073)
+P01-S103. OPEN QUESTION (for the AUDIT; completeness): should A07's STUDY or AUDIT cite the 31 records outside the 51 whose owner cell names A07 (27 in the first version; four A01 items added in the check), and is the pattern search that found them complete? The question bears on Q26 (P10). (P01-S073)
 
 P01-S104. OPEN QUESTION (for the AUDIT; boundary): which A07 code, if any, performs "the end-of-day route's excluded-symbol check" that A06's treatment group TG14 and its closing record give to A07, when no item ID or A07 line is named? (P01-S072 item 5)
 
@@ -270,7 +270,7 @@ P01-S106. OPEN QUESTION (for the AUDIT): A01 C11 records strategy loads with and
 
 P01-S107. OPEN QUESTION (for the AUDIT): no A07 file names `order_protocol` (A04 OA-22); does any A07 intent source say that A07 reads or checks it? (P01-S046, P01-S097)
 
-P01-S108. OPEN QUESTION (for the AUDIT): A05 CM-07 records that the screener "copies the quote's `average_price` as `vwap`"; the screener reads `quote.vwap` (L408), which A04's adapter sets from `average_price` (`broker/zerodha_adapter.py` L1792). Should A07's record name both steps of that path, with the adapter's step at the interface? (P01-S052, P01-S083)
+P01-S108. OPEN QUESTION (for the AUDIT): the Open Issues Register's A05-01 Evidence field (L2171) says that the screener "copies the quote's `average_price` as `vwap`", while the A05 CM-07 record itself names both steps ("copies the quote record's `vwap`, taken from the quote's `average_price`", A05 AUDIT L1301; attribution corrected in the check); the screener reads `quote.vwap` (L408), which A04's adapter sets from `average_price` (`broker/zerodha_adapter.py` L1792). Should A07's record name both steps of that path, with the adapter's step at the interface? (P01-S052, P01-S083)
 
 P01-S109. OPEN QUESTION (for the AUDIT): for A03 P-02 and Open Issues Register A06-12, the screener passes `ts` to `update_signal_status` and the gate's writes pass none; are the A07 status writers consistent in what they pass, and is A07's side recorded without any change to A03's record, whose wording Rama left OPEN? (P01-S036, P01-S087)
 
@@ -282,7 +282,7 @@ P01-S112. OPEN QUESTION (for the AUDIT): for A04 RD-12, does the A07 code distin
 
 P01-S113. OPEN QUESTION (for the AUDIT): for A06 ET-06 and A06-02, does any A07 code set an order among simultaneous screening verdicts or gate releases (the processor's workers, the step pool, the two-worker gate-release pool), and is that recorded as FACT about the code only, with no ranking inferred? (P01-S069, P01-S085)
 
-P01-S114. OPEN QUESTION (for Claude and ChatGPT; coverage): 25 of the 51 items are named in no part brief and are assigned here by location only (P01-S074); are the assigned parts to be told, so that each item's A07 side is recorded once and cited by its ID? (P01-S074)
+P01-S114. FACT (coverage; re-labelled from OPEN QUESTION in the check, because the question was settled after this part's first version): the question whether the parts assigned by location only (25 items named in no brief P02 to P10; P01-S074) are to be told, so that each item's A07 side is recorded once and cited by its ID, is settled by ADDENDUM 1 of the part briefs (21-Nov-2026): every writer from P03 onwards reads its own row of section 2.8 (P01-S074, as corrected by this check) and cross-references each listed item, its checker verifies each one, and the P02 checker adds statements for any item in P02's row that the P02 writer did not cover. (P01-S074)
 
 ## 6. UNKNOWN / NOT ESTABLISHED items
 
@@ -300,14 +300,14 @@ P01-S120. UNKNOWN / NOT ESTABLISHED: whether the A03 records meant U-24, U-25 an
 
 P01-S121. UNKNOWN / NOT ESTABLISHED: the A07 part of A02 K-27 that its owner field intends (P01-S093). Evidence: none in the records.
 
-P01-S122. UNKNOWN / NOT ESTABLISHED: whether the pattern search of P01-S073 found every record of the six AUDITs that names A07 as an owner. Evidence: a field-by-field review of the six AUDITs (Q26; P10 or the AUDIT).
+P01-S122. UNKNOWN / NOT ESTABLISHED: whether the pattern search of P01-S073 found every record of the six AUDITs that names A07 as an owner (the check's wider search of every table row found four A01 items that the first search had missed, P01-S073 as corrected; no field-by-field review was made). Evidence: a field-by-field review of the six AUDITs (Q26; P10 or the AUDIT).
 
 P01-S123. HISTORICAL (record): four of the 51 are themselves classified UNKNOWN / NOT ESTABLISHED and receive no treatment: A04 RL-11 (AFR L830), A05 CM-07 (AFR L1001), A05 FB-07 (AFR L1060) and A06 ET-06 (AFR L1209). Their classifications are unchanged here; A07 records its side only (P01-S048, P01-S052, P01-S056, P01-S069).
 
 ## 7. Questions about intent for Rama
 
-P01-S124. FACT and OPEN FOR RAMA: this part's work on the records raises no question about how the legacy system was meant to work: every intent question in the 10 register entries has already been put to Rama and recorded (OPEN, or decided for A06-08), and none is reopened here. Two record and boundary points cannot be settled from the records; they are listed for Claude and ChatGPT to put to Rama only if the AUDIT cannot settle them from the records (they are not history questions, and nothing is decided here):
-1. OPEN FOR RAMA (records boundary): are A03 U-24, U-25 and H-17 to be recorded in A07 as items with no A07 side (each was listed under A07 because a joint handoff cell names A07), or does any of them have an A07 side to be traced? (P01-S090 to P01-S092, P01-S099, P01-S120)
-2. OPEN FOR RAMA (records boundary): A01 B-08's "A07 strategy validation" points at `scan_strategy_errors` in `strategies/loader.py`, which the index assigns to A02; which topic records that side? (P01-S095, P01-S100)
+P01-S124. FACT (one leading label, re-labelled in the check; the two numbered points are OPEN FOR RAMA): this part's work on the records raises no question about how the legacy system was meant to work: every intent question in the 10 register entries has already been put to Rama and recorded (OPEN, or decided for A06-08), and none is reopened here. Two record and boundary points cannot be settled from the records; they are listed for Claude and ChatGPT to put to Rama only if the AUDIT cannot settle them from the records (they are not history questions, and nothing is decided here):
+1. OPEN FOR RAMA (records boundary): are A03 U-24, U-25 and H-17 to be recorded in A07 as items with no A07 side (each was listed under A07 because a joint handoff cell names A07), or does any of them have an A07 side to be traced? (P01-S090 to P01-S092, P01-S099, P01-S120; since ADDENDUM 1 of the part briefs, P09 records the A07 side of each if one exists at the baseline, or "no A07 side found", without changing the source records, which leaves this records point for the AUDIT; note added in the check)
+2. OPEN FOR RAMA (records boundary): A01 B-08's "A07 strategy validation" points at the startup check `check_strategy_configs` (`utils/startup_checks.py`, not an A07 path), which loads through A02's `StrategyLoader`, and at `scan_strategy_errors` in `strategies/loader.py`, which the index assigns to A02; which topic records that side? (P01-S095, P01-S100; corrected in the check)
 
 P01-S125. FACT (reminder, not a new question): the Chartink scanner conditions for the A05-25 comparison are material only Rama can supply; D-39 (P3) already records that the comparison is made when he supplies them, that A07 proceeds meanwhile, and that without them the comparison is UNKNOWN / NOT ESTABLISHED (P01-S084, P01-S119).

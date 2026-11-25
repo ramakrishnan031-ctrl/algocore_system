@@ -1,8 +1,8 @@
 # A07 evidence: the A07 source files at the study baseline
 
-**Status:** DRAFT — evidence for the A07 STUDY, for ChatGPT's review
+**Status:** APPROVED — evidence for the A07 STUDY, approved by Rama on 2026-11-25 with the A07 topic package (Decision Register, D-40)
 **Date:** 2026-11-20
-**Revision history:** First version, 2026-11-20.
+**Revision history:** First version, 2026-11-20. Approved by Rama on 2026-11-25 with the A07 topic package (Decision Register, D-40): status marked APPROVED; content unchanged.
 **Purpose and scope:** Identifies the A07 paths of the Master System Investigation Index (entry A07; Appendix A for the three scripts) at the study baseline: size, Git object, SHA-256 and history of each path; the A07 call sites in files that other topics own (`main.py`, A01's file, index rule 8; `signals/signal_processor.py`, A06's file; and others); the declared invocations of the scripts, as declarations only; the related paths that other topics own, which A07 reads at the boundary only (the start line of Decision Register D-38 and Rama's decisions P1 to P3 of 20-Nov-2026, D-39); the tests that reference A07 code (A19's; evidence of stated expectations only); and the A07 changes made after the last recorded deployment (D-21). It supports the STUDY's inventory and decides nothing.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 20-Nov-2026 from the local read-only clone with `git show`, `git ls-tree`, `git log`, `git grep` and `git diff`. Nothing in the clone was written or run, and no endpoint, scanner, broker or API was contacted. Every repository-wide search excluded `config/accounts.csv`, `**/.env*`, `**/*.local.yaml` and `**/*token*.json`, and none of them was opened. No credential, token, account identifier or machine path is reproduced (Document 08, section 11; D-07); a commit message that carries an account identifier is paraphrased.
 

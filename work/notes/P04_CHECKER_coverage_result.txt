@@ -1,0 +1,65 @@
+== sr_detector/retest_confirm.py: 137 lines
+  L38   name WAIT_BREAKOUT                       named=True line_cited=True OK
+  L39   name WAIT_RETEST                         named=True line_cited=True OK
+  L40   name WAIT_CONFIRM                        named=True line_cited=True OK
+  L41   name CONFIRMED                           named=True line_cited=True OK
+  L42   name REJECT                              named=True line_cited=True OK
+  L45   name IN_PROGRESS_STATES                  named=True line_cited=True OK
+  L47   name _LONG                               named=False line_cited=True CHECK
+  L50   def/class _is_long                       named=True line_cited=True OK
+  L55   def/class RetestParams                   named=True line_cited=True OK
+  L63   def/class RetestResult                   named=True line_cited=True OK
+  L68   def/class confirmed                      named=True line_cited=True OK
+  L72   def/class rejected                       named=True line_cited=True OK
+  L76   def/class terminal                       named=True line_cited=True OK
+  L80   def/class evaluate                       named=True line_cited=True OK
+  L130  def/class _strong_close                  named=True line_cited=True OK
+  branch lines: 23; not covered by any cited line or range: 0
+== screening/retest_monitor.py: 441 lines
+  L27   def/class ParkedCandidate                named=True line_cited=True OK
+  L44   def/class RetestMonitor                  named=True line_cited=True OK
+  L45   def/class __init__                       named=True line_cited=True OK
+  L75   def/class start                          named=True line_cited=True OK
+  L83   def/class stop                           named=True line_cited=True OK
+  L92   def/class register                       named=True line_cited=True OK
+  L107  def/class clear_all                      named=True line_cited=True OK
+  L118  def/class rehydrate                      named=True line_cited=True OK
+  L138  def/class parked_count                   named=True line_cited=True OK
+  L142  def/class has_symbol                     named=True line_cited=True OK
+  L149  def/class _run                           named=True line_cited=True OK
+  L159  def/class poll_once                      named=True line_cited=True OK
+  L169  def/class _evaluate                      named=True line_cited=True OK
+  L205  def/class _release                       named=True line_cited=True OK
+  L216  def/class _fetch_recent_1m               named=True line_cited=True OK
+  L229  def/class _to_row                        named=True line_cited=True OK
+  L243  def/class _from_row                      named=True line_cited=True OK
+  L255  def/class _safe_log                      named=True line_cited=True OK
+  L264  def/class RetestDiverter                 named=True line_cited=True OK
+  L275  def/class __init__                       named=True line_cited=True OK
+  L300  def/class enabled                        named=True line_cited=True OK
+  L303  def/class maybe_divert                   named=True line_cited=True OK
+  L381  def/class _matching_zone                 named=True line_cited=True OK
+  L392  def/class _log_divert_audit              named=True line_cited=True OK
+  L435  def/class _safe_log                      named=True line_cited=True OK
+  branch lines: 73; not covered by any cited line or range: 0
+TOTAL names 40; needing a look 1
+fetch_timeframes             1
+insert_retest_state          4
+update_retest_state          8
+release_retest_state         7
+clear_all_retest_state       4
+get_all_retest_state         4
+update_signal_status         8
+insert_sr_detector_result    4
+_cache.get                   1
+contains                     8
+center                       3
+to_dict                      3
+on_confirm                   13
+json.dumps                   2
+json.loads                   1
+fromisoformat                3
+replace(                     7
+threading.Thread             1
+_stop.wait                   1
+w.join                       1

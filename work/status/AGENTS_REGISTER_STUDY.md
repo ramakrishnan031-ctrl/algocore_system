@@ -2,8 +2,8 @@
 
 | Helper | Part | Role | Model / effort | Started (IST) | Final hand-back (IST) | Status |
 |---|---|---|---|---|---|---|
-| — | P07 | writer (handoffs; runs first) | pending Rama | — | — | NOT STARTED |
-| — | P01 | writer (calculation core) | pending Rama | — | — | NOT STARTED |
+| H1 | P07 | writer (handoffs; runs first) | Opus 5.5 / High (Rama, 26-Nov) | 26-Nov-2026 13:02 | — | RUNNING |
+| H2 | P01 | writer (calculation core) | Opus 5.5 / High (Rama, 26-Nov) | 26-Nov-2026 13:02 | — | RUNNING |
 
 Planned order (at most two at a time; next pair only after both final hand-backs; Rama consulted before each start):
 1. P07 writer + P01 writer

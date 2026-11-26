@@ -2,8 +2,8 @@
 
 **Status:** DRAFT — evidence for the A08 STUDY
 **Date:** 2026-11-26
-**Revision history:** First version, 2026-11-26.
-**Purpose and scope:** Part P07 of the A08 STUDY fieldwork (PRIOR_TOPIC_HANDOFFS; the A08 counterpart of A07's part P01). It lists (A) the 48 items that the approved A01 to A07 RECONCILED TOPIC RECORDS hand to A08 (A01 5, A02 7, A03 9, A04 4, A05 11, A06 8, A07 4), (B) the 16 Open Issues Register entries that name A08, (C) the handoff notes without an item ID that name A08, and (D) the difference in the wording of the retest path's owner. For each it records, from the records and registers, the source location, the result and classification, the treatment and status (copied unchanged), what the source says about A08's side, the neutral question it raises for A08, the A08 code location at the baseline where the answer lies, and the A08 STUDY part (P01 to P06) that answers it. It locates code and does not trace it: no A08 finding is written here. D-41 is applied: P1 (A08 owns the V2 retest mechanism; for `continue_from_retest` only the A08-specific handoff and values), P3 (other topics' call sites at the interface only) and P4 (all 48 items and 16 entries examined; IDs, owners, classifications, treatments and statuses unchanged; A04-05 under the security rules). No earlier topic's item is reopened, reclassified, re-treated or re-worded, and no record is edited.
+**Revision history:** First version, 2026-11-26. Checked and corrected in place by the P07 checker, 2026-11-26 (23 statements corrected, 1 re-labelled, 0 withdrawn, 26 added; see the final section "Check log"), including, on Rama's working decision of 26-Nov-2026, the A08 side of the 16 records of section 5.4 (new section 5.5) and their assignment in section 7.
+**Purpose and scope:** Part P07 of the A08 STUDY fieldwork (PRIOR_TOPIC_HANDOFFS; the A08 counterpart of A07's part P01). It lists (A) the 48 items that the approved A01 to A07 RECONCILED TOPIC RECORDS hand to A08 (A01 5, A02 7, A03 9, A04 4, A05 11, A06 8, A07 4), (B) the 16 Open Issues Register entries that name A08, (C) the handoff notes without an item ID that name A08, and (D) the difference in the wording of the retest path's owner; added in the check, on Rama's decision of 26-Nov-2026, (E) the A08 code location and part of each of the 16 AUDIT records whose Owner field names A08 outside the 48 (section 5.5). For each it records, from the records and registers, the source location, the result and classification, the treatment and status (copied unchanged), what the source says about A08's side, the neutral question it raises for A08, the A08 code location at the baseline where the answer lies, and the A08 STUDY part (P01 to P06) that answers it. It locates code and does not trace it: no A08 finding is written here. D-41 is applied: P1 (A08 owns the V2 retest mechanism; for `continue_from_retest` only the A08-specific handoff and values), P3 (other topics' call sites at the interface only) and P4 (all 48 items and 16 entries examined; IDs, owners, classifications, treatments and statuses unchanged; A04-05 under the security rules). No earlier topic's item is reopened, reclassified, re-treated or re-worded, and no record is edited.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb`, read on 2026-11-26 from the local read-only clone with git show/grep/log/blame. Nothing was written or run; no endpoint was contacted; the four credential-holding file patterns were excluded from every search; no credential, account identifier or machine path is reproduced. Project records: the algocore_system repository, branch `main`, commit `52cc811` ("A08 opened: Topic Completion Register, D-41, first A08 evidence"), read-only.
 
 ## 1. Method, sources and boundaries
@@ -380,3 +380,98 @@ P07-S115. FACT (cross-references):
 - The approved records quoted: A01 to A07 RTRs and AUDITs (sections 3 to 6); the Audit Findings Register and the Open Issues Register, unchanged.
 - The model: A07 evidence `A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md` (structure and depth only).
 - Later topics: A18 cites A08 for the retest path and covers the S&R shadow's activation (D-41, P1 and P2); A10, A11, A12 own the MARKET retest entry, the structure exit and the end-of-day clear, recorded by A08 at the interface (D-41, P3).
+
+## Check log
+
+Checked on 2026-11-26 (IST) by the P07 checker (helper H3), who did not write this file. The writer's original is kept unchanged at `<workspace>/check/A08_PRIOR_TOPIC_HANDOFFS_2026-11-26.md.writer_original`.
+
+**Method.** Every statement was checked against its cited record line at `52cc811` (the A01 to A07 RECONCILED TOPIC RECORDS and AUDITs, the A07 STUDY, the Audit Findings Register, the Open Issues Register, the Decision Register, the Topic Completion Register, the Master System Investigation Index, the A08 inventory) or legacy line at `970aabf` (`git show` with line numbers; path-limited `git grep -n`; repository-wide searches with the four exclusions of the COMMON brief, section 1; nothing run, imported or tested; no credential-holding file opened; lines of the spot-check script, `main.py` and the cron file displayed through a path mask). The sixteen A08 files were read in full at the baseline, and `main.py`, `signals/signal_processor.py`, `core/state_store.py`, `config/system_config.yaml`, `config/cron_registry.yaml` and `deploy/cron/trading-system.cron` at the cited lines. Independent read-only scratch scripts (outside the workspace, not kept) re-derived each list: an Audit Findings Register reader (cells split outside backticks; the 40 rows of the 48 and their classification, treatment and status cells match section 3 exactly; 8 of the 48 without a row); an AUDIT record reader (heading, "Result and classification" and "Owner" lines of the 48 match); an Owner-field scanner over the seven AUDITs with wrapped field lines joined (1,029 Owner fields; 50 name A08 or, for A06 WA-07, a range including it; 34 belong to the 48 and 16 do not; a first pass without joining missed A06 EV-01, whose A08 is on its continuation line L4303); an RTR line finder (63 lines name A08, every one accounted for in sections 3, 5.1 and 5.2); an AUDIT table-row finder (102 rows name A08: A01 13, A02 10, A03 12, A04 4, A05 38, A06 13, A07 12, every one accounted for in sections 3, 5.3 and P07-S096); and an Open Issues Register reader (261 entries; 16 name A08, each once; their summary rows, Owner and Question quotations and Resolution parts (2) and (3) confirmed on the full text).
+
+**Specific checks asked of this check.** (1) `continue_from_retest` has a single binding: verified repository-wide with the four exclusions; outside `tests/` and `docs/` the only reference that binds it is `main.py` L3786, inside the block of L3769; there is one `RetestMonitor(` construction (L3784), the other `on_confirm=` binding (L3745) is the PB-01 entry stage's, and no code reaches the method by a name string (P07-S102). (2) The AP-02 facts: `scripts/sr_level_export.py` L137 is `from main import _build_market_data_kite, _make_sr_fetch_fn, _parse_hhmm`, L139 `app_config = load_all(str(ROOT / "config"))`, L141 `instrument_cache = InstrumentCache(str(ROOT / "config" / "instruments.csv"))`, in that order inside `_make_real_analyze_fn` (L127 to L175), after its imports L130 to L135; which line fails first is not established here (part P05; nothing run). (3) The 16 records of section 5.4: each given an A08 code location verified at `970aabf` and a primary part (section 5.5; section 7), on Rama's decision of 26-Nov-2026 (P07-S123); nothing in the earlier topics changed.
+
+**Counts:** statements checked 115 (P07-S001 to P07-S115); verified without change 91; corrected 23; re-labelled 1 (in part); withdrawn 0; added 26 (P07-S116 to P07-S141). Final per-part primary assignment (items + issues + records): P01 2 (2 + 0 + 0), P02 28 (13 + 8 + 7), P03 11 (7 + 2 + 2), P04 18 (11 + 2 + 5), P05 13 (7 + 4 + 2), P06 8 (8 + 0 + 0); total 80 (48 + 16 + 16); notes N1 to N6 counted apart (N1 P03, N2 and N3 P02, N5 and N6 P04, N4 none).
+
+**Corrections (old -> new, source):**
+- P07-S002: A07 STUDY "the lines naming P02-S040 (L187, L1445)" -> L187 (the wording) and L1445 (the A08 boundary paragraph), with the further citing lines L712, L1428, L1443 and L1681 named (A07 STUDY).
+- P07-S005: the legacy reading list completed with the lines cited in sections 3 to 6 outside its ranges, and the third repository-wide search (`continue_from_retest`, P07-S102) added.
+- P07-S015: "(sections 2 to 8, 11, 15.1, 16, 17 and 22)" -> "(sections 2 to 7, 11, 15.1, 16, 17, 22 and 23)" (no RTR line naming A08 is in section 8; A07 RTR L814 is in section 23).
+- P07-S033: `core/state_store.py` "L3033, L3043, L3054" -> L3033 `insert_retest_state`, L1422 `update_signal_status`, L1990 `insert_sr_detector_result`, L3054 `release_retest_state` (L3043 is the transaction of `update_retest_state`, which neither the divert nor the release calls).
+- P07-S045 and P07-S073: `intraday_anchors` "L143 to L184" -> "L143 to L182"; `_build_anchors` "L209 to L236" -> "L209 to L235" (the functions end there; the next definitions start at L185 and L237).
+- P07-S050: `sr_detector/zone_builder.py` L164, the call of the volume-weighted `session_vwap`, added to the A08 volume users (`git grep -n -w volume` over the A08 paths).
+- P07-S057: the warmer's log lines "L69, L97, L99" -> L69, L97, L99, L117, L126, L134 and L140 (every `_safe_log` call in `sr_detector/zone_warmer.py`).
+- P07-S061: `_sr_observe` "called at L1550" -> L1550, L2296 and L2588 (`signals/signal_processor.py`; inside `_admit_and_place`, `continue_from_gate` and `continue_from_retest`; the A08 inventory, section 2.1, also lists only L1550).
+- P07-S063: "owner cell ends" -> the cell's owner list ends with A08 and A18, before a closing sentence citing SL-06 (A07 AUDIT L1176).
+- P07-S066: A07 XS-12 added, a records observation with no Owner field that reaches A08 only through L4323 (A07 AUDIT L4252 to L4258).
+- P07-S067 (re-labelled in part): the closing sentence labelled INTERPRETATION, with its basis (register L12 to L14).
+- P07-S068: the summary-table header "L2108" -> L682 (A03), L1507 (A04) and L2108 (A05); the 16 rows sit in three per-topic tables.
+- P07-S096: "None carries an item for A08 beyond the 48" refined: A05 L2143 and L2524 repeat the owner list of A04 CL-12 (one of the 16 records), and A07 L3761 and L3763 word the retest path's owner.
+- P07-S098: "put to the AUDIT and to Claude and ChatGPT ..., not to Rama" -> decided by Rama on 26-Nov-2026 (P07-S123), assigned in section 5.5.
+- P07-S102: the single-binding verification of this check added (see above); tests named as A19's stated expectations only.
+- P07-S103: the A07 AUDIT section 11.4.1 rows L3763 and L3761 added to the census of wordings.
+- P07-S105: a column for the 16 records of section 5.5, counts "items + issues + records" and the extended secondary cells added; preamble updated (64 -> 80).
+- P07-S106: the counts re-derived by the coverage script (80; the records 0, 7, 2, 5, 2, 0); "sections 5.2, 5.3 and 5.4 are not assigned" -> sections 5.2 and 5.3; the 5.4 records assigned in section 5.5, each primary agreeing with the writer's location-based suggestion.
+- P07-S107: the security rules extended to A04 CL-12 and AU-05 (interface only).
+- P07-S108: AP-02 "A01 AUDIT L2063" -> L2062 (the "Actual behaviour" field; L2063 is the Evidence line); AP-03: A07 XS-12 added; AP-05: the open question of whether A08 records its side replaced by Rama's decision (P07-S123); AP-06: A07 AUDIT L3763 and L3761 added.
+- P07-S110: "no result of the spot check is recorded anywhere" -> no document at the baseline records a result (A05 AUDIT L1610).
+- P07-S114: the decision on the 16 records noted (P07-S123).
+- P07-S115: P01's secondary record HA-03, the rows of section 5.5 and the workspace note of Rama's decision added.
+
+**Added (new IDs after P07-S115; never renumbered):**
+- P07-S116 to P07-S122: the seven table lead-ins of sections 3.1 to 3.7, which the writer left unnumbered, numbered in place (COMMON brief, section 4; the approved A07 model numbers its lead-ins). P07-S121 also corrected: the A06 table 12.5 has the columns "Owner", "Interface fact recorded here" and "Records" (A06 AUDIT L6545); only the tables 6.5 to 9.5 (headers L2266, L3226, L4003, L4945) have the "To" columns.
+- P07-S123: Rama's working decision of 26-Nov-2026 on the 16 records (`<workspace>/notes/RAMA_DECISIONS_A08_STUDY.md`).
+- P07-S124 to P07-S140: section 5.5, the lead-in and one row per record, with the A08 code location verified at `970aabf` and the part (P02: RL-11, CM-07, CM-11, HA-05, HA-10, IN-09, SX-07; P03: D-09, U-05; P04: Q-09, HA-03, EV-01, ET-07, RP-12; P05: CL-12, AU-05, interface only).
+- P07-S141: the nine UNKNOWN / NOT ESTABLISHED items and the seven AGREED ISSUEs among the 16 records (Audit Findings Register lines).
+
+**Coverage script** (`<workspace>/check/p07chk_cov.py`, read-only; it reads this file and the records at `52cc811`). Test (a) of the checker brief, every `def`/`class` of the part's files, does not apply: P07 owns no code file and locates code only (its brief; as in the approved A07 model). Test (b), the 48 items, the 16 entries, the 16 records and the prose notes, each present and each assigned to a part:
+
+```
+PASS A01 RTR has one A08 row
+PASS A02 RTR has one A08 row
+PASS A03 RTR has one A08 row
+PASS A04 RTR has one A08 row
+PASS A05 RTR has one A08 row
+PASS A06 RTR has one A08 row
+PASS A07 RTR has one A08 row
+PASS 48 distinct IDs in the seven RTR A08 rows (48)
+PASS section 3 has a row for every one of the 48 and no other
+PASS each of the 48 has exactly one section 3 row
+counts by topic: A01 5, A02 7, A03 9, A04 4, A05 11, A06 8, A07 4
+PASS Open Issues Register has 261 entries (261)
+PASS section 4 rows equal the 16 register entries naming A08, in order
+PASS 16 AUDIT records outside the 48 name A08 in their Owner field (16)
+PASS section 5.4 table lists exactly those 16, in order
+PASS section 5.5 rows P07-S125 to P07-S140 list exactly those 16, in order
+PASS notes N1 to N6 cover the 6 prose lines ['A03 RTR L419', 'A05 RTR L480', 'A06 RTR L548', 'A07 RTR L533', 'A07 RTR L560', 'A07 RTR L565']
+PASS 80 assigned rows (48 + 16 + 16): 80
+PASS every row has one primary part P01 to P06
+PASS P01: primary 2 items + 0 issues + 0 records = 2, table cells agree
+PASS P01: secondary cell equals the secondary assignments of the Part cells (6)
+PASS P02: primary 13 items + 8 issues + 7 records = 28, table cells agree
+PASS P02: secondary cell equals the secondary assignments of the Part cells (10)
+PASS P03: primary 7 items + 2 issues + 2 records = 11, table cells agree
+PASS P03: secondary cell equals the secondary assignments of the Part cells (15)
+PASS P04: primary 11 items + 2 issues + 5 records = 18, table cells agree
+PASS P04: secondary cell equals the secondary assignments of the Part cells (7)
+PASS P05: primary 7 items + 4 issues + 2 records = 13, table cells agree
+PASS P05: secondary cell equals the secondary assignments of the Part cells (8)
+PASS P06: primary 8 items + 0 issues + 0 records = 8, table cells agree
+PASS P06: secondary cell equals the secondary assignments of the Part cells (23)
+PASS Total row: 48, 16, 16, 80
+primary counts: P01 2, P02 28, P03 11, P04 18, P05 13, P06 8
+PASS statements P07-S001 to P07-S141, each once, no gap (141; duplicates [])
+PASS every statement starts with one label (bad: [])
+PASS no statement is labelled KNOWN DEFECT
+RESULT: ALL PASS
+```
+
+**Scan:** `python3 -I <workspace>/tools/scan.py` on this file and on the coverage script: `SCAN HITS: 0`. No account identifier, IP address, e-mail address, key fingerprint, machine path or secret value; `config/accounts.csv`, `.env*`, `*.local.yaml`, `*token*.json` and the backup settings file not opened; no credential field name or value is written, and CL-11, CL-15, CL-12, AU-05 and A04-05 are recorded at the interface only.
+
+**Sections, labels and neutrality:** the part brief's sections 1 to 11 are all present (with the new subsection 5.5). Every statement starts with one label (script); no KNOWN DEFECT label; OPEN FOR RAMA is not written (it occurs once, in P07-S001's statement that it is not used); no V2 design content; the Points for the AUDIT state records differences only, the UNKNOWN items state why they are unknown, and section 10 puts no question to Rama.
+
+**Residual doubts:**
+- A05 HA-03's primary part is P04, matching its linked entries A05-17 and A05-18; P01 (the `Candle` type) is as natural by file. For Claude to confirm in the part briefs.
+- The "A08 question" cells of section 5.5 are this check's neutral drafts; the assigned parts may refine them.
+- Rama's decision P07-S123 is recorded only in the workspace note; it has no Decision Register entry at `52cc811` and is to be flagged for ChatGPT at the STUDY review.
+- The record searches match "A08" as a word (P07-S113); a mention of A08's subject without the topic ID would not be found.
+- P07-S005's completed reading list names its additions by example; every line cited in sections 3 to 7 was re-read in this check.
+- The A08 inventory's section 2.1 still lists only L1550 for `_sr_observe` (already in the helper register as a revision to make); this part now gives L1550, L2296 and L2588.

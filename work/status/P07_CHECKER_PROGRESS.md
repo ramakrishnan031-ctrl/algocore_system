@@ -11,3 +11,6 @@
 | 26-Nov-2026 13:58 | section 6 checked (S099 to S104; D-41 P1 and the A06, A07 wordings re-read; continue_from_retest single binding verified: main.py L3786 only); S102 and S103 completed | section 7 | P07-S001 to P07-S104; added P07-S116 to P07-S140 |
 | 26-Nov-2026 14:00 | section 7 checked and extended (S105 to S107): the 16 records of section 5.5 given primary parts (P02 7, P03 2, P04 5, P05 2); counts now P01 2, P02 28, P03 11, P04 18, P05 13, P06 8 = 80; coverage script check/p07chk_cov.py ALL PASS | sections 8 to 11 | P07-S001 to P07-S107; added P07-S116 to P07-S140 |
 | 26-Nov-2026 14:01 | sections 8 to 11 checked (S108 to S115); AP-02, AP-03, AP-05, AP-06, S110, S114, S115 corrected; S141 added (UNKNOWN items among the 16 records) | header revision history and Check log | P07-S001 to P07-S115; added P07-S116 to P07-S141 |
+| 26-Nov-2026 14:04 | header revision history and purpose updated; Check log appended; coverage script ALL PASS (80 assigned: P01 2, P02 28, P03 11, P04 18, P05 13, P06 8); tables well-formed (15); scan 0 hits | final backup and hand-back | checked P07-S001 to P07-S115 (91 unchanged, 23 corrected, 1 re-labelled, 0 withdrawn); added P07-S116 to P07-S141 |
+
+**Status: COMPLETE** (26-Nov-2026 14:04 IST)

@@ -180,6 +180,61 @@
 
 ## 7. Threads, locks, clocks and failure behaviour across the four files (summary)
 
+This section gathers what sections 3 to 6 state, for citation by the other parts and the assembly; it adds no new code fact.
+
+- P02-S091 FACT (the threads that run code of the four files; other topics' threads at the interface only):
+
+| Thread | Started at | Code of the four files it runs |
+|---|---|---|
+| main thread | boot (`main.py`) | the constructions (P02-S040, P02-S064, P02-S075); the detector's `build_zone_knobs`, `build_scoring_params` and `build_flag_params` in its constructor (`sr_detector/detector.py` L93 to L95); `ZoneWarmer.start` (`main.py` L3796, L3816); `ZoneWarmer.stop` in `_shutdown` (L1744) |
+| "sp-dispatcher" (A06; `signals/signal_processor.py` L314 to L316) | the processor's start (`main.py` L3974) | `ZoneWarmer.enqueue`, through `_warm_zones` (L388) |
+| "sr-zone-warmer" (`sr_detector/zone_warmer.py` L67) | `main.py` L3796 or L3816 | `_run`, `_enqueue_rewarms` and its `enqueue` calls, `warm`; through `warm`, `OhlcFetcher.fetch_timeframes` (P02-S040 row 3) and the closure, `scored_zones_from_candles`, `split_zones`, `ZoneCache.put`; and `ZoneCache.symbols_due_for_rewarm` |
+| "sp-worker" pool (A06; L310 to L312) | on demand | `ZoneCache.get`, through the retest diverter (`screening/retest_monitor.py` L334; P04's) |
+| the thread that delivers the candle store's one-minute closes (A05's and A11's) | — | `ZoneCache.get`, through the structure exit (`orders/structure_exit_manager.py` L204; A11's) |
+| "sr-detector" (P03; `sr_detector/detector.py` L114) | `main.py` L3504 | `OhlcFetcher` row 1, `scored_zones_from_candles`, `intraday_anchors`, `build_anchor_payload`, `build_swings_payload` |
+| "sr-retest-monitor" (P04; `screening/retest_monitor.py` L79) | `main.py` L3797 | `OhlcFetcher` row 6 |
+| the A18 consumers' threads ("v3-chain", "pb01-capture", "pb01-entry" in A04 RL-11's list; the regime runner's) | A18's | `OhlcFetcher` rows 2, 4 and 5, `scored_zones_from_candles`, `split_zones` |
+
+- P02-S092 FACT and INTERPRETATION (the locks): FACT:
+
+| Lock | Type | Guards | Held during |
+|---|---|---|---|
+| `OhlcFetcher._lock` (`fetch.py` L51) | `threading.Lock` | `_mem` (L139 to L140, L150 to L151) | one dictionary read or write; in `_cache_put`, also one clock read (L151) |
+| `ZoneCache._lock` (`zone_cache.py` L33) | `threading.RLock` | `_store` (every method) | one dictionary operation; in `symbols_due_for_rewarm` and `evict_expired`, one clock read per stored entry |
+| `ZoneWarmer._pending_lock` (`zone_warmer.py` L57) | `threading.Lock` | `_pending` (L89 to L92, L95 to L96, L113 to L114) | one set operation |
+| the queue's own lock (`zone_warmer.py` L55) | inside `queue.Queue` | the warmer's queue | `get`, `put_nowait`, `task_done` (P02-S005 (a)) |
+
+  FACT: no line of the four files takes one of these locks while holding another, and none is held during a fetch, a limiter wait, a broker call, a scoring run or a log call. INTERPRETATION: no lock-order cycle can arise among them, and the waits they cause are short critical sections, the longest being the re-warm scan's, which grows with the number of stored symbols (P02-S071).
+- P02-S093 FACT and INTERPRETATION (the clocks): FACT: every time value in the four files comes from an injected `now_fn`, or the `now` argument, never from the system clock directly (P02-S009); in every trading-process construction it is `time_authority.now_ist`, the wall clock in IST (P02-S023, P02-S029). Its uses: the end and start of the fetch window (P02-S023), the fetcher cache's stored time and age (P02-S028 to P02-S031), the zone cache's `warmed_at` and age (P02-S065, P02-S069) and the scorer's recency reference (P02-S086; P01-S088 to P01-S091). The other timing values are durations: the warmer's idle wait as the `get` timeout (L106) and the 2.0-s join (L79). INTERPRETATION: no monotonic clock and no market clock (session, trading calendar) is used; every age and window is a wall-clock calendar duration.
+- P02-S094 FACT and INTERPRETATION (failure behaviour, by case; the "propagates" column states whether the exception leaves the four files' public method):
+
+| Case | Where | Outcome | Log line | Propagates |
+|---|---|---|---|---|
+| symbol not in the instrument cache, or a malformed row | `_resolve_token` L105 to L112 | no candles for any interval | WARNING "token lookup failed" | no |
+| token 0 | L109 | no candles | none | no |
+| `fetch_by_token`: falsy token | L98 to L99 | `None` | none | no |
+| `fetch_by_token`: token `int` cannot convert | L100 to L101 | — | none | yes (`ValueError` or `TypeError`) |
+| limiter timeout, shutdown abort or unknown category | closure `main.py` L431, caught at L130 | `None` for the interval | WARNING "historical_data failed" | no |
+| broker or library error (429, timeout, authentication) | closure L432 to L437, caught at L130 | `None` for the interval | WARNING "historical_data failed" | no |
+| market-data handle `None` | closure L429 to L430 | empty answer, `None` | none in the fetcher (one WARNING at boot, `main.py` L3483 to L3486) | no |
+| empty answer | L127 to L129 | `None`, not cached | none | no |
+| a row `from_kite` cannot convert | L126 | `None` for the interval | WARNING "historical_data failed" | no |
+| clock raises in `_cache_get` | L144 | — | none | yes |
+| clock raises in the window or in `_cache_put` | L122, L151 | `None` for the interval | WARNING "historical_data failed" | no |
+| `scored_zones_from_candles` given an empty dictionary | L99 | — | none | yes (`StopIteration`; no non-test caller passes one, P02-S050) |
+| NaN or infinite values in candles (P01-S097) or in the reference price | calculation core; `round_number_levels` L132 | as P01-S097; `ValueError` or `OverflowError` | none in the four files | yes, to the caller (the warmer's loop logs ERROR; the detector's handling is P03's) |
+| clock raises in the zone cache | `put` L37; `get` and the scan through `_age_sec` L76 | — | none in the cache | yes (to the warmer's loop, which logs ERROR "warm error" or "rewarm scan failed"; to the readers, P04 and A11) |
+| warmer queue full | `enqueue` L94 to L97 | symbol dropped, `_pending` cleared for it | WARNING "queue full, dropping" | no |
+| any other `enqueue` error | L98 to L99 | — | ERROR "enqueue failed" | no |
+| `warm` raises an `Exception` | `_run` L116 to L117 | that symbol skipped; loop continues | ERROR "warm error" | no |
+| re-warm scan raises | L125 to L126 | scan skipped | ERROR "rewarm scan failed" | no |
+| fetch miss in `warm` | L133 to L135 | old entry kept, still due for re-warm | INFO "fetch miss" | no |
+| clock raises when `warm` scores | `_safe_now` L146 to L150 | `now = None`, full recency vote (P01-S091) | none | no |
+| worker busy in a fetch at `stop` | `stop` L79 | join returns after 2.0 s; the worker finishes later | none | no |
+| the logger raises | `_safe_log` (both files) | swallowed | — | no |
+
+  INTERPRETATION: for a failure of the fetch itself the four files keep SR-F4's outcome (no candles, nothing raised), except the two paths of P02-S019 and P02-S036; the warmer's "Never raises into the caller" holds for `enqueue` and `stop`; `warm` can raise, but its only caller catches. Failures leave log lines only: the four files write no counter, alert, telemetry or stored record (a search of the four files for `effect`, `telemetry`, `notif`, `alert`, `state_store`, `insert_` and `emit` finds no line).
+
 ## 8. Callers and readers (interface only)
 
 ## 9. Inherited items: P02's primary items, then its secondary items

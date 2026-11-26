@@ -5,3 +5,4 @@ Output: <workspace>/parts/A08_CANDLE_FETCH_ZONE_BUILDER_CACHE_AND_WARMER_2026-11
 |---|---|---|---|
 | 2026-11-26 14:26 | skeleton (header + headings); briefs, P01, P07, inventory read | read the four source files in full; then section 1 | none |
 | 2026-11-26 14:44 | 1 and 2 | section 3 (OhlcFetcher) | P02-S001 to P02-S011 |
+| 2026-11-26 14:47 | 3 | section 4 (zone_builder) | P02-S001 to P02-S042 |

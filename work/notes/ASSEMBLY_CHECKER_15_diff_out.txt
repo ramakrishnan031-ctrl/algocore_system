@@ -1,0 +1,135 @@
+== A08-AP-02 L865 srcs=['P01-AP02']
+   ADDED: a perfectly flat plateau does not mark every bar | only in degenerate single-bar windows
+== A08-AP-04 L867 srcs=['P01-AP04']
+   LOST: Zone
+== A08-AP-12 L875 srcs=['P01-AP12']
+   ADDED: P03-S054
+== A08-AP-13 L876 srcs=['P01-AP13']
+   ADDED: P02-S050
+== A08-AP-14 L877 srcs=['P01-AP14']
+   LOST: L136 | L138 | L186 | L196 | L207 | v3_chain/pb01_runner.py | v3_chain/runner.py
+== A08-AP-16 L879 srcs=['P01-AP16']
+   LOST: Candidate | L5 | models.py
+== A08-AP-18 L884 srcs=['P02-AP01']
+   LOST: P02-S017 | main.py
+   VERDICT-WORDS: ['DEFECT']
+== A08-AP-20 L886 srcs=['P02-AP03']
+   LOST: L100 | L101 | L118 | L144
+== A08-AP-23 L889 srcs=['P02-AP06']
+   LOST: >=
+== A08-AP-26 L892 srcs=['P02-AP09']
+   LOST: A05 HA-04
+== A08-AP-28 L894 srcs=['P02-AP11', 'P04-AP14', 'P06-AP02']
+   LOST: None | main.py
+== A08-AP-31 L897 srcs=['P02-AP14', 'P06-AP06']
+   LOST: L3686 | L508 | L545 | relies on a TTL of 0 to keep them apart | sr_detector:
+== A08-AP-32 L898 srcs=['P02-AP15']
+   LOST: P02-S057
+== A08-AP-33 L899 srcs=['P02-AP16']
+   LOST: config/expected_managers.yaml
+== A08-AP-35 L904 srcs=['P03-AP01']
+   LOST: A01 B-11 | P03-S104 | P03-S105
+== A08-AP-36 L905 srcs=['P03-AP02']
+   LOST: P03-U03
+== A08-AP-37 L906 srcs=['P03-AP03']
+   VERDICT-WORDS: ['broken']
+== A08-AP-39 L908 srcs=['P03-AP05']
+   LOST: L1248 | core/schema.sql
+== A08-AP-40 L909 srcs=['P03-AP06']
+   LOST: P03-AP07
+== A08-AP-41 L910 srcs=['P03-AP07']
+   LOST:  and also that it 
+   ADDED:  and that it 
+== A08-AP-44 L913 srcs=['P03-AP10', 'P04-AP19', 'P06-AP05']
+   LOST: sr_detector.retest_sl_buffer_pct | sr_detector.sl_buffer_pct
+== A08-AP-46 L915 srcs=['P03-AP12']
+   LOST: L1972
+== A08-AP-48 L917 srcs=['P03-AP14', 'P06-AP03', 'P06-AP04']
+   LOST: <workspace>/status/AGENTS_REGISTER_STUDY.md | Default OFF | L419 | P06-S182 | _admit_and_place
+== A08-AP-51 L923 srcs=['P04-AP01']
+   ADDED: A01 C13
+== A08-AP-52 L924 srcs=['P04-AP02']
+   LOST: L107 | L116 | L1306 | L1307 | L234 | L236 | L3049 | L3059 | core/schema.sql | core/state_store.py | scripts/eod_cleanup.py
+== A08-AP-57 L929 srcs=['P04-AP07']
+   LOST: L17 | L397
+== A08-AP-60 L932 srcs=['P04-AP10']
+   LOST: L20 | L21 | v3_chain/pb01_entry.py
+== A08-AP-63 L935 srcs=['P04-AP13', 'P06-AP01']
+   LOST: L3974 | P04-AP01 | main.py
+== A08-AP-66 L938 srcs=['P04-AP18']
+   LOST: ), so the docstrings' 
+   ADDED: ), so the docstring's 
+== A08-AP-69 L944 srcs=['P05-AP01']
+   LOST: L128 | L129 | L15 | L17
+== A08-AP-70 L945 srcs=['P05-AP02', 'P07 AP-02']
+   LOST: Actual behaviour | L1183 | L137 | L1372 | L1389 | L1468 | L1677 | L2007 | L2063 | L480 | L796 | Path | load_all | main | rows | str
+== A08-AP-71 L946 srcs=['P05-AP03']
+   LOST: P05-U06
+== A08-AP-85 L960 srcs=['P05-AP17', 'P06-AP09']
+   LOST: 26 | 43 | 5.4 | <workspace>/notes/CLAUDE_ASSIGNMENT_DECISIONS.md | P03-S192 | P07-S113 | P07-S123
+   ADDED: 13.4 | 13.6
+== A08-AP-86 L964 srcs=['P06-AP07']
+   LOST: L1225 | L1234 | watchlist.entry_tf
+== A08-AP-87 L965 srcs=['P06-AP08']
+   LOST: 5.4 | <workspace>/notes/RAMA_DECISIONS_A08_STUDY.md | A01 C40 | A02 K-32 | P05-AP17 | P06-S175 | P06-S176
+   ADDED: 13.4 | A03 J-14
+== A08-AP-88 L969 srcs=['P07 AP-01']
+   LOST: 48
+== A08-AP-89 L970 srcs=['P07 AP-03']
+   LOST: L4252 | L4257 | P07-S029 | P07-S055
+== A08-AP-91 L972 srcs=['P07 AP-05']
+   LOST: 5.5 | L139 | L395 | L404 | L533 | P07-S097 | P07-S106 | scripts/sr_level_export.py
+   ADDED: 13.4
+== A08-AP-92 L973 srcs=['P07 AP-06']
+   LOST: P07-S103
+== A08-U-01 L981 srcs=['P01-U01', 'P02-U02', 'P03-U02', 'P04-U04', 'P06-U01']
+   LOST: P01-S119 | P02-S064 | P02-S075 | P02-S076 | P03-S060 | P03-S109 | P04-S177 | P06-S088 | UNKNOWN / NOT ESTABLISHED | anchor_intraday_interval | anchor_lookback_days | breakout_avg_window | cache_ttl_sec | entry_proximity_pct | intraday_anchors_enabled | max_queue | max_zones_logged | orb_window_minutes | retest_sl_buffer_pct | timeframes | volume_surge_mult | weak_breakout_frac
+== A08-U-02 L982 srcs=['P01-U02', 'P02-U03', 'P03-U03', 'P04-U05']
+   LOST: A05 HA-03 | A05 HA-04 | P03-AP02
+   ADDED: A05 CM-05
+== A08-U-03 L983 srcs=['P01-U03']
+   ADDED: A05 CM-10
+== A08-U-05 L985 srcs=['P01-U05', 'P02-U01', 'P04-U01', 'P06-U05', 'P07-S109']
+   LOST: 4.2 | A06 PQ-09 | A07 SL-06 | HISTORICAL | L3798 | L3801 | L509 | L529 | L542 | L634 | P01-S134 | P01-S137 | P02-S075 | P06-U01 | UNKNOWN / NOT ESTABLISHED | config/system_config.yaml | config_snapshots | intraday_anchors_enabled: false | main.py | sr_detector.enabled: true | sr_detector.wait_for_retest_enabled | structure_exit_enabled: false | wait_for_retest_enabled: false
+   ADDED: P06-S090 | sr_detector: ENABLED and started
+== A08-U-06 L986 srcs=['P01-U06']
+   LOST: P01-AP01
+== A08-U-08 L988 srcs=['P01-U08']
+   LOST: P01-R4
+== A08-U-09 L989 srcs=['P01-U09', 'P02-U11', 'P03-U10', 'P04-U08', 'P05-U07']
+   LOST: 3.13 | kiteconnect==5.1.0
+== A08-U-10 L990 srcs=['P01-U10']
+   LOST: P01-S004
+   ADDED: A05 HA-08
+== A08-U-11 L991 srcs=['P02-U04']
+   LOST: P02-S004
+== A08-U-17 L997 srcs=['P03-U01']
+   LOST: P03-AP05
+== A08-U-19 L999 srcs=['P03-U05', 'P05-U01', 'P05-U02', 'P07-S110']
+   LOST: A01 C40 | L1610 | L408 | L423 | L90 | L91 | P07-S049 | UNKNOWN / NOT ESTABLISHED | config/cron_registry.yaml | deploy/cron/trading-system.cron | recorded anywhere | scripts/sr_corp_action_spotcheck.py | scripts/sr_detector_backfill.py | scripts/sr_level_export.py | sr_detector_results
+== A08-U-20 L1000 srcs=['P03-U06']
+   LOST: P03-AP08
+== A08-U-22 L1002 srcs=['P03-U08']
+   LOST: P03-AP01
+== A08-U-23 L1003 srcs=['P03-U09']
+   LOST: P03-R5
+== A08-U-24 L1004 srcs=['P04-U02']
+   LOST: P04-S078 | P04-S183
+== A08-U-25 L1005 srcs=['P04-U03']
+   LOST: P04-AP01 | P04-U01 | P04-U08
+== A08-U-26 L1006 srcs=['P04-U06', 'P06-U03']
+   LOST: main.py
+   ADDED: P06-S081 | P06-S083
+== A08-U-27 L1007 srcs=['P04-U07']
+   LOST: P04-S078
+== A08-U-34 L1014 srcs=['P06-U02']
+   LOST: P06-AP02
+== A08-U-35 L1015 srcs=['P06-U04']
+   ADDED: P06-S086
+== A08-U-38 L1018 srcs=['P07-S141']
+   LOST: 5.5 | A03 D-09 | A04 CL-12 | A05 HA-03 | A06 EV-01 | L1001 | L1005 | L1008 | L1010 | L1015 | L1024 | L1191 | L1210 | L1357 | L1431 | L373 | L444 | L480 | L707 | L719 | L830
+== A08-U-39 L1019 srcs=['P07-S112']
+   LOST: UNKNOWN / NOT ESTABLISHED
+== A08-U-40 L1020 srcs=['P07-S113']
+   LOST: P07-S004 | UNKNOWN / NOT ESTABLISHED | git grep | git show
+   ADDED: 13.6

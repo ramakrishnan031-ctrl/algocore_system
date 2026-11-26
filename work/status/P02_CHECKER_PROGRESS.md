@@ -6,3 +6,4 @@ Writer original kept at: <workspace>/check/A08_CANDLE_FETCH_ZONE_BUILDER_CACHE_A
 |---|---|---|---|
 | 2026-11-26 15:15 | started; briefs read (COMMON, CHECKER, P02); writer original copied | read part file, P01/P07 context, the four source files | no edits yet |
 | 2026-11-26 15:40 | verification pass over all 157 statements, AP/U/R/X, against the baseline code, the algocore records (A01, A02, A04, A05, A06, A07, AFR), P01, P07, external pages (Kite, Python queue/threading/time/datetime/functions/exceptions, pydantic); coverage scripts run (notes/P02_CHECKER_coverage.py, notes/P02_CHECKER_calls.py) | apply corrections section by section, backup after each | findings in notes/P02_CHECKER_NOTES.md |
+| 2026-11-26 15:41 | sections 1 and 2 corrected (S005 extended; S160 added; S007, S008) | section 3 | scan 0 hits |

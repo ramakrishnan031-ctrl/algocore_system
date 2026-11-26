@@ -9,7 +9,7 @@
 | H5 | P02 | writer | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 14:24 | 26-Nov-2026 15:07 | COMPLETE (157 statements; 16 AUDIT points; backup ecd10a1) |
 | H6 | P03 | writer | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 14:24 | 26-Nov-2026 15:13 | COMPLETE (214 statements; 16 AUDIT points; backup 2aa596d) |
 | H7 | P02 | checker | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 15:14 | — | RUNNING |
-| H8 | P03 | checker | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 15:14 | — | RUNNING |
+| H8 | P03 | checker | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 15:14 | 26-Nov-2026 15:49 | COMPLETE (214 checked; 36 corrected, 4 re-labelled, 3 added -> 217; backup 616d386) |
 
 Planned order (at most two at a time; next pair only after both final hand-backs; Rama consulted before each start):
 1. P07 writer + P01 writer
@@ -25,3 +25,5 @@ Planned order (at most two at a time; next pair only after both final hand-backs
 Notes for later (Claude):
 - Inventory section 2.1 lists only L1550 for `_sr_observe`; the baseline also has call sites L2296 and L2588 (P01-S032). Correct the DRAFT inventory in a revision before the STUDY commit.
 - Inventory section 2.2 gives `main.py` L3717-L3718 for the PB-01 fetcher; those are import lines, the construction is L3728-L3732 (P02-X08). Correct in the inventory revision.
+- Rows H-44, U-59, U-60 (P03-S192): unassigned; P06 brief asks P06 to confirm the code they touch; Claude to decide assignment at assembly.
+- A03 AUDIT H-11 cites retest_monitor.py L415 for the divert's ts; baseline L414 (P03-X08 d). Record only in A08; do not change A03.

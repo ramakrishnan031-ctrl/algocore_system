@@ -19,3 +19,4 @@ them apart from P07's own AP-01 to AP-06.
 | 2026-11-26 18:54 | section 12 (intent sources against the code) written | section 13 (inherited items: 48, 16 OIR, 16 records, N1-N6, 43+5 and PQ-06) | built from P01 s9, P02 s10, P03 s11, P04 s12, P05 s4/7/9, P06 s10 |
 | 2026-11-26 18:58 | section 13 intro, 13.1 and 13.2 (the 48 items) written | 13.3 to 13.6 | AFR cells of 43+5 records and PQ-06 read by notes/ASSEMBLY_afr.py (read-only; an addition beyond the parts, for the hand-back) |
 | 2026-11-26 19:00 | sections 13.3 (16 OIR), 13.4 (16 records, flagged), 13.5 (N1-N6), 13.6 (5 + 43 + PQ-06; Claude's assignment decisions, flagged) written | section 14 (boundaries by owner topic) | register cells copied from AFR (read-only reader) |
+| 2026-11-26 19:02 | section 14 (boundaries by owner topic A01-A20; wording note; citation differences) written | section 15 (consolidated AP list and UNKNOWN list): extract all AP/U items to notes first | — |

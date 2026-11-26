@@ -1,0 +1,36 @@
+PASS 1a: every P01-P06 AP/U/R ID (180) appears in sections 15/16
+PASS 1b: P07 AP-01..AP-06 (6) appear in sections 15/16
+PASS 1c: P07 UNKNOWN statements (6: P07-S109, P07-S110, P07-S111, P07-S112, P07-S113, P07-S141) appear in sections 15/16
+PASS 1d: part totals AP 104, U 61, R 27 = 104, 61, 27
+PASS 2a: the 48 items of D-41 P4 (48) each have a row in 13.2
+PASS 2b: the 16 open issues of D-41 P4 (16) each have a row in 13.3
+PASS 2c: the 16 Owner-field records of P07 s5.5 (16) each have a row in 13.4
+PASS 2d: notes N1 to N6 each have a row in 13.5
+PASS 2e: the 43 records of P06-S175/S176 (34 + 9) each have a row in 13.6
+PASS 2f: the 5 records of Claude's assignment decision and A06 PQ-06 have rows in 13.6
+PASS 2g: the Status text quoted in 13.3 equals each of the 16 summary rows of the Open Issues Register
+PASS 3: 1.9 maps A.1 to A.7, B and section 5 (6 rows: 48 items and 16 issues, HA-06, unsorted rows, from_kite, the corporate-action check, L139 vs L141)
+PASS 4a: consolidated entries 92 AP, 40 U, 25 Q = 92, 40, 25
+PASS 4b: section 2 states "92 points for the AUDIT, 40 unknown items and 25 draft questions ... from 104, 61 and 27"
+PASS 4c: statements in the seven parts = 1152 (STUDY 17.2: 1,152)
+PASS 4d: 17.2 per-part statement ranges and counts
+PASS 4e: 17.2 P01 17 / 10 / 4
+PASS 4e: 17.2 P02 17 / 11 / 5
+PASS 4e: 17.2 P03 16 / 10 / 5
+PASS 4e: 17.2 P04 21 / 11 / 5
+PASS 4e: 17.2 P05 17 / 7 / 3
+PASS 4e: 17.2 P06 10 / 6 / 5
+PASS 4f: the 92 points cite 104 source points and the 40 unknowns 61 source unknowns (104, 61)
+PASS 4g: the 25 questions cite 26 R IDs, + P06-R1 withdrawn = 27
+PASS 4h: 13.6 counts: 34 + 9 = 43; 48 records; 47 with a pointer; J-14 none
+PASS 4i: 13.2 counts per topic {'A01': 5, 'A02': 7, 'A03': 9, 'A04': 4, 'A05': 11, 'A06': 8, 'A07': 4}
+PASS 5a: every cited part ID exists (1138 distinct)
+PASS 5b: every A08-AP-nn reference resolves to a defined entry
+PASS 5b: every A08-U-nn reference resolves to a defined entry
+PASS 5b: every A08-Q-nn reference resolves to a defined entry
+PASS 5c: consolidated IDs defined once each, in order, with the A08- prefix
+PASS 5d: no point number "AP-nn" written without its prefix (A08- for the STUDY, "P07 " for P07's own)
+PASS 6a: no absolute path
+PASS 6b: sections 1 to 17 present in order
+PASS 6c: KNOWN DEFECT never used as a label
+RESULT: ALL PASS

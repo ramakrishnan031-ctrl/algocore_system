@@ -72,3 +72,4 @@ N = count or number; R = record wording (register, decision, document); P = prec
 | 65 | F | 15.1, A08-AP-86 | restored: A02 L-12 row 13's validator lines and "beside the unchecked `watchlist.entry_tf`, A18's" | P06-AP07 |
 | 66 | F | 15.2, A08-U-01 | "the V1 observer's switches and parameters, which the arming commit records were changed manually on the machine" -> "... of which the arming commit records a manual change of `enabled` ..., so the deployed value could differ from the file" | P03-U02, P03-S214 |
 | 67 | F | 16, A08-Q-15 (P04-R1 and P06-R5 merged) | option B "please say which and roughly when" -> "please say which, roughly when and for how long" (P04-R1's "for how long" kept) | P04-R1 ("please say when and for how long"), P06-R5 |
+| 68 | P | 1.7 | the places where KNOWN DEFECT occurs -> adds "the check log at the end names it only among the checks made" | this check log names the term in its method, its completeness checks and change 7 |

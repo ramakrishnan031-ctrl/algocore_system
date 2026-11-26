@@ -1,0 +1,935 @@
+--- L3 cites 0 (0 unresolved [])
+    MISSING TOKENS: 04
+--- L5 cites 0 (0 unresolved [])
+    MISSING TOKENS: 16 | 26 | 5.5
+--- L6 cites 0 (0 unresolved [])
+    MISSING TOKENS: 16 | 26 | 48 | Candle.from_kite | continue_from_retest | main.py | sr_detector_results
+--- L7 cites 0 (0 unresolved [])
+    MISSING TOKENS: 26 | 52cc811 | 970aabf3c78d777d9d34549e021f7c8e756c7bdb | git blame | git diff | git grep | git log | git show | main
+--- L8 cites 0 (0 unresolved [])
+    MISSING TOKENS: 04 | 05 | 06 | 07 | 08 | 10 | 25 | 26
+--- L14 cites 0 (0 unresolved [])
+    MISSING TOKENS: 08 | 1.9 | 13 | 16 | 48
+--- L18 cites 0 (0 unresolved [])
+    MISSING TOKENS: 17 | A08_SOURCE_FILE_INVENTORY_2026-11-26.md | __init__.py | confluence.py | detector.py | fetch.py | flags.py | models.py | orders/ | pivots.py | retest_confirm.py | screening/retest_monitor.py | scripts/sr_corp_action_spotcheck.py | scripts/sr_detector_backfill.py | scripts/sr_level_export.py | sr_detector/ | zone_builder.py | zone_cache.py | zone_warmer.py | zones.py
+--- L20 cites 0 (0 unresolved [])
+    MISSING TOKENS: 26
+--- L22 cites 0 (0 unresolved [])
+    MISSING TOKENS: 14 | A18's retest path | L2375 | ParkedCandidate | RetestDiverter | RetestMonitor | SNR-V2 | SignalProcessor.continue_from_retest | clear_all | main.py | max_away_pct | retest_max_away_pct | retest_sl_buffer_pct | retest_state | screening/retest_monitor.py | signals/signal_processor.py | sr_detector.wait_for_retest_enabled | sr_detector/retest_confirm.py | timeout_sec
+--- L23 cites 0 (0 unresolved [])
+    MISSING TOKENS: SNR-DETECTOR-V1 | SRDetector | sr_detector_results
+--- L24 cites 0 (0 unresolved [])
+    MISSING TOKENS: 11 | Candle | main.py | orders/
+--- L25 cites 0 (0 unresolved [])
+    MISSING TOKENS: 1.10 | 13 | 16 | 48
+--- L26 cites 0 (0 unresolved [])
+    MISSING TOKENS: A08_TECHNICAL_ANALYSIS_SR_AND_RETEST_CONTEXT | S&R
+--- L28 cites 2 (0 unresolved [])
+    MISSING TOKENS: 13.4 | 13.6
+--- L32 cites 1 (0 unresolved [])
+    MISSING TOKENS: 08
+--- L33 cites 0 (0 unresolved [])
+    MISSING TOKENS: capital/ | continue_from_retest | core/candle_math.py | main.py | orders/eod_squareoff.py | orders/structure_exit_manager.py | regime/ | screening/hard_gate.py | scripts/eod_cleanup.py | scripts/forward_shadow_record.py | signals/signal_processor.py | v3_chain/
+--- L34 cites 0 (0 unresolved [])
+    MISSING TOKENS: 1.6
+--- L35 cites 0 (0 unresolved [])
+    MISSING TOKENS: 1.10
+--- L40 cites 0 (0 unresolved [])
+    MISSING TOKENS: 1.4 | 32 | 686df1c847d415958c4df406b77503bb45975749 | 7d4970a | 7d4970a26991fd40774023f5293a00556228e14b | 970aabf | 970aabf3c78d777d9d34549e021f7c8e756c7bdb | main
+--- L46 cites 0 (0 unresolved [])
+    MISSING TOKENS: 17.2 | 26 | <workspace>/notes/RAMA_DECISIONS_A08_STUDY.md | <workspace>/status/AGENTS_REGISTER_STUDY.md | main | wip/a08-fieldwork
+--- L50 cites 0 (0 unresolved [])
+    MISSING TOKENS: 115 | 141 | 16 | 23 | 26 | 5.5
+--- L51 cites 0 (0 unresolved [])
+    MISSING TOKENS: 12 | 132 | 140 | 33 | 5.5
+--- L52 cites 1 (0 unresolved [])
+    MISSING TOKENS: 157 | 160 | 44 | 5.5
+--- L53 cites 0 (0 unresolved [])
+    MISSING TOKENS: 214 | 217 | 36 | 5.5
+--- L54 cites 0 (0 unresolved [])
+    MISSING TOKENS: 182 | 183 | 5.5
+--- L55 cites 0 (0 unresolved [])
+    MISSING TOKENS: 121 | 122 | 18 | 5.5
+--- L56 cites 0 (0 unresolved [])
+    MISSING TOKENS: 186 | 189 | 5.5 | 53
+--- L58 cites 2 (0 unresolved [])
+    MISSING TOKENS: 13.4 | 13.6 | 5.5 | <workspace>/notes/CLAUDE_ASSIGNMENT_DECISIONS.md | Agreed treatment (Phase 2 input), or OPEN | Classification | Status
+--- L60 cites 0 (0 unresolved [])
+    MISSING TOKENS: 1.7 | 26
+--- L67 cites 5 (0 unresolved [])
+    MISSING TOKENS: requirements.txt
+--- L75 cites 0 (0 unresolved [])
+    MISSING TOKENS: 04 | 13 | 15 | 16
+--- L79 cites 5 (0 unresolved [])
+    MISSING TOKENS: git diff --stat 7d4970a 970aabf
+    FACT-SEGMENT CITES NON-FACT: P07-S112=UNKNOWN / NOT ESTABLISHED
+--- L83 cites 0 (0 unresolved [])
+    MISSING TOKENS: 1.6 | 25 | 26 | <workspace>/briefs/A08_ASSEMBLY_BRIEF.md
+--- L87 cites 19 (0 unresolved [])
+    MISSING TOKENS: 1.2 | 17.1
+--- L94 cites 0 (0 unresolved [])
+    MISSING TOKENS: 10 | 11 | 12 | 13 | 15.1
+--- L96 cites 7 (0 unresolved [])
+    MISSING TOKENS: 13.2
+--- L97 cites 5 (0 unresolved [])
+    MISSING TOKENS: 13.2
+--- L98 cites 8 (0 unresolved [])
+    MISSING TOKENS: 13.2
+--- L99 cites 30 (0 unresolved [])
+    MISSING TOKENS: 13.2
+--- L100 cites 16 (0 unresolved [])
+    MISSING TOKENS: 13.2
+--- L104 cites 0 (0 unresolved [])
+    MISSING TOKENS: *.local.yaml | *token*.json | .env* | config/accounts.csv
+--- L106 cites 16 (0 unresolved [])
+    MISSING TOKENS: <algocore_system clone> | <legacy clone>
+--- L110 cites 0 (0 unresolved [])
+    MISSING TOKENS: 1.6
+--- L114 cites 11 (0 unresolved [])
+    MISSING TOKENS: default_pivot_n: 5
+    FACT-SEGMENT CITES NON-FACT: P01-S094=INTERPRETATION
+--- L115 cites 11 (0 unresolved [])
+    FACT-SEGMENT CITES NON-FACT: P02-S030=INTERPRETATION and UNKNOWN / NOT ESTABLISHED
+--- L119 cites 11 (0 unresolved [])
+    MISSING TOKENS: sr_detector_results
+--- L120 cites 13 (0 unresolved [])
+    MISSING TOKENS: L529 | wait_for_retest_enabled: false
+--- L121 cites 4 (0 unresolved [])
+    MISSING TOKENS: L634 | structure_exit_enabled: false
+--- L126 cites 14 (0 unresolved [])
+    FACT-SEGMENT CITES NON-FACT: P05-S044=HISTORICAL, P05-S046=UNKNOWN / NOT ESTABLISHED
+--- L132 cites 0 (0 unresolved [])
+    MISSING TOKENS: 104 | 13 | 13.4 | 13.6 | 15 | 16 | 25 | 26 | 27 | 40 | 48 | 61 | 92
+--- L136 cites 0 (0 unresolved [])
+    MISSING TOKENS: Candle.from_kite | ConfluenceContext | ScoringParams | _zone_from_cluster | cluster_zones | find_swing_pivots | score_zones | sr_detector/confluence.py | sr_detector/models.py | sr_detector/pivots.py | sr_detector/zones.py | volume_profile_nodes
+--- L138 cites 4 (0 unresolved [])
+    MISSING TOKENS: A08_PIVOTS_ZONES_AND_CONFLUENCE_SCORING_2026-11-26.md
+--- L142 cites 2 (0 unresolved [])
+    FACT-SEGMENT CITES NON-FACT: P01-S131=HISTORICAL
+--- L146 cites 0 (0 unresolved [])
+    MISSING TOKENS: 13 | Candle | Candle.from_kite
+--- L149 cites 3 (0 unresolved [])
+    MISSING TOKENS: float()
+--- L160 cites 1 (0 unresolved [])
+    MISSING TOKENS: L175
+--- L162 cites 0 (0 unresolved [])
+    MISSING TOKENS: find_swing_pivots
+--- L164 cites 6 (0 unresolved [])
+    MISSING TOKENS: n - right - 1
+--- L165 cites 2 (0 unresolved [])
+    MISSING TOKENS: n = 2
+--- L169 cites 0 (0 unresolved [])
+    MISSING TOKENS: zones.py
+--- L173 cites 9 (0 unresolved [])
+    FACT-SEGMENT CITES NON-FACT: P01-S062=INTERPRETATION
+--- L175 cites 0 (0 unresolved [])
+    MISSING TOKENS: confluence.py
+--- L179 cites 4 (0 unresolved [])
+    MISSING TOKENS: _score_group | score >= t_high | score >= t_med | w_multi_tf × | w_swing × min(touches, touch_cap)
+--- L182 cites 4 (0 unresolved [])
+    MISSING TOKENS: 1 − age_days / window
+--- L187 cites 9 (0 unresolved [])
+    MISSING TOKENS: n = 5
+--- L191 cites 7 (0 unresolved [])
+    MISSING TOKENS: ScoredZone.contains
+--- L195 cites 29 (0 unresolved [])
+    MISSING TOKENS: 15.1 | 15.2
+--- L199 cites 0 (0 unresolved [])
+    MISSING TOKENS: OhlcFetcher | ZoneCache | ZoneSet | ZoneWarmer | main.py | sr_detector/fetch.py | sr_detector/zone_builder.py | sr_detector/zone_cache.py | sr_detector/zone_warmer.py
+--- L201 cites 3 (0 unresolved [])
+    MISSING TOKENS: A08_CANDLE_FETCH_ZONE_BUILDER_CACHE_AND_WARMER_2026-11-26.md
+--- L205 cites 5 (0 unresolved [])
+    FACT-SEGMENT CITES NON-FACT: P02-S011=INTERPRETATION
+--- L206 cites 3 (0 unresolved [])
+    MISSING TOKENS: , with SR-F1 to SR-F4; `zone_builder.py` 
+--- L208 cites 0 (0 unresolved [])
+    MISSING TOKENS: OhlcFetcher
+--- L211 cites 4 (0 unresolved [])
+    MISSING TOKENS: __token_<n>
+--- L218 cites 7 (0 unresolved [])
+    MISSING TOKENS: (symbol or cache key, interval)
+    FACT-SEGMENT CITES NON-FACT: P02-S144=HISTORICAL and INTERPRETATION
+--- L225 cites 3 (0 unresolved [])
+    MISSING TOKENS: _cache_get | acquire("historical")
+--- L232 cites 0 (0 unresolved [])
+    MISSING TOKENS: zone_builder
+--- L236 cites 4 (0 unresolved [])
+    MISSING TOKENS: pivot_n_by_tf.get(tf, default_pivot_n)
+--- L237 cites 10 (0 unresolved [])
+    MISSING TOKENS: [session_open, session_close)
+--- L239 cites 0 (0 unresolved [])
+    MISSING TOKENS: ZoneCache
+--- L241 cites 8 (0 unresolved [])
+    MISSING TOKENS: sr_detector.zone_cache_ttl_sec
+--- L244 cites 0 (0 unresolved [])
+    MISSING TOKENS: ZoneWarmer
+--- L254 cites 30 (0 unresolved [])
+    MISSING TOKENS: 15.1 | 15.2
+--- L258 cites 0 (0 unresolved [])
+    MISSING TOKENS: SNR-DETECTOR-V1 | SRDetector | build_sr_detector | main.py | scripts/sr_detector_backfill.py | sr_detector/__init__.py | sr_detector/detector.py | sr_detector/flags.py | sr_detector_results
+--- L260 cites 1 (0 unresolved [])
+    MISSING TOKENS: A08_V1_OBSERVER_FLAGS_RESULTS_AND_BACKFILL_2026-11-26.md
+--- L265 cites 6 (0 unresolved [])
+    MISSING TOKENS:  that does  | ; V1  | ; the backfill is the  | ; the detector is  | ; the flags module emits 
+--- L267 cites 0 (0 unresolved [])
+    MISSING TOKENS: build_sr_detector
+--- L271 cites 0 (0 unresolved [])
+    MISSING TOKENS: SRDetector
+--- L273 cites 6 (0 unresolved [])
+    MISSING TOKENS: queue.Queue(maxsize=max_queue)
+--- L278 cites 0 (0 unresolved [])
+    MISSING TOKENS: observe
+--- L284 cites 9 (0 unresolved [])
+    MISSING TOKENS: 30minute | 60minute | now = _safe_now()
+    FACT-SEGMENT CITES NON-FACT: P03-S048=INTERPRETATION
+--- L285 cites 4 (0 unresolved [])
+    MISSING TOKENS: anchor_intraday_interval
+--- L288 cites 0 (0 unresolved [])
+    MISSING TOKENS: flags.py
+--- L291 cites 4 (0 unresolved [])
+    FACT-SEGMENT CITES NON-FACT: P03-S068=INTERPRETATION
+--- L293 cites 7 (0 unresolved [])
+    MISSING TOKENS: 12 | band_low × (1 − retest_sl_buffer_pct / 100)
+    FACT-SEGMENT CITES NON-FACT: P03-S076=INTERPRETATION
+--- L295 cites 0 (0 unresolved [])
+    MISSING TOKENS: sr_detector_results
+--- L300 cites 6 (0 unresolved [])
+    FACT-SEGMENT CITES NON-FACT: P03-S099=INTERPRETATION
+--- L308 cites 0 (0 unresolved [])
+    MISSING TOKENS: scripts/sr_detector_backfill.py
+--- L311 cites 7 (0 unresolved [])
+    MISSING TOKENS: backfill(store, date_iso)
+--- L316 cites 4 (0 unresolved [])
+    FACT-SEGMENT CITES NON-FACT: P03-S141=UNKNOWN / NOT ESTABLISHED
+--- L320 cites 28 (0 unresolved [])
+    MISSING TOKENS: 15.1 | 15.2
+--- L324 cites 0 (0 unresolved [])
+    MISSING TOKENS: 14 | L2375 | ParkedCandidate | RetestDiverter | RetestMonitor | RetestParams | RetestResult | SNR-V2 | SignalProcessor.continue_from_retest | _strong_close | evaluate | retest_sl_buffer_pct | retest_state | screening/retest_monitor.py | signals/signal_processor.py | sr_detector/retest_confirm.py
+--- L326 cites 2 (0 unresolved [])
+    MISSING TOKENS: A08_V2_RETEST_PATH_AND_RESUME_HANDOFF_2026-11-26.md
+--- L328 cites 0 (0 unresolved [])
+    MISSING TOKENS: retest
+--- L335 cites 0 (0 unresolved [])
+    MISSING TOKENS: evaluate | retest_confirm
+--- L337 cites 5 (0 unresolved [])
+    MISSING TOKENS: str(direction).strip().upper() in ("LONG", "BUY")
+--- L338 cites 5 (0 unresolved [])
+    MISSING TOKENS: band_high × (1 + margin/100) | band_low × (1 − max_away_pct/100) | elapsed_sec > timeout_sec
+--- L339 cites 7 (0 unresolved [])
+    MISSING TOKENS: (close − low) / (high − low) >= frac
+--- L341 cites 0 (0 unresolved [])
+    MISSING TOKENS: RetestDiverter
+--- L344 cites 4 (0 unresolved [])
+    MISSING TOKENS: diverted to WAIT_FOR_RETEST ... — no capital reserved
+--- L347 cites 5 (0 unresolved [])
+    MISSING TOKENS: L368 | band_high × (1 + sl_buffer_pct/100) | band_low × (1 − sl_buffer_pct/100)
+--- L349 cites 0 (0 unresolved [])
+    MISSING TOKENS: ParkedCandidate | retest_state
+--- L351 cites 5 (0 unresolved [])
+    MISSING TOKENS: added_at + timeout_sec
+    FACT-SEGMENT CITES NON-FACT: P04-S051=INTERPRETATION
+--- L354 cites 0 (0 unresolved [])
+    MISSING TOKENS: RetestMonitor
+--- L357 cites 6 (0 unresolved [])
+    MISSING TOKENS: RETEST_REJECTED_<REASON> | elapsed = now_fn() − added_at
+--- L369 cites 0 (0 unresolved [])
+    MISSING TOKENS: continue_from_retest
+--- L372 cites 4 (0 unresolved [])
+    MISSING TOKENS: break_level = zone_band_high | structure_sl = zone_band_low × (1 − retest_sl_buffer_pct/100)
+--- L376 cites 9 (0 unresolved [])
+    FACT-SEGMENT CITES NON-FACT: P04-S110=INTERPRETATION
+--- L378 cites 34 (0 unresolved [])
+    MISSING TOKENS: 15.1 | 15.2
+--- L382 cites 1 (0 unresolved [])
+    MISSING TOKENS: 1.10 | InstrumentCache | load_all | scripts/sr_corp_action_spotcheck.py | scripts/sr_level_export.py
+--- L384 cites 5 (0 unresolved [])
+    MISSING TOKENS: A08_SPOTCHECK_AND_EXPORT_SCRIPTS_2026-11-26.md | L139 vs L141
+--- L388 cites 5 (0 unresolved [])
+    FACT-SEGMENT CITES NON-FACT: P05-S121=HISTORICAL
+--- L389 cites 3 (0 unresolved [])
+    MISSING TOKENS:  (P05-S013). The export's purpose:  |  (P05-S014). INTERPRETATION: 
+--- L391 cites 0 (0 unresolved [])
+    MISSING TOKENS: sr_corp_action_spotcheck.py
+--- L393 cites 3 (0 unresolved [])
+    MISSING TOKENS: ex ± window
+--- L394 cites 6 (0 unresolved [])
+    MISSING TOKENS: historical_data(..., interval="day")
+--- L396 cites 5 (0 unresolved [])
+    MISSING TOKENS: abs(worst_ratio − 1.0) < 0.15
+--- L398 cites 9 (0 unresolved [])
+    FACT-SEGMENT CITES NON-FACT: P05-S044=HISTORICAL, P05-S046=UNKNOWN / NOT ESTABLISHED
+--- L400 cites 0 (0 unresolved [])
+    MISSING TOKENS: L137 | L139 | L141 | sr_level_export.py
+--- L402 cites 4 (0 unresolved [])
+    MISSING TOKENS: L150
+--- L403 cites 3 (0 unresolved [])
+    MISSING TOKENS: load_all(str(ROOT / "config"))
+--- L404 cites 5 (0 unresolved [])
+    MISSING TOKENS: InstrumentCache(str(path))
+--- L406 cites 7 (0 unresolved [])
+    MISSING TOKENS: build_sr_detector(..., store=None, mode="live", now_fn=lambda: as_of, ...)
+--- L408 cites 0 (0 unresolved [])
+    MISSING TOKENS: sr_level_export.py
+--- L412 cites 4 (0 unresolved [])
+    MISSING TOKENS: reports/output/sr_levels.csv
+--- L416 cites 6 (0 unresolved [])
+    MISSING TOKENS: intraday_anchors_enabled: false
+--- L418 cites 26 (0 unresolved [])
+    MISSING TOKENS: 15.1 | 15.2
+--- L424 cites 53 (0 unresolved [])
+    MISSING TOKENS: A08_CONFIGURATION_WIRING_AND_CONSUMER_INTERFACES_2026-11-26.md
+--- L429 cites 4 (0 unresolved [])
+    MISSING TOKENS: sr_detector.enabled | sr_detector.intraday_anchors_enabled | sr_detector.wait_for_retest_enabled | structure_exit.structure_exit_enabled
+--- L436 cites 4 (0 unresolved [])
+    MISSING TOKENS: 0.0 | 0.7 | 90.0 | {}
+--- L451 cites 0 (0 unresolved [])
+    MISSING TOKENS: main.py
+--- L463 cites 1 (0 unresolved [])
+    MISSING TOKENS: RetestMonitor(on_confirm=signal_processor.continue_from_retest, ...) | build_sr_detector(config=_sr_cfg, fetch_fn=_sr_fetch_fn, instrument_cache=..., store=store, logger=..., mode=mode_label, session_open=market_windows.market_open, session_close=market_windows.market_close)
+--- L472 cites 0 (0 unresolved [])
+    MISSING TOKENS: L1599 | L1830 | L4252 | L4277 | _shutdown
+--- L474 cites 2 (0 unresolved [])
+    MISSING TOKENS: _shutdown(..., sr_detector=..., zone_warmer=..., retest_monitor=..., structure_exit_manager=..., ...)
+--- L477 cites 1 (0 unresolved [])
+    MISSING TOKENS: sr_detector.enabled | structure_exit_enabled | wait_for_retest_enabled
+--- L479 cites 0 (0 unresolved [])
+    MISSING TOKENS: _shutdown
+--- L481 cites 0 (0 unresolved [])
+    MISSING TOKENS: None | sr_detector=None | zone_warmer=None
+--- L482 cites 0 (0 unresolved [])
+    MISSING TOKENS: OhlcFetcher | SRDetector | sr-detector | sr_detector | zone_warmer=None
+--- L483 cites 0 (0 unresolved [])
+    MISSING TOKENS: RetestDiverter | RetestMonitor | RetestParams | ZoneCache | ZoneWarmer | retest_monitor | sr-retest-monitor | sr-zone-warmer | zone_warmer
+--- L484 cites 0 (0 unresolved [])
+    MISSING TOKENS: StructureExitManager | ZoneCache | ZoneWarmer | sr-zone-warmer | structure_exit_manager | zone_warmer
+--- L485 cites 0 (0 unresolved [])
+    MISSING TOKENS: retest_monitor | structure_exit_manager | zone_warmer
+--- L486 cites 0 (0 unresolved [])
+    MISSING TOKENS: retest_monitor | sr_detector | zone_warmer
+--- L487 cites 0 (0 unresolved [])
+    MISSING TOKENS: sr_detector | structure_exit_manager | zone_warmer
+--- L495 cites 0 (0 unresolved [])
+    MISSING TOKENS: (I) | 1.6
+--- L504 cites 14 (0 unresolved [])
+    MISSING TOKENS: max
+--- L507 cites 8 (0 unresolved [])
+    MISSING TOKENS: rehydrate | retest_state
+--- L511 cites 0 (0 unresolved [])
+    MISSING TOKENS: 13
+--- L544 cites 3 (0 unresolved [])
+    MISSING TOKENS: sr_detector_results
+--- L556 cites 1 (0 unresolved [])
+    MISSING TOKENS: time_authority
+--- L561 cites 0 (0 unresolved [])
+    MISSING TOKENS: 1.10 | 15.1 | 16
+--- L563 cites 0 (0 unresolved [])
+    MISSING TOKENS: 10 | 11 | 12
+--- L573 cites 16 (0 unresolved [])
+    MISSING TOKENS: Phase A reads resistance ... Phase B will read support
+--- L579 cites 5 (0 unresolved [])
+    MISSING TOKENS:  and the anchors  | ; the percentages' comments and  | ; the structure exit 
+--- L589 cites 0 (0 unresolved [])
+    MISSING TOKENS: 11
+--- L591 cites 9 (0 unresolved [])
+    MISSING TOKENS: (default OFF) ... `sr_detector.enabled: false`
+--- L592 cites 9 (0 unresolved [])
+    MISSING TOKENS: Deployed-tree config ground truth (grepped on the VM checkout ...) | production-unreachable (... RETEST_% statuses = 0 all-time)
+--- L593 cites 7 (0 unresolved [])
+    MISSING TOKENS: ), recorded as needing 
+--- L598 cites 9 (0 unresolved [])
+    MISSING TOKENS: Dormant by default ... byte-identical
+--- L609 cites 2 (0 unresolved [])
+    MISSING TOKENS: A08_PRIOR_TOPIC_HANDOFFS_2026-11-26.md
+--- L613 cites 4 (0 unresolved [])
+    MISSING TOKENS: 15.2
+--- L615 cites 5 (0 unresolved [])
+    MISSING TOKENS: no A08 side found
+--- L616 cites 2 (0 unresolved [])
+    MISSING TOKENS: 13.4 | 13.6
+    FACT-SEGMENT CITES NON-FACT: P07-S105=INTERPRETATION
+--- L620 cites 1 (0 unresolved [])
+    MISSING TOKENS: Result; treatment; status
+--- L624 cites 6 (0 unresolved [])
+    MISSING TOKENS: L304 | L855 | L856
+    FACT-SEGMENT CITES NON-FACT: P06-S082=INTERPRETATION
+--- L625 cites 5 (0 unresolved [])
+    MISSING TOKENS: L1108 | L1109 | L304
+--- L626 cites 5 (0 unresolved [])
+    MISSING TOKENS: L164 | L1874 | L304
+--- L627 cites 2 (0 unresolved [])
+    MISSING TOKENS: L304 | MATCH; FACT. Owner A01 wiring; A05, A08
+--- L628 cites 5 (0 unresolved [])
+    MISSING TOKENS: L2057 | L2064
+--- L629 cites 4 (0 unresolved [])
+    MISSING TOKENS: L1834 | L1842 | L341
+--- L630 cites 5 (0 unresolved [])
+    MISSING TOKENS: L2108 | L2110 | L341
+--- L631 cites 5 (0 unresolved [])
+    MISSING TOKENS: L2122 | L2124 | L341 | L6552
+--- L632 cites 4 (0 unresolved [])
+    MISSING TOKENS: L2136 | L319 | L341
+--- L633 cites 2 (0 unresolved [])
+    MISSING TOKENS: L2150 | L2373 | L320 | L341
+--- L634 cites 1 (0 unresolved [])
+    MISSING TOKENS: 11 | 13.1 | L2164 | L341
+--- L635 cites 1 (0 unresolved [])
+    MISSING TOKENS: 12 | 13.1 | L2178 | L2373 | L341
+--- L636 cites 2 (0 unresolved [])
+    MISSING TOKENS: 11 | A03 treatment group TG1 (AGREED, 11-Nov-2026) | ISSUE; FACT; INTERPRETATION; HISTORICAL | L369 | L406 | L414 | L416
+--- L637 cites 5 (0 unresolved [])
+    MISSING TOKENS: L1094 | L405 | L885 | L887
+--- L638 cites 2 (0 unresolved [])
+    MISSING TOKENS: L1599 | L1601 | L1808 | L405
+--- L639 cites 2 (0 unresolved [])
+    MISSING TOKENS: 16 | L1722 | L1724 | L1808 | L405
+--- L640 cites 4 (0 unresolved [])
+    MISSING TOKENS: L2047 | L2049 | L2300 | L405
+--- L641 cites 3 (0 unresolved [])
+    MISSING TOKENS: 11 | 18 | A03 treatment group TG4 (AGREED, 11-Nov-2026) | ISSUE; FACT | L2113 | L2121 | L2123 | L2300 | L405 | L451
+--- L642 cites 2 (0 unresolved [])
+    MISSING TOKENS: L2256 | L2300 | L405 | MATCH; FACT, INTERPRETATION
+--- L643 cites 1 (0 unresolved [])
+    MISSING TOKENS: 13.1 | L3075 | L3185 | L405
+--- L644 cites 2 (0 unresolved [])
+    MISSING TOKENS: 21 | A03 treatment group TG14 (AGREED, 11-Nov-2026) | ISSUE; FACT | L3081 | L3089 | L3091 | L3185 | L405 | L498
+    FACT-SEGMENT CITES NON-FACT: P03-S135=INTERPRETATION
+--- L645 cites 1 (0 unresolved [])
+    MISSING TOKENS: L414 | L648 | L656 | L796 | main.py
+--- L646 cites 1 (0 unresolved [])
+    MISSING TOKENS: 23 | A04 treatment group TG2 (AGREED, 13-Nov-2026) | L414 | L704 | L712 | L796
+--- L647 cites 2 (0 unresolved [])
+    MISSING TOKENS: 24 | L3443 | L3607 | L414 | L824
+--- L648 cites 1 (0 unresolved [])
+    MISSING TOKENS: L3449 | L3457 | L3607 | L414
+--- L649 cites 5 (0 unresolved [])
+    MISSING TOKENS: L1275 | L1389 | L466 | L999
+--- L650 cites 7 (0 unresolved [])
+    MISSING TOKENS: 27 | A05 treatment group TG9 (AGREED, 17-Nov-2026) | AGREED | ISSUE; FACT; INTERPRETATION | L1004 | L1337 | L1345 | L1347 | L1389 | L466
+--- L651 cites 3 (0 unresolved [])
+    MISSING TOKENS: 28 | L1389 | L466
+--- L652 cites 1 (0 unresolved [])
+    MISSING TOKENS: L1006 | L1528 | L1677 | L466
+--- L653 cites 5 (0 unresolved [])
+    MISSING TOKENS: L1009 | L1562 | L1570 | L1572 | L1677 | L466 | UNKNOWN / NOT ESTABLISHED (no treatment) | UNKNOWN / NOT ESTABLISHED; FACT; INTERPRETATION; HISTORICAL
+--- L654 cites 4 (0 unresolved [])
+    MISSING TOKENS: L1011 | L1598 | L1677 | L466
+--- L655 cites 2 (0 unresolved [])
+    MISSING TOKENS: 32 | L1604 | L1612 | L1677 | L466
+--- L656 cites 5 (0 unresolved [])
+    MISSING TOKENS: A05 treatment group TG10 (AGREED, 17-Nov-2026) | AGREED | ISSUE; FACT; INTERPRETATION; HISTORICAL | L1013 | L1618 | L1626 | L1628 | L1677 | L466
+--- L657 cites 4 (0 unresolved [])
+    MISSING TOKENS: 12 | L1640 | L1677 | L466
+--- L658 cites 1 (0 unresolved [])
+    MISSING TOKENS: 35 | L1017 | L1838 | L2007 | L466
+--- L659 cites 3 (0 unresolved [])
+    MISSING TOKENS: L3145 | L3153 | L466
+--- L660 cites 3 (0 unresolved [])
+    MISSING TOKENS: L2009 | L2018 | L531
+--- L661 cites 2 (0 unresolved [])
+    MISSING TOKENS: 38 | L2057 | L2068 | L2271 | L531
+--- L662 cites 3 (0 unresolved [])
+    MISSING TOKENS: L1175 | L2968 | L2976 | L531
+--- L663 cites 2 (0 unresolved [])
+    MISSING TOKENS: L1181 | L3202 | L3205 | L3231 | L531
+--- L664 cites 2 (0 unresolved [])
+    MISSING TOKENS: L3975 | L4010 | L531
+--- L665 cites 1 (0 unresolved [])
+    MISSING TOKENS: 42 | L531
+--- L666 cites 2 (0 unresolved [])
+    MISSING TOKENS: 43 | L4750 | L4758 | L4951 | L531
+--- L667 cites 3 (0 unresolved [])
+    MISSING TOKENS: 44 | L4922 | L4951 | L531 | PROCESSED
+--- L668 cites 3 (0 unresolved [])
+    MISSING TOKENS: 45 | L1208 | L543 | L874 | L876
+--- L669 cites 3 (0 unresolved [])
+    MISSING TOKENS: 46 | L2062 | L543
+--- L670 cites 2 (0 unresolved [])
+    MISSING TOKENS: HIGH | L3180 | L3182 | L543
+--- L671 cites 2 (0 unresolved [])
+    MISSING TOKENS: 21 | 48 | L4252 | L4257 | L543
+--- L673 cites 3 (0 unresolved [])
+    MISSING TOKENS: 48
+--- L679 cites 0 (0 unresolved [])
+    MISSING TOKENS: 48
+--- L681 cites 2 (0 unresolved [])
+    MISSING TOKENS: 13.4 | L693 | L871 | L885
+--- L682 cites 1 (0 unresolved [])
+    MISSING TOKENS: L1513
+--- L683 cites 1 (0 unresolved [])
+    MISSING TOKENS: L1536
+--- L684 cites 2 (0 unresolved [])
+    MISSING TOKENS: 13.4 | L2110
+--- L685 cites 2 (0 unresolved [])
+    MISSING TOKENS: 13.4 | L2111
+--- L686 cites 2 (0 unresolved [])
+    MISSING TOKENS: 13.4 | L2126
+--- L687 cites 1 (0 unresolved [])
+    MISSING TOKENS: L2127
+--- L688 cites 1 (0 unresolved [])
+    MISSING TOKENS: L2133
+--- L689 cites 1 (0 unresolved [])
+    MISSING TOKENS: L2135
+--- L690 cites 1 (0 unresolved [])
+    MISSING TOKENS: 10 | L2136
+--- L691 cites 3 (0 unresolved [])
+    MISSING TOKENS: 11 | L2137 | L2569 | L2583
+--- L692 cites 2 (0 unresolved [])
+    MISSING TOKENS: 12 | L2140
+--- L693 cites 1 (0 unresolved [])
+    MISSING TOKENS: 13 | L2143
+--- L694 cites 1 (0 unresolved [])
+    MISSING TOKENS: 14 | L2145
+--- L695 cites 1 (0 unresolved [])
+    MISSING TOKENS: 15 | L2146
+--- L696 cites 1 (0 unresolved [])
+    MISSING TOKENS: L2161
+--- L700 cites 4 (0 unresolved [])
+    FACT-SEGMENT CITES NON-FACT: P07-S123=HISTORICAL, P07-S141=UNKNOWN / NOT ESTABLISHED
+--- L704 cites 3 (0 unresolved [])
+    MISSING TOKENS: A03 treatment group TG1 (AGREED, 11-Nov-2026) | ISSUE; FACT; INTERPRETATION; HISTORICAL | L373
+--- L706 cites 3 (0 unresolved [])
+    MISSING TOKENS: 11 | A03 treatment group TG5 (AGREED, 11-Nov-2026) | ISSUE; FACT; INTERPRETATION | L480
+--- L707 cites 2 (0 unresolved [])
+    MISSING TOKENS: A04 treatment group TG2 (AGREED, 13-Nov-2026) | ISSUE; FACT; INTERPRETATION
+--- L708 cites 2 (0 unresolved [])
+    MISSING TOKENS: 13 | A04 treatment group TG3 (AGREED, 13-Nov-2026) | ISSUE; FACT; INTERPRETATION; HISTORICAL
+--- L712 cites 4 (0 unresolved [])
+    MISSING TOKENS: 13.6
+--- L714 cites 3 (0 unresolved [])
+    MISSING TOKENS: 11
+--- L719 cites 3 (0 unresolved [])
+    MISSING TOKENS: 16
+    FACT-SEGMENT CITES NON-FACT: P07-S140=HISTORICAL
+--- L723 cites 1 (0 unresolved [])
+    MISSING TOKENS: 15.2
+--- L730 cites 1 (0 unresolved [])
+    MISSING TOKENS: 14
+--- L731 cites 3 (0 unresolved [])
+    MISSING TOKENS: 13.2 | 21 | 45 | 46 | 48
+--- L736 cites 5 (0 unresolved [])
+    MISSING TOKENS: 13.4 | List with A08 facts (Recommended)
+    FACT-SEGMENT CITES NON-FACT: P07-S113=UNKNOWN / NOT ESTABLISHED
+--- L738 cites 0 (0 unresolved [])
+    MISSING TOKENS: <workspace>/notes/CLAUDE_ASSIGNMENT_DECISIONS.md
+--- L740 cites 2 (0 unresolved [])
+    MISSING TOKENS: 43 | 9.3
+--- L741 cites 1 (0 unresolved [])
+    MISSING TOKENS: List with A08 facts
+--- L742 cites 2 (0 unresolved [])
+    MISSING TOKENS: 13.4
+--- L743 cites 1 (0 unresolved [])
+    MISSING TOKENS: 16
+--- L744 cites 1 (0 unresolved [])
+    MISSING TOKENS: 16
+--- L747 cites 0 (0 unresolved [])
+    MISSING TOKENS: 1.5 | Result; treatment; status
+--- L752 cites 5 (0 unresolved [])
+    FACT-SEGMENT CITES NON-FACT: P03-S196=HISTORICAL and INTERPRETATION
+--- L754 cites 4 (0 unresolved [])
+    FACT-SEGMENT CITES NON-FACT: P05-S050=UNKNOWN / NOT ESTABLISHED
+--- L757 cites 1 (0 unresolved [])
+    MISSING TOKENS: Result and classification
+--- L761 cites 2 (0 unresolved [])
+    MISSING TOKENS: AGREED | Group A (AGREED, 06-Nov-2026, with its exceptions) | ISSUE; KNOWN DEFECT; HISTORICAL | L55 | L629 | L639 | only `scripts/sr_level_export.py` L137 imports `main`
+--- L762 cites 1 (0 unresolved [])
+    MISSING TOKENS: 06 | AGREED | Group E (AGREED, 06-Nov-2026, with its exceptions) | ISSUE; FACT, INTERPRETATION, UNKNOWN / NOT ESTABLISHED (actual timing) | L80 | L903 | L913 | the S&R detector 2 s
+--- L763 cites 2 (0 unresolved [])
+    MISSING TOKENS: L2002 | MATCH; FACT
+--- L764 cites 2 (0 unresolved [])
+    MISSING TOKENS: 09 | AGREED | Batch T1 group G4 (AGREED, 09-Nov-2026) | ISSUE; INTERPRETATION | L228 | L310 | L323 | scripts/sr_level_export.py
+--- L765 cites 1 (0 unresolved [])
+    MISSING TOKENS: 13 | L2344 | rate_per_sec > 0 | sr_level_export.py
+--- L766 cites 2 (0 unresolved [])
+    MISSING TOKENS: A03 treatment group TG1 (AGREED, 11-Nov-2026) | AGREED | ISSUE; FACT; INTERPRETATION | L2067 | L2080 | L448
+--- L767 cites 2 (0 unresolved [])
+    MISSING TOKENS: A03 treatment group TG5 (AGREED, 11-Nov-2026) | AGREED | ISSUE; FACT; INTERPRETATION | L2169 | L2182 | L455
+--- L768 cites 2 (0 unresolved [])
+    MISSING TOKENS: A03 treatment group TG13 (AGREED, 11-Nov-2026) | AGREED | ISSUE; FACT | L2197 | L2209 | L457
+--- L769 cites 2 (0 unresolved [])
+    MISSING TOKENS: 11 | A03 treatment group TG11 (AGREED, 11-Nov-2026) | AGREED | ISSUE; FACT | L2881 | L2894 | L485 | sr_detector_results
+--- L770 cites 2 (0 unresolved [])
+    MISSING TOKENS: L2965 | L2974
+--- L771 cites 3 (0 unresolved [])
+    MISSING TOKENS: A03 treatment group TG12 (AGREED, 11-Nov-2026) | AGREED | ISSUE; FACT; HISTORICAL | L579
+--- L772 cites 1 (0 unresolved [])
+    MISSING TOKENS: L1071 | MATCH; FACT | retest_state | signals
+--- L773 cites 1 (0 unresolved [])
+    MISSING TOKENS: 13 | A04 treatment group TG1 (AGREED, 13-Nov-2026) | AGREED | ISSUE; FACT; INTERPRETATION; HISTORICAL | L508 | L521 | L696 | kiteconnect
+--- L774 cites 1 (0 unresolved [])
+    MISSING TOKENS: L676 | L689 | L708 | OPEN | UNKNOWN / NOT ESTABLISHED (no treatment) | UNKNOWN / NOT ESTABLISHED; FACT; INTERPRETATION | reads no key from the environment
+--- L775 cites 1 (0 unresolved [])
+    MISSING TOKENS: L3593 | MATCH; FACT (A02 K-77's MATCH unchanged) | sr_level_export.py
+--- L776 cites 3 (0 unresolved [])
+    MISSING TOKENS: A05 treatment group TG18 (AGREED, 17-Nov-2026) | AGREED | ISSUE; FACT; HISTORICAL | L1211 | L1224 | L995 | single candle type | sr_detector.models.Candle | sr_detector/zone_builder.py
+--- L777 cites 2 (0 unresolved [])
+    MISSING TOKENS: 17 | A05 treatment group TG9 (AGREED, 17-Nov-2026) | AGREED | ISSUE; FACT; INTERPRETATION; HISTORICAL | L1002 | L1309 | L1322 | matching the Candle contract
+--- L778 cites 1 (0 unresolved [])
+    MISSING TOKENS: L1369 | MATCH; FACT; INTERPRETATION | sr_detector
+--- L779 cites 3 (0 unresolved [])
+    MISSING TOKENS: 17 | A05 treatment group TG10 (AGREED, 17-Nov-2026) | AGREED | ISSUE; FACT; HISTORICAL | L1007 | L1534 | L1547 | OhlcFetcher | the live `OhlcFetcher`
+--- L780 cites 3 (0 unresolved [])
+    MISSING TOKENS: L1664 | MATCH (A01 B-11 unchanged); FACT; INTERPRETATION
+--- L781 cites 1 (0 unresolved [])
+    MISSING TOKENS: L1666 | MATCH; FACT; INTERPRETATION
+--- L782 cites 2 (0 unresolved [])
+    MISSING TOKENS: 17 | A05 treatment group TG12 (AGREED, 17-Nov-2026) | AGREED | ISSUE; FACT; INTERPRETATION; HISTORICAL | L1019 | L1858 | L1871 | the S&R objects
+--- L783 cites 2 (0 unresolved [])
+    MISSING TOKENS: 17 | A05 treatment group TG12 (AGREED, 17-Nov-2026) | AGREED | ISSUE; FACT; INTERPRETATION; HISTORICAL | L1020 | L1872 | L1885 | the S&R fetchers' caches
+--- L784 cites 3 (0 unresolved [])
+    MISSING TOKENS: 17 | A05 treatment group TG18 (AGREED, 17-Nov-2026) | AGREED | ISSUE; HISTORICAL; FACT; INTERPRETATION | L1026 | L1956 | L1969 | scripts.sr_level_export
+--- L785 cites 2 (0 unresolved [])
+    MISSING TOKENS: L1027 | L1970 | L1983 | OPEN | UNKNOWN / NOT ESTABLISHED (no treatment) | scripts/sr_level_export.py
+--- L786 cites 2 (0 unresolved [])
+    MISSING TOKENS: L1065 | L3159 | L3172 | L47
+--- L787 cites 2 (0 unresolved [])
+    MISSING TOKENS: A05 treatment group TG18 (AGREED, 17-Nov-2026) | AGREED | ISSUE; FACT; HISTORICAL; INTERPRETATION (the coverage gap) | L1068 | L3201 | L3214
+--- L788 cites 2 (0 unresolved [])
+    MISSING TOKENS: 19 | A06 treatment group TG16 (AGREED, 19-Nov-2026) | AGREED | ISSUE (minor); FACT; INTERPRETATION; HISTORICAL | L1225 | L6358 | L6408
+--- L789 cites 2 (0 unresolved [])
+    MISSING TOKENS: 19 | A06 treatment group TG7 (AGREED, 19-Nov-2026) | AGREED | ISSUE; FACT; INTERPRETATION; HISTORICAL | L1198 | L4597 | L4634 | RETEST_*
+--- L790 cites 1 (0 unresolved [])
+    MISSING TOKENS: L1202 | L4817 | L4854 | None (UNKNOWN / NOT ESTABLISHED items receive no treatment) | UNKNOWN / NOT ESTABLISHED (no treatment) | UNKNOWN / NOT ESTABLISHED; FACT; INTERPRETATION; HISTORICAL | the S&R fetch closure
+--- L791 cites 3 (0 unresolved [])
+    MISSING TOKENS: L1209 | L5152 | L5165 | None (UNKNOWN / NOT ESTABLISHED items receive no treatment) | UNKNOWN / NOT ESTABLISHED (no treatment) | UNKNOWN / NOT ESTABLISHED; FACT; INTERPRETATION; HISTORICAL; OPEN QUESTION | the retest monitor's thread
+--- L792 cites 2 (0 unresolved [])
+    MISSING TOKENS: , below) | A07 batch 5, T1: carried forward as a Phase 2 input ( | AGREED | ISSUE; FACT; HISTORICAL; INTERPRETATION | L1405 | L3186 | L3199
+--- L793 cites 1 (0 unresolved [])
+    MISSING TOKENS: 11 | A03 treatment group TG13 (AGREED, 11-Nov-2026) | AGREED | ISSUE; FACT; HISTORICAL | L392 | L854 | L876
+--- L794 cites 2 (0 unresolved [])
+    MISSING TOKENS: L2279 | MATCH; FACT
+--- L800 cites 2 (0 unresolved [])
+    MISSING TOKENS: L1986 | MATCH; FACT (threads left running: C13) | structure_exit_enabled is True
+--- L801 cites 4 (0 unresolved [])
+    MISSING TOKENS: AGREED | Batch T1 group G3 (AGREED, 09-Nov-2026) | ISSUE; FACT | L232 | L366 | L396 | L399 | sr_detector.anchor_intraday_interval
+--- L802 cites 2 (0 unresolved [])
+    MISSING TOKENS: L860 | MATCH; FACT
+--- L803 cites 6 (0 unresolved [])
+    MISSING TOKENS: L515 | MATCH; FACT | Shadow V3 and S&R groups
+--- L804 cites 4 (0 unresolved [])
+    MISSING TOKENS: L2640 | MATCH; FACT | structure_exit_enabled: false
+--- L805 cites 2 (0 unresolved [])
+    MISSING TOKENS: L1066 | L1079 | L994 | OPEN | UNKNOWN / NOT ESTABLISHED (no treatment)
+--- L806 cites 3 (0 unresolved [])
+    MISSING TOKENS: L1203 | L4855 | L4875 | None (UNKNOWN / NOT ESTABLISHED items receive no treatment) | UNKNOWN / NOT ESTABLISHED (no treatment) | sr_detector.enabled
+--- L807 cites 3 (0 unresolved [])
+    MISSING TOKENS: L1228 | L6491 | L6521 | None (UNKNOWN / NOT ESTABLISHED items receive no treatment) | UNKNOWN / NOT ESTABLISHED (no treatment) | sr_detector.sl_buffer_pct
+--- L808 cites 2 (0 unresolved [])
+    MISSING TOKENS: , below) | A07 batch 6, T1: carried forward as a Phase 2 input ( | AGREED | ISSUE (minor), with MATCH parts; FACT; HISTORICAL; INTERPRETATION | L1439 | L4202 | L4215 | L508 | SYSCFG L508 to L509 (`sr_detector` keys at the baseline)
+--- L814 cites 4 (0 unresolved [])
+    MISSING TOKENS: 19 | A06 treatment group TG6 (AGREED, 19-Nov-2026) | AGREED | ISSUE (latent); FACT; INTERPRETATION; HISTORICAL | L1187
+--- L822 cites 4 (0 unresolved [])
+    MISSING TOKENS: 16 | 48 | A08_TECHNICAL_ANALYSIS_SR_AND_RETEST_CONTEXT
+--- L828 cites 35 (0 unresolved [])
+    MISSING TOKENS: 13.2 | 13.6
+--- L829 cites 70 (0 unresolved [])
+    MISSING TOKENS: 13.2 | 13.6
+--- L830 cites 13 (0 unresolved [])
+    MISSING TOKENS: 13.2 | 13.4 | 13.6
+--- L831 cites 11 (0 unresolved [])
+    MISSING TOKENS: 13.2 | 13.3 | 13.4 | 13.6
+--- L832 cites 8 (0 unresolved [])
+    MISSING TOKENS: 13.2 | 13.3 | 13.4 | 13.6
+--- L833 cites 24 (0 unresolved [])
+    MISSING TOKENS: 13.2 | 13.4 | 13.6 | _claim_in_flight
+--- L834 cites 10 (0 unresolved [])
+    MISSING TOKENS: 13.2 | 13.4 | 13.6 | L2411
+--- L835 cites 3 (0 unresolved [])
+    MISSING TOKENS: continue_from_retest
+--- L839 cites 4 (0 unresolved [])
+    MISSING TOKENS: continue_from_retest
+--- L840 cites 3 (0 unresolved [])
+    MISSING TOKENS: 13.6
+--- L885 cites 6 (0 unresolved [])
+    MISSING TOKENS: 10
+--- L910 cites 5 (0 unresolved [])
+    MISSING TOKENS:  and that it 
+--- L934 cites 5 (0 unresolved [])
+    MISSING TOKENS: 11
+--- L938 cites 2 (0 unresolved [])
+    MISSING TOKENS: ), so the docstring's 
+--- L957 cites 2 (0 unresolved [])
+    MISSING TOKENS: 12
+--- L958 cites 3 (0 unresolved [])
+    MISSING TOKENS: 11
+--- L960 cites 9 (0 unresolved [])
+    MISSING TOKENS: 13.4 | 13.6
+--- L965 cites 7 (0 unresolved [])
+    MISSING TOKENS: 13.4 | 13.6
+--- L967 cites 0 (0 unresolved [])
+    MISSING TOKENS: 13
+--- L969 cites 3 (0 unresolved [])
+    MISSING TOKENS: 13.2
+--- L970 cites 10 (0 unresolved [])
+    MISSING TOKENS: 13.1
+--- L971 cites 9 (0 unresolved [])
+    MISSING TOKENS: 13.3
+--- L972 cites 6 (0 unresolved [])
+    MISSING TOKENS: 13.4 | 13.6
+--- L975 cites 0 (0 unresolved [])
+    MISSING TOKENS: 16 | 17
+--- L985 cites 33 (0 unresolved [])
+    MISSING TOKENS: sr_detector: ENABLED and started
+--- L989 cites 17 (0 unresolved [])
+    MISSING TOKENS: 1.5
+--- L992 cites 3 (0 unresolved [])
+    MISSING TOKENS: 10
+--- L1003 cites 2 (0 unresolved [])
+    MISSING TOKENS: 12
+--- L1013 cites 2 (0 unresolved [])
+    MISSING TOKENS: 12
+--- L1017 cites 1 (0 unresolved [])
+    MISSING TOKENS: 13.2
+--- L1018 cites 1 (0 unresolved [])
+    MISSING TOKENS: 13.4
+--- L1019 cites 1 (0 unresolved [])
+    MISSING TOKENS: 1.8
+--- L1020 cites 1 (0 unresolved [])
+    MISSING TOKENS: 13.6
+--- L1022 cites 0 (0 unresolved [])
+    MISSING TOKENS: 10 | 29 | 61
+--- L1053 cites 2 (0 unresolved [])
+    MISSING TOKENS: 13.6
+--- L1071 cites 1 (0 unresolved [])
+    MISSING TOKENS: 13.6
+--- L1073 cites 7 (0 unresolved [])
+    MISSING TOKENS: 27
+--- L1079 cites 1 (0 unresolved [])
+    MISSING TOKENS: 970aabf3c78d777d9d34549e021f7c8e756c7bdb
+--- L1083 cites 0 (0 unresolved [])
+    MISSING TOKENS: 70 | sr_detector/__init__.py
+--- L1084 cites 0 (0 unresolved [])
+    MISSING TOKENS: 207 | sr_detector/models.py
+--- L1085 cites 0 (0 unresolved [])
+    MISSING TOKENS: 55 | sr_detector/pivots.py
+--- L1086 cites 0 (0 unresolved [])
+    MISSING TOKENS: 116 | sr_detector/zones.py
+--- L1087 cites 0 (0 unresolved [])
+    MISSING TOKENS: 211 | sr_detector/confluence.py
+--- L1088 cites 0 (0 unresolved [])
+    MISSING TOKENS: 186 | sr_detector/flags.py
+--- L1089 cites 0 (0 unresolved [])
+    MISSING TOKENS: 224 | sr_detector/zone_builder.py
+--- L1090 cites 0 (0 unresolved [])
+    MISSING TOKENS: 10 | 159 | sr_detector/fetch.py
+--- L1091 cites 0 (0 unresolved [])
+    MISSING TOKENS: 10 | 329 | sr_detector/detector.py
+--- L1092 cites 0 (0 unresolved [])
+    MISSING TOKENS: 76 | sr_detector/zone_cache.py
+--- L1093 cites 0 (0 unresolved [])
+    MISSING TOKENS: 10 | 161 | sr_detector/zone_warmer.py
+--- L1094 cites 0 (0 unresolved [])
+    MISSING TOKENS: 137 | sr_detector/retest_confirm.py
+--- L1095 cites 0 (0 unresolved [])
+    MISSING TOKENS: 10 | 441 | screening/retest_monitor.py
+--- L1096 cites 0 (0 unresolved [])
+    MISSING TOKENS: 102 | scripts/sr_corp_action_spotcheck.py
+--- L1097 cites 0 (0 unresolved [])
+    MISSING TOKENS: 149 | scripts/sr_detector_backfill.py
+--- L1098 cites 0 (0 unresolved [])
+    MISSING TOKENS: 203 | scripts/sr_level_export.py
+--- L1100 cites 0 (0 unresolved [])
+    MISSING TOKENS: 26 | 372 | 454 | 7d4970a | 826 | main.py | signals/signal_processor.py
+--- L1104 cites 0 (0 unresolved [])
+    MISSING TOKENS: 07 | Check log | Post-check correction by Claude | doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/TOPIC_WISE_DOCUMENTATION/A08_TECHNICAL_ANALYSIS_SR_AND_RETEST_CONTEXT/evidence/
+--- L1108 cites 0 (0 unresolved [])
+    MISSING TOKENS: 7d4970a | A08_SOURCE_FILE_INVENTORY_2026-11-26.md
+--- L1109 cites 141 (0 unresolved [])
+    MISSING TOKENS: A08_PRIOR_TOPIC_HANDOFFS_2026-11-26.md
+--- L1110 cites 140 (0 unresolved [])
+    MISSING TOKENS: A08_PIVOTS_ZONES_AND_CONFLUENCE_SCORING_2026-11-26.md
+--- L1111 cites 160 (0 unresolved [])
+    MISSING TOKENS: A08_CANDLE_FETCH_ZONE_BUILDER_CACHE_AND_WARMER_2026-11-26.md
+--- L1112 cites 217 (0 unresolved [])
+    MISSING TOKENS: A08_V1_OBSERVER_FLAGS_RESULTS_AND_BACKFILL_2026-11-26.md
+--- L1113 cites 183 (0 unresolved [])
+    MISSING TOKENS: A08_V2_RETEST_PATH_AND_RESUME_HANDOFF_2026-11-26.md
+--- L1114 cites 122 (0 unresolved [])
+    MISSING TOKENS: A08_SPOTCHECK_AND_EXPORT_SCRIPTS_2026-11-26.md
+--- L1115 cites 190 (0 unresolved [])
+    MISSING TOKENS: A08_CONFIGURATION_WIRING_AND_CONSUMER_INTERFACES_2026-11-26.md
+--- L1117 cites 0 (0 unresolved [])
+    MISSING TOKENS: 104 | 15 | 152 | 16 | 25 | 27 | 40 | 61 | 92
+--- L1121 cites 0 (0 unresolved [])
+    MISSING TOKENS: 05 | 117 | 13b0da0ca81574ebf3d966a8223d687534e34d1f2fbebcf02c2a14e5a31a7df7 | 19 | 20 | 23 | 26 | 5.5 | <algocore_system clone> | <legacy clone> | <workspace> | <workspace>/check/A08_STUDY_2026-11-26.md.assembler_original
+--- L1125 cites 2 (0 unresolved [])
+    MISSING TOKENS: 370 | 386 | <workspace>/notes/ASSEMBLY_CHECKER_index.py | ASSEMBLY_CHECKER_support.py
+--- L1126 cites 0 (0 unresolved [])
+    MISSING TOKENS: 1.4 | 17.1 | 32 | 7d4970a | L116 | L137 | L160 | L169 | L176 | L354 | L375 | L424 | L431 | git -C <legacy clone> show 970aabf:<path> | nl -ba | git rev-list --count | screening/retest_monitor.py | scripts/sr_level_export.py | sr_detector/models.py | sr_detector/retest_confirm.py
+--- L1127 cites 0 (0 unresolved [])
+    MISSING TOKENS: 04 | 06 | 1.4 | 1.9 | 13 | 13.2 | 13.6 | 16 | 19 | 4.2 | 52cc811 | 89 | <algocore_system clone> | <workspace> | How entries are recorded | L4323 | notes/CLAUDE_ASSIGNMENT_DECISIONS.md | notes/RAMA_DECISIONS_A08_STUDY.md | status/AGENTS_REGISTER_STUDY.md
+--- L1128 cites 1 (0 unresolved [])
+    MISSING TOKENS: 104 | 15 | 16 | 165 | 25 | 40 | 61 | 92 | ASSEMBLY_CHECKER_15_diff.py
+--- L1129 cites 0 (0 unresolved [])
+    MISSING TOKENS: 1.2 | 15 | continue_from_retest
+--- L1133 cites 1 (0 unresolved [])
+    MISSING TOKENS: 1.9 | 104 | 11 | 13.2 | 13.3 | 13.6 | 138 | 15 | 152 | 16 | 17 | 17.2 | 180 | 25 | 27 | 34 | 35 | 40 | 43 | 47 | 48 | 61 | 92 | 92 ... 40 ... 25 ... from 104, 61 and 27 | <workspace>/notes/ASSEMBLY_CHECKER_completeness.py | notes/ASSEMBLY_CHECKER_completeness_result.txt
+--- L1134 cites 0 (0 unresolved [])
+    MISSING TOKENS: 13 | 13.2 | 13.6 | 21 | 89 | <workspace>/notes/ASSEMBLY_CHECKER_cells.py
+--- L1135 cites 0 (0 unresolved [])
+    MISSING TOKENS: 267 | ASSEMBLY_cellcheck.py | ASSEMBLY_coverage.py
+--- L1136 cites 0 (0 unresolved [])
+    MISSING TOKENS: python3 -I | scan.py
+--- L1140 cites 0 (0 unresolved [])
+    MISSING TOKENS: 132 | 15.1 | 15.2 | 165 | 63 | 66
+--- L1142 cites 0 (0 unresolved [])
+    MISSING TOKENS: 13.6 | 57 | 6.3 | How entries are recorded | MATCH; not entered | Not entered: MATCH items (they stay in the AUDIT, section 6.3) | Result and classification | not entered (MATCH)
+--- L1143 cites 0 (0 unresolved [])
+    MISSING TOKENS: (I) | 10 | 44 | 45
+--- L1144 cites 0 (0 unresolved [])
+    MISSING TOKENS: 05 | 06 | 1.6 | 4.2 | no known backup
+--- L1145 cites 2 (0 unresolved [])
+    MISSING TOKENS: 48 | 59
+--- L1146 cites 0 (0 unresolved [])
+    MISSING TOKENS: 1.5
+--- L1147 cites 1 (0 unresolved [])
+    MISSING TOKENS: 67
+--- L1148 cites 0 (0 unresolved [])
+    MISSING TOKENS: 04 | 16 | 19 | OPEN FOR RAMA
+--- L1150 cites 0 (0 unresolved [])
+    MISSING TOKENS: 1.2 | 1.3 | 1.9 | 11 | 13 | 14 | 15 | 17 | 30 | 60 | continue_from_retest
+--- L1154 cites 0 (0 unresolved [])
+    MISSING TOKENS: 1.5 | 10 | 11 | 12 | 13 | 29 | 33 | 39 | 50 | 58 | 61 | 64
+--- L1158 cites 0 (0 unresolved [])
+    MISSING TOKENS: 26 | 5.5 | First version, 2026-11-26.
+--- L1159 cites 0 (0 unresolved [])
+    MISSING TOKENS: 1.2 | L2375 | L2375 at the baseline | L2375, A06's file | RetestMonitor (...) and sr_detector/retest_confirm.py | in `screening/retest_monitor.py` | max_away_pct | max_away_pct, configured as retest_max_away_pct | screening/retest_monitor.py | the MARKET entry type | the MARKET entry type of the retest entry
+--- L1160 cites 0 (0 unresolved [])
+    MISSING TOKENS: 1.5 | 26 | 5.5
+--- L1161 cites 2 (0 unresolved [])
+    MISSING TOKENS:  ->  | 1.5
+--- L1162 cites 1 (0 unresolved [])
+    MISSING TOKENS: 1.5
+--- L1163 cites 0 (0 unresolved [])
+    MISSING TOKENS:  ->  |  | Document 06, section 4.2 ( | (reported by Rama on 05-Oct-2026, not independently verified; ...) | (reported by Rama, not independently verified; ...) | 05 | 06 | 1.6 | 4.2
+--- L1164 cites 1 (0 unresolved [])
+    MISSING TOKENS:  -> adds  | 1.7 | 13
+--- L1165 cites 0 (0 unresolved [])
+    MISSING TOKENS: 1.9
+--- L1166 cites 3 (0 unresolved [])
+    MISSING TOKENS: default_pivot_n: 5
+--- L1167 cites 6 (0 unresolved [])
+    MISSING TOKENS: each consumer ... has its own `OhlcFetcher` | every fetch failure gives one WARNING and no candles
+--- L1169 cites 7 (0 unresolved [])
+    MISSING TOKENS: in a HIGH zone
+--- L1170 cites 11 (0 unresolved [])
+    MISSING TOKENS: no run or result is recorded anywhere
+--- L1171 cites 1 (0 unresolved [])
+    MISSING TOKENS: 14 | in shadow
+--- L1172 cites 1 (0 unresolved [])
+    MISSING TOKENS: 15 | FACT and HISTORICAL (the commit history): | FACT: | The four files
+--- L1173 cites 1 (0 unresolved [])
+    MISSING TOKENS: 16 | the first `left` and last `right` bars are never examined (SR-P1, SR-P2)
+--- L1174 cites 1 (0 unresolved [])
+    MISSING TOKENS: A NaN or wrong-side infinite price raises `ValueError` or `OverflowError`
+--- L1176 cites 1 (0 unresolved [])
+    MISSING TOKENS: so with more zones the lowest-priced are kept
+--- L1177 cites 1 (0 unresolved [])
+    MISSING TOKENS: 20 | with the HIGH filter | with the configured confidence filter (committed `HIGH`)
+--- L1178 cites 1 (0 unresolved [])
+    MISSING TOKENS: 21 | `main.py` imports only the knob builders
+--- L1179 cites 1 (0 unresolved [])
+    MISSING TOKENS: 22 | two paths raise to the caller | two paths that a non-test caller can reach ...
+--- L1180 cites 1 (0 unresolved [])
+    MISSING TOKENS: -inf | a NaN or `+inf` price raises, uncaught, against the docstring | a NaN or infinite price raises | round_number_levels
+--- L1182 cites 1 (0 unresolved [])
+    MISSING TOKENS:  ->  | 25 | holds for the package read as 
+--- L1183 cites 1 (0 unresolved [])
+    MISSING TOKENS:  -> adds  | 26
+--- L1184 cites 2 (0 unresolved [])
+    MISSING TOKENS:  ->  | 27
+--- L1185 cites 2 (0 unresolved [])
+    MISSING TOKENS: 28
+--- L1186 cites 1 (0 unresolved [])
+    MISSING TOKENS: lists the unit with line references that match none of the baseline's lines | sr_detector/__init__.py:25
+--- L1187 cites 0 (0 unresolved [])
+    MISSING TOKENS:  -> D-41's words:  | 30 | L2375 | documents only the A08-specific handoff and values | not audited by A08 | recorded at the interface only | signals/signal_processor.py | the MARKET entry type of the retest entry
+--- L1188 cites 1 (0 unresolved [])
+    MISSING TOKENS: 31 | L121 | evaluate | sr_detector/retest_confirm.py | the touch a low at or below the band's top
+--- L1189 cites 2 (0 unresolved [])
+    MISSING TOKENS: 32 | sr_detector/retest_confirm.py | treats a zero range as not strong
+--- L1190 cites 1 (0 unresolved [])
+    MISSING TOKENS: 33
+--- L1191 cites 1 (0 unresolved [])
+    MISSING TOKENS: 34
+--- L1192 cites 2 (0 unresolved [])
+    MISSING TOKENS: 35 | _evaluate | comparing IST wall-clock digits | comparing wall-clock digits
+--- L1193 cites 1 (0 unresolved [])
+    MISSING TOKENS: 36
+--- L1194 cites 1 (0 unresolved [])
+    MISSING TOKENS: gove... | governor ...
+--- L1195 cites 1 (0 unresolved [])
+    MISSING TOKENS: 38 | RESERVED, PROCESSED, TIMEOUT or REJECTED_<check>
+--- L1196 cites 2 (0 unresolved [])
+    MISSING TOKENS: 39
+--- L1198 cites 3 (0 unresolved [])
+    MISSING TOKENS: L380 | `sl_buffer_pct` ... by the diverter for the parked stop | for the stop it writes to its audit row, `proposed_retest_sl`
+--- L1199 cites 2 (0 unresolved [])
+    MISSING TOKENS: 41 | ; ... P04-S042) | feeds the divert's audit-row stop (P06-S066 says  | feeds the divert's parked stop
+--- L1200 cites 1 (0 unresolved [])
+    MISSING TOKENS:  (under the UNKNOWN label) ->  | 43
+--- L1201 cites 0 (0 unresolved [])
+    MISSING TOKENS:  ->  | (I) | 10 | 44 | 48 | 53
+--- L1202 cites 15 (0 unresolved [])
+    MISSING TOKENS: (I) | 45
+--- L1203 cites 2 (0 unresolved [])
+    MISSING TOKENS: 10 | 22 | 46
+--- L1204 cites 2 (0 unresolved [])
+    MISSING TOKENS: 11 | 47 | the only A08 object built in the trading process is the V1 observer
+--- L1205 cites 1 (0 unresolved [])
+    MISSING TOKENS:  ->  | 11 | 48
+--- L1206 cites 2 (0 unresolved [])
+    MISSING TOKENS:  ->  | ; P06-S113  | the registry's states
+--- L1207 cites 2 (0 unresolved [])
+    MISSING TOKENS: line references that match none of the baseline's lines | sr_detector/__init__.py:25
+--- L1208 cites 1 (0 unresolved [])
+    MISSING TOKENS: 51
+--- L1209 cites 1 (0 unresolved [])
+    MISSING TOKENS: 12 | 52
+--- L1210 cites 2 (0 unresolved [])
+    MISSING TOKENS: 13.2 | 41 | 53 | the V2 parked stop and the resumption's stop | the diverter's audit-row stop and the resumption's stop
+--- L1211 cites 1 (0 unresolved [])
+    MISSING TOKENS: 13.2 | 47 | 54 | HIGH | parks any screened signal whose entry lies in a HIGH zone on its side
+--- L1212 cites 0 (0 unresolved [])
+    MISSING TOKENS: 13.2 | 42 | 44 | 46 | 55 | L1176 | L1989 | L3988 | L4922 | Whether these components ran is UNKNOWN / NOT ESTABLISHED (EV-14 (4))
+--- L1213 cites 1 (0 unresolved [])
+    MISSING TOKENS: 13.4 | by IST wall-clock digits
+--- L1214 cites 0 (0 unresolved [])
+    MISSING TOKENS:  (its ISSUE part is K-32, table (a)); A03 H-43, Q-52, R-34, A02 V-22, L-33  | 13 | 13.6 | 57 | ; A01 S-33  | ; A04 RL-15  | ; A05 CM-12 and HA-13  | ; A05 HA-11  | How entries are recorded | L1071 | L1369 | L1664 | L1666 | L1986 | L2002 | L22 | L2279 | L2344 | L2640 | L3593 | L515 | L860 | MATCH; FACT | MATCH; not entered | Not entered | Result and classification | not entered (MATCH) | rate_per_sec > 0
+--- L1215 cites 2 (0 unresolved [])
+    MISSING TOKENS: 13.6 | Withdrawn: counted once as D-09 (...) | withdrawn in the A03 AUDIT and counted as D-09
+--- L1216 cites 3 (0 unresolved [])
+    MISSING TOKENS: 13.6 | none: no part records the point | one, A03 J-14 ..., has 
+--- L1217 cites 0 (0 unresolved [])
+    MISSING TOKENS:  -> D-41's words ( | 14 | 60 | internal orchestration | not audited by A08 | recorded at the interface only
+--- L1218 cites 5 (0 unresolved [])
+    MISSING TOKENS: the A07 MATCH rows RP-13, RP-19, RP-21 at A08's side (P04-S160; P07-S095)
+--- L1219 cites 1 (0 unresolved [])
+    MISSING TOKENS: 14 | 62 | no A08 interface found
+--- L1220 cites 1 (0 unresolved [])
+    MISSING TOKENS: 15.1 | 63
+--- L1221 cites 1 (0 unresolved [])
+    MISSING TOKENS:  | P02-AP01 (the P02 checker added A05's reasoning  | ), the PB-01 TTL-0 clause and its `main.py` comment,  | 15.1 | 64
+--- L1222 cites 1 (0 unresolved [])
+    MISSING TOKENS: 15.1 | 65
+--- L1223 cites 2 (0 unresolved [])
+    MISSING TOKENS:  ->  | 15.2
+--- L1224 cites 2 (0 unresolved [])
+    MISSING TOKENS: 16 | 67
+--- L1225 cites 0 (0 unresolved [])
+    MISSING TOKENS: 1.7 | 68 | the check log at the end names it only among the checks made
+--- L1229 cites 1 (0 unresolved [])
+    MISSING TOKENS: 1.4 | 1.8 | 13.1 | 13.4 | 13.5 | 17.2 | 372 | 454 | 826 | OPEN FOR RAMA | git show
+--- L1233 cites 3 (0 unresolved [])
+    MISSING TOKENS: L375 | L424 | L431
+--- L1234 cites 0 (0 unresolved [])
+    MISSING TOKENS: 1.9
+--- L1235 cites 0 (0 unresolved [])
+    MISSING TOKENS: 06 | 1.6 | 4.2
+--- L1236 cites 3 (0 unresolved [])
+    MISSING TOKENS: 61
+--- L1237 cites 0 (0 unresolved [])
+    MISSING TOKENS: 13.3 | L871 | L885 | L886
+--- L1238 cites 0 (0 unresolved [])
+    MISSING TOKENS: 13.2 | 13.6 | A08 side
+--- L1239 cites 2 (0 unresolved [])
+    MISSING TOKENS: 1.2 | 13.4 | 16 | 43

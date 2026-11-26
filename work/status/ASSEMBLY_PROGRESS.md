@@ -15,3 +15,4 @@ them apart from P07's own AP-01 to AP-06.
 | 2026-11-26 18:48 | section 6 (P04, V2 retest path and continue_from_retest handoff) written | read P05 -> section 7 | P04 index + sections 9, 11, 13-16, selected statements, check log read; notes updated |
 | 2026-11-26 18:49 | section 7 (P05, spot-check and export scripts) written | read P06 -> sections 8, 9, 11 | P05 index + sections 8, 10-13 read; notes updated |
 | 2026-11-26 18:51 | sections 8 (configuration) and 9 (wiring, start/shutdown, switch rows) written | section 11 (consumers), then 10 | P06 sections 1-14 read (tables in full); notes updated |
+| 2026-11-26 18:53 | sections 11 (consumers) and 10 (cross-part summary table) written | section 12 (intent sources), then 13 | P06 section 7 table carried; section 10 from the parts' summaries |

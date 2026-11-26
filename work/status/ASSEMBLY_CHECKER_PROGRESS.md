@@ -9,3 +9,4 @@ Check notes / scripts: /home/claude/a08/notes/ASSEMBLY_CHECKER_*
 | 26-Nov-2026 19:23 | Start: briefs read; original copied to check/ | Read notes, registers, decisions; read STUDY | 0 |
 | 26-Nov-2026 19:34 | Sections 1 and 2 checked (D-41 P1 against the register; 1.5 against the helper register and Rama's decisions; 1.6 against Document 06 s4.2 and D-21; 1.9 sources; section 2 headline facts against the parts); 14 corrections (notes/ASSEMBLY_CHECKER_CHANGES.md); scan 0 | Section 3 (P01) | 14 |
 | 26-Nov-2026 19:37 | Section 3 (P01) checked: every bullet against P01-S006 to S137 (tables included; index rebuilt to capture tables); 7 corrections | Section 4 (P02) | 21 |
+| 26-Nov-2026 19:38 | Section 4 (P02) checked against P02-S007 to S160 (tables included); 3 corrections | Section 5 (P03) | 24 |

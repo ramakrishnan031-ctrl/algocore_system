@@ -26,3 +26,6 @@ N = count or number; R = record wording (register, decision, document); P = prec
 | 19 | L | 3, output order | "so with more zones the lowest-priced are kept" moved out of the FACT into an INTERPRETATION sentence | P01-S093 labels it INTERPRETATION |
 | 20 | P | 3, callers inside A08 | "with the HIGH filter" -> "with the configured confidence filter (committed `HIGH`)" | P01-S107 (`z.confidence == self._require_conf`) |
 | 21 | F | 3, callers in other topics' files | "`main.py` imports only the knob builders" -> "`main.py` calls no function of the four files, and for them imports only the zone builder's two knob builders" | P01-S118 (`main.py` imports other A08 objects too, section 9) |
+| 22 | F | 4, failures | "two paths raise to the caller" -> "two paths that a non-test caller can reach ..."; adds the argument types no non-test caller passes, which would also raise outside the `try` | P02-S036 (the P02 checker's addition) |
+| 23 | F | 4, `round_number_levels` | "a NaN or infinite price raises" -> "a NaN or `+inf` price raises, uncaught, against the docstring" (a `-inf` price is non-positive and returns `()`) | P02-S054 (d) |
+| 24 | F | 4, `ZoneWarmer.enqueue` | adds "beyond these locks the threads share one interpreter, so the warmer's own Python work and the dispatcher take turns (P02-S080; ... P02-U11)" | P02-S080 (the P02 checker's addition) |

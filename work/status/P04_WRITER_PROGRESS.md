@@ -15,3 +15,4 @@ Work notes: /home/claude/a08/notes/P04_grep.sh (git grep with the four exclusion
 | 2026-11-26 16:22 | section 7 (rehydrate, restart cases, day boundary, clear_all + EOD call, recovery fire, stop + shutdown, C37 and C13 A08 sides) | section 8 (continue_from_retest handoff) | P04-S001 to P04-S092 |
 | 2026-11-26 16:24 | section 8 (continue_from_retest handoff: inputs, band->stop, buffer, entry estimate, MARKET type, call-outs named, nothing returned, statuses) | section 9 (threads, locks, clocks, failures summary) | P04-S001 to P04-S105 |
 | 2026-11-26 16:25 | section 9 (threads, locks, interleavings, clocks table, direction tests, failure table) | section 10 (call sites in other topics files) | P04-S001 to P04-S113 |
+| 2026-11-26 16:26 | section 10 (call sites in other topics files, table P04-S114 to P04-S129) | section 11 (inherited items) | P04-S001 to P04-S129 |

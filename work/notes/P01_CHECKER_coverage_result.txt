@@ -1,25 +1,25 @@
-# P01 checker coverage result (static ast parse of baseline text; nothing imported or run), 2026-11-26 13:40 IST
+# P01 checker coverage result on the CORRECTED file (static ast parse of baseline text; nothing imported or run), 2026-11-26 13:59 IST
 ## sr_detector/models.py
-class Candle L24-L43: covered by 20 stmt(s) ['P01-S003', 'P01-S008', 'P01-S009', 'P01-S010', 'P01-S012', 'P01-S014', 'P01-S015', 'P01-S019', 'P01-S020', 'P01-S038', 'P01-S059', 'P01-S090'] ...
+class Candle L24-L43: covered by 21 stmt(s) ['P01-S003', 'P01-S008', 'P01-S009', 'P01-S010', 'P01-S012', 'P01-S014', 'P01-S015', 'P01-S019', 'P01-S020', 'P01-S038', 'P01-S059', 'P01-S064'] ...
 class Pivot L51-L56: covered by 6 stmt(s) ['P01-S008', 'P01-S009', 'P01-S022', 'P01-S038', 'P01-S041', 'P01-S050']
 class Zone L60-L83: covered by 15 stmt(s) ['P01-S008', 'P01-S009', 'P01-S012', 'P01-S023', 'P01-S024', 'P01-S025', 'P01-S026', 'P01-S027', 'P01-S050', 'P01-S054', 'P01-S057', 'P01-S058'] ...
-class ScoredZone L87-L121: covered by 14 stmt(s) ['P01-S008', 'P01-S009', 'P01-S012', 'P01-S025', 'P01-S026', 'P01-S027', 'P01-S028', 'P01-S037', 'P01-S070', 'P01-S082', 'P01-S105', 'P01-S106'] ...
-class Candidate L129-L149: covered by 9 stmt(s) ['P01-S008', 'P01-S012', 'P01-S030', 'P01-S031', 'P01-S032', 'P01-S105', 'P01-S115', 'P01-S117', 'P01-S122']
+class ScoredZone L87-L121: covered by 16 stmt(s) ['P01-S008', 'P01-S009', 'P01-S012', 'P01-S025', 'P01-S026', 'P01-S027', 'P01-S028', 'P01-S037', 'P01-S070', 'P01-S082', 'P01-S092', 'P01-S105'] ...
+class Candidate L129-L149: covered by 10 stmt(s) ['P01-S008', 'P01-S012', 'P01-S030', 'P01-S031', 'P01-S032', 'P01-S105', 'P01-S115', 'P01-S117', 'P01-S122', 'P01-S134']
 class RetestProposal L157-L161: covered by 4 stmt(s) ['P01-S008', 'P01-S033', 'P01-S037', 'P01-S105']
 class SRAnalysis L190-L207: covered by 6 stmt(s) ['P01-S008', 'P01-S035', 'P01-S037', 'P01-S104', 'P01-S117', 'P01-S131']
-def from_kite L34-L43: covered by 15 stmt(s) ['P01-S003', 'P01-S012', 'P01-S015', 'P01-S016', 'P01-S019', 'P01-S020', 'P01-S021', 'P01-S063', 'P01-S094', 'P01-S097', 'P01-S099', 'P01-S103'] ...
+def from_kite L34-L43: covered by 16 stmt(s) ['P01-S003', 'P01-S012', 'P01-S015', 'P01-S016', 'P01-S019', 'P01-S020', 'P01-S021', 'P01-S063', 'P01-S064', 'P01-S094', 'P01-S097', 'P01-S099'] ...
     branch/return nodes: Return@L36
 def center L73-L74: covered by 12 stmt(s) ['P01-S012', 'P01-S023', 'P01-S024', 'P01-S026', 'P01-S027', 'P01-S028', 'P01-S071', 'P01-S083', 'P01-S084', 'P01-S086', 'P01-S105', 'P01-S107']
     branch/return nodes: Return@L74
 def width L77-L78: covered by 14 stmt(s) ['P01-S012', 'P01-S023', 'P01-S024', 'P01-S025', 'P01-S026', 'P01-S053', 'P01-S054', 'P01-S059', 'P01-S061', 'P01-S062', 'P01-S063', 'P01-S064'] ...
     branch/return nodes: Return@L78
-def contains L80-L83: covered by 12 stmt(s) ['P01-S012', 'P01-S024', 'P01-S025', 'P01-S027', 'P01-S042', 'P01-S047', 'P01-S054', 'P01-S062', 'P01-S083', 'P01-S085', 'P01-S098', 'P01-S107']
+def contains L80-L83: covered by 13 stmt(s) ['P01-S012', 'P01-S024', 'P01-S025', 'P01-S027', 'P01-S042', 'P01-S047', 'P01-S054', 'P01-S062', 'P01-S083', 'P01-S085', 'P01-S098', 'P01-S107'] ...
     branch/return nodes: Return@L83
 def center L104-L105: covered by 12 stmt(s) ['P01-S012', 'P01-S023', 'P01-S024', 'P01-S026', 'P01-S027', 'P01-S028', 'P01-S071', 'P01-S083', 'P01-S084', 'P01-S086', 'P01-S105', 'P01-S107']
     branch/return nodes: Return@L105
-def contains L107-L109: covered by 12 stmt(s) ['P01-S012', 'P01-S024', 'P01-S025', 'P01-S027', 'P01-S042', 'P01-S047', 'P01-S054', 'P01-S062', 'P01-S083', 'P01-S085', 'P01-S098', 'P01-S107']
+def contains L107-L109: covered by 13 stmt(s) ['P01-S012', 'P01-S024', 'P01-S025', 'P01-S027', 'P01-S042', 'P01-S047', 'P01-S054', 'P01-S062', 'P01-S083', 'P01-S085', 'P01-S098', 'P01-S107'] ...
     branch/return nodes: Return@L109
-def to_dict L111-L121: covered by 11 stmt(s) ['P01-S012', 'P01-S028', 'P01-S029', 'P01-S082', 'P01-S093', 'P01-S101', 'P01-S104', 'P01-S107', 'P01-S109', 'P01-S110', 'P01-S111']
+def to_dict L111-L121: covered by 12 stmt(s) ['P01-S012', 'P01-S028', 'P01-S029', 'P01-S082', 'P01-S093', 'P01-S101', 'P01-S104', 'P01-S107', 'P01-S109', 'P01-S110', 'P01-S111', 'P01-S136']
     branch/return nodes: Return@L112
 def is_long L148-L149: covered by 4 stmt(s) ['P01-S012', 'P01-S031', 'P01-S105', 'P01-S127']
     branch/return nodes: Return@L149
@@ -31,7 +31,7 @@ const CONF_ANCHOR_PLUS_VALIDATED_SWINGS L176: covered by 3 stmt(s) ['P01-S008', 
 const TF_ROLE L180: covered by 4 stmt(s) ['P01-S008', 'P01-S036', 'P01-S128', 'P01-S131']
 
 ## sr_detector/pivots.py
-def find_swing_pivots L24-L55: covered by 14 stmt(s) ['P01-S008', 'P01-S038', 'P01-S055', 'P01-S073', 'P01-S086', 'P01-S094', 'P01-S097', 'P01-S102', 'P01-S108', 'P01-S109', 'P01-S110', 'P01-S119'] ...
+def find_swing_pivots L24-L55: covered by 15 stmt(s) ['P01-S008', 'P01-S038', 'P01-S055', 'P01-S073', 'P01-S086', 'P01-S094', 'P01-S097', 'P01-S102', 'P01-S108', 'P01-S109', 'P01-S110', 'P01-S119'] ...
     branch/return nodes: If@L39, For@L42, Return@L55, Return@L40, If@L48, If@L52
 
 ## sr_detector/zones.py
@@ -43,7 +43,7 @@ def volume_profile_nodes L78-L116: covered by 6 stmt(s) ['P01-S008', 'P01-S059',
     branch/return nodes: If@L91, If@L95, For@L100, If@L110, For@L113, Return@L116, Return@L92, Return@L96, If@L103, If@L105, Return@L111, If@L114
 
 ## sr_detector/confluence.py
-class ConfluenceContext L37-L42: covered by 7 stmt(s) ['P01-S008', 'P01-S010', 'P01-S067', 'P01-S069', 'P01-S070', 'P01-S091', 'P01-S102']
+class ConfluenceContext L37-L42: covered by 9 stmt(s) ['P01-S008', 'P01-S010', 'P01-S067', 'P01-S069', 'P01-S070', 'P01-S091', 'P01-S094', 'P01-S102', 'P01-S137']
 class ScoringParams L46-L59: covered by 9 stmt(s) ['P01-S008', 'P01-S068', 'P01-S069', 'P01-S070', 'P01-S102', 'P01-S106', 'P01-S118', 'P01-S122', 'P01-S124']
 def score_zones L62-L73: covered by 5 stmt(s) ['P01-S008', 'P01-S070', 'P01-S093', 'P01-S094', 'P01-S102']
     branch/return nodes: For@L69, Return@L73, For@L71
@@ -53,10 +53,10 @@ def _score_group L104-L159: covered by 6 stmt(s) ['P01-S008', 'P01-S070', 'P01-S
     branch/return nodes: If@L120, If@L125, If@L129, If@L133, If@L137, If@L142, Return@L149
 def _bucket L162-L167: covered by 2 stmt(s) ['P01-S008', 'P01-S080']
     branch/return nodes: If@L163, If@L165, Return@L167, Return@L164, Return@L166
-def _level_in_band L170-L177: covered by 3 stmt(s) ['P01-S008', 'P01-S083', 'P01-S098']
+def _level_in_band L170-L177: covered by 4 stmt(s) ['P01-S008', 'P01-S054', 'P01-S083', 'P01-S098']
     branch/return nodes: If@L173, Return@L177, Return@L174
-def _has_round_number L180-L192: covered by 5 stmt(s) ['P01-S008', 'P01-S084', 'P01-S087', 'P01-S097', 'P01-S098']
+def _has_round_number L180-L192: covered by 6 stmt(s) ['P01-S008', 'P01-S084', 'P01-S087', 'P01-S097', 'P01-S098', 'P01-S140']
     branch/return nodes: If@L183, For@L186, Return@L192, Return@L184, If@L187, If@L190, Return@L191
-def _recency_factor L195-L211: covered by 4 stmt(s) ['P01-S008', 'P01-S088', 'P01-S097', 'P01-S119']
+def _recency_factor L195-L211: covered by 5 stmt(s) ['P01-S008', 'P01-S088', 'P01-S097', 'P01-S119', 'P01-S137']
     branch/return nodes: If@L198, If@L201, If@L204, If@L208, Return@L211, Return@L199, Return@L202, Return@L209
 

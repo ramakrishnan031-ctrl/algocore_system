@@ -21,3 +21,4 @@ them apart from P07's own AP-01 to AP-06.
 | 2026-11-26 19:00 | sections 13.3 (16 OIR), 13.4 (16 records, flagged), 13.5 (N1-N6), 13.6 (5 + 43 + PQ-06; Claude's assignment decisions, flagged) written | section 14 (boundaries by owner topic) | register cells copied from AFR (read-only reader) |
 | 2026-11-26 19:02 | section 14 (boundaries by owner topic A01-A20; wording note; citation differences) written | section 15 (consolidated AP list and UNKNOWN list): extract all AP/U items to notes first | — |
 | 2026-11-26 19:05 | section 15.1 part 1 written (A08-AP-01 to A08-AP-50: P01, P02, P03 points with merges AP-28, AP-31, AP-34, AP-44, AP-47, AP-48) | 15.1 part 2 (P04 to P07 points: A08-AP-51 to A08-AP-92) | consolidation plan: 104 points -> 92 entries; 61 unknowns -> 40; 27 R IDs -> 25 questions + 1 withdrawn |
+| 2026-11-26 19:06 | section 15.1 complete (A08-AP-01 to A08-AP-92) | 15.2 (UNKNOWN items A08-U-01 to A08-U-40) | — |

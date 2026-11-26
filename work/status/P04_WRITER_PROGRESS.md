@@ -16,3 +16,4 @@ Work notes: /home/claude/a08/notes/P04_grep.sh (git grep with the four exclusion
 | 2026-11-26 16:24 | section 8 (continue_from_retest handoff: inputs, band->stop, buffer, entry estimate, MARKET type, call-outs named, nothing returned, statuses) | section 9 (threads, locks, clocks, failures summary) | P04-S001 to P04-S105 |
 | 2026-11-26 16:25 | section 9 (threads, locks, interleavings, clocks table, direction tests, failure table) | section 10 (call sites in other topics files) | P04-S001 to P04-S113 |
 | 2026-11-26 16:26 | section 10 (call sites in other topics files, table P04-S114 to P04-S129) | section 11 (inherited items) | P04-S001 to P04-S129 |
+| 2026-11-26 16:30 | section 11 (inherited: 11 items, 2 open issues, 5 records, N5/N6 + wording, 8 secondary, 2 rows of P07 5.3) | section 12 (stated intent) | P04-S001 to P04-S160 |

@@ -17,3 +17,4 @@ them apart from P07's own AP-01 to AP-06.
 | 2026-11-26 18:51 | sections 8 (configuration) and 9 (wiring, start/shutdown, switch rows) written | section 11 (consumers), then 10 | P06 sections 1-14 read (tables in full); notes updated |
 | 2026-11-26 18:53 | sections 11 (consumers) and 10 (cross-part summary table) written | section 12 (intent sources), then 13 | P06 section 7 table carried; section 10 from the parts' summaries |
 | 2026-11-26 18:54 | section 12 (intent sources against the code) written | section 13 (inherited items: 48, 16 OIR, 16 records, N1-N6, 43+5 and PQ-06) | built from P01 s9, P02 s10, P03 s11, P04 s12, P05 s4/7/9, P06 s10 |
+| 2026-11-26 18:58 | section 13 intro, 13.1 and 13.2 (the 48 items) written | 13.3 to 13.6 | AFR cells of 43+5 records and PQ-06 read by notes/ASSEMBLY_afr.py (read-only; an addition beyond the parts, for the hand-back) |

@@ -1,0 +1,10 @@
+# P03 checker progress log (helper H8; Opus 5.5, Max effort)
+
+File checked: /home/claude/a08/parts/A08_V1_OBSERVER_FLAGS_RESULTS_AND_BACKFILL_2026-11-26.md
+Writer original (unchanged copy): /home/claude/a08/check/A08_V1_OBSERVER_FLAGS_RESULTS_AND_BACKFILL_2026-11-26.md.writer_original (md5 da827c9b71719822c92137840e573f66)
+
+| Time (IST) | Section checked | Next step | Changes so far |
+|---|---|---|---|
+| 2026-11-26 15:15 | start: briefs read; writer original copied | read the part file in full, then check section by section | none |
+| 2026-11-26 15:36 | verification pass over all 214 statements, AP01-AP16, U01-U10, R1-R5, X01-X08 done (sources: four files in full; A06/A01/A03/A02/A15/A12/A16 interface lines; algocore records; P01/P07; web pages re-read); coverage script notes/P03_CHECKER_coverage.py (39/39 names, 2/2 options, all calls); Q-17 script notes/P03_CHECKER_q17_keys.py (24 = 24 = 24) | apply corrections section by section, starting with sections 1 to 3 | none applied yet |
+| 2026-11-26 15:37 | sections 1 to 3 (S001 to S023) checked | section 4 (S024 to S058) | corrected: S005 (external context: URL actually read, page dates, CPython qualifier, json decoder), S018 (literal _IST lines) |

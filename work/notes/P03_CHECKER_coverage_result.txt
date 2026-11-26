@@ -1,0 +1,97 @@
+== 1. every def/class and module-level name, and whether the part names it
+  OK  sr_detector/__init__.py L25 def build_sr_detector
+  OK  sr_detector/detector.py L50 constant _SENTINEL
+  OK  sr_detector/detector.py L51 constant DETECTOR_VERSION
+  OK  sr_detector/detector.py L54 class SRDetector
+  OK  sr_detector/detector.py L55 def __init__
+  OK  sr_detector/detector.py L107 def enabled
+  OK  sr_detector/detector.py L110 def start
+  OK  sr_detector/detector.py L118 def stop
+  OK  sr_detector/detector.py L131 def observe
+  OK  sr_detector/detector.py L144 def _run
+  OK  sr_detector/detector.py L161 def process_candidate
+  OK  sr_detector/detector.py L167 def analyze
+  OK  sr_detector/detector.py L209 def _build_anchors
+  OK  sr_detector/detector.py L237 def _breakout_context
+  OK  sr_detector/detector.py L252 def _evidence
+  OK  sr_detector/detector.py L259 def _write
+  OK  sr_detector/detector.py L305 def _safe_now
+  OK  sr_detector/detector.py L311 def _safe_log
+  OK  sr_detector/detector.py L320 def _attr
+  OK  sr_detector/detector.py L324 def _iso
+  OK  sr_detector/detector.py L328 def _json
+  OK  sr_detector/flags.py L28 class BreakoutContext
+  OK  sr_detector/flags.py L38 class FlagParams
+  OK  sr_detector/flags.py L46 class FlagResult
+  OK  sr_detector/flags.py L55 def compute_flags_and_retest
+  OK  sr_detector/flags.py L114 def _nearest
+  OK  sr_detector/flags.py L125 def _broken_zone
+  OK  sr_detector/flags.py L138 def _is_into_zone
+  OK  sr_detector/flags.py L149 def _breakout_flags
+  OK  sr_detector/flags.py L178 def _retest_for_long
+  OK  sr_detector/flags.py L184 def _retest_for_short
+  OK  scripts/sr_detector_backfill.py L20 constant ROOT
+  OK  scripts/sr_detector_backfill.py L24 constant DB_PATH
+  OK  scripts/sr_detector_backfill.py L27 constant _TERMINAL
+  OK  scripts/sr_detector_backfill.py L30 def _is_terminal
+  OK  scripts/sr_detector_backfill.py L34 def _win_loss
+  OK  scripts/sr_detector_backfill.py L44 def backfill
+  OK  scripts/sr_detector_backfill.py L96 def main
+  OK  scripts/sr_detector_backfill.py L131 def _cron_main
+  defs/classes/constants: 39; not named in the part: 0
+== 2. argparse options of the script
+  OK  L101 date
+  OK  L102 --db
+== 3. external calls (attribute calls on injected collaborators, imports inside functions)
+  OK  scripts/sr_detector_backfill.py StateStore at L115
+  OK  scripts/sr_detector_backfill.py datetime.now at L112
+  OK  scripts/sr_detector_backfill.py now_ist at L110
+  OK  scripts/sr_detector_backfill.py skip_if_non_trading_day at L143
+  OK  scripts/sr_detector_backfill.py store.close at L120
+  OK  scripts/sr_detector_backfill.py store.fetch_one at L55
+  OK  scripts/sr_detector_backfill.py store.get_sr_results_for_backfill at L49
+  OK  scripts/sr_detector_backfill.py store.update_sr_outcome at L63,84
+  OK  sr_detector/__init__.py OhlcFetcher at L53
+  OK  sr_detector/__init__.py SRDetector at L61
+  OK  sr_detector/__init__.py build_sr_detector at L12,25
+  OK  sr_detector/detector.py _effect_handle at L74
+  OK  sr_detector/detector.py build_anchor_payload at L235
+  OK  sr_detector/detector.py build_anchors at L191,209
+  OK  sr_detector/detector.py build_flag_params at L95
+  OK  sr_detector/detector.py build_scoring_params at L94
+  OK  sr_detector/detector.py build_swings_payload at L192
+  OK  sr_detector/detector.py build_zone_knobs at L93
+  OK  sr_detector/detector.py compute_flags_and_retest at L179
+  OK  sr_detector/detector.py intraday_anchors at L224
+  OK  sr_detector/detector.py json.dumps at L329
+  OK  sr_detector/detector.py mean at L243
+  OK  sr_detector/detector.py queue.Queue at L100
+  OK  sr_detector/detector.py scored_zones_from_candles at L176
+  OK  sr_detector/detector.py self._fetcher.fetch_interval at L221
+  OK  sr_detector/detector.py self._fetcher.fetch_timeframes at L168
+  OK  sr_detector/detector.py self._fx_write.inc at L298
+  OK  sr_detector/detector.py self._q.get at L147
+  OK  sr_detector/detector.py self._q.put_nowait at L121,136
+  OK  sr_detector/detector.py self._q.task_done at L158
+  OK  sr_detector/detector.py self._stop.clear at L113
+  OK  sr_detector/detector.py self._stop.is_set at L145
+  OK  sr_detector/detector.py self._stop.set at L119
+  OK  sr_detector/detector.py self._store.insert_sr_detector_result at L295
+  OK  sr_detector/detector.py self._worker.start at L115
+  OK  sr_detector/detector.py threading.Thread at L114
+  OK  sr_detector/flags.py compute_flags_and_retest at L55
+== 4. branch-heavy functions (if/elif/else/except/for/while/ternary/and-or count)
+  sr_detector/detector.py observe L131 to L143: 3 branch keywords
+  sr_detector/detector.py _run L144 to L160: 5 branch keywords
+  sr_detector/detector.py analyze L167 to L208: 10 branch keywords
+  sr_detector/detector.py _build_anchors L209 to L236: 8 branch keywords
+  sr_detector/detector.py _breakout_context L237 to L251: 4 branch keywords
+  sr_detector/detector.py _evidence L252 to L258: 4 branch keywords
+  sr_detector/detector.py _write L259 to L304: 13 branch keywords
+  sr_detector/flags.py compute_flags_and_retest L55 to L113: 19 branch keywords
+  sr_detector/flags.py _nearest L114 to L124: 7 branch keywords
+  sr_detector/flags.py _broken_zone L125 to L137: 12 branch keywords
+  sr_detector/flags.py _breakout_flags L149 to L177: 5 branch keywords
+  scripts/sr_detector_backfill.py _win_loss L34 to L43: 3 branch keywords
+  scripts/sr_detector_backfill.py backfill L44 to L95: 6 branch keywords
+  scripts/sr_detector_backfill.py main L96 to L130: 4 branch keywords

@@ -22,3 +22,4 @@ them apart from P07's own AP-01 to AP-06.
 | 2026-11-26 19:02 | section 14 (boundaries by owner topic A01-A20; wording note; citation differences) written | section 15 (consolidated AP list and UNKNOWN list): extract all AP/U items to notes first | — |
 | 2026-11-26 19:05 | section 15.1 part 1 written (A08-AP-01 to A08-AP-50: P01, P02, P03 points with merges AP-28, AP-31, AP-34, AP-44, AP-47, AP-48) | 15.1 part 2 (P04 to P07 points: A08-AP-51 to A08-AP-92) | consolidation plan: 104 points -> 92 entries; 61 unknowns -> 40; 27 R IDs -> 25 questions + 1 withdrawn |
 | 2026-11-26 19:06 | section 15.1 complete (A08-AP-01 to A08-AP-92) | 15.2 (UNKNOWN items A08-U-01 to A08-U-40) | — |
+| 2026-11-26 19:08 | section 15.2 written (A08-U-01 to A08-U-40; 8 merged entries hold 29 items) | section 16 (questions A08-Q-01 to A08-Q-25; P06-R1 withdrawn) | references to U and Q numbers fixed |

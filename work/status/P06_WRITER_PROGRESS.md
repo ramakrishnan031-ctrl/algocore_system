@@ -17,3 +17,4 @@ File: parts/A08_CONFIGURATION_WIRING_AND_CONSUMER_INTERFACES_2026-11-26.md
 | 2026-11-26 17:21 IST | section 10 (intent) | section 11 (AUDIT points) | P06-S001 to P06-S186 (U01, U03 reserved) |
 | 2026-11-26 17:21 IST | section 11 (AUDIT points AP01 to AP10) | section 12 (UNKNOWN) | P06-S001 to P06-S186; AP01 to AP10 |
 | 2026-11-26 17:23 IST | section 12 (UNKNOWN U01 to U06); P06-S006 completed with the 7d4970a comparison | section 13 (questions) | P06-S001 to P06-S186; AP01 to AP10; U01 to U06 |
+| 2026-11-26 17:23 IST | section 13 (questions R1 to R5) | section 14 (cross-references) | P06-S001 to P06-S186; AP01 to AP10; U01 to U06; R1 to R5 |

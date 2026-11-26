@@ -381,7 +381,13 @@ Both legacy machines are terminated; no log, database, journal or deployed confi
 
 ## 13. Questions about intent for Rama
 
-(to be filled: section 13)
+Drafts for Claude to put to Rama through the STUDY; plain wording; the options are not ranked.
+
+- P06-R1 (P06-AP01; A01 C13) — When the legacy program started, the support and resistance background workers were switched on before the start-up check against the broker's positions and before the kill-switch check. Were they meant to start only after those checks? A: yes, only after the checks; B: starting earlier was acceptable because they do nothing until a trade signal arrives; C: not sure; Other.
+- P06-R2 (P06-AP05; A02 K-22) — The legacy system had three separate settings for how far beyond a support or resistance level the stop-loss is placed: one for the old observer's suggestion (0.3 %), one for the "wait for retest" entry (0.2 %) and one for the structure-based exit (0.2 %, with a note saying it should match the entry setting). Were the entry and the exit meant to use one shared value? A: yes, one shared value; B: no, separate values on purpose; C: not sure; Other.
+- P06-R3 (P06-AP06) — The support and resistance tuning settings were also used by the newer V3 decision chain and the PB-01 watchlist, and one cache setting by the market-regime engine, so changing an S&R setting changed those features too. Was that sharing intended? A: yes, one set of settings for all; B: no, each feature was meant to have its own; C: not sure; Other.
+- P06-R4 (P06-AP10) — The code allowed the structure-based exit to be switched on without the "wait for retest" feature. In that case its support and resistance zones were prepared only for stocks that had received a new signal since the program started. Was the structure-based exit meant to be used on its own? A: yes, on its own; B: no, only together with the retest feature; C: it was never meant to be switched on yet; D: not sure; Other.
+- P06-R5 (P06-U01) — Do you recall switching on the "wait for retest" entry, the structure-based exit or the VWAP/opening-range anchors on the production machine at any time (for example by editing the settings file there)? A: never; B: yes (please say which and roughly when); C: not sure.
 
 ## 14. Cross-references to other parts and topics
 

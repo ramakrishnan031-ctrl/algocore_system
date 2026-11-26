@@ -8,3 +8,4 @@
 | 26-Nov-2026 13:19 | section 3 (the 48 items) written | section 4 (the 16 open issues) | P07-S001 to P07-S066 |
 | 26-Nov-2026 13:20 | section 4 (the 16 open issues) written | section 5 (non-ID notes) | P07-S001 to P07-S086 |
 | 26-Nov-2026 13:22 | section 5 (non-ID notes, other mentions) written | section 6 (retest-ownership wording) | P07-S001 to P07-S098 |
+| 26-Nov-2026 13:23 | section 6 (retest-ownership wording) written | section 7 (assignment table) | P07-S001 to P07-S104 |

@@ -11,3 +11,4 @@ Check notes / scripts: /home/claude/a08/notes/ASSEMBLY_CHECKER_*
 | 26-Nov-2026 19:37 | Section 3 (P01) checked: every bullet against P01-S006 to S137 (tables included; index rebuilt to capture tables); 7 corrections | Section 4 (P02) | 21 |
 | 26-Nov-2026 19:38 | Section 4 (P02) checked against P02-S007 to S160 (tables included); 3 corrections | Section 5 (P03) | 24 |
 | 26-Nov-2026 19:40 | Section 5 (P03) checked against P03-S009 to S217; 5 corrections | Section 6 (P04) | 29 |
+| 26-Nov-2026 19:42 | Section 6 (P04) checked against P04-S011 to S183 and the baseline (retest_confirm.py L116 to L137); 9 corrections (one contradiction of part and code: zero-range strong close) | Section 7 (P05) | 38 |

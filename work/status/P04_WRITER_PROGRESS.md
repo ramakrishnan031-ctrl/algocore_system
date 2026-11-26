@@ -6,3 +6,4 @@ Work notes: /home/claude/a08/notes/P04_grep.sh (git grep with the four exclusion
 | Time (IST) | Section done | Next step | Statement IDs used so far |
 |---|---|---|---|
 | 2026-11-26 16:12 | skeleton (header + 16 section headings); sources read (briefs, D-41, P01/P02/P03/P07, inventory, both A08 files in full, interface lines, records of the assigned items) | section 1 (Method) | none |
+| 2026-11-26 16:13 | section 1 (Method, sources, boundaries) | section 2 (files, purpose, three retest mechanisms) | P04-S001 to P04-S010 |

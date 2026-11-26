@@ -45,3 +45,10 @@
 - Sec 12: S161-S170 docstrings/comments; S171-S175 tests; S176-S178 docs; S179-S182 history.
 - Sec 14 (X07): A01 wiring/boot/shutdown S016,S035,S062,S080,S089,S091,S092,S114,S115; A02 keys/loader/registry S019,S034,S097,S125,S128; A03 store/table/CHECKs S053-S059,S122, AP17, AP21; A05 HA-03/HA-04/CM-05/A05-17/18/29; A06 divert call site/resumption/WA-06/WA-07/EV-01/EV-11/ET-07/upstream claim S036, sec 8, S136-S138,S146,S147, AP03; A07 SL-06,SL-30,EG-01,RP-12,RP-13,RP-21 S105,S139-S141,S148,S160; A09 S099,S102; A10 MARKET S100,S121, AP18; A11 _strong_close S017,S120; A12 eod clear/prune/recovery S059,S086-S088,S119,S123; A13 S102; A15 report/registry/evidence S060,S125,S126,S175; A18 PB-01 + wording S017,S127,S150, AP09, AP10; A19 tests S129,S171-S175, AP20.
 - X08: (b) inventory sec 7 omits test_sr_v2_market_path.py (now in Rev 1); (c) records notes AP21; (d) AP01 bears on SL-06,SL-30,ET-07,EV-11,Q-11,C13.
+
+## P05 (122 statements S001-S122; 17 AP; 7 U; 3 R; 8 X). Writer H10 Max; checker H12 High.
+- Sec 13 primary: C38b S093; K-02 S094; CL-11 S095; CL-15 S096; RL-06 S097; HA-07 S098; XC-03 S099. OIR: A04-05 S100; A04-28 S101; A05-32 S102; A05-54 S103. Records: CL-12 S104; AU-05 S105.
+- Secondary: D-05 S106; CM-15 S107; HA-09 S108; A05-02 S109; CM-07, HA-05, IN-09, SX-07 S110; N2 S111.
+- 8.5 records found: A01 C40 S112; A02 K-32 S113 (Claude's assignment decision: listed in 13.6 with P05 facts).
+- Sec 12: S114-S116 texts; S117-S119 tests; S120 docs; S121 history.
+- Sec 14 (X07): A01 helpers/import effects C38b, C40; A02 load_all, keys K-02, K-32, L-45, L-47; A04 client/limiter CL-11, CL-12, CL-15, AU-05, RL-06, A04-05, A04-28; A05 instrument cache HA-07, HA-09, XC-03, CM-15, IN-09, A05-02, A05-32, A05-54; A15 registry; A16 no schedule; A19 test.

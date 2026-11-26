@@ -13,3 +13,4 @@ Check notes / scripts: /home/claude/a08/notes/ASSEMBLY_CHECKER_*
 | 26-Nov-2026 19:40 | Section 5 (P03) checked against P03-S009 to S217; 5 corrections | Section 6 (P04) | 29 |
 | 26-Nov-2026 19:42 | Section 6 (P04) checked against P04-S011 to S183 and the baseline (retest_confirm.py L116 to L137); 9 corrections (one contradiction of part and code: zero-range strong close) | Section 7 (P05) | 38 |
 | 26-Nov-2026 19:43 | Section 7 (P05) checked against P05-S010 to S122 and the baseline (sr_level_export.py L137 to L160); 2 corrections | Section 8 (configuration) | 40 |
+| 26-Nov-2026 19:46 | Sections 8, 9 and 10 checked (P06-S007 to S091; the switch table against P06-S088; the "(I)" marker by script); 6 log entries (section 9 unchanged) | Section 11 (consumers) | 46 |

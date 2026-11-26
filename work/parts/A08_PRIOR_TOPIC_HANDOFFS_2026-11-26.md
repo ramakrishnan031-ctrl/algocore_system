@@ -189,6 +189,99 @@ P07-S086. INTERPRETATION (from P07-S070 to P07-S085): none of the 16 entries put
 
 ## 5. The non-ID handoff notes
 
+### 5.1 The notes in the records' section 15 and 15.2 prose (found by script, P07-S015)
+
+P07-S087. FACT (method): each note below is identified by "N" and a number for use in section 7; none is an item, none is added to the 48, and none is re-owned. The quotations are the clause that names A08 (under 15 words, the full text at the line given).
+
+| Statement | Note | Record and line | What the record says (A08 clause) | Items it relates to | A08 question | A08 code location (FACT) | Part |
+|---|---|---|---|---|---|---|---|
+| P07-S088 HISTORICAL (record) | N1 | A03 RTR L419 (among STUDY questions "not put to Rama by A03"); with A03 RTR L199 (section 7) and L147 (section 5) | "the S&R shadow database (A08)"; L199: legacy records describe a third, S&R shadow database, and "No such module, path or text exists at the baseline" (owner by subject: A08); L147: "the S&R shadow database absent at the baseline" | none by ID; Q-17, Q-29, U-25 store the S&R rows in the trading database | whether any A08 code creates, opens or writes a database other than the trading store | the A08 writes go through the injected store: `sr_detector/detector.py` L295, `screening/retest_monitor.py` L97 and L413; the backfill opens `scripts/sr_detector_backfill.py` L24 (`DB_PATH`) or `--db` (L102, L115); repository-wide `git grep -i` of `sr_shadow`, `shadow_db`, `shadow.db` and `sr_detector.db` (with the four exclusions): no hit | P03; P04 |
+| P07-S089 HISTORICAL (record) | N2 | A05 RTR L480; with A05 RTR L706 (section 22.2) and L452 (section 15.1) | "the fetchers' cache key and wall-clock age (KNOWN DEFECT considered and not given at the boundary), the unsorted fetched rows, `Candle.from_kite`'s conversions, the corporate-action check, and `scripts/sr_level_export.py` stopping at L139 before A01 C38b's recorded L141, C38b unchanged (A08)" (L480; quoted in full because it lists five points); L706: "HA-06's cache-key collision is handed to A08"; L452: "A01 C38b's earlier failing line, noted for A08" | HA-06 (cache; the KNOWN DEFECT consideration is the A08 AUDIT's to make, not this part's); CM-05 (order); CM-10 and HA-08 (conversions); HA-07 (check); C38b and CM-15 (L139) | as P07-S048, P07-S043, P07-S044, P07-S050, P07-S049, P07-S022 | as those statements | P02 (cache, rows); P01 (conversions); P05 (check, export) |
+| P07-S090 HISTORICAL (record) | N3 | A06 RTR L548 | "whether the dispatcher's zone warming can block (A08)" | WD-10, WD-16, PQ-09, PQ-11 | as P07-S056 | as P07-S056 | P02 |
+| P07-S091 HISTORICAL (record) | N4 | A07 RTR L533 | the listing rule: an entry naming more than one topic, "for example "A08 and A18", is listed under each" | SL-06, SL-30, EG-01 (listed under A08 and A18) | none of its own (section 6) | none | none (section 6) |
+| P07-S092 HISTORICAL (record) | N5 | A07 RTR L560 | "to A08, the reachability of `continue_from_retest` (with A18) and the S&R backfill script" | SL-06, SL-30 (reachability); XS-12, A03 U-25 (backfill) | as P07-S062, P07-S063, P07-S038 | as those statements | P04; P03 |
+| P07-S093 HISTORICAL (record) | N6 | A07 RTR L565 (point 2, "OPEN QUESTION for Claude and ChatGPT") | "The retest path's owner": A07 STUDY P02-S040 says A08; parts SL and EG say "A08 and A18"; A06 PQ-13 says "A18's retest path" | SL-06, SL-30, EG-01; A06 PQ-13 (an A07 item, not in the 48) | decided for the topic boundary by D-41, P1 (section 6) | `main.py` L3769 to L3802; `screening/retest_monitor.py` (section 6) | section 6; P04 |
+
+### 5.2 Other lines of the seven RTRs that name A08 (outside section 15 and 15.2)
+
+P07-S094. HISTORICAL (record; P07-S004 (d)): the RTRs name A08 at further lines that state boundaries or summaries and carry no handoff of their own. Each is listed with the items it touches; none is added or re-owned. INTERPRETATION (the last column): the part whose files the line concerns.
+
+| RTR | Lines | What the lines say about A08 (short) | Touches | Part |
+|---|---|---|---|---|
+| A01 | L154; L444 | `main.py` builds every subsystem for an owner topic, "A08 S&R" among them; `sr_level_export.py` "its owner is probably A08, to be confirmed" | C38b (P07-S013) | P06; P05 |
+| A02 | L136 | A02's boundary list: "A08 (the S&R keys)" | K-21 to K-24 | P06 |
+| A03 | L147; L199 | A08 for `sr_detector_results`, `retest_state` and the absent shadow database | N1 | P03; P04 |
+| A04 | L144 | "A08 (the historical fetch closure on the shared client)" | C38a, B-11, RL-05 | P02; P06 |
+| A05 | L39, L41, L43 | the boundary: A08 owns the technical-analysis use of market data; A05 read `sr_detector/fetch.py` and `sr_detector/models.py` "only as boundary evidence (A08 keeps them)"; U-25 "an A08-owned pointer only" | CM-05, CM-10, HA-01 to HA-09, U-25 | P02; P01; P03 |
+| A05 | L59, L119, L127, L128, L131, L181, L188, L320 | summaries: six consumers reach the closure "each through its own `OhlcFetcher`" (A08 and A18); `sr_detector/zone_builder.py` is a `candle_math` caller; at the committed values the closure serves "the V1 detector (A08)"; the spot check has no recorded result; two cross-section reads are "for A08 and A18 to judge"; the fetchers' cache (A08's, boundary) | HA-06, HA-07, HA-09, K-24, CM-15 | P02; P05; P06 |
+| A05 | L205 | "A08 (the fetch orchestration, `Candle.from_kite` and the fail-safe; token-0 rows turned into None without a warning; the retest monitor's wall-clock comparison; the corporate-action spot check)" | HA-01, HA-08, IN-02, HA-07; the wall-clock comparison relates to HA-03 (A05-17, A05-18), not among the 48 | P02; P01; P04; P05 |
+| A05 | L439, L452, L493, L504, L706, L707, L710 | U-25 carried as "an A08-owned pointer only"; C38b's earlier line noted for A08; cross-topic parts of the treatments stay with their owners ("S&R: A08"); the repository check of A05-25 ("A07's and A08's code"); HA-06's cache-key collision handed to A08 | U-25, C38b, HA-06; A05-25 | P03; P05; P02 |
+| A06 | L42, L45, L225 | A06 maps the later call-outs at the interface only; "technical analysis, S&R and the retest path (A08)" | all A06 items | P06 |
+| A06 | L61, L205, L214 | the S&R hooks (A08); after the screener the FCFS path calls "the retest diverter (A08)" and, after `place()`, "the S&R observer (A08)"; "A08's retest path" writes `signals` rows | EV-23, EG-01, P-02 | P04; P03 |
+| A06 | L229 | "A08 (the zone warmer's `enqueue` on the dispatcher thread; the retest diverter and `continue_from_retest` not reached at the committed `wait_for_retest_enabled: false`; the S&R observer after placement; the retest path's SL buffer, A02 K-22)" | WD-10, PQ-11, SL-06, SL-30, EV-23, K-22 | P02; P04; P03 |
+| A06 | L762, L763 | A06's interface-only parts stay with their owners (A08 among them); "price and symbol use (A07, A08, A09, A10)" among the owners of treatment parts | WA-07 | P04 |
+| A07 | L42, L45, L47, L164 | A08 "owns the technical-analysis and S&R calculations"; under D-39 (P1) "the S&R inputs A08's" and "the production of S&R inputs A08's"; "`screening/retest_monitor.py` (A08)" | EG-01; the playbook gates' S&R inputs | P06; P04 |
+| A07 | L88, L211 | the refinement of STUDY P02-S040: the reachability of `continue_from_retest` "to A08", parts SL and EG "A08 and A18" | section 6 | P04 |
+| A07 | L112, L126, L130, L136, L138 | "the zones A08's" for `gate_rr`; A08 among the readers of A07's statuses; "A08's retest threads (L2411)"; "A08's `RETEST_WAITING`" replaces A07's "proceed"; "the retest resumption's reachability is A08's"; "A08's retest diverter runs after `PASSED` with its own zone cache" | EG-01, SL-30, EV-11, P-02 | P04; P06 |
+| A07 | L166, L168 | boundary point (5), the retest path's owner; "A08 (`screening/retest_monitor.py`, A08's although in A07's package; the diverter overwriting `PASSED`; `continue_from_retest` with strategy control at L2411; `gate_rr`'s S&R inputs)" | section 6; EG-01, SL-30 | P04; P06 |
+| A07 | L793, L806, L814 | section 22.1 point 2: the retest path's owner "(A08, or A08 and A18; ...)", and Rama's decision "(a)" of 25-Nov-2026 to carry it forward as an OPEN QUESTION; the handoffs go to A08 among other topics; "A08 is not opened before then (D-23)" | section 6 | none |
+
+### 5.3 AUDIT table rows that name A08 and carry no ID of the 48
+
+P07-S095. FACT (P07-S004 (c), with a filter keeping rows whose first cell is an ID not among the 48): these MATCH rows and handoff rows name A08 in an owner cell or as the owner of a named line. None of them is in an RTR's A08 row; none is added to the 48 and none is re-owned. They are listed because they locate A08 code that the parts will read.
+
+| AUDIT | Line | Row (ID; result) | What it says about A08 (short) | Part (INTERPRETATION) |
+|---|---|---|---|---|
+| A01 | L526 | S-35; MATCH (section 5) | the optional-feature flags and the shared fetch closure; owners "A01 (call site); A08, A18" | P06 |
+| A02 | L527 | L-45; MATCH (section 5.4) | "one `model_copy` in an offline tool (`scripts/sr_level_export.py` L152 to L155, A08)" | P05 |
+| A02 | L529 | L-47; MATCH (section 5.4) | `scripts/sr_level_export.py` L139 "passes a `str`, which the signature does not accept"; "the call site has no handler (A08)" | P05 |
+| A02 | L554 | handoff table 5.5, row "`scripts/sr_level_export.py` L139", owner "A08" (no item ID) | passes `str(ROOT / "config")` ("INTERPRETATION: `TypeError`"); "no handler at the site or in `main()` (L190)"; the `model_copy` override "is not validated" | P05 |
+| A02 | L2328 | K-61; MATCH (section 9.4) | the `sr_detector` keys: "MATCH (32)", with K-22 and K-24 as the ISSUEs; owners "A08, A18" | P06 |
+| A03 | L1053 | H-25; MATCH (section 6.4) | the `signals.status` vocabulary, `RETEST_*` included; owners "A06, A07, A08 (values); A03 (CHECK)" | P04 |
+| A03 | L1072 | H-44; MATCH (section 6.4) | `sr_detector_results.mode` spellings, `screening/retest_monitor.py` L415 and `sr_detector/detector.py` L273; owners "A08, A02, A12; A03" | P03; P04 |
+| A03 | L1075 | H-47; MATCH (section 6.4) | the `retest_state.state` CHECK; owners "A11, A08, A18; A03" | P04 |
+| A03 | L2273 | Q-46; MATCH (section 9.4.1) | the retest state's upsert, atomic release, end-of-day clear and rehydrate; owners "A08; A03" | P04 |
+| A03 | L3171 | U-59; MATCH (section 11.4) | the backfill's outcome writes (only terminal trades); owner "A08" | P03 |
+| A03 | L3172 | U-60; MATCH (section 11.4) | the backfill's run detection by exit-code marker; owners "A16; A08" | P03 |
+| A04 | L796 | handoff table 5.5, owner "A08" | besides CL-11 and CL-15: "`scripts/sr_level_export.py` obtains no client because it fails before `_build_market_data_kite` (A01 C38b ...)" | P05 |
+| A04 | L3193 | CS-27; MATCH (section 10.4) | the historical-data closure on the shared client; owners "A01 (wiring); A08, A18 consumers" | P02 |
+| A05 | L1370 | CM-13; MATCH (section 7.4) | the candle contract; owners "A05; A08 (the type)" | P01 |
+| A05 | L1665 | HA-12; MATCH (section 8.4) | the closure's own steps; owners "A05; A01 (wiring); A08 (the injection)" | P02; P06 |
+| A05 | L1667 | HA-14; MATCH (section 8.4) | the request (window, dates, token, one request per interval); owners "A05; A08 (the fetcher); A04 (RD-33)" | P02 |
+| A05 | L1668 | HA-15; MATCH (section 8.4) | the returned contract, rows to `Candle`; owners "A05; A08 (`Candle`, the fetcher)" | P01; P02 |
+| A05 | L1669 | HA-16; MATCH (section 8.4) | the six-flag build of the closure; owners "A05; A01 (wiring); A08, A11, A18 (the consumers)" | P06 |
+| A05 | L3274 | handoff table 13.5, owner "A08" | besides XC-03: "the V1 detector's fetcher missing from the registry's count (A15's text ...)" | P06 (P07-S053) |
+| A07 | L3733 | RP-13; MATCH (section 11.4) | threads and locks across A07; owners "A07; A06, A01, A08 (their threads)" | P04 |
+| A07 | L3739 | RP-19; MATCH (section 11.4) | "The technical and S&R information A07 consumes (Q14; A08 owns the calculation)"; owners "A07; A08, A05, A18" | P06 |
+| A07 | L3741 | RP-21; MATCH (section 11.4) | the end-to-end order of the accepted path; owners include A08 ("theirs") | P04; P06 |
+
+P07-S096. FACT (the other AUDIT table rows naming A08): the A05 AUDIT names A08 in a further 25 rows of its internal disposition tables (the STUDY's AUDIT points, L138, L185, L1159, L1174, L1177, L1183, L1205, L1446, L1465, L1468, L1473, L3020, L3037, L3368; the inherited-item tables, L274, L403, L849, L1511 to L1513, L2143, L2144, L2149, L2524 to L2526, L2832), the A06 AUDIT in five (inherited-item tables L384, L387, L4228, L4231, L6156) and the A07 AUDIT in three (L3761, L3763, L4309). They record how those topics disposed of their own STUDY points and inherited items; among them, A05 L1183 ("the export script stops at L139") and L1468 ("`scripts/sr_level_export.py` fails at L139 before A01 C38b's L141") bear on AP-02. None carries an item for A08 beyond the 48.
+
+### 5.4 AUDIT records whose Owner field names A08 but which are not among the 48
+
+P07-S097. FACT (P07-S004 (b) over every record of the seven AUDITs): 16 records name A08 in their Owner field and are not in any RTR's A08 row. They are not handed to A08 and are not added here; they are listed so that the parts can see where the earlier records already name an A08 side.
+
+| AUDIT | Record (heading line; Owner line) | Subject (shortened) | A08 in the Owner field (short) | Linked entry | Part (INTERPRETATION) |
+|---|---|---|---|---|---|
+| A03 | D-09 (L462; L472) | heartbeats of a `--db` run go to the default database | "the scripts' owners (A07, A12, A05, A08, ...)" | A03-10 | P03 |
+| A03 | Q-09 (L2011; L2021) | status setters without a from-state predicate | "A08 (retest)" | — | P04 |
+| A03 | U-05 (L2812; L2821) | order and trade status sets differ | "A08 (backfill)" | — | P03 |
+| A04 | CL-12 (L662; L672) | script clients choose account and credentials by different rules | "the scripts' owners A05, A08, ..." | — | P05 (interface only) |
+| A04 | AU-05 (L1047; L1057) | scripts read the token file themselves | "the scripts' owners for their reads (A05, A08, ...)" | — | P05 (interface only) |
+| A04 | RL-11 (L3519; L3529) | UNKNOWN: concurrent use of the one Live client | "A08 (the fetch closure's use, as C38a records)" | — | P02 (with C38a) |
+| A05 | CM-07 (L1295; L1305) | two values called VWAP | "A08 (the anchors)" | A05-01 | P02 |
+| A05 | CM-11 (L1351; L1361) | UNKNOWN: whether any calculation call site ran | "A18, A08 and A15 (their paths and records)" | — | P02 |
+| A05 | HA-03 (L1548; L1558) | the historical `Candle.ts` is the server's label unchanged | "A08 (`Candle` and the retest monitor)" | A05-17, A05-18 | P04; P01 |
+| A05 | HA-05 (L1576; L1586) | UNKNOWN: whether each window fitted one request | "A08 and A18 (the windows each consumer asks for)" | — | P02 |
+| A05 | HA-10 (L1646; L1656) | UNKNOWN: the runtime of historical access | "A08 and A18 (the consumers)" | — | P02 |
+| A05 | IN-09 (L1928; L1938) | UNKNOWN: one rule for a symbol missing from the cache | "the consumers' owners (..., A08, ...)" | A05-02 | P02 |
+| A06 | EV-01 (L4254; L4302) | status writes are unconditional | "A07 and A08 (the gate, screener and retest values)" | — | P04 |
+| A06 | ET-07 (L5166; L5176) | UNKNOWN: the runtime facts of the throttle | "A07, A08, A18 (item 7)" | — | P04 |
+| A07 | SX-07 (L1902; L1912) | which VWAP the screening was meant to use | "A08 (the anchors that use `session_vwap`)" | — | P02 |
+| A07 | RP-12 (L3709; L3719) | UNKNOWN: whether any end-to-end path ran | "A06, A08, A09, A10 (their steps of each path)" | — | P04 |
+
+P07-S098. INTERPRETATION (from P07-S097): the RTRs' A08 rows were collected from the AUDITs' handoff tables (A03 RTR L395, A07 RTR L533), not from Owner fields, so an Owner field that names A08 does not by itself make an item A08's. Whether the A08 STUDY records its side of these 16 is not settled by any record; it is put to the AUDIT and to Claude and ChatGPT (section 8, AP-05), not to Rama.
+
 ## 6. The retest-ownership wording
 
 ## 7. Assignment table

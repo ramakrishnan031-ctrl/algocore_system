@@ -17,7 +17,7 @@
 | H13 | P06 | writer | Opus 5.5 / High (Rama, 26-Nov) | 26-Nov-2026 17:00 | 26-Nov-2026 17:24 | COMPLETE (186 statements; 10 AUDIT points; 14 inventory corrections; 43 unnamed records found; backup 966b77e) |
 | H14 | P06 | checker | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 17:26 | 26-Nov-2026 18:13 | COMPLETE (186 checked; 53 corrected, 3 added -> 189; 47 of 48 records with part pointers; PQ-06 found) |
 | H15 | STUDY | assembler | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 18:36 | 26-Nov-2026 19:22 | COMPLETE (A08_STUDY_2026-11-26.md, 1,117 lines; 92 AUDIT points, 40 UNKNOWN, 25 questions; coverage ALL PASS; backup a8918fa) |
-| H16 | STUDY | assembly checker | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 19:23 | — | RUNNING |
+| H16 | STUDY | assembly checker | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 19:23 | 26-Nov-2026 20:09 | COMPLETE (68 corrections; counts all right; completeness ALL PASS; 1,239 lines; backup ccc6aae) |
 
 Planned order (at most two at a time; next pair only after both final hand-backs; Rama consulted before each start):
 1. P07 writer + P01 writer

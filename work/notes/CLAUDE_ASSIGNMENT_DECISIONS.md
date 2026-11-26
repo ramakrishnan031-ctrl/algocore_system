@@ -11,3 +11,4 @@
 - P06-R5 overlaps A07-Q19 and A07-29: the assembly keeps it, with the overlap noted, for Rama to see in context.
 - Post-check corrections by Claude: P03-S157 (line ranges assigned to the right files) and P04-S126 (UNKNOWN clause
   added); each logged at the end of its part file.
+- Post-check correction by Claude: P06-S051 and P06-S066 (the divert's structure stop goes only to the audit row's proposed_retest_sl; P04-S042), logged at the end of P06.

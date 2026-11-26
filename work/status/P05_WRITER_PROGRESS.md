@@ -11,3 +11,4 @@
 | 26-Nov-2026 16:41 | section 6 (export: command, columns, payload keys, clock, output, failures) written; S053 line range corrected; scan 0 hits | section 7 (declared invocations and references) | P05-S001 to P05-S084 |
 | 26-Nov-2026 16:44 | section 7 (declared invocations and references; relation to intraday_anchors_enabled; DG-1 pending lists) written; scan 0 hits | section 8 (inherited items) | P05-S001 to P05-S092 |
 | 26-Nov-2026 16:53 | section 8 (7 primary items, 4 open issues, 2 records; secondary items D-05, CM-15, HA-09, A05-02, CM-07/HA-05/IN-09/SX-07, N2; 8.5 two further records found: A01 C40, A02 K-32) written; S021 cross-ref fixed to 8.5; scan 0 hits | section 9 (stated intent) | P05-S001 to P05-S113 |
+| 26-Nov-2026 16:58 | section 9 (stated intent: docstrings/comments vs code, tests, legacy documents, history) written; scan 0 hits | section 10 (Points for the AUDIT) | P05-S001 to P05-S121 |

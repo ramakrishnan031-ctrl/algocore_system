@@ -384,7 +384,7 @@ Draft questions, only where no source states the intent. Claude relays them; thi
 
 ## Check log
 
-**Checker:** helper H8 (Opus 5.5, Max effort), 26-Nov-2026, 15:15 to 15:50 IST. The writer's file is kept unchanged at `<workspace>/check/A08_V1_OBSERVER_FLAGS_RESULTS_AND_BACKFILL_2026-11-26.md.writer_original` (md5 `da827c9b71719822c92137840e573f66`).
+**Checker:** helper H8 (Opus 5.5, Max effort), 26-Nov-2026, 15:15 to 15:50 IST. The writer's file is kept unchanged at `<workspace>/check/A08_V1_OBSERVER_FLAGS_RESULTS_AND_BACKFILL_2026-11-26.md.writer_original` (SHA-256 `2afd6021b8fdf96a17dc8a6b02dd72bcb636b910e376f7e468ef3a8086c16a50`).
 
 **Method.**
 1. Every statement, AUDIT point, UNKNOWN item, question and cross-reference was read against its cited source: the legacy code at the baseline (`git -C <legacy clone> show 970aabf:<path> | nl -ba`; `git grep` with the four exclusions; `git log`, `git show --numstat` and the message bodies of the cited commits, author lines not read out), the algocore records at `52cc811` (the A02, A03, A05, A06 and A07 AUDITs, the A03 RTR, the Open Issues Register, the Master System Investigation Index for owners), and the checked parts P01 and P07. No legacy file, test, script or SQL was run, imported or tested; no credential-holding file was opened; the cron line was displayed only with its machine paths masked.
@@ -465,4 +465,5 @@ Draft questions, only where no source states the intent. Claude relays them; thi
 
 | Statement | Before -> after | Reason | Source |
 |---|---|---|---|
+| Check log, method line | the writer's file named by its MD5 value -> by its SHA-256 value (the same file) | the workspace validator allows commit and SHA-256 hashes only (check S5) | `sha256sum` of the kept writer's file |
 | P03-S157 | line cell "L55 to L95, L176 to L209" beside two files -> each range assigned to its file: `utils/cron_heartbeat.py` L55 onwards and L176 to L209; `utils/holiday_guard.py` L85 to L95 | both ranges were in `utils/cron_heartbeat.py`; `is_trading_day` is at `utils/holiday_guard.py` L85 to L95 (noted by the P06 checker) | `git show 970aabf:utils/cron_heartbeat.py`, `git show 970aabf:utils/holiday_guard.py` |

@@ -16,3 +16,14 @@
 
 ## Section 14 (boundaries) pointers
 - P01 X08: A01 S118, S137; A07 gate_htf S135; A15 daily_trade_review S136; A06 as_of S137, Candidate S032/S115; A02 keys S055,S065,S069,S123,S129; A05 candle_math S020,S112; A11 S116; A15 daily_stats S113; A18 S108-S111,S114,S135,S137, AP05, AP14; A19 S124-S127,S140.
+
+## P02 (160 statements S001-S160; 17 AP; 11 U; 5 R (R1-R5); 8 X). Writer H5 Max; checker H7 Max.
+- Sec 13 primary items: C38a S101; K-23 S102; K-24 S103; RL-05 S104; CM-05 S105; CM-15 S106; HA-01 S107; HA-06 S108; HA-09 S109; IN-02 S110; WD-10 S111; WD-16 S112; PQ-11 S113.
+- OIR primary: A05-01 S114; A05-02 S115; A05-25 S116; A05-27 S117; A05-28 S118; A05-35 S119; A05-37 S120; A05-38 S121.
+- Owner-field records primary: RL-11 S122; CM-07 S123; CM-11 S124; HA-05 S125; HA-10 S126; IN-09 S127; SX-07 S128.
+- Notes: N2 S129 (cache key/age + unsorted rows); N3 S130.
+- Secondary: C13 S131; B-11 S132; K-21 S133; K-22 S134; CM-10 S135; HA-04 S136; PQ-09 S137; A05-17 S138; A05-29 S139; HA-03 S140.
+- Sec 10: threads S091 table; locks S092; clocks S093; failure table S094; shutdown S088/S089; enqueue S079/S080.
+- Sec 12: S142-S149 docstrings/comments vs code; S150-S153 tests; S154, S158 docs (PATHS.md L386, L392, L409; SYSTEM_MAP; expected_managers.yaml); S155-S157 history.
+- Sec 14 (X07): A01 closure/constructions/warmer start/_shutdown; A02 keys K-23, K-24; A04 limiter RL-05, RL-11; A05 session_vwap, instrument cache; A06 _warm_zones WD-10, WD-16, PQ-11; A07 SX-07; A11 structure exit ZoneCache.get never enqueues S159/AP17; A12 eod clears retest monitor not zone cache; A15 telemetry S099, registry S158; A16/A17 process lifetime, clock sync; A18 regime/V3/PB-01 fetchers; A19 tests.
+- X08: inventory 2.2 PB-01 fetcher lines L3728-L3732 (now corrected in inventory Rev 1).

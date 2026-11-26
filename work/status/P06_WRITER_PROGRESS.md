@@ -9,3 +9,4 @@ File: parts/A08_CONFIGURATION_WIRING_AND_CONSUMER_INTERFACES_2026-11-26.md
 | 2026-11-26 17:11 IST | section 2 (key table, 46 rows) | section 3 | P06-S001 to P06-S058 |
 | 2026-11-26 17:12 IST | section 3 (keys and readers; defaults) | section 4 (wiring) | P06-S001 to P06-S069 |
 | 2026-11-26 17:13 IST | section 4 (wiring) | section 5 (start and shutdown order) | P06-S001 to P06-S080 |
+| 2026-11-26 17:14 IST | section 5 (start and shutdown order) | section 6 (switch combinations) | P06-S001 to P06-S086 (U03 reserved) |

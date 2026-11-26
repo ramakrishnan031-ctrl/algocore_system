@@ -14,3 +14,4 @@ Work notes: /home/claude/a08/notes/P04_grep.sh (git grep with the four exclusion
 | 2026-11-26 16:21 | section 6 (RetestMonitor: constructor, start, poll loop, fetch filter, _evaluate, elapsed clock TypeError S070, release, handoff, register, logs) | section 7 (rehydrate, clear_all, stop, day boundary) | P04-S001 to P04-S078 |
 | 2026-11-26 16:22 | section 7 (rehydrate, restart cases, day boundary, clear_all + EOD call, recovery fire, stop + shutdown, C37 and C13 A08 sides) | section 8 (continue_from_retest handoff) | P04-S001 to P04-S092 |
 | 2026-11-26 16:24 | section 8 (continue_from_retest handoff: inputs, band->stop, buffer, entry estimate, MARKET type, call-outs named, nothing returned, statuses) | section 9 (threads, locks, clocks, failures summary) | P04-S001 to P04-S105 |
+| 2026-11-26 16:25 | section 9 (threads, locks, interleavings, clocks table, direction tests, failure table) | section 10 (call sites in other topics files) | P04-S001 to P04-S113 |

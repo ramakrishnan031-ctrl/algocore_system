@@ -11,3 +11,8 @@
 - 26-Nov-2026: writers P04 and P05 on Opus 5.5, Max effort.
 - 26-Nov-2026: checkers P04 and P05 on Opus 5.5, High effort.
 - 26-Nov-2026: writer P06 on Opus 5.5, High effort.
+- 26-Nov-2026: checker P06 on Opus 5.5, Max effort.
+- 26-Nov-2026 (Claude chat): the 43 earlier AUDIT records/rows that touch A08 code or switches without naming A08
+  (P06-S175, P06-S176; P06-AP08): "List with A08 facts (Recommended)" — the STUDY lists them with pointers to the part
+  statements that already record the A08 facts; no extra fieldwork unless a part is silent; flagged for ChatGPT at the
+  STUDY review. Nothing in earlier topics is changed.

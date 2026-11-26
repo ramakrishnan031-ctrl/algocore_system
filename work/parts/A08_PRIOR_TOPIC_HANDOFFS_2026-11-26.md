@@ -255,7 +255,7 @@ P07-S095. FACT (P07-S004 (c), with a filter keeping rows whose first cell is an 
 | A07 | L3739 | RP-19; MATCH (section 11.4) | "The technical and S&R information A07 consumes (Q14; A08 owns the calculation)"; owners "A07; A08, A05, A18" | P06 |
 | A07 | L3741 | RP-21; MATCH (section 11.4) | the end-to-end order of the accepted path; owners include A08 ("theirs") | P04; P06 |
 
-P07-S096. FACT (the other AUDIT table rows naming A08): the A05 AUDIT names A08 in a further 27 rows of its internal disposition tables (the STUDY's AUDIT points, L138, L185, L1159, L1174, L1177, L1183, L1205, L1446, L1465, L1468, L1473, L3020, L3037, L3368; the inherited-item tables, L274, L403, L849, L1511 to L1513, L2143, L2144, L2149, L2524 to L2526, L2832), the A06 AUDIT in six (the STUDY-point table L6120; the inherited-item tables L384, L387, L4228, L4231, L6156) and the A07 AUDIT in three (L3761, L3763, L4309). They record how those topics disposed of their own STUDY points and inherited items; among them, A05 L1183 ("the export script stops at L139") and L1468 ("`scripts/sr_level_export.py` fails at L139 before A01 C38b's L141") bear on AP-02. None carries an item for A08 beyond the 48.
+P07-S096. FACT (the other AUDIT table rows naming A08): the A05 AUDIT names A08 in a further 27 rows of its internal disposition tables (the STUDY's AUDIT points, L138, L185, L1159, L1174, L1177, L1183, L1205, L1446, L1465, L1468, L1473, L3020, L3037, L3368; the inherited-item tables, L274, L403, L849, L1511 to L1513, L2143, L2144, L2149, L2524 to L2526, L2832), the A06 AUDIT in six (the STUDY-point table L6120; the inherited-item tables L384, L387, L4228, L4231, L6156) and the A07 AUDIT in three (L3761, L3763, L4309). They record how those topics disposed of their own STUDY points and inherited items; among them, A05 L1183 ("the export script stops at L139") and L1468 ("`scripts/sr_level_export.py` fails at L139 before A01 C38b's L141") bear on AP-02. None hands A08 an item beyond the 48; refined in the check: A05 L2143 and L2524 repeat the owner list of A04 CL-12, one of the 16 records of section 5.4, and A07 L3761 and L3763 word the retest path's owner (section 6, P07-S103).
 
 ### 5.4 AUDIT records whose Owner field names A08 but which are not among the 48
 
@@ -280,7 +280,7 @@ P07-S097. FACT (P07-S004 (b) over every record of the seven AUDITs): 16 records 
 | A07 | SX-07 (L1902; L1912) | which VWAP the screening was meant to use | "A08 (the anchors that use `session_vwap`)" | — | P02 |
 | A07 | RP-12 (L3709; L3719) | UNKNOWN: whether any end-to-end path ran | "A06, A08, A09, A10 (their steps of each path)" | — | P04 |
 
-P07-S098. INTERPRETATION (from P07-S097): the RTRs' A08 rows were collected from the AUDITs' handoff tables (A03 RTR L395, A07 RTR L533), not from Owner fields, so an Owner field that names A08 does not by itself make an item A08's. Whether the A08 STUDY records its side of these 16 is not settled by any record; it is put to the AUDIT and to Claude and ChatGPT (section 8, AP-05), not to Rama.
+P07-S098. INTERPRETATION (from P07-S097): the RTRs' A08 rows were collected from the AUDITs' handoff tables (A03 RTR L395, A07 RTR L533), not from Owner fields, so an Owner field that names A08 does not by itself make an item A08's. Whether the A08 STUDY records its side of these 16 was not settled by any approved record; corrected in the check: Rama decided it on 26-Nov-2026 (P07-S123), and section 5.5 gives each record its A08 code location and part.
 
 ## 6. The retest-ownership wording
 

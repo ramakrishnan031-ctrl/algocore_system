@@ -11,3 +11,4 @@ Output: /home/claude/a08/parts/A08_V1_OBSERVER_FLAGS_RESULTS_AND_BACKFILL_2026-1
 | 2026-11-26 14:57 | section 6 (row: write, table, V2 writer, readers, telemetry) | section 7 (non-gating); forward refs to keep: S118 = backfill outcomes per case; AP04 = flags docstring; AP13 = registry line refs | P03-S001 to P03-S100 |
 | 2026-11-26 14:58 | section 7 (non-gating) | section 8 (backfill) starting at P03-S113; S118 = outcomes per case; AP01 = indirect effects; AP13 = registry | P03-S001 to P03-S112 |
 | 2026-11-26 15:00 | section 8 (backfill) | section 9 (call sites table) from P03-S142 | P03-S001 to P03-S141 |
+| 2026-11-26 15:01 | section 9 (call sites table) | section 10 (inherited items) from P03-S163 | P03-S001 to P03-S162 |

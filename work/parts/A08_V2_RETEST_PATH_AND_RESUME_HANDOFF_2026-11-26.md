@@ -165,6 +165,59 @@ INTERPRETATION: on every `True` the processor returns without sizing, reservatio
 
 ## 9. Threads, locks, clocks and failure behaviour (summary)
 
+This section gathers what sections 3 to 8 state, for citation by the other parts and the assembly; it adds no new code fact except where a line is cited.
+
+- P04-S106 FACT (the threads that run code of the two files; other topics' threads at the interface only):
+
+| Thread | Started at | Code of the two files it runs |
+|---|---|---|
+| main thread | boot (`main.py`) | the constructions (L3774 to L3792), the bindings (L3793, L3794), `rehydrate` (L3795), `RetestMonitor.start` (L3797); in `_shutdown`, `RetestMonitor.stop` (L1733) |
+| "sp-worker" pool (A06; P02-S071) | the processor's start (`main.py` L3974) | `RetestDiverter.maybe_divert` and through it `ZoneCache.get` (P02), `_matching_zone`, `RetestMonitor.has_symbol`, `RetestMonitor.register` (`insert_retest_state`), `update_signal_status`, `_log_divert_audit` (`insert_sr_detector_result`) |
+| "sr-retest-monitor" (`screening/retest_monitor.py` L79) | `main.py` L3797 | `_run`, `poll_once`, `_evaluate`, `_fetch_recent_1m` (the one-minute fetcher, P02-S040 row 6, and the shared closure), `retest_confirm.evaluate` and `_strong_close`, `_release`, `update_retest_state`, and the callback `continue_from_retest` with everything it calls (section 8) |
+| the thread that runs the end-of-day `_fire` (A12's: the "eod_squareoff_poll" thread, `orders/eod_squareoff.py` L308, when polling was started; the main thread when the restart recovery fires during `post_wire_init`, `main.py` L3866; the caller of `fire_now`) | A12's | `RetestMonitor.clear_all` |
+
+- P04-S107 FACT and INTERPRETATION (locks): FACT: the monitor's one `threading.RLock` (L69) guards only the `_parked` dictionary, in `register` (L95), `clear_all` (L109), `rehydrate` (L129), `parked_count` (L139), `has_symbol` (L144), `poll_once` (L160), `_evaluate` (L197) and `_release` (L206); no store call, fetch, evaluation, log call or callback runs while it is held; the diverter and `retest_confirm.py` have no lock. INTERPRETATION: no method that takes the lock calls another that takes it while holding it, so the lock's re-entrancy is not used; each critical section is a dictionary operation or a copy of its values, so a waiter waits only for that.
+- P04-S108 INTERPRETATION (the interleavings the code allows; from P04-S107 and sections 4 to 7): (a) the diverter's duplicate test and its `register` are separate critical sections (P04-S041); (b) a poll's snapshot and `clear_all` (P04-S087); (c) a `register` during a poll: the new candidate is first evaluated at the next poll (P04-S065); (d) a confirmation's `_release` and a later divert of the same symbol: the symbol is free as soon as the release has removed it from memory, before the resumption runs, so a new in-zone signal of the same symbol can be parked while, or after, the first is resumed and placed; whether a second entry on that symbol is then refused is A06's and A09's (the one-trade-per-symbol-direction check, `signals/signal_processor.py` L2478, named only); (e) `rehydrate` cannot overlap a poll, running before `start` (L3795, L3797), and runs before the processor's start (L3974), so no divert can interleave with it.
+- P04-S109 FACT (every clock reading in the two files and at the handoff):
+
+| Where | Clock | Form used | Purpose |
+|---|---|---|---|
+| `maybe_divert` L368 | the diverter's `now_fn` (`main.py`: `time_authority.now_ist`, L3792) | aware, made naive by `replace(tzinfo=None)` | `added_at`, the retest clock's start |
+| `_log_divert_audit` L398 | the same | naive text | the divert row's `ts` and `created_at` |
+| `_evaluate` L171 | the monitor's `now_fn` (`main.py`: `time_authority.now_ist`, L3787) | aware, minus the naive `added_at` | the elapsed time (P04-S070) |
+| `_to_row` L230 | the monitor's `now_fn` | naive text | `retest_state.created_at` |
+| `_to_row` L231 | `added_at` plus `timeout_sec` (no clock read) | naive text | `retest_state.timeout_at` (never read) |
+| `_run` L151 | `Event.wait(timeout=poll_interval)` | a timeout, not a time stamp | the poll interval |
+| the one-minute fetcher, `sr_detector/fetch.py` L122 and L144 (P02's) | its `now_fn` (`time_authority.now_ist`, `main.py` L3776) | aware | the window's end and the cache age (P02-S022, P02-S031) |
+| `continue_from_retest` L2399 (A06's, named only) | `now_ist()` | aware | A06's entry-window checks |
+
+- P04-S110 INTERPRETATION (what the clocks mean; A06 WA-06's A08 side): the retest clock starts at the divert, read from the trading process's wall clock, and is not the signal's scan or receipt time: no A08 file reads `triggered_at` (search of the sixteen A08 paths), and the `ParkedCandidate` carries no trigger time (P04-S048). The elapsed time and the timeout are wall-clock and calendar time: a backward step of the system clock would lengthen a wait and a forward step shorten it (once the subtraction works); the candle filter compares IST wall-clock digits (P04-S066); the stored times drop the offset (P04-S051). At the committed wiring the elapsed time cannot be computed at all (P04-S070).
+- P04-S111 FACT (the direction and side tests on the V2 path): `_process_one` maps the strategy direction to the side with `_dir in ("LONG", "BUY")` (`signals/signal_processor.py` L1035, A06's); the diverter selects the zone list by `side == "BUY"` or `side == "SELL"` and refuses any other side (L321 to L324); the audit row decides its columns by `parked.direction in ("LONG", "BUY")` (L399); `evaluate` decides the fold's side by `_is_long`, case-insensitive and stripped (L50 to L51, L92); `continue_from_retest` decides its side and stop by `parked.direction in ("LONG", "BUY")` (L2435). They agree for the two directions the strategy schema admits (P04-S105).
+- P04-S112 FACT (failure behaviour, summary; each row cites the statements that establish it):
+
+| Condition | What the V2 code does | Statements |
+|---|---|---|
+| switch off (committed) | nothing is built; the divert test is false | P04-S016 |
+| zone cache miss, expired entry, or `get` raising | not diverted; normal placement | P04-S040 |
+| no zone of the required confidence on the side contains the entry (NaN or infinite entry included) | not diverted | P04-S039 |
+| symbol already parked and the entry in a zone | `REJECTED_RETEST_DUP`; the signal is dropped | P04-S041, P04-S044 |
+| `register`'s insert fails | parked in memory only; `RETEST_WAITING`; lost at a restart | P04-S074 |
+| the `RETEST_WAITING` write fails | parked; the status stays as the screener left it; no audit row; `True` returned | P04-S044 |
+| the audit write fails | ERROR; parked | P04-S045 |
+| the one-minute fetch fails or is empty | the fold runs on no candles: in progress (the stored state can move back) or a timeout | P04-S066, P04-S076 |
+| the elapsed time at the committed wiring (aware clock, naive `added_at`) | `TypeError` at every evaluation; ERROR "evaluate failed"; the candidate stays parked and is fetched at every poll | P04-S070 |
+| `evaluate` or the filter raises (a malformed candle) | ERROR "evaluate failed"; the candidate stays | P04-S065 |
+| `update_retest_state` fails | ERROR; memory updated, the row not | P04-S069 |
+| the release's store call fails | memory entry gone; row and old status stay; on a confirmation the callback still runs | P04-S072 |
+| the callback raises out of its handlers | ERROR "continue_from_retest raised"; the poll goes on | P04-S073, P04-S103 |
+| the table read at boot fails | ERROR; nothing restored; rows stay | P04-S079 |
+| a row cannot be converted | ERROR; skipped in memory; left in the table | P04-S079, P04-S081 |
+| the end-of-day store clear fails | memory cleared; rows stay and are restored at the next boot | P04-S085, P04-S087 |
+| `stop` during a poll | 2.0 s join; the poll finishes on the daemon thread or is cut at exit | P04-S090 |
+| a thread start fails in the wiring block | the diverter stays bound; the monitor may not poll; parked candidates wait for the end-of-day clear | P04-S091 |
+
+- P04-S113 INTERPRETATION (from P04-S112): A08's V2 code retries nothing, raises no alert and calls no notifier (neither file imports one, P04-S012, P04-S013); its failures are ERROR lines and, at the diverter, a fall-back to normal placement before the commit point or a silent hold after it. `maybe_divert` never raises an `Exception` to the processor (P04-S038), and nothing in the monitor's thread can end it except an exception deriving from `BaseException` only (P04-S064, P04-S065).
+
 ## 10. Call sites in other topics' files (interface only)
 
 ## 11. Inherited items: P04's primary items, then its secondary items

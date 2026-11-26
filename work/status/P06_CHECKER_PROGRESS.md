@@ -12,3 +12,4 @@ Writer's original kept unchanged: check/A08_CONFIGURATION_WIRING_AND_CONSUMER_IN
 | 2026-11-26 17:40 | section 4 (S070-S080): every wiring line re-read; S074 (processor row), S080 corrected | section 5 (start/shutdown) | 15 corrected |
 | 2026-11-26 17:41 | section 5 (S081-S086): S082, S083, S084, S085, S086 corrected | section 6 (switch table) | 20 corrected |
 | 2026-11-26 17:42 | section 6 (S087-S091): 8-row table re-derived from L3436, L3480, L3491, L3549, L3769, L3807-L3811 (all rows agree); S087, S089, S091 corrected | section 7 (consumer table) | 23 corrected |
+| 2026-11-26 17:49 | section 7 (S092-S120): every row re-read; importer/table sweeps re-run (same lists); name sweep P06_CHECKER_consumers.py; S100, S105, S113, S115, S116, S120 corrected; S187 added | section 8 (inventory corrections) | 29 corrected, 1 added |

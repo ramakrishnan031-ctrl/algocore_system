@@ -240,7 +240,7 @@
 | P03-S154 | FACT | `config/system_config.yaml`; `core/config_loader.py` (A02) | L508 to L545, L103 to L104; L1153 to L1255 | the `sr_detector:` keys read by the four files (P03-S019, P03-S025, P03-S026, P03-S060) and the session times (P03-S116); committed values and loader defaults only. |
 | P03-S155 | FACT | `core/time_authority.py` (A01) | L55 to L59; L94 to L99 | `now_ist()`, the default clock of `build_sr_detector` (P03-S018), the source of the candidate's `ts` (P03-S144) and of the backfill's default date (P03-S124). |
 | P03-S156 | FACT | `core/effect_telemetry.py` (A15); `config/expected_managers.yaml` (A02's file) | L75 to L114; L118 to L123 | `handle("sr_detector")` at construction and `inc()` after each successful insert; the registry entry for the unit (P03-S026, P03-S086, P03-S098). |
-| P03-S157 | FACT | `utils/cron_heartbeat.py` (A16); `utils/holiday_guard.py` (A01) | L55 to L95, L176 to L209 | `skip_if_non_trading_day("sr_detector_backfill")` with its relative defaults, which calls `is_trading_day` and, on a non-trading day, `record_heartbeat(..., status="SKIPPED", ...)` (P03-S128). |
+| P03-S157 | FACT | `utils/cron_heartbeat.py` (A16); `utils/holiday_guard.py` (A01) | `utils/cron_heartbeat.py` L55 onwards (`record_heartbeat`) and L176 to L209 (`skip_if_non_trading_day`); `utils/holiday_guard.py` L85 to L95 (`is_trading_day`) | `skip_if_non_trading_day("sr_detector_backfill")` with its relative defaults, which calls `is_trading_day` and, on a non-trading day, `record_heartbeat(..., status="SKIPPED", ...)` (P03-S128). |
 | P03-S158 | FACT | `config/cron_registry.yaml`; `deploy/cron/trading-system.cron` (A16) | L408 to L423; L90 to L91 | the declared 15:58 Monday-to-Friday run, without a date argument, with an exit-status marker (P03-S133, P03-S134); declarations only. |
 | P03-S159 | FACT | `reports/daily_trade_review.py` (A15) | L60; L387 to L394; L466 to L467; L537 to L542 | the reader of the table: the first row per signal by `created_at`; `actual_result`, the zone, distance and confidence columns (P03-S096). |
 | P03-S160 | FACT | `scripts/eod_cleanup.py` (A12) | L192 to L204; L215 to L217; L234 to L236; L260 to L262 | the prune that deletes the table's rows of old `EXPIRED`, `DUPLICATE` and `REJECTED*` signals without a trade (P03-S097). |
@@ -460,3 +460,9 @@ Draft questions, only where no source states the intent. Claude relays them; thi
 4. S134: no external source was cited for the cron time zone because the legacy hosts' cron implementation is not established (U06); an external citation would first need that implementation.
 5. S205: "no recorded calibration result" rests on a search of `docs/`, `PATHS.md` and `README.md` for "BIR" and "buying into resistance"; another wording could exist.
 6. X08 (d): the earlier A03 record's line citation is noted for Claude only; it is not changed.
+
+### Post-check correction by Claude (2026-11-26 18:13 IST)
+
+| Statement | Before -> after | Reason | Source |
+|---|---|---|---|
+| P03-S157 | line cell "L55 to L95, L176 to L209" beside two files -> each range assigned to its file: `utils/cron_heartbeat.py` L55 onwards and L176 to L209; `utils/holiday_guard.py` L85 to L95 | both ranges were in `utils/cron_heartbeat.py`; `is_trading_day` is at `utils/holiday_guard.py` L85 to L95 (noted by the P06 checker) | `git show 970aabf:utils/cron_heartbeat.py`, `git show 970aabf:utils/holiday_guard.py` |

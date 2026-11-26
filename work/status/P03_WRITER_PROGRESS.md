@@ -14,3 +14,4 @@ Output: /home/claude/a08/parts/A08_V1_OBSERVER_FLAGS_RESULTS_AND_BACKFILL_2026-1
 | 2026-11-26 15:01 | section 9 (call sites table) | section 10 (inherited items) from P03-S163 | P03-S001 to P03-S162 |
 | 2026-11-26 15:03 | section 10 (inherited items: 12 primary incl. N1, 16 secondary, 3 unassigned 5.3 rows) | section 11 (stated intent) from P03-S193; AP numbering fixed: AP01 indirect effects, AP04 flags docstring, AP07 guard vs manual run, AP13 registry lines | P03-S001 to P03-S192 |
 | 2026-11-26 15:06 | section 11 (stated intent: 11.1 to 11.4) | section 12 (AUDIT points AP01 to AP16) | P03-S001 to P03-S214 |
+| 2026-11-26 15:07 | section 12 (AUDIT points P03-AP01 to P03-AP16) | section 13 (UNKNOWN items P03-U01 to U10; U03 = forming candles and delay) | P03-S001 to P03-S214; AP01 to AP16 |

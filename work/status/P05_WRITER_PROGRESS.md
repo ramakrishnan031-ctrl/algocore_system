@@ -14,3 +14,4 @@
 | 26-Nov-2026 16:58 | section 9 (stated intent: docstrings/comments vs code, tests, legacy documents, history) written; scan 0 hits | section 10 (Points for the AUDIT) | P05-S001 to P05-S121 |
 | 26-Nov-2026 17:02 | section 10 (Points for the AUDIT, P05-AP01 to P05-AP17) written; scan 0 hits | section 11 (UNKNOWN items) | P05-S001 to P05-S121; P05-AP01 to P05-AP17 |
 | 26-Nov-2026 17:04 | section 11 (UNKNOWN items P05-U01 to P05-U07) written; scan 0 hits | section 12 (questions for Rama) | P05-S001 to P05-S121; AP01-AP17; U01-U07 |
+| 26-Nov-2026 17:06 | section 12 (questions for Rama P05-R1 to P05-R3) written; scan 0 hits | section 13 (cross-references), then validation | P05-S001 to P05-S121; AP01-AP17; U01-U07; R1-R3 |

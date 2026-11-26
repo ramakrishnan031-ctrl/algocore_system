@@ -258,4 +258,10 @@ Each item names the evidence that would settle it. None of that evidence is in t
 
 ## 12. Questions about intent for Rama
 
+Draft questions, only where no source states the intent. Claude relays them; this part does not ask Rama directly. The open history questions of the entries A04-05, A04-28, A05-02, A05-32 and A05-54 are not asked again (P07-S068), and nothing here touches a credential.
+
+- P05-R1 (P05-AP10) — The one-time check of whether the broker's past prices are corrected for share splits and bonus issues decided "corrected" or "not corrected" by looking for any day-to-day jump of 15 % or more in the closing price anywhere in the date range around the event, not only on the event date itself. Was the check meant to judge only the price change at the event date, or any day in the range? A: only the event date; B: any day in the range was intended; C: not sure; Other.
+- P05-R2 (P05-AP06) — The level-export script, meant for comparing the system's support and resistance levels with your own chart marks, writes nothing for a stock and date whose price data could not be fetched, so its file cannot show that data were missing. Was the export meant to show such gaps in its file? A: yes, gaps were to be shown; B: no, leaving them out was intended; C: not sure; Other.
+- P05-R3 (P05-AP07) — The level-export script computes each date's levels as they stood at 15:30 on that date. Was it meant only for trading days that had already closed, or also for the current day while the market was open? A: closed days only; B: also the current day during market hours; C: not sure; Other.
+
 ## 13. Cross-references to other parts and topics

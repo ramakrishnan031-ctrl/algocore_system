@@ -237,6 +237,30 @@ This section gathers what sections 3 to 6 state, for citation by the other parts
 
 ## 8. Callers and readers (interface only)
 
+Found with `git grep -n -w <name> 970aabf -- '*.py'` over the whole tree with the four exclusions, test files left out (they are cited in section 10), for every public name of the four files. Each row records the call and what is passed; the caller's logic stays with its owner (D-41, P3).
+
+- P02-S095 FACT (the fetcher's callers): the seven constructions and every call made on them are in P02-S040; the search for `OhlcFetcher`, `fetch_timeframes`, `fetch_interval` and `fetch_by_token` finds no other non-test caller (the other hits are comments and docstrings: `core/config_loader.py` L1480; `main.py` L426, L3669; `regime/__init__.py` L8, L42; `regime/engine.py` L16, L64; `screening/retest_monitor.py` L48; `scripts/forward_shadow_record.py` L96; `scripts/sr_level_export.py` L15, L128; `sr_detector/zone_warmer.py` L7, L34; `v3_chain/pb01_entry.py` L10, L85; `v3_chain/pb01_runner.py` L66; `v3_chain/runner.py` L16, L52; `v3_chain/watchlist_capture.py` L62; and the package's re-export, `sr_detector/__init__.py` L19, L22).
+- P02-S096 FACT (the zone builder's callers):
+
+| Function | Non-test callers (lines) |
+|---|---|
+| `build_zone_knobs` | `sr_detector/detector.py` L93 (P03); `main.py` L3555 (warmer), L3686 (V3 chain), L3723 (PB-01) |
+| `build_scoring_params` | `sr_detector/detector.py` L94; `main.py` L3556, L3687, L3724 |
+| `build_flag_params` | `sr_detector/detector.py` L95 |
+| `prior_day_levels` | inside the file only: L101, L193 |
+| `scored_zones_from_candles` | `sr_detector/detector.py` L176; `sr_detector/zone_warmer.py` L136; `v3_chain/runner.py` L180; `v3_chain/pb01_runner.py` L122; `v3_chain/watchlist_capture.py` L210 (function-local import L205) |
+| `split_zones` | `sr_detector/zone_warmer.py` L138; `v3_chain/runner.py` L182; `v3_chain/pb01_runner.py` L124 |
+| `round_number_levels` | inside the file only: L199 |
+| `intraday_anchors` | `sr_detector/detector.py` L224 |
+| `build_anchor_payload` | `sr_detector/detector.py` L235 |
+| `build_swings_payload` | `sr_detector/detector.py` L192 |
+| `ZoneKnobs` (as a type) | `sr_detector/zone_warmer.py` L25, L36; parameter comments `v3_chain/runner.py` L50, `v3_chain/pb01_runner.py` L67, `v3_chain/watchlist_capture.py` L66 |
+
+- P02-S097 FACT (the zone cache's callers and readers): constructed once (`main.py` L3557 to L3558); written by the warmer (`put`, `sr_detector/zone_warmer.py` L139) and scanned by it (`symbols_due_for_rewarm`, L123); read with `get` by the retest diverter (`screening/retest_monitor.py` L334, which then reads `zs.resistance` for a long and `zs.support` for a short signal, L339; P04's) and by the structure exit (`orders/structure_exit_manager.py` L204 to L206, which then reads the cached zones' `confidence`, `band_low` and `band_high`, P01-S116; A11's). The object reaches the two readers as `RetestDiverter(zone_cache=_v2_zone_cache, ...)` (`main.py` L3789 to L3792) and `StructureExitManager(..., zone_cache=_v2_zone_cache, ...)` (L3817 to L3831). `evict_expired`, `size` and `clear` have no caller (P02-S068).
+- P02-S098 FACT (the warmer's callers): constructed once (`main.py` L3564 to L3568), handed to the processor (`zone_warmer=zone_warmer`, L3609; stored at `signals/signal_processor.py` L230); `enqueue` from `_warm_zones` (L373; called at L388); `start` at `main.py` L3796 and L3816; `stop` at L1744 (`_shutdown`, parameter L1615). `warm` has no caller outside `_run` (L115).
+- P02-S099 FACT (fetcher telemetry at the interface; A15's counter, A01's file): `effect_telemetry.register_constructed("ohlc_fetchers")` follows the five `OhlcFetcher` constructions in `main.py` (L3524, L3563, L3683, L3733, L3778); the V1 detector's fetcher, built inside `sr_detector/__init__.py` L53 to L60, has no such call (the fetcher-count point of A05 XC-03, primary in P05; P07-S053). The four files make no telemetry call themselves (P02-S094).
+- P02-S100 INTERPRETATION (what the committed values would build; from P02-S040, P02-S064, P02-S075 and the committed switches): at the committed values (values only) the trading process would hold no `ZoneCache` and no `ZoneWarmer` and three `OhlcFetcher` objects (P02-S041); of the zone builder it would call, through the V1 detector, the three builders and `scored_zones_from_candles` (the anchors being off, `intraday_anchors`, `build_anchor_payload` and `build_swings_payload` would not be called), and, through the A18 consumers, `scored_zones_from_candles` and `split_zones`. Whether any of this ran in production is UNKNOWN / NOT ESTABLISHED (section 12; A08 inventory, section 4).
+
 ## 9. Inherited items: P02's primary items, then its secondary items
 
 ## 10. Stated intent: docstrings, comments, tests, documents, history

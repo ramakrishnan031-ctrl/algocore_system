@@ -1,5 +1,7 @@
 # P02 checker scratch notes (H7)
 
+**ALL ITEMS BELOW APPLIED (2026-11-26 15:54 IST); see the part file's Check log. Checkboxes left as written.**
+
 ## Corrections to apply (status: [ ] to do, [x] done)
 Section 1
 - [ ] S005: add (b) GIL sentence (threading page, CPython implementation detail); (d) subtraction rule ("Subtraction of a datetime from a datetime is defined only if both operands are naive, or if both are aware. If one is aware and the other is naive, TypeError is raised."), now(): "Return the current local date and time"; "If optional argument tz is None or not specified, this is like today()"; "Subsequent calls to datetime.now() may return the same instant depending on the precision of the underlying clock"; today(): "functionally equivalent to now(), but without a tz parameter". Checker re-read note.

@@ -8,7 +8,7 @@
 | H4 | P01 | checker | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 13:31 | 26-Nov-2026 14:02 | COMPLETE (132 checked; 33 corrected, 12 re-labelled, 8 added -> 140; backup d618f26) |
 | H5 | P02 | writer | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 14:24 | 26-Nov-2026 15:07 | COMPLETE (157 statements; 16 AUDIT points; backup ecd10a1) |
 | H6 | P03 | writer | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 14:24 | 26-Nov-2026 15:13 | COMPLETE (214 statements; 16 AUDIT points; backup 2aa596d) |
-| H7 | P02 | checker | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 15:14 | — | RUNNING |
+| H7 | P02 | checker | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 15:14 | 26-Nov-2026 15:55 | COMPLETE (157 checked; 44 corrected, 1 re-labelled, 3 added -> 160; AP17 added; backup 88c9292) |
 | H8 | P03 | checker | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 15:14 | 26-Nov-2026 15:49 | COMPLETE (214 checked; 36 corrected, 4 re-labelled, 3 added -> 217; backup 616d386) |
 
 Planned order (at most two at a time; next pair only after both final hand-backs; Rama consulted before each start):

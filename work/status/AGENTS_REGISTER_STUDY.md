@@ -14,6 +14,7 @@
 | H10 | P05 | writer | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 15:56 | 26-Nov-2026 16:36 | COMPLETE (121 statements; 17 AUDIT points; progress-log times corrected by the writer) |
 | H11 | P04 | checker | Opus 5.5 / High (Rama, 26-Nov) | 26-Nov-2026 16:44 | 26-Nov-2026 16:53 | COMPLETE (182 checked; 3 corrected, 1 added -> 183; AP13, AP15 reworded; backup b53adb4) |
 | H12 | P05 | checker | Opus 5.5 / High (Rama, 26-Nov) | 26-Nov-2026 16:44 | 26-Nov-2026 16:57 | COMPLETE (121 checked; 18 corrected, 1 added -> 122; AP10 corrected; backup 4d5f467) |
+| H13 | P06 | writer | Opus 5.5 / High (Rama, 26-Nov) | 26-Nov-2026 17:00 | — | RUNNING |
 
 Planned order (at most two at a time; next pair only after both final hand-backs; Rama consulted before each start):
 1. P07 writer + P01 writer

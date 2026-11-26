@@ -9,3 +9,4 @@
 | 26-Nov-2026 16:28 | section 4 (whether a spot-check run/result is recorded: documents, searches, history; UNKNOWN) written; scan 0 hits | section 5 (export: analysis function and where it stops) | P05-S001 to P05-S046 |
 | 26-Nov-2026 16:36 | section 5 (export analysis function; first failing line by reading: imports UNKNOWN, else L139 TypeError at config_loader L2481; L141/L142 not reachable first; L143 None client) written; scan 0 hits | section 6 (export, columns, clock, output, failures) | P05-S001 to P05-S068 |
 | 26-Nov-2026 16:41 | section 6 (export: command, columns, payload keys, clock, output, failures) written; S053 line range corrected; scan 0 hits | section 7 (declared invocations and references) | P05-S001 to P05-S084 |
+| 26-Nov-2026 16:44 | section 7 (declared invocations and references; relation to intraday_anchors_enabled; DG-1 pending lists) written; scan 0 hits | section 8 (inherited items) | P05-S001 to P05-S092 |

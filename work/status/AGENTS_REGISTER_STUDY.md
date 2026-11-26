@@ -11,7 +11,7 @@
 | H7 | P02 | checker | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 15:14 | 26-Nov-2026 15:55 | COMPLETE (157 checked; 44 corrected, 1 re-labelled, 3 added -> 160; AP17 added; backup 88c9292) |
 | H8 | P03 | checker | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 15:14 | 26-Nov-2026 15:49 | COMPLETE (214 checked; 36 corrected, 4 re-labelled, 3 added -> 217; backup 616d386) |
 | H9 | P04 | writer | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 15:56 | — | RUNNING |
-| H10 | P05 | writer | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 15:56 | — | RUNNING |
+| H10 | P05 | writer | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 15:56 | 26-Nov-2026 16:36 | COMPLETE (121 statements; 17 AUDIT points; progress-log times corrected by the writer) |
 
 Planned order (at most two at a time; next pair only after both final hand-backs; Rama consulted before each start):
 1. P07 writer + P01 writer
@@ -29,3 +29,4 @@ Notes for later (Claude):
 - Inventory section 2.2 gives `main.py` L3717-L3718 for the PB-01 fetcher; those are import lines, the construction is L3728-L3732 (P02-X08). Correct in the inventory revision.
 - Rows H-44, U-59, U-60 (P03-S192): unassigned; P06 brief asks P06 to confirm the code they touch; Claude to decide assignment at assembly.
 - A03 AUDIT H-11 cites retest_monitor.py L415 for the divert's ts; baseline L414 (P03-X08 d). Record only in A08; do not change A03.
+- A01 C40 and A02 K-32 touch A08's scripts but do not name A08 (P05-AP17): not assigned; decide at assembly / flag for ChatGPT.

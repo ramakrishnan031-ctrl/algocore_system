@@ -195,7 +195,7 @@ This section gathers what sections 3 to 6 state, for citation by the other parts
 | the thread that delivers the candle store's one-minute closes (A05's and A11's) | — | `ZoneCache.get`, through the structure exit (`orders/structure_exit_manager.py` L204; A11's) |
 | "sr-detector" (P03; `sr_detector/detector.py` L114) | `main.py` L3504 | `OhlcFetcher` row 1, `scored_zones_from_candles`, `intraday_anchors`, `build_anchor_payload`, `build_swings_payload` |
 | "sr-retest-monitor" (P04; `screening/retest_monitor.py` L79) | `main.py` L3797 | `OhlcFetcher` row 6 |
-| the A18 consumers' threads ("v3-chain", "pb01-capture", "pb01-entry" in A04 RL-11's list; the regime runner's) | A18's | `OhlcFetcher` rows 2, 4 and 5, `scored_zones_from_candles`, `split_zones` |
+| the A18 consumers' threads ("v3-chain", "pb01-capture", "pb01-entry" in A04 RL-11's list; the regime runner's, "market-regime", `regime/runner.py` L50, name added in the check) | A18's | `OhlcFetcher` rows 2, 4 and 5, `scored_zones_from_candles`, `split_zones` |
 
 - P02-S092 FACT and INTERPRETATION (the locks): FACT:
 
@@ -215,13 +215,13 @@ This section gathers what sections 3 to 6 state, for citation by the other parts
 | symbol not in the instrument cache, or a malformed row | `_resolve_token` L105 to L112 | no candles for any interval | WARNING "token lookup failed" | no |
 | token 0 | L109 | no candles | none | no |
 | `fetch_by_token`: falsy token | L98 to L99 | `None` | none | no |
-| `fetch_by_token`: token `int` cannot convert | L100 to L101 | — | none | yes (`ValueError` or `TypeError`) |
+| `fetch_by_token`: token `int` cannot convert | L100 to L101 | — | none | yes (`ValueError`, `TypeError` or, for an infinite float, `OverflowError`; the last added in the check) |
 | limiter timeout, shutdown abort or unknown category | closure `main.py` L431, caught at L130 | `None` for the interval | WARNING "historical_data failed" | no |
 | broker or library error (429, timeout, authentication) | closure L432 to L437, caught at L130 | `None` for the interval | WARNING "historical_data failed" | no |
 | market-data handle `None` | closure L429 to L430 | empty answer, `None` | none in the fetcher (one WARNING at boot, `main.py` L3483 to L3486) | no |
 | empty answer | L127 to L129 | `None`, not cached | none | no |
 | a row `from_kite` cannot convert | L126 | `None` for the interval | WARNING "historical_data failed" | no |
-| clock raises in `_cache_get` | L144 | — | none | yes |
+| clock raises in `_cache_get`, or the stored and current readings mix naive and aware (added in the check) | L144 | — | none | yes |
 | clock raises in the window or in `_cache_put` | L122, L151 | `None` for the interval | WARNING "historical_data failed" | no |
 | `scored_zones_from_candles` given an empty dictionary | L99 | — | none | yes (`StopIteration`; no non-test caller passes one, P02-S050) |
 | NaN or infinite values in candles (P01-S097) or in the reference price | calculation core; `round_number_levels` L132 | as P01-S097; `ValueError` or `OverflowError` | none in the four files | yes, to the caller (the warmer's loop logs ERROR; the detector's handling is P03's) |
@@ -232,7 +232,7 @@ This section gathers what sections 3 to 6 state, for citation by the other parts
 | re-warm scan raises | L125 to L126 | scan skipped | ERROR "rewarm scan failed" | no |
 | fetch miss in `warm` | L133 to L135 | old entry kept, still due for re-warm | INFO "fetch miss" | no |
 | clock raises when `warm` scores | `_safe_now` L146 to L150 | `now = None`, full recency vote (P01-S091) | none | no |
-| worker busy in a fetch at `stop` | `stop` L79 | join returns after 2.0 s; the worker finishes later | none | no |
+| worker inside a broker call at `stop` (a limiter wait has already been aborted by then, P02-S089; corrected in the check) | `stop` L79 | join returns after 2.0 s; the worker finishes later | none | no |
 | the logger raises | `_safe_log` (`fetch.py` L153 to L159; `zone_warmer.py` L152 to L158) | swallowed | — | no |
 
   INTERPRETATION: for a failure of the fetch itself the four files keep SR-F4's outcome (no candles, nothing raised), except the two paths of P02-S019 and P02-S036; the warmer's "Never raises into the caller" holds for `enqueue` and `stop`; `warm` can raise, but its only caller catches. Failures leave log lines only: the four files write no counter, alert, telemetry or stored record (a search of the four files for `effect`, `telemetry`, `notif`, `alert`, `state_store`, `insert_` and `emit` finds no line).
@@ -241,7 +241,7 @@ This section gathers what sections 3 to 6 state, for citation by the other parts
 
 Found with `git grep -n -w <name> 970aabf -- '*.py'` over the whole tree with the four exclusions, test files left out (they are cited in section 10), for every public name of the four files. Each row records the call and what is passed; the caller's logic stays with its owner (D-41, P3).
 
-- P02-S095 FACT (the fetcher's callers): the seven constructions and every call made on them are in P02-S040; the search for `OhlcFetcher`, `fetch_timeframes`, `fetch_interval` and `fetch_by_token` finds no other non-test caller (the other hits are comments and docstrings: `core/config_loader.py` L1480; `main.py` L426, L3669; `regime/__init__.py` L8, L42; `regime/engine.py` L16, L64; `screening/retest_monitor.py` L48; `scripts/forward_shadow_record.py` L96; `scripts/sr_level_export.py` L15, L128; `sr_detector/zone_warmer.py` L7, L34; `v3_chain/pb01_entry.py` L10, L85; `v3_chain/pb01_runner.py` L66; `v3_chain/runner.py` L16, L52; `v3_chain/watchlist_capture.py` L62; and the package's re-export, `sr_detector/__init__.py` L19, L22).
+- P02-S095 FACT (the fetcher's callers): the seven constructions and every call made on them are in P02-S040; the search for `OhlcFetcher`, `fetch_timeframes`, `fetch_interval` and `fetch_by_token` finds no other non-test caller (the other hits are the imports beside each construction, `main.py` L3517, L3553, L3675, L3717, L3771, added in the check, and comments and docstrings: `core/config_loader.py` L1480; `main.py` L426, L3669; `regime/__init__.py` L8, L42; `regime/engine.py` L16, L64; `screening/retest_monitor.py` L48; `scripts/forward_shadow_record.py` L96; `scripts/sr_level_export.py` L15, L128; `sr_detector/zone_warmer.py` L7, L34; `v3_chain/pb01_entry.py` L10, L85; `v3_chain/pb01_runner.py` L66; `v3_chain/runner.py` L16, L52; `v3_chain/watchlist_capture.py` L62; and the package's re-export, `sr_detector/__init__.py` L19, L22).
 - P02-S096 FACT (the zone builder's callers):
 
 | Function | Non-test callers (lines) |
@@ -249,7 +249,7 @@ Found with `git grep -n -w <name> 970aabf -- '*.py'` over the whole tree with th
 | `build_zone_knobs` | `sr_detector/detector.py` L93 (P03); `main.py` L3555 (warmer), L3686 (V3 chain), L3723 (PB-01) |
 | `build_scoring_params` | `sr_detector/detector.py` L94; `main.py` L3556, L3687, L3724 |
 | `build_flag_params` | `sr_detector/detector.py` L95 |
-| `prior_day_levels` | inside the file only: L101, L193 |
+| `prior_day_levels` | inside the file only: L101, L193 (the matches in `sr_detector/confluence.py` L39 and L133 are the `ConfluenceContext` field of that name; noted in the check) |
 | `scored_zones_from_candles` | `sr_detector/detector.py` L176; `sr_detector/zone_warmer.py` L136; `v3_chain/runner.py` L180; `v3_chain/pb01_runner.py` L122; `v3_chain/watchlist_capture.py` L210 (function-local import L205) |
 | `split_zones` | `sr_detector/zone_warmer.py` L138; `v3_chain/runner.py` L182; `v3_chain/pb01_runner.py` L124 |
 | `round_number_levels` | inside the file only: L199 |

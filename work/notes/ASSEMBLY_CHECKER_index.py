@@ -16,6 +16,7 @@ for p, fn in PARTS.items():
     lines = open(f'{W}/parts/{fn}', encoding='utf-8').read().split('\n')
     # stop at the check log: statements are defined before it
     cur = None
+    blank_seen = False
     sec = ''
     for n, l in enumerate(lines, 1):
         if l.startswith('## Check log'):
@@ -42,12 +43,17 @@ for p, fn in PARTS.items():
                 continue
             idx[i] = {'part': p, 'line': n, 'label': label, 'text': l, 'sec': sec}
             cur = i
-        elif cur and l.strip() and not l.startswith('- P0') :
-            # continuation (table inside a statement, sub-bullets)
+            blank_seen = False
+        elif cur and l.strip() and (l.startswith('|') or l.startswith('  ') or not blank_seen):
+            # continuation: lines directly after the statement, or a table / indented block after a blank line
             idx[cur]['text'] += '\n' + l
+            blank_seen = False if not l.startswith('|') and not l.startswith('  ') else blank_seen
         elif not l.strip():
-            # blank line ends a P07 paragraph statement and bullets
-            cur = None if (cur and not cur.startswith('P07')) or cur else None
+            blank_seen = True
+            continue
+        else:
+            cur = None
+        if l.strip(): blank_seen = False
 json.dump(idx, open(f'{W}/notes/ASSEMBLY_CHECKER_index.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=0)
 from collections import Counter
 c = Counter((v['part'], re.sub(r'\d+', '', k.split('-', 1)[1]) if not k.startswith('P07 ') else 'AP') for k, v in idx.items())

@@ -15,3 +15,6 @@ Writer original kept at: <workspace>/check/A08_CANDLE_FETCH_ZONE_BUILDER_CACHE_A
 | 2026-11-26 15:48 | section 10 corrected (S146, S148, S149, S153, S154, S155; S158 added) | sections 11 to 14 | scan 0 hits |
 | 2026-11-26 15:49 | section 11 corrected (AP01, AP03, AP06, AP11, AP14, AP16; AP17 added) | sections 12 to 14 | scan 0 hits |
 | 2026-11-26 15:49 | sections 12 to 14 corrected (U01, U07, U11; R1, R3, R4, R5; X05, X07) | header revision history, check log, final checks | scan 0 hits |
+| 2026-11-26 15:54 | header revision history and Check log written; final checks: 160 statement IDs (S001 to S160) each once, 17 AP, 11 U, 5 R, 8 X; all P02/P01/P07 references resolve; 7 tables well-formed; 14 sections + Check log; coverage 43/43 names, 119/119 branch lines; scan 0 hits | none | 44 corrected (1 also re-labelled), 0 withdrawn, 3 added; 6 AP corrected, 1 added; 3 U, 4 R, 2 X corrected |
+
+**STATUS: COMPLETE** (2026-11-26 15:54 IST)

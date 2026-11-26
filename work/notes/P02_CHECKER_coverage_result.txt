@@ -1,0 +1,66 @@
+# P02 checker coverage result on the CORRECTED file (static ast parse of baseline text from git show 970aabf; nothing imported or run), 2026-11-26 15:50 IST
+## sr_detector/fetch.py
+class OhlcFetcher L32-L159: named in 16 stmt(s) ['P02-S008', 'P02-S010', 'P02-S040', 'P02-S074', 'P02-S091', 'P02-S092', 'P02-S095', 'P02-S099', 'P02-S100', 'P02-S101'] ...
+def __init__ L33-L51: named in 5 stmt(s) ['P02-S002', 'P02-S008', 'P02-S040', 'P02-S095', 'P02-S099']
+def fetch_timeframes L53-L68: named in 18 stmt(s) ['P02-S008', 'P02-S015', 'P02-S017', 'P02-S019', 'P02-S028', 'P02-S035', 'P02-S036', 'P02-S039', 'P02-S040', 'P02-S045'] ...
+def fetch_interval L70-L83: named in 13 stmt(s) ['P02-S008', 'P02-S017', 'P02-S019', 'P02-S028', 'P02-S036', 'P02-S040', 'P02-S095', 'P02-S103', 'P02-S116', 'P02-S143'] ...
+def fetch_by_token L85-L101: named in 17 stmt(s) ['P02-S008', 'P02-S018', 'P02-S019', 'P02-S028', 'P02-S035', 'P02-S036', 'P02-S040', 'P02-S094', 'P02-S095', 'P02-S103'] ...
+def _resolve_token L105-L112: named in 7 stmt(s) ['P02-S008', 'P02-S020', 'P02-S035', 'P02-S094', 'P02-S110', 'P02-S121', 'P02-S142']
+def _fetch_one L114-L136: named in 12 stmt(s) ['P02-S008', 'P02-S014', 'P02-S015', 'P02-S017', 'P02-S018', 'P02-S022', 'P02-S028', 'P02-S037', 'P02-S107', 'P02-S126'] ...
+def _cache_get L138-L147: named in 7 stmt(s) ['P02-S008', 'P02-S022', 'P02-S028', 'P02-S029', 'P02-S032', 'P02-S035', 'P02-S094']
+def _cache_put L149-L151: named in 9 stmt(s) ['P02-S008', 'P02-S022', 'P02-S028', 'P02-S029', 'P02-S032', 'P02-S035', 'P02-S036', 'P02-S092', 'P02-S094']
+def _safe_log L153-L159: named in 4 stmt(s) ['P02-S008', 'P02-S037', 'P02-S087', 'P02-S094']
+branch-type lines: 34; cited by a statement of the file's own section(s) [3, 7]: 34
+names not named in any statement: none
+
+## sr_detector/zone_builder.py
+def _attr L24-L25: named in 4 stmt(s) ['P02-S008', 'P02-S043', 'P02-S046', 'P02-S047']
+class ZoneKnobs L29-L37: named in 5 stmt(s) ['P02-S008', 'P02-S044', 'P02-S045', 'P02-S074', 'P02-S096']
+def build_zone_knobs L40-L49: named in 6 stmt(s) ['P02-S008', 'P02-S045', 'P02-S051', 'P02-S075', 'P02-S091', 'P02-S096']
+def build_scoring_params L52-L66: named in 6 stmt(s) ['P02-S008', 'P02-S046', 'P02-S051', 'P02-S075', 'P02-S091', 'P02-S096']
+def build_flag_params L69-L75: named in 5 stmt(s) ['P02-S008', 'P02-S047', 'P02-S091', 'P02-S096', 'P02-S134']
+def prior_day_levels L78-L82: named in 10 stmt(s) ['P02-S008', 'P02-S026', 'P02-S048', 'P02-S049', 'P02-S059', 'P02-S096', 'P02-S105', 'P02-S117', 'P02-S136', 'P02-S156']
+def scored_zones_from_candles L85-L107: named in 12 stmt(s) ['P02-S008', 'P02-S009', 'P02-S045', 'P02-S048', 'P02-S049', 'P02-S051', 'P02-S085', 'P02-S091', 'P02-S094', 'P02-S096'] ...
+def split_zones L110-L115: named in 7 stmt(s) ['P02-S008', 'P02-S052', 'P02-S085', 'P02-S091', 'P02-S096', 'P02-S100', 'P02-S156']
+def round_number_levels L124-L140: named in 9 stmt(s) ['P02-S008', 'P02-S053', 'P02-S059', 'P02-S060', 'P02-S094', 'P02-S096', 'P02-S147', 'P02-S152', 'P02-S157']
+def intraday_anchors L143-L182: named in 13 stmt(s) ['P02-S008', 'P02-S042', 'P02-S055', 'P02-S060', 'P02-S091', 'P02-S096', 'P02-S100', 'P02-S106', 'P02-S114', 'P02-S138'] ...
+def build_anchor_payload L185-L204: named in 11 stmt(s) ['P02-S008', 'P02-S048', 'P02-S053', 'P02-S054', 'P02-S059', 'P02-S091', 'P02-S096', 'P02-S100', 'P02-S147', 'P02-S152'] ...
+def build_swings_payload L207-L224: named in 9 stmt(s) ['P02-S008', 'P02-S060', 'P02-S061', 'P02-S091', 'P02-S096', 'P02-S100', 'P02-S147', 'P02-S152', 'P02-S157']
+branch-type lines: 31; cited by a statement of the file's own section(s) [4, 7]: 31
+names not named in any statement: none
+
+## sr_detector/zone_cache.py
+class ZoneSet L23-L26: named in 14 stmt(s) ['P02-S008', 'P02-S063', 'P02-S064', 'P02-S065', 'P02-S066', 'P02-S070', 'P02-S071', 'P02-S072', 'P02-S073', 'P02-S081'] ...
+class ZoneCache L29-L76: named in 14 stmt(s) ['P02-S008', 'P02-S010', 'P02-S064', 'P02-S074', 'P02-S091', 'P02-S092', 'P02-S100', 'P02-S146', 'P02-S148', 'P02-S149'] ...
+def __init__ L30-L34: named in 5 stmt(s) ['P02-S002', 'P02-S008', 'P02-S040', 'P02-S095', 'P02-S099']
+def put L36-L39: named in 14 stmt(s) ['P02-S005', 'P02-S008', 'P02-S065', 'P02-S068', 'P02-S070', 'P02-S071', 'P02-S080', 'P02-S083', 'P02-S085', 'P02-S086'] ...
+def get L41-L49: named in 22 stmt(s) ['P02-S005', 'P02-S008', 'P02-S028', 'P02-S049', 'P02-S060', 'P02-S061', 'P02-S066', 'P02-S067', 'P02-S068', 'P02-S070'] ...
+def symbols_due_for_rewarm L51-L56: named in 9 stmt(s) ['P02-S008', 'P02-S067', 'P02-S068', 'P02-S071', 'P02-S084', 'P02-S091', 'P02-S092', 'P02-S097', 'P02-S145']
+def evict_expired L58-L63: named in 7 stmt(s) ['P02-S008', 'P02-S068', 'P02-S071', 'P02-S073', 'P02-S092', 'P02-S097', 'P02-S151']
+def size L65-L67: named in 8 stmt(s) ['P02-S005', 'P02-S008', 'P02-S032', 'P02-S064', 'P02-S068', 'P02-S076', 'P02-S097', 'P02-S151']
+def clear L69-L73: named in 7 stmt(s) ['P02-S008', 'P02-S032', 'P02-S068', 'P02-S073', 'P02-S077', 'P02-S097', 'P02-S151']
+def _age_sec L75-L76: named in 6 stmt(s) ['P02-S008', 'P02-S066', 'P02-S067', 'P02-S069', 'P02-S071', 'P02-S094']
+branch-type lines: 19; cited by a statement of the file's own section(s) [5, 7]: 19
+names not named in any statement: none
+
+## sr_detector/zone_warmer.py
+class ZoneWarmer L30-L158: named in 13 stmt(s) ['P02-S008', 'P02-S010', 'P02-S075', 'P02-S080', 'P02-S091', 'P02-S092', 'P02-S100', 'P02-S111', 'P02-S131', 'P02-S147'] ...
+def __init__ L31-L59: named in 5 stmt(s) ['P02-S002', 'P02-S008', 'P02-S040', 'P02-S095', 'P02-S099']
+def start L63-L69: named in 17 stmt(s) ['P02-S004', 'P02-S005', 'P02-S008', 'P02-S028', 'P02-S057', 'P02-S077', 'P02-S078', 'P02-S089', 'P02-S090', 'P02-S091'] ...
+def stop L71-L80: named in 15 stmt(s) ['P02-S008', 'P02-S047', 'P02-S072', 'P02-S074', 'P02-S080', 'P02-S083', 'P02-S088', 'P02-S089', 'P02-S090', 'P02-S091'] ...
+def enqueue L84-L99: named in 20 stmt(s) ['P02-S008', 'P02-S078', 'P02-S079', 'P02-S080', 'P02-S081', 'P02-S084', 'P02-S089', 'P02-S090', 'P02-S091', 'P02-S094'] ...
+def _run L103-L119: named in 7 stmt(s) ['P02-S008', 'P02-S077', 'P02-S082', 'P02-S085', 'P02-S091', 'P02-S094', 'P02-S098']
+def _enqueue_rewarms L121-L126: named in 4 stmt(s) ['P02-S008', 'P02-S082', 'P02-S084', 'P02-S091']
+def warm L129-L142: named in 26 stmt(s) ['P02-S008', 'P02-S010', 'P02-S064', 'P02-S065', 'P02-S070', 'P02-S071', 'P02-S072', 'P02-S076', 'P02-S080', 'P02-S082'] ...
+def _safe_now L146-L150: named in 7 stmt(s) ['P02-S008', 'P02-S009', 'P02-S085', 'P02-S086', 'P02-S087', 'P02-S094', 'P02-S151']
+def _safe_log L152-L158: named in 4 stmt(s) ['P02-S008', 'P02-S037', 'P02-S087', 'P02-S094']
+const _SENTINEL L161: named in 3 stmt(s) ['P02-S008', 'P02-S074', 'P02-S088']
+branch-type lines: 35; cited by a statement of the file's own section(s) [6, 7]: 35
+names not named in any statement: none
+
+# calls not named in the part (P02_CHECKER_calls.py):
+## sr_detector/fetch.py
+## sr_detector/zone_builder.py
+## sr_detector/zone_cache.py
+  L62 self._store.pop: NOT NAMED
+## sr_detector/zone_warmer.py

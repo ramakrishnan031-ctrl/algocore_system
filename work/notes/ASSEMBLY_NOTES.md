@@ -52,3 +52,12 @@
 - 8.5 records found: A01 C40 S112; A02 K-32 S113 (Claude's assignment decision: listed in 13.6 with P05 facts).
 - Sec 12: S114-S116 texts; S117-S119 tests; S120 docs; S121 history.
 - Sec 14 (X07): A01 helpers/import effects C38b, C40; A02 load_all, keys K-02, K-32, L-45, L-47; A04 client/limiter CL-11, CL-12, CL-15, AU-05, RL-06, A04-05, A04-28; A05 instrument cache HA-07, HA-09, XC-03, CM-15, IN-09, A05-02, A05-32, A05-54; A15 registry; A16 no schedule; A19 test.
+
+## P06 (189 statements S001-S189; 10 AP; 6 U; 5 R (R1 withdrawn); 8 X). Writer H13 High; checker H14 Max.
+- Sec 13 primary: C13 S137; C37 S138; B-11 S139; K-21 S140; K-25 S141 (no A08 side); K-26 S142 (no A08 side); U-24 S143 (no A08 side); PQ-09 S144.
+- Secondary table S146-S167: C38a S146; K-02 S147; K-22 S148; K-23 S149; K-24 S150; RL-05 S151; HA-06 S152; HA-09 S153; XC-03 S154; WA-06 S155; WA-07 S156; WD-10 S157; WD-16 S158; EV-23 S159; SL-06 S160; SL-30 S161; A05-01 + CM-07 S162; RL-11 S163; CM-11 S164; HA-05 S165; HA-10 S166; ET-07 S167.
+- 9.3: H-44 S169 (P03-S095, P04-S045); U-59 S170 (P03-S118, S120, S192, S196); U-60 S171 (P03-S129, S133, S134, S138, S192); C40 S172 (P05-S049, S050, S112); K-32 S173 (P05-S021, S113).
+- 9.4: S175 table 34 records (pointers in table); S176 9 records: A01 S-33 (P06-S072,S056); A02 L-12 (P06-S053,S009,AP07; P03-S025); A02 V-22 (P06-S072,S114); A02 L-33 (P06-S009,S011,S040,S052,S056,S065); A03 R-34 (P06-S056,S088,S074; P04-S120); A05 CA-16 (P06-U01,S056); A06 EV-14 (P06-U01,S011,S040); A06 XA-05 (P06-U01,S040,S051); A07 XS-08 (P06-S011,S057). S177/S178 not A08-touching lists. S189 PQ-06 (P02-S080,S098; P06-S094).
+- Sec 11 consumer table S093-S118, S187 (v3_chain/truncate.py), S119 inputs, S120 sweep result.
+- Sec 12: S179-S186.
+- Inventory corrections S121-S136, S187, S188 (applied in inventory Rev 1).

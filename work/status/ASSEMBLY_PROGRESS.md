@@ -12,3 +12,4 @@ them apart from P07's own AP-01 to AP-06.
 | 2026-11-26 18:42 | section 3 (P01, calculation core) written | read P02 (index + full key sections) -> section 4 | P07 read in full; P01 read in full; notes/ASSEMBLY_NOTES.md started |
 | 2026-11-26 18:44 | section 4 (P02, fetch, zone builder, cache, warmer) written | read P03 -> section 5 | P02 index + sections 3.8, 7, 9, 11-14 read in full; notes updated |
 | 2026-11-26 18:46 | section 5 (P03, V1 observer, flags, row, backfill) written | read P04 -> section 6 | P03 index + sections 10, 12-15, check log read; notes updated |
+| 2026-11-26 18:48 | section 6 (P04, V2 retest path and continue_from_retest handoff) written | read P05 -> section 7 | P04 index + sections 9, 11, 13-16, selected statements, check log read; notes updated |

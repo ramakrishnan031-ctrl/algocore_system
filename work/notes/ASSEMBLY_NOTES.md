@@ -36,3 +36,12 @@
 - Sec 12: S193-S197 docstrings; S198-S202 tests; S203-S207 docs; S208-S214 history.
 - Sec 14 (X07): A01 wiring/clock/holiday S035,S155,S157; A02 config + registry S154,S098, AP13; A03 store/schema/locking S087,S089,S106,S152,S153; A04 limiter/client S105; A05 instrument cache S217; A06 seam, EV-23, TIMEOUT S101,S102,S143-S147,S169,S215; A10 trade rows/recovery S121,S215, AP11; A12 prune S097,S160; A15 report/telemetry/logging S096,S098,S156,S159,S217; A16 guard/registry/cron S128,S133,S134,S157,S158, AP07, AP08; A18 activation D-41 P2, PB-01 retest S077; A19 tests S139,S140,S162,S198-S202.
 - X08 (d): A03 H-11 cites retest_monitor L415; baseline L414 (recorded only).
+
+## P04 (183 statements S001-S183; 21 AP; 11 U; 5 R; 8 X). Writer H9 Max; checker H11 High. Post-check correction by Claude: S126.
+- Sec 13 primary: K-22 S131; H-11 S132; P-02 S133; P-11 S134; Q-11 S135; WA-06 S136; WA-07 S137; EV-11 S138; SL-06 S139; SL-30 S140; EG-01 S141.
+- OIR primary: A05-17 S142; A05-18 S143. Records primary: Q-09 S144; HA-03 S145; EV-01 S146; ET-07 S147; RP-12 S148. N5 S149; N6 + wording S150.
+- Secondary: C13 S151; C37 S152; K-21 S153; Q-17 S154; CM-05 S155; HA-04 S156; A05-29 S157; N1 S158. 5.3 rows: H-25,H-44,H-47,Q-46 S159; RP-13,RP-21 S160.
+- Sec 10: threads S106; locks S107; interleavings S108; clocks S109/S110; directions S111; failure table S112; S113 summary; TypeError S070.
+- Sec 12: S161-S170 docstrings/comments; S171-S175 tests; S176-S178 docs; S179-S182 history.
+- Sec 14 (X07): A01 wiring/boot/shutdown S016,S035,S062,S080,S089,S091,S092,S114,S115; A02 keys/loader/registry S019,S034,S097,S125,S128; A03 store/table/CHECKs S053-S059,S122, AP17, AP21; A05 HA-03/HA-04/CM-05/A05-17/18/29; A06 divert call site/resumption/WA-06/WA-07/EV-01/EV-11/ET-07/upstream claim S036, sec 8, S136-S138,S146,S147, AP03; A07 SL-06,SL-30,EG-01,RP-12,RP-13,RP-21 S105,S139-S141,S148,S160; A09 S099,S102; A10 MARKET S100,S121, AP18; A11 _strong_close S017,S120; A12 eod clear/prune/recovery S059,S086-S088,S119,S123; A13 S102; A15 report/registry/evidence S060,S125,S126,S175; A18 PB-01 + wording S017,S127,S150, AP09, AP10; A19 tests S129,S171-S175, AP20.
+- X08: (b) inventory sec 7 omits test_sr_v2_market_path.py (now in Rev 1); (c) records notes AP21; (d) AP01 bears on SL-06,SL-30,ET-07,EV-11,Q-11,C13.

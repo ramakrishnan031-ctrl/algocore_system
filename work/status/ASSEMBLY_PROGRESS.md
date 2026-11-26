@@ -16,3 +16,4 @@ them apart from P07's own AP-01 to AP-06.
 | 2026-11-26 18:49 | section 7 (P05, spot-check and export scripts) written | read P06 -> sections 8, 9, 11 | P05 index + sections 8, 10-13 read; notes updated |
 | 2026-11-26 18:51 | sections 8 (configuration) and 9 (wiring, start/shutdown, switch rows) written | section 11 (consumers), then 10 | P06 sections 1-14 read (tables in full); notes updated |
 | 2026-11-26 18:53 | sections 11 (consumers) and 10 (cross-part summary table) written | section 12 (intent sources), then 13 | P06 section 7 table carried; section 10 from the parts' summaries |
+| 2026-11-26 18:54 | section 12 (intent sources against the code) written | section 13 (inherited items: 48, 16 OIR, 16 records, N1-N6, 43+5 and PQ-06) | built from P01 s9, P02 s10, P03 s11, P04 s12, P05 s4/7/9, P06 s10 |

@@ -228,7 +228,7 @@ P07-S094. HISTORICAL (record; P07-S004 (d)): the RTRs name A08 at further lines 
 
 ### 5.3 AUDIT table rows that name A08 and carry no ID of the 48
 
-P07-S095. FACT (P07-S004 (c), with a filter keeping rows whose first cell is an ID not among the 48): these MATCH rows and handoff rows name A08 in an owner cell or as the owner of a named line. None of them is in an RTR's A08 row; none is added to the 48 and none is re-owned. They are listed because they locate A08 code that the parts will read.
+P07-S095. FACT (P07-S004 (c), with a filter keeping rows whose first cell is an ID not among the 48, and the handoff rows without an ID; the script counted 13, 10, 12, 4, 38, 13 and 12 table rows naming A08 in the A01 to A07 AUDITs, 102 in all, each accounted for in section 3, this table or P07-S096): these MATCH rows and handoff rows name A08 in an owner cell or as the owner of a named line. None of them is in an RTR's A08 row; none is added to the 48 and none is re-owned. They are listed because they locate A08 code that the parts will read.
 
 | AUDIT | Line | Row (ID; result) | What it says about A08 (short) | Part (INTERPRETATION) |
 |---|---|---|---|---|
@@ -255,7 +255,7 @@ P07-S095. FACT (P07-S004 (c), with a filter keeping rows whose first cell is an 
 | A07 | L3739 | RP-19; MATCH (section 11.4) | "The technical and S&R information A07 consumes (Q14; A08 owns the calculation)"; owners "A07; A08, A05, A18" | P06 |
 | A07 | L3741 | RP-21; MATCH (section 11.4) | the end-to-end order of the accepted path; owners include A08 ("theirs") | P04; P06 |
 
-P07-S096. FACT (the other AUDIT table rows naming A08): the A05 AUDIT names A08 in a further 25 rows of its internal disposition tables (the STUDY's AUDIT points, L138, L185, L1159, L1174, L1177, L1183, L1205, L1446, L1465, L1468, L1473, L3020, L3037, L3368; the inherited-item tables, L274, L403, L849, L1511 to L1513, L2143, L2144, L2149, L2524 to L2526, L2832), the A06 AUDIT in five (inherited-item tables L384, L387, L4228, L4231, L6156) and the A07 AUDIT in three (L3761, L3763, L4309). They record how those topics disposed of their own STUDY points and inherited items; among them, A05 L1183 ("the export script stops at L139") and L1468 ("`scripts/sr_level_export.py` fails at L139 before A01 C38b's L141") bear on AP-02. None carries an item for A08 beyond the 48.
+P07-S096. FACT (the other AUDIT table rows naming A08): the A05 AUDIT names A08 in a further 27 rows of its internal disposition tables (the STUDY's AUDIT points, L138, L185, L1159, L1174, L1177, L1183, L1205, L1446, L1465, L1468, L1473, L3020, L3037, L3368; the inherited-item tables, L274, L403, L849, L1511 to L1513, L2143, L2144, L2149, L2524 to L2526, L2832), the A06 AUDIT in six (the STUDY-point table L6120; the inherited-item tables L384, L387, L4228, L4231, L6156) and the A07 AUDIT in three (L3761, L3763, L4309). They record how those topics disposed of their own STUDY points and inherited items; among them, A05 L1183 ("the export script stops at L139") and L1468 ("`scripts/sr_level_export.py` fails at L139 before A01 C38b's L141") bear on AP-02. None carries an item for A08 beyond the 48.
 
 ### 5.4 AUDIT records whose Owner field names A08 but which are not among the 48
 

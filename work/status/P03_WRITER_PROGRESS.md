@@ -16,3 +16,4 @@ Output: /home/claude/a08/parts/A08_V1_OBSERVER_FLAGS_RESULTS_AND_BACKFILL_2026-1
 | 2026-11-26 15:06 | section 11 (stated intent: 11.1 to 11.4) | section 12 (AUDIT points AP01 to AP16) | P03-S001 to P03-S214 |
 | 2026-11-26 15:07 | section 12 (AUDIT points P03-AP01 to P03-AP16) | section 13 (UNKNOWN items P03-U01 to U10; U03 = forming candles and delay) | P03-S001 to P03-S214; AP01 to AP16 |
 | 2026-11-26 15:08 | section 13 (UNKNOWN items P03-U01 to P03-U10) | section 14 (questions P03-R1 to R5; R5 = calibration record) | P03-S001 to P03-S214; AP01 to AP16; U01 to U10 |
+| 2026-11-26 15:08 | sections 14 (questions P03-R1 to R5) and 15 (cross-references P03-X01 to X08) | final consistency checks and scan | P03-S001 to P03-S214; AP01 to AP16; U01 to U10; R1 to R5; X01 to X08 |

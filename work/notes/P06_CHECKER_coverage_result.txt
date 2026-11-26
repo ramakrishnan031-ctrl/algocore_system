@@ -1,0 +1,22 @@
+1. fields: 45 + structure_exit_enabled; rows missing: none
+2. main.py lines with an A08 name (code lines): 144; not inside any cited line or range: none
+3. branch/try/return lines in main L2085-L2192, L1599-L1831, L3417-L3840, L3860-L3975: 146; not cited: 16
+   L2089: try:
+   L2091: except SystemExit as se:
+   L2092: return 5 if se.code != 0 else 0
+   L2094: if args.version:
+   L2096: return 0
+   L2134: if not sentinel.exists():
+   L2145: try:
+   L2148: except OSError:
+   L2150: return 0
+   L2151: except FileNotFoundError:
+   L2184: if not lock_ok:
+   L2186: return 1
+   L3906: if not is_paper:
+   L3917: else:
+   L3929: try:
+   L3942: except Exception as exc:
+4. consumer files not named in section 7: none
+2b. strict: A08-named main.py code lines not in a main.py citation: none
+3b. strict: branch/try/return lines in _shutdown and the S&R wiring region: 113; not in a main.py citation: none

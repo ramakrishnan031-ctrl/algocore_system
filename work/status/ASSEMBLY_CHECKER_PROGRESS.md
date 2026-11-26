@@ -16,3 +16,4 @@ Check notes / scripts: /home/claude/a08/notes/ASSEMBLY_CHECKER_*
 | 26-Nov-2026 19:46 | Sections 8, 9 and 10 checked (P06-S007 to S091; the switch table against P06-S088; the "(I)" marker by script); 6 log entries (section 9 unchanged) | Section 11 (consumers) | 46 |
 | 26-Nov-2026 19:47 | Section 11 checked (table compared with P06-S093 to S118, S187 by script; inventory section 7 count checked); 3 log entries | Section 12 (intent sources) | 49 |
 | 26-Nov-2026 19:48 | Section 12 checked (intent sources against P01 s9, P02 s10, P03 s11, P04 s12, P05 s4/7/9, P06 s10); 3 corrections | Section 13 (inherited items; register cells by script) | 52 |
+| 26-Nov-2026 19:53 | Section 13 checked: 89 register rows (3 cells each) exact by notes/ASSEMBLY_CHECKER_cells.py; 16 OIR summary Status cells exact; 21 MATCH cells against their AUDIT rows; 13.2 order/sources vs P07; A08 sides vs primary statements; counts re-done; 7 log entries | Section 14 (boundaries) | 59 |

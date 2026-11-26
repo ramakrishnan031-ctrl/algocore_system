@@ -10,3 +10,4 @@ Work notes: /home/claude/a08/notes/P04_grep.sh (git grep with the four exclusion
 | 2026-11-26 16:14 | section 2 (files, purpose, the distinct retest mechanisms) | section 3 (retest_confirm) | P04-S001 to P04-S017 |
 | 2026-11-26 16:16 | section 3 (retest_confirm: params, states, evaluate, strong close) | section 4 (RetestDiverter); rule: no forward statement numbers, use section refs | P04-S001 to P04-S033 |
 | 2026-11-26 16:17 | section 4 (RetestDiverter: constructor, call site, maybe_divert, zone lookup, dedup, structure SL, parked record, return table, audit row) | section 5 (ParkedCandidate, retest_state) | P04-S001 to P04-S047 |
+| 2026-11-26 16:19 | section 5 (ParkedCandidate, _to_row/_from_row, retest_state table, store methods, CHECKs, other readers) | section 6 (RetestMonitor lifecycle, poll, confirm, reject, persistence) | P04-S001 to P04-S060 |

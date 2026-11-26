@@ -6,6 +6,8 @@
 | H2 | P01 | writer (calculation core) | Opus 5.5 / High (Rama, 26-Nov) | 26-Nov-2026 13:02 | 26-Nov-2026 13:23 | COMPLETE (132 statements; 17 AUDIT points; backup ceb66fb) |
 | H3 | P07 | checker | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 13:31 | 26-Nov-2026 14:04 | COMPLETE (115 checked; 23 corrected, 1 re-labelled, 26 added -> 141; 16 Owner-field records assigned; backup 0677158) |
 | H4 | P01 | checker | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 13:31 | 26-Nov-2026 14:02 | COMPLETE (132 checked; 33 corrected, 12 re-labelled, 8 added -> 140; backup d618f26) |
+| H5 | P02 | writer | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 14:24 | — | RUNNING |
+| H6 | P03 | writer | Opus 5.5 / Max (Rama, 26-Nov) | 26-Nov-2026 14:24 | — | RUNNING |
 
 Planned order (at most two at a time; next pair only after both final hand-backs; Rama consulted before each start):
 1. P07 writer + P01 writer

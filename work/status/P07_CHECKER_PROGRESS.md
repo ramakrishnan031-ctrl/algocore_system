@@ -6,3 +6,4 @@
 | 26-Nov-2026 13:55 | section 1 checked (S001 to S010; all records and legacy lines re-read); S002 and S005 corrected | section 2 | P07-S001 to P07-S010 |
 | 26-Nov-2026 13:55 | section 2 checked (S011 to S016; lists re-derived by script: 48 items, 16 entries, 261 entries, 40 AFR rows); S015 corrected | section 3 | P07-S001 to P07-S016 |
 | 26-Nov-2026 13:56 | section 3 checked (S017 to S066; every record, AFR and legacy line re-read); lead-ins numbered S116 to S122 (S121 corrected); S033, S045, S050, S057, S061, S063, S066 corrected | section 4 | P07-S001 to P07-S066; added P07-S116 to P07-S122 |
+| 26-Nov-2026 13:56 | section 4 checked (S067 to S086; every entry field and summary row re-read by script); S067 re-labelled in part, S068 and S073 corrected | section 5 | P07-S001 to P07-S086; added P07-S116 to P07-S122 |

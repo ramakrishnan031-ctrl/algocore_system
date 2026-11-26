@@ -2,7 +2,7 @@
 
 | Helper | Part | Role | Model / effort | Started (IST) | Final hand-back (IST) | Status |
 |---|---|---|---|---|---|---|
-| H1 | P07 | writer (handoffs; runs first) | Opus 5.5 / High (Rama, 26-Nov) | 26-Nov-2026 13:02 | — | RUNNING |
+| H1 | P07 | writer (handoffs; runs first) | Opus 5.5 / High (Rama, 26-Nov) | 26-Nov-2026 13:02 | 26-Nov-2026 13:26 | COMPLETE (115 statements; 6 AUDIT points; assignment table P07-S105) |
 | H2 | P01 | writer (calculation core) | Opus 5.5 / High (Rama, 26-Nov) | 26-Nov-2026 13:02 | 26-Nov-2026 13:23 | COMPLETE (132 statements; 17 AUDIT points; backup ceb66fb) |
 
 Planned order (at most two at a time; next pair only after both final hand-backs; Rama consulted before each start):

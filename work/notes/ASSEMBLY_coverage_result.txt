@@ -1,0 +1,50 @@
+PASS P01 AP: 17 IDs in sections 15/16
+PASS P01 U: 10 IDs in sections 15/16
+PASS P01 R: 4 IDs in sections 15/16
+PASS P02 AP: 17 IDs in sections 15/16
+PASS P02 U: 11 IDs in sections 15/16
+PASS P02 R: 5 IDs in sections 15/16
+PASS P03 AP: 16 IDs in sections 15/16
+PASS P03 U: 10 IDs in sections 15/16
+PASS P03 R: 5 IDs in sections 15/16
+PASS P04 AP: 21 IDs in sections 15/16
+PASS P04 U: 11 IDs in sections 15/16
+PASS P04 R: 5 IDs in sections 15/16
+PASS P05 AP: 17 IDs in sections 15/16
+PASS P05 U: 7 IDs in sections 15/16
+PASS P05 R: 3 IDs in sections 15/16
+PASS P06 AP: 10 IDs in sections 15/16
+PASS P06 U: 6 IDs in sections 15/16
+PASS P06 R: 5 IDs in sections 15/16
+PASS P07 AP: 6 IDs (as "P07 AP-nn") in sections 15/16
+PASS P07 UNKNOWN statements: 6 ['P07-S109', 'P07-S110', 'P07-S111', 'P07-S112', 'P07-S113', 'P07-S141'] in sections 15/16
+PASS P07 questions: none (P07-S114) cited in section 16
+part totals: AP 104, U 61, R 27
+PASS 48 inherited items: 48 found in P07 section 3, all in section 13
+PASS 16 open issues: 16 found in P07 section 4, all in section 13
+PASS 16 Owner-field records: 16 found in P07 section 5.5, all in section 13.4
+PASS notes N1 to N6 in section 13.5
+PASS P06-S175 records: 34 (expected 34), all in section 13.6
+PASS P06-S176 records: 9 (expected 9) ['A01 S-33', 'A02 L-12', 'A02 V-22', 'A02 L-33', 'A03 R-34', 'A05 CA-16', 'A06 EV-14', 'A06 XA-05', 'A07 XS-08'], all in section 13.6
+PASS the 5 records of P06-S169 to P06-S173 in section 13.6
+PASS A06 PQ-06 (P06-S189) in section 13.6
+PASS A08-AP-01 to A08-AP-92 each defined once, in order  got 92
+PASS every A08-AP-nn reference resolves
+PASS A08-U-01 to A08-U-40 each defined once, in order  got 40
+PASS every A08-U-nn reference resolves
+PASS A08-Q-01 to A08-Q-25 each defined once, in order  got 25
+PASS every A08-Q-nn reference resolves
+PASS every cited part ID exists in its part (1134 distinct IDs cited)
+PASS every "P07 AP-nn" citation exists
+PASS no absolute path in the STUDY
+PASS no [FILL- placeholder left
+INFO "KNOWN DEFECT" occurrences: 7
+   ...ION, HISTORICAL and OPEN QUESTION (Document 04, section 6); KNOWN DEFECT is not used as a label in t...
+   ...ach stays OPEN as recorded) (P07-S001, P07-S011, P07-S068). KNOWN DEFECT occurs below only inside a ...
+   ...| five points: the fetchers' cache key and wall-clock age ("KNOWN DEFECT considered and not given at...
+   ...---|---|---|---| | A01 C3 (L629 to L639) | AFR L55: "ISSUE; KNOWN DEFECT; HISTORICAL"; "Group A (AGR...
+   ...alidated values), P02-AP01 (evidence bearing on A05 HA-06's KNOWN DEFECT consideration, which stands...
+   ...arison it invites; no point is resolved or classified here, KNOWN DEFECT is not used, and the classi...
+   ... window (A05 HA-06's A08 side; evidence that bears on A05's KNOWN DEFECT consideration, which stands...
+PASS sections 1 to 17 present in order  ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17']
+RESULT: ALL PASS

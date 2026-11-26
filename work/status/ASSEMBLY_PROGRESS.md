@@ -27,3 +27,4 @@ them apart from P07's own AP-01 to AP-06.
 | 2026-11-26 19:09 | section 17 (evidence index) written | section 2 (in brief), then section 1 and the header | part counts verified by script: 1,152 statements |
 | 2026-11-26 19:11 | section 2 (A08 in brief) written | section 1 (1.1 to 1.10) and the header fields | — |
 | 2026-11-26 19:13 | section 1 (1.1 to 1.10) and header fields written; no [FILL-] placeholder left | coverage script, label/ID/path checks, scan, final backup | — |
+| 2026-11-26 19:14 | coverage script run: ALL PASS (notes/ASSEMBLY_coverage.py, result in notes/ASSEMBLY_coverage_result.txt); citation check; 4 wording precisions applied (to_dict rounding, monitor interval default and retest_max_away_pct, backfill NO_TRADE rows, HA-03 citation) | spot-check of sections against parts; final scan; final backup | scan 0 |

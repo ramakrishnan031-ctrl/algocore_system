@@ -16,3 +16,4 @@
   (P06-S175, P06-S176; P06-AP08): "List with A08 facts (Recommended)" — the STUDY lists them with pointers to the part
   statements that already record the A08 facts; no extra fieldwork unless a part is silent; flagged for ChatGPT at the
   STUDY review. Nothing in earlier topics is changed.
+- 26-Nov-2026: assembly helper on Opus 5.5, Max effort.

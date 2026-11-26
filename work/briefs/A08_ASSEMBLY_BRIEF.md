@@ -13,9 +13,10 @@ Progress log: `/home/claude/a08/status/ASSEMBLY_PROGRESS.md`. Save, log and back
 In `/home/claude/a08/parts/`: P01 `A08_PIVOTS_ZONES_AND_CONFLUENCE_SCORING_2026-11-26.md`; P02
 `A08_CANDLE_FETCH_ZONE_BUILDER_CACHE_AND_WARMER_2026-11-26.md`; P03 `A08_V1_OBSERVER_FLAGS_RESULTS_AND_BACKFILL_2026-11-26.md`;
 P04 `A08_V2_RETEST_PATH_AND_RESUME_HANDOFF_2026-11-26.md`; P05 `A08_SPOTCHECK_AND_EXPORT_SCRIPTS_2026-11-26.md`; P06
-`A08_CONFIGURATION_WIRING_AND_CONSUMER_INTERFACES_<date>.md`; P07 `A08_PRIOR_TOPIC_HANDOFFS_2026-11-26.md`; the A08
-inventory (committed DRAFT, plus Claude's revision notes in `/home/claude/a08/notes/INVENTORY_REVISION_NOTES.md` if
-present); Rama's working decisions `/home/claude/a08/notes/RAMA_DECISIONS_A08_STUDY.md`; Claude's assignment decisions
+`A08_CONFIGURATION_WIRING_AND_CONSUMER_INTERFACES_2026-11-26.md`; P07 `A08_PRIOR_TOPIC_HANDOFFS_2026-11-26.md`; the A08
+inventory, Revision 1 (applied by Claude, uncommitted, in the working clone:
+`/home/claude/algocore_system/doc/02_PHASE1_LEGACY_STUDY_AND_AUDIT/TOPIC_WISE_DOCUMENTATION/A08_TECHNICAL_ANALYSIS_SR_AND_RETEST_CONTEXT/evidence/A08_SOURCE_FILE_INVENTORY_2026-11-26.md`;
+read it, do not edit it); Rama's working decisions `/home/claude/a08/notes/RAMA_DECISIONS_A08_STUDY.md`; Claude's assignment decisions
 `/home/claude/a08/notes/CLAUDE_ASSIGNMENT_DECISIONS.md` (if present); ChatGPT's A08 investigation direction (its
 requirements are summarised in Decision Register D-41's Evidence field and in the Topic Completion Register entry A08;
 the direction's section 4 lists: A.1 inventory; A.2 S&R data path; A.3 retest monitoring; A.4 the three scripts; A.5

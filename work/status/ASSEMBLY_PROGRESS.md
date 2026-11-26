@@ -25,3 +25,4 @@ them apart from P07's own AP-01 to AP-06.
 | 2026-11-26 19:08 | section 15.2 written (A08-U-01 to A08-U-40; 8 merged entries hold 29 items) | section 16 (questions A08-Q-01 to A08-Q-25; P06-R1 withdrawn) | references to U and Q numbers fixed |
 | 2026-11-26 19:09 | section 16 written (A08-Q-01 to A08-Q-25; P06-R1 withdrawn listed) | section 17 (evidence index), then 1 and 2, then header | — |
 | 2026-11-26 19:09 | section 17 (evidence index) written | section 2 (in brief), then section 1 and the header | part counts verified by script: 1,152 statements |
+| 2026-11-26 19:11 | section 2 (A08 in brief) written | section 1 (1.1 to 1.10) and the header fields | — |

@@ -13,3 +13,4 @@ Output: <workspace>/parts/A08_CANDLE_FETCH_ZONE_BUILDER_CACHE_AND_WARMER_2026-11
 | 2026-11-26 14:58 | 9 | section 10 (stated intent) | P02-S001 to P02-S141 |
 | 2026-11-26 14:59 | 10 | section 11 (AUDIT points) | P02-S001 to P02-S157 |
 | 2026-11-26 15:01 | 11 | section 12 (UNKNOWN items) | P02-S001 to P02-S157; P02-AP01 to P02-AP16 |
+| 2026-11-26 15:01 | 12 | section 13 (questions for Rama) | P02-S001 to P02-S157; P02-AP01 to P02-AP16; P02-U01 to P02-U11 |

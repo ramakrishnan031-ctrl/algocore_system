@@ -374,6 +374,20 @@ Neutral points for the A08 AUDIT, each citing the statements it rests on. "Bound
 
 ## 12. UNKNOWN / NOT ESTABLISHED items
 
+Each item names the evidence that would settle it. None of that evidence is in the repository at the baseline; both legacy machines are terminated, and no log, database or journal survives (Document 06, section 4.2).
+
+- P02-U01 — Which objects of the four files existed and ran in production: the deployed values of the switches `sr_detector.enabled`, `wait_for_retest_enabled`, `structure_exit_enabled`, `intraday_anchors_enabled`, `regime.enabled`, `v3_chain_mode` and `watchlist.enabled`, and so which fetchers were built and whether the zone cache and the warmer existed (P02-S040, P02-S041, P02-S075, P02-S100; A06 PQ-09, A07 SL-06; P07-S109). Would settle it: the deployed configuration and the boot log lines ("zone_warmer: started", the wiring INFO and ERROR lines of `main.py`).
+- P02-U02 — The deployed values of the lookbacks, TTLs, re-warm margin, anchor settings and the limiter's `max_wait_sec` (P02-S040, P02-S045, P02-S064, P02-S075, P02-S076). Would settle it: the configuration as deployed, or the effective configuration logged at boot.
+- P02-U03 — Whether the legacy server's answers included a still-forming last candle (intraday, or today's daily candle during the session), and so which day `prior_day_levels` took and what the anchors measured; and whether the rows were ascending and without duplicates (P02-S024, P02-S026, P02-S048, P02-S058; A05 HA-04, CM-05; P01-U02). Would settle it: captured broker answers of the legacy period.
+- P02-U04 — Whether the server accepted each window in one request (P02-S125; A05 HA-05). Would settle it: the fetcher's WARNING lines or captured answers of the period, and the vendor's limits as they stood then (the page read today states none, P02-S004).
+- P02-U05 — Whether the legacy machine's clock stepped while the system ran, and so whether either cache served entries beyond, or expired them before, their TTL (P02-S030, P02-S069). Would settle it: the machine's time-synchronisation logs (A17).
+- P02-U06 — Whether calls into the shared closure overlapped, and whether the one client tolerated it (P02-S034, P02-S101, P02-S122; A01 C38a, A04 RL-11). Would settle it: request logs with thread names and timings.
+- P02-U07 — The warmer's runtime: whether it started, how deep its queue grew, whether it dropped symbols, how much re-warm traffic it made, how long its fetches took and whether its join timed out at shutdown (P02-S084, P02-S089, P02-S112; A06 WD-16). Would settle it: the warmer's and the fetcher's log lines of the period, which do not survive; expected to remain UNKNOWN.
+- P02-U08 — Which fetch failures occurred, and of which kind (limiter timeouts, shutdown aborts, broker refusals such as 429s, conversion failures, tokens of 0, missing symbols) (P02-S020, P02-S037, P02-S038; A05 HA-10). Would settle it: the fetcher's WARNING lines of the period.
+- P02-U09 — Whether the candle labels' wall clock was IST, as the anchors' scoping needs (P02-S056; P01-U04). Would settle it: stored candles or evidence rows with their timestamps.
+- P02-U10 — How long the trading process ran between restarts, and so how far the two caches and the re-warm set grew (P02-S032, P02-S073, P02-S084). Would settle it: the service logs of the legacy machine (A16, A17).
+- P02-U11 — The production Python version (A01 B-41; P01-U09); the library semantics relied on here (P02-S005) are long-standing but were read for the current release. Would settle it: an environment record of the production machine.
+
 ## 13. Questions about intent for Rama
 
 ## 14. Cross-references

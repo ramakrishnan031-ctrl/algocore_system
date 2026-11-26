@@ -27,3 +27,12 @@
 - Sec 12: S142-S149 docstrings/comments vs code; S150-S153 tests; S154, S158 docs (PATHS.md L386, L392, L409; SYSTEM_MAP; expected_managers.yaml); S155-S157 history.
 - Sec 14 (X07): A01 closure/constructions/warmer start/_shutdown; A02 keys K-23, K-24; A04 limiter RL-05, RL-11; A05 session_vwap, instrument cache; A06 _warm_zones WD-10, WD-16, PQ-11; A07 SX-07; A11 structure exit ZoneCache.get never enqueues S159/AP17; A12 eod clears retest monitor not zone cache; A15 telemetry S099, registry S158; A16/A17 process lifetime, clock sync; A18 regime/V3/PB-01 fetchers; A19 tests.
 - X08: inventory 2.2 PB-01 fetcher lines L3728-L3732 (now corrected in inventory Rev 1).
+
+## P03 (217 statements S001-S217; 16 AP; 10 U; 5 R; 8 X). Writer H6 Max; checker H8 Max. Post-check correction by Claude: S157.
+- Sec 13 primary: D-05 S164; Q-17 S165; Q-29 S166; U-25 S167; HA-04 S168; EV-23 S169; XS-12 S170; A03-10 S171; A05-29 S172; D-09 S173; U-05 S174; N1 S175.
+- Secondary: C13 S176; K-21 S177; K-22 S178; K-23 S179; H-11 S180; CM-15 S181; HA-06 S182; HA-07 S183; HA-08 S184; A05-32 S185; CM-07 S186; CM-11 S187; HA-05 S188; SX-07 S189; RP-12 S190; N5 S191.
+- 5.3 rows H-44, U-59, U-60: S192 (facts S095, S118, S120, S128/S129/S134).
+- Sec 10: stop leaves S033/S216; worker before placement S036; observe S037-S040; exceptions S055; as-of S057; clock NULL created_at S092; shared resources S105-S107,S217; backfill date S116/S125; failure S126; guard S128-S131.
+- Sec 12: S193-S197 docstrings; S198-S202 tests; S203-S207 docs; S208-S214 history.
+- Sec 14 (X07): A01 wiring/clock/holiday S035,S155,S157; A02 config + registry S154,S098, AP13; A03 store/schema/locking S087,S089,S106,S152,S153; A04 limiter/client S105; A05 instrument cache S217; A06 seam, EV-23, TIMEOUT S101,S102,S143-S147,S169,S215; A10 trade rows/recovery S121,S215, AP11; A12 prune S097,S160; A15 report/telemetry/logging S096,S098,S156,S159,S217; A16 guard/registry/cron S128,S133,S134,S157,S158, AP07, AP08; A18 activation D-41 P2, PB-01 retest S077; A19 tests S139,S140,S162,S198-S202.
+- X08 (d): A03 H-11 cites retest_monitor L415; baseline L414 (recorded only).

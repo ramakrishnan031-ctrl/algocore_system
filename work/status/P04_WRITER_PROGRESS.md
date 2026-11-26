@@ -19,3 +19,4 @@ Work notes: /home/claude/a08/notes/P04_grep.sh (git grep with the four exclusion
 | 2026-11-26 16:30 | section 11 (inherited: 11 items, 2 open issues, 5 records, N5/N6 + wording, 8 secondary, 2 rows of P07 5.3) | section 12 (stated intent) | P04-S001 to P04-S160 |
 | 2026-11-26 16:32 | section 12 (stated intent: 12.1 comments vs code, 12.2 tests, 12.3 legacy documents, 12.4 history) | section 13 (Points for the AUDIT) | P04-S001 to P04-S182 |
 | 2026-11-26 16:34 | section 13 (Points for the AUDIT P04-AP01 to P04-AP21) | section 14 (UNKNOWN items P04-U01 onwards) | P04-S001 to P04-S182; AP01 to AP21 |
+| 2026-11-26 16:36 | sections 14 (U01 to U11), 15 (R1 to R5), 16 (X01 to X08) | review pass: citation check script, consistency, scan | P04-S001 to P04-S182; AP01 to AP21; U01 to U11; R1 to R5; X01 to X08 |

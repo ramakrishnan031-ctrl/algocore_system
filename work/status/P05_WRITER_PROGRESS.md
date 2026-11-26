@@ -13,3 +13,4 @@
 | 26-Nov-2026 16:53 | section 8 (7 primary items, 4 open issues, 2 records; secondary items D-05, CM-15, HA-09, A05-02, CM-07/HA-05/IN-09/SX-07, N2; 8.5 two further records found: A01 C40, A02 K-32) written; S021 cross-ref fixed to 8.5; scan 0 hits | section 9 (stated intent) | P05-S001 to P05-S113 |
 | 26-Nov-2026 16:58 | section 9 (stated intent: docstrings/comments vs code, tests, legacy documents, history) written; scan 0 hits | section 10 (Points for the AUDIT) | P05-S001 to P05-S121 |
 | 26-Nov-2026 17:02 | section 10 (Points for the AUDIT, P05-AP01 to P05-AP17) written; scan 0 hits | section 11 (UNKNOWN items) | P05-S001 to P05-S121; P05-AP01 to P05-AP17 |
+| 26-Nov-2026 17:04 | section 11 (UNKNOWN items P05-U01 to P05-U07) written; scan 0 hits | section 12 (questions for Rama) | P05-S001 to P05-S121; AP01-AP17; U01-U07 |

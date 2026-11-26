@@ -246,6 +246,16 @@ Neutral points for the A08 AUDIT, each citing the statements it rests on. "Bound
 
 ## 11. UNKNOWN / NOT ESTABLISHED items
 
+Each item names the evidence that would settle it. None of that evidence is in the repository at the baseline; both legacy machines are terminated (Document 06, section 4.2).
+
+- P05-U01 — Whether the spot check was ever run, where, for which symbol and window, and what it printed (P05-S046, P05-S044). Would settle it: an operator's note of a run, or its captured output.
+- P05-U02 — Whether the export was ever run and how each run ended; whether, in the environment where it was run, an import at L37 or L130 to L137 failed before L139 (P05-S050, P05-S059; A01 C40 for the import's effects). Would settle it: a record of a run (its traceback or a CSV) and the package list of that environment.
+- P05-U03 — Whether the broker's historical candles were adjusted for splits and bonuses in the legacy period, and so whether a corporate action could have put a false step into the detector's or the export's 180-day windows (P05-S037, P05-S038; A05 HA-07; P03-U04). Would settle it: a result of the check obtained in the legacy period, or candles of that period captured around a known corporate action.
+- P05-U04 — What the NSE instrument dump held in the legacy period (repeated tradingsymbols, rows of several segments), and so which token the spot check would have taken for a given symbol (P05-S028; A05 XC-03). Would settle it: a dump captured in the legacy period.
+- P05-U05 — How the broker treated the scripts' requests: naive window ends with no time zone (both scripts), windows that end after the moment of the request, empty or reversed windows (the spot check's `--window` of 0 or less), interval strings outside the loader's set (the export's `--interval`), and which daily candle ends a window that closes at 15:30 of a date, and so which day the export's prior-day levels and reference price describe (P05-S019, P05-S020, P05-S064, P05-S078, P05-S080, P05-S115). Would settle it: captured broker responses of the legacy period.
+- P05-U06 — Whether Rama's manual-marking validation was made by any other means, and whether `intraday_anchors_enabled` was ever true, or `confidence_class` ever flipped, on a production machine (P05-S091; committed `false`). Would settle it: a record of the validation and the deployed configuration of the legacy period.
+- P05-U07 — The installed versions of Python and of `kiteconnect` in production (committed pin `kiteconnect==5.1.0`; A01 B-41), on which the spot check's client defaults (its timeout) and the rows' format depend (P05-S021, P05-S023). Would settle it: the production environment's package list.
+
 ## 12. Questions about intent for Rama
 
 ## 13. Cross-references to other parts and topics

@@ -61,7 +61,7 @@ P07-S017. FACT (reading the tables): "RTR" and "AUDIT" are the source topic's RE
 
 ### 3.1 The 5 A01 items (A01 RTR section 15, row A08, L304)
 
-The A01 AUDIT's section 8 table has the columns "Finding (ID)", "Owner topic", "What A01 records" and "What the owner must examine" (L2142).
+P07-S116. FACT (reading the table; the writer's unnumbered lead-in, numbered in the check): the A01 AUDIT's section 8 table has the columns "Finding (ID)", "Owner topic", "What A01 records" and "What the owner must examine" (L2142).
 
 | Statement | ID | Source | Result and classification | Treatment; status | A08 side (source) | A08 question | A08 code location (FACT) | Part |
 |---|---|---|---|---|---|---|---|---|
@@ -73,7 +73,7 @@ The A01 AUDIT's section 8 table has the columns "Finding (ID)", "Owner topic", "
 
 ### 3.2 The 7 A02 items (A02 RTR section 15.2, row A08, L341)
 
-The A02 AUDIT's handoff table 9.5 has the columns "Item", "Owner" and "What" (L2350); K-24, K-25 and K-26 share one row (L2373, owners "A18, A08").
+P07-S117. FACT (reading the table; the writer's unnumbered lead-in, numbered in the check): the A02 AUDIT's handoff table 9.5 has the columns "Item", "Owner" and "What" (L2350); K-24, K-25 and K-26 share one row (L2373, owners "A18, A08").
 
 | Statement | ID | Source | Result and classification | Treatment; status | A08 side (source) | A08 question | A08 code location (FACT) | Part |
 |---|---|---|---|---|---|---|---|---|
@@ -87,14 +87,14 @@ The A02 AUDIT's handoff table 9.5 has the columns "Item", "Owner" and "What" (L2
 
 ### 3.3 The 9 A03 items (A03 RTR section 15.2, row A08, L405)
 
-The A03 AUDIT's handoff tables name A08 in the rows L1094 (6.5, owners "A08, A18"), L1808 (8.5, "A07, A08"), L2300 (9.5, "A08") and L3185 (11.5, the joint row "A08, A05, A07, A18, A19"); the collected index row is L5377.
+P07-S118. FACT (reading the table; the writer's unnumbered lead-in, numbered in the check): the A03 AUDIT's handoff tables name A08 in the rows L1094 (6.5, owners "A08, A18"), L1808 (8.5, "A07, A08"), L2300 (9.5, "A08") and L3185 (11.5, the joint row "A08, A05, A07, A18, A19"); the collected index row is L5377.
 
 | Statement | ID | Source | Result and classification | Treatment; status | A08 side (source) | A08 question | A08 code location (FACT) | Part |
 |---|---|---|---|---|---|---|---|---|
 | P07-S030 HISTORICAL (record) | D-05 | RTR L405; record AUDIT L406 (L414, L416); joint row L3185; AFR L369 | "ISSUE; FACT; INTERPRETATION; HISTORICAL" | "A03 treatment group TG1 (AGREED, 11-Nov-2026)"; "AGREED" | Owner L416 names A03, A15, A19, A07, A20 and A18, not A08; the joint row's D-05 clause concerns `forward_shadow_record.py` and `replay_signals.py` | whether any A08 script is documented or commented as read-only and opens the live database write-capable | `scripts/sr_detector_backfill.py` L24 (`DB_PATH`), L102 (`--db`), L114 to L115 (`StateStore(Path(args.db))`; it writes by design, docstring L4 to L10); `scripts/sr_level_export.py` docstring L5 ("READ-ONLY export"), L161 (`store=None`); `scripts/sr_corp_action_spotcheck.py`: no `StateStore` or database path (search) | P03; P05 |
 | P07-S031 HISTORICAL (record) | H-11 | RTR L405; record AUDIT L877 (L885, L887); row L1094 ("naive IST stamps in `retest_state`, `sr_detector_results` (retest path)" and empty text on a clock failure); AFR L393 | "ISSUE; FACT; INTERPRETATION" | "A03 treatment group TG6 (AGREED, 11-Nov-2026)"; "AGREED" | Owner L887: "A08 (retest)" among the readers and writers named | which time forms A08 writes into `retest_state` and `sr_detector_results`, from which clock, and what it writes when the clock call fails | `screening/retest_monitor.py` `_to_row` L229 to L241 (L230, L231, L239), `maybe_divert` L368, `_log_divert_audit` L398, L414, L430; `sr_detector/detector.py` `_write` L272, L293, `_safe_now` L305 to L309, `_iso` L324 to L325 | P04; P03 |
 | P07-S032 HISTORICAL (record) | P-02 | RTR L405; record AUDIT L1591 (L1599, L1601); joint row L1808 ("P-02 values from the screener, gate and retest"); AFR L424 | "ISSUE; FACT; HISTORICAL" | "A03 treatment group TG5 (AGREED, 11-Nov-2026)"; "AGREED" | Owner L1601: "A07, A08 (gate, screener, retest values)" | which status values the retest path writes, through which store calls, and whether any call passes a time stamp | `screening/retest_monitor.py` L349 to L351 (`"REJECTED_RETEST_DUP"` with a reason), L373 (`"RETEST_WAITING"`), L183 and L192 through `_release` L205 to L212 (`"RETEST_CONFIRMED"`, `"RETEST_REJECTED_<REASON>"`); store methods `core/state_store.py` L1408 and L3049 to L3059 (A03, interface) | P04 |
-| P07-S033 HISTORICAL (record) | P-11 | RTR L405; record AUDIT L1714 (L1722, L1724; case (5) in the field at L1720); joint row L1808 ("P-11 (5)"); AFR L433 | "ISSUE; FACT; INTERPRETATION" | "A03 treatment group TG2 (AGREED, 11-Nov-2026)"; "AGREED" | Owner L1724: "A07, A08 (screener, gate, retest)" | which separately committed writes the divert and the release make, in which order, and what a stop between them leaves | `screening/retest_monitor.py` `maybe_divert` L371 (`register`, which calls `insert_retest_state` at L97), L373 (`update_signal_status`), L374 (`_log_divert_audit`, `insert_sr_detector_result` at L413); `_evaluate` L183 then L187 (release, then `on_confirm`); each store call is its own transaction (`core/state_store.py` L3033, L3043, L3054; A03, interface) | P04 |
+| P07-S033 HISTORICAL (record) | P-11 | RTR L405; record AUDIT L1714 (L1722, L1724; case (5) in the field at L1720); joint row L1808 ("P-11 (5)"); AFR L433 | "ISSUE; FACT; INTERPRETATION" | "A03 treatment group TG2 (AGREED, 11-Nov-2026)"; "AGREED" | Owner L1724: "A07, A08 (screener, gate, retest)" | which separately committed writes the divert and the release make, in which order, and what a stop between them leaves | `screening/retest_monitor.py` `maybe_divert` L371 (`register`, which calls `insert_retest_state` at L97), L373 (`update_signal_status`), L374 (`_log_divert_audit`, `insert_sr_detector_result` at L413); `_evaluate` L183 then L187 (release, then `on_confirm`); each store call is its own transaction (`core/state_store.py` L3033 `insert_retest_state`, L1422 `update_signal_status`, L1990 `insert_sr_detector_result`, L3054 `release_retest_state`; A03, interface; corrected in the check: L3043 is `update_retest_state`, which neither step calls) | P04 |
 | P07-S034 HISTORICAL (record) | Q-11 | RTR L405; record AUDIT L2039 (L2047, L2049); row L2300 ("Q-11 (retest release failure and rehydration)"); AFR L446 (Component `screening/retest_monitor.py`) | "ISSUE; FACT; INTERPRETATION" | "A03 treatment group TG2 (AGREED, 11-Nov-2026)"; "AGREED" | Owner L2049: "A08 (retest), A07 (gate), A06 (resumption guards); A03 (the release methods)." | what the monitor does when the release raises: its memory, the stored row, the resume call, and what a restart rehydrates | `screening/retest_monitor.py` `_release` L205 to L212 (removed from memory L206 to L207; the store call in a `try`, logged, L208 to L212); `_evaluate` L180 to L190; `rehydrate` L118 to L136; called at boot `main.py` L3795 (interface) | P04 |
 | P07-S035 HISTORICAL (record) | Q-17 | RTR L405; record AUDIT L2113 (L2121, L2123); row L2300; AFR L451 (Component `sr_detector/detector.py`) | "ISSUE; FACT" | "A03 treatment group TG4 (AGREED, 11-Nov-2026)"; "AGREED" | Owner L2123: "A03; A08 (callers)." | which keys each A08 caller passes to `insert_sr_detector_result`, and whether any omits a nullable key | `sr_detector/detector.py` `_write` L259 to L301 (row L269 to L294, call L295); `screening/retest_monitor.py` `_log_divert_audit` L392 to L433 (call L413 to L431); store method `core/state_store.py` L1979 (A03, interface) | P03; P04 |
 | P07-S036 HISTORICAL (record) | Q-29 | RTR L405; MATCH row AUDIT L2256 (section 9.4.1); row L2300; no AFR row | "MATCH; FACT, INTERPRETATION" (owner cell "A08; A03") | not entered (MATCH) | the row: only NULL-outcome rows are selected and each is updated in its own transaction | A08's side of the selection, the per-row updates and a re-run | `scripts/sr_detector_backfill.py` `backfill` L44 to L93 (read L49; updates L63 to L66 and L84 to L90); store methods `core/state_store.py` L1997 and L2008 (A03, interface) | P03 |
@@ -103,7 +103,7 @@ The A03 AUDIT's handoff tables name A08 in the rows L1094 (6.5, owners "A08, A18
 
 ### 3.4 The 4 A04 items (A04 RTR section 15.2, row A08, L414)
 
-The A04 AUDIT names A08 in the handoff rows L796 (table 5.5, owner "A08") and L3607 (table 11.5, the joint row "A05, A08, A12, A15, A18, A19, A20"); the collected index row is L5041. CL-11 and CL-15 are recorded at the interface only, under the security rules (P07-S009).
+P07-S119. FACT (reading the table; the writer's unnumbered lead-in, numbered in the check): the A04 AUDIT names A08 in the handoff rows L796 (table 5.5, owner "A08") and L3607 (table 11.5, the joint row "A05, A08, A12, A15, A18, A19, A20"); the collected index row is L5041. CL-11 and CL-15 are recorded at the interface only, under the security rules (P07-S009).
 
 | Statement | ID | Source | Result and classification | Treatment; status | A08 side (source) | A08 question | A08 code location (FACT) | Part |
 |---|---|---|---|---|---|---|---|---|
@@ -114,7 +114,7 @@ The A04 AUDIT names A08 in the handoff rows L796 (table 5.5, owner "A08") and L3
 
 ### 3.5 The 11 A05 items (A05 RTR section 15.2, row A08, L466)
 
-The A05 AUDIT's handoff tables name A08 in the rows L1389 (7.5), L1677 (8.5), L2007 (9.5) and L3274 (13.5), each with owner "A08"; the collected index row is L3327. The A05 RTR's prose (L480) and its section 22.2 (L706) add the notes of section 5.1.
+P07-S120. FACT (reading the table; the writer's unnumbered lead-in, numbered in the check): the A05 AUDIT's handoff tables name A08 in the rows L1389 (7.5), L1677 (8.5), L2007 (9.5) and L3274 (13.5), each with owner "A08"; the collected index row is L3327. The A05 RTR's prose (L480) and its section 22.2 (L706) add the notes of section 5.1.
 
 | Statement | ID | Source | Result and classification | Treatment; status | A08 side (source) | A08 question | A08 code location (FACT) | Part |
 |---|---|---|---|---|---|---|---|---|
@@ -132,7 +132,7 @@ The A05 AUDIT's handoff tables name A08 in the rows L1389 (7.5), L1677 (8.5), L2
 
 ### 3.6 The 8 A06 items (A06 RTR section 15.2, row A08, L531)
 
-The A06 AUDIT's handoff tables have the columns "To", "What ... records at the interface" and "Records"; they name A08 in the rows L2271 ("A07 to A10 (screening, S&R, risk, placement)"), L3231 and L4010 ("A08 (S&R zones)"), L4951 ("A08 (S&R, retest)") and L6552 ("A08 (retest)", for A02 K-22); the collected index row is L6628.
+P07-S121. FACT (reading the table; the writer's unnumbered lead-in, numbered and corrected in the check): the A06 AUDIT's handoff tables of parts WA, WD, PQ and EV (6.5, 7.5, 8.5, 9.5; headers L2266, L3226, L4003, L4945) have the columns "To", "What ... records at the interface" and "Records"; the table 12.5 has the columns "Owner", "Interface fact recorded here" and "Records" (L6545). They name A08 in the rows L2271 ("A07 to A10 (screening, S&R, risk, placement)"), L3231 and L4010 ("A08 (S&R zones)"), L4951 ("A08 (S&R, retest)") and L6552 ("A08 (retest)", table 12.5, for A02 K-22); the collected index row is L6628.
 
 | Statement | ID | Source | Result and classification | Treatment; status | A08 side (source) | A08 question | A08 code location (FACT) | Part |
 |---|---|---|---|---|---|---|---|---|
@@ -147,7 +147,7 @@ The A06 AUDIT's handoff tables have the columns "To", "What ... records at the i
 
 ### 3.7 The 4 A07 items (A07 RTR section 15.2, row A08, L543)
 
-The A07 AUDIT names A08 in the handoff rows L1208 ("A08 (retest)"), L1214 (the A18 row, "with A08"), L3436 ("A08 and A18 (retest path, `continue_from_retest`)") and L4323 ("A08 (S&R)"); the collected index row is L4432.
+P07-S122. FACT (reading the table; the writer's unnumbered lead-in, numbered in the check): the A07 AUDIT names A08 in the handoff rows L1208 ("A08 (retest)"), L1214 (the A18 row, "with A08"), L3436 ("A08 and A18 (retest path, `continue_from_retest`)") and L4323 ("A08 (S&R)"); the collected index row is L4432.
 
 | Statement | ID | Source | Result and classification | Treatment; status | A08 side (source) | A08 question | A08 code location (FACT) | Part |
 |---|---|---|---|---|---|---|---|---|

@@ -32,15 +32,20 @@ re-describe the A08 objects' internals.
    not yet listed by `git grep` over the whole repository (exclusions applied) for every public A08 name.
 4. The A08 inventory corrections found so far (for Claude's inventory revision; record as facts with lines): section
    2.1 `_sr_observe` call sites (L1550, L2296, L2588); section 2.2 PB-01 fetcher lines (construction L3728 to L3732);
-   and any other inventory line you find wrong.
+   section 7 omits `tests/unit/test_sr_v2_market_path.py` (P04-X08); and any other inventory line you find wrong
+   (re-run the section 7 test search with every public A08 name).
 
 ## Inherited items
 
 Answer A08's side of every item whose PRIMARY part is P06 in P07 section 7 (final: A01 C13, C37, B-11; A02 K-21, K-25,
 K-26; A03 U-24; A06 PQ-09 — P07-S107 notes no A08 code was found for K-25, K-26, U-24: confirm and record "no A08 side
 found" or the side you find), and record P06's side where P06 is SECONDARY. Also confirm, as facts, the three rows
-H-44, U-59, U-60 recorded unassigned in P03-S192 and say which part's code they touch (Claude decides their
-assignment). Never change any item's classification, treatment or status.
+H-44, U-59, U-60 recorded unassigned in P03-S192, and the two records A01 C40 and A02 K-32 recorded unassigned in
+P05-AP17 (they touch A08's scripts but do not name A08), and say which part's code each touches and whether that
+part already records the facts (Claude decides their assignment). Finally, search the approved A01 to A07 AUDIT files
+for records that touch any of the sixteen A08 paths (by path or A08 public name) without naming A08, beyond those
+already listed in P07 sections 3 to 5 and above, and list them as facts (ID, file, line, A08 code touched).
+Never change any item's classification, treatment or status.
 
 ## Intent sources
 

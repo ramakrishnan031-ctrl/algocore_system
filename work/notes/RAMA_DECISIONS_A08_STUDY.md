@@ -8,3 +8,4 @@
   D-41's ownership; an addition to examination coverage.)
 - 26-Nov-2026: writers P02 and P03 on Opus 5.5, Max effort.
 - 26-Nov-2026: checkers P02 and P03 on Opus 5.5, Max effort.
+- 26-Nov-2026: writers P04 and P05 on Opus 5.5, Max effort.

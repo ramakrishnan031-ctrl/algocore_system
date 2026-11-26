@@ -28,3 +28,6 @@ them apart from P07's own AP-01 to AP-06.
 | 2026-11-26 19:11 | section 2 (A08 in brief) written | section 1 (1.1 to 1.10) and the header fields | — |
 | 2026-11-26 19:13 | section 1 (1.1 to 1.10) and header fields written; no [FILL-] placeholder left | coverage script, label/ID/path checks, scan, final backup | — |
 | 2026-11-26 19:14 | coverage script run: ALL PASS (notes/ASSEMBLY_coverage.py, result in notes/ASSEMBLY_coverage_result.txt); citation check; 4 wording precisions applied (to_dict rounding, monitor interval default and retest_max_away_pct, backfill NO_TRADE rows, HA-03 citation) | spot-check of sections against parts; final scan; final backup | scan 0 |
+| 2026-11-26 19:16 | final checks: coverage ALL PASS (41 PASS, 0 FAIL); register-cell check 267 matched, 0 mismatches (notes/ASSEMBLY_cellcheck.py); table cell counts consistent; verdict-word sweep clean; scan 0 hits | hand back | — |
+
+**COMPLETE** (2026-11-26 19:16 IST): out/A08_STUDY_2026-11-26.md, 1,117 lines, sections 1 to 17; 92 points for the AUDIT (from 104), 40 UNKNOWN items (from 61), 25 questions (from 27 IDs; P06-R1 withdrawn; P04-R1 and P06-R5 merged); coverage test ALL PASS.

@@ -17,3 +17,4 @@
   statements that already record the A08 facts; no extra fieldwork unless a part is silent; flagged for ChatGPT at the
   STUDY review. Nothing in earlier topics is changed.
 - 26-Nov-2026: assembly helper on Opus 5.5, Max effort.
+- 26-Nov-2026: assembly checker on Opus 5.5, Max effort.

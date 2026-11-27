@@ -12,4 +12,5 @@ File: `<workspace>/parts/A08_AUDIT_PART_FC_2026-11-27.md`. IDs FC-01 onward (sec
 | 2026-11-27 15:29 | section 3, records FC-06 to FC-10 written and saved (scan 0 hits); backup f3963a7 (BACKUP OK) | section 3, FC-11 to FC-18 | FC-01 to FC-10 |
 | 2026-11-27 15:33 | section 3 complete: records FC-11 to FC-18 written and saved (scan 0 hits); section 3 = FC-01 to FC-18 (FC-18 a records observation) | section 4, MATCH rows FC-19 to FC-27 | FC-01 to FC-18 |
 | 2026-11-27 15:35 | section 4 written: MATCH rows FC-19 to FC-27 (scan 0 hits) | sections 5 to 9 | FC-01 to FC-27 |
-| 2026-11-27 15:38 | sections 5 (handoffs) and 6 (totals) written (scan 0 hits) | sections 7, 8, 9; then script re-count, final checks | FC-01 to FC-27 |
+| 2026-11-27 15:37 | sections 5 (handoffs) and 6 (totals) written (scan 0 hits); backup 77113b6 (BACKUP OK) | sections 7, 8, 9; then script re-count, final checks | FC-01 to FC-27 |
+| 2026-11-27 15:39 | sections 7 (could not establish), 8 (questions; new draft FC-R1) and 9 (3 sources beyond the halves) written; section 1's intent list made to match the citations (script); A05 CD-37 prefixed (scan 0 hits) | verification scripts: part statements, totals, line pointers | FC-01 to FC-27; FC-R1 |

@@ -342,11 +342,55 @@ Interface facts only; each owner keeps its logic, IDs, classifications, treatmen
 
 ## 6. Totals
 
+Counted by script (`<workspace>/notes/CZ_check.py`, which reads only this file and the allocation note; working material, not kept).
+
+| Result | Count | IDs |
+|---|---:|---|
+| ISSUE | 12 | CZ-01, CZ-02, CZ-03, CZ-04, CZ-07, CZ-08, CZ-09, CZ-10, CZ-11, CZ-12, CZ-13, CZ-14 |
+| UNKNOWN / NOT ESTABLISHED | 3 | CZ-05, CZ-06, CZ-15 |
+| MATCH | 14 | CZ-16, CZ-17, CZ-18, CZ-19, CZ-20, CZ-21, CZ-22, CZ-23, CZ-24, CZ-25, CZ-26, CZ-27, CZ-28, CZ-29 |
+| KNOWN DEFECT given | 0 | considered and not given in eight records: CZ-01 ((a) and (c) hold; (b) holds only on the reading that the timeframe vote is not an independent method; (d) fails), CZ-02 for the flat top ((a) and (b) hold; (c) holds as INTERPRETATION; (d) fails), CZ-04 ((a) fails), CZ-07 ((a) fails; (c) not established), CZ-08 ((a) and (b) hold; (c) not established; (d) fails), CZ-09 ((a) and (b) hold; (c) not established; (d) fails), CZ-11 ((a) fails), CZ-12 ((a) fails); not considered in CZ-02 (its docstring part), CZ-03, CZ-05, CZ-06, CZ-10, CZ-13 and CZ-14 (a wording, design or consistency difference, or no mechanism), and not applicable to CZ-15 (runtime only) |
+| Records observations (not counted) | 0 | none |
+| Withdrawn | 0 | none |
+| Total result records | 29 | CZ-01 to CZ-29, contiguous, each defined once (by script) |
+
+- Of the 12 ISSUE records, ten carry "minor" with its basis (CZ-02, CZ-03, CZ-04, CZ-07, CZ-08, CZ-09, CZ-10, CZ-11, CZ-13, CZ-14), four of them also "latent" (CZ-07, CZ-08, CZ-09, CZ-11); one carries "latent" alone (CZ-12), the basis being the committed switch values; one carries no severity word, its impact described with its basis (CZ-01). Seven ISSUE records have MATCH parts and are counted as ISSUE (CZ-01, CZ-02, CZ-03, CZ-09, CZ-10, CZ-12, CZ-14); three have UNKNOWN parts (CZ-02, CZ-08, CZ-14). One UNKNOWN record has a MATCH part (CZ-05).
+- All 36 allocated items are disposed in section 2 (checked by script: no item missing, none extra, none twice): 17 points for the AUDIT, 10 UNKNOWN items, 4 draft questions, 2 inherited items and 3 listed records; none is cited away whole to another part. Items whose mechanism lies partly in another part's file, with what is counted here: A08-AP-05, A08-AP-06 and A08-AP-07 (the fetcher's side is part FC's: CM-05, A05-27, A05-28 and the interval discard); A08-AP-12 (the detector's cap, in part VO's file, counted here as CZ-13); A08-AP-13 (the profiled series, part FC's, A08-AP-25); A08-AP-14 (the class's readers in parts VO, RT and SC, counted here as CZ-12); A08-AP-16 (`PATHS.md` L417, part VO's, A08-AP-48). CZ-12 and CZ-13 are flagged for Claude's decision under the ownership rule.
+- Not counted here, cited only: A05 CM-05 and the entries A05-27 and A05-28 (part FC); A08-AP-25 and A08-AP-32 (part FC); A08-AP-38 and A08-AP-48 (part VO); A08-AP-82 and A08-U-33 (part SC); A08-AP-86 (part XW). Earlier topics' records cited without change: A05 CM-01, CM-05, CM-08, CM-10, CM-12, CM-13, HA-08; A02 K-61; A07 HG-32, EG-13; A01 B-41.
+
 ## 7. Could not establish
+
+- Every point of CZ-15: the deployed values of every key (A08-U-01); the order, duplicates, gaps and completeness of the candles the core received (A08-U-02); whether any bad value reached it (A08-U-03); whether the candle times were aware IST, so which recency branch ran (A08-U-04); which A08 code and which consumers of the core ran (A08-U-05); the zones, scores and buckets produced, and how often HIGH came from the pivots alone, a group drifted, a zone had zero width or the log cap cut an analysis (A08-U-06); whether a clock wrapper ever returned `None` (A08-U-07); whether the visual review took place (A08-U-08); the production Python and library versions (A08-U-09); what the historical volume meant (A08-U-10). Would settle them: the evidence named in each point of CZ-15 (the deployed configuration or its boot log, captured broker answers, the production `sr_detector_results` rows, the process logs, an environment record), none of which survives.
+- Rama's intent where no source states it: whether agreement of swings across timeframes was enough for HIGH (A08-Q-01; CZ-01), whether a width limit or a minimum number of touches was intended (A08-Q-02; CZ-03, CZ-04), whether a flat top counts once (A08-Q-03; CZ-02), and whether the manual-marking check and the visual review were made (A08-Q-04; CZ-12, CZ-14). Would settle them: Rama's answers; none is needed to classify a record.
+- Which component was meant to guarantee the candle order and to remove duplicates (CZ-05, CZ-06): the Open Issues Register entries A05-27 and A05-28 were answered OPEN on 16-Nov-2026 (RS-12) and are not put again.
+- The specification behind "spec E" and the test's "spec K" (CZ-14 (2); IS-510): no tracked file; the legacy half's draft question ISB-R3 asks whether it existed.
+- Three external pages could not be re-read on 27-Nov-2026 (the Kite Connect "Historical candle data" page and the Python "Built-in Functions" and "math" pages; the permission requests were not answered in time and were not retried); what they say is used only through P01-S004, read on 26-Nov-2026 (section 1).
+- **Clone checks after the work** (27-Nov-2026, filled at the end of the work; see the last line of this section).
 
 ## 8. Questions about intent for Rama
 
+No new question is raised by this part: every CZ record's classification rests on a stated source or, where no source states the intent, on what the code itself shows or on the absence of surviving evidence. The four STUDY questions allocated here stand as drafted (STUDY section 16); they are restated with the records they bear on and the context this part adds, for Claude to relay. None is answered here, none is needed to classify a record, and each stays OPEN FOR RAMA. No earlier topic's history question is put again (A05-27 and A05-28 stay OPEN as recorded).
+
+1. **A08-Q-01** (CZ-01). As drafted: in the legacy code a zone was rated HIGH whenever swing highs or lows at about the same price appeared on two of the three timeframes (with at least three swing points in total) or on all three, even with no other evidence; was that what you meant by HIGH confidence (A: yes, agreement of swings across timeframes was enough; B: no, HIGH was meant to need at least one kind of evidence other than the swings; C: not sure; Other)? Context the AUDIT adds, without changing the question: the code's own description says confidence is "NEVER a single method", while the code's test written the same day counts the timeframe agreement as the second method; at the committed settings every zone found on all three timeframes is HIGH.
+2. **A08-Q-02** (CZ-03, CZ-04). As drafted: whether a limit on a zone's width or a minimum number of swing points was intended (A: no limit and no minimum; B: a width limit; C: a minimum number of touches; D: both; E: not sure; Other). Context: a pending list of 30-Jun-2026 planned a "zone-accuracy review" that named one symbol's "too-wide-zone", with "zone params only" as the outcome if recalibration was needed (IS-555); the merge across timeframes can also widen a group beyond its 0.4 per cent setting (CZ-03).
+3. **A08-Q-03** (CZ-02). As drafted: whether a flat top or bottom of equal neighbouring highs or lows was meant to count as one touch or as several (A: one touch; B: several touches; C: not sure; Other). Context: the code's own test reads the rule's "perfectly flat plateau" as a run of equal bars that fills the whole window, which the code marks with no pivot; a shorter flat top is marked on every bar.
+4. **A08-Q-04** (CZ-12, CZ-14; CZ-15 point 8). As drafted: whether the manual-marking check or the visual review was carried out, and whether a record of the result is kept (A: neither was done; B: one or both were done, please say which, when and where the result is; C: not sure; Other). Context: the V3 step-4 plan says that reward-to-risk "uses ANCHOR-only levels ... until swing validation flips it" (section 9, row 1), while no code reads the label that marks the swing-based zones as not yet validated (CZ-12); the legacy half's additions to this question (the detector's comment and the soak report's condition) stand.
+
+The legacy half's draft question ISB-R3 (the lettered S&R specification) bears on CZ-14 (2); it is the legacy half's and is not restated here.
+
 ## 9. Sources cited beyond the intent-sources file
+
+Legacy passages used by this part that neither checked half lists, each read at the baseline; dates by `git blame -s -l` and `git log -1 --format='%H %as'` (hashes and dates only). All HISTORICAL. To be numbered in the cross-part check.
+
+| # | Source (path and lines) | Date (introducing commit) | Kind | What it states (short quotation) | Used in |
+|---|---|---|---|---|---|
+| 1 | `docs/v3/V3_STEP4_HARDGATE_SCORER_PLAN.md` L123, the plan's boundary rule (A07 IS-955 cites the same line for its fail-closed clause) | 2026-07-12 (`536172cfadfdd28ec9e5f8c00f9d549f0cd57dc2`) | INTENT | "R:R uses **ANCHOR-only** levels (03.01 `confidence_class=ANCHOR_ONLY`) until swing validation flips it" | CZ-12; section 8 |
+| 2 | `sr_detector/models.py` L81, the `Zone.contains` docstring | 2026-06-27 (`dea336ae71c353fd86331a37d0a788e02968aca9`) | DECLARATION | "True if price falls inside the band, optionally widened by buffer_pct." | CZ-20 |
+| 3 | `sr_detector/models.py` L202, the comment on the three V3 fields of `SRAnalysis` | 2026-07-12 (`536172cfadfdd28ec9e5f8c00f9d549f0cd57dc2`) | DECLARATION | "V3 03.01 (additive; default-safe so every existing construction is unchanged)" | CZ-26 |
+| 4 | `regime/engine.py` L191 to L192, the `_swing_structure` docstring [A18's file] | 2026-07-12 (`536172cfadfdd28ec9e5f8c00f9d549f0cd57dc2`) | DECLARATION | "from the two most recent swing highs and lows (reuses find_swing_pivots)" | CZ-05 |
+| 5 | `v3_chain/runner.py` L207, the gates comment [A18's file] | 2026-07-12 (`474e10b4fbf3f26f70926e7eaa7e4890eddbb861`) | DECLARATION | "Gates (LOG-ONLY — recorded, never enforced)." | CZ-12 |
+
+Notes on the intent-sources halves, for the cross-part check (not records observations: the halves are this AUDIT's working evidence, not project records; nothing is changed by them): (1) CD-505 lists the round-number docstring among the statements that only the code contradicts; CZ-19 reads the docstring's "magnitude (or half-magnitude)" as the disjunction the code applies, and finds no contradiction. (2) CD-506's interpretation added in the check says that every value the candidate receives "is already passed to `_emit_signal_alert` before placement"; at the baseline the alert call receives eight of the candidate's twelve values, and the signal id, intent, mode and time are in the caller's scope but not passed (`signals/signal_processor.py` L1371 to L1380, L486 to L497; CZ-14 (5)). (3) In this part's reading, IS-518 does not cover `sr_detector/models.py` L81 and IS-519 does not cover L202; rows 2 and 3 above list them.
 
 ## 10. Check log
 

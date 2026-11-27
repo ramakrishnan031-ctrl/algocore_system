@@ -30,3 +30,5 @@
       export's first failing line (A05 HA-07, A01 C38b).
   CZ: N2's `Candle.from_kite` conversions (A05 CM-10, HA-08) — already disposed by CZ.
 - FC-R1 (new draft question; adds to A08-Q-25): kept for the cross-part check to merge with XW's Q-25 handling.
+- Open for the cross-part check (from the CZ checker): CZ-27 kept MATCH on A08's side while docs/SYSTEM_MAP.md L211's
+  "no parallel type" is false because of A05's CandleData (handoff to A05); decide whether any part counts it.

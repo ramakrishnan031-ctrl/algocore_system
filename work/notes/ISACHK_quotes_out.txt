@@ -273,7 +273,7 @@
   ok [11w] was true of an earlier state or of the paper branch -> A05 AUDIT L1640
   ok [3w] none changes behaviour -> A05 AUDIT L1640
   ok [7w] A08 (`sr_detector/fetch.py` and the check script for -> A05 AUDIT L1642; P07 L129; P05 L194
-===== L119 IS-028: 15 quoted fragments
+===== L119 IS-028: 17 quoted fragments
   ok [10w] UNKNOWN / NOT ESTABLISHED; FACT; INTERPRETATION; UNKNOWN / NOT ESTABLISHED -> AFR L999; A08 STUDY L649; P02 L276; P07 L121
   ok [6w] UNKNOWN / NOT ESTABLISHED (no treatment) -> AFR L368,L382,L387,L400,L402,L419+; A03 RTR L299; A04 RTR L286; A06 AUDIT L386,L393,L4230,L5062; A06 RTR L740; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L113,L127
   ok [7w] Inputs : Sequences of Candle (chronologically ordered) -> AFR L999; A05 AUDIT L1271; A05_CANDLE_MATH_2026-11-14.md L29
@@ -283,10 +283,11 @@
   ok [4w] were to be handled -> A05 AUDIT L1271; A08 STUDY L869; P01 L269
   ok [3w] the module's contract -> AFR L1003; OIR L2548,L2563; A05 AUDIT L1277,L1326,L1331
   ok [8w] the fetcher, which passes the rows as received -> OIR L2548,L2563; A05 AUDIT L1277; P07 L121,L179
+  ok [7w] not needed for the A05 module side -> A05 AUDIT L1279
   ok [12w] STUDY question 17 stays OPEN FOR RAMA for the fetch side (A08's) -> A05 AUDIT L1279
-  ok [6w] was meant to guarantee oldest-first order -> A08 STUDY L689; P02 L291; P07 L179
-  NOT FOUND [6w]: was meant to be relied on
-  ok [6w] was meant to remove duplicate candles -> A08 STUDY L690; P02 L292; P07 L180
+  ok [5w] meant to guarantee oldest-first order -> OIR L2545; A05 RTR L649; A08 STUDY L689; P02 L291; P07 L179
+  ok [5w] meant to be relied on -> OIR L2545,L2560; A05 RTR L649,L650
+  ok [5w] meant to remove duplicate candles -> OIR L2560; A05 RTR L650; A08 STUDY L690; P02 L292; P07 L180
   ok [9w] A08 (the fetcher, which passes the rows as received) -> OIR L2548,L2563; A05 AUDIT L1277; P07 L121,L179
 ===== L120 IS-029: 11 quoted fragments
   ok [4w] ISSUE; FACT; INTERPRETATION; HISTORICAL -> AFR L292,L369,L372,L373,L431,L461+; A04 AUDIT L382,L3747; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L162; A05 AUDIT L269,L278,L285,L408,L851,L1513+; A05 STUDY L893,L902,L909; A05_INSTRUMENT_REFRESH_AND_ALIAS_TOOL_2026-11-14.md L135,L267
@@ -299,7 +300,7 @@
   ok [3w] meant to treat -> OIR L2710; A05 RTR L660; A05 STUDY L1155,L1179; A05_CANDLE_STORE_AND_LIVE_CANDLES_2026-11-14.md L318; A05_INSTRUMENT_CACHE_2026-11-14.md L340; A08 STUDY L695
   ok [5w] A08, A10 (their consumers' handling) -> OIR L2668,L2698,L2713; A05 AUDIT L1840; P07 L130,L183
   ok [7w] Never send an order using token 0 -> OIR L2672
-===== L121 IS-030: 6 quoted fragments
+===== L121 IS-030: 7 quoted fragments
   ok [4w] UNKNOWN / NOT ESTABLISHED -> DOC04 L92,L107; DOC06 L65; DOC08 L94,L102,L145; AFR L5,L5,L5,L5,L5,L5+; DR L296,L464,L464,L492,L520,L534+; OIR L5,L5,L76,L106,L106,L112+
   ok [6w] UNKNOWN / NOT ESTABLISHED (no treatment) -> AFR L368,L382,L387,L400,L402,L419+; A03 RTR L299; A04 RTR L286; A06 AUDIT L386,L393,L4230,L5062; A06 RTR L740; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L113,L127
   ok [8w] No source states one rule for every consumer -> A05 AUDIT L1932; A05 IS L511
@@ -382,10 +383,12 @@
   ok [14w] does not cover the one call path outside the adapter that holds a bucket -> A04 AUDIT L3443
   ok [9w] The fail-safe swallow itself matches SR-F4 (MATCH part, A08's) -> A04 AUDIT L3443; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L217; P02 L275
   ok [6w] A08 (the fetch and its fail-safe) -> A04 AUDIT L3445; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L217,L294; P07 L112
-===== L129 IS-038: 14 quoted fragments
+===== L129 IS-038: 16 quoted fragments
   ok [4w] ISSUE; FACT; INTERPRETATION; HISTORICAL -> AFR L292,L369,L372,L373,L431,L461+; A04 AUDIT L382,L3747; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L162; A05 AUDIT L269,L278,L285,L408,L851,L1513+; A05 STUDY L893,L902,L909; A05_INSTRUMENT_REFRESH_AND_ALIAS_TOOL_2026-11-14.md L135,L267
   ok [6w] A06 treatment group TG5 (AGREED, 19-Nov-2026) -> AFR L1169,L1170,L1174,L1175,L1176,L1177+; A08 STUDY L662; P02 L282; P07 L141
-  NOT FOUND [8w]: if the dispatcher itself lags or has stopped
+  ok [4w] where no threshold looks -> A06 AUDIT L2962
+  ok [6w] dispatcher itself lags or has stopped -> A06 AUDIT L2963
+  ok [9w] can block, which decides when the queue thresholds engage -> A06 AUDIT L3231
   ok [4w] UNKNOWN / NOT ESTABLISHED -> DOC04 L92,L107; DOC06 L65; DOC08 L94,L102,L145; AFR L5,L5,L5,L5,L5,L5+; DR L296,L464,L464,L492,L520,L534+; OIR L5,L5,L76,L106,L106,L112+
   ok [13w] Whether the zone warmer was enabled and whether its enqueue can block (A08) -> A06 AUDIT L3192; A06 STUDY L1358r
   ok [5w] A06; A08 (the zone warmer) -> A06 AUDIT L3205; P07 L142

@@ -18,3 +18,9 @@
   STUDY review. Nothing in earlier topics is changed.
 - 26-Nov-2026: assembly helper on Opus 5.5, Max effort.
 - 26-Nov-2026: assembly checker on Opus 5.5, Max effort.
+
+# AUDIT stage
+- 27-Nov-2026 (Claude chat): A08 AUDIT plan (A08_AUDIT_PLAN_2026-11-27.txt) approved; pair 1 (intent sources) on Opus
+  5.5, Max effort. Rama's points to preserve: (1) D-42 must record only Rama's actual decisions of 26-Nov-2026, without
+  introducing new decisions; (2) preserve all five A08 boundary decisions (D-41, P1 to P5); (3) do not update the Audit
+  Findings Register or the Open Issues Register during fieldwork (issue discussion only after ChatGPT's AUDIT review).

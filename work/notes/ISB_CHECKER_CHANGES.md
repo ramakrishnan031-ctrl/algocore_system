@@ -56,3 +56,24 @@ Format: row — before -> after — reason — source re-read.
 - IS-607 — date cell "L19 and L107 to L171 (02357130); L20 to L102 (9f56b077)" -> "L19, L61, L93 and L107 to L171 (02357130); L20 to L24 and the rest of L39 to L102 (9f56b077)" — exact blame runs.
 - IS-609 — date cell "L99 to L117" -> "L99 to L100, L102 to L103, L112 to L117" for 02357130 (L101 and L104 to L111 are 9f56b077) — exact blame runs.
 - Verified unchanged: IS-602 to IS-606, IS-608, IS-610 to IS-618 (test headers and assertions read at the cited lines; blame runs computed for every cited range; IS-610 and IS-612 already say "two lines of"/"partly").
+
+## C10 (section 3, IC rows)
+- All 13 rows re-read on both sides at the cited lines (and commit order checked with git log: dea336ae -> 55c93d3c -> 9f56b077 -> 02357130 -> 5257ed08 on 27-Jun; a5c3704d 21:27 < 132e571e 23:31 < 4959111a 23:55 on 01-Aug). None chooses a side; no verdict; "Code follows" states facts only.
+- IC-502 — "(PROC L188, L1040 ...)" -> "(PROC L188, L1039 to L1040 ...)" (the quotation starts on L1039); "SYMMETRIC LONG+SHORT" attributed to SMAP L487 too -> SMAP's own "symmetric LONG+SHORT" quoted separately (SMAP L487 is lower case).
+- IC-503 — the INTERPRETATION's reading was set in quotation marks ("in the upper 60 % of the range") though it is no source text -> reworded without quotation marks.
+- IC-510 — EVC L271 -> L270 to L271 (see C4).
+- IC-511 — Y extended with two code-level texts found in the completeness search (IS-620, IS-621); date cell "both" -> "all" (same commit 474e10b4...).
+- IC-512 — "(+ support/short mirror)" was attributed to INIT L7, which reads "(and the support/short mirror)" -> each quoted exactly.
+- IC-513 — Y extended with the dashboard inventory (IS-619, 2026-08-07).
+- ADDED IC-514 (closure build condition: MAIN L3417 to L3418 vs the later comments L3424 to L3425, L3466 to L3467, L3470 to L3471, L3474 to L3476; code L3480; history by git log -L) and IC-515 (security audit L154 vs RMON L329 to L331 and commit b3a5c949). Cross-references added in IS-531, IS-569, IS-570.
+
+## C11 (section 4, CD rows)
+- All 28 rows: code lines re-read at 970aabf; each difference re-confirmed except as below. CD-527 re-confirmed with git log only (V2 commits in the history of 8116b747...; per-file git log of zone_cache.py at 8116b747... lists 9f56b077...).
+- CD-501 — quote "≥2 distinct method-types" -> ">=2 distinct method-types" (CONFL L20); test-name wording (see C9).
+- CD-506 — source "MODELS L5" -> "L5 to L6"; ADDED INTERPRETATION: the "already in hand at _emit_signal_alert" text is not contradicted by the code (the candidate is built post-placement in `_sr_observe`, as the docstring's first sentence says, and every value it receives is already passed to `_emit_signal_alert` before placement, PROC L1370 to L1380 vs L1550 to L1561); kept as a documentation point (A08-AP-16) — the difference must be real.
+- CD-508 — added the log lines (L131 to L135) for "historical_data failed".
+- CD-513 — the three call sites were written "L1550 ... L2296 ... L2588" right after "SMAP L486" -> "PROC L1550" (they are signal_processor lines).
+- CD-515 — "so it takes "today" (L105 to L112)" -> "the current IST date (L105 to L112; the usage line's "today (IST)", L13)" (the quoted word is not in L105 to L112).
+- CD-517 — source "BACKFILL L7" -> "L7 to L8" (the quotation spans both).
+- CD-527 — "git show 8116b747...:sr_detector/zone_cache.py gives the file" -> "git log --format=%H 8116b747... -- sr_detector/zone_cache.py lists the commit that created the file, 9f56b077..." (git log only, as the brief requires; same result).
+- CD-528 — code reading refined: the date read (L218) is also outside the `try`; the raise reaches `_run`'s handler (DETECT L150 to L156); ADDED INTERPRETATION: real against `_build_anchors`' "never raises" in both cases; against ZBUILD L128 only if a NaN reference counts as "missing" (L128 promises () only for missing/non-positive; +inf is neither); the STUDY's P02-S054 (d) reads it against L128.

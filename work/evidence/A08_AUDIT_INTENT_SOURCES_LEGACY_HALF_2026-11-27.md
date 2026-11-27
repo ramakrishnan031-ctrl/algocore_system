@@ -79,7 +79,7 @@
 
 ## 2. Sources by area
 
-"Intent stated" is a paraphrase or a short quotation (under 15 words). IDs run IS-501 onward across the eight tables. Where a source conflicts with another legacy source the IC number is given (section 3); where only the code (or, for CD-527, the repository history) contradicts it, the CD number (section 4). The code facts behind every IC and CD row are the STUDY statements named in sections 3 and 4. The last column names the STUDY items (A08-AP-nn, A08-U-nn, A08-Q-nn) and the evidence statements the source bears on; a source that bears on several areas is listed once, in the area named first, and cited by number elsewhere. Every row is HISTORICAL (section 1.3).
+"Intent stated" is a paraphrase or a short quotation (under 15 words). IDs run IS-501 onward across the eight tables. Where a source conflicts with another legacy source the IC number is given (section 3); where only the code (or, for CD-527, the repository history) contradicts it, the CD number (section 4). The code facts behind every IC and CD row are the STUDY statements named in sections 3 and 4. The last column names the STUDY items (A08-AP-nn, A08-U-nn, A08-Q-nn) and the evidence statements the source bears on; a source that bears on several areas is listed once, in the area named first, and cited by number elsewhere; a letter (a) to (g) at the end of the last column names another area the source also bears on. Every row is HISTORICAL (section 1.3).
 
 ### 2.1 All areas
 

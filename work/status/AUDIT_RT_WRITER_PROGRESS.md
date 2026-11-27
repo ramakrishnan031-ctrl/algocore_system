@@ -11,3 +11,4 @@ Output: `<workspace>/parts/A08_AUDIT_PART_RT_2026-11-27.md`
 | 2026-11-27 17:24 | section 3 batch 2 written: RT-08 to RT-14 | section 3 batch 3: RT-15 to RT-21 | RT-01 to RT-14 written |
 | 2026-11-27 17:26 | section 3 complete: RT-01 to RT-21 (RT-20 records observation) | section 4: MATCH rows RT-22 to RT-36 | RT-01 to RT-21 written |
 | 2026-11-27 17:28 | section 4 written: MATCH rows RT-22 to RT-36 | sections 5 to 9 | RT-01 to RT-36 written |
+| 2026-11-27 17:31 | sections 5 to 9 written; clone checks after the work 17:31 IST (legacy 970aabf, status empty; project 20e267d, main, status empty) | read-through of the whole file; final re-count; final scan and backup | RT-01 to RT-36 |

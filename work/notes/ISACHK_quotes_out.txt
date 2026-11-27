@@ -206,7 +206,7 @@
 ===== L106 IS-022: 7 quoted fragments
   ok [8w] LONG fails iff (1h close < 1h EMA) -> A07 AUDIT L2993
   ok [6w] (last two 1h swing HIGHS descending) -> A07 AUDIT L2993
-  NOT FOUND [7w]: the last two 1h swing LOWS ascending
+  ok [6w] (last two 1h swing LOWS ascending) -> A07 AUDIT L2993
   ok [5w] is not met → PASS -> A07 AUDIT L2993; A07_QUALITY_SCORER_HARD_GATE_AND_V3_PLAYBOOK_GATES_2026-11-21.md L171
   ok [8w] lists of swing prices built from the pivots -> A07 AUDIT L2993
   ok [4w] A07; A18 (the inputs) -> A07 AUDIT L2993

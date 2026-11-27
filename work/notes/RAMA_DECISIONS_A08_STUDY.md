@@ -25,3 +25,4 @@
   introducing new decisions; (2) preserve all five A08 boundary decisions (D-41, P1 to P5); (3) do not update the Audit
   Findings Register or the Open Issues Register during fieldwork (issue discussion only after ChatGPT's AUDIT review).
 - 27-Nov-2026: checkers of the intent-sources halves on Opus 5.5, Max effort.
+- 27-Nov-2026: AUDIT part writers CZ and FC on Opus 5.5, Max effort.

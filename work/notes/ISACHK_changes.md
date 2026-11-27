@@ -20,3 +20,7 @@ Format: row | before -> after | reason | source (algocore_system at 20e267d unle
 - IS-016 | "the Status cell of all 16 is one text" -> "the summary-table Status cell of all 16" | P07-S068 states it for the summary rows; each entry's own Status field is longer and dated | P07-S068; OIR L883
 - IS-096 ADDED | D-38 (L527-L539; Exact decision L534; Rama approval L537; A07 RTR L164) | completeness: the writer's brief names D-38 to D-41; D-38 is a boundary decision whose "every other interface keeps the owner" rule covers A08's processor call sites; no A08 file cites it | DR L527-L539; A07 RTR L164; P04-S036
 - Header and section 1.2: D-38 added to the Decision Register lists.
+
+## Section 2.2 (IS-019 to IS-023): checked
+- CM-10, HA-08, CM-01, CM-08 fields and AFR cells (L1004, L1013, L995, L1002) re-opened with a read-only record printer: labels, groups, statuses, owners and quotations as recorded; CM-12 and CM-13 rows (A05 AUDIT L1369, L1370) MATCH as stated; TG9 (AFR L931) and TG10 (AFR L933): Rama's choice "B — ACCEPT WITH QUALIFICATION" and the quoted qualifications confirmed; A05 AUDIT handoff rows L1389, L1677 confirmed; A07 HG-32 (A07 AUDIT L2993) MATCH, owner "A07; A18 (the inputs)" confirmed; A05 IS rows L151, L152, L161, L168, L185, L362 confirmed.
+- IS-022 | the SHORT mirror on "the last two 1h swing LOWS ascending" -> on the "(last two 1h swing LOWS ascending)" | misquotation: "the" was added inside the quotation marks | A07 AUDIT L2993

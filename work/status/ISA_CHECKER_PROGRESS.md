@@ -13,3 +13,4 @@ Writer original: <workspace>/check/A08_AUDIT_INTENT_SOURCES_PROJECT_HALF_2026-11
 | 27-Nov-2026 14:15 IST | section 2.4 (IS-041 to IS-052) checked: 1 correction (IS-041 line) | section 2.5 (IS-053 to IS-070) | IS-001 to IS-052 checked; IS-096 added |
 | 27-Nov-2026 14:20 IST | section 2.5 (IS-053 to IS-070) checked: 2 corrections (IS-054, IS-060); 4 RS candidates noted for section 4 | section 2.6 (IS-071 to IS-079) | IS-001 to IS-070 checked; IS-096 added |
 | 27-Nov-2026 14:22 IST | section 2.6 (IS-071 to IS-079) checked: 1 correction (IS-075 quotation); 2 RS points noted (RS-11, RS-14) | section 2.7 (IS-080 to IS-094) | IS-001 to IS-079 checked; IS-096 added |
+| 27-Nov-2026 14:26 IST | sections 2.7 and 2.8 (IS-080 to IS-095) checked: 2 corrections (IS-090 quotation, IS-095 search scope); IS-097 (2.8) and IS-098 (2.5) added; IC-003 Y side completed | section 3 (IC-001 to IC-006; section 3.2) | IS-001 to IS-095 checked; IS-096 to IS-098 added |

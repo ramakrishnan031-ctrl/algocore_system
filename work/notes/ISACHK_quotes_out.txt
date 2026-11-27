@@ -756,7 +756,7 @@
   ok [11w] The absence of adjustment code is not an ISSUE by itself -> A05 AUDIT L1612
   ok [7w] no source asks the system to adjust -> A05 AUDIT L1612
   ok [12w] A08 (the check script and the detector's reliance on adjusted candles); A05 -> OIR L2623; A05 AUDIT L1614; P05 L175,L182
-  NOT FOUND [11w]: were meant to be adjusted for splits and bonuses before use?
+  ok [10w] meant to be adjusted for splits and bonuses before use -> OIR L2620; A05 RTR L654; A05 STUDY L1172; A05_HISTORICAL_CANDLE_ACCESS_2026-11-14.md L295; A08 STUDY L692; P07 L182
   ok [7w] is answered by evidence and not asked -> OIR L2395,L2470,L2620
 ===== L188 IS-076: 11 quoted fragments
   ok [4w] ISSUE; FACT; INTERPRETATION; HISTORICAL -> AFR L292,L369,L372,L373,L431,L461+; A04 AUDIT L382,L3747; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L162; A05 AUDIT L269,L278,L285,L408,L851,L1513+; A05 STUDY L893,L902,L909; A05_INSTRUMENT_REFRESH_AND_ALIAS_TOOL_2026-11-14.md L135,L267

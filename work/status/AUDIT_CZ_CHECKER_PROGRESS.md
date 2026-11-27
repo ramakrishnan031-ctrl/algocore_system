@@ -1,0 +1,9 @@
+# AUDIT part CZ — checker progress log (helper A7)
+
+File checked: `<workspace>/parts/A08_AUDIT_PART_CZ_2026-11-27.md` (writer A5; CZ-01 to CZ-29). Writer's original copied
+to `<workspace>/check/A08_AUDIT_PART_CZ_2026-11-27.md.writer_original` (sha256 prefix 437ac290).
+
+| Time (IST) | Section done | Next step | Records checked so far |
+|---|---|---|---|
+| 2026-11-27 16:00 | started; briefs (COMMON, AUDIT COMMON, PART, PART CHECKER), Claude's assignment decisions, allocation, writer's progress log read; writer's original copied; clones checked (legacy 970aabf; project 20e267d) | read the part file in full; re-read the four core files at 970aabf | none |
+| 2026-11-27 16:21 | verification pass over all 29 records: the four files re-read in full at 970aabf; every interface line cited re-read (config L508 to L545, L633 to L639; loader L1153 to L1256; zone_builder; fetch; detector; warmer; retest monitor; structure exit; V3 runner, PB-01 runner, capture; forward shadow; export; regime; hard gate; signal processor; schema; candle_math; time authority; package init; tests as documents); intent rows IS/IC/CD/RS cited checked in both halves; STUDY 13.2, 13.6, 15, 16 and P01/P03 statements read; own scripts `<workspace>/notes/CZCHK_arith.py` (independent re-statement), `CZCHK_cover.py` (coverage, totals, citations), `CZCHK_stmt.py` run (no legacy import); coverage 36/36; totals ISSUE 12 / UNKNOWN 3 / MATCH 14 confirmed; KD re-tests done; about 20 corrections identified, no result change so far | apply corrections to section 2 and records CZ-01 to CZ-10; save; back up | CZ-01 to CZ-29 (verification) |

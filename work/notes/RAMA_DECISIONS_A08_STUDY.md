@@ -26,3 +26,4 @@
   Findings Register or the Open Issues Register during fieldwork (issue discussion only after ChatGPT's AUDIT review).
 - 27-Nov-2026: checkers of the intent-sources halves on Opus 5.5, Max effort.
 - 27-Nov-2026: AUDIT part writers CZ and FC on Opus 5.5, Max effort.
+- 27-Nov-2026: AUDIT part checkers CZ and FC on Opus 5.5, Max effort.

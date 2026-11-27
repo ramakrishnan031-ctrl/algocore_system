@@ -15,3 +15,4 @@ Output: `<workspace>/evidence/A08_AUDIT_INTENT_SOURCES_LEGACY_HALF_2026-11-27.md
 - 27-Nov-2026 13:11 IST — section 3 done: IC-501 to IC-513. Next: section 4 (CD-501 to CD-528). IDs used: IS-501..IS-618, IC-501..IC-513.
 - 27-Nov-2026 13:11 IST — backup after section 3 BLOCKED by scan hits in the other writer's file notes/ISA_check.py (not mine; not touched). My file scans 0. Will retry.
 - 27-Nov-2026 13:15 IST — section 4 done: CD-501 to CD-528; IS-581 extended with the printed verdict texts L94 to L97. Next: section 5 (could not establish). IDs used: IS-501..IS-618, IC-501..IC-513, CD-501..CD-528.
+- 27-Nov-2026 13:15 IST — section 5 done (could not establish). Next: section 6 (ISB-R1 to ISB-R4, additions, legacy attributions to Rama), then completion checks.

@@ -19,3 +19,14 @@
   and no item allocated elsewhere covers them; parts VO, RT and SC CITE them and do not count them again.
 - Split items (A08-AP-05, AP-06, AP-07, AP-13, AP-16): CZ counts the core's side only; FC counts the fetcher's /
   zone builder's side (A05 CM-05, A05-27, A05-28; AP-25); VO counts the PATHS.md L417 point (AP-48).
+- FC-06 counts the zone builder's L99 series choice; CZ (A08-AP-13) counts the core's side only and cites FC-06.
+- Items FC cites to later parts (each later part must count or dispose them; the cross-part check verifies):
+  RT: A08-AP-28 (a); the diverter's and monitor's use of the zone cache; A06 WA-07 (NaN entry price); a repeated
+      one-minute list after a clock step.
+  XW: A08-AP-28 (c) fetcher count; A08-AP-31 (knobs reuse; P06-AP06; A08-Q-24); A08-AP-34 (switch combination;
+      P06-AP10; A08-Q-25); A01 C37; A06 PQ-09.
+  VO: the V1 detector's fetch-result handling and FETCH_FAILED row; `build_anchor_payload` outside its try (CD-528).
+  SC: the export's per-call fetcher, constant clock and unvalidated `--interval`; N2's corporate-action check and the
+      export's first failing line (A05 HA-07, A01 C38b).
+  CZ: N2's `Candle.from_kite` conversions (A05 CM-10, HA-08) — already disposed by CZ.
+- FC-R1 (new draft question; adds to A08-Q-25): kept for the cross-part check to merge with XW's Q-25 handling.

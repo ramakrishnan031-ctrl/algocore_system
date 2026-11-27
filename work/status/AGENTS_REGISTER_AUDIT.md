@@ -10,8 +10,8 @@
 | A6 | FC | writer | Opus 5.5 / Max (Rama, 27-Nov) | 27-Nov-2026 14:52 | 27-Nov-2026 15:49 | COMPLETE (26 records + 1 observation: 13 ISSUE, 4 UNKNOWN, 9 MATCH; KD 0 given, 11 considered; 65/65 disposed; backup 12790c9) |
 | A7 | CZ | checker | Opus 5.5 / Max (Rama, 27-Nov) | 27-Nov-2026 15:59 | 27-Nov-2026 16:35 | COMPLETE (29 checked; no result changed; 23 corrections; 8 KD re-tests confirmed not given; backup 42c3f8d) |
 | A8 | FC | checker | Opus 5.5 / Max (Rama, 27-Nov) | 27-Nov-2026 15:59 | 27-Nov-2026 16:42 | COMPLETE (27 checked; no result changed; KD given in check: FC-06 (i), FC-07 (provisional, minor); Q-05 arithmetic corrected) |
-| A9 | VO | writer | Opus 5.5 / Max (Rama, 27-Nov) | 27-Nov-2026 16:47 | — | RUNNING |
-| A10 | RT | writer | Opus 5.5 / Max (Rama, 27-Nov) | 27-Nov-2026 16:47 | — | RUNNING |
+| A9 | VO | writer | Opus 5.5 / Max (Rama, 27-Nov) | 27-Nov-2026 16:47 | — | PAUSED 27-Nov-2026 17:33 (weekly limit; stopped by Claude after a backup; resume from its progress log) |
+| A10 | RT | writer | Opus 5.5 / Max (Rama, 27-Nov) | 27-Nov-2026 16:47 | — | PAUSED 27-Nov-2026 17:33 (weekly limit; stopped by Claude after a backup; resume from its progress log) |
 
 Planned order (A08_AUDIT_PLAN_2026-11-27.txt): ISA+ISB writers; their checkers; CZ+FC; checkers; VO+RT; checkers; SC+XW;
 checkers; cross-part check; assembly; independent check. Rama consulted before each pair.

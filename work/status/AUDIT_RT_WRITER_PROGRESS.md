@@ -9,3 +9,4 @@ Output: `<workspace>/parts/A08_AUDIT_PART_RT_2026-11-27.md`
 | 2026-11-27 17:14 | section 2 written (2.1 to 2.7); coverage by script: 58/58 allocated items, each one disposition row, none extra | section 3, records RT-01 to RT-05 | RT-01 to RT-36 referenced in dispositions (records not yet written) |
 | 2026-11-27 17:23 | section 3 batch 1 written: RT-01 to RT-07 | section 3 batch 2: RT-08 to RT-14 | RT-01 to RT-07 written |
 | 2026-11-27 17:24 | section 3 batch 2 written: RT-08 to RT-14 | section 3 batch 3: RT-15 to RT-21 | RT-01 to RT-14 written |
+| 2026-11-27 17:26 | section 3 complete: RT-01 to RT-21 (RT-20 records observation) | section 4: MATCH rows RT-22 to RT-36 | RT-01 to RT-21 written |

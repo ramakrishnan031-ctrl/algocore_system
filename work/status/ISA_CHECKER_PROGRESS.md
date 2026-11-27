@@ -10,3 +10,4 @@ Writer original: <workspace>/check/A08_AUDIT_INTENT_SOURCES_PROJECT_HALF_2026-11
 | 27-Nov-2026 14:02 IST | section 2.1 (IS-001 to IS-018) checked: 5 corrections (IS-010, IS-013 x2, IS-016 x2); IS-096 added (D-38); header and 1.2 lists updated | section 2.2 (IS-019 to IS-023) | IS-001 to IS-018 checked; IS-096 added |
 | 27-Nov-2026 14:08 IST | section 2.2 (IS-019 to IS-023) checked: 1 correction (IS-022 quotation) | section 2.3 (IS-024 to IS-040) | IS-001 to IS-023 checked; IS-096 added |
 | 27-Nov-2026 14:13 IST | section 2.3 (IS-024 to IS-040) checked: 4 corrections (IS-038 WD-10 meaning and quotation; IS-028 x2; IS-030) | section 2.4 (IS-041 to IS-052) | IS-001 to IS-040 checked; IS-096 added |
+| 27-Nov-2026 14:15 IST | section 2.4 (IS-041 to IS-052) checked: 1 correction (IS-041 line) | section 2.5 (IS-053 to IS-070) | IS-001 to IS-052 checked; IS-096 added |

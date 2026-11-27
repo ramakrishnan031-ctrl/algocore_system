@@ -49,3 +49,4 @@ ISB-R questions:
 - ISB-R3 specs A..K existence
 - ISB-R4 confirm "Deliberate trade-off (Rama)" quotation (for Claude/ChatGPT to decide)
 Additions: Q-23 (IC-506 test comment), Q-19 (EOD comment + PB-01 analog), Q-04 (DETECT L186-L187), Q-14 (runbook not tracked; roadmap), Q-18 (A11 reuses _strong_close), Q-20 (docstring ratio)
+- CD-527 V3P0 L13/L121 'None are in main' vs history (8116b74 contains V2 commits)

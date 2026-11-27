@@ -11,3 +11,4 @@ Output: <workspace>/evidence/A08_AUDIT_INTENT_SOURCES_PROJECT_HALF_2026-11-27.md
 | 27-Nov-2026 12:56 IST | section 2.3 (area b, FC) written, IS-024 to IS-040; AFR cells of 12 rows and A05 IS row lines re-checked | section 2.4 (area c, VO), IS-041 to IS-052 | IS-001 to IS-040 |
 | 27-Nov-2026 12:58 IST | section 2.4 (area c, VO) written, IS-041 to IS-052; AFR cells of 11 rows and the A03 joint rows re-checked | section 2.5 (area d, RT), IS-053 to IS-070 | IS-001 to IS-052 |
 | 27-Nov-2026 13:01 IST | section 2.5 (area d, RT) written, IS-053 to IS-070; AFR cells of 19 rows, the A06 handoff row L2271, OIR A06-26 and A07-26 lines re-checked | section 2.6 (area e, SC), IS-071 to IS-079 | IS-001 to IS-070 |
+| 27-Nov-2026 13:03 IST | section 2.6 (area e, SC) written, IS-071 to IS-079; AFR cells of 17 rows and the A01, A02, A04, A05 lines re-checked | section 2.7 (area f, XW), IS-080 to IS-094 | IS-001 to IS-079 |

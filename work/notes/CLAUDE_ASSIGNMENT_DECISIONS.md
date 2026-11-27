@@ -32,3 +32,12 @@
 - FC-R1 (new draft question; adds to A08-Q-25): kept for the cross-part check to merge with XW's Q-25 handling.
 - Open for the cross-part check (from the CZ checker): CZ-27 kept MATCH on A08's side while docs/SYSTEM_MAP.md L211's
   "no parallel type" is false because of A05's CandleData (handoff to A05); decide whether any part counts it.
+- KNOWN DEFECT condition (b), one reading for all A08 parts (Claude, 27-Nov-2026; flagged for ChatGPT's AUDIT review):
+  the A07 AUDIT's reading, which is also the rule's own wording — (b) holds whenever, by the language or library
+  semantics, the mechanism produces the outcome for certain whenever the case occurs; (b) fails only for unwired
+  mechanisms, mechanisms that work as their sources intend, or outcomes that are not certain. A "the code does what it
+  is written to do" argument alone does not fail (b). Applied by the FC checker (FC-06 part (i) prior-day vote and FC-07
+  given KNOWN DEFECT, provisional, both minor); CZ does not rely on the other reading (CZ-01's (b) "holds only on a
+  reading", fails on (d)). Parts VO, RT, SC and XW apply this reading; the cross-part check verifies all parts.
+- FC-07 sits at the A08/A18 boundary (A08's daily[-2] rule meets A18's truncated input): FC counts it as mechanism
+  owner; XW cites FC-06 and FC-07; handoff to A18 for its side.

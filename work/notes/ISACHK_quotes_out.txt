@@ -90,11 +90,12 @@
   ok [9w] no known backup of their databases, logs or crontab -> DOC06 L62; A07 AUDIT L1232,L2180,L3404,L4346; A07 RTR L352,L779; A07 IS L168,L829
   ok [10w] the code is not assumed to have run as written -> DOC06 L66; A07 AUDIT L3404; A07 IS L168
   ok [10w] does not show that it was the value in force -> DOC06 L66; AFR L1430; A07 AUDIT L3699; A07 IS L168
-===== L86 IS-010: 7 quoted fragments
+===== L86 IS-010: 8 quoted fragments
   ok [2w] Reference system -> SRCINV L24
   ok [8w] The production system is always the reference system -> DR L296; SRCINV L24; A07 IS L169
   ok [9w] is checked against the production code at that commit -> DR L296
-  ok [7w] in the S&R change and configuration settings -> DR L297; SRCINV L24
+  ok [14w] Rama: the production and testing repositories differ in the S&R change and configuration s -> DR L297
+  ok [5w] S&R Change and Config settings -> DR L299; A07 AUDIT L4114; A07 IS L169,L830
   ok [7w] reported by Rama and not independently verified -> DR L298; A06 AUDIT L6865; A06 RTR L278; A07 AUDIT L4685
   ok [5w] plus the S&R shadow files -> AFR L1068,L1225; DR L298; SRCINV L24,L90; R01 L164; A01 STUDY L769; A01_LEGACY_RECORDS_CHECK_2026-11-04.md L12
   ok [7w] REPORTED BY RAMA — NOT INDEPENDENTLY VERIFIED -> SRCINV L7,L24,L104,L105; A06 RTR L578; A07 RTR L608
@@ -131,11 +132,12 @@
   ok [4w] C38b, probably (to confirm) -> A01 RTR L304; A08 STUDY L613,L969; P07 L50,L347
   ok [8w] an entry that names more than one topic -> A04 AUDIT L5031; A04 RTR L404; A05 AUDIT L3317; A05 RTR L456; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L31; A06 AUDIT L6618
   ok [4w] is listed under each -> AFR L1440; A03 AUDIT L5367; A03 RTR L395; A04 AUDIT L5031; A04 RTR L404; A05 AUDIT L3317
-===== L92 IS-016: 9 quoted fragments
-  ok [4w] (1) FACT / HISTORICAL -> OIR L67,L82,L97,L112,L127,L142+
-  ok [7w] (2) Rama's statement about the legacy system -> OIR L464,L479,L494,L509,L524,L539+; P07 L163
-  NOT FOUND [7w]: (3) Rama's treatment for the new system
+===== L92 IS-016: 10 quoted fragments
+  ok [3w] FACT / HISTORICAL -> OIR L12,L67,L82,L97,L112,L127+; A07 STUDY L1405; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L202; P07 L163
+  ok [6w] Rama's statement about the legacy system -> OIR L13,L464,L479,L494,L509,L524+; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L153,L157; A06_RECEIVER_AUTHENTICATION_AND_VALIDATION_2026-11-17.md L120; A07 STUDY L1405; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L202; P07 L163
+  ok [6w] Rama's treatment for the new system -> OIR L14; A03 AUDIT L1304
   ok [6w] not an approved V2 design decision -> OIR L14,L464,L479,L494,L509,L524+; P07 L163
+  ok [3w] Rama's new-system input -> OIR L463,L464,L478,L479,L493,L494+; A02 RTR L381; A03 RTR L448; A04 AUDIT L393,L394,L396,L4705,L4928; A04 RTR L462; A05 RTR L514
   ok [9w] No entry is marked CLOSED without Rama's explicit decision -> OIR L16
   ok [5w] OPEN QUESTION (Rama answered OPEN) -> OIR L435,L436,L437,L438,L439,L441+; A04 AUDIT L2709,L3356,L3748,L3749; A07 AUDIT L633,L634,L635,L636,L638,L639+; A07 STUDY L1409,L1410,L1411,L1412,L1414,L1415+; A07 IS L185; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L208,L209,L210,L211,L213,L214+
   ok [9w] AGREED in part (the Phase 2 input as recorded) -> OIR L435,L436,L437,L438,L439,L440+; TCR L59,L78,L97; A04 AUDIT L2709,L3356,L3748,L3749; A05 RTR L512; A06 RTR L584; A07 RTR L614,L768
@@ -162,7 +164,12 @@
   ok [4w] the S&R inputs A08's -> A07 RTR L45; A07 STUDY L1427; A07 IS L163; P07 L223
   ok [5w] A08's although in A07's package -> A07 RTR L168; P07 L226
   ok [9w] which examines its side when it is opened (D-23) -> A02 RTR L471; A03 RTR L610; A04 RTR L634; A05 RTR L707; A06 RTR L763; A07 RTR L806
-===== L102 IS-019: 10 quoted fragments
+===== L95 IS-096: 4 quoted fragments
+  ok [7w] the hand-over is at the screening call -> DR L534; A07 STUDY L20; A07 IS L162
+  ok [6w] every other interface keeps the owner -> DR L534; OIR L3131; A07 STUDY L20
+  ok [8w] it does not set the new system's architecture -> DR L534
+  ok [3w] your suggestion accepted -> DR L537; OIR L680,L749,L764,L779,L794,L809+; A07 IS L819; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L216
+===== L103 IS-019: 10 quoted fragments
   ok [3w] ISSUE; FACT; INTERPRETATION -> AFR L221,L222,L223,L224,L226,L229+; A02 AUDIT L1968; A03 AUDIT L3987,L4029,L4057,L4085,L4099,L4127+; A04 AUDIT L370,L371,L374,L379,L382,L383+; A04_AUTHENTICATION_TOKEN_AND_CLOCK_SKEW_2026-11-11.md L46,L483; A04_COSTS_AND_SLIPPAGE_2026-11-11.md L306,L307
   ok [6w] A05 treatment group TG9 (AGREED, 17-Nov-2026) -> AFR L1000,L1002,L1004; A08 STUDY L650,L777; P07 L122
   ok [8w] not established for input validation, rounding or NaN -> AFR L1004; A05 AUDIT L1341
@@ -173,7 +180,7 @@
   ok [5w] B — ACCEPT WITH QUALIFICATION -> AFR L186,L188,L189,L190,L195,L200+; A04 RTR L513; A05 RTR L586; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L99,L117,L125,L229; A05_TREATMENT_GROUPING_CHECK_2026-11-17.md L35,L36,L38,L39,L40,L42+; A06 RTR L566,L653
   ok [4w] at the data boundary -> AFR L923,L923,L923,L931,L931; OIR L2432; A05 RTR L533,L542,L543,L594
   ok [3w] before any calculation -> AFR L931
-===== L103 IS-020: 14 quoted fragments
+===== L104 IS-020: 14 quoted fragments
   ok [4w] ISSUE; FACT; INTERPRETATION; HISTORICAL -> AFR L292,L369,L372,L373,L431,L461+; A04 AUDIT L382,L3747; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L162; A05 AUDIT L269,L278,L285,L408,L851,L1513+; A05 STUDY L893,L902,L909; A05_INSTRUMENT_REFRESH_AND_ALIAS_TOOL_2026-11-14.md L135,L267
   ok [6w] A05 treatment group TG10 (AGREED, 17-Nov-2026) -> AFR L1006,L1007,L1011,L1012,L1013; A08 STUDY L652,L654,L655,L656,L779; P02 L278,L279; P07 L124,L126,L127,L128; P05 L175
   ok [3w] One OHLCV bar -> AFR L1008,L1013; A05 AUDIT L1552,L1622; A05_CANDLE_MATH_2026-11-14.md L37; A05_HISTORICAL_CANDLE_ACCESS_2026-11-14.md L133; P01 L32
@@ -187,7 +194,7 @@
   ok [9w] the meaning of the broker's fields at the boundary -> A05 AUDIT L1628
   ok [3w] PB-01's volume test -> A05 AUDIT L1628,L1678
   ok [8w] a missing volume is kept distinguishable from zero -> AFR L933
-===== L104 IS-021: 8 quoted fragments
+===== L105 IS-021: 8 quoted fragments
   ok [3w] ISSUE; FACT; HISTORICAL -> AFR L365,L379,L383,L386,L392,L424+; A04 AUDIT L2790,L2804; A06 AUDIT L384,L4228,L4891; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L111; A07 AUDIT L595,L3151; A07 STUDY L1367
   ok [6w] A05 treatment group TG18 (AGREED, 17-Nov-2026) -> AFR L976,L992,L995,L996,L997,L1003+; A08 STUDY L657,L776,L784,L787; P02 L280; P07 L129
   ok [13w] the single candle type in the codebase; NO parallel type is defined here -> A05 AUDIT L1215; A05_CANDLE_MATH_2026-11-14.md L27
@@ -196,7 +203,7 @@
   ok [4w] A05; A08 (the type) -> A05 AUDIT L1370; P07 L248
   ok [9w] resample() is the ONE place that constructs a Candle -> A05 AUDIT L1370
   ok [3w] as IS-59 states -> A05 AUDIT L1370
-===== L105 IS-022: 7 quoted fragments
+===== L106 IS-022: 7 quoted fragments
   ok [8w] LONG fails iff (1h close < 1h EMA) -> A07 AUDIT L2993
   ok [6w] (last two 1h swing HIGHS descending) -> A07 AUDIT L2993
   NOT FOUND [7w]: the last two 1h swing LOWS ascending
@@ -204,11 +211,11 @@
   ok [8w] lists of swing prices built from the pivots -> A07 AUDIT L2993
   ok [4w] A07; A18 (the inputs) -> A07 AUDIT L2993
   ok [2w] last two -> AFR L696; R02 L2545; A01 AUDIT L1513; A01 IS L13; A04 AUDIT L513,L787; A04_BROKER_CLIENT_AND_ADAPTERS_2026-11-11.md L188,L449
-===== L106 IS-023: 4 quoted fragments
+===== L107 IS-023: 4 quoted fragments
   ok [7w] Inputs : Sequences of Candle (chronologically ordered) -> AFR L999; A05 AUDIT L1271; A05_CANDLE_MATH_2026-11-14.md L29
   ok [7w] ts is timezone-aware (or naive IST) datetime -> AFR L1008; A05 AUDIT L1552; A05 IS L161; A05_CANDLE_MATH_2026-11-14.md L37; A05_HISTORICAL_CANDLE_ACCESS_2026-11-14.md L133; P01 L32
   ok [2w] candle_math→sr_detector ×2 -> A05 AUDIT L1369; A05 IS L168; A05_CANDLE_MATH_2026-11-14.md L248
-===== L114 IS-024: 18 quoted fragments
+===== L115 IS-024: 18 quoted fragments
   ok [4w] ISSUE; FACT; INTERPRETATION; HISTORICAL -> AFR L292,L369,L372,L373,L431,L461+; A04 AUDIT L382,L3747; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L162; A05 AUDIT L269,L278,L285,L408,L851,L1513+; A05 STUDY L893,L902,L909; A05_INSTRUMENT_REFRESH_AND_ALIAS_TOOL_2026-11-14.md L135,L267
   ok [6w] A05 treatment group TG10 (AGREED, 17-Nov-2026) -> AFR L1006,L1007,L1011,L1012,L1013; A08 STUDY L652,L654,L655,L656,L779; P02 L278,L279; P07 L124,L126,L127,L128; P05 L175
   ok [9w] Intra-session cache keyed by (symbol, interval) with a TTL -> AFR L1011; A05 AUDIT L1594; A05 IS L177; P02 L23
@@ -226,7 +233,7 @@
   ok [7w] the fetchers' cache key and wall-clock age -> A05 RTR L480; A08 STUDY L728; P02 L309; P07 L199
   ok [4w] is handed to A08 -> A05 AUDIT L3489; A05 RTR L706; P02 L279; P07 L199
   ok [9w] KNOWN DEFECT considered and not given at the boundary -> A05 AUDIT L3489; A05 RTR L480,L706; A08 STUDY L728; P02 L279,L309; P07 L199
-===== L115 IS-025: 15 quoted fragments
+===== L116 IS-025: 15 quoted fragments
   ok [5w] usable for READ-ONLY historical data -> A05 AUDIT L1664; A05 IS L175; A05_HISTORICAL_CANDLE_ACCESS_2026-11-14.md L33
   ok [5w] Live: reuse kite_client (== adapter._kite) -> AFR L164; A01 AUDIT L1870; A04 AUDIT L512,L3523; A05 AUDIT L1664; A05 IS L175; A05_HISTORICAL_CANDLE_ACCESS_2026-11-14.md L33
   ok [5w] Routes every call through rate_limiter.acquire( -> A04 AUDIT L3439; A05 AUDIT L1636,L1665; A05 IS L175; A05_HISTORICAL_CANDLE_ACCESS_2026-11-14.md L45
@@ -242,7 +249,7 @@
   ok [5w] shared rate-limited OHLC fetch closure -> A05 AUDIT L1669,L1669; A05 IS L191
   ok [3w] distinct from sr_detector.cache_ttl_sec -> A02 AUDIT L2146; A05 AUDIT L1594,L1596; A05 IS L192; P06 L84
   ok [9w] breakout volume must exceed this × avg for confirmation -> A05 AUDIT L1622; A05 IS L193; P06 L39; P03 L95
-===== L116 IS-026: 14 quoted fragments
+===== L117 IS-026: 14 quoted fragments
   ok [4w] ISSUE; FACT; INTERPRETATION; HISTORICAL -> AFR L292,L369,L372,L373,L431,L461+; A04 AUDIT L382,L3747; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L162; A05 AUDIT L269,L278,L285,L408,L851,L1513+; A05 STUDY L893,L902,L909; A05_INSTRUMENT_REFRESH_AND_ALIAS_TOOL_2026-11-14.md L135,L267
   ok [6w] A05 treatment group TG10 (AGREED, 17-Nov-2026) -> AFR L1006,L1007,L1011,L1012,L1013; A08 STUDY L652,L654,L655,L656,L779; P02 L278,L279; P07 L124,L126,L127,L128; P05 L175
   ok [14w] Every failure path (no token, fetch raises, empty result) returns None for that TF -> AFR L1006; A05 AUDIT L1524; A05 IS L503; P02 L23,L330
@@ -256,7 +263,7 @@
   ok [5w] the abort's severity contradicts FIX-060 -> A05 AUDIT L1528
   ok [7w] the closure lets the limiter's exceptions through -> A05 AUDIT L1530
   ok [6w] the fetcher's log text and level -> A05 AUDIT L1530; P07 L124
-===== L117 IS-027: 11 quoted fragments
+===== L118 IS-027: 11 quoted fragments
   ok [3w] ISSUE; FACT; HISTORICAL -> AFR L365,L379,L383,L386,L392,L424+; A04 AUDIT L2790,L2804; A06 AUDIT L384,L4228,L4891; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L111; A07 AUDIT L595,L3151; A07 STUDY L1367
   ok [6w] A05 treatment group TG18 (AGREED, 17-Nov-2026) -> AFR L976,L992,L995,L996,L997,L1003+; A08 STUDY L657,L776,L784,L787; P02 L280; P07 L129
   ok [13w] Both default OFF → nothing constructed → zero pipeline change (dormant on deploy) -> A05 AUDIT L1636; A05 IS L176; A08 STUDY L580; P06 L101,L352
@@ -266,7 +273,7 @@
   ok [11w] was true of an earlier state or of the paper branch -> A05 AUDIT L1640
   ok [3w] none changes behaviour -> A05 AUDIT L1640
   ok [7w] A08 (`sr_detector/fetch.py` and the check script for -> A05 AUDIT L1642; P07 L129; P05 L194
-===== L118 IS-028: 15 quoted fragments
+===== L119 IS-028: 15 quoted fragments
   ok [10w] UNKNOWN / NOT ESTABLISHED; FACT; INTERPRETATION; UNKNOWN / NOT ESTABLISHED -> AFR L999; A08 STUDY L649; P02 L276; P07 L121
   ok [6w] UNKNOWN / NOT ESTABLISHED (no treatment) -> AFR L368,L382,L387,L400,L402,L419+; A03 RTR L299; A04 RTR L286; A06 AUDIT L386,L393,L4230,L5062; A06 RTR L740; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L113,L127
   ok [7w] Inputs : Sequences of Candle (chronologically ordered) -> AFR L999; A05 AUDIT L1271; A05_CANDLE_MATH_2026-11-14.md L29
@@ -281,7 +288,7 @@
   NOT FOUND [6w]: was meant to be relied on
   ok [6w] was meant to remove duplicate candles -> A08 STUDY L690; P02 L292; P07 L180
   ok [9w] A08 (the fetcher, which passes the rows as received) -> OIR L2548,L2563; A05 AUDIT L1277; P07 L121,L179
-===== L119 IS-029: 11 quoted fragments
+===== L120 IS-029: 11 quoted fragments
   ok [4w] ISSUE; FACT; INTERPRETATION; HISTORICAL -> AFR L292,L369,L372,L373,L431,L461+; A04 AUDIT L382,L3747; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L162; A05 AUDIT L269,L278,L285,L408,L851,L1513+; A05 STUDY L893,L902,L909; A05_INSTRUMENT_REFRESH_AND_ALIAS_TOOL_2026-11-14.md L135,L267
   ok [6w] A05 treatment group TG11 (AGREED, 17-Nov-2026) -> AFR L1016,L1017,L1018,L1035; A08 STUDY L658; P02 L281; P07 L130
   ok [4w] not matched in Kite -> AFR L1017; A05 AUDIT L1834,L1838,L2257,L2373; A05 IS L227; A05_INSTRUMENT_REFRESH_AND_ALIAS_TOOL_2026-11-14.md L25,L85
@@ -292,13 +299,13 @@
   ok [3w] meant to treat -> OIR L2710; A05 RTR L660; A05 STUDY L1155,L1179; A05_CANDLE_STORE_AND_LIVE_CANDLES_2026-11-14.md L318; A05_INSTRUMENT_CACHE_2026-11-14.md L340; A08 STUDY L695
   ok [5w] A08, A10 (their consumers' handling) -> OIR L2668,L2698,L2713; A05 AUDIT L1840; P07 L130,L183
   ok [7w] Never send an order using token 0 -> OIR L2672
-===== L120 IS-030: 6 quoted fragments
+===== L121 IS-030: 6 quoted fragments
   ok [4w] UNKNOWN / NOT ESTABLISHED -> DOC04 L92,L107; DOC06 L65; DOC08 L94,L102,L145; AFR L5,L5,L5,L5,L5,L5+; DR L296,L464,L464,L492,L520,L534+; OIR L5,L5,L76,L106,L106,L112+
   ok [6w] UNKNOWN / NOT ESTABLISHED (no treatment) -> AFR L368,L382,L387,L400,L402,L419+; A03 RTR L299; A04 RTR L286; A06 AUDIT L386,L393,L4230,L5062; A06 RTR L740; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L113,L127
   ok [8w] No source states one rule for every consumer -> A05 AUDIT L1932; A05 IS L511
   ok [9w] the consumers' owners (A04, A06, A08, A09, A10, A11) -> OIR L2188; A05 AUDIT L1938; A06 AUDIT L411; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L161,L213; P07 L175; P05 L195
   ok [9w] needed to classify (STUDY question 26, OPEN FOR RAMA -> A05 AUDIT L1940
-===== L121 IS-031: 15 quoted fragments
+===== L122 IS-031: 15 quoted fragments
   ok [9w] UNKNOWN / NOT ESTABLISHED; FACT; INTERPRETATION; HISTORICAL; OPEN QUESTION -> AFR L1001,L1209; A07 AUDIT L609,L625,L1804; A07 STUDY L1381,L1397; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L127,L150; A07_STEP_EXECUTOR_AND_THE_TEN_STEPS_2026-11-21.md L248; A08 STUDY L710,L791
   ok [6w] two different values are called VWAP -> AFR L1001; A05 AUDIT L1295,L3500; A05 RTR L335; A07 AUDIT L1906
   ok [4w] set to None (v2) -> AFR L1351,L1357; A05 AUDIT L233; A05 RTR L354; A05 IS L155,L357; A07 AUDIT L99,L1822,L1906,L3739,L4072,L4076+; A07 RTR L277,L286
@@ -313,11 +320,11 @@
   ok [9w] None (UNKNOWN / NOT ESTABLISHED items receive no treatment) -> AFR L1152,L1153,L1154,L1163,L1165,L1181+; A06_TREATMENT_GROUPING_CHECK_2026-11-20.md L29; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L150; A08 STUDY L663,L664,L668,L717,L718,L719+; P02 L283,L305,L478; P06 L258
   ok [6w] A08 (the anchors that use `session_vwap`) -> A07 AUDIT L1912; P07 L280,L307
   ok [9w] no new question: A05-01 already holds the history question -> A07 AUDIT L1914
-===== L122 IS-032: 3 quoted fragments
+===== L123 IS-032: 3 quoted fragments
   ok [11w] on live tick-built candles as well, or on historical candles only? -> OIR L2515; A05 RTR L647; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L214
   ok [4w] the S&R zone builder -> OIR L2522; A05 RTR L504
   ok [8w] A07's and A08's code, not audited in A05 -> OIR L2522; A05 RTR L504; P07 L52,L178
-===== L123 IS-033: 15 quoted fragments
+===== L124 IS-033: 15 quoted fragments
   ok [6w] UNKNOWN / NOT ESTABLISHED; FACT; HISTORICAL -> AFR L436,L845,L1010,L1163,L1312,L1314+; A08 STUDY L668,L713,L718; P02 L302,L305,L475,L478; P07 L154; P04 L259
   ok [5w] fits one request per interval -> AFR L1010,L1010; A05 AUDIT L1576,L1580,L1594,L3503; A05 STUDY L387; A05 IS L178,L396; A05_CONFIGURATION_KEYS_2026-11-15.md L92; A05_HISTORICAL_CANDLE_ACCESS_2026-11-14.md L127
   ok [5w] respects the Zerodha minute cap -> AFR L1010; A05 AUDIT L1576,L1580,L3503; A05 STUDY L387; A05 IS L178; A05_CONFIGURATION_KEYS_2026-11-15.md L92; A05_HISTORICAL_CANDLE_ACCESS_2026-11-14.md L127
@@ -331,13 +338,13 @@
   ok [3w] the S&R objects -> A05 AUDIT L1864; A08 STUDY L782; P06 L327
   ok [4w] the S&R fetchers' caches -> A05 AUDIT L1878; A08 STUDY L783; P06 L328
   ok [6w] `970aabf` plus the S&R shadow files -> AFR L1068,L1225; DR L298; SRCINV L24,L90; R01 L164; A01 STUDY L769; A01_LEGACY_RECORDS_CHECK_2026-11-04.md L12
-===== L124 IS-034: 5 quoted fragments
+===== L125 IS-034: 5 quoted fragments
   ok [12w] The caller scopes `candles` to the intended session/window (e.g. today's in-session bars) -> A05 AUDIT L1372; A05_CANDLE_MATH_2026-11-14.md L83
   ok [4w] as the docstring asks -> A05 AUDIT L1372
   ok [10w] No source states a completeness rule for the scoped bars -> A05 AUDIT L1372
   ok [3w] MATCH; FACT; INTERPRETATION -> A01 AUDIT L1933,L2011,L2019,L2020,L2023; A02 AUDIT L505,L527; A03 AUDIT L606,L610,L611,L613,L619,L1050+; A04 AUDIT L779,L787,L1261,L1267,L1269,L1271+; A05 AUDIT L288,L712,L713,L715,L1084,L1085+; A05 STUDY L912
   ok [4w] A05; A08 (the caller) -> A05 AUDIT L1372; A08 STUDY L651; P02 L277; P07 L123; P05 L193
-===== L125 IS-035: 12 quoted fragments
+===== L126 IS-035: 12 quoted fragments
   ok [6w] A05; A01 (wiring); A08 (the injection) -> A05 AUDIT L1665; P07 L249
   ok [8w] INJECTED as `fetch_fn(token, from_date, to_date, interval) -> list[dict]` -> A05 AUDIT L1665; P02 L23
   ok [6w] this package imports nothing from broker/ -> A05 AUDIT L1665; P02 L23
@@ -350,7 +357,7 @@
   ok [2w] Intra-session cache -> AFR L1011; A05 AUDIT L1594,L1668; A05 IS L177; P02 L23
   ok [8w] A05; A01 (wiring); A08, A11, A18 (the consumers) -> A05 AUDIT L1669; P07 L252
   ok [4w] Shares the ZoneCache/ZoneWarmer infra -> A05 AUDIT L1669; A05 IS L191
-===== L126 IS-036: 15 quoted fragments
+===== L127 IS-036: 15 quoted fragments
   ok [2w] C38a (concurrency) -> AFR L164,L164; A01 AUDIT L1867; A04 AUDIT L350; A04_BROKER_CALL_SITE_MAP_2026-11-11.md L462,L558; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L46,L73,L250; A08 STUDY L614,L626,L1017
   ok [5w] Live: reuse kite_client (== adapter._kite) -> AFR L164; A01 AUDIT L1870; A04 AUDIT L512,L3523; A05 AUDIT L1664; A05 IS L175; A05_HISTORICAL_CANDLE_ACCESS_2026-11-14.md L33
   ok [5w] INTERPRETATION: concurrent use was anticipated -> A01 AUDIT L1870
@@ -365,7 +372,7 @@
   ok [2w] failure containment -> A04 AUDIT L3193,L3446
   ok [5w] A01 (wiring); A08, A18 consumers -> A04 AUDIT L3193; P07 L247
   ok [12w] which catches every exception, so the untranslated SDK exceptions never leave it -> A04 AUDIT L3193
-===== L127 IS-037: 11 quoted fragments
+===== L128 IS-037: 11 quoted fragments
   ok [3w] ISSUE; FACT; INTERPRETATION -> AFR L221,L222,L223,L224,L226,L229+; A02 AUDIT L1968; A03 AUDIT L3987,L4029,L4057,L4085,L4099,L4127+; A04 AUDIT L370,L371,L374,L379,L382,L383+; A04_AUTHENTICATION_TOKEN_AND_CLOCK_SKEW_2026-11-11.md L46,L483; A04_COSTS_AND_SLIPPAGE_2026-11-11.md L306,L307
   ok [6w] A04 treatment group TG19 (AGREED, 13-Nov-2026) -> AFR L820,L821,L822,L823,L824,L825+; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L217,L223; A08 STUDY L647,L648; P02 L275; P07 L112,L113; P05 L174
   ok [3w] every broker call -> AFR L634,L824,L825,L1051; OIR L1959,L1959; R02 L732; A01 AUDIT L1007; A01 STUDY L445; A01 IS L145,L641
@@ -375,7 +382,7 @@
   ok [14w] does not cover the one call path outside the adapter that holds a bucket -> A04 AUDIT L3443
   ok [9w] The fail-safe swallow itself matches SR-F4 (MATCH part, A08's) -> A04 AUDIT L3443; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L217; P02 L275
   ok [6w] A08 (the fetch and its fail-safe) -> A04 AUDIT L3445; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L217,L294; P07 L112
-===== L128 IS-038: 14 quoted fragments
+===== L129 IS-038: 14 quoted fragments
   ok [4w] ISSUE; FACT; INTERPRETATION; HISTORICAL -> AFR L292,L369,L372,L373,L431,L461+; A04 AUDIT L382,L3747; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L162; A05 AUDIT L269,L278,L285,L408,L851,L1513+; A05 STUDY L893,L902,L909; A05_INSTRUMENT_REFRESH_AND_ALIAS_TOOL_2026-11-14.md L135,L267
   ok [6w] A06 treatment group TG5 (AGREED, 19-Nov-2026) -> AFR L1169,L1170,L1174,L1175,L1176,L1177+; A08 STUDY L662; P02 L282; P07 L141
   NOT FOUND [8w]: if the dispatcher itself lags or has stopped
@@ -390,7 +397,7 @@
   ok [4w] UNKNOWN / NOT ESTABLISHED -> DOC04 L92,L107; DOC06 L65; DOC08 L94,L102,L145; AFR L5,L5,L5,L5,L5,L5+; DR L296,L464,L464,L492,L520,L534+; OIR L5,L5,L76,L106,L106,L112+
   ok [4w] the S&R fetch closure -> AFR L1202; A04_LEGACY_RECORDS_CHECK_2026-11-11.md L538; A06 AUDIT L4835; A06 STUDY L912; A06_EVENT_CREATION_PERSISTENCE_AND_HANDOFF_MAP_2026-11-17.md L690; A08 STUDY L790
   ok [7w] whether the dispatcher's zone warming can block -> A06 RTR L548; A08 STUDY L729; P02 L310; P07 L200
-===== L129 IS-039: 8 quoted fragments
+===== L130 IS-039: 8 quoted fragments
   ok [2w] ISSUE; FACT -> AFR L61,L62,L63,L64,L65,L66+; A01 AUDIT L1075,L1086; A02 AUDIT L629,L643,L687,L715,L801,L1828+; A03 AUDIT L2414,L2442,L2470,L2498,L2512,L2526+; A04 AUDIT L332,L333,L334,L335,L336,L337+; A04_ADAPTER_READS_AND_STATE_TRANSLATION_2026-11-11.md L413,L415,L416,L417,L420,L507+
   ok [6w] Batch T5 group G2 (AGREED, 09-Nov-2026) -> AFR L298,L302,L303,L306,L307,L311+; A04 AUDIT L375,L2052,L4324; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L121; A05 AUDIT L268,L2829,L3109; A05 STUDY L892; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L117
   ok [3w] worker / logging -> AFR L319; A02 AUDIT L2132; P02 L157; P03 L300
@@ -398,7 +405,7 @@
   ok [12w] a hardcoded constructor value beside a configurable key of the same name -> A02 AUDIT L2136
   ok [13w] whether the key itself was meant to govern the warmer is not established -> A02 AUDIT L2136
   ok [2w] A02; A08 -> A02 AUDIT L2124,L2138; P07 L83
-===== L130 IS-040: 11 quoted fragments
+===== L131 IS-040: 11 quoted fragments
   ok [3w] ISSUE; FACT; INTERPRETATION -> AFR L221,L222,L223,L224,L226,L229+; A02 AUDIT L1968; A03 AUDIT L3987,L4029,L4057,L4085,L4099,L4127+; A04 AUDIT L370,L371,L374,L379,L382,L383+; A04_AUTHENTICATION_TOKEN_AND_CLOCK_SKEW_2026-11-11.md L46,L483; A04_COSTS_AND_SLIPPAGE_2026-11-11.md L306,L307
   ok [6w] Batch T5 group G3 (AGREED, 09-Nov-2026) -> AFR L300,L301,L308,L312,L313,L317+; A04 AUDIT L374,L376,L488,L2047,L4703; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L120,L122; A06 AUDIT L375,L376,L378,L380,L2461,L5064+; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L93,L94,L96,L98; A07 IS L182
   ok [12w] how far back to fetch daily candles to compute LEVEL (calendar days) -> AFR L320; A02 AUDIT L2146
@@ -409,12 +416,12 @@
   ok [8w] cache_ttl=0 keeps the entry stage's 5-min poll FRESH -> A02 AUDIT L2146; P02 L336
   ok [9w] the regime TTL reuse has no stated intent (INTERPRETATION) -> A02 AUDIT L2150
   ok [6w] A02; A18 (watchlist, regime); A08 (fetcher) -> A02 AUDIT L2152
-===== L138 IS-041: 5 quoted fragments
+===== L139 IS-041: 5 quoted fragments
   ok [8w] end-of-day backfill of trade outcomes into S&R results -> MSII L307
   ok [3w] cron: 15:58 Mon-Fri -> MSII L307,L310
   ok [6w] a FACT about a declaration only -> MSII L280
   ok [3w] preliminary and source-derived -> MSII L23; A07 AUDIT L912; A07 IS L160,L514
-===== L139 IS-042: 20 quoted fragments
+===== L140 IS-042: 20 quoted fragments
   ok [2w] ISSUE; FACT -> AFR L61,L62,L63,L64,L65,L66+; A01 AUDIT L1075,L1086; A02 AUDIT L629,L643,L687,L715,L801,L1828+; A03 AUDIT L2414,L2442,L2470,L2498,L2512,L2526+; A04 AUDIT L332,L333,L334,L335,L336,L337+; A04_ADAPTER_READS_AND_STATE_TRANSLATION_2026-11-11.md L413,L415,L416,L417,L420,L507+
   ok [6w] A03 treatment group TG14 (AGREED, 11-Nov-2026) -> AFR L476,L486,L487,L488,L489,L490+; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L155; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L106; A08 STUDY L644; P07 L102
   ok [5w] Only TERMINAL trades are finalised -> AFR L498; A03 AUDIT L3085; A08 STUDY L573; P03 L27,L299
@@ -433,7 +440,7 @@
   ok [8w] A07's live path consumes no S&R detector output -> A07 AUDIT L4255,L4323; A07 STUDY L1374,L1445; A07_STATUSES_PERSISTENCE_CONCURRENCY_AND_DUPLICATION_2026-11-21.md L369; A08 STUDY L522,L834,L1205
   ok [4w] the S&R backfill script -> A07 RTR L560; A08 STUDY L731; P07 L202; P03 L286; P04 L278
   ok [5w] as an A08-owned pointer only -> TCR L90; A05 AUDIT L25,L2762; A05 RTR L41,L710; A05 STUDY L25,L870; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L33,L155
-===== L140 IS-043: 11 quoted fragments
+===== L141 IS-043: 11 quoted fragments
   ok [2w] ISSUE; FACT -> AFR L61,L62,L63,L64,L65,L66+; A01 AUDIT L1075,L1086; A02 AUDIT L629,L643,L687,L715,L801,L1828+; A03 AUDIT L2414,L2442,L2470,L2498,L2512,L2526+; A04 AUDIT L332,L333,L334,L335,L336,L337+; A04_ADAPTER_READS_AND_STATE_TRANSLATION_2026-11-11.md L413,L415,L416,L417,L420,L507+
   ok [6w] A03 treatment group TG4 (AGREED, 11-Nov-2026) -> AFR L384,L385,L386,L391,L394,L395+; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L143; A08 STUDY L641; P07 L99
   ok [12w] the explicit column set means a missing key surfaces clearly in tests -> AFR L451; A03 AUDIT L2117
@@ -443,12 +450,12 @@
   ok [3w] A03; A08 (callers) -> A03 AUDIT L2123; P07 L99; P03 L257
   ok [4w] A08, A02, A12; A03 -> A03 AUDIT L1072; A08 STUDY L751; P06 L293; P07 L241; P03 L290
   ok [7w] Each writer uses its own table's spelling -> A03 AUDIT L1072
-===== L141 IS-044: 5 quoted fragments
+===== L142 IS-044: 5 quoted fragments
   ok [4w] ISSUE; FACT; INTERPRETATION; HISTORICAL -> AFR L292,L369,L372,L373,L431,L461+; A04 AUDIT L382,L3747; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L162; A05 AUDIT L269,L278,L285,L408,L851,L1513+; A05 STUDY L893,L902,L909; A05_INSTRUMENT_REFRESH_AND_ALIAS_TOOL_2026-11-14.md L135,L267
   ok [6w] A03 treatment group TG1 (AGREED, 11-Nov-2026) -> AFR L365,L366,L367,L369,L370,L371+; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L125; A06 AUDIT L383,L2462,L3163; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L110; A07 IS L516; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L94,L95
   ok [12w] a reporting / analysis job can never mutate production data through it -> AFR L369; A03 AUDIT L410
   ok [10w] Rama: not needed to classify (the sources state read-only use) -> A03 AUDIT L418r; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L125
-===== L142 IS-045: 10 quoted fragments
+===== L143 IS-045: 10 quoted fragments
   ok [4w] ISSUE; FACT; INTERPRETATION; HISTORICAL -> AFR L292,L369,L372,L373,L431,L461+; A04 AUDIT L382,L3747; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L162; A05 AUDIT L269,L278,L285,L408,L851,L1513+; A05 STUDY L893,L902,L909; A05_INSTRUMENT_REFRESH_AND_ALIAS_TOOL_2026-11-14.md L135,L267
   ok [6w] A03 treatment group TG1 (AGREED, 11-Nov-2026) -> AFR L365,L366,L367,L369,L370,L371+; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L125; A06 AUDIT L383,L2462,L3163; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L110; A07 IS L516; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L94,L95
   ok [5w] Always verify with `--db <copy>` -> AFR L373,L516; A03 AUDIT L466,L3471
@@ -458,17 +465,17 @@
   ok [3w] ISSUE; FACT; INTERPRETATION -> AFR L221,L222,L223,L224,L226,L229+; A02 AUDIT L1968; A03 AUDIT L3987,L4029,L4057,L4085,L4099,L4127+; A04 AUDIT L370,L371,L374,L379,L382,L383+; A04_AUTHENTICATION_TOKEN_AND_CLOCK_SKEW_2026-11-11.md L46,L483; A04_COSTS_AND_SLIPPAGE_2026-11-11.md L306,L307
   ok [4w] write markers, never heartbeats -> A03 AUDIT L2173,L3172; A03_STATE_STORE_API_PART2_2026-11-09.md L368
   ok [5w] Withdrawn: counted once as D-09 -> A03 AUDIT L2965; A08 STUDY L770,L1215
-===== L143 IS-046: 6 quoted fragments
+===== L144 IS-046: 6 quoted fragments
   ok [3w] ISSUE; FACT; INTERPRETATION -> AFR L221,L222,L223,L224,L226,L229+; A02 AUDIT L1968; A03 AUDIT L3987,L4029,L4057,L4085,L4099,L4127+; A04 AUDIT L370,L371,L374,L379,L382,L383+; A04_AUTHENTICATION_TOKEN_AND_CLOCK_SKEW_2026-11-11.md L46,L483; A04_COSTS_AND_SLIPPAGE_2026-11-11.md L306,L307
   ok [6w] A03 treatment group TG5 (AGREED, 11-Nov-2026) -> AFR L388,L389,L390,L423,L424,L425+; A04 AUDIT L379,L381,L382,L3744,L3746,L3747; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L159,L161,L162; A06 AUDIT L384,L4228; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L111; A07 IS L249
   ok [7w] No source states one shared active-order set -> A03 AUDIT L2816
   ok [8w] A08 (backfill); A03 (status predicates as stored values) -> A03 AUDIT L2821
   ok [10w] which active-order set is intended is the owners' (A12, A20) -> A03 AUDIT L2823
-===== L144 IS-047: 3 quoted fragments
+===== L145 IS-047: 3 quoted fragments
   ok [2w] ISSUE; FACT -> AFR L61,L62,L63,L64,L65,L66+; A01 AUDIT L1075,L1086; A02 AUDIT L629,L643,L687,L715,L801,L1828+; A03 AUDIT L2414,L2442,L2470,L2498,L2512,L2526+; A04 AUDIT L332,L333,L334,L335,L336,L337+; A04_ADAPTER_READS_AND_STATE_TRANSLATION_2026-11-11.md L413,L415,L416,L417,L420,L507+
   ok [6w] No other module touches SQLite directly -> A03 AUDIT L354,L1863,L2202,L2655; A03 STUDY L155; A03 IS L88,L294; A03_CONNECTIONS_AND_TRANSACTIONS_2026-11-09.md L70; A03_STATE_STORE_API_PART2_2026-11-09.md L29,L362
   ok [2w] ISSUE; FACT -> AFR L61,L62,L63,L64,L65,L66+; A01 AUDIT L1075,L1086; A02 AUDIT L629,L643,L687,L715,L801,L1828+; A03 AUDIT L2414,L2442,L2470,L2498,L2512,L2526+; A04 AUDIT L332,L333,L334,L335,L336,L337+; A04_ADAPTER_READS_AND_STATE_TRANSLATION_2026-11-11.md L413,L415,L416,L417,L420,L507+
-===== L145 IS-048: 11 quoted fragments
+===== L146 IS-048: 11 quoted fragments
   ok [7w] UNKNOWN / NOT ESTABLISHED; FACT; INTERPRETATION; HISTORICAL -> AFR L718,L726,L747,L779,L1001,L1009+; A07 AUDIT L609,L613,L625,L1804,L4017; A07 STUDY L1381,L1385,L1397; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L127,L131,L150; A07_STEP_EXECUTOR_AND_THE_TEN_STEPS_2026-11-21.md L248; A08 STUDY L653,L710,L790,L791
   ok [6w] UNKNOWN / NOT ESTABLISHED (no treatment) -> AFR L368,L382,L387,L400,L402,L419+; A03 RTR L299; A04 RTR L286; A06 AUDIT L386,L393,L4230,L5062; A06 RTR L740; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L113,L127
   ok [7w] We never decide on a live candle -> A05 AUDIT L1202,L1378,L1566; A05 IS L133,L133,L186,L499; A05_HISTORICAL_CANDLE_ACCESS_2026-11-14.md L244
@@ -479,7 +486,7 @@
   ok [8w] were meant to use an incomplete last candle -> A05 AUDIT L1570
   ok [11w] A08 (the V1 detector, the retest monitor, the fetcher's cache); A18 -> OIR L2578; A05 AUDIT L1572
   ok [13w] left out of historical windows that end at the moment of the call -> OIR L2575; A05 RTR L651; A05 STUDY L1170; A05_HISTORICAL_CANDLE_ACCESS_2026-11-14.md L293
-===== L146 IS-049: 7 quoted fragments
+===== L147 IS-049: 7 quoted fragments
   ok [8w] no rejection or alteration through these call sites -> A06 AUDIT L4922; A08 STUDY L667; P07 L146; P03 L167
   ok [12w] Owner A06 (the call sites); A18, A08, A14, A15 (the receiving logic) -> A06 AUDIT L4922; A08 STUDY L667; P07 L146
   ok [9w] Whether these components ran is UNKNOWN / NOT ESTABLISHED -> A06 AUDIT L4922; A08 STUDY L667,L1212
@@ -488,7 +495,7 @@
   ok [2w] A08's enqueue -> A06 AUDIT L4922; P06 L478r; P07 L146; P03 L167
   ok [6w] ), which are not studied here -> A06 AUDIT L4922
   ok [4w] the S&R observer (A08) -> A06 RTR L205; P07 L220
-===== L147 IS-050: 10 quoted fragments
+===== L148 IS-050: 10 quoted fragments
   ok [10w] a third database, an S&R shadow database with four tables -> A03 RTR L199
   ok [10w] No such module, path or text exists at the baseline -> A03 RTR L199; A08 STUDY L727; P07 L198
   ok [4w] owner by subject: A08 -> A03 RTR L199; A03 STUDY L960; P07 L198
@@ -499,19 +506,19 @@
   ok [2w] read configuration -> A02 IS L333; A05_CONFIGURATION_KEYS_2026-11-15.md L130
   ok [6w] no `sr_shadow/` module exists at 970aabf -> A02 IS L333
   ok [6w] records' tree only (A08 by subject) -> A02 IS L333
-===== L148 IS-051: 5 quoted fragments
+===== L149 IS-051: 5 quoted fragments
   ok [5w] ISSUE (minor); FACT; INTERPRETATION; HISTORICAL -> AFR L1134,L1135,L1136,L1140,L1142,L1143+; A08 STUDY L788
   ok [6w] A06 treatment group TG16 (AGREED, 19-Nov-2026) -> AFR L1145,L1149,L1150,L1151,L1155,L1189+; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L143; A07_QUALITY_SCORER_HARD_GATE_AND_V3_PLAYBOOK_GATES_2026-11-21.md L285; A07_STEP_EXECUTOR_AND_THE_TEN_STEPS_2026-11-21.md L256; A08 STUDY L788
   ok [10w] the single wiring point used by main.py, scripts/sr_level_export.py and signals/signal_pro -> R02 L1143; A06 AUDIT L6370; A06 IS L338; A06_LEGACY_RECORDS_CHECK_2026-11-17.md L133
   ok [6w] the processor does not call `build_sr_detector` -> A06 AUDIT L6387
   ok [12w] The eight BASELINE DIFFERENCE results come from the processor's S&R shadow lines -> A06 AUDIT L6393
-===== L149 IS-052: 5 quoted fragments
+===== L150 IS-052: 5 quoted fragments
   ok [9w] ISSUE; FACT, INTERPRETATION, UNKNOWN / NOT ESTABLISHED (actual timing) -> AFR L80; A04 AUDIT L4166; A06 AUDIT L352,L3458; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L63; A08 STUDY L762
   ok [7w] Group E (AGREED, 06-Nov-2026, with its exceptions) -> AFR L79,L80,L81,L82,L83,L86+; A04 AUDIT L338,L341,L2049,L3349,L3733,L3740; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L61,L64; A06 AUDIT L352,L353,L354,L359,L560,L561+; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L63,L64,L65,L70; A07 IS L255,L419
   ok [8w] 15s leaves the other half of the budget -> AFR L80; A01 AUDIT L906; A01 IS L360
   ok [5w] the S&R detector 2 s -> A01 AUDIT L908; A08 STUDY L762; P06 L307
   ok [14w] A01 (the sequence); A17 (the unit, a declaration only); the owners of each `stop()` -> A01 AUDIT L911
-===== L157 IS-053: 9 quoted fragments
+===== L158 IS-053: 9 quoted fragments
   ok [3w] A08 and A18 -> TCR L90; A01 AUDIT L856,L2581; A01_MAIN_PY_STRUCTURE_AND_IMPORTS_2026-11-04.md L33; A04_BROKER_CALL_SITE_MAP_2026-11-11.md L273; A05 AUDIT L1138,L1586,L1656; A05 RTR L41,L59,L181
   ok [3w] A18's retest path -> DR L576; TCR L147; A06 AUDIT L3990; A07 AUDIT L100,L4416,L4451; A07 RTR L166,L211,L565; A08 STUDY L22,L732,L824,L824,L973
   ok [12w] The index's A08 entry (L119 to L120) gives retest monitoring to A08 -> A07 AUDIT L100
@@ -521,7 +528,7 @@
   ok [9w] forward as an OPEN QUESTION to the topics named -> A07 RTR L793,L793; P07 L314
   ok [4w] Rama's decision (25-Nov-2026): (a) -> A07 RTR L792,L793,L794,L798
   ok [9w] carried forward to the topics named, the records unchanged -> DR L562
-===== L158 IS-054: 13 quoted fragments
+===== L159 IS-054: 13 quoted fragments
   ok [6w] The reachability of `continue_from_retest` is A08's -> A07 STUDY L187; A07_STRATEGY_CONTROL_TAXONOMY_AND_DIRECTION_REGISTRY_2026-11-21.md L88; P07 L314
   ok [4w] the path's reachability A08's -> A07 AUDIT L3763; P07 L320
   ok [3w] A08 and A18 -> TCR L90; A01 AUDIT L856,L2581; A01_MAIN_PY_STRUCTURE_AND_IMPORTS_2026-11-04.md L33; A04_BROKER_CALL_SITE_MAP_2026-11-11.md L273; A05 AUDIT L1138,L1586,L1656; A05 RTR L41,L59,L181
@@ -535,7 +542,7 @@
   ok [10w] Owners A07 (gate) and A18 (retest); A06 (the expiry rule) -> A06 AUDIT L3990; A07 IS L418; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L144; P07 L312
   ok [10w] NOT the :607 60s expiry -- this is a park-and-resume -> A06 AUDIT L3990,L4718; A06 IS L194
   ok [6w] no age check on either path -> A06 AUDIT L3990
-===== L159 IS-055: 10 quoted fragments
+===== L160 IS-055: 10 quoted fragments
   ok [7w] UNKNOWN / NOT ESTABLISHED; FACT; HISTORICAL; INTERPRETATION -> AFR L1312,L1314,L1333,L1334,L1352,L1357+; A08 STUDY L668,L718; P02 L305,L478; P07 L154; P04 L259
   ok [9w] None (UNKNOWN / NOT ESTABLISHED items receive no treatment) -> AFR L1152,L1153,L1154,L1163,L1165,L1181+; A06_TREATMENT_GROUPING_CHECK_2026-11-20.md L29; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L150; A08 STUDY L663,L664,L668,L717,L718,L719+; P02 L283,L305,L478; P06 L258
   ok [6w] UNKNOWN / NOT ESTABLISHED (no treatment) -> AFR L368,L382,L387,L400,L402,L419+; A03 RTR L299; A04 RTR L286; A06 AUDIT L386,L393,L4230,L5062; A06 RTR L740; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L113,L127
@@ -545,7 +552,7 @@
   ok [10w] Would settle it: the production `signals` table (statuses and reasons) -> A07 AUDIT L874
   ok [11w] EG part (the gate rows), A08 and A18 (the retest path) -> A07 AUDIT L876
   ok [8w] the machine values are the subject of A07-Q19 -> A07 AUDIT L878
-===== L160 IS-056: 7 quoted fragments
+===== L161 IS-056: 7 quoted fragments
   ok [12w] the A07 logic on both resume paths does what its sources state -> A07 AUDIT L1176; A08 STUDY L669; P07 L155
   ok [8w] Re-checks kill-switch / market-window / strategy-control / governor -> A07 AUDIT L1176,L1270; A07 IS L597; A08 STUDY L371; P04 L154
   ok [9w] the retest path's reachability is A08's and A18's (P02-S040) -> A07 AUDIT L1176
@@ -553,7 +560,7 @@
   ok [7w] the orchestration of both functions, interface only -> A07 AUDIT L1176; A08 STUDY L669
   ok [6w] A08 and A18 (the retest path) -> A07 AUDIT L876,L1176; A08 STUDY L669; P07 L154,L155,L314,L314
   ok [7w] Whether L2062 or L2411 ever executed: SL-06 -> A07 AUDIT L1176; A08 STUDY L669
-===== L161 IS-057: 9 quoted fragments
+===== L162 IS-057: 9 quoted fragments
   ok [4w] ISSUE; FACT; HISTORICAL; INTERPRETATION -> AFR L959,L960,L961,L967,L975,L976+; A08 STUDY L670,L787,L792; P07 L156; P04 L261
   ok [11w] A07 batch 5, T1: carried forward as a Phase 2 input -> AFR L1404,L1405,L1406,L1408,L1409,L1410+; A08 STUDY L670,L792; P07 L156; P04 L261
   ok [9w] until price retraces to the entry level (or timeout) -> AFR L1404; A07 AUDIT L3176; A07 STUDY L656; A07 IS L433; A07_ENTRY_GATE_AND_RESUME_CONTRACT_2026-11-21.md L21
@@ -562,13 +569,13 @@
   ok [4w] no understanding is inferred -> OIR L4150
   ok [2w] traceable end-to-end -> AFR L1288; OIR L4150
   ok [7w] as if a missing mechanism is active -> AFR L1288; OIR L4150; A07 RTR L643,L679
-===== L162 IS-058: 6 quoted fragments
+===== L163 IS-058: 6 quoted fragments
   ok [4w] ISSUE; FACT; HISTORICAL; INTERPRETATION -> AFR L959,L960,L961,L967,L975,L976+; A08 STUDY L670,L787,L792; P07 L156; P04 L261
   ok [3w] is not wired -> AFR L1405; A01 AUDIT L895; A02 AUDIT L2230; A02_KEY_CONSUMER_MAP_PART1_2026-11-06.md L165,L166; A04 AUDIT L2233,L2978; A04_BROKER_CALL_SITE_MAP_2026-11-11.md L146
   ok [5w] to prevent stale next-morning rehydration -> A07 AUDIT L3190; A07 IS L445; A07_LEGACY_RECORDS_INTENT_SOURCES_AND_TESTS_2026-11-21.md L179
   ok [10w] safe end-of-day handling and restart recovery of persisted waiting state -> AFR L1289; A07 RTR L645,L680
   ok [8w] not a decision to reproduce the legacy gate -> AFR L1289; A07 RTR L645,L680,L765
-===== L163 IS-059: 9 quoted fragments
+===== L164 IS-059: 9 quoted fragments
   ok [5w] ISSUE (latent); FACT; INTERPRETATION; HISTORICAL -> AFR L1173,L1187,L1201; A07 AUDIT L623,L3158; A07 STUDY L1395; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L148; A08 STUDY L666,L814; P07 L145
   ok [6w] A06 treatment group TG6 (AGREED, 19-Nov-2026) -> AFR L1137,L1182,L1187,L1201; A07 IS L418; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L148; A08 STUDY L666,L814; P07 L145; P04 L258
   ok [10w] NOT the :607 60s expiry -- this is a park-and-resume -> A06 AUDIT L3990,L4718; A06 IS L194
@@ -577,19 +584,19 @@
   ok [12w] at the committed values the retest path is not reached (`wait_for_retest_enabled: false`) -> A06 AUDIT L4744
   ok [5w] the entry points and `stop()` -> A06 AUDIT L4758; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L148
   ok [4w] A08 (the retest monitor) -> A06 AUDIT L4758; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L148; P07 L145
-===== L164 IS-060: 4 quoted fragments
+===== L165 IS-060: 4 quoted fragments
   NOT FOUND [6w]: was meant to be checked again
   ok [5w] on gate or retest resumption -> OIR L3396; A06 RTR L707; A06 STUDY L1406; A06_PROCESSOR_INTAKE_QUEUE_WORKERS_AND_EXPIRY_2026-11-17.md L879
   ok [3w] OPEN for all -> OIR L2963,L3220,L3223,L3235,L3238,L3250+; TCR L115; A06 RTR L565,L574,L684
   ok [3w] none is inferred -> AFR L1368; OIR L614,L629,L644,L659,L674,L749+; A06 RTR L572,L572; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L153,L157,L161,L163,L165,L167; A06_RECEIVER_AUTHENTICATION_AND_VALIDATION_2026-11-17.md L120; A07 AUDIT L2067,L4611
   ok [3w] 607 60s expiry -> AFR L1189; A06 AUDIT L3892,L3908,L3990,L4718,L6777; A06 RTR L352; A06 IS L194,L370; A06_PROCESSOR_INTAKE_QUEUE_WORKERS_AND_EXPIRY_2026-11-17.md L553; A07 AUDIT L1270
-===== L165 IS-061: 6 quoted fragments
+===== L166 IS-061: 6 quoted fragments
   ok [4w] ISSUE; FACT; INTERPRETATION; HISTORICAL -> AFR L292,L369,L372,L373,L431,L461+; A04 AUDIT L382,L3747; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L162; A05 AUDIT L269,L278,L285,L408,L851,L1513+; A05 STUDY L893,L902,L909; A05_INSTRUMENT_REFRESH_AND_ALIAS_TOOL_2026-11-14.md L135,L267
   ok [6w] A06 treatment group TG1 (AGREED, 19-Nov-2026) -> AFR L1140,L1142,L1143,L1144,L1146,L1160+; A07 IS L302; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L140,L141; A07_QUALITY_SCORER_HARD_GATE_AND_V3_PLAYBOOK_GATES_2026-11-21.md L283,L284; A07_STEP_EXECUTOR_AND_THE_TEN_STEPS_2026-11-21.md L252; A08 STUDY L660,L661
   ok [4w] A06 (receiver); part PQ -> A06 AUDIT L2018,L2740; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L140; A07_QUALITY_SCORER_HARD_GATE_AND_V3_PLAYBOOK_GATES_2026-11-21.md L283
   ok [7w] A07 to A10 (screening, S&R, risk, placement) -> A06 AUDIT L2271; A07 IS L302; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L140; P07 L135
   ok [5w] a `triggered_at` later than receipt -> A06 AUDIT L2271; A07 AUDIT L181,L1323,L1920; A07 STUDY L1533,L1687; A07 IS L302; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L140; A07_QUALITY_SCORER_HARD_GATE_AND_V3_PLAYBOOK_GATES_2026-11-21.md L283
-===== L166 IS-062: 10 quoted fragments
+===== L167 IS-062: 10 quoted fragments
   ok [4w] ISSUE; FACT; INTERPRETATION; HISTORICAL -> AFR L292,L369,L372,L373,L431,L461+; A04 AUDIT L382,L3747; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L162; A05 AUDIT L269,L278,L285,L408,L851,L1513+; A05 STUDY L893,L902,L909; A05_INSTRUMENT_REFRESH_AND_ALIAS_TOOL_2026-11-14.md L135,L267
   ok [6w] no finiteness, upper-bound or tick test -> AFR L1161; A06 AUDIT L2024,L6752; A06 RTR L337
   ok [8w] A07 to A10 (later use of the price) -> A06 AUDIT L2068; A07 IS L302; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L141; A07_QUALITY_SCORER_HARD_GATE_AND_V3_PLAYBOOK_GATES_2026-11-21.md L284; A07_SECONDARY_SCREENER_ORCHESTRATION_AND_RESULT_2026-11-21.md L215; P07 L140
@@ -598,7 +605,7 @@
   ok [7w] A07 to A10 (screening, S&R, risk, placement) -> A06 AUDIT L2271; A07 IS L302; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L140; P07 L135
   ok [3w] finite positive numbers -> A06 AUDIT L1719,L2072,L6671; A06 RTR L416; A06 STUDY L1387; A06_RECEIVER_AUTHENTICATION_AND_VALIDATION_2026-11-17.md L321
   ok [4w] stays a draft question -> A06 AUDIT L2022,L2072,L2120,L2203
-===== L167 IS-063: 13 quoted fragments
+===== L168 IS-063: 13 quoted fragments
   ok [4w] ISSUE; FACT; INTERPRETATION; HISTORICAL -> AFR L292,L369,L372,L373,L431,L461+; A04 AUDIT L382,L3747; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L162; A05 AUDIT L269,L278,L285,L408,L851,L1513+; A05 STUDY L893,L902,L909; A05_INSTRUMENT_REFRESH_AND_ALIAS_TOOL_2026-11-14.md L135,L267
   ok [6w] A06 treatment group TG9 (AGREED, 19-Nov-2026) -> AFR L1191,L1192,L1197,L1224; A07 IS L248; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L147; A08 STUDY L716; P04 L272
   ok [4w] with timestamp and reason -> AFR L1191,L1415,L1415; A03 AUDIT L1595; A06 AUDIT L321,L2820,L4262,L4528,L6270; A06 RTR L382; A06 IS L224,L373; A07 AUDIT L1506,L3342,L3346,L4579
@@ -612,7 +619,7 @@
   ok [3w] ISSUE; FACT; HISTORICAL -> AFR L365,L379,L383,L386,L392,L424+; A04 AUDIT L2790,L2804; A06 AUDIT L384,L4228,L4891; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L111; A07 AUDIT L595,L3151; A07 STUDY L1367
   ok [7w] accepted for SP9 API symmetry; not stored -> AFR L1344; A03 AUDIT L1595; A03 IS L175; A06 IS L226; A07 AUDIT L1507,L1694; A07 STUDY L321
   ok [6w] A07, A08 (gate, screener, retest values) -> A03 AUDIT L1601; A06 AUDIT L384,L4228; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L111; A07 IS L249; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L99; P07 L96
-===== L168 IS-064: 7 quoted fragments
+===== L169 IS-064: 7 quoted fragments
   ok [3w] ISSUE; FACT; INTERPRETATION -> AFR L221,L222,L223,L224,L226,L229+; A02 AUDIT L1968; A03 AUDIT L3987,L4029,L4057,L4085,L4099,L4127+; A04 AUDIT L370,L371,L374,L379,L382,L383+; A04_AUTHENTICATION_TOKEN_AND_CLOCK_SKEW_2026-11-11.md L46,L483; A04_COSTS_AND_SLIPPAGE_2026-11-11.md L306,L307
   ok [6w] A03 treatment group TG2 (AGREED, 11-Nov-2026) -> AFR L374,L375,L376,L377,L381,L408+; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L149; A06 AUDIT L385,L387,L388,L2463,L2687,L4229+; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L112,L114,L115; A07 IS L250,L416; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L100,L101,L102,L105
   ok [6w] LOCK → VALIDATE → COMMIT updates -> AFR L433; A03 AUDIT L1718; A03 IS L106r
@@ -620,7 +627,7 @@
   ok [7w] memory first, persistence best-effort, by stated design -> A03 AUDIT L1718; P04 L254
   ok [9w] no source states that these sequences survive a stop -> A03 AUDIT L1722
   ok [5w] A07, A08 (screener, gate, retest) -> A03 AUDIT L1724; A07 IS L250; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L100; P07 L97
-===== L169 IS-065: 16 quoted fragments
+===== L170 IS-065: 16 quoted fragments
   ok [3w] ISSUE; FACT; INTERPRETATION -> AFR L221,L222,L223,L224,L226,L229+; A02 AUDIT L1968; A03 AUDIT L3987,L4029,L4057,L4085,L4099,L4127+; A04 AUDIT L370,L371,L374,L379,L382,L383+; A04_AUTHENTICATION_TOKEN_AND_CLOCK_SKEW_2026-11-11.md L46,L483; A04_COSTS_AND_SLIPPAGE_2026-11-11.md L306,L307
   ok [7w] no zombie row with a stale status -> A03 AUDIT L2043; P04 L93
   ok [14w] Release the parking row first (so it can't be re-evaluated), then resume the pipeline -> A03 AUDIT L2043; P04 L123
@@ -636,7 +643,7 @@
   ok [6w] only where documented (FIX-010, retest release) -> A03 AUDIT L2279
   ok [3w] ISSUE; FACT; INTERPRETATION -> AFR L221,L222,L223,L224,L226,L229+; A02 AUDIT L1968; A03 AUDIT L3987,L4029,L4057,L4085,L4099,L4127+; A04 AUDIT L370,L371,L374,L379,L382,L383+; A04_AUTHENTICATION_TOKEN_AND_CLOCK_SKEW_2026-11-11.md L46,L483; A04_COSTS_AND_SLIPPAGE_2026-11-11.md L306,L307
   ok [5w] not established for these four -> AFR L448; A03 AUDIT L2071
-===== L170 IS-066: 10 quoted fragments
+===== L171 IS-066: 10 quoted fragments
   ok [3w] ISSUE; FACT; INTERPRETATION -> AFR L221,L222,L223,L224,L226,L229+; A02 AUDIT L1968; A03 AUDIT L3987,L4029,L4057,L4085,L4099,L4127+; A04 AUDIT L370,L371,L374,L379,L382,L383+; A04_AUTHENTICATION_TOKEN_AND_CLOCK_SKEW_2026-11-11.md L46,L483; A04_COSTS_AND_SLIPPAGE_2026-11-11.md L306,L307
   ok [6w] A03 treatment group TG6 (AGREED, 11-Nov-2026) -> AFR L393,L449,L453,L472,L478,L482+; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L161; A08 STUDY L637; P07 L95; P04 L252
   ok [7w] All TEXT timestamps are ISO-8601 IST (e.g. -> AFR L393,L482; A03 AUDIT L881,L2843; P03 L137
@@ -646,14 +653,14 @@
   ok [2w] A08, A18 -> AFR L824,L1006; A01 AUDIT L384,L526,L2160,L2160; A01 STUDY L244; A02 AUDIT L2328; A02_KEY_CONSUMER_MAP_PART1_2026-11-06.md L64; A02_KEY_CONSUMER_MAP_PART2_2026-11-06.md L175
   ok [6w] empty text on a clock failure -> A03 AUDIT L1094; P07 L95
   ok [12w] date filters use the stored form, never SQL DATE() on offset text -> AFR L350
-===== L171 IS-067: 6 quoted fragments
+===== L172 IS-067: 6 quoted fragments
   ok [3w] ISSUE; FACT; HISTORICAL -> AFR L365,L379,L383,L386,L392,L424+; A04 AUDIT L2790,L2804; A06 AUDIT L384,L4228,L4891; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L111; A07 AUDIT L595,L3151; A07 STUDY L1367
   ok [6w] A03 treatment group TG13 (AGREED, 11-Nov-2026) -> AFR L392,L411,L432,L457,L509,L526; A04 AUDIT L380,L3745; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L160; A08 STUDY L768,L793
   ok [8w] Four open prefix families are allowed via GLOB -> A03 AUDIT L859; A03_TRADING_SCHEMA_PART1_2026-11-09.md L85
   ok [6w] A06, A07, A08 (values); A03 (CHECK) -> A03 AUDIT L1053; P07 L240
   ok [11w] key 38 rebuilds `signals` (its CHECK), not the new `retest_state` table -> A03 AUDIT L1071
   ok [4w] A11, A08, A18; A03 -> A03 AUDIT L1075; P07 L242
-===== L172 IS-068: 9 quoted fragments
+===== L173 IS-068: 9 quoted fragments
   ok [2w] ISSUE; FACT -> AFR L61,L62,L63,L64,L65,L66+; A01 AUDIT L1075,L1086; A02 AUDIT L629,L643,L687,L715,L801,L1828+; A03 AUDIT L2414,L2442,L2470,L2498,L2512,L2526+; A04 AUDIT L332,L333,L334,L335,L336,L337+; A04_ADAPTER_READS_AND_STATE_TRANSLATION_2026-11-11.md L413,L415,L416,L417,L420,L507+
   ok [6w] Batch T5 group G3 (AGREED, 09-Nov-2026) -> AFR L300,L301,L308,L312,L313,L317+; A04 AUDIT L374,L376,L488,L2047,L4703; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L120,L122; A06 AUDIT L375,L376,L378,L380,L2461,L5064+; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L93,L94,L96,L98; A07 IS L182
   ok [10w] The SL-buffer keys: a misnamed path and an untied duplicate -> AFR L318; A02 AUDIT L2114,L2563; A06_CONFIGURATION_KEYS_2026-11-17.md L759; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L98
@@ -663,7 +670,7 @@
   ok [4w] — match Phase A -> A02 AUDIT L2118
   ok [11w] A02; A08 (detector, flags, retest); A06 (signal processor); A11 (structure exit) -> A02 AUDIT L2124
   ok [7w] the retest path's SL buffer, A02 K-22 -> A06 RTR L229; P07 L221
-===== L173 IS-069: 13 quoted fragments
+===== L174 IS-069: 13 quoted fragments
   ok [4w] ISSUE; FACT; INTERPRETATION; HISTORICAL -> AFR L292,L369,L372,L373,L431,L461+; A04 AUDIT L382,L3747; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L162; A05 AUDIT L269,L278,L285,L408,L851,L1513+; A05 STUDY L893,L902,L909; A05_INSTRUMENT_REFRESH_AND_ALIAS_TOOL_2026-11-14.md L135,L267
   ok [6w] A05 treatment group TG5 (AGREED, 17-Nov-2026) -> AFR L982,L1008,L1044; A08 STUDY L712; P04 L271
   ok [7w] ts is timezone-aware (or naive IST) datetime -> AFR L1008; A05 AUDIT L1552; A05 IS L161; A05_CANDLE_MATH_2026-11-14.md L37; A05_HISTORICAL_CANDLE_ACCESS_2026-11-14.md L133; P01 L32
@@ -676,7 +683,7 @@
   ok [11w] meant to mark the start of its minute or its end? -> OIR L2410; A05 RTR L640; P04 L265
   ok [12w] for candles built live, candles fetched from the broker and candles stored -> OIR L2425; A05 RTR L641; A05 STUDY L1153; P04 L266
   ok [7w] identify the candle by its start boundary -> OIR L2417
-===== L174 IS-070: 11 quoted fragments
+===== L175 IS-070: 11 quoted fragments
   ok [4w] UNKNOWN / NOT ESTABLISHED -> DOC04 L92,L107; DOC06 L65; DOC08 L94,L102,L145; AFR L5,L5,L5,L5,L5,L5+; DR L296,L464,L464,L492,L520,L534+; OIR L5,L5,L76,L106,L106,L112+
   ok [11w] the gate-release path, the retest path or the allocator's enforce mode -> AFR L1203; A06 AUDIT L249,L4218,L4859,L5172; A06 RTR L287,L360; A06 STUDY L1359
   ok [5w] A07, A08, A18 (item 7) -> A06 AUDIT L5176; P07 L279,L306
@@ -688,12 +695,12 @@
   ok [5w] UNKNOWN / NOT ESTABLISHED; FACT -> AFR L251,L287,L387,L400,L436,L551+; A03 AUDIT L4220; A04_ADAPTER_READS_AND_STATE_TRANSLATION_2026-11-11.md L217; A07 AUDIT L609,L613,L625,L1804,L4017; A07 STUDY L1381,L1385,L1397; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L127,L131,L150
   ok [10w] A07; A06, A08, A09, A10 (their steps of each path) -> A07 AUDIT L3719
   ok [9w] Rama: not needed (RS-11: no other records are available) -> A07 AUDIT L3721r
-===== L182 IS-071: 6 quoted fragments
+===== L183 IS-071: 6 quoted fragments
   ok [7w] one-time check whether historical candles are split-adjusted -> MSII L306
   ok [9w] read-only export of detected S&R levels for manual comparison -> MSII L308
   ok [10w] preliminary and source-derived (file names and docstrings), not verified behaviour -> MSII L23; A07 AUDIT L912; A07 IS L160
   ok [9w] a dash does not prove that it was unused -> MSII L23; A07 IS L514
-===== L183 IS-072: 18 quoted fragments
+===== L184 IS-072: 18 quoted fragments
   ok [9w] Reuse main.py's read-only market-data kite + rate-limited fetch closure -> A01 AUDIT L2060; A01 IS L114; A04_BROKER_CLIENT_AND_ADAPTERS_2026-11-11.md L294; P05 L26,L170
   ok [8w] HANDED OFF, not counted as an A01 result -> A01 AUDIT L2064; A08 STUDY L628; P07 L72; P05 L170
   ok [12w] its owner classifies the failure, which is certain whenever the script runs -> A01 AUDIT L2064
@@ -713,7 +720,7 @@
   ok [3w] stops at L139 -> A05 AUDIT L1183,L1301,L1372,L1389,L1677,L2007; A05 STUDY L346,L416,L458,L480,L943,L979+; A05_CANDLE_MATH_2026-11-14.md L403; A05_INSTRUMENT_CACHE_2026-11-14.md L49,L194,L307,L380,L385; A05_PRODUCERS_CONSUMERS_AND_DUPLICATION_2026-11-15.md L74; A08 STUDY L405,L651,L945
   ok [7w] fails at L139 before A01 C38b's L141 -> A05 AUDIT L1468; P07 L258
   ok [8w] A01 C38b's earlier failing line, noted for A08 -> A05 RTR L452; P07 L199
-===== L184 IS-073: 7 quoted fragments
+===== L185 IS-073: 7 quoted fragments
   ok [2w] ISSUE; FACT -> AFR L61,L62,L63,L64,L65,L66+; A01 AUDIT L1075,L1086; A02 AUDIT L629,L643,L687,L715,L801,L1828+; A03 AUDIT L2414,L2442,L2470,L2498,L2512,L2526+; A04 AUDIT L332,L333,L334,L335,L336,L337+; A04_ADAPTER_READS_AND_STATE_TRANSLATION_2026-11-11.md L413,L415,L416,L417,L420,L507+
   ok [7w] Group H (AGREED, 06-Nov-2026, with its exceptions) -> AFR L94,L95,L98,L150,L151,L152+; A04 AUDIT L348,L351,L366,L477,L485,L959+; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L71,L74,L89; A06 AUDIT L366,L567,L1119; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L77; A08 STUDY L754
   ok [2w] Imports EVERYTHING -> AFR L98; A01 AUDIT L1115
@@ -721,7 +728,7 @@
   ok [12w] A01; A04 for `load_dotenv`; the S&R export script's owner for its import -> A01 AUDIT L1120; P06 L296; P05 L201
   ok [4w] ISSUE; KNOWN DEFECT; HISTORICAL -> AFR L55; A04 AUDIT L331,L954,L3739; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L54; A08 STUDY L761
   ok [5w] only `scripts/sr_level_export.py` L137 imports `main` -> A01 AUDIT L635; A08 STUDY L761; P06 L306
-===== L185 IS-074: 8 quoted fragments
+===== L186 IS-074: 8 quoted fragments
   ok [2w] ISSUE; FACT -> AFR L61,L62,L63,L64,L65,L66+; A01 AUDIT L1075,L1086; A02 AUDIT L629,L643,L687,L715,L801,L1828+; A03 AUDIT L2414,L2442,L2470,L2498,L2512,L2526+; A04 AUDIT L332,L333,L334,L335,L336,L337+; A04_ADAPTER_READS_AND_STATE_TRANSLATION_2026-11-11.md L413,L415,L416,L417,L420,L507+
   ok [6w] Batch T5 group G2 (AGREED, 09-Nov-2026) -> AFR L298,L302,L303,L306,L307,L311+; A04 AUDIT L375,L2052,L4324; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L121; A05 AUDIT L268,L2829,L3109; A05 STUDY L892; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L117
   ok [9w] single source of truth, no hardcoded times anywhere else -> AFR L73,L298; A01 AUDIT L813,L950; A01 IS L142; A02 AUDIT L1838
@@ -731,7 +738,7 @@
   ok [2w] sources conflict -> AFR L406,L407,L462,L507,L509,L566+; OIR L76,L97,L136,L256,L271,L316+; A01 AUDIT L37,L366,L369,L372,L375,L376+; A02 AUDIT L36,L202,L220,L304,L408,L701+; A02 RTR L187; A02 STUDY L827
   ok [3w] A02 (the keys) -> OIR L625,L640; A02 AUDIT L1830,L1844,L1900,L1914,L2026; A04 AUDIT L2591; A04_ADAPTER_READS_AND_STATE_TRANSLATION_2026-11-11.md L413; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L192; A05 AUDIT L1586,L1600
   ok [5w] A08 (`sr_level_export.py`); A19 (t2 script) -> A02 AUDIT L1844
-===== L186 IS-075: 15 quoted fragments
+===== L187 IS-075: 15 quoted fragments
   ok [3w] ISSUE; FACT; HISTORICAL -> AFR L365,L379,L383,L386,L392,L424+; A04 AUDIT L2790,L2804; A06 AUDIT L384,L4228,L4891; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L111; A07 AUDIT L595,L3151; A07 STUDY L1367
   ok [6w] A05 treatment group TG10 (AGREED, 17-Nov-2026) -> AFR L1006,L1007,L1011,L1012,L1013; A08 STUDY L652,L654,L655,L656,L779; P02 L278,L279; P07 L124,L126,L127,L128; P05 L175
   ok [5w] Purpose (spec C, one-time verification) -> AFR L1012; A05 AUDIT L1608; A08 STUDY L389; P05 L25,L194
@@ -747,7 +754,7 @@
   ok [12w] A08 (the check script and the detector's reliance on adjusted candles); A05 -> OIR L2623; A05 AUDIT L1614; P05 L175,L182
   NOT FOUND [11w]: were meant to be adjusted for splits and bonuses before use?
   ok [7w] is answered by evidence and not asked -> OIR L2395,L2470,L2620
-===== L187 IS-076: 11 quoted fragments
+===== L188 IS-076: 11 quoted fragments
   ok [4w] ISSUE; FACT; INTERPRETATION; HISTORICAL -> AFR L292,L369,L372,L373,L431,L461+; A04 AUDIT L382,L3747; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L162; A05 AUDIT L269,L278,L285,L408,L851,L1513+; A05 STUDY L893,L902,L909; A05_INSTRUMENT_REFRESH_AND_ALIAS_TOOL_2026-11-14.md L135,L267
   ok [6w] A05 treatment group TG17 (AGREED, 17-Nov-2026) -> AFR L1063,L1064,L1065,L1066; A06 AUDIT L400,L3464; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L141; A08 STUDY L659,L786; P07 L131; P05 L176
   ok [10w] Within the trading process the sources state one instrument source -> A05 AUDIT L3149
@@ -758,7 +765,7 @@
   ok [9w] the V1 detector's fetcher missing from the registry's count -> A05 AUDIT L3274; P07 L131,L253; P05 L176
   ok [14w] from their own download of the broker's dump, or from one shared instrument source -> OIR L2935; A05 RTR L675; A05 STUDY L1201; A05_PRODUCERS_CONSUMERS_AND_DUPLICATION_2026-11-15.md L265; P05 L183
   ok [4w] ISSUE; FACT; INTERPRETATION; HISTORICAL -> AFR L292,L369,L372,L373,L431,L461+; A04 AUDIT L382,L3747; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L162; A05 AUDIT L269,L278,L285,L408,L851,L1513+; A05 STUDY L893,L902,L909; A05_INSTRUMENT_REFRESH_AND_ALIAS_TOOL_2026-11-14.md L135,L267
-===== L188 IS-077: 12 quoted fragments
+===== L189 IS-077: 12 quoted fragments
   ok [6w] ISSUE; FACT; INTERPRETATION; HISTORICAL; OPEN QUESTION -> AFR L292,L820,L821,L825,L1213; A05 AUDIT L285,L1513,L2149,L2526; A05 STUDY L909; A05_INSTRUMENT_REFRESH_AND_ALIAS_TOOL_2026-11-14.md L135,L267; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L223; A08 STUDY L648
   ok [6w] A04 treatment group TG19 (AGREED, 13-Nov-2026) -> AFR L820,L821,L822,L823,L824,L825+; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L217,L223; A08 STUDY L647,L648; P02 L275; P07 L112,L113; P05 L174
   ok [3w] every broker call -> AFR L634,L824,L825,L1051; OIR L1959,L1959; R02 L732; A01 AUDIT L1007; A01 STUDY L445; A01 IS L145,L641
@@ -770,7 +777,7 @@
   ok [3w] A08 `sr_level_export.py`, `sr_corp_action_spotcheck.py` -> A04 AUDIT L3459; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L223; P07 L113; P05 L174
   ok [7w] to share the trading process's request budget -> OIR L1958; A04 STUDY L650; A04_BROKER_CALL_SITE_MAP_2026-11-11.md L524; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L275
   ok [7w] or not to be paced at all -> OIR L1958; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L275; P05 L181
-===== L189 IS-078: 11 quoted fragments
+===== L190 IS-078: 11 quoted fragments
   ok [6w] A04 treatment group TG2 (AGREED, 13-Nov-2026) -> AFR L697,L699,L700,L702,L703,L704+; A05_LIVE_FEED_AND_TICK_INTAKE_2026-11-14.md L291; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L181,L187,L193; A08 STUDY L645,L646,L707; P07 L110,L111; P05 L172
   ok [4w] interface only (security rules) -> A08 STUDY L645,L682,L707,L755
   ok [6w] not established for a malformed file -> AFR L710; A04 AUDIT L708
@@ -782,14 +789,14 @@
   ok [6w] Batch T5 group G1 (AGREED, 09-Nov-2026) -> AFR L297,L304,L305,L309,L310,L314+; A04 AUDIT L372,L377,L482,L2051,L2053,L3003+; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L118,L123; A05 AUDIT L267,L410,L3108; A05 STUDY L891; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L111
   ok [4w] a consistency recommendation only -> OIR L1620
   ok [10w] obtains no client because it fails before `_build_market_data_kite` (A01 C38b -> A04 AUDIT L796; P07 L246
-===== L190 IS-079: 5 quoted fragments
+===== L191 IS-079: 5 quoted fragments
   ok [4w] ISSUE; HISTORICAL; FACT; INTERPRETATION -> AFR L1026,L1039; A08 STUDY L784
   ok [6w] A05 treatment group TG18 (AGREED, 17-Nov-2026) -> AFR L976,L992,L995,L996,L997,L1003+; A08 STUDY L657,L776,L784,L787; P02 L280; P07 L129
   ok [4w] UNKNOWN / NOT ESTABLISHED -> DOC04 L92,L107; DOC06 L65; DOC08 L94,L102,L145; AFR L5,L5,L5,L5,L5,L5+; DR L296,L464,L464,L492,L520,L534+; OIR L5,L5,L76,L106,L106,L112+
   ok [5w] whether `scripts/sr_level_export.py` was ever run -> A08 STUDY L785; P06 L330
-===== L194 -: 1 quoted fragments
+===== L195 -: 1 quoted fragments
   ok [5w] S&R Change and Config settings -> DR L299; A07 AUDIT L4114; A07 IS L169,L830
-===== L198 IS-080: 10 quoted fragments
+===== L199 IS-080: 10 quoted fragments
   ok [4w] ISSUE; FACT, OPEN QUESTION -> AFR L68,L75,L89,L113,L119,L124+; A04 AUDIT L333,L344,L346,L476,L955,L958+; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L56,L67,L69; A04_RATE_LIMITS_AND_CONCURRENCY_2026-11-11.md L372; A06 AUDIT L349,L356,L557,L1506,L3994,L5390+; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L60,L67
   ok [6w] Group B (AGREED, 06-Nov-2026); A01-10 (AGREED) -> AFR L75; A06 AUDIT L349,L557,L1506; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L60; A08 STUDY L624; P06 L251; P07 L68
   ok [6w] every start comes after Phase 0f -> A01 AUDIT L851
@@ -799,7 +806,7 @@
   ok [5w] the optional workers (A08, A18) -> A01 AUDIT L2160; P07 L68
   ok [7w] before the last guards and the reconcile -> OIR L195; A01 AUDIT L2420
   ok [14w] History: OPEN QUESTION (no historical answer; recorded OPEN at Rama's direction; confirmed -> OIR L201,L216,L261,L336; A04 AUDIT L389,L397,L3352; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L186; A08 STUDY L1071; P06 L251,L389
-===== L199 IS-081: 10 quoted fragments
+===== L200 IS-081: 10 quoted fragments
   ok [3w] ISSUE; FACT, INTERPRETATION -> AFR L61,L62,L64,L65,L69,L70+; A03 AUDIT L2470,L2498,L2512,L2526; A04 AUDIT L332,L334,L335,L336,L337,L338+; A04_ADAPTER_READS_AND_STATE_TRANSLATION_2026-11-11.md L420; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L55,L57,L58,L59,L60,L61+; A04_PRODUCT_RESOLUTION_AND_POSITION_HELPERS_2026-11-11.md L343
   ok [4w] Group B (AGREED, 06-Nov-2026) -> AFR L75,L76,L77,L78,L97,L99+; A04 AUDIT L336,L337,L342,L957,L3000,L3348+; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L59,L60,L65; A05 AUDIT L257,L258,L260,L403,L406,L407+; A05 STUDY L881,L882,L884; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L49,L55,L67
   ok [6w] the comment of each block ( -> AFR L97; A01 AUDIT L1104
@@ -807,7 +814,7 @@
   ok [11w] A01 wiring; A18, A08, A06, A05 and A11 for the internals -> A01 AUDIT L1109; A05_CANDLE_STORE_AND_LIVE_CANDLES_2026-11-14.md L227; A05_LIVE_FEED_AND_TICK_INTAKE_2026-11-14.md L281; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L67; P07 L69
   ok [7w] the retest diverter and the EOD reference -> A01 AUDIT L2184; P07 L69
   ok [6w] partial wiring after an optional-feature failure -> A01 AUDIT L2184; A06_RECEIVER_INGRESS_ROUTES_AND_LIFECYCLE_2026-11-17.md L271
-===== L200 IS-082: 7 quoted fragments
+===== L201 IS-082: 7 quoted fragments
   ok [7w] MATCH; FACT. Owner A01 wiring; A05, A08 -> A01 AUDIT L1989; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L79; A08 STUDY L627
   ok [5w] live reuses the adapter's client -> A01 AUDIT L1989
   ok [5w] is rate-limited (the `historical` bucket) -> A01 AUDIT L1989
@@ -815,7 +822,7 @@
   ok [7w] concurrent use of the shared client (C38) -> A01 AUDIT L2207; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L79; P07 L71
   ok [13w] a kite handle usable for READ-ONLY historical data. Live: reuse kite_client (== adapter._k -> A05 AUDIT L1664; A05_HISTORICAL_CANDLE_ACCESS_2026-11-14.md L33
   ok [2w] Adapter UNTOUCHED -> A05 AUDIT L1664; A05 IS L179; A05_HISTORICAL_CANDLE_ACCESS_2026-11-14.md L226
-===== L201 IS-083: 7 quoted fragments
+===== L202 IS-083: 7 quoted fragments
   ok [6w] MATCH; FACT (threads left running: C13) -> A01 AUDIT L1986; A08 STUDY L800,L1214
   ok [14w] runs only when `structure_exit_enabled is True` (file false); before the zone and structur -> A01 AUDIT L1986
   ok [3w] Rama's explicit GO -> A01 AUDIT L346,L1986; A01 IS L1067
@@ -824,17 +831,17 @@
   ok [12w] BLOCK only when structure exit is on and an enabled strategy trails -> A02 AUDIT L860
   ok [4w] File value `structure_exit_enabled: false` -> A02 AUDIT L860
   ok [5w] the gate does not run -> A02 AUDIT L860
-===== L202 IS-084: 2 quoted fragments
+===== L203 IS-084: 2 quoted fragments
   ok [5w] A01 (call site); A08, A18 -> A01 AUDIT L526; P07 L235
   ok [7w] Optional-feature flags and the shared fetch closure -> A01 AUDIT L526
-===== L203 IS-085: 8 quoted fragments
+===== L204 IS-085: 8 quoted fragments
   ok [2w] ISSUE; FACT -> AFR L61,L62,L63,L64,L65,L66+; A01 AUDIT L1075,L1086; A02 AUDIT L629,L643,L687,L715,L801,L1828+; A03 AUDIT L2414,L2442,L2470,L2498,L2512,L2526+; A04 AUDIT L332,L333,L334,L335,L336,L337+; A04_ADAPTER_READS_AND_STATE_TRANSLATION_2026-11-11.md L413,L415,L416,L417,L420,L507+
   ok [6w] Batch T5 group G3 (AGREED, 09-Nov-2026) -> AFR L300,L301,L308,L312,L313,L317+; A04 AUDIT L374,L376,L488,L2047,L4703; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L120,L122; A06 AUDIT L375,L376,L378,L380,L2461,L5064+; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L93,L94,L96,L98; A07 IS L182
   ok [5w] All _pct fields are PERCENTAGES -> A02 AUDIT L2104; A04 AUDIT L4960; A04_COSTS_AND_SLIPPAGE_2026-11-11.md L64,L95
   ok [11w] each key's own comment states its unit (for example YAML L514 -> A02 AUDIT L2104
   ok [6w] the consumers' owners for unit handling -> A02 AUDIT L2110; A04_COSTS_AND_SLIPPAGE_2026-11-11.md L124; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L122; P07 L81
   ok [13w] Rama: not needed to classify; needed for treatment (which convention is meant file-wide) -> A02 AUDIT L2112r
-===== L204 IS-086: 10 quoted fragments
+===== L205 IS-086: 10 quoted fragments
   ok [2w] A08, A18 -> AFR L824,L1006; A01 AUDIT L384,L526,L2160,L2160; A01 STUDY L244; A02 AUDIT L2328; A02_KEY_CONSUMER_MAP_PART1_2026-11-06.md L64; A02_KEY_CONSUMER_MAP_PART2_2026-11-06.md L175
   ok [8w] MATCH (32), FACT; ISSUE K-22 (`sl_buffer_pct`), K-24 (`cache_ttl_sec`) -> A02 AUDIT L2328
   ok [12w] the `ScoringParams` default 0.0 for `band_buffer_pct` applies only to direct construction  -> A02 AUDIT L2328
@@ -845,7 +852,7 @@
   ok [6w] Batch T1 group G3 (AGREED, 09-Nov-2026) -> AFR L229,L230,L231,L232,L234,L235; A08 STUDY L801
   ok [6w] Intraday intervals are checked for `sr_detector.anchor_intraday_interval` -> A02 AUDIT L396
   ok [6w] unknown keys in YAML raise `ConfigSchemaError` -> A02 IS L306
-===== L205 IS-087: 9 quoted fragments
+===== L206 IS-087: 9 quoted fragments
   ok [2w] ISSUE; FACT -> AFR L61,L62,L63,L64,L65,L66+; A01 AUDIT L1075,L1086; A02 AUDIT L629,L643,L687,L715,L801,L1828+; A03 AUDIT L2414,L2442,L2470,L2498,L2512,L2526+; A04 AUDIT L332,L333,L334,L335,L336,L337+; A04_ADAPTER_READS_AND_STATE_TRANSLATION_2026-11-11.md L413,L415,L416,L417,L420,L507+
   ok [6w] Batch T5 group G1 (AGREED, 09-Nov-2026) -> AFR L297,L304,L305,L309,L310,L314+; A04 AUDIT L372,L377,L482,L2051,L2053,L3003+; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L118,L123; A05 AUDIT L267,L410,L3108; A05 STUDY L891; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L111
   ok [5w] is stored and never read -> AFR L321; A02 AUDIT L2156,L2566; A08 STUDY L919; P03 L44,L347
@@ -855,36 +862,36 @@
   ok [2w] (no reader) -> AFR L322,L1003,L1021; A02 AUDIT L2170,L2567; A05 AUDIT L1332,L1895; A05_CANDLE_MATH_2026-11-14.md L222
   ok [5w] retest timeframe (built via candle_math.resample) -> AFR L322,L1003; A02 AUDIT L2174; A05 AUDIT L1327,L1327; A05_CANDLE_MATH_2026-11-14.md L220,L220,L278
   ok [2w] A02; A18 -> A02 AUDIT L1285,L2152,L2166,L2180; A07 IS L641,L663; A08 STUDY L634,L635,L970; P06 L255,L256; P07 L85,L86,L349
-===== L206 IS-088: 5 quoted fragments
+===== L207 IS-088: 5 quoted fragments
   ok [3w] ISSUE; FACT; INTERPRETATION -> AFR L221,L222,L223,L224,L226,L229+; A02 AUDIT L1968; A03 AUDIT L3987,L4029,L4057,L4085,L4099,L4127+; A04 AUDIT L370,L371,L374,L379,L382,L383+; A04_AUTHENTICATION_TOKEN_AND_CLOCK_SKEW_2026-11-11.md L46,L483; A04_COSTS_AND_SLIPPAGE_2026-11-11.md L306,L307
   ok [6w] A03 treatment group TG2 (AGREED, 11-Nov-2026) -> AFR L374,L375,L376,L377,L381,L408+; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L149; A06 AUDIT L385,L387,L388,L2463,L2687,L4229+; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L112,L114,L115; A07 IS L250,L416; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L100,L101,L102,L105
   ok [12w] Fetch today's NSE F&O ban list and store it in the DB -> AFR L497,L1054; A03 AUDIT L3071; A05 AUDIT L2842
   ok [5w] A08, A05, A07, A18, A19 -> A03 AUDIT L3185; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L125,L149,L155,L291,L298; A07 AUDIT L4254; A07 IS L713; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L90,L105,L227; P07 L90
-===== L207 IS-089: 5 quoted fragments
+===== L208 IS-089: 5 quoted fragments
   ok [4w] UNKNOWN / NOT ESTABLISHED -> DOC04 L92,L107; DOC06 L65; DOC08 L94,L102,L145; AFR L5,L5,L5,L5,L5,L5+; DR L296,L464,L464,L492,L520,L534+; OIR L5,L5,L76,L106,L106,L112+
   ok [9w] None (UNKNOWN / NOT ESTABLISHED items receive no treatment) -> AFR L1152,L1153,L1154,L1163,L1165,L1181+; A06_TREATMENT_GROUPING_CHECK_2026-11-20.md L29; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L150; A08 STUDY L663,L664,L668,L717,L718,L719+; P02 L283,L305,L478; P06 L258
   ok [11w] not applicable (the question is what happened or what was installed) -> AFR L1190; A06 AUDIT L3951
   ok [2w] stays UNKNOWN -> AFR L5,L46,L339,L368,L387,L420+; DR L464; OIR L352,L747,L762,L777,L792,L807+; TCR L132; A01 AUDIT L1906; A01 IS L1101
   ok [4w] A08 (the warmer's enablement) -> A06 AUDIT L3978; P06 L258; P07 L143
-===== L208 IS-090: 7 quoted fragments
+===== L209 IS-090: 7 quoted fragments
   ok [4w] UNKNOWN / NOT ESTABLISHED -> DOC04 L92,L107; DOC06 L65; DOC08 L94,L102,L145; AFR L5,L5,L5,L5,L5,L5+; DR L296,L464,L464,L492,L520,L534+; OIR L5,L5,L76,L106,L106,L112+
   ok [6w] the effective values of `sr_detector.enabled`, `wait_for_retest_enabled` -> A06 AUDIT L4864
   ok [4w] UNKNOWN / NOT ESTABLISHED -> DOC04 L92,L107; DOC06 L65; DOC08 L94,L102,L145; AFR L5,L5,L5,L5,L5,L5+; DR L296,L464,L464,L492,L520,L534+; OIR L5,L5,L76,L106,L106,L112+
   ok [4w] UNKNOWN / NOT ESTABLISHED -> DOC04 L92,L107; DOC06 L65; DOC08 L94,L102,L145; AFR L5,L5,L5,L5,L5,L5+; DR L296,L464,L464,L492,L520,L534+; OIR L5,L5,L76,L106,L106,L112+
   ok [2w] A13; A11 -> A03 AUDIT L2640
   NOT FOUND [10w]: has no construction site (structure exit conditional on `structure_exit_enabled: false`)
-===== L209 IS-091: 5 quoted fragments
+===== L210 IS-091: 5 quoted fragments
   ok [8w] ISSUE (minor), with MATCH parts; FACT; HISTORICAL; INTERPRETATION -> AFR L1439; A08 STUDY L808
   ok [11w] A07 batch 6, T1: carried forward as a Phase 2 input -> AFR L1420,L1422,L1426,L1427,L1428,L1432+; A08 STUDY L808
   ok [1w] `config/system_config.yaml:508-509` -> A07 AUDIT L4206; A07 IS L474,L766
   ok [4w] aligned with verified behaviour -> AFR L1300; A07 RTR L647,L687,L766
-===== L210 IS-092: 4 quoted fragments
+===== L211 IS-092: 4 quoted fragments
   ok [3w] ISSUE; FACT; HISTORICAL -> AFR L365,L379,L383,L386,L392,L424+; A04 AUDIT L2790,L2804; A06 AUDIT L384,L4228,L4891; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L111; A07 AUDIT L595,L3151; A07 STUDY L1367
   ok [6w] A03 treatment group TG12 (AGREED, 11-Nov-2026) -> AFR L510,L566,L567,L568,L569,L576+; A08 STUDY L771
   ok [2w] Table completeness -> AFR L579; A03 AUDIT L4711,L5613; A03_BACKUP_SCRIPTS_2026-11-09.md L131
   ok [1w] verifies -> DOC02 L68; DOC07 L151; AFR L510,L579; OIR L809; PMA L92; R02 L503,L1850,L2934,L3011
   ok [2w] table completeness -> AFR L579; A03 AUDIT L4715; A03_BACKUP_SCRIPTS_2026-11-09.md L106
-===== L211 IS-093: 14 quoted fragments
+===== L212 IS-093: 14 quoted fragments
   ok [6w] the production of S&R inputs A08's -> DR L548; TCR L128; A07 RTR L164; A07 STUDY L24,L539; A07_QUALITY_SCORER_HARD_GATE_AND_V3_PLAYBOOK_GATES_2026-11-21.md L6; P07 L223
   ok [4w] A07; A08, A05, A18 -> A07 AUDIT L3739; P07 L255
   ok [12w] The technical and S&R information A07 consumes (Q14; A08 owns the calculation) -> A07 AUDIT L3739; P07 L255
@@ -897,12 +904,12 @@
   ok [6w] computed and passed by A18's callers -> A07 RTR L138; A07 STUDY L1014; A07_STATUSES_PERSISTENCE_CONCURRENCY_AND_DUPLICATION_2026-11-21.md L176
   ok [4w] the S&R observer (A08) -> A06 RTR L205; P07 L220
   ok [3w] A08's retest path -> A06 RTR L214; A07 IS L254; A07_STATUSES_PERSISTENCE_CONCURRENCY_AND_DUPLICATION_2026-11-21.md L28; P07 L220,L306; P04 L273
-===== L212 IS-094: 4 quoted fragments
+===== L213 IS-094: 4 quoted fragments
   ok [8w] false = divert never fires; zero pipeline change -> A06 IS L304; P06 L55; P04 L28
   ok [10w] the retest path is not reached at the committed value -> A06 IS L304
   ok [13w] Both default OFF → nothing constructed → zero pipeline change (dormant on deploy) -> A05 AUDIT L1636; A05 IS L176; A08 STUDY L580; P06 L101,L352
   ok [12w] the retest diverter and `continue_from_retest` not reached at the committed `wait_for_rete -> A06 RTR L229; P07 L221
-===== L220 IS-095: 8 quoted fragments
+===== L221 IS-095: 8 quoted fragments
   ok [12w] test presence or a test result does not prove production runtime behaviour -> MSII L231; A07 IS L161,L549
   ok [13w] are evidence of the tested claim only, at the stated commit and conditions -> MSII L231; A07 IS L549
   ok [4w] run, imported or tested -> DR L548,L576; TCR L130,L149; A06 AUDIT L5361,L6099; A06_CHARTINK_CONFIGURATION_AND_SCANNER_CHECKS_2026-11-17.md L11; A06_EVENT_CREATION_PERSISTENCE_AND_HANDOFF_MAP_2026-11-17.md L70; A07 AUDIT L1294,L2261,L3087,L3517
@@ -911,20 +918,20 @@
   ok [5w] have naive dates, newest first -> A05 IS L188
   ok [8w] fails on a missing zone or invalid geometry -> A07 IS L580
   ok [8w] the test asserts only that `reconcile_once` was called -> A01 AUDIT L851
-===== L226 -: 1 quoted fragments
-===== L230 IC-001: 5 quoted fragments
+===== L227 -: 1 quoted fragments
+===== L231 IC-001: 5 quoted fragments
   ok [4w] C38b, probably (to confirm) -> A01 RTR L304; A08 STUDY L613,L969; P07 L50,L347
   ok [10w] not A01 (the owner is to be confirmed, probably A08) -> A01 AUDIT L2065; P07 L50; P05 L170,L313
   ok [6w] not A01; probably A08 (to confirm) -> A01 AUDIT L2186; P07 L50
   ok [8w] its owner is probably A08, to be confirmed -> A01 RTR L444; P07 L50,L211
   ok [13w] C38b's owner is settled for A08's purposes by D-41 (P4) and the index -> P07 L370
-===== L231 IC-002: 5 quoted fragments
+===== L232 IC-002: 5 quoted fragments
   ok [7w] the script fails at its own L141 -> A01 AUDIT L2186; A08 STUDY L945; P07 L72,L348; P05 L111
   ok [3w] stops at L139 -> A05 AUDIT L1183,L1301,L1372,L1389,L1677,L2007; A05 STUDY L346,L416,L458,L480,L943,L979+; A05_CANDLE_MATH_2026-11-14.md L403; A05_INSTRUMENT_CACHE_2026-11-14.md L49,L194,L307,L380,L385; A05_PRODUCERS_CONSUMERS_AND_DUPLICATION_2026-11-15.md L74; A08 STUDY L405,L651,L945
   ok [7w] fails at L139 before A01 C38b's L141 -> A05 AUDIT L1468; P07 L258
   ok [2w] L141's `AttributeError` -> A08 STUDY L405,L628,L945; P05 L109,L170,L231
   ok [5w] cannot be the first failure -> A08 STUDY L628; P05 L170
-===== L232 IC-003: 7 quoted fragments
+===== L233 IC-003: 7 quoted fragments
   ok [6w] The reachability of `continue_from_retest` is A08's -> A07 STUDY L187; A07_STRATEGY_CONTROL_TAXONOMY_AND_DIRECTION_REGISTRY_2026-11-21.md L88; P07 L314
   ok [6w] A08 owns the V2 retest mechanism -> DR L576; TCR L147; A08 STUDY L22,L822,L973; P07 L6,L316,L352; P04 L5,L279
   ok [3w] A08 and A18 -> TCR L90; A01 AUDIT L856,L2581; A01_MAIN_PY_STRUCTURE_AND_IMPORTS_2026-11-04.md L33; A04_BROKER_CALL_SITE_MAP_2026-11-11.md L273; A05 AUDIT L1138,L1586,L1656; A05 RTR L41,L59,L181
@@ -932,17 +939,17 @@
   ok [6w] Owners A07 (gate) and A18 (retest) -> A06 AUDIT L3990; A07 IS L418; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L144; P07 L312
   ok [4w] A06's PQ-13 wording ( -> DR L576; TCR L147; A08 STUDY L22,L824; P07 L316
   ok [10w] ) is not changed; the A08 records note the difference -> DR L576; TCR L147; A08 STUDY L824; P07 L316
-===== L233 IC-004: 5 quoted fragments
+===== L234 IC-004: 5 quoted fragments
   ok [2w] A02; A18. -> A02 AUDIT L2166,L2180; A08 STUDY L634,L635; P06 L255,L256; P07 L85,L86
   ok [4w] A06 (receiver); part PQ -> A06 AUDIT L2018,L2740; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L140; A07_QUALITY_SCORER_HARD_GATE_AND_V3_PLAYBOOK_GATES_2026-11-21.md L283
   ok [9w] A06 (receiver threshold; processor dispatcher and executor, part PQ). -> A06 AUDIT L2976
   ok [8w] an entry that names more than one topic -> A04 AUDIT L5031; A04 RTR L404; A05 AUDIT L3317; A05 RTR L456; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L31; A06 AUDIT L6618
   ok [4w] is listed under each -> AFR L1440; A03 AUDIT L5367; A03 RTR L395; A04 AUDIT L5031; A04 RTR L404; A05 AUDIT L3317
-===== L234 IC-005: 3 quoted fragments
+===== L235 IC-005: 3 quoted fragments
   ok [5w] Yes, check A08's side (Recommended) -> A08 STUDY L700; P07 L285; WNOTE L6
   ok [6w] Not a change to D-41's ownership -> A08 STUDY L700; P07 L285; WNOTE L7
   ok [6w] only Rama's actual decisions of 26-Nov-2026 -> WNOTE L24
-===== L235 IC-006: 10 quoted fragments
+===== L236 IC-006: 10 quoted fragments
   ok [3w] pre-order technical analysis -> OIR L2267; A05 RTR L503
   ok [3w] support and resistance -> AFR L931; OIR L2267; WSO L35; R02 L1383,L1469; A05 RTR L503,L598; A08 STUDY L1037,L1062,L1068,L1069
   ok [9w] to one or two quality stocks before placing orders -> OIR L2267; A05 RTR L503
@@ -953,56 +960,56 @@
   ok [8w] his statement about how the system was run -> OIR L1560,L2267; A05 RTR L503
   ok [8w] not as an answer to A05-07 or A05-08 -> OIR L2267
   ok [11w] does not settle either question, and nothing is inferred from it -> OIR L2267; A05 RTR L503
-===== L243 IS-071: 3 quoted fragments
+===== L244 IS-071: 3 quoted fragments
   ok [9w] read-only export of detected S&R levels for manual comparison -> MSII L308
   ok [1w] never -> DOC01 L45; DOC02 L24; DOC03 L47,L79; DOC04 L15,L60,L74,L74,L100; DOC05 L137,L145,L147,L148; DOC06 L58,L66
   ok [1w] persists -> AFR L474,L1418,L1422; R01 L120,L125; R02 L399,L465,L470,L633,L816,L821+; A01 RTR L382; A01 IS L320,L838; A02_KEY_CONSUMER_MAP_PART2_2026-11-06.md L21
-===== L244 IS-013: 1 quoted fragments
-  ok [13w] an open trade is left untouched so a later run picks it up -> R02 L3386
 ===== L245 IS-013: 1 quoted fragments
+  ok [13w] an open trade is left untouched so a later run picks it up -> R02 L3386
+===== L246 IS-013: 1 quoted fragments
   ok [10w] the single wiring point used by main.py, scripts/sr_level_export.py and signals/signal_pro -> R02 L1143; A06 AUDIT L6370; A06 IS L338; A06_LEGACY_RECORDS_CHECK_2026-11-17.md L133
-===== L246 IS-013: 2 quoted fragments
+===== L247 IS-013: 2 quoted fragments
   ok [3w] called from signals/signal_processor.py:1082 -> R02 L868
   ok [4w] rehydrated at boot (main.py:3819-3832) -> R02 L868
-===== L247 IS-064: 6 quoted fragments
+===== L248 IS-064: 6 quoted fragments
   ok [3w] L398 and L415 -> A03 AUDIT L882; A08 STUDY L850,L940; P03 L383; P04 L252,L357
   ok [2w] L229, L239 -> A03 AUDIT L882; A08 STUDY L850,L940; P04 L252,L357
   ok [3w] L370 to L371 -> A03 AUDIT L1718; A03_TRADING_SCHEMA_PART1_2026-11-09.md L643; A07_ENTRY_GATE_AND_RESUME_CONTRACT_2026-11-21.md L113; A08 STUDY L851,L940; P04 L254,L254,L357
   ok [3w] L117 to L132 -> AFR L446; A03 AUDIT L2044; A08 STUDY L851,L940; P04 L255,L357
   ok [4w] Earlier-record citation differences found -> A08 STUDY L848
-===== L251 -: 1 quoted fragments
+===== L252 -: 1 quoted fragments
   ok [4w] not as an answer -> OIR L1560,L1635,L1695,L1710,L2177,L2267; A01 RTR L336; A07 IS L823
-===== L255 RS-01: 5 quoted fragments
+===== L256 RS-01: 5 quoted fragments
   ok [4w] Approve; prepare checkpoint (Recommended) -> DR L579; TCR L149
   ok [9w] Choose Option (a) — as corrected (Recommended) for P1 -> DR L579
   ok [4w] A08 studies it (Recommended) -> DR L579
   ok [3w] Accept both (Recommended) -> DR L579
   ok [5w] Approve folder and method (Recommended) -> DR L579
-===== L256 RS-02: 4 quoted fragments
+===== L257 RS-02: 4 quoted fragments
   ok [13w] Agreed, Production repo vs sbx repo differs when? S&R Change and Config settings -> DR L299; A07 IS L830
   ok [10w] So always review the production system as valid reference system -> DR L299; A07 IS L830
   ok [7w] reported by Rama and not independently verified -> DR L298; A06 AUDIT L6865; A06 RTR L278; A07 AUDIT L4685
   ok [7w] REPORTED BY RAMA — NOT INDEPENDENTLY VERIFIED -> SRCINV L7,L24,L104,L105; A06 RTR L578; A07 RTR L608
-===== L257 RS-03: 4 quoted fragments
+===== L258 RS-03: 4 quoted fragments
   ok [5w] Yes, check A08's side (Recommended) -> A08 STUDY L700; P07 L285; WNOTE L6
   ok [11w] Not a change to D-41's ownership; an addition to examination coverage -> A08 STUDY L700; P07 L285; WNOTE L7
   ok [5w] List with A08 facts (Recommended) -> A08 STUDY L736; WNOTE L16
   ok [5w] flagged for ChatGPT's STUDY review -> A08 STUDY L28,L132,L698,L738
-===== L258 RS-04: 2 quoted fragments
+===== L259 RS-04: 2 quoted fragments
   ok [13w] I do have telegram and emails only & no other records are available -> SRCINV L111; A07 IS L829
   ok [12w] Both telegram & emails are similar to production system alerts (nothing special) -> SRCINV L111; A07 IS L829
-===== L259 RS-05: 4 quoted fragments
+===== L260 RS-05: 4 quoted fragments
   ok [9w] covers the entire system, every area and every flow -> DOC04 L66; A07 IS L828
   ok [6w] not one setting or one example -> DOC04 L66; A07 IS L828
   ok [10w] one illustration of the kind of problem, not its limit -> DOC04 L68; A07 IS L828
   ok [14w] of the same nature exist in signals, capital, alerts, order management and other areas -> DOC04 L68; A07 IS L828
-===== L260 RS-06: 5 quoted fragments
+===== L261 RS-06: 5 quoted fragments
   ok [4w] Rama's decision (25-Nov-2026): (a) -> A07 RTR L792,L793,L794,L798
   ok [9w] the retest path's owner (A08, or A08 and A18 -> A07 RTR L793
   ok [11w] is carried forward as an OPEN QUESTION to the topics named -> A07 RTR L793
   ok [11w] A07's records and the approved records of other topics are unchanged -> A07 RTR L793
   ok [4w] (1 A; 2 A -> DR L565
-===== L261 RS-07: 10 quoted fragments
+===== L262 RS-07: 10 quoted fragments
   ok [3w] Raised with Rama -> DOC10 L95,L115; AFR L5,L5,L5,L5,L5,L5+; OIR L26,L64,L79,L94,L109,L124+; TCR L132; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L25; A05 AUDIT L298,L408,L852,L1512,L1795,L2143+
   ok [5w] His operational background of 15-Nov-2026 -> OIR L2267
   ok [10w] recorded as his statement about how the system was run -> OIR L1560,L2267; A05 RTR L503
@@ -1013,89 +1020,89 @@
   ok [12w] only for stocks being considered for orders, not for every NSE stock -> OIR L2267; A05 RTR L503
   ok [12w] It does not settle either question, and nothing is inferred from it -> OIR L2267; A05 RTR L503
   ok [3w] Confirmed as written -> AFR L5,L632,L913,L1091,L1248,L1257+; OIR L5,L5,L5,L5,L5,L1505+; TCR L77,L77,L77,L77,L77,L92+; A04 RTR L437,L438,L439,L440,L441; A05 RTR L489,L490,L491,L492,L493; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L275
-===== L262 RS-08: 6 quoted fragments
+===== L263 RS-08: 6 quoted fragments
   ok [10w] his statement about the current workflow, not a history answer -> OIR L2522; A05 RTR L265,L504; A07 AUDIT L508,L1812; A07 RTR L250,L418,L524,L607; A07 IS L815,L822
   ok [11w] already evaluate indicators and conditions such as ATR, RSI and MACD -> OIR L2522; A05 RTR L265; A07 AUDIT L2071; A07 IS L822
   ok [11w] appears to calculate or evaluate some of the same indicators again -> OIR L2522; A07 AUDIT L2071; A07 IS L822
   ok [4w] which is duplicate work -> OIR L2522; A05 RTR L504; A07 IS L822
   ok [3w] a general observation -> OIR L2522; A05 RTR L504; A07 AUDIT L2071; A07 IS L822; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L214
   ok [10w] not a claim that `screening/secondary_screener.py` itself calculates ATR or RSI -> OIR L2522; A05 RTR L504; A07 IS L822; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L214
-===== L263 RS-09: 4 quoted fragments
+===== L264 RS-09: 4 quoted fragments
   ok [4w] By mistakenly duplicate created -> OIR L2177; A05 RTR L502; A07 IS L823; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L213
   ok [7w] 'created by mistake' means without my knowledge -> OIR L2177; A05 RTR L502
   ok [8w] coding agent created it by its own assumption -> OIR L2177; A05 RTR L502; A07 IS L823; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L213
   ok [12w] In new system: No duplicates, No similar function more than one place/file -> OIR L2177; A05 RTR L516,L575; A07 IS L823; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L213
-===== L264 RS-10: 4 quoted fragments
+===== L265 RS-10: 4 quoted fragments
   ok [8w] For every history question, my answer is OPEN. -> OIR L869,L884,L899,L914,L929,L944+; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L155
   ok [8w] For every new-system proposal presented in this batch -> OIR L869,L884,L899,L914,L929,L944+; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L155
   ok [9w] I accept ChatGPT's suggestion as a Phase 2 input. -> OIR L869,L884,L899,L914,L929,L944+; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L155
   ok [3w] Part A confirmed -> AFR L184,L184,L184,L343,L365,L366+; OIR L5,L5,L5,L680,L680,L680+; TCR L58,L58,L58,L58; A03 RTR L428,L429,L430,L432; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L125,L251,L257; A07 IS L825
-===== L265 RS-11: 4 quoted fragments
+===== L266 RS-11: 4 quoted fragments
   ok [2w] Suggestion accepted -> OIR L5,L539,L539,L554,L569,L584+; A04 RTR L437,L438,L439; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L275
   ok [4w] a consistency recommendation only -> OIR L1620
   ok [11w] Generally I would say for all questions: OPEN & SUGGESTION ACCEPTED -> OIR L5,L1505,L1950,L1965,L1980,L1995+; A04 RTR L440; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L159
   ok [3w] Confirmed as written -> AFR L5,L632,L913,L1091,L1248,L1257+; OIR L5,L5,L5,L5,L5,L1505+; TCR L77,L77,L77,L77,L77,L92+; A04 RTR L437,L438,L439,L440,L441; A05 RTR L489,L490,L491,L492,L493; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L275
-===== L266 RS-12: 4 quoted fragments
+===== L267 RS-12: 4 quoted fragments
   ok [3w] none is inferred -> AFR L1368; OIR L614,L629,L644,L659,L674,L749+; A06 RTR L572,L572; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L153,L157,L161,L163,L165,L167; A06_RECEIVER_AUTHENTICATION_AND_VALIDATION_2026-11-17.md L120; A07 AUDIT L2067,L4611
   ok [10w] For the new system, consider one clearly defined missing-instrument policy -> OIR L2192; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L161
   ok [12w] This is a later recommendation, not a decision made by this answer -> OIR L2192; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L161
   ok [3w] Confirmed as written -> AFR L5,L632,L913,L1091,L1248,L1257+; OIR L5,L5,L5,L5,L5,L1505+; TCR L77,L77,L77,L77,L77,L92+; A04 RTR L437,L438,L439,L440,L441; A05 RTR L489,L490,L491,L492,L493; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L275
-===== L267 RS-13: 4 quoted fragments
+===== L268 RS-13: 4 quoted fragments
   ok [14w] History: OPEN QUESTION (no historical answer; recorded OPEN at Rama's direction; confirmed -> OIR L201,L216,L261,L336; A04 AUDIT L389,L397,L3352; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L186; A08 STUDY L1071; P06 L251,L389
   ok [4w] History: C — OPEN -> OIR L202,L217,L262,L337
   ok [2w] (weakly B) -> OIR L202
   ok [6w] be turned into his historical answer -> OIR L202,L217,L262,L337
-===== L268 RS-14: 1 quoted fragments
+===== L269 RS-14: 1 quoted fragments
   ok [10w] is intended to operate using one configured Zerodha client code -> AFR L707; OIR L97; A04 AUDIT L666
-===== L269 RS-15: 4 quoted fragments
+===== L270 RS-15: 4 quoted fragments
   ok [4w] both routes were used -> A07 AUDIT L4114,L4122,L4646; A07 RTR L597; A07 IS L841
   ok [11w] were at first changed locally and then pushed to the VM -> A07 RTR L597; A07 IS L841
   ok [6w] also changed directly on the VM -> A07 AUDIT L4114; A07 RTR L597; A07 IS L841
   ok [7w] no dates, values, settings or files named -> A07 RTR L597; A07 IS L841
-===== L270 RS-16: 4 quoted fragments
+===== L271 RS-16: 4 quoted fragments
   ok [7w] Deliberate trade-off (Rama): DURABILITY over the prior -> A08 STUDY L599; P03 L326
   ok [4w] convention for this flag -> A08 STUDY L599; P03 L326
   ok [6w] instead of a deployed-only uncommitted override -> A08 STUDY L447,L599,L1200; P03 L326
   ok [5w] shadow / non-gating / read-only -> A08 STUDY L599; P03 L326
-===== L271 RS-17: 3 quoted fragments
+===== L272 RS-17: 3 quoted fragments
   ok [7w] flagged NOT-YET-VALIDATED until Rama's manual-marking validation passes -> A08 STUDY L160,L575; P01 L59; P05 L137,L210
   ok [13w] The 03.03 R:R gate will use ANCHOR-only levels for live capital until then -> A08 STUDY L160,L575,L877; P01 L59,L249,L277; P05 L210
   ok [11w] never drive the later R:R gate until Rama's validation flips it -> P03 L79
-===== L272 RS-18: 4 quoted fragments
+===== L273 RS-18: 4 quoted fragments
   ok [12w] a flat CSV Rama can visually compare against his MANUAL chart marks -> A08 STUDY L389; P05 L26
   ok [4w] the #1 03.01 safeguard -> A08 STUDY L389; P05 L26
   ok [7w] Rama compares against his manual chart marks -> A08 STUDY L416; P05 L158
   ok [4w] for Rama's manual-marking validation -> P05 L158
-===== L273 RS-19: 2 quoted fragments
+===== L274 RS-19: 2 quoted fragments
   ok [11w] Rama's manual zone-marking pass over `scripts/sr_level_export.py` output joined to filled- -> P05 L160; P03 L314
   ok [4w] off (awaits manual marking) -> P05 L160
-===== L274 RS-20: 1 quoted fragments
+===== L275 RS-20: 1 quoted fragments
   ok [6w] AWAITING Rama nod before live apply -> P03 L312; P04 L328
-===== L275 RS-21: 1 quoted fragments
+===== L276 RS-21: 1 quoted fragments
   ok [3w] Rama's explicit GO -> A01 AUDIT L346,L1986; A01 IS L1067
-===== L276 RS-22: 1 quoted fragments
+===== L277 RS-22: 1 quoted fragments
   ok [2w] AUDIT stage -> TCR L16,L54,L73,L92,L111,L130; A06_RECEIVER_AUTHENTICATION_AND_VALIDATION_2026-11-17.md L351; WNOTE L22
-===== L277 RS-23: 6 quoted fragments
+===== L278 RS-23: 6 quoted fragments
   ok [7w] input to the Phase 2 proposal only -> AFR L20,L1248,L1257,L1267,L1277,L1286+; A01 RTR L16; A02 RTR L16; A03 RTR L16; A04 RTR L16; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L203
   ok [4w] changes no legacy finding -> AFR L20,L1248; DR L422,L436,L450,L464; A01 RTR L16; A02 RTR L16; A03 RTR L16; A04 RTR L16
   ok [6w] may perform only genuinely additional checks -> AFR L931
   ok [7w] independent technical analysis, support/resistance or risk checks -> AFR L931
   ok [11w] Verify split/bonus adjustment behaviour before long historical windows are relied on -> AFR L933
-===== L282 -: 2 quoted fragments
+===== L283 -: 2 quoted fragments
   ok [5w] not yet reviewed by ChatGPT -> A08 STUDY L3
   ok [6w] DRAFT, for ChatGPT's review (step 5) -> TCR L150; A07 IS L164
-===== L284 Q: 2 quoted fragments
+===== L285 Q: 2 quoted fragments
   ok [2w] S&R Change -> DR L299; A07 AUDIT L4114; A07 IS L169,L830
   ok [3w] not independently verified -> AFR L1061; DR L298; A04 RTR L28; A04 STUDY L45; A05 AUDIT L246,L1650,L2940; A05 RTR L29,L276,L506
-===== L285 Q: 1 quoted fragments
+===== L286 Q: 1 quoted fragments
   ok [3w] support and resistance -> AFR L931; OIR L2267; WSO L35; R02 L1383,L1469; A05 RTR L503,L598; A08 STUDY L1037,L1062,L1068,L1069
-===== L287 -: 1 quoted fragments
-===== L288 -: 3 quoted fragments
+===== L288 -: 1 quoted fragments
+===== L289 -: 3 quoted fragments
   ok [1w] Classification -> DOC10 L113; AFR L17,L51,L219,L363,L694,L957+; A01 AUDIT L44,L359,L430,L2629,L2651; A02 AUDIT L44,L2394; A02 RTR L468; A03 AUDIT L44
   ok [7w] Agreed treatment (Phase 2 input), or OPEN -> DOC10 L116; AFR L20,L51,L219,L363,L694,L957+; A04_PRIOR_TOPIC_HANDOFFS_2026-11-11.md L34; A05_PRIOR_TOPIC_HANDOFFS_2026-11-15.md L19; A06_PRIOR_TOPIC_HANDOFFS_2026-11-17.md L18,L36,L261; A07_PRIOR_TOPIC_HANDOFFS_2026-11-21.md L18,L41
-===== L297 Q: 2 quoted fragments
+===== L298 Q: 2 quoted fragments
   ok [3w] pre-order technical analysis -> OIR L2267; A05 RTR L503
   ok [3w] wait for retest -> A08 STUDY L1049,L1053,L1067,L1069; P06 L390,L392,L393; P03 L372; P04 L379
-===== L298 Q: 2 quoted fragments
+===== L299 Q: 2 quoted fragments
   ok [2w] S&R Change -> DR L299; A07 AUDIT L4114; A07 IS L169,L830
   ok [2w] S&R Change -> DR L299; A07 AUDIT L4114; A07 IS L169,L830

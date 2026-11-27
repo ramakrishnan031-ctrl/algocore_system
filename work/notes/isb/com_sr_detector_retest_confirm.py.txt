@@ -1,0 +1,50 @@
+    1 [9f56b07751 2026-06-27] DOC """
+    2 [9f56b07751 2026-06-27] DOC sr_detector/retest_confirm.py — Trading System v2 · S&R V2 Phase A (SNR-V2)
+    3 [9f56b07751 2026-06-27] DOC 
+    4 [9f56b07751 2026-06-27] DOC Purpose:
+    5 [9f56b07751 2026-06-27] DOC     The WAIT_FOR_RETEST confirmation state machine — PURE and unit-testable. No
+    6 [02357130fe 2026-06-27] DOC     candle patterns / indicator names; only "broke + touched + strong close".
+    7 [02357130fe 2026-06-27] DOC     Given the matched zone band + the 1m candles since divert + elapsed time, it
+    8 [02357130fe 2026-06-27] DOC     returns the resulting state. SYMMETRIC: the same fold drives both sides; only
+    9 [02357130fe 2026-06-27] DOC     the directional predicates flip (LONG = above resistance, SHORT = below
+   10 [02357130fe 2026-06-27] DOC     support).
+   11 [9f56b07751 2026-06-27] DOC 
+   12 [9f56b07751 2026-06-27] DOC Design:
+   13 [9f56b07751 2026-06-27] DOC     Deterministic FOLD from WAIT_BREAKOUT over the candles (chronological). This
+   14 [9f56b07751 2026-06-27] DOC     is idempotent and restart-safe: the state is a pure function of
+   15 [02357130fe 2026-06-27] DOC     (zone, direction, candles-since-divert, elapsed). The monitor persists the
+   16 [02357130fe 2026-06-27] DOC     result as a snapshot but recomputes it every poll, so re-seeing candles never
+   17 [02357130fe 2026-06-27] DOC     mis-advances. The persisted state names are shared by both sides (WAIT_BREAKOUT
+   18 [02357130fe 2026-06-27] DOC     means "waiting for the directional break") → no schema/glob change.
+   19 [9f56b07751 2026-06-27] DOC 
+   20 [02357130fe 2026-06-27] DOC State machine (the break is direction-relative):
+   21 [02357130fe 2026-06-27] DOC     LONG  : break = 1m CLOSE above band_high ; confirm close strong in UPPER frac.
+   22 [02357130fe 2026-06-27] DOC     SHORT : break = 1m CLOSE below band_low  ; confirm close strong in LOWER frac.
+   23 [02357130fe 2026-06-27] DOC 
+   24 [02357130fe 2026-06-27] DOC     WAIT_BREAKOUT → WAIT_RETEST  : a 1m candle BREAKS in the trade direction.
+   25 [9f56b07751 2026-06-27] DOC     WAIT_RETEST   → WAIT_CONFIRM : a 1m candle RE-ENTERS the band (the retest touch).
+   26 [02357130fe 2026-06-27] DOC     WAIT_CONFIRM  → CONFIRMED    : a 1m candle BREAKS again AND closes in the
+   27 [02357130fe 2026-06-27] DOC                                    strong `confirm_strong_close_frac` of its range.
+   28 [02357130fe 2026-06-27] DOC     any state     → REJECT       : elapsed > timeout_sec, OR the candle CLOSES more
+   29 [02357130fe 2026-06-27] DOC                                    than `max_away_pct` the WRONG way past the band
+   30 [02357130fe 2026-06-27] DOC                                    (LONG: below band_low → "break_down";
+   31 [02357130fe 2026-06-27] DOC                                     SHORT: above band_high → "reclaim_up").
+   32 [9f56b07751 2026-06-27] DOC """
+   44 [9f56b07751 2026-06-27] COM # States persisted in retest_state.state (the in-progress ones only).
+   57 [02357130fe 2026-06-27] COM     max_away_pct: float                 # wrong-way reject: close past the band by this %
+   58 [02357130fe 2026-06-27] COM     confirm_strong_close_frac: float    # strong close: directional close position ≥ this
+   59 [02357130fe 2026-06-27] COM     breakout_margin_pct: float = 0.0    # close must clear the band by this % (small)
+   84 [9f56b07751 2026-06-27] COM     candles: List,            # 1m Candle-likes (.open/.high/.low/.close), chronological
+   87 [02357130fe 2026-06-27] COM     direction: str = "LONG",  # "LONG"/"BUY" or "SHORT"/"SELL"
+   97 [02357130fe 2026-06-27] COM         break_level = band_high * (1.0 + margin)     # close must clear ABOVE band_high
+   98 [02357130fe 2026-06-27] COM         reject_level = band_low * (1.0 - away)       # close below → failed (break_down)
+   99 [02357130fe 2026-06-27] COM         broke = lambda c: c.close > break_level      # noqa: E731
+  100 [02357130fe 2026-06-27] COM         failed = lambda c: c.close < reject_level    # noqa: E731
+  104 [02357130fe 2026-06-27] COM         break_level = band_low * (1.0 - margin)      # close must clear BELOW band_low
+  105 [02357130fe 2026-06-27] COM         reject_level = band_high * (1.0 + away)      # close above → failed (reclaim_up)
+  106 [02357130fe 2026-06-27] COM         broke = lambda c: c.close < break_level      # noqa: E731
+  107 [02357130fe 2026-06-27] COM         failed = lambda c: c.close > reject_level    # noqa: E731
+  120 [02357130fe 2026-06-27] COM             # retest touch: the candle's range re-enters the band (side-agnostic).
+  131 [02357130fe 2026-06-27] DOC     """Directional strong close: LONG wants the close in the UPPER frac of the 1m
+  132 [02357130fe 2026-06-27] DOC     range, SHORT in the LOWER frac."""
+  134 [02357130fe 2026-06-27] COM     if rng <= 0:                                       # degenerate (flat) bar

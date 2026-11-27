@@ -1,0 +1,67 @@
+    1 [9f56b07751 2026-06-27] DOC """
+    2 [9f56b07751 2026-06-27] DOC screening/retest_monitor.py — Trading System v2 · S&R V2 Phase A (SNR-V2)
+    3 [9f56b07751 2026-06-27] DOC 
+    4 [9f56b07751 2026-06-27] DOC Purpose:
+    5 [9f56b07751 2026-06-27] DOC     The WAIT_FOR_RETEST monitor. Holds candidates DIVERTED by the pre-placement
+    6 [9f56b07751 2026-06-27] DOC     check (a LONG entry inside a HIGH resistance zone) and, on a daemon poll
+    7 [9f56b07751 2026-06-27] DOC     thread, fetches fresh 1m candles per parked symbol and advances the pure
+    8 [9f56b07751 2026-06-27] DOC     retest_confirm state machine:
+    9 [9f56b07751 2026-06-27] DOC       • CONFIRMED → hand to signal_processor.continue_from_retest (reserve+MARKET).
+   10 [9f56b07751 2026-06-27] DOC       • REJECT (timeout / break-down) → clear (no capital was held).
+   11 [9f56b07751 2026-06-27] DOC     Restart-safe like EntryGate: persists to retest_state, rehydrates on boot,
+   12 [9f56b07751 2026-06-27] DOC     deletes the row atomically on release. Uniform worker pattern (daemon thread
+   13 [9f56b07751 2026-06-27] DOC     + stop_event.wait). NO capital is held while parked.
+   14 [9f56b07751 2026-06-27] DOC """
+   33 [9f56b07751 2026-06-27] COM     entry_price: float          # original derived entry (pre-divert)
+   34 [9f56b07751 2026-06-27] COM     sl_price: float             # original derived SL (pre-divert)
+   40 [9f56b07751 2026-06-27] COM     added_at: datetime          # naive IST (divert time = retest clock start)
+   48 [9f56b07751 2026-06-27] COM         onem_fetcher,                       # OhlcFetcher (short 1m window, no cache)
+   51 [9f56b07751 2026-06-27] COM         on_confirm: Callable[[ParkedCandidate], None],   # signal_processor.continue_from_retest
+   73 [9f56b07751 2026-06-27] COM     # ── lifecycle ─────────────────────────────────────────────────────────────
+   90 [9f56b07751 2026-06-27] COM     # ── register / clear (called by signal_processor + EOD) ──────────────────
+   93 [9f56b07751 2026-06-27] DOC         """Park a diverted candidate + persist for restart-safety. Never raises."""
+  108 [9f56b07751 2026-06-27] DOC         """EOD: drop every parked candidate (in-memory + persisted). Returns count."""
+  119 [9f56b07751 2026-06-27] DOC         """Boot: rebuild the parked set from retest_state. Returns count restored."""
+  143 [9f56b07751 2026-06-27] DOC         """True if a candidate for this symbol is already parked (dedup guard)."""
+  147 [9f56b07751 2026-06-27] COM     # ── worker ────────────────────────────────────────────────────────────────
+  158 [9f56b07751 2026-06-27] COM     # Public + synchronous so tests can drive it deterministically.
+  178 [02357130fe 2026-06-27] COM             direction=parked.direction,    # SNR-V2: LONG above resistance / SHORT below support
+  181 [9f56b07751 2026-06-27] COM             # Release the parking row first (so it can't be re-evaluated), then
+  182 [9f56b07751 2026-06-27] COM             # resume the pipeline. No capital was held → nothing to release.
+  214 [9f56b07751 2026-06-27] COM     # ── 1m fetch (short window, fresh each poll) ──────────────────────────────
+  227 [9f56b07751 2026-06-27] COM     # ── persistence (de)serialisation ────────────────────────────────────────
+  265 [9f56b07751 2026-06-27] DOC     """
+  266 [02357130fe 2026-06-27] DOC     The pre-placement divert decision (SNR-V2 STEP 3), SYMMETRIC by direction.
+  267 [02357130fe 2026-06-27] DOC     Reads the ZoneCache SYNCHRONOUSLY (no fetch on the hot path):
+  268 [02357130fe 2026-06-27] DOC       • a LONG entry sitting inside a HIGH-confidence RESISTANCE zone, or
+  269 [02357130fe 2026-06-27] DOC       • a SHORT entry sitting inside a HIGH-confidence SUPPORT zone,
+  270 [02357130fe 2026-06-27] DOC     is parked into the RetestMonitor BEFORE any sizing/reservation (so it holds no
+  271 [02357130fe 2026-06-27] DOC     capital). A miss / unknown side / no-HIGH-zone returns False → the caller
+  272 [02357130fe 2026-06-27] DOC     continues normal placement. Never raises.
+  273 [9f56b07751 2026-06-27] DOC     """
+  318 [9f56b07751 2026-06-27] DOC         """Return True iff the candidate was diverted into WAIT_FOR_RETEST."""
+  323 [02357130fe 2026-06-27] COM         if not (is_long or is_short):              # unknown side → normal placement
+  325 [b3a5c94926 2026-07-14] COM         # M-S6: `divert_committed` flips True the moment the caller MUST NOT place —
+  326 [b3a5c94926 2026-07-14] COM         # either the symbol is already parked (dedup) or we have registered the candidate.
+  327 [b3a5c94926 2026-07-14] COM         # register() adds to the monitor BEFORE it persists and never raises, so once it
+  328 [b3a5c94926 2026-07-14] COM         # runs the candidate WILL fire on retest; a later bookkeeping exception must NOT
+  329 [b3a5c94926 2026-07-14] COM         # fall through to placement (that is the double-order path). Concurrent same-symbol
+  330 [b3a5c94926 2026-07-14] COM         # signals are already serialized upstream by the receiver's atomic _claim_in_flight
+  331 [b3a5c94926 2026-07-14] COM         # (M-1/FIX-011), so this method never runs twice for one symbol in parallel.
+  334 [9f56b07751 2026-06-27] COM             zs = self._cache.get(symbol)            # synchronous; miss → None
+  337 [02357130fe 2026-06-27] COM             # LONG diverts into a resistance zone (sells the rip); SHORT into a
+  338 [02357130fe 2026-06-27] COM             # support zone (buys the dip back). Mirror, same matcher.
+  344 [9f56b07751 2026-06-27] COM             # Dedup: a symbol already parked must not spawn a 2nd MARKET entry
+  345 [9f56b07751 2026-06-27] COM             # (overlap invariant). Drop the duplicate signal rather than placing
+  346 [02357130fe 2026-06-27] COM             # it into the zone.
+  348 [b3a5c94926 2026-07-14] COM                 divert_committed = True          # already parked → caller must NOT place
+  354 [02357130fe 2026-06-27] COM             # Structure SL: LONG below the reclaimed level, SHORT above the rejected one.
+  372 [b3a5c94926 2026-07-14] COM             divert_committed = True              # M-S6: register() is authoritative from here
+  378 [b3a5c94926 2026-07-14] COM             # M-S6: a post-commit bookkeeping failure must NOT fall through to placement.
+  382 [02357130fe 2026-06-27] DOC         """Nearest required-confidence zone (resistance for LONG / support for
+  383 [02357130fe 2026-06-27] DOC         SHORT) whose band contains the entry. Side-agnostic."""
+  393 [02357130fe 2026-06-27] DOC         """Best-effort sr_detector_results row so the V2 divert is auditable.
+  394 [02357130fe 2026-06-27] DOC         Mirrored by direction: LONG fills the resistance columns + reclaim level
+  395 [02357130fe 2026-06-27] DOC         (band_high); SHORT fills the support columns + rejection level (band_low)."""
+  406 [02357130fe 2026-06-27] COM                 proposed_entry = zone.band_high          # reclaim level
+  412 [02357130fe 2026-06-27] COM                 proposed_entry = zone.band_low           # rejection level

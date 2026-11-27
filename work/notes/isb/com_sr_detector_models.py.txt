@@ -1,0 +1,71 @@
+    1 [dea336ae71 2026-06-27] DOC """
+    2 [dea336ae71 2026-06-27] DOC sr_detector/models.py — Trading System v2 · S&R Detector V1 (SNR-DETECTOR-V1)
+    3 [dea336ae71 2026-06-27] DOC 
+    4 [dea336ae71 2026-06-27] DOC Purpose:
+    5 [dea336ae71 2026-06-27] DOC     Immutable value objects shared across the S&R detector package. Pure data —
+    6 [dea336ae71 2026-06-27] DOC     no behaviour, no I/O, stdlib only.
+    7 [dea336ae71 2026-06-27] DOC 
+    8 [dea336ae71 2026-06-27] DOC What This Module Does NOT Do:
+    9 [dea336ae71 2026-06-27] DOC     - No fetching, no DB, no config reading.
+   10 [dea336ae71 2026-06-27] DOC     - No imports outside stdlib (keeps sr_detector/ a pure package).
+   11 [dea336ae71 2026-06-27] DOC """
+   19 [dea336ae71 2026-06-27] COM # ─────────────────────────────────────────────────────────────────────────────
+   20 [dea336ae71 2026-06-27] COM # Market data
+   21 [dea336ae71 2026-06-27] COM # ─────────────────────────────────────────────────────────────────────────────
+   25 [dea336ae71 2026-06-27] DOC     """One OHLCV bar. ts is timezone-aware (or naive IST) datetime."""
+   35 [dea336ae71 2026-06-27] DOC         """Build from a kite.historical_data() dict row."""
+   46 [dea336ae71 2026-06-27] COM # ─────────────────────────────────────────────────────────────────────────────
+   47 [dea336ae71 2026-06-27] COM # Structure
+   48 [dea336ae71 2026-06-27] COM # ─────────────────────────────────────────────────────────────────────────────
+   52 [dea336ae71 2026-06-27] DOC     """A swing pivot — a local extreme over N bars each side."""
+   55 [dea336ae71 2026-06-27] COM     kind: str            # "HIGH" | "LOW"
+   61 [dea336ae71 2026-06-27] DOC     """
+   62 [dea336ae71 2026-06-27] DOC     A price BAND (never a single line) clustered from same-kind pivots on ONE
+   63 [dea336ae71 2026-06-27] DOC     timeframe. RESISTANCE is built from swing highs, SUPPORT from swing lows.
+   64 [dea336ae71 2026-06-27] DOC     """
+   67 [dea336ae71 2026-06-27] COM     kind: str            # "RESISTANCE" | "SUPPORT"
+   81 [dea336ae71 2026-06-27] DOC         """True if price falls inside the band, optionally widened by buffer_pct."""
+   88 [dea336ae71 2026-06-27] DOC     """
+   89 [dea336ae71 2026-06-27] DOC     A confluence-scored zone, possibly MERGED across timeframes. Carries the
+   90 [dea336ae71 2026-06-27] DOC     evidence breakdown that lets us audit + calibrate (spec E).
+   91 [dea336ae71 2026-06-27] DOC     """
+   94 [dea336ae71 2026-06-27] COM     kind: str                              # "RESISTANCE" | "SUPPORT"
+   96 [dea336ae71 2026-06-27] COM     confidence: str                        # "HIGH" | "MEDIUM" | "LOW"
+   98 [dea336ae71 2026-06-27] COM     timeframes: Tuple[str, ...]            # which TFs contributed
+   99 [dea336ae71 2026-06-27] COM     # evidence: ordered (method_name, contribution) pairs — JSON-serialisable.
+  124 [dea336ae71 2026-06-27] COM # ─────────────────────────────────────────────────────────────────────────────
+  125 [dea336ae71 2026-06-27] COM # The placed candidate the observer sees (post-placement, non-gating)
+  126 [dea336ae71 2026-06-27] COM # ─────────────────────────────────────────────────────────────────────────────
+  130 [dea336ae71 2026-06-27] DOC     """
+  131 [dea336ae71 2026-06-27] DOC     A snapshot of a placed entry handed to the detector. Built post-placement in
+  132 [dea336ae71 2026-06-27] DOC     signal_processor; everything here is already in hand at _emit_signal_alert.
+  133 [dea336ae71 2026-06-27] DOC     """
+  137 [dea336ae71 2026-06-27] COM     direction: str                 # "LONG" | "SHORT" | "BUY" | "SELL"
+  142 [dea336ae71 2026-06-27] COM     intent: str                    # "INTRADAY" | "DELIVERY"
+  143 [dea336ae71 2026-06-27] COM     mode: str                      # "paper" | "live"
+  145 [dea336ae71 2026-06-27] COM     score: Optional[int] = None    # None on the gate-release path
+  152 [dea336ae71 2026-06-27] COM # ─────────────────────────────────────────────────────────────────────────────
+  153 [dea336ae71 2026-06-27] COM # Retest proposal + the analysis result (the row to persist)
+  154 [dea336ae71 2026-06-27] COM # ─────────────────────────────────────────────────────────────────────────────
+  158 [dea336ae71 2026-06-27] DOC     """V1 logs the PROPOSAL only — the hypothetical outcome is a later EOD step."""
+  164 [dea336ae71 2026-06-27] COM # Structure-status sentinels (persisted in the flags layer / for fetch failures).
+  169 [536172cfad 2026-07-12] COM # V3 03.01 — confidence_class: which detection layer the analysis may be trusted
+  170 [536172cfad 2026-07-12] COM # on. Defaults to ANCHOR_ONLY: anchors (PDH/PDL/PDC, round, VWAP, ORB) are
+  171 [536172cfad 2026-07-12] COM # reference levels; structural SWINGS are computed + emitted but flagged
+  172 [536172cfad 2026-07-12] COM # NOT-YET-VALIDATED until Rama's manual-marking validation passes (the later,
+  173 [536172cfad 2026-07-12] COM # human-gated flip to ANCHOR_PLUS_VALIDATED_SWINGS). The 03.03 R:R gate will use
+  174 [536172cfad 2026-07-12] COM # ANCHOR-only levels for live capital until then.
+  178 [536172cfad 2026-07-12] COM # V3 03.01 — S&R Timeframe Policy (intraday): map a fetched interval to its
+  179 [536172cfad 2026-07-12] COM # structural ROLE so swing levels are labelled primary/major for validation.
+  182 [536172cfad 2026-07-12] COM     "60minute": "MAJOR",     # 1-hour = MAJOR structural
+  183 [536172cfad 2026-07-12] COM     "30minute": "PRIMARY",   # 30-minute = PRIMARY structural
+  191 [dea336ae71 2026-06-27] DOC     """The detector's verdict for one candidate — everything that gets logged."""
+  192 [dea336ae71 2026-06-27] COM     structure_status: str                          # STRUCT_OK | STRUCT_NONE | STRUCT_FETCH_FAILED
+  200 [dea336ae71 2026-06-27] COM     evidence: dict = field(default_factory=dict)   # full per-zone breakdown (JSON)
+  201 [dea336ae71 2026-06-27] COM     note: Optional[str] = None                     # e.g. "fetch_failed: <reason>"
+  202 [536172cfad 2026-07-12] COM     # V3 03.01 (additive; default-safe so every existing construction is unchanged):
+  203 [536172cfad 2026-07-12] COM     anchors: dict = field(default_factory=dict)    # Layer-A reference levels: prior_day
+  204 [536172cfad 2026-07-12] COM     #   (PDH/PDL/PDC), round_numbers, vwap, orb_high/orb_low/orb_window_minutes.
+  205 [536172cfad 2026-07-12] COM     swings: dict = field(default_factory=dict)     # Layer-B structural swing levels by
+  206 [536172cfad 2026-07-12] COM     #   role: {"PRIMARY":[...], "MAJOR":[...], ...} — computed but NOT-YET-VALIDATED.
+  207 [536172cfad 2026-07-12] COM     confidence_class: str = CONF_ANCHOR_ONLY       # ANCHOR_ONLY (default) | ANCHOR_PLUS_VALIDATED_SWINGS

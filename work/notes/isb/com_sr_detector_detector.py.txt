@@ -1,0 +1,53 @@
+    1 [dea336ae71 2026-06-27] DOC """
+    2 [dea336ae71 2026-06-27] DOC sr_detector/detector.py — Trading System v2 · S&R Detector V1 (SNR-DETECTOR-V1)
+    3 [dea336ae71 2026-06-27] DOC 
+    4 [dea336ae71 2026-06-27] DOC Purpose:
+    5 [dea336ae71 2026-06-27] DOC     The async, NON-GATING observer. signal_processor hands it a placed Candidate
+    6 [dea336ae71 2026-06-27] DOC     AFTER the order reached placement; observe() enqueues and returns immediately.
+    7 [dea336ae71 2026-06-27] DOC     A single serialized background worker does the slow work (3 historical
+    8 [dea336ae71 2026-06-27] DOC     fetches → pivots → zones → confluence → flags → shadow-log row). It NEVER
+    9 [dea336ae71 2026-06-27] DOC     blocks/delays placement and NEVER raises into the pipeline (spec A, J, K-★).
+   10 [dea336ae71 2026-06-27] DOC 
+   11 [dea336ae71 2026-06-27] DOC     SHADOW only: no reject, no veto, no entry/SL/TGT change, no STM. V1 answers
+   12 [dea336ae71 2026-06-27] DOC     one question — "can we reliably detect buying-into-resistance before the
+   13 [dea336ae71 2026-06-27] DOC     outcome is known?" — by logging evidence for offline validation.
+   14 [dea336ae71 2026-06-27] DOC 
+   15 [dea336ae71 2026-06-27] DOC What This Module Does NOT Do:
+   16 [dea336ae71 2026-06-27] DOC     - No order/STM/sizing interaction; no EventBus dependency.
+   17 [dea336ae71 2026-06-27] DOC     - No outcome simulation (retest is a proposal only; outcomes are an EOD step).
+   18 [dea336ae71 2026-06-27] DOC     - No long-term candle storage (fetch → analyse → discard + the session cache).
+   19 [dea336ae71 2026-06-27] DOC """
+   72 [132e571e16 2026-08-01] COM         # effect-telemetry (ledger #1, frozen contract A2.1): one handle,
+   73 [132e571e16 2026-08-01] COM         # resolved once — an sr_detector_results row written.
+   80 [536172cfad 2026-07-12] COM         # V3 03.01 Layer-A intraday anchors (VWAP/ORB) — default-OFF gate. When
+   81 [536172cfad 2026-07-12] COM         # off, analyze() adds no anchor/swing enrichment and does NO extra fetch,
+   82 [536172cfad 2026-07-12] COM         # so the shadow row is byte-identical to before. Session bounds are
+   83 [536172cfad 2026-07-12] COM         # injected (from MarketWindows in main.py) — never hardcoded here.
+   88 [536172cfad 2026-07-12] COM         self._session_open = session_open      # datetime.time | None
+   89 [536172cfad 2026-07-12] COM         self._session_close = session_close    # datetime.time | None
+   91 [9f56b07751 2026-06-27] COM         # SNR-V2: the zone-building params + the pivots→zones→confluence sequence
+   92 [9f56b07751 2026-06-27] COM         # are shared with the ZoneWarmer via sr_detector.zone_builder (one path).
+  104 [dea336ae71 2026-06-27] COM     # ── lifecycle ───────────────────────────────────────────────────────────
+  129 [dea336ae71 2026-06-27] COM     # ── the non-gating seam (spec A) ──────────────────────────────────────────
+  132 [dea336ae71 2026-06-27] DOC         """Enqueue a placed candidate and return immediately. Never raises."""
+  139 [dea336ae71 2026-06-27] COM         except Exception as exc:  # belt-and-suspenders; the pipeline must not see this
+  142 [dea336ae71 2026-06-27] COM     # ── worker ────────────────────────────────────────────────────────────────
+  160 [dea336ae71 2026-06-27] COM     # Public + synchronous so tests can drive it deterministically.
+  165 [dea336ae71 2026-06-27] COM     # ── analysis (fetch → pivots → zones → confluence → flags) ───────────────
+  184 [536172cfad 2026-07-12] COM         # V3 03.01 (gated, default-OFF): Layer-A anchor levels + Layer-B swing
+  185 [536172cfad 2026-07-12] COM         # labelling for the manual-marking validation. confidence_class stays
+  186 [536172cfad 2026-07-12] COM         # ANCHOR_ONLY — swings are computed + emitted but NOT-YET-VALIDATED, so
+  187 [536172cfad 2026-07-12] COM         # they never drive the later R:R gate until Rama's validation flips it.
+  210 [536172cfad 2026-07-12] DOC         """Layer-A anchors: prior-day (PDH/PDL/PDC) + round numbers (always) plus
+  211 [536172cfad 2026-07-12] DOC         the intraday VWAP/ORB block (a today-only fine fetch; only when session
+  212 [536172cfad 2026-07-12] DOC         bounds are injected). Fail-safe — a fine-fetch miss yields None fields,
+  213 [536172cfad 2026-07-12] DOC         never raises."""
+  231 [536172cfad 2026-07-12] COM                 except Exception as exc:   # fail-safe: anchors are shadow-only
+  257 [dea336ae71 2026-06-27] COM     # ── persistence (imitates the screener_results write: txn + never-raise) ──
+  261 [536172cfad 2026-07-12] COM             # V3 03.01: enrich the evidence JSON with anchors/swings/confidence_class
+  262 [536172cfad 2026-07-12] COM             # ONLY when the anchor layer is on — default-OFF keeps the persisted
+  263 [536172cfad 2026-07-12] COM             # row byte-identical to the pre-V3 shadow write.
+  296 [132e571e16 2026-08-01] COM             # effect-telemetry (frozen A2.1): an sr_detector_results row
+  297 [132e571e16 2026-08-01] COM             # written — counted only after the insert succeeded.
+  300 [dea336ae71 2026-06-27] COM             # Shadow logging must never raise (parity with screener_results write).
+  303 [dea336ae71 2026-06-27] COM     # ── helpers ───────────────────────────────────────────────────────────────

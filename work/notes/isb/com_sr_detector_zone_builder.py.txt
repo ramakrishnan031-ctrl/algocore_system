@@ -1,0 +1,36 @@
+    1 [9f56b07751 2026-06-27] DOC """
+    2 [9f56b07751 2026-06-27] DOC sr_detector/zone_builder.py — Trading System v2 · S&R V2 (SNR-V2)
+    3 [9f56b07751 2026-06-27] DOC 
+    4 [9f56b07751 2026-06-27] DOC Purpose:
+    5 [9f56b07751 2026-06-27] DOC     The SINGLE zone-building path, shared by the V1 detector (async observer) and
+    6 [9f56b07751 2026-06-27] DOC     the V2 ZoneWarmer. Derive-don't-duplicate: the pivots→zones→confluence
+    7 [9f56b07751 2026-06-27] DOC     sequence and the config→params mapping live here ONCE. Pure + stdlib/core only.
+    8 [9f56b07751 2026-06-27] DOC """
+   30 [9f56b07751 2026-06-27] DOC     """Pivot/zone/volume/recency knobs (the non-scoring half of the config)."""
+   92 [9f56b07751 2026-06-27] DOC     """pivots → zones → confluence, over an already-fetched per-TF candle set."""
+  111 [9f56b07751 2026-06-27] DOC     """Return (resistance_zones, support_zones)."""
+  118 [536172cfad 2026-07-12] COM # ─────────────────────────────────────────────────────────────────────────────
+  119 [536172cfad 2026-07-12] COM # V3 03.01 — Layer-A anchors (VWAP + ORB, intraday) and Layer-B swing labelling.
+  120 [536172cfad 2026-07-12] COM # Pure functions; stdlib + core.candle_math only. Reference levels for the
+  121 [536172cfad 2026-07-12] COM # manual-marking validation export; they do NOT gate capital in this step.
+  122 [536172cfad 2026-07-12] COM # ─────────────────────────────────────────────────────────────────────────────
+  125 [536172cfad 2026-07-12] DOC     """The magnitude / half-magnitude round levels straddling `price`.
+  126 [536172cfad 2026-07-12] DOC 
+  127 [536172cfad 2026-07-12] DOC     e.g. price 523 → magnitude 100 → {500, 600} and half {500, 550} → sorted
+  128 [536172cfad 2026-07-12] DOC     (500, 550, 600). Pure; returns () for a missing/non-positive price.
+  129 [536172cfad 2026-07-12] DOC     """
+  151 [536172cfad 2026-07-12] DOC     """VWAP + opening-range (ORB) anchors from today's fine intraday candles.
+  152 [536172cfad 2026-07-12] DOC 
+  153 [536172cfad 2026-07-12] DOC     Scopes `fine_candles` to `on_date`'s in-session bars, then:
+  154 [536172cfad 2026-07-12] DOC       - vwap  = core.candle_math.session_vwap over the scoped bars;
+  155 [536172cfad 2026-07-12] DOC       - orb_high / orb_low = max high / min low over the OPENING window
+  156 [536172cfad 2026-07-12] DOC         [session_open, session_open + orb_window_minutes).
+  157 [536172cfad 2026-07-12] DOC     Returns None fields when the data is insufficient (never fabricated). Pure;
+  158 [536172cfad 2026-07-12] DOC     compares only wall-clock times so candle tzinfo (aware or naive IST) is fine.
+  159 [536172cfad 2026-07-12] DOC     """
+  190 [536172cfad 2026-07-12] DOC     """Combine Layer-A anchors into one export/evidence payload: prior-day
+  191 [536172cfad 2026-07-12] DOC     PDH/PDL/PDC (existing), round numbers, reference price, and the intraday
+  192 [536172cfad 2026-07-12] DOC     VWAP/ORB block (when computed). Pure."""
+  208 [536172cfad 2026-07-12] DOC     """Group scored structural zones by S&R Timeframe-Policy ROLE (30m=PRIMARY,
+  209 [536172cfad 2026-07-12] DOC     1h=MAJOR, day=DAILY, …) for the manual-marking export. A merged zone present
+  210 [536172cfad 2026-07-12] DOC     on multiple TFs is listed under each contributing role. Pure."""

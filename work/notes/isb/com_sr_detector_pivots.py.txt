@@ -1,0 +1,30 @@
+    1 [dea336ae71 2026-06-27] DOC """
+    2 [dea336ae71 2026-06-27] DOC sr_detector/pivots.py — Trading System v2 · S&R Detector V1
+    3 [dea336ae71 2026-06-27] DOC 
+    4 [dea336ae71 2026-06-27] DOC Purpose:
+    5 [dea336ae71 2026-06-27] DOC     Swing-pivot detection on a single timeframe. A swing high/low is a bar whose
+    6 [dea336ae71 2026-06-27] DOC     high/low is the extreme over N bars on EACH side (N configurable per TF).
+    7 [dea336ae71 2026-06-27] DOC     Pure functions; stdlib only.
+    8 [dea336ae71 2026-06-27] DOC 
+    9 [dea336ae71 2026-06-27] DOC Locked Design Decisions:
+   10 [dea336ae71 2026-06-27] DOC     SR-P1 — A pivot HIGH at index i requires high[i] >= every high in the window
+   11 [dea336ae71 2026-06-27] DOC             [i-left, i+right] AND strictly greater than at least one neighbour in
+   12 [dea336ae71 2026-06-27] DOC             the window (so a perfectly flat plateau does not mark every bar).
+   13 [dea336ae71 2026-06-27] DOC             SUPPORT pivots are the low-side mirror.
+   14 [dea336ae71 2026-06-27] DOC     SR-P2 — The first `left` and last `right` bars can never be pivots (no full
+   15 [dea336ae71 2026-06-27] DOC             window) — they are skipped.
+   16 [dea336ae71 2026-06-27] DOC """
+   25 [dea336ae71 2026-06-27] DOC     """
+   26 [dea336ae71 2026-06-27] DOC     Return swing HIGH and LOW pivots for the given candle series.
+   27 [dea336ae71 2026-06-27] DOC 
+   28 [dea336ae71 2026-06-27] DOC     Args:
+   29 [dea336ae71 2026-06-27] DOC         candles: chronological OHLCV bars.
+   30 [dea336ae71 2026-06-27] DOC         left:    bars required to the left of a pivot.
+   31 [dea336ae71 2026-06-27] DOC         right:   bars required to the right of a pivot.
+   32 [dea336ae71 2026-06-27] DOC 
+   33 [dea336ae71 2026-06-27] DOC     Returns:
+   34 [dea336ae71 2026-06-27] DOC         Pivots in bar order (a bar may yield both a HIGH and a LOW pivot only in
+   35 [dea336ae71 2026-06-27] DOC         degenerate single-bar windows; normally one or neither).
+   36 [dea336ae71 2026-06-27] DOC     """
+   47 [dea336ae71 2026-06-27] COM         # Swing high (→ resistance): the extreme high over the window.
+   51 [dea336ae71 2026-06-27] COM         # Swing low (→ support): the extreme low over the window.

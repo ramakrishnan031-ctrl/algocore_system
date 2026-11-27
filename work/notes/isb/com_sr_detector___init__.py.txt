@@ -1,0 +1,27 @@
+    1 [dea336ae71 2026-06-27] DOC """
+    2 [dea336ae71 2026-06-27] DOC sr_detector/ — Trading System v2 · S&R Detector V1 (SNR-DETECTOR-V1)
+    3 [dea336ae71 2026-06-27] DOC 
+    4 [dea336ae71 2026-06-27] DOC A PURE package (imports only core/ + stdlib) that runs as an async, non-gating
+    5 [dea336ae71 2026-06-27] DOC observer beside order placement. It fetches Daily/60m/30m structure for each
+    6 [dea336ae71 2026-06-27] DOC PLACED candidate, scores support/resistance zones by confluence, flags
+    7 [dea336ae71 2026-06-27] DOC "buying-into-resistance" (and the support/short mirror), and logs an evidence
+    8 [dea336ae71 2026-06-27] DOC row to sr_detector_results for OFFLINE validation. SHADOW only — it never
+    9 [dea336ae71 2026-06-27] DOC rejects, sizes, or touches SL/TGT/STM, and never blocks/delays placement.
+   10 [dea336ae71 2026-06-27] DOC 
+   11 [dea336ae71 2026-06-27] DOC Public API:
+   12 [dea336ae71 2026-06-27] DOC     build_sr_detector(...)  → wire from config + injected collaborators
+   13 [dea336ae71 2026-06-27] DOC     SRDetector              → the observer (observe / start / stop)
+   14 [dea336ae71 2026-06-27] DOC     Candidate               → the post-placement snapshot the seam builds
+   15 [dea336ae71 2026-06-27] DOC """
+   37 [dea336ae71 2026-06-27] DOC     """
+   38 [dea336ae71 2026-06-27] DOC     Construct a wired SRDetector. `fetch_fn(token, from_date, to_date, interval)`
+   39 [dea336ae71 2026-06-27] DOC     is the rate-limited broker call (built in main.py as a closure over the
+   40 [dea336ae71 2026-06-27] DOC     market-data kite handle + rate_limiter — see main.py wiring). `now_fn`
+   41 [dea336ae71 2026-06-27] DOC     defaults to core.time_authority.now_ist.
+   42 [536172cfad 2026-07-12] DOC 
+   43 [536172cfad 2026-07-12] DOC     `session_open`/`session_close` (datetime.time) are the NSE session bounds
+   44 [536172cfad 2026-07-12] DOC     used by the V3 03.01 Layer-A anchors (VWAP/ORB); pass them from the system's
+   45 [536172cfad 2026-07-12] DOC     MarketWindows (main.py) so nothing hardcodes 09:15. They are optional — when
+   46 [536172cfad 2026-07-12] DOC     absent (or `intraday_anchors_enabled` is False, the default) the detector
+   47 [536172cfad 2026-07-12] DOC     skips the intraday-anchor fetch and behaves exactly as before.
+   48 [dea336ae71 2026-06-27] DOC     """

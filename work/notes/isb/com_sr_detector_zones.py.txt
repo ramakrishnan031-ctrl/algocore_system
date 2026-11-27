@@ -1,0 +1,36 @@
+    1 [dea336ae71 2026-06-27] DOC """
+    2 [dea336ae71 2026-06-27] DOC sr_detector/zones.py — Trading System v2 · S&R Detector V1
+    3 [dea336ae71 2026-06-27] DOC 
+    4 [dea336ae71 2026-06-27] DOC Purpose:
+    5 [dea336ae71 2026-06-27] DOC     Cluster same-kind swing pivots (on ONE timeframe) into price BANDS (zones),
+    6 [dea336ae71 2026-06-27] DOC     and compute a simple volume-by-price profile to surface high-volume nodes.
+    7 [dea336ae71 2026-06-27] DOC     Everything downstream uses zones (with a buffer), never exact prices.
+    8 [dea336ae71 2026-06-27] DOC     Pure functions; stdlib only.
+    9 [dea336ae71 2026-06-27] DOC 
+   10 [dea336ae71 2026-06-27] DOC Locked Design Decisions:
+   11 [dea336ae71 2026-06-27] DOC     SR-Z1 — Greedy 1-D clustering by price: pivots are sorted; a pivot joins the
+   12 [dea336ae71 2026-06-27] DOC             running cluster while it is within `cluster_pct` of the cluster's
+   13 [dea336ae71 2026-06-27] DOC             current high, else it starts a new cluster.
+   14 [dea336ae71 2026-06-27] DOC     SR-Z2 — Zone band = [min, max] of the cluster's pivot prices. touches = count
+   15 [dea336ae71 2026-06-27] DOC             of pivots; last_touch_ts = most recent pivot ts (recency).
+   16 [dea336ae71 2026-06-27] DOC     SR-Z3 — HIGH pivots → RESISTANCE zones; LOW pivots → SUPPORT zones.
+   17 [dea336ae71 2026-06-27] DOC     SR-Z4 — Volume profile bins the bar volume into price buckets (using each
+   18 [dea336ae71 2026-06-27] DOC             bar's mid); a "node" is any bin whose volume is >= node_frac of the
+   19 [dea336ae71 2026-06-27] DOC             max-volume bin. Returns the node centre prices.
+   20 [dea336ae71 2026-06-27] DOC """
+   34 [dea336ae71 2026-06-27] DOC     """
+   35 [dea336ae71 2026-06-27] DOC     Cluster pivots into zones. RESISTANCE from HIGH pivots, SUPPORT from LOW.
+   36 [dea336ae71 2026-06-27] DOC 
+   37 [dea336ae71 2026-06-27] DOC     Args:
+   38 [dea336ae71 2026-06-27] DOC         pivots: pivots from one timeframe (mixed HIGH/LOW ok).
+   39 [dea336ae71 2026-06-27] DOC         cluster_pct: a pivot joins the running cluster while its price is within
+   40 [dea336ae71 2026-06-27] DOC             this percent of the cluster's current band-high (e.g. 0.5 = 0.5%).
+   41 [dea336ae71 2026-06-27] DOC         timeframe: label stamped on each produced Zone.
+   42 [dea336ae71 2026-06-27] DOC     """
+   84 [dea336ae71 2026-06-27] DOC     """
+   85 [dea336ae71 2026-06-27] DOC     Return the centre prices of high-volume price bins (volume nodes, SR-Z4).
+   86 [dea336ae71 2026-06-27] DOC 
+   87 [dea336ae71 2026-06-27] DOC     A crude volume-by-price: bucket each bar's volume at its mid price across
+   88 [dea336ae71 2026-06-27] DOC     `bins` equal-width buckets over [min low, max high]; a node is any bucket
+   89 [dea336ae71 2026-06-27] DOC     whose total volume >= node_frac * (max bucket volume).
+   90 [dea336ae71 2026-06-27] DOC     """

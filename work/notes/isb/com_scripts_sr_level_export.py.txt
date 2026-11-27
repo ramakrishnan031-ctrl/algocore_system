@@ -1,0 +1,44 @@
+    1 [536172cfad 2026-07-12] DOC """
+    2 [536172cfad 2026-07-12] DOC scripts/sr_level_export.py — Trading System v2 · V3 03.01 S&R Detection
+    3 [536172cfad 2026-07-12] DOC 
+    4 [536172cfad 2026-07-12] DOC Purpose (Task 4 — manual-marking validation):
+    5 [536172cfad 2026-07-12] DOC     READ-ONLY export of the detector's ANCHOR + SWING levels for a set of
+    6 [536172cfad 2026-07-12] DOC     symbols + dates, in a flat CSV Rama can visually compare against his MANUAL
+    7 [536172cfad 2026-07-12] DOC     chart marks. This is the #1 03.01 safeguard: validate auto-detected S&R
+    8 [536172cfad 2026-07-12] DOC     against the human eye BEFORE it ever gates capital. It changes NO trading
+    9 [536172cfad 2026-07-12] DOC     behaviour — it runs the same pure detection path (with the intraday-anchor
+   10 [536172cfad 2026-07-12] DOC     layer turned on) and dumps the levels; it never places, sizes, or persists.
+   11 [536172cfad 2026-07-12] DOC 
+   12 [536172cfad 2026-07-12] DOC Design:
+   13 [536172cfad 2026-07-12] DOC     - The pure core (`flatten_analysis`, `rows_to_csv`, `export_levels`) is fully
+   14 [536172cfad 2026-07-12] DOC       unit-tested with an injected analyze function — no broker needed.
+   15 [536172cfad 2026-07-12] DOC     - `main()` wires a READ-ONLY market-data kite + the sr_detector OhlcFetcher,
+   16 [536172cfad 2026-07-12] DOC       builds a detector per as-of date (anchors enabled), and writes the CSV.
+   17 [536172cfad 2026-07-12] DOC       Run on the VM with a live token (like sr_detector_backfill).
+   18 [536172cfad 2026-07-12] DOC 
+   19 [536172cfad 2026-07-12] DOC Usage:
+   20 [536172cfad 2026-07-12] DOC     python scripts/sr_level_export.py --symbols RELIANCE,TCS --dates 2026-07-10 \
+   21 [536172cfad 2026-07-12] DOC         [--interval 5minute --orb-window 15 --out reports/output/sr_levels.csv]
+   22 [536172cfad 2026-07-12] DOC """
+   37 [536172cfad 2026-07-12] COM from sr_detector.models import CONF_ANCHOR_ONLY, Candidate, SRAnalysis  # noqa: E402
+   39 [536172cfad 2026-07-12] COM # Flat CSV column order (comparison-friendly for the human eye).
+   63 [536172cfad 2026-07-12] DOC     """Flatten one SRAnalysis into level rows (anchors + swings). Pure."""
+   69 [536172cfad 2026-07-12] COM     # ── Layer A: anchors ──
+   84 [536172cfad 2026-07-12] COM     # ── Layer B: structural swings (labelled PRIMARY/MAJOR/…; NOT-YET-VALIDATED) ──
+   95 [536172cfad 2026-07-12] DOC     """Render rows to a CSV string with the fixed header. Pure."""
+  109 [536172cfad 2026-07-12] DOC     """For every (symbol, date), call `analyze_fn(symbol, date) -> SRAnalysis`
+  110 [536172cfad 2026-07-12] DOC     and flatten to level rows. `analyze_fn` is injected so the core is testable
+  111 [536172cfad 2026-07-12] DOC     without a broker. A None analysis (fetch failure) contributes no rows. Pure
+  112 [536172cfad 2026-07-12] DOC     w.r.t. `analyze_fn`."""
+  123 [536172cfad 2026-07-12] COM # ─────────────────────────────────────────────────────────────────────────────
+  124 [536172cfad 2026-07-12] COM # Real wiring (VM / live token). Not unit-tested (needs a broker session).
+  125 [536172cfad 2026-07-12] COM # ─────────────────────────────────────────────────────────────────────────────
+  127 [536172cfad 2026-07-12] COM def _make_real_analyze_fn(interval: str, orb_window: int):  # pragma: no cover
+  128 [536172cfad 2026-07-12] DOC     """Build analyze_fn wiring a READ-ONLY market-data kite + OhlcFetcher +
+  129 [536172cfad 2026-07-12] DOC     detector (anchors enabled), one as-of the requested date's session close."""
+  136 [536172cfad 2026-07-12] COM     # Reuse main.py's read-only market-data kite + rate-limited fetch closure.
+  150 [536172cfad 2026-07-12] COM     # Anchors ON + the requested fine interval / ORB window (a COPY — never
+  151 [536172cfad 2026-07-12] COM     # mutate the live config object used by the running system).
+  164 [536172cfad 2026-07-12] COM         # Reference price = the day's last close (from the daily fetch).
+  178 [536172cfad 2026-07-12] COM def main(argv: Optional[List[str]] = None) -> int:  # pragma: no cover
+  202 [536172cfad 2026-07-12] COM if __name__ == "__main__":  # pragma: no cover

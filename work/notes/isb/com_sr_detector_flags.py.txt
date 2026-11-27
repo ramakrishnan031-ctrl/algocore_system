@@ -1,0 +1,42 @@
+    1 [dea336ae71 2026-06-27] DOC """
+    2 [dea336ae71 2026-06-27] DOC sr_detector/flags.py — Trading System v2 · S&R Detector V1
+    3 [dea336ae71 2026-06-27] DOC 
+    4 [dea336ae71 2026-06-27] DOC Purpose:
+    5 [dea336ae71 2026-06-27] DOC     From a placed candidate + its confluence-scored zones, emit zero-or-more
+    6 [dea336ae71 2026-06-27] DOC     structural flags and a RETEST PROPOSAL (proposal only in V1 — no outcome
+    7 [dea336ae71 2026-06-27] DOC     simulation). Resistance/longs are the first-class target (that is where the
+    8 [dea336ae71 2026-06-27] DOC     ~13% LONG win-rate problem lives); support/shorts get the mirror set.
+    9 [dea336ae71 2026-06-27] DOC     Pure functions; stdlib only. SHADOW — never rejects, never sizes.
+   10 [dea336ae71 2026-06-27] DOC 
+   11 [dea336ae71 2026-06-27] DOC Flags (spec F):
+   12 [dea336ae71 2026-06-27] DOC     BUYING_INTO_RESISTANCE    long entry within buffer of a HIGH resistance zone
+   13 [dea336ae71 2026-06-27] DOC     SELLING_INTO_SUPPORT      short mirror
+   14 [dea336ae71 2026-06-27] DOC     WEAK_BREAKOUT             breakout candle lacks follow-through
+   15 [dea336ae71 2026-06-27] DOC     NO_VOLUME_CONFIRMATION    breakout without a volume surge
+   16 [dea336ae71 2026-06-27] DOC     LOW_CONFIDENCE_STRUCTURE  nearest zone only LOW/MED confidence
+   17 [dea336ae71 2026-06-27] DOC     NO_CLEAR_STRUCTURE        no usable zones
+   18 [dea336ae71 2026-06-27] DOC """
+   29 [dea336ae71 2026-06-27] DOC     """Recent price action used for breakout/volume flags (built from candles)."""
+   39 [dea336ae71 2026-06-27] COM     entry_proximity_pct: float = 1.0   # entry within this % of a zone → "into" it
+   40 [dea336ae71 2026-06-27] COM     volume_surge_mult: float = 1.5     # breakout volume must exceed this × avg
+   41 [dea336ae71 2026-06-27] COM     weak_breakout_frac: float = 0.25   # clears band by < frac×width → weak follow-through
+   42 [dea336ae71 2026-06-27] COM     retest_sl_buffer_pct: float = 0.3  # proposed retest SL this % beyond the zone
+   79 [dea336ae71 2026-06-27] COM         # Buying into overhead resistance.
+   87 [55c93d3ca0 2026-06-27] COM         # Breakout flags evaluate the zone JUST BROKEN (resistance below entry),
+   88 [55c93d3ca0 2026-06-27] COM         # not the overhead one — a price that cleared a level is breaking the
+   89 [55c93d3ca0 2026-06-27] COM         # level beneath it.
+   93 [dea336ae71 2026-06-27] COM         # Selling into underlying support (mirror).
+  104 [dea336ae71 2026-06-27] COM     # de-dupe while preserving order
+  110 [dea336ae71 2026-06-27] COM # ─────────────────────────────────────────────────────────────────────────────
+  111 [dea336ae71 2026-06-27] COM # Internal
+  112 [dea336ae71 2026-06-27] COM # ─────────────────────────────────────────────────────────────────────────────
+  126 [55c93d3ca0 2026-06-27] DOC     """
+  127 [55c93d3ca0 2026-06-27] DOC     The zone a breakout is breaking THROUGH: for a long, the resistance just
+  128 [55c93d3ca0 2026-06-27] DOC     below entry (greatest band_high <= entry); for a short, the support just
+  129 [55c93d3ca0 2026-06-27] DOC     above entry (smallest band_low >= entry). None if there is no such zone.
+  130 [55c93d3ca0 2026-06-27] DOC     """
+  139 [dea336ae71 2026-06-27] DOC     """
+  140 [dea336ae71 2026-06-27] DOC     Long: entry sits at/inside the band or just below it (within proximity), but
+  141 [dea336ae71 2026-06-27] DOC     NOT above band_high (that is a breakout, handled separately). Short mirrors.
+  142 [dea336ae71 2026-06-27] DOC     """
+  179 [dea336ae71 2026-06-27] COM     # Wait for a break above and a retest of the zone from above (res→support).

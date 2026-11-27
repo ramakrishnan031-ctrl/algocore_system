@@ -1,0 +1,27 @@
+    1 [9f56b07751 2026-06-27] DOC """
+    2 [9f56b07751 2026-06-27] DOC sr_detector/zone_warmer.py — Trading System v2 · S&R V2 Phase A (SNR-V2)
+    3 [9f56b07751 2026-06-27] DOC 
+    4 [9f56b07751 2026-06-27] DOC Purpose:
+    5 [9f56b07751 2026-06-27] DOC     Daemon worker (uniform worker pattern) that keeps the ZoneCache warm so the
+    6 [9f56b07751 2026-06-27] DOC     pre-placement divert check is INSTANT (no fetch on the hot path). On a queued
+    7 [9f56b07751 2026-06-27] DOC     symbol it fetches the structure TFs (day/60m/30m) via the reused OhlcFetcher
+    8 [9f56b07751 2026-06-27] DOC     (which paces through rate_limiter.acquire("historical")), builds scored zones
+    9 [9f56b07751 2026-06-27] DOC     via the shared zone_builder, and stores resistance+support in the cache.
+   10 [9f56b07751 2026-06-27] DOC     Re-warms cached symbols before TTL expiry. Enqueue a symbol when its signal
+   11 [9f56b07751 2026-06-27] DOC     ARRIVES so warming overlaps the pipeline window; a cache miss simply falls
+   12 [9f56b07751 2026-06-27] DOC     through to normal placement (never blocks).
+   13 [9f56b07751 2026-06-27] DOC 
+   14 [9f56b07751 2026-06-27] DOC What it does NOT do:
+   15 [9f56b07751 2026-06-27] DOC     - No 1-minute fetch (that is the RetestMonitor's job).
+   16 [9f56b07751 2026-06-27] DOC     - Never raises into the caller; warming failures are logged + skipped.
+   17 [9f56b07751 2026-06-27] DOC """
+   34 [9f56b07751 2026-06-27] COM         fetcher,                 # sr_detector.fetch.OhlcFetcher (structure TFs)
+   61 [9f56b07751 2026-06-27] COM     # ── lifecycle ─────────────────────────────────────────────────────────────
+   82 [9f56b07751 2026-06-27] COM     # ── enqueue (signal-arrival hook) ─────────────────────────────────────────
+   85 [9f56b07751 2026-06-27] DOC         """Queue a symbol for warming. Deduped; never raises into the caller."""
+  101 [9f56b07751 2026-06-27] COM     # ── worker ────────────────────────────────────────────────────────────────
+  108 [9f56b07751 2026-06-27] COM                 self._enqueue_rewarms()      # idle: refresh near-expiry symbols
+  128 [9f56b07751 2026-06-27] COM     # Public + synchronous so tests can drive it deterministically.
+  130 [9f56b07751 2026-06-27] DOC         """Fetch structure TFs, build zones, store in the cache. Returns True if
+  131 [9f56b07751 2026-06-27] DOC         zones were cached. A fetch miss leaves the cache untouched (returns False)."""
+  144 [9f56b07751 2026-06-27] COM     # ── helpers ───────────────────────────────────────────────────────────────

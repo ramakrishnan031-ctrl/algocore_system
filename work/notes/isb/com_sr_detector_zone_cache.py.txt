@@ -1,0 +1,14 @@
+    1 [9f56b07751 2026-06-27] DOC """
+    2 [9f56b07751 2026-06-27] DOC sr_detector/zone_cache.py — Trading System v2 · S&R V2 Phase A (SNR-V2)
+    3 [9f56b07751 2026-06-27] DOC 
+    4 [9f56b07751 2026-06-27] DOC Purpose:
+    5 [9f56b07751 2026-06-27] DOC     In-memory, thread-safe, per-symbol store of the latest confluence-scored
+    6 [9f56b07751 2026-06-27] DOC     zones, split into resistance[] and support[] (BOTH cached — Phase A reads
+    7 [9f56b07751 2026-06-27] DOC     resistance for the buying-into-resistance divert; Phase B will read support).
+    8 [9f56b07751 2026-06-27] DOC     A pre-placement check reads this synchronously (NO fetch on the hot path) —
+    9 [9f56b07751 2026-06-27] DOC     a miss / expired entry returns None and the caller falls through to normal
+   10 [9f56b07751 2026-06-27] DOC     placement. Pure: stdlib + sr_detector.models only.
+   11 [9f56b07751 2026-06-27] DOC """
+   42 [9f56b07751 2026-06-27] DOC         """Return the cached ZoneSet, or None on miss / expiry (treated as miss)."""
+   52 [9f56b07751 2026-06-27] DOC         """Cached symbols whose age exceeds (ttl − margin) — the warmer refreshes
+   53 [9f56b07751 2026-06-27] DOC         them before they expire so a hot-path get() keeps hitting."""

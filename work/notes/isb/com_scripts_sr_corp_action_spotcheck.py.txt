@@ -1,0 +1,20 @@
+    1 [dea336ae71 2026-06-27] DOC """
+    2 [dea336ae71 2026-06-27] DOC scripts/sr_corp_action_spotcheck.py — Trading System v2 · S&R Detector V1
+    3 [dea336ae71 2026-06-27] DOC 
+    4 [dea336ae71 2026-06-27] DOC Purpose (spec C, one-time verification):
+    5 [dea336ae71 2026-06-27] DOC     Confirm whether kite.historical_data() returns split/bonus-ADJUSTED equity
+    6 [dea336ae71 2026-06-27] DOC     candles by default. The detector clusters swing pivots over 6 months — an
+    7 [dea336ae71 2026-06-27] DOC     UNADJUSTED split (e.g. 2:1 → price halves overnight) would create a phantom
+    8 [dea336ae71 2026-06-27] DOC     gap and a false zone. Run ONCE against a known-split stock on the VM (needs a
+    9 [dea336ae71 2026-06-27] DOC     live token); note the result in SYSTEM_MAP.
+   10 [dea336ae71 2026-06-27] DOC 
+   11 [dea336ae71 2026-06-27] DOC How it works:
+   12 [dea336ae71 2026-06-27] DOC     Fetch daily candles spanning a known split/bonus ex-date and report the
+   13 [dea336ae71 2026-06-27] DOC     largest overnight close-to-close ratio. ADJUSTED data is continuous (ratios
+   14 [dea336ae71 2026-06-27] DOC     near 1.0); UNADJUSTED data shows a ratio near the split factor (≈0.5 for 2:1,
+   15 [dea336ae71 2026-06-27] DOC     ≈0.2 for 5:1, etc.).
+   16 [dea336ae71 2026-06-27] DOC 
+   17 [dea336ae71 2026-06-27] DOC Usage (VM):
+   18 [dea336ae71 2026-06-27] DOC     python scripts/sr_corp_action_spotcheck.py --symbol IDEA --around 2026-01-15 --window 20
+   19 [dea336ae71 2026-06-27] DOC """
+   35 [dea336ae71 2026-06-27] COM     from kiteconnect import KiteConnect  # type: ignore[import]

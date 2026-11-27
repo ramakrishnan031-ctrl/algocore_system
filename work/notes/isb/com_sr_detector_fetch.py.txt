@@ -1,0 +1,47 @@
+    1 [dea336ae71 2026-06-27] DOC """
+    2 [dea336ae71 2026-06-27] DOC sr_detector/fetch.py — Trading System v2 · S&R Detector V1
+    3 [dea336ae71 2026-06-27] DOC 
+    4 [dea336ae71 2026-06-27] DOC Purpose:
+    5 [dea336ae71 2026-06-27] DOC     Detector-side fetch orchestration: resolve a symbol → instrument_token, fetch
+    6 [dea336ae71 2026-06-27] DOC     the 3 timeframe windows (one request each), cache within the session, and
+    7 [dea336ae71 2026-06-27] DOC     FAIL SAFE (never raise; an error yields no candles so the detector logs a
+    8 [dea336ae71 2026-06-27] DOC     fetch_failed row and skips analysis — spec C).
+    9 [dea336ae71 2026-06-27] DOC 
+   10 [dea336ae71 2026-06-27] DOC Design:
+   11 [dea336ae71 2026-06-27] DOC     SR-F1 — The actual rate-limited broker call is INJECTED as `fetch_fn(token,
+   12 [dea336ae71 2026-06-27] DOC             from_date, to_date, interval) -> list[dict]`. main.py builds it as a
+   13 [dea336ae71 2026-06-27] DOC             closure over (market-data kite handle, rate_limiter.acquire("historical")),
+   14 [dea336ae71 2026-06-27] DOC             so this package imports nothing from broker/ and never touches a
+   15 [dea336ae71 2026-06-27] DOC             hardcoded API key. Paper + live share the same closure (parity).
+   16 [dea336ae71 2026-06-27] DOC     SR-F2 — Token via the injected instrument_cache.get_by_symbol(sym).instrument_token
+   17 [dea336ae71 2026-06-27] DOC             (already loaded; not rebuilt via kite.instruments()).
+   18 [dea336ae71 2026-06-27] DOC     SR-F3 — Intra-session cache keyed by (symbol, interval) with a TTL, so a
+   19 [dea336ae71 2026-06-27] DOC             re-signalling symbol is not re-fetched.
+   20 [dea336ae71 2026-06-27] DOC     SR-F4 — Every failure path (no token, fetch raises, empty result) returns
+   21 [dea336ae71 2026-06-27] DOC             None for that TF; nothing propagates into the pipeline.
+   22 [dea336ae71 2026-06-27] DOC """
+   49 [dea336ae71 2026-06-27] COM         # (symbol, interval) -> (fetched_at_monotonic_dt, candles)
+   54 [dea336ae71 2026-06-27] DOC         """
+   55 [dea336ae71 2026-06-27] DOC         Return {interval: [Candle,...]} for the intervals that fetched OK. A
+   56 [dea336ae71 2026-06-27] DOC         failed/empty interval is simply omitted (never raises). An empty dict
+   57 [dea336ae71 2026-06-27] DOC         means the detector should record a fetch_failed / NO_CLEAR_STRUCTURE row.
+   58 [dea336ae71 2026-06-27] DOC         """
+   73 [536172cfad 2026-07-12] DOC         """Fetch ONE interval with an explicit (usually short) lookback window.
+   74 [536172cfad 2026-07-12] DOC 
+   75 [536172cfad 2026-07-12] DOC         V3 03.01: the Layer-A intraday anchors (VWAP/ORB) need TODAY's fine bars
+   76 [536172cfad 2026-07-12] DOC         (e.g. 5-minute, lookback 1) — a different window than the multi-day
+   77 [536172cfad 2026-07-12] DOC         structural fetch. Reuses the same token/cache/fetch_fn machinery; returns
+   78 [536172cfad 2026-07-12] DOC         None on any failure (fail-safe, SR-F4). fetch_timeframes() is unchanged.
+   79 [536172cfad 2026-07-12] DOC         """
+   89 [536172cfad 2026-07-12] DOC         """Fetch ONE interval for an EXPLICIT instrument_token (skips the
+   90 [536172cfad 2026-07-12] DOC         symbol→token cache resolution).
+   91 [536172cfad 2026-07-12] DOC 
+   92 [536172cfad 2026-07-12] DOC         V3 03.02: the market-index (e.g. NIFTY 50) is NOT in the instrument
+   93 [536172cfad 2026-07-12] DOC         cache, so its token is supplied from config and fetched directly through
+   94 [536172cfad 2026-07-12] DOC         the SAME rate-limited fetch_fn (reuse, not a new data path). Returns None
+   95 [536172cfad 2026-07-12] DOC         on any failure (fail-safe). `cache_key` scopes the intra-session cache
+   96 [536172cfad 2026-07-12] DOC         (defaults to the token).
+   97 [536172cfad 2026-07-12] DOC         """
+  103 [dea336ae71 2026-06-27] COM     # ── internal ──────────────────────────────────────────────────────────────
+  110 [dea336ae71 2026-06-27] COM         except Exception as exc:   # InstrumentNotFoundError or anything
+  130 [dea336ae71 2026-06-27] COM         except Exception as exc:   # fail-safe: never propagate (SR-F4)

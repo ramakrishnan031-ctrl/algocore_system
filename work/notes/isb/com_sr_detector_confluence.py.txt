@@ -1,0 +1,43 @@
+    1 [dea336ae71 2026-06-27] DOC """
+    2 [dea336ae71 2026-06-27] DOC sr_detector/confluence.py — Trading System v2 · S&R Detector V1
+    3 [dea336ae71 2026-06-27] DOC 
+    4 [dea336ae71 2026-06-27] DOC Purpose:
+    5 [dea336ae71 2026-06-27] DOC     Turn per-timeframe zones into MERGED, confluence-scored zones. Confidence is
+    6 [dea336ae71 2026-06-27] DOC     NEVER a single method — it is a weighted sum of independent votes, bucketed
+    7 [dea336ae71 2026-06-27] DOC     into HIGH / MEDIUM / LOW, with the evidence breakdown preserved so we can
+    8 [dea336ae71 2026-06-27] DOC     audit + calibrate (spec E). Pure functions; stdlib only.
+    9 [dea336ae71 2026-06-27] DOC 
+   10 [dea336ae71 2026-06-27] DOC Locked Design Decisions:
+   11 [dea336ae71 2026-06-27] DOC     SR-C1 — Merge same-kind zones ACROSS timeframes by centre proximity
+   12 [dea336ae71 2026-06-27] DOC             (within merge_pct) into one band; the merged band spans the union.
+   13 [dea336ae71 2026-06-27] DOC     SR-C2 — Votes (each weighted, config-tuned):
+   14 [dea336ae71 2026-06-27] DOC               swing      = w_swing  * min(total_touches, touch_cap)
+   15 [dea336ae71 2026-06-27] DOC               multi_tf   = w_multi  * num_distinct_timeframes
+   16 [dea336ae71 2026-06-27] DOC               volume     = w_volume if a volume node falls in the band
+   17 [dea336ae71 2026-06-27] DOC               prior_day  = w_prior  if a PDH/PDL/PDC level falls in the band
+   18 [dea336ae71 2026-06-27] DOC               round_num  = w_round  if a round number falls in the band
+   19 [dea336ae71 2026-06-27] DOC               recency    = w_recency * recency_factor (recent touches → higher)
+   20 [dea336ae71 2026-06-27] DOC     SR-C3 — HIGH  = score>=t_high AND >=2 distinct method-types contribute AND
+   21 [dea336ae71 2026-06-27] DOC                     present on >=2 timeframes.
+   22 [dea336ae71 2026-06-27] DOC             MEDIUM= score>=t_med.
+   23 [dea336ae71 2026-06-27] DOC             LOW   = otherwise.
+   24 [dea336ae71 2026-06-27] DOC             (V1 logs ALL; only HIGH would ever drive a flag — V2 veto.)
+   25 [dea336ae71 2026-06-27] DOC """
+   38 [dea336ae71 2026-06-27] DOC     """External evidence the scorer overlays onto raw zones."""
+   39 [dea336ae71 2026-06-27] COM     prior_day_levels: Tuple[float, ...] = ()     # PDH, PDL, PDC
+   41 [dea336ae71 2026-06-27] COM     now: Optional[datetime] = None               # recency reference
+   47 [dea336ae71 2026-06-27] DOC     """Confluence weights + thresholds. All CONFIG-tuned (visual-review phase)."""
+   67 [dea336ae71 2026-06-27] DOC     """Merge across TFs and score each merged zone. RESISTANCE + SUPPORT separately."""
+   76 [dea336ae71 2026-06-27] COM # ─────────────────────────────────────────────────────────────────────────────
+   77 [dea336ae71 2026-06-27] COM # Internal
+   78 [dea336ae71 2026-06-27] COM # ─────────────────────────────────────────────────────────────────────────────
+   83 [dea336ae71 2026-06-27] DOC     """Greedy-cluster same-kind zones from all TFs by centre proximity."""
+  118 [dea336ae71 2026-06-27] COM     # swing (always present for a real zone)
+  123 [dea336ae71 2026-06-27] COM     # multi-timeframe agreement
+  128 [dea336ae71 2026-06-27] COM     # volume node
+  132 [dea336ae71 2026-06-27] COM     # prior-day level
+  136 [dea336ae71 2026-06-27] COM     # round number
+  140 [dea336ae71 2026-06-27] COM     # recency
+  181 [dea336ae71 2026-06-27] DOC     """A multiple of the price magnitude (or half-magnitude) falling in the band."""
+  185 [dea336ae71 2026-06-27] COM     magnitude = 10.0 ** math.floor(math.log10(center))   # e.g. 523 -> 100
+  203 [dea336ae71 2026-06-27] COM     # tz-safety: kite candle ts may be aware (IST) while now_fn() differs.

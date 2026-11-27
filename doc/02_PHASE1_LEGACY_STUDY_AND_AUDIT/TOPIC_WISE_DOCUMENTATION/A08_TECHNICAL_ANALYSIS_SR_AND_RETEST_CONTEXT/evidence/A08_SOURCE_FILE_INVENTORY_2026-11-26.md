@@ -2,7 +2,7 @@
 
 **Status:** DRAFT — evidence for the A08 STUDY
 **Date:** 2026-11-26
-**Revision history:** First version, 2026-11-26.
+**Revision history:** First version, 2026-11-26. Revision 1, 2026-11-26: line references and omissions corrected from the checked A08 STUDY parts (part P06, section 8, statements P06-S122 to P06-S135, P06-S187 and P06-S188; parts P01 to P05 as cited there); every corrected cell names its source statement. No path, size, hash or count of section 1's table changed (P06-S136).
 **Purpose and scope:** Identifies the A08 paths of the Master System Investigation Index (entry A08; Appendix A for the three scripts) at the study baseline: size, Git object, SHA-256 and history of each path; the A08 call sites in files that other topics own (`main.py`, A01's file, index rule 8; `signals/signal_processor.py`, A06's file; the `orders/` consumers; and others); the declared invocations of the scripts, as declarations only; the configuration block A08's code reads, by key name and committed value only; the related paths that other topics own, which A08 reads at the boundary only (Rama's decisions P1 to P5 of 26-Nov-2026, Decision Register D-41); the tests that reference A08 code (A19's; evidence of stated expectations only); and the A08 changes made after the last recorded deployment (D-21). It supports the STUDY's inventory and decides nothing.
 **Source:** trading-system-prod-snapshot, branch `main`, commit `970aabf3c78d777d9d34549e021f7c8e756c7bdb` (Source Inventory, SRC-10), read on 26-Nov-2026 from the local read-only clone with `git show`, `git ls-tree`, `git log`, `git rev-list`, `git grep` and `git diff`. Nothing in the clone was written or run, and no endpoint, scanner, broker or API was contacted. Every repository-wide search excluded `config/accounts.csv`, `**/.env*`, `**/*.local.yaml` and `**/*token*.json`, and none of them was opened. No credential, token, account identifier or machine path is reproduced (Document 08, section 11; D-07).
 
@@ -33,7 +33,7 @@ Lines and bytes are those of the file at the baseline. "Commits" counts the comm
 
 Total: 2,372 lines in the thirteen modules and package files, and 454 lines in the three scripts (2,826 in all).
 
-Top-level contents (FACT; `class` and `def` at column 0): `__init__.py`: `build_sr_detector` (L25); `models.py`: `Candle` (L24), `Pivot` (L51), `Zone` (L60), `ScoredZone` (L87), `Candidate` (L129), `RetestProposal` (L157), `SRAnalysis` (L190); `pivots.py`: `find_swing_pivots` (L24); `zones.py`: `cluster_zones` (L28), `_zone_from_cluster` (L65), `volume_profile_nodes` (L78); `confluence.py`: `ConfluenceContext` (L37), `ScoringParams` (L46), `score_zones` (L62) and helpers L80 to L195; `flags.py`: `BreakoutContext` (L28), `FlagParams` (L38), `FlagResult` (L46), `compute_flags_and_retest` (L55) and helpers L114 to L184; `zone_builder.py`: `ZoneKnobs` (L29), `build_zone_knobs` (L40), `build_scoring_params` (L52), `build_flag_params` (L69), `prior_day_levels` (L78), `scored_zones_from_candles` (L85), `split_zones` (L110), `round_number_levels` (L124), `intraday_anchors` (L143), `build_anchor_payload` (L185), `build_swings_payload` (L207); `fetch.py`: `OhlcFetcher` (L32); `detector.py`: `SRDetector` (L54); `zone_cache.py`: `ZoneSet` (L23), `ZoneCache` (L29); `zone_warmer.py`: `ZoneWarmer` (L30); `retest_confirm.py`: `_is_long` (L50), `RetestParams` (L55), `RetestResult` (L63), `evaluate` (L80), `_strong_close` (L130); `screening/retest_monitor.py`: `ParkedCandidate` (L27), `RetestMonitor` (L44), `RetestDiverter` (L264); the scripts: `sr_corp_action_spotcheck.py` `main` (L52); `sr_detector_backfill.py` `backfill` (L44), `main` (L96), `_cron_main` (L131); `sr_level_export.py` `flatten_analysis` (L62), `export_levels` (L104), `_make_real_analyze_fn` (L127), `main` (L178).
+Top-level contents (FACT; `class` and `def` at column 0): `__init__.py`: `build_sr_detector` (L25); `models.py`: `Candle` (L24), `Pivot` (L51), `Zone` (L60), `ScoredZone` (L87), `Candidate` (L129), `RetestProposal` (L157), `SRAnalysis` (L190); `pivots.py`: `find_swing_pivots` (L24); `zones.py`: `cluster_zones` (L28), `_zone_from_cluster` (L65), `volume_profile_nodes` (L78); `confluence.py`: `ConfluenceContext` (L37), `ScoringParams` (L46), `score_zones` (L62) and helpers L80 to L195; `flags.py`: `BreakoutContext` (L28), `FlagParams` (L38), `FlagResult` (L46), `compute_flags_and_retest` (L55) and helpers L114 to L184; `zone_builder.py`: `ZoneKnobs` (L29), `build_zone_knobs` (L40), `build_scoring_params` (L52), `build_flag_params` (L69), `prior_day_levels` (L78), `scored_zones_from_candles` (L85), `split_zones` (L110), `round_number_levels` (L124), `intraday_anchors` (L143), `build_anchor_payload` (L185), `build_swings_payload` (L207); `fetch.py`: `OhlcFetcher` (L32); `detector.py`: `SRDetector` (L54); `zone_cache.py`: `ZoneSet` (L23), `ZoneCache` (L29); `zone_warmer.py`: `ZoneWarmer` (L30); `retest_confirm.py`: `_is_long` (L50), `RetestParams` (L55), `RetestResult` (L63), `evaluate` (L80), `_strong_close` (L130); `screening/retest_monitor.py`: `ParkedCandidate` (L27), `RetestMonitor` (L44), `RetestDiverter` (L264); the scripts: `sr_corp_action_spotcheck.py` `main` (L52); `sr_detector_backfill.py` `backfill` (L44), `main` (L96), `_cron_main` (L131); `sr_level_export.py` `flatten_analysis` (L62), `export_levels` (L104), `_make_real_analyze_fn` (L127), `main` (L178). Also at column 0 (Revision 1; P06-S188): `zone_builder.py` `_attr` (L24); `detector.py` `_attr` (L320), `_iso` (L324), `_json` (L328); `scripts/sr_corp_action_spotcheck.py` `_build_kite` (L33), `_token_for` (L45); `scripts/sr_detector_backfill.py` `_is_terminal` (L30), `_win_loss` (L34); `scripts/sr_level_export.py` `_row` (L46), `rows_to_csv` (L94).
 
 ## 2. The A08 call sites in files that other topics own
 
@@ -43,11 +43,11 @@ FACT, at the baseline. The STUDY records each one at the interface (call, contra
 
 | Lines | What is there |
 |---|---|
-| L186 to L188; L229 to L231 | constructor parameters and fields: `sr_detector` (the V1 observer), `zone_warmer`, `retest_sl_buffer_pct` (default 0.2), `_retest_diverter` |
+| L186 to L188; L229 to L232 | constructor parameters and fields: `sr_detector` (the V1 observer), `zone_warmer`, `retest_sl_buffer_pct` (default 0.2), `_retest_diverter` |
 | L356 to L359 | `set_retest_diverter`: late binding of the V2 diverter |
 | L361 onwards; L388 | `_warm_zones`: enqueues a signal's symbol into the `ZoneWarmer`; called at L388 |
-| L614 to L658 | `_sr_observe`: builds a `Candidate` (import L640) and calls `SRDetector.observe` (L655); called at L1550, after the order reached placement |
-| L1042 to L1043 | `RetestDiverter.enabled` and `maybe_divert` on the FCFS path |
+| L614 to L658 | `_sr_observe`: builds a `Candidate` (import L640) and calls `SRDetector.observe` (L655); called at L1550 (`_admit_and_place`), L2296 (`continue_from_gate`) and L2588 (`continue_from_retest`), each after the `PROCESSED` write (P06-S122; P01-S032; P03-S101) |
+| L1042 to L1049; L1056 | `RetestDiverter.enabled` and `maybe_divert` on the FCFS path; the parked return at L1056 (P06-S126; P04-S117) |
 | L2375 onwards | `continue_from_retest`, the retest resume entry point (`on_confirm` of the `RetestMonitor`); A08 records only the A08-specific handoff and values, its internal orchestration staying A06's (D-41, P1); its strategy-control check is at L2411 (A07's logic, recorded by A07) |
 
 ### 2.2 `main.py` (A01's file)
@@ -61,25 +61,31 @@ FACT, at the baseline. The STUDY records each one at the interface (call, contra
 | L3549 to L3572 | `ZoneCache`, `OhlcFetcher`, `build_zone_knobs`, `build_scoring_params` and `ZoneWarmer` when `_v2_on` or `_struct_exit_on` |
 | L3575 to L3610 | `SignalProcessor(..., sr_detector=..., zone_warmer=..., retest_sl_buffer_pct=_sr_cfg.sl_buffer_pct, ...)` |
 | L3673 to L3693 | an `OhlcFetcher` and the zone knobs reused by the V3 chain (A18) |
-| L3717 to L3718 | an `OhlcFetcher` and the zone knobs reused by the PB-01 watchlist (A18) |
+| L3712 to L3763 | the PB-01 block (A18): imports L3717 to L3718, the zone knobs L3723 to L3724, an `OhlcFetcher` L3728 to L3732, reused by the PB-01 watchlist (P06-S123; P02-X08) |
 | L3765 to L3802 | `RetestParams`, `RetestMonitor(on_confirm=signal_processor.continue_from_retest, ...)`, `RetestDiverter`; `set_retest_diverter`; `eod.set_retest_monitor`; `rehydrate()`; `zone_warmer.start()`; `retest_monitor.start()` |
-| L3804 to L3830 | `StructureExitManager` (A11) with the zone cache, when `_struct_exit_on` |
+| L3804 to L3837 | `StructureExitManager` (A11) with the zone cache, when `_struct_exit_on`: the warmer start L3816, construction L3817 to L3831, `start()` L3832, `except` L3835 to L3837 (P06-S127) |
 | L1599 onwards (L1697, L1733, L1739, L1744) | `_shutdown`: `sr_detector.stop()`, `retest_monitor.stop()`, `structure_exit_manager.stop()`, `zone_warmer.stop()` |
-| L4267 to L4268 | `zone_warmer` and `retest_monitor` passed to `_shutdown` |
+| L4266 to L4269 | `sr_detector` (L4266), `zone_warmer` and `retest_monitor` (L4267 to L4268) and `structure_exit_manager` (L4269) passed to `_shutdown` (P06-S128) |
+| L393 to L438 | the closure's helpers `_build_market_data_kite` (L393 to L418) and `_make_sr_fetch_fn` (L421 to L438), used by the fetch of every A08 object (P06-S129) |
+| L3428 to L3443 | the structure-exit guard before the S&R blocks (P06-S129) |
+| L3524, L3563, L3683, L3733, L3778 | the five `register_constructed("ohlc_fetchers")` calls (P06-S129) |
 
 ### 2.3 Other callers
 
 | Caller (owner) | Lines | What |
 |---|---|---|
-| `orders/structure_exit_manager.py` (A11) | L70; L102 to L130; L203 to L208 | imports `retest_confirm._strong_close`; reads the `ZoneCache` for the structure stop |
+| `orders/structure_exit_manager.py` (A11) | L70; L102 to L130; L203 to L208; L256 to L277, L281 to L296 (`_strong_close` at L290, L293) | imports `retest_confirm._strong_close`; reads the `ZoneCache` and the zones' fields for the structure stop (P06-S135) |
 | `orders/eod_squareoff.py` (A12) | L157 to L159; L191 to L193; L349 to L356 | `set_retest_monitor`; `RetestMonitor.clear_all()` at square-off |
-| `orders/order_placer.py`, `orders/order_protocol_limit.py`, `orders/full_entry_engine.py` (A10) | L888, L1355; L183, L207; L85 | `entry_order_type` "MARKET" for the retest-confirm entry |
-| `regime/engine.py` (A18) | L50 | `find_swing_pivots` |
-| `v3_chain/runner.py`, `v3_chain/pb01_runner.py`, `v3_chain/watchlist_capture.py` (A18) | L32 to L34; L37 to L39; L205 | `CONF_ANCHOR_ONLY`, `find_swing_pivots`, `scored_zones_from_candles`, `split_zones` |
+| `orders/order_placer.py`, `orders/order_protocol_limit.py`, `orders/full_entry_engine.py`, `orders/order_protocol_co.py` (A10) | L888, L1345 to L1356; L183, L206 to L219; L85, L93 to L119; L103 | `entry_order_type` "MARKET" for the retest-confirm entry (`order_protocol_co.py` takes and ignores it) (P06-S130; P04-S121) |
+| `regime/engine.py` (A18) | L50; L193 to L194; L108, L117 to L118, L321 to L323 | `find_swing_pivots` (import and call); the injected fetcher through `_fetch` (P06-S131) |
+| `v3_chain/runner.py`, `v3_chain/pb01_runner.py`, `v3_chain/watchlist_capture.py` (A18) | L32 to L34; L37 to L39; L205 | `CONF_ANCHOR_ONLY`, `find_swing_pivots`, `scored_zones_from_candles`, `split_zones`; the runners and the capture also call the fetcher (`fetch_timeframes`) (P06-S131) |
+| `v3_chain/pb01_entry.py` (A18) | L279 to L280, L289 to L291, L308 | the shared PB-01 `OhlcFetcher`, without importing A08 (P06-S131) |
+| `v3_chain/truncate.py` (A18) | L54 to L68, L71 onwards (L92) | reads the `ts` of the fetched A08 `Candle` objects; called by the V3 runner, the PB-01 runner and the entry stage (P06-S187) |
 | `core/candle_math.py` (A05), `core/daily_stats.py` (A15) | L42, L376; L24 | the `Candle` type (function-local imports in `core/candle_math.py`) |
 | `scripts/forward_shadow_record.py` (A18; index, Appendix A) | L133 | the `Candle` type |
-| `core/state_store.py` (A03) | L1992 to L2020; L3017 onwards | the `sr_detector_results` writes, the backfill reads and updates; the `retest_state` writes (`insert_retest_state` L3026, `update_retest_state` L3041) |
-| `core/schema.sql`, `core/migrations.py` (A03) | L1247 to L1294; L1303 to L1336; L82, L131 | the `sr_detector_results` table (schema v37) and the `retest_state` table (v38) |
+| `core/state_store.py` (A03) | L1979 to L2024; L3026 to L3072; L1408 to L1426 | the `sr_detector_results` methods (writes, the backfill reads and updates); the `retest_state` methods (`insert_retest_state` L3026, `update_retest_state` L3041); `update_signal_status` (P06-S133) |
+| `core/schema.sql`, `core/migrations.py` (A03) | L1247 to L1300; L1303 to L1340; L81 to L83, L131 to L132 | the `sr_detector_results` table and indexes (schema v37) and the `retest_state` table and indexes (v38; rebuild entry L132) (P06-S133) |
+| other readers of A08 code or of A08's stored output (owners as the index states) | — | `screening/hard_gate.py` `gate_htf` (A07); `reports/daily_trade_review.py`, `reports/signal_status.py`, `core/effect_telemetry.py` with `config/expected_managers.yaml`, `core/evidence_contract.py` and its manifest (A15); `scripts/eod_cleanup.py` (A12); `ops_dashboard/backend/readers/db_reader.py` and the `ops_dashboard` label maps; `core/config_auditor.py` (A02); `core/time_authority.py` as the clock (P06-S132; the STUDY's consumer table) |
 
 ## 3. Declared invocations of the scripts
 
@@ -93,7 +99,7 @@ FACT (declarations only; not evidence that any job ran; Document 06, section 4.2
 
 ## 4. The configuration A08's code reads
 
-FACT: the `sr_detector:` block of `config/system_config.yaml` (A02's file), L508 to L545, loaded through `SRDetectorConfig` (`core/config_loader.py` L1153 onwards, A02's file). Committed values only; whether any was in force in production is UNKNOWN / NOT ESTABLISHED (Document 06, section 4.2). The switches are `enabled: true` (L509, the V1 observer), `wait_for_retest_enabled: false` (L529, the V2 retest path) and `intraday_anchors_enabled: false` (L542); `structure_exit_enabled: false` (L634) sits in the structure-exit block, read by `main.py` L3427. The other keys (timeframes, lookback and cache, pivot, clustering, merge, buffers, volume, the confluence weights and thresholds, the retest parameters, the zone cache and warmer, the poll interval, the structure-stop buffer, the anchor settings) are listed by the STUDY with their readers and defaults.
+FACT: the `sr_detector:` block of `config/system_config.yaml` (A02's file), L508 to L545, loaded through `SRDetectorConfig` (`core/config_loader.py` L1153 onwards, A02's file). Committed values only; whether any was in force in production is UNKNOWN / NOT ESTABLISHED (Document 06, section 4.2). The switches are `enabled: true` (L509, the V1 observer), `wait_for_retest_enabled: false` (L529, the V2 retest path) and `intraday_anchors_enabled: false` (L542); `structure_exit_enabled: false` (L634) sits in the structure-exit block, read by `main.py` L3427, by `core/config_auditor.py` L224 (rule A4, run at `main.py` L3437 to L3439) and by `orders/structure_exit_manager.py` L127 to L129 (P06-S134). The other keys (timeframes, lookback and cache, pivot, clustering, merge, buffers, volume, the confluence weights and thresholds, the retest parameters, the zone cache and warmer, the poll interval, the structure-stop buffer, the anchor settings) are listed by the STUDY with their readers and defaults.
 
 ## 5. Related paths that other topics own
 
@@ -124,6 +130,6 @@ FACT (`git diff --stat 7d4970a 970aabf` over the sixteen A08 paths): no A08 file
 
 ## 7. Tests that reference A08 code (A19; evidence of stated expectations only)
 
-FACT: 26 tracked files under `tests/` match `git grep -l -E 'sr_detector|retest_monitor|RetestMonitor|RetestDiverter|ZoneCache|ZoneWarmer|OhlcFetcher|sr_corp_action_spotcheck|sr_detector_backfill|sr_level_export' 970aabf -- tests`. A test states an expectation under its own conditions; it is never evidence of production behaviour, and none was run.
+FACT: 26 tracked files under `tests/` match `git grep -l -E 'sr_detector|retest_monitor|RetestMonitor|RetestDiverter|ZoneCache|ZoneWarmer|OhlcFetcher|sr_corp_action_spotcheck|sr_detector_backfill|sr_level_export' 970aabf -- tests`. A test states an expectation under its own conditions; it is never evidence of production behaviour, and none was run. Revision 1 (P06-S124): the search does not match `tests/unit/test_config_auditor.py`, which tests rule A4 on `structure_exit_enabled` (L87 to L132), or `tests/unit/test_sr_v2_market_path.py`, the SNR-V2 MARKET-route test, which names no A08 code (P04-X08); no file under `tests/` outside the 26 imports A08 code.
 
 `tests/integration/test_hardening_scenarios.py`; `tests/unit/test_candle_math.py`; `tests/unit/test_config_loader.py`; `tests/unit/test_daily_stats.py`; `tests/unit/test_evidence_contract.py`; `tests/unit/test_f3_cron_drift_markers.py`; `tests/unit/test_market_regime.py`; `tests/unit/test_output_retention.py`; `tests/unit/test_signal_processor.py`; `tests/unit/test_sr_anchors.py`; `tests/unit/test_sr_detector_backfill.py`; `tests/unit/test_sr_detector_fetch.py`; `tests/unit/test_sr_detector_observer.py`; `tests/unit/test_sr_detector_units.py`; `tests/unit/test_sr_level_export.py`; `tests/unit/test_sr_v2_continue.py`; `tests/unit/test_sr_v2_divert.py`; `tests/unit/test_sr_v2_monitor.py`; `tests/unit/test_sr_v2_retest_confirm.py`; `tests/unit/test_sr_v2_zone_cache.py`; `tests/unit/test_structure_exit_manager.py`; `tests/unit/test_v3_chain.py`; `tests/unit/test_v3_pb01_e2e.py`; `tests/unit/test_v3_pb01_entry.py`; `tests/unit/test_v3_pb01_runner.py`; `tests/unit/test_v3_watchlist_capture.py`.

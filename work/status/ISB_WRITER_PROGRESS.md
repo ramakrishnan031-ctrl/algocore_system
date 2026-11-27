@@ -10,3 +10,4 @@ Output: `<workspace>/evidence/A08_AUDIT_INTENT_SOURCES_LEGACY_HALF_2026-11-27.md
 - 27-Nov-2026 13:00 IST — section 2.4 done (area c, VO): IS-542 to IS-561. Next: 2.5 area (d) RT from IS-562. IDs used: IS-501..IS-561; refs IC-501, IC-507, IC-508, IC-512, CD-513..CD-518, CD-528.
 - 27-Nov-2026 13:03 IST — section 2.5 done (area d, RT): IS-562 to IS-580. Next: 2.6 area (e) SC from IS-581. IDs used: IS-501..IS-580; refs IC-502, IC-503, IC-508, CD-519..CD-522.
 - 27-Nov-2026 13:04 IST — section 2.6 done (area e, SC): IS-581 to IS-586. Next: 2.7 area (f) XW from IS-587. IDs used: IS-501..IS-586; refs IC-509, CD-523..CD-526.
+- 27-Nov-2026 13:07 IST — section 2.7 done (area f, XW): IS-587 to IS-600. Next: 2.8 area (g) tests from IS-601. IDs used: IS-501..IS-600; refs IC-501, IC-504, IC-506, IC-511, IC-513, CD-526.

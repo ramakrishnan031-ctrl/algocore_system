@@ -22,17 +22,74 @@
 
 ## 2. Dispositions of the allocated items
 
+All 36 items allocated to CZ (`<workspace>/notes/AUDIT_ALLOCATION.md`, the rows with Part CZ) are disposed below, each by the record or records that answer it. No item is cited away whole to another part; where part of an item's mechanism lies in another part's file, that part is named and the item's own record says what is counted here. Dispositions: CONFIRMED (the STUDY's facts hold at the baseline), NARROWED, EXTENDED, SPLIT, NOT CONFIRMED (the stated difference is not found on re-reading), CITED TO PART <X>. Inherited items and listed records keep their owners, IDs, classifications, treatments and statuses, quoted unchanged from STUDY sections 13.2 and 13.6; only A08's side is recorded here.
+
 ### 2.1 STUDY section 15.1 points allocated to CZ (17)
+
+| Item | Subject in brief | Disposition | Records |
+|---|---|---|---|
+| A08-AP-01 | what makes a zone HIGH: "≥2 distinct method-types" always met by two votes derived from the pivots | CONFIRMED (re-computed by script: every three-timeframe group is HIGH; a two-timeframe group is HIGH from three summed touches; no one-timeframe group is HIGH) | CZ-01 (ISSUE; KNOWN DEFECT considered and not given); OPEN FOR RAMA through A08-Q-01 (not needed to classify) |
+| A08-AP-02 | plateaus and outside bars against SR-P1's parenthesis and the docstring | CONFIRMED for the outside bar; NARROWED for the plateau: the unit test of the same commit reads SR-P1's "perfectly flat plateau" as a window of equal bars, which the code meets | CZ-02 (ISSUE, minor, with MATCH parts and an UNKNOWN part); A08-Q-03 |
+| A08-AP-03 | width of a zone and of a merged group | SPLIT: the chaining and the union band follow SR-Z1 and SR-C1 (MATCH parts); the merge's running-mean test and its joining of one timeframe's zones differ from SR-C1 and the configuration comment; no source states a width limit | CZ-03 (ISSUE, minor, with MATCH parts); A08-Q-02 for the width limit |
+| A08-AP-04 | zero-width zones against "A price BAND (never a single line)" | CONFIRMED | CZ-04 (ISSUE, minor) |
+| A08-AP-05 | candle order (A05 CM-05's A08 side) | CONFIRMED for the core: the pivots use list position as time and rely on their documented "chronological" input; the fetcher's passing of rows as received is part FC's (A05 CM-05 is allocated to FC); the readers of the output order are A18's and A07's (interface) | CZ-05 (UNKNOWN / NOT ESTABLISHED, with a MATCH part) |
+| A08-AP-06 | duplicates and gaps | CONFIRMED | CZ-06 (UNKNOWN / NOT ESTABLISHED) |
+| A08-AP-07 | unvalidated values (A05 CM-10 and HA-08, A08's side) | SPLIT: prices, times and the exceptions of the four files CZ-07; the volume default CZ-08; the fetcher's discard of a whole interval for one bad row is part FC's (`sr_detector/fetch.py` L121 to L136), cited | CZ-07 (ISSUE, minor, latent; KNOWN DEFECT considered and not given); CZ-08 (ISSUE, minor, latent, with an UNKNOWN part; KNOWN DEFECT considered and not given) |
+| A08-AP-08 | the recency time base | SPLIT: the full vote on a missing clock or a non-positive window CZ-09 (ISSUE part); the time-zone branch follows the `Candle` contract (MATCH part); `recency_min_factor` above 1 CZ-11; the export's naive clock is part SC's script, recorded at the interface | CZ-09 (ISSUE, minor, latent, with MATCH parts; KNOWN DEFECT considered and not given); CZ-11 |
+| A08-AP-09 | the buffer: `ScoringParams` default 0.0 against 0.1 elsewhere; SR-C2's wording; no buffer in the round-number test | CONFIRMED | CZ-10 (ISSUE, minor, with MATCH parts) |
+| A08-AP-10 | zero-weight votes counted as method types | CONFIRMED, extended to the core's other unchecked parameters | CZ-11 (ISSUE, minor, latent; KNOWN DEFECT considered and not given) |
+| A08-AP-11 | the round-number rule against its docstring | NOT CONFIRMED as a difference: the code tests the docstring's disjunction ("magnitude (or half-magnitude)") and its example ("523 -> 100") as written; the redundant first step and the tenfold change of step are properties of the stated rule, which no source qualifies; the related `round_number_levels` is part FC's file (A08-AP-32, FC) | CZ-19 (MATCH) |
+| A08-AP-12 | output order and the logged zones | CONFIRMED, extended: `SRAnalysis.evidence` is commented "full per-zone breakdown (JSON)" and the confluence docstring says "V1 logs ALL", against the detector's cap of `max_zones_logged` per kind; counted here (no item allocated to part VO covers the cap; flagged) | CZ-13 (ISSUE, minor); CZ-21 (MATCH: the core's output contract) |
+| A08-AP-13 | the volume profile's input | SPLIT: the profile follows SR-Z4 (MATCH); the choice of the profiled series is the zone builder's, part FC's (A08-AP-25), cited; `bins` and `node_frac` unchecked, CZ-11 | CZ-18 (MATCH); CZ-11 |
+| A08-AP-14 | the confidence class against the use of swing-derived zones | CONFIRMED, extended with `docs/v3/V3_STEP4_HARDGATE_SCORER_PLAN.md` L123 (section 9): "R:R uses ANCHOR-only levels ... until swing validation flips it"; counted here (the class is defined in this part's file; its readers are in parts VO, RT and SC and in A11 and A18; flagged) | CZ-12 (ISSUE, latent, with a MATCH part; KNOWN DEFECT considered and not given); OPEN FOR RAMA through A08-Q-04 (not needed to classify) |
+| A08-AP-15 | the lag of recent structure | CONFIRMED (as SR-P2 states) | CZ-16 (MATCH) |
+| A08-AP-16 | documentation and residue points in the core | CONFIRMED, EXTENDED (the `Candidate.score` comment "None on the gate-release path" while the retest resumption also passes `None`, found here) and NARROWED ("everything here is already in hand at _emit_signal_alert" read as a statement of availability, which holds: MATCH part); the `PATHS.md` L417 point is part VO's (A08-AP-48), cited | CZ-14 (ISSUE, minor, with MATCH and UNKNOWN parts) |
+| A08-AP-17 | minor contract points: `to_dict`, rounding, `is_long` | SPLIT; NARROWED by arithmetic: at the committed pivot `n` the four-decimal rounding cannot carry a stored score across a threshold; the strategy schema restricts the first-come path's direction to LONG or SHORT | CZ-22 (MATCH: `to_dict`); CZ-23 (MATCH: `Candidate` and `is_long`) |
 
 ### 2.2 STUDY section 15.2 items allocated to CZ (10)
 
+Each item is runtime or history that no surviving evidence settles; each is disposed whole here (the merged items' sub-points from other parts included), and the other parts may cite CZ-15 by point.
+
+| Item | Subject in brief | Disposition | Records |
+|---|---|---|---|
+| A08-U-01 | the deployed values of every key A08 reads (P01-U01; P02-U02; P03-U02; P04-U04; P06-U01) | UNKNOWN / NOT ESTABLISHED | CZ-15 point 1 |
+| A08-U-02 | the legacy server's candles: order, duplicates, gaps, forming bars; the prior day; the V1 timing; the minute labels (P01-U02; P02-U03; P03-U03; P04-U05) | UNKNOWN / NOT ESTABLISHED | CZ-15 point 2; CZ-05, CZ-06 |
+| A08-U-03 | whether any bad price or volume reached `from_kite` or the algorithms | UNKNOWN / NOT ESTABLISHED | CZ-15 point 3; CZ-07 |
+| A08-U-04 | whether candle `ts` values were aware IST; which recency branch ran; the anchors' scoping (P01-U04; P02-U09) | UNKNOWN / NOT ESTABLISHED | CZ-15 point 4; CZ-09 |
+| A08-U-05 | which A08 code existed and ran, and which consumers (P01-U05; P02-U01; P04-U01; P06-U05; P07-S109) | UNKNOWN / NOT ESTABLISHED | CZ-15 point 5 |
+| A08-U-06 | the zones, scores and buckets produced; how often HIGH came from the swing and timeframe votes alone | UNKNOWN / NOT ESTABLISHED | CZ-15 point 6; CZ-01 |
+| A08-U-07 | whether a `_safe_now` wrapper ever returned `None` | UNKNOWN / NOT ESTABLISHED (expected to remain so) | CZ-15 point 7; CZ-09 |
+| A08-U-08 | whether the "visual-review phase" tuning took place | UNKNOWN / NOT ESTABLISHED; OPEN FOR RAMA through A08-Q-04 | CZ-15 point 8; CZ-14 |
+| A08-U-09 | the production Python and library versions (P01-U09; P02-U11; P03-U10; P04-U08; P05-U07) | UNKNOWN / NOT ESTABLISHED | CZ-15 point 9 |
+| A08-U-10 | what the broker's historical `volume` meant | UNKNOWN / NOT ESTABLISHED | CZ-15 point 10; CZ-08 |
+
 ### 2.3 STUDY section 16 draft questions allocated to CZ (4)
 
-### 2.4 Inherited items allocated to CZ (2)
+| Item | Subject in brief | Disposition | Records |
+|---|---|---|---|
+| A08-Q-01 | was agreement of swings across timeframes enough for HIGH? | stands as drafted (not answered here); OPEN FOR RAMA | CZ-01 (not needed to classify: the sources conflict and the code resolves the conflict one way; needed for the treatment); section 8 |
+| A08-Q-02 | was a width limit or a minimum number of touches intended? | stands as drafted; OPEN FOR RAMA | CZ-03, CZ-04 (not needed to classify); section 8 |
+| A08-Q-03 | should a flat top or bottom count as one touch or several? | stands as drafted; OPEN FOR RAMA | CZ-02 (its UNKNOWN part); section 8 |
+| A08-Q-04 | were the manual-marking check and the visual review made, and is a record kept? | stands as drafted; OPEN FOR RAMA; section 8 adds context (no new question) | CZ-12, CZ-14, CZ-15 point 8 |
+
+### 2.4 Inherited items allocated to CZ (2; IDs, owners, classifications, treatments and statuses quoted unchanged from STUDY section 13.2)
+
+| Prior item | Classification; treatment; status (unchanged) | A08 side at the baseline | Records |
+|---|---|---|---|
+| A05 CM-10 | "ISSUE; FACT; INTERPRETATION"; "A05 treatment group TG9 (AGREED, 17-Nov-2026)"; "AGREED" (STUDY 13.2 item 27; Owner "A05; A08 (the row-to-Candle conversion)", A05 AUDIT L1347) | confirmed: `Candle.from_kite` converts without any check (NaN and infinity accepted; a missing key, a `None` price or a non-numeric string raises); none of the four files checks a value or catches an exception, and the same bad value is skipped silently by the pivots and raises in the volume profile, the round-number test and two `max` calls; the fetcher's discard of the interval is part FC's | CZ-07 (A08's own record; CM-10 keeps A05's) |
+| A05 HA-08 | "ISSUE; FACT; INTERPRETATION; HISTORICAL"; "A05 treatment group TG10 (AGREED, 17-Nov-2026)"; "AGREED" (STUDY 13.2 item 33; Owner "A08 (`Candle` and `from_kite`); A05 ...; A18 ...", A05 AUDIT L1628) | confirmed: a missing, `None`, zero or empty volume becomes 0 and a fraction is truncated; a series of zeros gives no volume node and so no volume vote; a `Candle` carries no instrument, interval or source, and the core receives the interval as the dict key; the flags' volume test is part VO's | CZ-08 (A08's own record; HA-08 keeps A05's) |
 
 ### 2.5 Open Issues Register entries allocated to CZ (0)
 
-### 2.6 Owner-field records, listed records and notes allocated to CZ (3)
+None is allocated to CZ. The entries A05-27 and A05-28 (whether the fetch layer was meant to guarantee oldest-first order and to remove duplicates; history OPEN, RS-12; owners naming A08 "the fetcher, which passes the rows as received") are part FC's; CZ-05 and CZ-06 cite them without re-asking them.
+
+### 2.6 Owner-field records, listed records and notes allocated to CZ (3; quoted unchanged from STUDY section 13.6 (b))
+
+| Record | Classification; treatment; status (unchanged) | A08 side at the baseline | Records |
+|---|---|---|---|
+| A05 CM-01 (A05 AUDIT L1211 to L1224) | "ISSUE; FACT; HISTORICAL"; "A05 treatment group TG18 (AGREED, 17-Nov-2026)"; "AGREED" | the "single candle type" `sr_detector.models.Candle`: one six-field frozen dataclass, used by every A08 path; the second candle record that makes the header's claim fail is A05's `data/candle_store.py` `CandleData`; `sr_detector/zone_builder.py` L16 imports `core.candle_math.session_vwap`, not a candle type | CZ-27 (MATCH, A08 side) |
+| A05 CM-08 (A05 AUDIT L1309 to L1322) | "ISSUE; FACT; INTERPRETATION; HISTORICAL"; "A05 treatment group TG9 (AGREED, 17-Nov-2026)"; "AGREED" | `resample`'s "matching the Candle contract": the `Candle` docstring admits aware or naive-IST times, which is the convention `resample` cites | CZ-28 (MATCH, A08 side) |
+| A05 CM-12 (MATCH row, A05 AUDIT L1369) | "MATCH; FACT; INTERPRETATION"; not entered (MATCH) | `core/candle_math.py`'s two `sr_detector` imports reach only `Candle` (L42 under `if TYPE_CHECKING:`; L376 inside `resample`) | CZ-29 (MATCH, A08 side) |
 
 ## 3. Issue and UNKNOWN records
 
